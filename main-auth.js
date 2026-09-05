@@ -5,6 +5,16 @@ import { ADMIN_UID } from './admin-config.js';
 
 const db = getFirestore(app);
 
+// 0. CALCOLO AUTOMATICO DEL PERCORSO BASE DEL SITO
+// Funziona sia se il sito è pubblicato su github.io/nexus-didattica/
+// sia se in futuro verrà spostato su un dominio personalizzato (es. nexusdidattica.it),
+// dove non c'è più la sottocartella "/nexus-didattica/". Non serve modificare nulla a mano.
+const REPO_BASE = (() => {
+    const marcatore = "/nexus-didattica/";
+    const path = window.location.pathname;
+    return path.indexOf(marcatore) === 0 ? "/nexus-didattica" : "";
+})();
+
 // 1. GESTIONE AUTENTICAZIONE E VISTE ADMIN/UTENTE
 const authButtons = document.querySelector('.auth-buttons');
 
@@ -21,7 +31,7 @@ onAuthStateChanged(auth, async (user) => {
                 if (utenteDocSnap.exists() && utenteDocSnap.data().bannato === true) {
                     await signOut(auth);
                     alert("Il tuo account è stato sospeso. Contatta l'assistenza se pensi sia un errore.");
-                    window.location.href = "/nexus-didattica/index.html";
+                    window.location.href = `${REPO_BASE}/index.html`;
                     return;
                 }
             } catch (error) {
@@ -32,7 +42,7 @@ onAuthStateChanged(auth, async (user) => {
         if (authButtons) {
             const nomeUtente = user.displayName || "Profilo";
             authButtons.innerHTML = `
-                <a href="/nexus-didattica/profilo.html" class="btn-profile">👤 ${nomeUtente}</a>
+                <a href="${REPO_BASE}/profilo.html" class="btn-profile">👤 ${nomeUtente}</a>
                 <button id="logout-btn" class="btn-logout">Esci</button>
             `;
 
@@ -70,8 +80,8 @@ onAuthStateChanged(auth, async (user) => {
     } else {
         if (authButtons) {
             authButtons.innerHTML = `
-                <a href="/nexus-didattica/login.html" class="btn-login">Accedi</a>
-                <a href="/nexus-didattica/registrati.html" class="btn-register">Registrati</a>
+                <a href="${REPO_BASE}/login.html" class="btn-login">Accedi</a>
+                <a href="${REPO_BASE}/registrati.html" class="btn-register">Registrati</a>
             `;
         }
         if (adminLink) adminLink.style.display = "none";
@@ -627,10 +637,10 @@ async function controllaManutenzione(user) {
 
         if (isAttivo && !siamoInManutenzione) {
             // Manutenzione ATTIVA -> Vai alla pagina di manutenzione
-            window.location.href = "/nexus-didattica/manutenzione.html";
+            window.location.href = `${REPO_BASE}/manutenzione.html`;
         } else if (!isAttivo && siamoInManutenzione) {
             // Manutenzione DISATTIVATA -> Torna alla Home
-            window.location.href = "/nexus-didattica/index.html";
+            window.location.href = `${REPO_BASE}/index.html`;
         }
     } catch (error) {
         console.error("Errore nel controllo manutenzione:", error);
