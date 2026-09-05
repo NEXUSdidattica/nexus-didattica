@@ -51,8 +51,15 @@ if (forgotPasswordBtn) {
             return;
         }
 
+        // Dice a Firebase di mandare l'utente sulla NOSTRA pagina di reset
+        // personalizzata, invece della pagina generica di Firebase.
+        const actionCodeSettings = {
+            url: "https://nexusdidattica.it/nuova_password.html",
+            handleCodeInApp: false
+        };
+
         try {
-            await sendPasswordResetEmail(auth, email);
+            await sendPasswordResetEmail(auth, email, actionCodeSettings);
             console.log("Email inviata con successo a:", email);
             
             if (infoMsg) {
