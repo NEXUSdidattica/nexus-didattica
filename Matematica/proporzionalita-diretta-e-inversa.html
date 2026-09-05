@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alla Proporzionalità Diretta e Inversa: formule, costante di proporzionalità (k), grafici cartesiani, tabelle e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proporzionalità Diretta e Inversa: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-proporzionalita-diretta-inversa" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Proporzionalità Diretta e Inversa</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi delle relazioni tra grandezze, formule per il calcolo della costante k, rappresentazione sul piano cartesiano e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Proporzionalità Diretta</h2>
+            <p>
+                Due grandezze variabili <i>x</i> e <i>y</i> si dicono <strong>direttamente proporzionali</strong> se il loro <strong>rapporto rimane costante</strong> al variare dei valori:
+            </p>
+            <div class="formula-box">
+                📈 <strong>Formula della Proporzionalità Diretta:</strong><br>
+                <code>y / x = k</code> &nbsp;&rArr;&nbsp; <code>y = k &middot; x</code> (dove <em>k</em> è la costante di proporzionalità diretta)<br>
+                <em>Grafico sul piano cartesiano:</em> una <strong>retta passante per l'origine</strong> degli assi (0,0).
+            </div>
+            <p>
+                <em>Esempio:</em> Se raddoppia la quantità <i>x</i>, raddoppia anche la quantità <i>y</i> (es. peso delle mele e costo totale).
+            </p>
+
+            <h2>2. Proporzionalità Inversa</h2>
+            <p>
+                Due grandezze variabili <i>x</i> e <i>y</i> si dicono <strong>inversamente proporzionali</strong> se il loro <strong>prodotto rimane costante</strong>:
+            </p>
+            <div class="formula-box">
+                📉 <strong>Formula della Proporzionalità Inversa:</strong><br>
+                <code>x &middot; y = k</code> &nbsp;&rArr;&nbsp; <code>y = k / x</code> (dove <em>k</em> è la costante di proporzionalità inversa)<br>
+                <em>Grafico sul piano cartesiano:</em> un ramo di <strong>iperbole equilatera</strong>.
+            </div>
+            <p>
+                <em>Esempio:</em> Se raddoppia il numero di operai (<i>x</i>), il tempo impiegato per svolgere un lavoro (<i>y</i>) si dimezza.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un'automobile viaggia a velocità costante percorrendo 150 km in 2 ore. Calcola la costante di proporzionalità <i>k</i> e stabilisci quanti chilometri percorrerà in 5 ore.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Identificazione relazione:</strong> Spazio (<i>y</i>) e Tempo (<i>x</i>) sono in proporzionalità diretta (<code>y = k &middot; x</code>).</li>
+                    <li><strong>Calcolo della costante <i>k</i>:</strong> <code>k = y / x = 150 / 2 = 75 km/h</code>.</li>
+                    <li><strong>Calcolo per 5 ore:</strong> <code>y = k &middot; x = 75 &middot; 5 = 375 km</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>k = 75</code>; Spazio percorso in 5 ore = <code>375 km</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Proporzionalità Diretta e Inversa</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 problemi svolti: riconosci la tipologia di proporzionalità, trova la costante <i>k</i>, completa le tabelle e risolvi problemi applicati.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 2 === 1) {
+                        let k = (i % 8) + 2;
+                        let x = 4;
+                        let y = k * x;
+                        domanda = `Le variabili <i>x</i> e <i>y</i> sono in proporzionalità diretta con costante <i>k</i> = ${k}. Calcola il valore di <i>y</i> quando <i>x</i> = ${x}.`;
+                        risposta = `y = ${y}`;
+                        spiegazione = `
+                        1) Per la proporzionalità diretta vale la legge: <code>y = k &middot; x</code>.<br>
+                        2) Sostituiamo i valori noti: <code>y = ${k} &middot; ${x} = ${y}</code>.`;
+                    } else {
+                        let k = (i % 5 + 2) * 10;
+                        let x = 5;
+                        let y = k / x;
+                        domanda = `Due grandezze sono inversamente proporzionali e la loro costante vale <i>k</i> = ${k}. Quanto vale <i>y</i> quando <i>x</i> = ${x}?`;
+                        risposta = `y = ${y}`;
+                        spiegazione = `
+                        1) Per la proporzionalità inversa la legge è: <code>x &middot; y = k</code> &rArr; <code>y = k / x</code>.<br>
+                        2) Sostituiamo i dati: <code>y = ${k} / ${x} = ${y}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let x1 = 3, y1 = 12, x2 = 7;
+                        let k = y1 / x1;
+                        let y2 = k * x2;
+                        domanda = `Dalla seguente tabella di proporzionalità diretta: (x₁=${x1}, y₁=${y1}), ricava il valore della costante <i>k</i> e determina y₂ per x₂=${x2}.`;
+                        risposta = `k = ${k}, y₂ = ${y2}`;
+                        spiegazione = `
+                        1) Calcolo costante di proporzionalità diretta: <code>k = y₁ / x₁ = ${y1} / ${x1} = ${k}</code>.<br>
+                        2) Calcolo incognita: <code>y₂ = k &middot; x₂ = ${k} &middot; ${x2} = ${y2}</code>.`;
+                    } else if (mod === 2) {
+                        let x1 = 4, y1 = 15, x2 = 10;
+                        let k = x1 * y1;
+                        let y2 = k / x2;
+                        domanda = `In una relazione di proporzionalità inversa sappiamo che per <i>x</i> = ${x1} si ha <i>y</i> = ${y1}. Calcola la costante <i>k</i> e il valore di <i>y</i> quando <i>x</i> = ${x2}.`;
+                        risposta = `k = ${k}, y = ${y2}`;
+                        spiegazione = `
+                        1) Trova la costante di proporzionalità inversa: <code>k = x &middot; y = ${x1} &middot; ${y1} = ${k}</code>.<br>
+                        2) Calcola il nuovo valore: <code>y = k / x = ${k} / ${x2} = ${y2}</code>.`;
+                    } else {
+                        domanda = `Riconosci il tipo di proporzionalità rappresentato dai punti A(2, 6), B(4, 12) e C(6, 18) e indica l'equazione della curva.`;
+                        risposta = `Proporzionalità Diretta (y = 3x)`;
+                        spiegazione = `
+                        1) Verifichiamo il rapporto <i>y/x</i>: <code>6/2 = 3</code>, <code>12/4 = 3</code>, <code>18/6 = 3</code>.<br>
+                        2) Il rapporto è costante (<i>k</i> = 3), quindi la proporzionalità è <strong>diretta</strong>.<br>
+                        3) L'equazione è <code>y = 3x</code> e sul piano cartesiano rappresenta una retta passante per l'origine.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let operai1 = 6, giorni1 = 12, operai2 = 9;
+                    let k = operai1 * giorni1;
+                    let giorni2 = k / operai2;
+                    domanda = `Un cantiere impiega ${operai1} operai per completare un lavoro in ${giorni1} giorni. Se gli operai diventano ${operai2}, quanti giorni saranno necessari? Riconosci il tipo di relazione.`;
+                    risposta = `Inversamente proporzionali, Giorni = ${giorni2} giorni`;
+                    spiegazione = `
+                    1) All'aumentare degli operai il tempo diminuisce: la proporzionalità è <strong>inversa</strong>.<br>
+                    2) Calcolo costante <i>k</i>: <code>k = ${operai1} &middot; ${giorni1} = ${k}</code> (lavoro totale).<br>
+                    3) Calcolo del nuovo tempo: <code>Tempo = k / Operai = ${k} / ${operai2} = ${giorni2}</code> giorni.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

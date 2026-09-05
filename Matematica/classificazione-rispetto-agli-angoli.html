@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 2: Classificazione rispetto agli angoli (Acutangolo, Rettangolo, Ottusangolo) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Classificazione dei Triangoli rispetto agli Angoli - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-2" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 2</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Classificazione rispetto agli Angoli</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio dettagliato dei triangoli acutangoli, rettangoli e ottusangoli, proprietà degli angoli interni e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Classificazione dei Triangoli in Base agli Angoli</h2>
+            <p>
+                Oltre alla suddivisione basata sui lati, i triangoli possono essere classificati esaminando le ampiezze dei loro tre angoli interni:
+            </p>
+            <ul>
+                <li><strong>Triangolo Acutangolo:</strong> Ha tutti e tre gli angoli interni <em>acuti</em>, ovvero ciascuno di essi misura meno di <code>90&deg;</code> (< <code>90&deg;</code>).</li>
+                <li><strong>Triangolo Rettangolo:</strong> Possiede un angolo interno che è un angolo retto (esattamente pari a <code>90&deg;</code>). I due lati che formano l'angolo retto sono detti <em>cateti</em>, mentre il lato opposto all'angolo retto è l'<em>ipotenusa</em>.</li>
+                <li><strong>Triangolo Ottusangolo:</strong> Possiede un angolo interno <em>ottuso</em>, ovvero di ampiezza superiore a <code>90&deg;</code> (> <code>90&deg;</code>) e inferiore a <code>180&deg;</code>. Gli altri due angoli sono necessariamente acuti.</li>
+            </ul>
+
+            <h2>2. Proprietà Fondamentale degli Angoli Interni</h2>
+            <p>
+                La regola geometrica fondamentale che vale per qualsiasi tipologia di triangolo nel piano euclideo stabilisce che:
+            </p>
+            <ul>
+                <li>La somma degli angoli interni di un qualsiasi triangolo è sempre pari a un angolo piatto, ovvero <code>180&deg;</code> (<code>&alpha; + &beta; + &gamma; = 180&deg;</code>).</li>
+                <li>In un triangolo rettangolo, i due angoli acuti sono necessariamente <em>complementari</em> tra loro (la loro somma ammonta esattamente a <code>90&deg;</code>).</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule e Relazioni Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Somma angoli interni: <code>&alpha; + &beta; + &gamma; = 180&deg;</code><br>
+                    • Calcolo angolo mancante: <code>&gamma; = 180&deg; - (&alpha; + &beta;)</code><br>
+                    • Triangolo rettangolo (angoli acuti <code>&alpha;</code> e <code>&beta;</code>): <code>&alpha; + &beta; = 90&deg;</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In un triangolo, due angoli interni misurano rispettivamente <code>55&deg;</code> e <code>65&deg;</code>. Calcola l'ampiezza del terzo angolo e stabilisci di che tipo di triangolo si tratta rispetto agli angoli.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo che la somma dei tre angoli interni di un triangolo è sempre pari a <code>180&deg;</code>.</li>
+                    <li>Sommiamo i due angoli noti: <code>55&deg; + 65&deg; = 120&deg;</code>.</li>
+                    <li>Sottraiamo la somma ottenuta da <code>180&deg;</code> per ricavare il terzo angolo: <code>180&deg; - 120&deg; = 60&deg;</code>.</li>
+                    <li>Poiché tutti e tre gli angoli (<code>55&deg;</code>, <code>65&deg;</code> e <code>60&deg;</code>) sono inferiori a <code>90&deg;</code>, il triangolo è un <strong>triangolo acutangolo</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Terzo angolo = 60&deg; (Triangolo Acutangolo)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Classificazione rispetto agli Angoli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici sul calcolo degli angoli interni mancanti e identificazione di triangoli acutangoli, rettangoli e ottusangoli.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let ang1 = (i % 30) + 40; // tra 40 e 69
+                    let ang2 = (i % 25) + 35; // tra 35 e 59
+                    let ang3 = 180 - (ang1 + ang2);
+                    domanda = `In un triangolo, due angoli misurano rispettivamente <code>${ang1}&deg;</code> e <code>${ang2}&deg;</code>. Calcola l'ampiezza del terzo angolo interno.`;
+                    risposta = `<strong>${ang3}&deg;</strong>`;
+                    spiegazione = `
+                    1) La somma degli angoli interni di un triangolo è sempre pari a <code>180&deg;</code>.<br>
+                    2) Sommiamo i due angoli dati: <code>${ang1}&deg; + ${ang2}&deg; = ${ang1 + ang2}&deg;</code>.<br>
+                    3) Sottraiamo il totale da <code>180&deg;</code>: <code>180&deg; - ${ang1 + ang2}&deg; = ${ang3}&deg;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let angRetto = 90;
+                    let angAcuto = (i % 40) + 25; // tra 25 e 64
+                    let angAltro = 180 - (angRetto + angAcuto);
+                    domanda = `In un triangolo rettangolo, uno degli angoli acuti misura <code>${angAcuto}&deg;</code>. Calcola l'ampiezza dell'altro angolo acuto.`;
+                    risposta = `<strong>${angAltro}&deg;</strong>`;
+                    spiegazione = `
+                    1) In un triangolo rettangolo, i due angoli acuti sono complementari (la loro somma è <code>90&deg;</code>).<br>
+                    2) Sottraiamo l'angolo acuto noto da <code>90&deg;</code>.<br>
+                    3) Calcolo: <code>90&deg; - ${angAcuto}&deg; = ${angAltro}&deg;</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let rapporto1 = (i % 3) + 2; // coefficienti per proporzioni o somme
+                    let rapporto2 = (i % 4) + 3;
+                    let sommaParti = rapporto1 + rapporto2;
+                    let angoloFisso = 40; // ad esempio un angolo fisso e il resto diviso in parti
+                    let restoAngoli = 180 - angoloFisso;
+                    let parte = Math.floor(restoAngoli / sommaParti);
+                    let partA = parte * rapporto1;
+                    let partB = restoAngoli - partA;
+                    domanda = `In un triangolo, un angolo misura <code>${angoloFisso}&deg;</code> e gli altri due stanno tra loro nel rapporto di <code>${rapporto1} : ${rapporto2}</code>. Calcola l'ampiezza dei due angoli rimanenti sapendo che la loro somma è <code>${restoAngoli}&deg;</code>.`;
+                    risposta = `<strong>${partA}&deg; e ${partB}&deg;</strong>`;
+                    spiegazione = `
+                    1) Togliamo l'angolo noto dalla somma totale di <code>180&deg;</code> ottenendo <code>${restoAngoli}&deg;</code> per la somma degli altri due angoli.<br>
+                    2) Dividiamo la somma per il numero totale di parti proporzionali (<code>${rapporto1} + ${rapporto2} = ${sommaParti}</code>).<br>
+                    3) Moltiplichiamo il valore di una parte per i rispettivi coefficienti: <code>${parte} &times; ${rapporto1} = ${partA}&deg;</code> e <code>${parte} &times; ${rapporto2} = ${partB}&deg;</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Enunciato, dimostrazione e 100 esercizi guidati sul Teorema di Unicità del Limite - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teorema di Unicità del Limite - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione corretta per il rendering automatico -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        /* Stile esatto delle card con sfondo colorato e bordo spesso a sinistra */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teorema-di-unicita-del-limite" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi Matematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Teorema di Unicità del Limite</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Analisi rigorosa dell'enunciato e dimostrazione per assurdo che garantisce che, se una funzione ammette limite in un punto, tale limite è unico.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Enunciato del Teorema</h2>
+            <p>Se la funzione \(f(x)\) ammette limite \(l\) per \(x\) che tende a \(x_0\), allora tale limite è <strong>unico</strong>. In formule:</p>
+            
+            <div class="formula-box">
+                <p>\(\lim_{x \to x_0} f(x) = l_1 \quad \text{e} \quad \lim_{x \to x_0} f(x) = l_2 \implies l_1 = l_2\)</p>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>🔍 Dimostrazione per Assurdo</h3>
+                <p>Supponiamo per assurdo che il limite non sia unico e che esistano due valori distinti \(l_1 \neq l_2\) (supponiamo \(l_1 < l_2\)). Scegliendo un intorno disgiunto dei due limiti tramite la definizione formale con \(\varepsilon\), si arriva a una contraddizione logica sulla permanenza del segno e sugli intorni di convergenza.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati e Verifica Concettuale</h2>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'facile' : (i <= 75 ? 'medio' : 'difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    const mod = i % 3;
+                    if (mod === 1) {
+                        domanda = "Se per una funzione continua si calcola il limite $\\lim_{x \\to " + (i % 5 + 1) + "} (" + (i % 3 + 2) + "x)$, il teorema di unicità garantisce che il risultato sia un unico numero reale? (Rispondi Vero o Falso e motiva).";
+                        risposta = "Vero";
+                        spiegazione = "Sì, per il teorema di unicità del limite, se il limite esiste ed è finito, esso assume uno e un solo valore reale.";
+                    } else if (mod === 2) {
+                        domanda = "Può una funzione avere contemporaneamente due limiti distinti $l_1 = 3$ e $l_2 = 5$ per $x \\to 2$?";
+                        risposta = "No";
+                        spiegazione = "Il teorema di unicità del limite vieta categoricamente che esistano due limiti distinti nello stesso punto di accumulazione.";
+                    } else {
+                        domanda = "Se $\\lim_{x \\to 0} f(x) = " + (i % 4 + 1) + "$ e un calcolo errato ne suggerisce un secondo valore, quale principio geometrico/analitico smentisce il secondo valore?";
+                        risposta = "Teorema di unicità del limite";
+                        spiegazione = "Il teorema di unicità del limite assicura che il valore del limite, se esiste, è unico.";
+                    }
+                } else if (i <= 75) {
+                    const mod = i % 2;
+                    if (mod === 1) {
+                        domanda = "Considerando la funzione definita a tratti, spiega perché l'esistenza del limite implica l'accordo tra limite destro e sinistro in coerenza con l'unicità ($Exercizio \\ " + i + "$).";
+                        risposta = "Limiti destro e sinistro coincidenti";
+                        spiegazione = "Se il limite esiste, sia l'avvicinamento da destra che da sinistra devono convergere allo stesso valore unico.";
+                    } else {
+                        domanda = "Analizza l'applicazione della definizione con $\\varepsilon$ per dimostrare l'unicità del limite nell'esercizio guida $" + i + "$.";
+                        risposta = "Dimostrazione per assurdo completata";
+                        spiegazione = "Supponendo due limiti distinti si dimostra che i rispettivi intorni collidono, violando le ipotesi di separabilità.";
+                    }
+                } else {
+                    const mod = i % 3;
+                    if (mod === 1) {
+                        domanda = "Dimostra rigorosamente per assurdo il teorema di unicità del limite assumendo $l_1 \\neq l_2$ e sfruttando la disuguaglianza triangolare sugli intorni ($Exercizio \\ " + i + "$).";
+                        risposta = "Assurdo logico";
+                        spiegazione = "Fissando $\\varepsilon = \\frac{|l_1 - l_2|}{3}$, i rispettivi intorni di $l_1$ e $l_2$ risulterebbero disgiunti, il che è impossibile poiché entrambi dovrebbero contenere i valori di $f(x)$ per $x$ vicino a $x_0$.";
+                    } else if (mod === 2) {
+                        domanda = "Verifica la consistenza del teorema di unicità per funzioni generalizzate e spazi topologici astratti nell'esercizio avanzato $" + i + "$.";
+                        risposta = "Consistenza topologica verificata";
+                        spiegazione = "Negli spazi di Hausdorff la proprietà di separabilità dei punti garantisce l'unicità del limite anche in contesti non metrici.";
+                    } else {
+                        domanda = "Discuti le implicazioni del teorema di unicità del limite nei punti di discontinuità di seconda specie ($Exercizio \\ " + i + "$).";
+                        risposta = "Non applicabilità o limiti non esistenti";
+                        spiegazione = "Nei punti in cui il limite non esiste (o diverge), il teorema non si applica in quanto non vi è un valore limite definito.";
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffClass}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise().catch((err) => console.log(err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

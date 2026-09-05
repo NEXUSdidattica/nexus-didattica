@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa allo studio del segno di una funzione e ricerca delle intersezioni con gli assi con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Segno della Funzione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-segno" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Studio del Segno di una Funzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Individuazione delle zone in cui il grafico si trova al di sopra o al di sotto dell'asse \(x\) e ricerca delle intersezioni.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Come studiare il segno di \(f(x)\)</h2>
+            <p>Studiare il segno di una funzione significa determinare per quali valori di \(x\) appartenenti al dominio il valore della funzione è positivo (\(f(x) > 0\)), nullo (\(f(x) = 0\)) o negativo (\(f(x) < 0\)). Questo passaggio geometricamente ci dice in quali regioni del piano cartesiano il grafico si trova sopra l'asse \(x\), lo interseca o si trova sotto di esso.</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[\text{Impostiamo la disequazione: } f(x) \ge 0 \quad (\text{o } f(x) > 0)\]
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Passaggi Operativi e Intersezioni</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Intersezioni con l'asse \(x\) (Zeri della funzione):</strong> Si risolve l'equazione \(f(x) = 0\). I punti ottenuti \((x_0, 0)\) sono i punti in cui il grafico interseca l'asse delle ascisse.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Intersezione con l'asse \(y\):</strong> Si calcola, se \(0\) appartiene al dominio, il valore di \(f(0)\). Il punto di intersezione (al pi&ugrave; uno, per definizione di funzione) sarà \((0, f(0))\).</li>
+                    <li><strong>Regola dei Segni (per funzioni fratte o prodotti):</strong> Nello studio di frazioni algebriche \(\frac{N(x)}{D(x)} \ge 0\), si studiano separatamente il segno del numeratore e del denominatore ponendoli sempre \(> 0\) e si applica il grafico dei segni (regola della moltiplicazione dei segni). Il denominatore va escluso (mai posto uguale a zero).</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sullo Studio del Segno</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta strutturata di 100 esercizi interamente svolti, dai polinomi di grado superiore alle funzioni fratte, irrazionali e logaritmiche.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sul segno della funzione -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Polinomi di 1° e 2° grado elementari
+                        difficolta = "facile";
+                        const tipo = n % 3;
+                        const a = (n % 5) + 1;
+                        const b = (n % 7) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Studia il segno della funzione lineare \\(f(x) = x - ${a}\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(x > ${a}\\); \\(f(x) = 0\\) per \\(x = ${a}\\); \\(f(x) < 0\\) per \\(x < ${a}\\)`;
+                            spiegazione = `Impostiamo la disequazione \\(x - ${a} > 0 \\implies x > ${a}\\).\n- La funzione si annulla in \\(x = ${a}\\) (intersezione con l'asse \\(x\\): \\((${a}, 0)\\)).\n- È positiva a destra di \\(${a}\\) e negativa a sinistra.`;
+                        } else if (tipo === 1) {
+                            domanda = `Studia il segno della funzione \\(f(x) = ${b}x + ${a * 2}\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(x > -\\frac{${a * 2}}{${b}}\\)`;
+                            spiegazione = `Poniamo \\(${b}x + ${a * 2} > 0 \\implies ${b}x > -${a * 2} \\implies x > -\\frac{${a * 2}}{${b}}\\).\nL'intersezione con l'asse \\(x\\) si ha in \\(x = -\\frac{${a * 2}}{${b}}\\).`;
+                        } else {
+                            domanda = `Studia il segno della parabola \\(f(x) = x^2 - ${b * b}\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(x < -${b} \\lor x > ${b}\\); \\(f(x) < 0\\) per \\(-${b} < x < ${b}\\)`;
+                            spiegazione = `1. Troviamo gli zeri ponendo \\(x^2 - ${b * b} = 0 \\implies x = \\pm ${b}\\).\n2. Trattandosi di una parabola con \\(a > 0\\) (rivolta verso l'alto), la funzione è negativa tra le radici e positiva all'esterno.`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni fratte, prodotti e parabole con delta positivo
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Studia il segno della funzione fratta \\(f(x) = \\frac{x - ${k}}{x + ${k}}\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(x < -${k} \\lor x > ${k}\\); \\(f(x) < 0\\) per \\(-${k} < x < ${k}\\)`;
+                            spiegazione = `1. **Numeratore \\(> 0\\):** \\(x - ${k} > 0 \\implies x > ${k}\\).\n2. **Denominatore \\(> 0\\):** \\(x + ${k} > 0 \\implies x > -${k}\\) (con \\(x \\neq -${k}\\)).\n3. Facendo il grafico dei segni, la frazione è positiva per \\(x < -${k}\\) e \\(x > ${k}\\), negativa nell'intervallo intermedio.`;
+                        } else if (tipo === 1) {
+                            domanda = `Studia il segno della funzione prodotto \\(f(x) = x(x^2 - ${k * k})\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(-${k} < x < 0 \\lor x > ${k}\\)`;
+                            spiegazione = `1. Fattorizziamo completamente: \\(f(x) = x(x - ${k})(x + ${k})\\).\n2. Fattori:\n   - \\(x > 0\\)\n   - \\(x - ${k} > 0 \\implies x > ${k}\\)\n   - \\(x + ${k} > 0 \\implies x > -${k}\\)\n3. Applicando la regola dei segni su tre fattori, otteniamo che \\(f(x) > 0\\) per \\(-${k} < x < 0\\) e per \\(x > ${k}\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina il segno della funzione \\(f(x) = \\frac{x^2 - 4}{x - ${k}}\\) (assumendo \\(${k} \\neq 2\\)).`;
+                            risultato = `Segno dipendente dai fattori \\((x-2)(x+2)\\) e \\((x-${k})\\)`;
+                            spiegazione = `1. Numeratore \\(x^2 - 4 > 0 \\implies x < -2 \\lor x > 2\\).\n2. Denominatore \\(x - ${k} > 0 \\implies x > ${k}\\).\n3. Si combinano i segni dei tre binomi tenendo conto del campo di esistenza \\(x \\neq ${k}\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Studia il segno della funzione \\(f(x) = \\frac{x^2 + ${k}}{x}\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(x > 0\\); \\(f(x) < 0\\) per \\(x < 0\\)`;
+                            spiegazione = `1. Il numeratore \\(x^2 + ${k}\\) è sempre positivo \\(\\forall x \\in \\mathbb{R}\\) poiché somma di un quadrato e di una costante positiva.\n2. Il segno della funzione dipende unicamente dal denominatore \\(x\\).\n3. Pertanto \\(f(x) > 0\\) se \\(x > 0\\) e \\(f(x) < 0\\) se \\(x < 0\\). Non ci sono intersezioni con l'asse \\(x\\).`;
+                        } else {
+                            domanda = `Studia il segno della funzione \\(f(x) = \\frac{x - 1}{x^2 + ${k}}\\_[corretto] \\to f(x) = \\frac{x - 1}{x^2 + ${k}}\\).`;
+                            risultato = `\\(f(x) > 0\\) per \\(x > 1\\); \\(f(x) < 0\\) per \\(x < 1\\)`;
+                            spiegazione = `1. Il denominatore \\(x^2 + ${k}\\) è sempre positivo per ogni \\(x\\).\n2. Il segno della frazione è determinato esclusivamente dal numeratore \\(x - 1\\).\n3. \\(f(x) > 0 \\iff x > 1\\). Intersezione asse \\(x\\) in \\((1, 0)\\).`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni irrazionali, logaritmiche e trigonometriche
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Studia il segno della funzione irrazionale:\n\\[f(x) = \\sqrt{x^2 - ${k * k}} - x\\]`;
+                            risultato = `Analisi del dominio e confronto algebrico`;
+                            spiegazione = `1. **Dominio:** \\(x^2 - ${k * k} \\ge 0 \\implies x \\le -${k} \\lor x \\ge ${k}\\).\n` +
+                            `2. **Segno \\(f(x) > 0\\):** \\(\\sqrt{x^2 - ${k * k}} > x\\).\n` +
+                            `- Per \\(x < 0\\), la radice (che è \\(\\ge 0\\)) è sempre maggiore di un numero negativo, quindi la disequazione è verificata in tutto il semiasse negativo del dominio (cioè \\(x \\le -${k}\\)).\n` +
+                            `- Per \\(x \\ge ${k}\\), elevando al quadrato: \\(x^2 - ${k * k} > x^2 \\implies -${k * k} > 0\\) (mai verificata).\n` +
+                            `Conclusione: \\(f(x) > 0\\) per \\(x \\le -${k}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Studia il segno della funzione logaritmica:\n\\[f(x) = \\ln(x^2 - ${k}x + ${k * 2})\\]`;
+                            risultato = `Studio degli zeri dell'argomento rispetto a 1`;
+                            spiegazione = `1. Il logaritmo è positivo quando il suo argomento è maggiore di \\(1\\):\n` +
+                            `\\[\\ln(A) > 0 \\iff A > 1 \\implies x^2 - ${k}x + ${k * 2} > 1 \\implies x^2 - ${k}x + ${k * 2 - 1} > 0\\]\n` +
+                            `2. Si risolve la disequazione di secondo grado associata per determinare gli intervalli di positività.`;
+                        } else if (tipo === 2) {
+                            domanda = `Studia il segno della funzione trigonometrica:\n\\[f(x) = \\sin(x) - \\frac{1}{2}\\] nell'intervallo \\([0, 2\\pi]\\)`;
+                            risultato = `\\(f(x) > 0\\) per \\(\\frac{\\pi}{6} < x < \\frac{5\\pi}{6}\\)`;
+                            spiegazione = `1. Poniamo \\(\\sin(x) - \\frac{1}{2} > 0 \\implies \\sin(x) > \\frac{1}{2}\\).\n` +
+                            `2. Sulla circonferenza trigonometrica, il seno vale \\(\\frac{1}{2}\\) in \\(x = \\frac{\\pi}{6}\\) e \\(x = \\frac{5\\pi}{6}\\).\n` +
+                            `3. La funzione è positiva per \\(\\frac{\\pi}{6} < x < \\frac{5\\pi}{6}\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Studia il segno della funzione:\n\\[f(x) = x \\cdot e^{x - ${k}}\\]`;
+                            risultato = `\\(f(x) > 0\\) per \\(x > 0\\)`;
+                            spiegazione = `1. L'esponenziale \\(e^{x - ${k}}\\) è sempre strettamente positivo per ogni \\(x \\in \\mathbb{R}\\).\n` +
+                            `2. Il segno della funzione dipende unicamente dal fattore \\(x\\).\n` +
+                            `3. \\(f(x) > 0 \\iff x > 0\\). La funzione si annulla nell'origine \\((0,0)\\).`;
+                        } else {
+                            domanda = `Studia il segno della funzione fratta con radicale:\n\\[f(x) = \\frac{\\sqrt{x - 1}}{x - ${k}}\\] (con \\(${k} > 1\\))`;
+                            risultato = `\\(f(x) > 0\\) per \\(x > ${k}\\)`;
+                            spiegazione = `1. **Dominio:** \\(x - 1 \\ge 0 \\implies x \\ge 1\\).\n` +
+                            `2. **Numeratore \\(\\sqrt{x-1}\\):** è sempre \\(\\ge 0\\) nel dominio (si annulla in \\(x = 1\\)).\n` +
+                            `3. **Denominatore \\(x - ${k}\\):** è positivo per \\(x > ${k}\\).\n` +
+                            `Poiché il numeratore non è mai negativo nel dominio, la frazione è positiva strettamente dove il denominatore è positivo ed \\(x \\neq 1\\), cioè per \\(x > ${k}\\).`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

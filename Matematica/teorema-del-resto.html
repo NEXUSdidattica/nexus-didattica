@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Teorema del Resto - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teorema del Resto - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teorema-del-resto" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Scomposizioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Teorema del Resto</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Calcolo rapido del resto di una divisione tra polinomi senza eseguire la divisione lunga e verifica della divisibilità.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Enunciato del Teorema del Resto</h2>
+            <p>
+                Il <strong>Teorema del Resto</strong> afferma che quando un polinomio <code>P(x)</code> viene diviso per un binomio di primo grado del tipo <code>(x - a)</code>, il resto <code>R</code> della divisione è uguale al valore assumibile dal polinomio quando si sostituisce la variabile <code>x</code> con il numero <code>a</code>.
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Formula del Resto:</strong><br>
+                <code>R = P(a)</code><br><br>
+                • Se si divide per <code>(x - a)</code>, si calcola <code>P(a)</code>.<br>
+                • Se si divide per <code>(x + a)</code>, si calcola <code>P(-a)</code>.<br>
+                • Se <code>R = 0</code>, il polinomio <code>P(x)</code> è <strong>DIVISIBILE</strong> per il binomio.<br>
+                • Se <code>R ≠ 0</code>, il polinomio <code>P(x)</code> <strong>NON È DIVISIBILE</strong> per il binomio.
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il resto della divisione tra <code>P(x) = 2x³ - 5x² + 3x - 4</code> e il binomio <code>D(x) = x - 2</code> e stabilisci se è divisibile.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Identifichiamo il valore da sostituire: siccome il divisore è <code>(x - 2)</code>, poniamo <code>a = 2</code>.</li>
+                    <li>Sostituiamo <code>x = 2</code> nel polinomio <code>P(x)</code>:
+                        <br><code>P(2) = 2(2)³ - 5(2)² + 3(2) - 4</code>
+                        <br><code>P(2) = 2(8) - 5(4) + 6 - 4</code>
+                        <br><code>P(2) = 16 - 20 + 6 - 4 = 2</code>.
+                    </li>
+                    <li>Poiché <code>R = 2 ≠ 0</code>, la divisione lascia un resto di 2 e il polinomio <strong>NON È DIVISIBILE</strong>.</li>
+                </ol>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE ESERCIZI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Teorema del Resto</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua comprensione. Troverai sia casi in cui il polinomio risulta <strong>DIVISIBILE</strong> (resto = 0), sia casi in cui risulta <strong>NON DIVISIBILE</strong> (resto ≠ 0).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore degli Esercizi Bilanciati -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // LIVELLO FACILE
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 3) + 1; // 1, 2, 3
+                    let isDivisibile = (i % 2 === 0);
+
+                    if (isDivisibile) {
+                        // R = 0
+                        domanda = `Calcola il resto della divisione di <code>P(x) = x² - ${a*a}</code> per <code>D(x) = x - ${a}</code> e verifica se è divisibile.`;
+                        risposta = `Resto R = 0. Il polinomio è <strong>DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Poniamo <code>x = ${a}</code>.<br>
+                        2) Sostituiamo nell'espressione: <code>P(${a}) = (${a})² - ${a*a} = ${a*a} - ${a*a} = 0</code>.<br>
+                        3) Poiché <code>R = 0</code>, il polinomio è <strong>DIVISIBILE</strong> per <code>(x - ${a})</code>.`;
+                    } else {
+                        // R != 0
+                        let extra = (i % 4) + 1;
+                        domanda = `Calcola il resto della divisione di <code>P(x) = x² - ${a*a} + ${extra}</code> per <code>D(x) = x - ${a}</code> e verifica se è divisibile.`;
+                        risposta = `Resto R = ${extra}. Il polinomio <strong>NON È DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Poniamo <code>x = ${a}</code>.<br>
+                        2) Sostituiamo nell'espressione: <code>P(${a}) = (${a})² - ${a*a} + ${extra} = ${a*a} - ${a*a} + ${extra} = ${extra}</code>.<br>
+                        3) Poiché <code>R = ${extra} ≠ 0</code>, il polinomio <strong>NON È DIVISIBILE</strong> per <code>(x - ${a})</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // LIVELLO MEDIO
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 2 === 0) ? 2 : -1;
+                    let signA = a > 0 ? `- ${a}` : `+ ${Math.abs(a)}`;
+                    let isDivisibile = (i % 3 !== 0); // Alternati: 2 su 3 sono divisibili
+
+                    if (isDivisibile) {
+                        // Costruiamo P(x) = (x - a)(x² + 2x + 1) -> P(a) = 0
+                        domanda = `Verifica tramite il Teorema del Resto se <code>P(x) = x³ - ${a+1}x² + ${a}x</code> è divisibile per <code>D(x) = x ${signA}</code>.`;
+                        risposta = `Resto R = 0. Il polinomio è <strong>DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Poniamo <code>x = ${a}</code>.<br>
+                        2) Sostituiamo: <code>P(${a}) = (${a})³ - ${a+1}(${a})² + ${a}(${a}) = ${a**3} - ${ (a+1)*(a**2) } + ${a*a} = 0</code>.<br>
+                        3) Il resto è <code>R = 0</code>, dunque il polinomio è <strong>DIVISIBILE</strong>.`;
+                    } else {
+                        let offset = (i % 5) + 2;
+                        domanda = `Calcola il resto della divisione di <code>P(x) = x³ - 3x² + 4x + ${offset}</code> per <code>D(x) = x - 2</code>.`;
+                        let val = (2**3) - 3*(2**2) + 4*(2) + offset; // 8 - 12 + 8 + offset = 4 + offset
+                        risposta = `Resto R = ${val}. Il polinomio <strong>NON È DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Sostituiamo <code>x = 2</code> nel polinomio <code>P(x)</code>.<br>
+                        2) Calcolo: <code>P(2) = (2)³ - 3(2)² + 4(2) + ${offset} = 8 - 12 + 8 + ${offset} = ${val}</code>.<br>
+                        3) Siccome <code>R = ${val} ≠ 0</code>, il polinomio <strong>NON È DIVISIBILE</strong>.`;
+                    }
+
+                } else {
+                    // LIVELLO DIFFICILE
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    // Bilanciamento tra DIVISIBILE e NON DIVISIBILE
+                    let modulo = i % 4;
+
+                    if (modulo === 1 || modulo === 3) {
+                        // CASO DIFFICILE: DIVISIBILE (Resto = 0)
+                        let a = (modulo === 1) ? 2 : -2;
+                        let signDiv = a > 0 ? `- ${a}` : `+ ${Math.abs(a)}`;
+                        
+                        domanda = `Determina se il polinomio di 4° grado <code>P(x) = 2x⁴ - ${a*2}x³ - 3x² + ${a*3}x</code> è divisibile per <code>D(x) = x ${signDiv}</code>.`;
+                        
+                        let calcP = 2*(a**4) - (a*2)*(a**3) - 3*(a**2) + (a*3)*a; // Risulta sempre 0!
+                        
+                        risposta = `Resto R = 0. Il polinomio è <strong>DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Applichiamo il Teorema del Resto sostituendo <code>x = ${a}</code>.<br>
+                        2) Calcoliamo i singoli potenze e prodotti:<br>
+                           • <code>2 · (${a})⁴ = 2 · ${a**4} = ${2*(a**4)}</code><br>
+                           • <code>- ${a*2} · (${a})³ = - ${a*2} · ${a**3} = ${-(a*2)*(a**3)}</code><br>
+                           • <code>- 3 · (${a})² = - 3 · ${a**2} = ${-3*(a**2)}</code><br>
+                           • <code>+ ${a*3} · (${a}) = ${ (a*3)*a }</code><br>
+                        3) Sommiamo i valori: <code>R = ${2*(a**4)} - ${a*2*(a**3)} - ${3*(a**2)} + ${(a*3)*a} = 0</code>.<br>
+                        4) Esito: Poiché <code>R = 0</code>, il polinomio è <strong>DIVISIBILE</strong>.`;
+
+                    } else if (modulo === 2) {
+                        // CASO DIFFICILE: DIVISIBILE CON FRAZIONE (Resto = 0)
+                        domanda = `Calcola il resto di <code>P(x) = 4x³ - 4x² + 3x - 1</code> diviso per <code>D(x) = x - 1/2</code>.`;
+                        risposta = `Resto R = 0. Il polinomio è <strong>DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Sostituiamo <code>x = 1/2</code> nel polinomio.<br>
+                        2) Svolgimento dei calcoli frazionari:<br>
+                           • <code>P(1/2) = 4(1/2)³ - 4(1/2)² + 3(1/2) - 1</code><br>
+                           • <code>P(1/2) = 4(1/8) - 4(1/4) + 3/2 - 1</code><br>
+                           • <code>P(1/2) = 1/2 - 1 + 3/2 - 1 = (1/2 + 3/2) - 2 = 2 - 2 = 0</code>.<br>
+                        3) Esito: Il resto è <code>R = 0</code>, perciò il polinomio è <strong>DIVISIBILE</strong>.`;
+
+                    } else {
+                        // CASO DIFFICILE: NON DIVISIBILE (Resto != 0)
+                        domanda = `Verifica se <code>P(x) = 3x⁴ - 2x³ + 5x - 7</code> è divisibile per <code>D(x) = x + 1</code>.`;
+                        let rVal = 3*((-1)**4) - 2*((-1)**3) + 5*(-1) - 7; // 3 + 2 - 5 - 7 = -7
+                        risposta = `Resto R = ${rVal}. Il polinomio <strong>NON È DIVISIBILE</strong>.`;
+                        spiegazione = `
+                        1) Poiché il divisore è <code>(x + 1)</code>, sostituiamo <code>x = -1</code>.<br>
+                        2) Calcolo:<br>
+                           • <code>P(-1) = 3(-1)⁴ - 2(-1)³ + 5(-1) - 7</code><br>
+                           • <code>P(-1) = 3(1) - 2(-1) - 5 - 7</code><br>
+                           • <code>P(-1) = 3 + 2 - 5 - 7 = -7</code>.<br>
+                        3) Esito: Il resto è <code>R = -7 ≠ 0</code>, dunque il polinomio <strong>NON È DIVISIBILE</strong>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Calcolo del Resto</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

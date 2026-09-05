@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Il Pipelining nella CPU: Parallelismo e Cicli di Istruzione - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Pipelining nella CPU - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="pipelining" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Pipelining
+                    nella CPU</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Tecniche di parallelismo a livello di istruzione, suddivisione in stadi, hazard e incremento delle
+                    prestazioni del processore.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è il Pipelining?</h2>
+            <p>
+                Il <strong>pipelining</strong> è una tecnica di implementazione architetturale della CPU che consente
+                l'esecuzione sovrapposta di più istruzioni sfruttando il parallelismo intrinseco del ciclo macchina.
+                Invece di attendere il completamento totale di un'istruzione prima di iniziare la successiva (ciclo
+                fetch-decode-execute sequenziale), la CPU suddivide l'elaborazione in stadi sequenziali indipendenti,
+                dove ogni stadio lavora contemporaneamente su un'istruzione diversa.
+            </p>
+
+            <h2>2. Gli Stadi Fondamentali della Pipeline</h2>
+            <p>
+                In una classica architettura RISC a 5 stadi, il flusso di un'istruzione viene ripartito nelle seguenti
+                fasi:
+            </p>
+            <ul>
+                <li><strong>IF (Instruction Fetch):</strong> Prelievo dell'istruzione dalla memoria cache delle
+                    istruzioni utilizzando il Program Counter (PC).</li>
+                <li><strong>ID (Instruction Decode):</strong> Decodifica dell'istruzione e lettura dei registri operandi
+                    necessari.</li>
+                <li><strong>EX (Execute):</strong> Esecuzione dell'operazione aritmetico-logica (ALU) o calcolo
+                    dell'indirizzo di memoria.</li>
+                <li><strong>MEM (Memory Access):</strong> Lettura o scrittura dei dati nella memoria RAM/Cache dati (se
+                    l'istruzione lo richiede).</li>
+                <li><strong>WB (Write Back):</strong> Scrittura del risultato finale all'interno del registro di
+                    destinazione della CPU.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Hazard della Pipeline:</strong> Le prestazioni teoriche possono essere ridotte da conflitti o
+                dipendenze (hazard strutturali, sui dati o di controllo legati ai salti condizionati) che costringono la
+                pipeline a inserire cicli di stallo (<em>bubbles</em>).
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore di Efficienza e Stadi di Pipeline</h2>
+            <p>Seleziona una configurazione di pipeline o analizzane l'impatto sui cicli di clock necessari per
+                completare le istruzioni.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">pipeline-inspector@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">Instruction Parallelism Analyzer</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona
+                            Profondità / Modalità Pipeline:</label>
+                        <select id="pipelineSelect" class="code-input" style="background-color: #111; color: #f97316;">
+                            <option value="SEQUENZIALE">Esecuzione Sequenziale (Senza Pipelining)</option>
+                            <option value="CLASSICA_5">Pipeline Classica a 5 Stadi (RISC standard)</option>
+                            <option value="PROFONDA_10+">Pipeline Profonda / Superpipelining (10+ stadi)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-esegui" onclick="analizzaPipeline()" style="width: 100%;">Analizza ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Seleziona una modalità di pipeline per calcolare il
+                    guadagno di prestazioni...</div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore -->
+    <script>
+        function analizzaPipeline() {
+            let tipo = document.getElementById('pipelineSelect').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            let speedup = "";
+            let stalli = "";
+            let descrizione = "";
+
+            if (tipo === "SEQUENZIALE") {
+                speedup = "1x (Nessun incremento)";
+                stalli = "Assenti (ogni istruzione impiega N cicli completi)";
+                descrizione = "Ogni istruzione deve terminare interamente prima che la successiva possa iniziare, sprecando gran parte delle risorse della CPU.";
+            } else if (tipo === "CLASSICA_5") {
+                speedup = "Circa 3x - 4.5x rispetto al sequenziale";
+                stalli = "Ridotti, gestiti tramite forwarding e predizione base dei salti";
+                descrizione = "Ottimo compromesso tra frequenza di clock e complessità circuitale, standard nei microprocessori moderni ed efficienti.";
+            } else if (tipo === "PROFONDA_10+") {
+                speedup = "Elevato potenziale teorico di frequenza";
+                stalli = "Frequenti e pesanti in caso di errata predizione dei salti (branch misprediction penalty alta)";
+                descrizione = "Suddivide ulteriormente i compiti per raggiungere frequenze di clock elevatissime, penalizzata però da stalli lunghi se si verificano hazard.";
+            }
+
+            outputDiv.style.color = '#38bdf8';
+            outputDiv.innerHTML = `> Analisi Architettura [<strong>${tipo}</strong>]:<br>` +
+                `&nbsp;&nbsp;Fattore di accelerazione (Speedup): <em>${speedup}</em><br>` +
+                `&nbsp;&nbsp;Impatto degli stalli (Hazards): ${stalli}<br>` +
+                `&nbsp;&nbsp;Caratteristica operativa: ${descrizione}`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

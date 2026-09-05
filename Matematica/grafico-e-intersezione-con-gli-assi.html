@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida al Grafico e alle Intersezioni con gli Assi della Parabola: calcolo zeri, intercetta y, grafici SVG e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Grafico e Intersezione con gli Assi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="grafico-e-intersezione-con-gli-assi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Grafico e Intersezione con gli Assi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come tracciare il grafico di una parabola e calcolare analiticamente le intersezioni con l'asse \(x\) e l'asse \(y\).
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Intersezione con l'Asse \(y\) (Ordinata all'origine)</h2>
+            <p>
+                Per trovare il punto in cui la parabola interseca l'asse verticale delle ordinate, si pone \(x = 0\) nell'equazione generale \(y = ax^2 + bx + c\).
+            </p>
+            <div class="formula-box">
+                $$\text{Se } x = 0 \implies y = c \quad \rightarrow \quad \text{Punto } P(0, c)$$
+            </div>
+            <p>
+                Il termine noto \(c\) rappresenta visivamente l'altezza in cui la curva attraversa l'asse \(y\).
+            </p>
+
+            <h2>2. Intersezioni con l'Asse \(x\) (Zeri della funzione)</h2>
+            <p>
+                Per trovare i punti in cui la parabola interseca l'asse orizzontale delle ascisse, si pone \(y = 0\), ottenendo un'equazione di secondo grado associata: \(ax^2 + bx + c = 0\). A seconda del segno del discriminante \(\Delta = b^2 - 4ac\), avremo tre casi geometrici distinti:
+            </p>
+            <ul>
+                <li><strong>\(\Delta > 0\):</strong> La parabola interseca l'asse \(x\) in <strong>due punti distinti</strong> \(X_1\left(\frac{-b - \sqrt{\Delta}}{2a}, 0\right)\) e \(X_2\left(\frac{-b + \sqrt{\Delta}}{2a}, 0\right)\).</li>
+                <li><strong>\(\Delta = 0\):</strong> La parabola è tangente all'asse \(x\) in <strong>un solo punto</strong> coincidente con il vertice \(V\left(-\frac{b}{2a}, 0\right)\).</li>
+                <li><strong>\(\Delta < 0\):</strong> La parabola <strong>non interseca</strong> l'asse \(x\) (rimane interamente sopra o sotto di esso).</li>
+            </ul>
+
+            <!-- GRAFICO SVG CASI DEL DELTA -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                
+                <!-- Delta > 0 -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1rem;">\(\Delta > 0\) (2 Intersezioni)</h3>
+                    <svg viewBox="0 0 160 160" style="width: 100%; max-width: 130px; margin: 0.5rem auto; display: block;">
+                        <line x1="10" y1="100" x2="150" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="80" y1="10" x2="80" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M 30,50 Q 80,140 130,50" fill="none" stroke="#2563eb" stroke-width="2" />
+                        <circle cx="50" cy="100" r="3" fill="#dc2626" />
+                        <circle cx="110" cy="100" r="3" fill="#dc2626" />
+                    </svg>
+                    <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0;">Due zeri reali distinti.</p>
+                </div>
+
+                <!-- Delta = 0 -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1rem;">\(\Delta = 0\) (1 Tangenza)</h3>
+                    <svg viewBox="0 0 160 160" style="width: 100%; max-width: 130px; margin: 0.5rem auto; display: block;">
+                        <line x1="10" y1="110" x2="150" y2="110" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="80" y1="10" x2="80" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M 30,50 Q 80,170 130,50" fill="none" stroke="#059669" stroke-width="2" />
+                        <circle cx="80" cy="110" r="3" fill="#dc2626" />
+                    </svg>
+                    <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0;">Vertice sull'asse \(x\).</p>
+                </div>
+
+                <!-- Delta < 0 -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1rem;">\(\Delta < 0\) (Nessuna Intersezione)</h3>
+                    <svg viewBox="0 0 160 160" style="width: 100%; max-width: 130px; margin: 0.5rem auto; display: block;">
+                        <line x1="10" y1="120" x2="150" y2="120" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="80" y1="10" x2="80" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M 30,70 Q 80,140 130,70" fill="none" stroke="#d97706" stroke-width="2" />
+                    </svg>
+                    <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0;">Nessun punto di contatto.</p>
+                </div>
+
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Trova le intersezioni con gli assi della parabola \(y = x^2 - 5x + 6\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Intersezione asse \(y\):</strong> Poniamo \(x = 0 \implies y = 0^2 - 5(0) + 6 = 6\). Otteniamo il punto \(A(0, 6)\).</li>
+                    <li><strong>Intersezioni asse \(x\):</strong> Poniamo \(y = 0 \implies x^2 - 5x + 6 = 0\).</li>
+                    <li>Calcoliamo il delta: \(\Delta = (-5)^2 - 4(1)(6) = 25 - 24 = 1\).</li>
+                    <li>Troviamo le soluzioni con la formula \(x = \frac{-b \pm \sqrt{\Delta}}{2a}\):
+                        $$x_1 = \frac{5 - 1}{2} = 2, \quad x_2 = \frac{5 + 1}{2} = 3$$
+                    </li>
+                    <li>Otteniamo i punti d'intersezione \(B(2, 0)\) e \(C(3, 0)\).</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Intercetta asse \(y\) in \((0, 6)\); intersezioni asse \(x\) in \((2, 0)\) e \((3, 0)\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Grafico e Intersezioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi focalizzati sul calcolo delle intersezioni con gli assi cartesiani. Clicca sulle card per visualizzare lo svolgimento dettagliato.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let aVal = 1;
+                let bVal = - (i % 4) - 2;
+                let cVal = (i % 5);
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    cVal = 0; // Radici intere facili
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    aVal = (i % 2 === 0) ? 2 : 1;
+                }
+
+                let eqStr = `y = ${aVal === 1 ? '' : aVal}x^2 ${bVal >= 0 ? '+ ' + bVal : '- ' + Math.abs(bVal)}x ${cVal >= 0 ? '+ ' + cVal : '- ' + Math.abs(cVal)}`;
+                
+                let intercettaY = `(0, ${cVal})`;
+                let delta = (bVal * bVal - 4 * aVal * cVal);
+                
+                let intersezioniXStr = "";
+                if (delta > 0) {
+                    let x1 = ((-bVal - Math.sqrt(delta)) / (2 * aVal)).toFixed(2);
+                    let x2 = ((-bVal + Math.sqrt(delta)) / (2 * aVal)).toFixed(2);
+                    intersezioniXStr = `Due punti: \\((${x1}, 0)\\) e \\((${x2}, 0)\\)`;
+                } else if (delta === 0) {
+                    let x0 = (-bVal / (2 * aVal)).toFixed(2);
+                    intersezioniXStr = `Un punto di tangenza: \\((${x0}, 0)\\)`;
+                } else {
+                    intersezioniXStr = `Nessuna intersezione reale (\\(\\Delta < 0\\))`;
+                }
+
+                let calcoloSpiegato = `
+                    1) <strong>Asse \\(y\\):</strong> Ponendo \\(x = 0\\) otteniamo direttamente \\(y = ${cVal}\\), quindi il punto è \\(${intercettaY}\\).<br>
+                    2) <strong>Asse \\(x\\):</strong> Risolviamo l'equazione associata \\(${eqStr.replace('y = ', '')} = 0\\).<br>
+                    3) Calcoliamo il delta: \\(\\Delta = (${bVal})^2 - 4(${aVal})(${cVal}) = ${delta}\\).<br>
+                    4) Risultato intersezioni asse \\(x\\): <strong>${intersezioniXStr}</strong>.
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Determina le intersezioni con gli assi cartesiani della parabola: \\(${eqStr}\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Intercetta Asse Y:</strong> \\(${intercettaY}\\)</p>
+                            <p>🎯 <strong>Intersezioni Asse X:</strong> ${intersezioniXStr}</p>
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

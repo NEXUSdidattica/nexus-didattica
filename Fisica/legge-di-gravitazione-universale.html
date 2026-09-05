@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulla Legge di Gravitazione Universale di Newton - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Legge di Gravitazione Universale e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            content: #1e293b;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="legge-di-gravitazione-universale" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Meccanica Celeste</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Legge di Gravitazione Universale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio della forza d'attrazione gravitazionale tra i corpi celesti e terrestri secondo Isaac Newton, con 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Legge di Gravitazione Universale?</h2>
+            <p>
+                Formulata da Isaac Newton nel 1687 all'interno dell'opera <em>Philosophiae Naturalis Principia Mathematica</em>, la <strong>legge di gravitazione universale</strong> afferma che ogni corpo nell'universo attrae qualsiasi altro corpo con una forza che è direttamente proporzionale al prodotto delle loro masse e inversamente proporzionale al quadrato della distanza che li separa.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formula Fondamentale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$F = G \cdot \frac{m_1 \cdot m_2}{r^2}$$
+                    Dove:<br>
+                    • $F$ è la forza di attrazione gravitazionale (in Newton, $\text{N}$)<br>
+                    • $G$ è la costante di gravitazione universale ($G \approx 6,674 \times 10^{-11} \text{ N}\cdot\text{m}^2/\text{kg}^2$)<br>
+                    • $m_1$ e $m_2$ sono le masse dei due corpi (in $\text{kg}$)<br>
+                    • $r$ è la distanza tra i centri dei due corpi (in metri, $\text{m}$)
+                </p>
+            </div>
+
+            <h2>2. Proprietà e Caratteristiche Principali</h2>
+            <p>
+                • <strong>Natura attrattiva:</strong> La forza gravitazionale è sempre e solo attrattiva; non esiste una repulsione gravitazionale nota.<br>
+                • <strong>Legge dell'inverso del quadrato:</strong> All'aumentare della distanza $r$, la forza diminuisce rapidamente in base al quadrato della distanza (se raddoppia la distanza, la forza diventa un quarto).<br>
+                • <strong>Principio di azione e reazione:</strong> La forza esercitata dal corpo 1 sul corpo 2 è uguale in modulo e direzione, ma di verso opposto, a quella esercitata dal corpo 2 sul corpo 1 (Terza Legge di Newton).
+            </p>
+
+            <h2>3. Batteria di 100 Esercizi con Esercizi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Chi ha formulato la legge di gravitazione universale?", 
+                    r: "Isaac Newton.", 
+                    s: "Esempio guidato: pubblicata nel 1687 nei Principes Mathematiques de la Philosophie Naturelle." 
+                },
+                { 
+                    q: "La forza di gravità tra due corpi è direttamente proporzionale a quale grandezza?", 
+                    r: "Al prodotto delle loro masse ($m_1 \cdot m_2$).", 
+                    s: "Esempio guidato: raddoppiando una delle due masse, la forza d'attrazione raddoppia in modo lineare." 
+                },
+                { 
+                    q: "Se la distanza $r$ tra due corpi raddoppia, come varia la forza gravitazionale?", 
+                    r: "Diventa un quarto ($\frac{1}{4}$) del valore iniziale.", 
+                    s: "Esempio guidato: per via della proporzionalità inversa col quadrato della distanza ($r^2$), se $r$ diventa $2r$, il fattore al denominatore diventa $(2r)^2 = 4r^2$." 
+                },
+                { 
+                    q: "La forza gravitazionale può essere repulsiva?", 
+                    r: "No, è esclusivamente attrattiva.", 
+                    s: "Esempio guidato: contrariamente alla forza elettrica, le masse si attraggono sempre indipendentemente dal loro segno (che non esiste per la massa)." 
+                },
+                { 
+                    q: "Qual è l'unità di misura della costante di gravitazione universale $G$ nel Sistema Internazionale?", 
+                    r: "$\text{N}\cdot\text{m}^2/\text{kg}^2$ (o $\text{m}^3/(\text{kg}\cdot\text{s}^2)$).", 
+                    s: "Esempio guidato: ricavata isolando $G$ dalla formula $G = \frac{F \cdot r^2}{m_1 \cdot m_2}$." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Due corpi di massa $m_1 = 2000\text{ kg}$ e $m_2 = 4000\text{ kg}$ si trovano a una distanza di $2\text{ m}$. Calcola la forza di attrazione gravitazionale approssimativa sapendo che $G \approx 6,67 \times 10^{-11}\text{ N}\cdot\text{m}^2/\text{kg}^2$.", 
+                    r: "$1,334 \times 10^{-7}\text{ N}$.", 
+                    s: "Esempio guidato: $F = 6,67 \times 10^{-11} \cdot \frac{2000 \cdot 4000}{2^2} = 6,67 \times 10^{-11} \cdot \frac{8000000}{4} = 6,67 \times 10^{-11} \cdot 2000000 = 13,34 \times 10^{-5} = 1,334 \times 10^{-7}\text{ N}$." 
+                },
+                { 
+                    q: "Se la distanza tra la Terra e un satellite artificiale viene triplicata ($3r$), come cambia il valore della forza di gravità esercitata dalla Terra sul satellite?", 
+                    r: "Si riduce di un fattore 9 ($\frac{1}{9}$).", 
+                    s: "Esempio guidato: applicando l'inverso del quadrato, $F' = G \frac{m_1 m_2}{(3r)^2} = \frac{1}{9} \left(G \frac{m_1 m_2}{r^2}\right) = \frac{1}{9} F$." 
+                },
+                { 
+                    q: "Due corpi puntiformi identici esercitano l'uno sull'altro una forza gravitazionale $F$. Se la massa di entrambi i corpi viene raddoppiata e la distanza dimezzata, quale sarà la nuova forza?", 
+                    r: "$16F$.", 
+                    s: "Esempio guidato: $F' = G \frac{(2m_1)(2m_2)}{(r/2)^2} = G \frac{4 m_1 m_2}{r^2 / 4} = 4 \cdot 4 \left(G \frac{m_1 m_2}{r^2}\right) = 16F$." 
+                },
+                { 
+                    q: "Qual è il valore approssimativo dell'accelerazione di gravità $g$ sulla superficie terrestre derivato dalla legge di gravitazione universale ($g = G \frac{M_{\text{Terra}}}{R_{\text{Terra}}^2}$)?", 
+                    r: "Circa $9,81\text{ m/s}^2$.", 
+                    s: "Esempio guidato: inserendo la massa della Terra ($M \approx 5,97 \times 10^{24}\text{ kg}$) e il raggio medio ($R \approx 6,37 \times 10^6\text{ m}$), si ottiene $9,81\text{ m/s}^2$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un astronauta si trova a un'altitudine pari al raggio della Terra ($h = R_{\text{Terra}}$) rispetto alla superficie. Quanto vale l'accelerazione di gravità a quell'altezza rispetto al valore $g$ sulla superficie?", 
+                    r: "Vale $\frac{1}{4} g$ (un quarto del valore superficiale).", 
+                    s: "Esempio guidato: la distanza dal centro della Terra diventa $r = R_{\text{Terra}} + h = R_{\text{Terra}} + R_{\text{Terra}} = 2R_{\text{Terra}}$. Poiché la forza e l'accelerazione scalano con il quadrato della distanza, a doppia distanza l'accelerazione diventa $(1/2)^2 = 1/4$ di quella iniziale." 
+                },
+                { 
+                    q: "Due sferette di piombo omogenee, ciascuna con massa di $100\text{ kg}$, sono poste a una distanza tra i loro centri di $1\text{ m}$. Calcola la forza di attrazione gravitazionale tra di esse ($G = 6,67 \times 10^{-11}\text{ N}\cdot\text{m}^2/\text{kg}^2$).", 
+                    r: "$6,67 \times 10^{-7}\text{ N}$.", 
+                    s: "Esempio guidato: $F = 6,67 \times 10^{-11} \cdot \frac{100 \cdot 100}{1^2} = 6,67 \times 10^{-11} \cdot 10000 = 6,67 \times 10^{-7}\text{ N}$." 
+                },
+                { 
+                    q: "Un pianeta ipotetico ha una massa doppia rispetto alla Terra e un raggio triplo rispetto alla Terra. Qual è il rapporto tra l'accelerazione di gravità di questo pianeta e quella terrestre ($g_{\text{pianeta}} / g_{\text{terra}}$)?", 
+                    r: "$\frac{2}{9}$ (circa 0,22).", 
+                    s: "Esempio guidato: $g_{\text{p}} = G \frac{2M}{(3R)^2} = G \frac{2M}{9R^2} = \frac{2}{9} \left(G \frac{M}{R^2}\right) = \frac{2}{9} g_{\text{t}}$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Dilatazione Termica (Lineare, Superficiale e Volumica) e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Dilatazioni Termiche: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="dilatazioni-termiche" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Dilatazioni Termiche</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Dilatazione lineare, superficiale e volumica dei corpi solidi e liquidi in seguito a variazioni di temperatura, con 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. La Dilatazione Lineare dei Solidi</h2>
+            <p>
+                Quando un solido di forma prevalentemente unidimensionale (come una sbarra metallica di lunghezza $l_0$) subisce un aumento di temperatura $\Delta T$, la sua lunghezza varia in modo direttamente proporzionale alla lunghezza iniziale e alla variazione termica.
+            </p>
+            <div class="formula-box">
+                📐 <b>Legge della dilatazione lineare:</b>
+                $$\Delta l = l_0 \cdot \lambda \cdot \Delta T \quad \text{e} \quad l = l_0(1 + \lambda \cdot \Delta T)$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $\lambda$ (o $\alpha$) rappresenta il <em>coefficiente di dilatazione lineare</em>, espresso in $\text{°C}^{-1}$ o $\text{K}^{-1}$.
+                </p>
+            </div>
+
+            <h2>2. Dilatazione Superficiale e Volumica</h2>
+            <p>
+                Estendendo il principio alle due e tre dimensioni spaziali:
+            </p>
+            <ul>
+                <li><strong>Dilatazione Superficiale:</strong> $\Delta S = S_0 \cdot \sigma \cdot \Delta T$, dove il coefficiente superficiale è approssimativamente $\sigma \approx 2\lambda$.</li>
+                <li><strong>Dilatazione Volumica:</strong> $\Delta V = V_0 \cdot \beta \cdot \Delta T$, dove il coefficiente volumico per i solidi vale $\beta \approx 3\lambda$, mentre per i liquidi costituisce la modalità principale di espansione termica.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulle Dilatazioni Termiche</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo di allungamenti, superfici finali, volumi dilatati e coefficienti caratteristici, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulle Dilatazioni Termiche
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // 1. Dilatazione lineare (calcolo Delta l o l finale)
+                    let l0 = 1.0 + (i % 5) * 0.5; // m
+                    let lambda = 2.4e-5; // es. ottone o alluminio
+                    let deltaT = 20 + (i % 30);
+                    let deltaL_mm = (l0 * lambda * deltaT * 1000).toFixed(2);
+
+                    q = `Esercizio ${i}: Una sbarra di metallo lunga $l_0 = ${l0.toFixed(1)}\\text{ m}$ (con coefficiente $\\lambda = 2,4 \\cdot 10^{-5}\\text{ °C}^{-1}$) subisce un incremento termico $\\Delta T = ${deltaT}\\text{ °C}$. Calcola l'allungamento $\\Delta l$ espresso in millimetri.`;
+                    r = `$${deltaL_mm}\\text{ mm}$.`;
+                    s = `Applicando la formula $\\Delta l = l_0 \\cdot \\lambda \\cdot \\Delta T$: $\\Delta l = ${l0.toFixed(1)} \\cdot 2,4 \\cdot 10^{-5} \\cdot ${deltaT} = ${(l0 * lambda * deltaT).toFixed(5)}\\text{ m} = ${deltaL_mm}\\text{ mm}$.`;
+                
+                } else if (tipo === 1) {
+                    // 2. Dilatazione volumica di un liquido
+                    let V0 = 2.0 + (i % 4); // litri o m^3
+                    let beta = 1.1e-3; // es. alcol o mercurio
+                    let deltaT = 25 + (i % 20);
+                    let deltaV = (V0 * beta * deltaT).toFixed(4);
+
+                    q = `Esercizio ${i}: Un volume iniziale $V_0 = ${V0}\\text{ m}^3$ di liquido (coefficiente volumico $\\beta = 1,1 \\cdot 10^{-3}\\text{ °C}^{-1}$) viene riscaldato con una variazione di temperatura $\\Delta T = ${deltaT}\\text{ °C}$. Calcola l'aumento di volume $\\Delta V$.`;
+                    r = `$${deltaV}\\text{ m}^3$.`;
+                    s = `Utilizzando la legge della dilatazione volumica $\\Delta V = V_0 \\cdot \\beta \\cdot \\Delta T$: $\\Delta V = ${V0} \\cdot 1,1 \\cdot 10^{-3} \\cdot ${deltaT} = ${deltaV}\\text{ m}^3$.`;
+                
+                } else if (tipo === 2) {
+                    // 3. Dilatazione superficiale
+                    let S0 = 1.5 + (i % 3);
+                    let sigma = 3.4e-5; // coefficiente superficiale approssimato
+                    let deltaT = 30;
+                    let deltaS = (S0 * sigma * deltaT).toFixed(5);
+
+                    q = `Esercizio ${i}: Una lamina metallica ha una superficie iniziale $S_0 = ${S0.toFixed(1)}\\text{ m}^2$ e coefficiente superficiale $\\sigma = 3,4 \\cdot 10^{-5}\\text{ °C}^{-1}$. Se la temperatura aumenta di $${deltaT}\\text{ °C}$, qual è l'incremento di superficie $\\Delta S$?`;
+                    r = `$${deltaS}\\text{ m}^2$.`;
+                    s = `Applicando la formula della dilatazione superficiale $\\Delta S = S_0 \\cdot \\sigma \\cdot \\Delta T$: $\\Delta S = ${S0.toFixed(1)} \\cdot 3,4 \\cdot 10^{-5} \\cdot ${deltaT} = ${deltaS}\\text{ m}^2$.`;
+                
+                } else {
+                    // 4. Domanda concettuale / Effetti pratici
+                    q = `Esercizio ${i}: Spiega perché nei binari ferroviari in acciaio vengono lasciati piccoli spazi vuoti (giunti di dilatazione) tra una sezione e l'altra.`;
+                    r = `Per consentire l'espansione lineare del metallo durante le calde giornate estive senza deformare o incurvare i binari.`;
+                    s = `In estate l'aumento della temperatura provoca una dilatazione lineare del metallo; in assenza di giunti di spazio libero, le forze di compressione provocherebbero il rigonfiamento o il disallineamento della rotaia.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

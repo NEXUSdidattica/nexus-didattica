@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa a Sconti e Aumenti Percentuali: formule, prezzo scontato con il metodo del complemento, prezzo maggiorato e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sconti e Aumenti Percentuali: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-sconti-e-aumenti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Sconti e Aumenti Percentuali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Metodi classici e diretti (complemento a 100) per calcolare prezzi finali, rincari e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Calcolo dello Sconto: I due metodi</h2>
+            <p>
+                Per calcolare il prezzo scontato puoi scegliere tra due procedimenti diversi:
+            </p>
+            
+            <h3>Metodo Classico (in 2 passaggi)</h3>
+            <p>
+                Si calcola prima il valore dello sconto in euro e poi lo si sottrae dal prezzo iniziale.
+            </p>
+
+            <h3>Metodo Diretto o del "Complemento a 100" (in 1 solo passaggio)</h3>
+            <p>
+                Se un bene è scontato del 45%, significa che pagherai il <strong>(100 - 45)% = 55%</strong> del suo valore originale. Puoi trovare il prezzo finale direttamente calcolando questa percentuale residua.
+            </p>
+
+            <div class="formula-box">
+                🏷️ <strong>Esempio Sconto del 45% su 670 €:</strong><br>
+                • <em>Percentuale da pagare:</em> <code>(100 - 45)% = 55%</code><br>
+                • <em>Calcolo prezzo finale:</em> <code>(670 &middot; 55) / 100 = 368,50 €</code><br>
+                • <em>In forma di proporzione:</em> <code>100 : (100 - 45) = 670 : x</code> &rArr; <code>100 : 55 = 670 : x</code>
+            </div>
+
+            <h2>2. Calcolo dell'Aumento o Rincaro</h2>
+            <p>
+                Allo stesso modo, per un aumento (es. IVA o rincaro), la percentuale da considerare sarà superiore al 100%:
+            </p>
+
+            <div class="formula-box">
+                📈 <strong>Esempio Aumento del 20% su 500 €:</strong><br>
+                • <em>Percentuale finale:</em> <code>(100 + 20)% = 120%</code><br>
+                • <em>Calcolo prezzo finale:</em> <code>(500 &middot; 120) / 100 = 600 €</code><br>
+                • <em>In forma di proporzione:</em> <code>100 : (100 + 20) = 500 : x</code> &rArr; <code>100 : 120 = 500 : x</code>
+            </div>
+
+            <h2>3. Formula Inversa: Risalire al Prezzo Iniziale</h2>
+            <p>
+                Se conosciamo il prezzo finale e la percentuale applicata, usiamo la proporzione inversa:
+            </p>
+            <ul>
+                <li><strong>In caso di Sconto:</strong> <code>Prezzo Iniziale = (Prezzo Finale &middot; 100) / (100 - Sconto%)</code></li>
+                <li><strong>In caso di Aumento:</strong> <code>Prezzo Iniziale = (Prezzo Finale &middot; 100) / (100 + Aumento%)</code></li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un laptop da 800 € viene offerto con uno sconto del 15%. Trova il prezzo finale con il metodo diretto del complemento a 100.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la percentuale residua da pagare: <code>100% - 15% = 85%</code>.</li>
+                    <li>Impostiamo la proporzione: <code>100 : 85 = 800 : x</code>.</li>
+                    <li>Risolviamo: <code>x = (800 &middot; 85) / 100 = 680 €</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>680 €</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Sconti e Aumenti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue competenze: applica il metodo classico o il metodo del complemento a 100 per risolvere gli esercizi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let prezzoIniziale = i * 10;
+                    let sconto = 10 + (i % 5) * 5;
+                    let percResidua = 100 - sconto;
+                    let prezzoFinale = (prezzoIniziale * percResidua) / 100;
+
+                    domanda = `Un prodotto da <strong>${prezzoIniziale} €</strong> è scontato del <strong>${sconto}%</strong>. Calcola il prezzo finale usando il metodo del complemento a 100.`;
+                    risposta = `${prezzoFinale} €`;
+                    spiegazione = `
+                    1) Calcola la percentuale residua da pagare: <code>100 - ${sconto} = ${percResidua}%</code>.<br>
+                    2) Imposta la proporzione: <code>100 : ${percResidua} = ${prezzoIniziale} : x</code>.<br>
+                    3) Calcolo finale: <code>x = (${prezzoIniziale} &middot; ${percResidua}) / 100 = ${prezzoFinale} €</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let prezzoIniziale = i * 15;
+                        let aumento = 20;
+                        let percTotale = 100 + aumento;
+                        let prezzoFinale = (prezzoIniziale * percTotale) / 100;
+
+                        domanda = `Un articolo da <strong>${prezzoIniziale} €</strong> subisce un rincaro del <strong>${aumento}%</strong>. Qual è il prezzo aggiornato?`;
+                        risposta = `${prezzoFinale} €`;
+                        spiegazione = `
+                        1) Percentuale totale da considerare: <code>100 + ${aumento} = ${percTotale}%</code>.<br>
+                        2) Proporzione: <code>100 : ${percTotale} = ${prezzoIniziale} : x</code>.<br>
+                        3) Calcolo: <code>x = (${prezzoIniziale} &middot; ${percTotale}) / 100 = ${prezzoFinale} €</code>.`;
+                    } else {
+                        let prezzoFinale = i * 8;
+                        let sconto = 20;
+                        let percPagata = 100 - sconto;
+                        let prezzoIniziale = (prezzoFinale * 100) / percPagata;
+
+                        domanda = `Dopo uno sconto del <strong>${sconto}%</strong>, un prodotto costa <strong>${prezzoFinale} €</strong>. Quanto costava in origine?`;
+                        risposta = `${prezzoIniziale} €`;
+                        spiegazione = `
+                        1) Il prezzo finale rappresenta il <code>100 - ${sconto} = ${percPagata}%</code> del totale.<br>
+                        2) Proporzione per il totale: <code>100 : ${percPagata} = x : ${prezzoFinale}</code>.<br>
+                        3) Calcola il prezzo originale: <code>x = (${prezzoFinale} &middot; 100) / ${percPagata} = ${prezzoIniziale} €</code>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let prezzoBase = i * 20;
+                    let pass1 = prezzoBase * 0.9;
+                    let pass2 = pass1 * 0.9;
+
+                    domanda = `Un bene da <strong>${prezzoBase} €</strong> subisce due sconti consecutivi del <strong>10%</strong>. Qual è il prezzo finale da pagare?`;
+                    risposta = `${pass2.toFixed(2)} €`;
+                    spiegazione = `
+                    1) Primo sconto (si paga il 90%): <code>${prezzoBase} &middot; 0.90 = ${pass1} €</code>.<br>
+                    2) Secondo sconto del 10% sul prezzo già scontato (si paga il 90% di ${pass1}): <code>${pass1} &middot; 0.90 = ${pass2.toFixed(2)} €</code>.<br>
+                    <em>Nota:</em> Due sconti consecutivi del 10% non equivalgono a un unico sconto del 20%!`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

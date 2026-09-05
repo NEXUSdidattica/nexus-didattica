@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa allo studio degli asintoti verticali, orizzontali e obliqui con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Asintoti Verticali, Orizzontali e Obliqui - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-asintoti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Asintoti Verticali, Orizzontali e Obliqui</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio del comportamento asintotico di una funzione mediante il calcolo dei limiti agli estremi del dominio.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Definizioni e Metodi di Ricerca</h2>
+            <p>Un asintoto è una retta alla quale il grafico di una funzione si avvicina indefinitamente man mano che ci si sposta verso l'infinito o verso un punto di accumulazione del dominio.</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[\text{Asintoto Verticale: } \lim_{x \to x_0} f(x) = \pm\infty \implies x = x_0\]
+                \[\text{Asintoto Orizzontale: } \lim_{x \to \pm\infty} f(x) = l \implies y = l\]
+                \[\text{Asintoto Obliquo } (y = mx + q): m = \lim_{x \to \pm\infty} \frac{f(x)}{x}, \quad q = \lim_{x \to \pm\infty} (f(x) - mx)\]
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Regole Operative Fondamentali</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Asintoti Verticali:</strong> Si cercano nei punti di discontinuità o agli estremi aperti del dominio in cui la funzione non è definita. Se almeno un limite destro o sinistro fa \(\pm\infty\), la retta \(x = x_0\) è asintoto verticale.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Asintoti Orizzontali:</strong> Si calcolano i limiti per \(x \to +\infty\) e \(x \to -\infty\). Se il risultato è un numero finito \(l\), la retta \(y = l\) è asintoto orizzontale. (Nota: se esiste l'asintoto orizzontale, solitamente non esiste quello obliquo nella stessa direzione).</li>
+                    <li><strong>Asintoti Obliqui:</strong> Si cercano quando il limite a infinito è infinito e il grado del numeratore di una funzione fratta supera di una sola unità il grado del denominatore. Se \(m\) è finito e diverso da zero, e \(q\) è finito, la retta \(y = mx + q\) è asintoto obliquo.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sugli Asintoti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta strutturata di 100 esercizi interamente svolti, dalla ricerca di asintoti verticali in funzioni fratte alla determinazione di coefficienti angolari di rette oblique.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sugli asintoti -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Asintoti verticali e orizzontali elementari in funzioni fratte
+                        difficolta = "facile";
+                        const tipo = n % 3;
+                        const a = (n % 5) + 1;
+                        const b = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova gli asintoti verticali e orizzontali della funzione \\(f(x) = \\frac{1}{x - ${a}}\\).`;
+                            risultato = `Asintoto verticale: \\(x = ${a}\\); Asintoto orizzontale: \\(y = 0\\)`;
+                            spiegazione = `1. **Asintoto verticale:** Il dominio esclude \\(x = ${a}\\). Calcolando il limite \\(\\lim_{x \\to ${a}} \\frac{1}{x - ${a}} = \\pm\\infty\\), la retta \\(x = ${a}\\) è asintoto verticale.\n2. **Asintoto orizzontale:** \\(\\lim_{x \\to \\pm\\infty} \\frac{1}{x - ${a}} = 0\\), quindi la retta \\(y = 0\\) è asintoto orizzontale.`;
+                        } else if (tipo === 1) {
+                            domanda = `Trova gli asintoti verticali e orizzontali della funzione \\(f(x) = \\frac{${b}x}{x + 2}\\).`;
+                            risultato = `Asintoto verticale: \\(x = -2\\); Asintoto orizzontale: \\(y = ${b}\\)`;
+                            spiegazione = `1. **Asintoto verticale:** Il denominatore si annulla in \\(x = -2\\). Il limite per \\(x \\to -2\\) dà \\(\\pm\\infty\\), quindi \\(x = -2\\) è asintoto verticale.\n2. **Asintoto orizzontale:** Rapporto dei coefficienti di grado massimo per \\(x \\to \\pm\\infty\\): \\(y = \\frac{${b}}{1} = ${b}\\).`;
+                        } else {
+                            domanda = `Trova gli asintoti verticali e orizzontali della funzione \\(f(x) = \\frac{x + ${a}}{2x - ${b}}\\) (con \\(${b} \\neq 0\\)).`;
+                            risultato = `Asintoto verticale: \\(x = \\frac{${b}}{2}\\); Asintoto orizzontale: \\(y = \\frac{1}{2}\\)`;
+                            spiegazione = `1. **Asintoto verticale:** Il denominatore si annulla in \\(2x - ${b} = 0 \\implies x = \\frac{${b}}{2}\\).\n2. **Asintoto orizzontale:** \\(\\lim_{x \\to \\pm\\infty} \\frac{x + ${a}}{2x - ${b}} = \\frac{1}{2}\\), da cui \\(y = \\frac{1}{2}\\).`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni con asintoti obliqui e denominatori quadratici
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina gli eventuali asintoti obliqui della funzione \\(f(x) = \\frac{x^2 - 1}{x - ${k}}\\).`;
+                            risultato = `Asintoto obliquo: \\(y = x + ${k}\\) (con asintoto verticale in \\(x = ${k}\\))`;
+                            spiegazione = `1. **Asintoto verticale:** \\(x = ${k}\\).\n2. **Asintoto obliquo:** Il grado del numeratore (2) supera di 1 il grado del denominatore (1).\n- \\(m = \\lim_{x \\to \\pm\\infty} \\frac{x^2 - 1}{x(x - ${k})} = 1\\).\n- \\(q = \\lim_{x \\to \\pm\\infty} \\left( \\frac{x^2 - 1}{x - ${k}} - 1 \\cdot x \\right) = \\lim_{x \\to \pm\\infty} \\frac{x^2 - 1 - x^2 + ${k}x}{x - ${k}} = ${k}\\).\nL'asintoto obliquo è \\(y = x + ${k}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Trova gli asintoti della funzione \\(f(x) = \\frac{x^2 + ${k}x}{x + 1}\\).`;
+                            risultato = `Asintoto verticale: \\(x = -1\\); Asintoto obliquo: \\(y = x + ${k - 1}\\)`;
+                            spiegazione = `1. **Asintoto verticale:** In \\(x = -1\\) il numeratore vale \\(1 - ${k} \\neq 0\\) e il denominatore tende a zero, quindi \\(x = -1\\) è asintoto verticale.\n2. **Asintoto obliquo:** \\(m = 1\\) e \\(q = \\lim_{x \\to \\pm\\infty} \\left( \\frac{x^2 + ${k}x}{x + 1} - x \\right) = ${k - 1}\\). Retta: \\(y = x + ${k - 1}\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina gli asintoti orizzontali o verticali di \\(f(x) = \\frac{x}{x^2 + ${k}}\\).`;
+                            risultato = `Asintoto orizzontale: \\(y = 0\\); Nessun asintoto verticale`;
+                            spiegazione = `1. **Asintoto verticale:** Il denominatore \\(x^2 + ${k}\\) non si annulla mai in \\(\\mathbb{R}\\), quindi non ci sono asintoti verticali.\n2. **Asintoto orizzontale:** \\(\\lim_{x \\to \\pm\\infty} \\frac{x}{x^2 + ${k}} = 0\\), per cui \\(y = 0\\) è asintoto orizzontale.`;
+                        } else if (tipo === 3) {
+                            domanda = `Trova gli asintoti della funzione \\(f(x) = \\frac{2x^2 + 5}{x - 1}\\).`;
+                            risultato = `Asintoto verticale: \\(x = 1\\); Asintoto obliquo: \\(y = 2x + 2\\)`;
+                            spiegazione = `1. **Asintoto verticale:** \\(x = 1\\).\n2. **Asintoto obliquo:** \\(m = \\lim \\frac{2x^2+5}{x(x-1)} = 2\\).\n\\(q = \\lim \\left( \\frac{2x^2+5}{x-1} - 2x \\right) = \\lim \\frac{2x^2+5-2x^2+2x}{x-1} = 2\\).\nAsintoto obliquo: \\(y = 2x + 2\\).`;
+                        } else {
+                            domanda = `Determina gli asintoti della funzione \\(f(x) = x + \\frac{1}{x}\\).`;
+                            risultato = `Asintoto verticale: \\(x = 0\\); Asintoto obliquo: \\(y = x\\)`;
+                            spiegazione = `1. **Asintoto verticale:** In \\(x = 0\\) la funzione diverge a \\(\\pm\\infty\\), quindi \\(x = 0\\) è asintoto verticale.\n2. **Asintoto obliquo:** Per \\(x \\to \\pm\\infty\\), il termine \\(\\frac{1}{x} \\to 0\\), per cui il grafico si appoggia alla retta \\(y = x\\) (asintoto obliquo con \\(m=1, q=0\\)).`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni irrazionali, logaritmiche e con valori assoluti
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova gli asintoti della funzione irrazionale:\n\\[f(x) = \\sqrt{x^2 + ${k}x}\\]`;
+                            risultato = `Asintoti obliqui: \\(y = x + \\frac{${k}}{2}\\) (per \\(x \\to +\\infty\\)) e \\(y = -x - \\frac{${k}}{2}\\) (per \\(x \\to -\\infty\\))`;
+                            spiegazione = `1. **Asintoto per \\(x \\to +\\infty\\):**\n- \\(m = \\lim_{x \\to +\\infty} \\frac{\\sqrt{x^2 + ${k}x}}{x} = \\lim \\sqrt{1 + \\frac{${k}}{x}} = 1\\).\n- \\(q = \\lim_{x \\to +\\infty} (\\sqrt{x^2 + ${k}x} - x) = \\lim \\frac{${k}x}{\\sqrt{x^2 + ${k}x} + x} = \\frac{${k}}{2}\\).\nRetta: \\(y = x + \\frac{${k}}{2}\\).\n2. Analogamente per \\(x \\to -\\infty\\) si ottiene \\(y = -x - \\frac{${k}}{2}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Trova gli asintoti della funzione logaritmica:\n\\[f(x) = \\ln(x - ${k})\\]`;
+                            risultato = `Asintoto verticale: \\(x = ${k}\\) (da destra); Nessun asintoto orizzontale o obliquo`;
+                            spiegazione = `1. **Dominio:** \\(x > ${k}\\).\n2. **Asintoto verticale:** \\(\\lim_{x \\to ${k}^+} \\ln(x - ${k}) = -\\infty\\), quindi la retta \\(x = ${k}\\) è asintoto verticale.\n3. Per \\(x \\to +\\infty\\), il logaritmo cresce a \\(+\\infty\\) ma con pendenza decrescente (nessun asintoto obliquo né orizzontale).`;
+                        } else if (tipo === 2) {
+                            domanda = `Trova gli asintoti della funzione:\n\\[f(x) = x \\cdot e^{\\frac{1}{x}}\\]`;
+                            risultato = `Asintoto verticale: \\(x = 0\\); Asintoto obliquo: \\(y = x + 1\\) per \\(x \\to \\pm\\infty\`;`;
+                            spiegazione = `1. **Asintoto verticale:** \\(\\lim_{x \\to 0^+} x e^{1/x} = +\\infty\\) ( \\(x = 0\\) è asintoto verticale).\n2. **Asintoto obliquo:**\n- \\(m = \\lim \\frac{x e^{1/x}}{x} = \\lim e^{1/x} = e^0 = 1\\).\n- \\(q = \\lim (x e^{1/x} - x) = \\lim x(e^{1/x} - 1)\\). Ponendo \\(t = \\frac{1}{x}\\), il limite diventa \\(\\lim_{t \\to 0} \\frac{e^t - 1}{t} = 1\\).\nAsintoto obliquo: \\(y = x + 1\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina gli asintoti della funzione:\n\\[f(x) = \\frac{x^3}{x^2 - 1}\\]`;
+                            risultato = `Asintoti verticali: \\(x = -1, x = 1\\); Asintoto obliquo: \\(y = x\\)`;
+                            spiegazione = `1. **Asintoti verticali:** In \\(x = -1\\) e \\(x = 1\\) il denominatore si annulla e il numeratore è diverso da zero, generando asintoti verticali.\n2. **Asintoto obliquo:**\n- \\(m = \\lim \\frac{x^3}{x(x^2-1)} = 1\\).\n- \\(q = \\lim \\left( \\frac{x^3}{x^2-1} - x \\right) = \\lim \\frac{x^3 - x^3 + x}{x^2-1} = 0\\).\nAsintoto obliquo: \\(y = x\\).`;
+                        } else {
+                            domanda = `Trova gli asintoti della funzione trigonometrica smorzata:\n\\[f(x) = \\frac{\\sin(x)}{x}\\]`;
+                            risultato = `Asintoto orizzontale: \\(y = 0\\) per \\(x \\to \\pm\\infty\\); Eliminabilità della singolarità in \\(x = 0\\)`;
+                            spiegazione = `1. **Asintoto verticale:** In \\(x = 0\\) il limite notevole vale \\(1\\), quindi non c'è asintoto verticale (la discontinuità è eliminabile).\n2. **Asintoto orizzontale:** Per \\(x \\to \\pm\\infty\\), \\(\\frac{\\sin(x)}{x} \\to 0\\) per il teorema del confronto, quindi \\(y = 0\\) è asintoto orizzontale.`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

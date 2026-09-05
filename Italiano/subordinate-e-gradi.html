@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa alle Proposizioni Subordinate e ai Gradi di Subordinazione nell'Analisi del Periodo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proposizioni Subordinate e Gradi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Italiano) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (ITALIANO) --- */
+        body[data-materia="Italiano"] {
+            --colore-primario: #ff0000;
+            --colore-hover: #dc2626;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 255, 0, 0;
+        }
+
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario) !important;
+            color: #ffffff !important;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario) !important;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4) !important;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover) !important;
+            border-color: var(--colore-hover) !important;
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        body[data-materia="Italiano"] #btn-salva-lezione.salvato, 
+        body[data-materia="Italiano"] #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a !important;
+            color: #713f12 !important;
+            border: 2px solid #eab308 !important;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4) !important;
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            width: fit-content;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLA ARTICOLI */
+        .tabella-particolarita {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-particolarita th, 
+        .tabella-particolarita td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-particolarita th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: bold;
+        }
+
+        .tabella-particolarita tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-subordinate-e-gradi" data-materia="Italiano">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Italiano / Analisi del Periodo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Proposizioni Subordinate e i Gradi di Subordinazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida approfondita alla struttura ipotattica, alla classificazione delle subordinate (esplicite e implicite) e alla gerarchia dei gradi di dipendenza.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è la Subordinazione (Ipotassi)</h2>
+            <p>
+                Nell'analisi del periodo, si parla di <strong>subordinazione</strong> (o <em>ipotassi</em>) quando all'interno di una frase complessa (periodo) una o più proposizioni dipendono da un'altra proposizione (che funge da reggente) e non possono reggersi autonomamente. La proposizione da cui dipendono può essere la proposizione principale (o reggente di primo grado) oppure un'altra subordinata di grado precedente.
+            </p>
+            <p>
+                Mentre la coordinazione si sviluppa in orizzontale (sullo stesso piano gerarchico), la subordinazione si sviluppa in verticale, creando una struttura ad albero o una piramide di dipendenze logiche e sintattiche.
+            </p>
+
+            <h2>2. Esplicite e Implicite: Come Riconoscerle</h2>
+            <p>
+                Le proposizioni subordinate si distinguono in due grandi macro-categorie formali a seconda della forma verbale con cui sono costruite:
+            </p>
+            <ul>
+                <li>
+                    <strong>Subordinate Esplicite:</strong> Contengono un verbo di modo finito (indicativo, congiuntivo, condizionale o imperativo). Di norma sono introdotte da congiunzioni subordinanti, pronomi relativi o connettivi specifici (es. <em>che, perché, sebbene, quando</em>).
+                    <br><em>Esempio:</em> "Penso <strong>che tu abbia ragione</strong>." (*abbia* è un congiuntivo presente, modo finito).
+                </li>
+                <li>
+                    <strong>Subordinate Implicite:</strong> Contengono un verbo di modo indefinito (infinito, gerundio o participio). Di solito non presentano un soggetto espresso (che coincide quasi sempre con quello della reggente) e sono introdotte da preposizioni o congiunzioni seguite dall'infinito o dal gerundio (es. <em>di, a, da, per, con, nel, giunto, avendo</em>).
+                    <br><em>Esempio:</em> "Spero <strong>di superare la verifica</strong>." (*superare* è un infinito).
+                </li>
+            </ul>
+
+            <h2>3. I Gradi di Subordinazione</h2>
+            <p>
+                La gerarchia di un periodo complesso si misura attraverso i <strong>gradi di subordinazione</strong>, che indicano la distanza gerarchica e la dipendenza di una frase rispetto alla proposizione principale:
+            </p>
+            <ul>
+                <li><strong>Proposizione Principale (Reggente):</strong> È il fulcro del periodo, non dipende da nessuna altra frase ed è considerata di grado 0.</li>
+                <li><strong>Subordinata di 1° Grado:</strong> Dipende direttamente dalla proposizione principale.</li>
+                <li><strong>Subordinata di 2° Grado:</strong> Dipende direttamente dalla subordinata di 1° grado (e così via per il 3°, 4° grado...).</li>
+            </ul>
+
+            <!-- BOX ESEMPIO GUIDATO SUI GRADI -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">🔍 Esempio Pratico di Analisi dei Gradi</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Periodo:</strong> "Vengo ad allenarmi in palestra / perché voglio migliorare la tecnica / che l'allenatore ci ha spiegato."</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <ol style="padding-left: 1.2rem; margin-bottom: 0;">
+                    <li><strong>"Vengo ad allenarmi in palestra"</strong> $\rightarrow$ Proposizione Principale (Grado 0).</li>
+                    <li><strong>"perché voglio migliorare la tecnica"</strong> $\rightarrow$ Proposizione subordinata causale di <strong>1° grado</strong> (dipende direttamente dalla principale).</li>
+                    <li><strong>"che l'allenatore ci ha spiegato"</strong> $\rightarrow$ Proposizione subordinata relativa di <strong>2° grado</strong> (dipende direttamente dalla subordinata di 1° grado, specificando la parola "tecnica").</li>
+                </ol>
+            </div>
+
+            <h2>4. Classificazione delle Proposizioni Subordinate</h2>
+            <p>
+                Le subordinate si suddividono in tre grandi gruppi funzionali a seconda del ruolo che ricoprono all'interno della frase reggente (simili ai complementi o alle parti del discorso della frase semplice):
+            </p>
+
+            <h3>A. Subordinate Sostantive (o Complementari Indirette/Dirette)</h3>
+            <p>
+                Svolgono la funzione del soggetto o del complemento oggetto (o di altri argomenti richiesti dal verbo della reggente):
+            </p>
+            <ul>
+                <li><strong>Soggettive:</strong> Fanno da soggetto alla reggente (spesso impersonale). <br><em>Es:</em> "Sembra <strong>che il tempo stia migliorando</strong>."</li>
+                <li><strong>Oggettive:</strong> Fanno da complemento oggetto del verbo della reggente. <br><em>Es:</em> "Tutti sanno <strong>che la terra è rotonda</strong>."</li>
+                <li><strong>Inter indirette:</strong> Pongono una domanda o un dubbio in forma dipendente. <br><em>Es:</em> "Dimmi <strong>chi ha risolto l'esercizio di matematica</strong>."</li>
+                <li><strong>Dichiarative:</strong> Specificano un elemento dimostrativo presente nella reggente. <br><em>Es:</em> "Questo desidero: <strong>che voi capiate l'argomento</strong>."</li>
+            </ul>
+
+            <h3>B. Subordinate Attributive (o Relative)</h3>
+            <p>
+                Si collegano a un nome (antecedente) della reggente tramite un pronome o avverbio relativo (*che, cui, il quale, dove*):
+            </p>
+            <ul>
+                <li><strong>Relative Proprie:</strong> Arricchiscono o specificano un nome della reggente. <br><em>Es:</em> "Ho letto il libro <strong>che mi hai prestato</strong>."</li>
+                <li><strong>Relative Improprie:</strong> Svolgono la funzione di un'altra subordinata (causale, finale, consecutiva, concessiva). <br><em>Es:</em> "Invidio te, <strong>che (= poiché) non ti agiti mai</strong>."</li>
+            </ul>
+
+            <h3>C. Subordinate Avverbiali (o Circumanziali)</h3>
+            <p>
+                Svolgono la funzione dei complementi avverbiali di luogo, tempo, causa, fine, ecc., modificando l'intero periodo:
+            </p>
+            <ul>
+                <li><strong>Causali:</strong> Indicano la causa di ciò che avviene nella reggente (*perché, poiché, giacché*).</li>
+                <li><strong>Finali:</strong> Indicano lo scopo o il fine dell'azione (*affinché, perché* + congiuntivo, o *a / per* + infinito).</li>
+                <li><strong>Temporali:</strong> Collocano temporalmente l'azione (*quando, mentre, prima che, dopo che*).</li>
+                <li><strong>Concessive:</strong> Esprimono un fatto nonostante il quale si realizza la reggente (*sebbene, benché, nonostante*).</li>
+                <li><strong>Condizionali (Ipotetiche):</strong> Esprimono la condizione da cui dipende la reggente (protasi del periodo ipotetico: *se*).</li>
+                <li><strong>Consecutive:</strong> Esprimono la conseguenza di quanto detto nella reggente (*tanto... che, così... che*).</li>
+                <li><strong>Comparative:</strong> Stabiliscono un paragone con la reggente (*più... di quanto, così... come*).</li>
+                <li><strong>Modali / Instrumentali:</strong> Indicano il modo o il mezzo in cui si compie l'azione.</li>
+            </ul>
+
+            <!-- TABELLA RIASSUNTIVA SUBORDINATE -->
+            <table class="tabella-particolarita" style="margin-top: 1.5rem;">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Principali Tipologie</th>
+                        <th>Funzione Sintattica / Elementi Guida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Sostantive</strong></td>
+                        <td>Soggettiva, Oggettiva, Interrogativa Indiretta, Dichiarativa</td>
+                        <td>Fanno le veci del soggetto o del complemento oggetto della reggente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Attributive</strong></td>
+                        <td>Relativa (propria e impropria)</td>
+                        <td>Modificano un nome della reggente tramite pronomi relativi (*che, cui*).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Avverbiali</strong></td>
+                        <td>Causale, Finale, Temporale, Concessiva, Condizionale, Consecutiva</td>
+                        <td>Agiscono come complementi circostanziali (tempo, causa, fine, condizione).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>5. Consigli pratici per l'Analisi del Periodo</h2>
+            <p>
+                Per eseguire un'analisi del periodo impeccabile senza commettere errori nell'individuazione delle subordinate e dei gradi:
+            </p>
+            <ul>
+                <li><strong>Conta i verbi:</strong> Ricorda la regola d'oro: in un periodo ci sono tante proposizioni quanti sono i verbi (di modo finito o indefinito).</li>
+                <li><strong>Isola la Principale:</strong> Cerca sempre la frase che ha senso compiuto da sola e non è introdotta da alcuna congiunzione subordinante. Quello sarà il tuo punto di partenza (Grado 0).</li>
+                <li><strong>Verifica le dipendenze:</strong> Chiediti sempre a quale frase si riallaccia la proposizione successiva per stabilire se si tratta di una coordinata o di una subordinata di 1°, 2° o successivo grado.</li>
+            </ul>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

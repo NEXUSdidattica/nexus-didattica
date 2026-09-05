@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Protocollo UDP (User Datagram Protocol), comunicazione connectionless, velocità, streaming e simulatore interattivo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Protocollo UDP & Comunicazione Connectionless - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .mem-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        @media(max-width: 768px) {
+            .mem-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .mem-output {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+
+        table.tag-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        table.tag-table th,
+        table.tag-table td {
+            border: 1px solid #fed7aa;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        table.tag-table th {
+            background-color: #fff7ed;
+            color: #c2410c;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="protocollo-udp" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Protocollo
+                    UDP (User Datagram Protocol)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Comunicazione senza connessione, leggerezza, velocità, gestione dello streaming multimediale e
+                    simulatore interattivo.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è il Protocollo UDP</h2>
+            <p>
+                Il protocollo <strong>UDP</strong> (<em>User Datagram Protocol</em>) opera anch'esso al <strong>Livello
+                    4 (Transport)</strong> del modello OSI. A differenza del TCP, l'UDP è un protocollo non orientato
+                alla connessione (<em>connectionless</em>) e non affidabile (<em>best-effort</em>): non stabilisce una
+                sessione preventiva, non prevede riscontri (ACK) e non garantisce né l'ordine di arrivo né la consegna
+                dei pacchetti.
+            </p>
+
+            <div class="formula-box">
+                <strong>Perché si usa l'UDP?</strong>
+                <p>La sua estrema leggerezza (un header di soli 8 byte contro i 20+ del TCP) e l'assenza di ritardi
+                    dovuti ad handshaking o controlli di flusso lo rendono ideale per applicazioni in tempo reale dove
+                    la velocità è prioritaria rispetto alla perfezione assoluta dei dati (es. streaming video, VoIP,
+                    giochi online, DNS).</p>
+            </div>
+
+            <h2>2. Struttura del Datagramma UDP</h2>
+            <p>Il pacchetto UDP (denominato <em>datagramma</em>) possiede un formato estremamente minimale e
+                strutturato:</p>
+
+            <table class="tag-table">
+                <thead>
+                    <tr>
+                        <th>Campo Header</th>
+                        <th>Lunghezza</th>
+                        <th>Descrizione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Source Port</strong></td>
+                        <td>16 bit</td>
+                        <td>Indica la porta del processo mittente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Destination Port</strong></td>
+                        <td>16 bit</td>
+                        <td>Indica la porta del processo destinatario.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Length</strong></td>
+                        <td>16 bit</td>
+                        <td>Lunghezza totale del datagramma (header + dati).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Checksum</strong></td>
+                        <td>16 bit</td>
+                        <td>Codice di controllo opzionale per verificare l'integrità del pacchetto.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. TCP vs UDP: Quando usare l'uno o l'altro</h2>
+            <p>La scelta del protocollo di trasporto dipende interamente dalle esigenze specifiche dell'applicazione di
+                rete:</p>
+            <ul>
+                <div><strong>TCP:</strong> Scelto quando l'integrità dei dati è tassativa (es. navigazione web
+                    HTTP/HTTPS, trasferimento file FTP, posta elettronica SMTP). Un singolo byte mancante corromperebbe
+                    il file.</div>
+                <div><strong>UDP:</strong> Scelto quando la priorità assoluta è la latenza ridotta (es. chiamate
+                    Zoom/Discord, flussi video in diretta, interrogazioni DNS). Se un singolo fotogramma o pacchetto
+                    audio si perde per strada, viene semplicemente ignorato per mantenere la continuità temporale.</div>
+            </ul>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>4. Simulatore Interattivo: Invio Datagrammi e Streaming UDP</h2>
+            <p>Simula l'invio rapido di datagrammi UDP senza handshake e osserva il comportamento in condizioni di
+                traffico in tempo reale.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">udp-streamer@nexus-sys:~#</span>
+                    <span style="font-size: 0.8rem; color: #888;">UDP Datagram & Streaming Simulator</span>
+                </div>
+
+                <div class="mem-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona
+                            Test / Servizio UDP:</label>
+                        <select id="udpOpSelect" class="code-input">
+                            <option value="dns_query">Invio Richiesta DNS (Porta 53) - Datagramma singolo</option>
+                            <option value="voip_stream">Simulazione Streaming Audio VoIP / Chiamata (Flusso continuo)
+                            </option>
+                            <option value="packet_loss">Test di perdita pacchetti (Best-Effort Delivery)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-os" onclick="simulaUdpOp()">INVIA DATAGRAMMA ⚡</button>
+                    </div>
+                </div>
+
+                <div class="mem-output" id="memOutputUdp">
+                    > Seleziona un'operazione UDP e avvia la simulazione per visualizzare il comportamento dei
+                    datagrammi sul terminale.
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore UDP -->
+    <script>
+        window.simulaUdpOp = function () {
+            const op = document.getElementById('udpOpSelect').value;
+            const output = document.getElementById('memOutputUdp');
+
+            let snippet = "";
+            if (op === 'dns_query') {
+                snippet = `> Invio Datagramma UDP verso Server DNS (192.168.1.1:53):<br>` +
+                    `&nbsp;&nbsp;↳ Creazione pacchetto UDP (Header 8 byte + Payload query <code>nexusdidattica.it</code>).<br>` +
+                    `&nbsp;&nbsp;↳ Invio immediato senza attesa di connessione preventiva.<br>` +
+                    `&nbsp;&nbsp;↳ Risposta ricevuta dal server in 12ms. Nessun ACK formale richiesto.`;
+            } else if (op === 'voip_stream') {
+                snippet = `> Avvio Flusso Streaming Audio in Tempo Reale (UDP Porta 5004):<br>` +
+                    `&nbsp;&nbsp;↳ Invio continuo di 50 pacchetti/sec (Codec Opus).<br>` +
+                    `&nbsp;&nbsp;↳ Latenza media registrata: 18ms.<br>` +
+                    `&nbsp;&nbsp;↳ <strong>Nota:</strong> Nessun blocco della trasmissione in caso di micro-jitter o ritardi di rete.`;
+            } else {
+                snippet = `> Test di Perdita Pacchetti su Canale UDP (Simulazione carico elevato):<br>` +
+                    `&nbsp;&nbsp;↳ Invio di 1000 datagrammi di test.<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetti consegnati con successo: 982 (98.2%)<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetti smarriti per congestione di rete: 18 (1.8%)<br>` +
+                    `&nbsp;&nbsp;↳ <strong>Esito:</strong> L'UDP non effettua alcuna richiesta di ritrasmissione; i dati persi vengono scartati.`;
+            }
+
+            output.style.color = "#4ade80";
+            output.innerHTML = snippet;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

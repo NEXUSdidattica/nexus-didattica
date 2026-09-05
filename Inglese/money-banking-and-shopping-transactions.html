@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Money, Banking and Shopping Transactions in inglese: vocaboli per denaro, servizi bancari, conti correnti, acquisti e transazioni commerciali - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Money, Banking and Shopping Transactions - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="money-banking-and-shopping-transactions" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Commerce</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Money, Banking and Shopping Transactions</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo dedicato alla gestione del denaro, ai servizi bancari, ai conti correnti, agli acquisti e alle transazioni commerciali in inglese.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Money and Currencies (Denaro e Valute)</h2>
+            <p>I termini fondamentali per indicare il denaro contante, le forme di pagamento e le valute monetarie.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cash / Banknote / Coin</td><td>Contanti / Banconota / Moneta</td></tr>
+                    <tr><td>Currency / Exchange rate</td><td>Valuta / Tasso di cambio</td></tr>
+                    <tr><td>Price / Cost / Value</td><td>Prezzo / Costo / Valore</td></tr>
+                    <tr><td>Wealth / Income / Budget</td><td>Ricchezza / Reddito / Bilancio (budget)</td></tr>
+                    <tr><td>Debt / Loan</td><td>Debito / Prestito bancario</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Banking and Accounts (Servizi Bancari e Conti)</h2>
+            <p>Le istituzioni finanziarie, i tipi di conti e le operazioni eseguite tramite banche.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Bank / Branch / ATM (Cash machine)</td><td>Banca / Filiale / Bancomat (sportello automatico)</td></tr>
+                    <tr><td>Bank account / Current account (Checking account US)</td><td>Conto bancario / Conto corrente</td></tr>
+                    <tr><td>Savings account</td><td>Conto di risparmio</td></tr>
+                    <tr><td>To deposit / To withdraw money</td><td>Depositare / Prelevare denaro</td></tr>
+                    <tr><td>Interest rate / Bank fee</td><td>Tasso d'interesse / Commissione bancaria</td></tr>
+                    <tr><td>Online banking / Mobile banking</td><td>Home banking / Servizi bancari da app</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Shopping and Payment Methods (Acquisti e Metodi di Pagamento)</h2>
+            <p>I vocaboli impiegati durante l'esperienza d'acquisto in negozio o online.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Credit card / Debit card</td><td>Carta di credito / Carta di debito</td></tr>
+                    <tr><td>Contactless payment / Digital wallet</td><td>Pagamento contactless / Portafoglio digitale (es. Apple Pay)</td></tr>
+                    <tr><td>Receipt / Invoice</td><td>Scontrino fiscale / Fattura</td></tr>
+                    <tr><td>Discount / Sale / Bargain</td><td>Sconto / Saldi (vendita promozionale) / Affare conveniente</td></tr>
+                    <tr><td>Refund / Return</td><td>Rimborso / Restituzione (di un articolo)</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Commercial Transactions and Phrasal Verbs (Transazioni e Verbi Utili)</h2>
+            <p>Espressioni e verbi frasali comunemente utilizzati nelle spese quotidiane e nel commercio.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To buy / To purchase / To sell</td><td>Comprare / Acquistare / Vendere</td></tr>
+                    <tr><td>To pay by card / To pay in cash</td><td>Pagare con carta / Pagare in contanti</td></tr>
+                    <tr><td>To afford / To cost a fortune</td><td>Potersi permettere (qualcosa) / Costare un occhio della testa</td></tr>
+                    <tr><td>To save money / To spend money</td><td>Risparmiare denaro / Spendere soldi</td></tr>
+                    <tr><td>To shop around / To check prices</td><td>Confrontare i prezzi (girando negozi) / Controllare i prezzi</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Espressione Utile: "To cost an arm and a leg"</h3>
+                <p style="margin-bottom: 0;">
+                    Nel linguaggio comune inglese, l'idioma <b>"to cost an arm and a leg"</b> viene utilizzato per indicare che un prodotto o un servizio è estremamente costoso (equivalente all'italiano <i>"costare un occhio della testa"</i>). Al contrario, se un articolo è molto economico si dice che costa pochissimo o che è <i>"dirt cheap"</i>.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

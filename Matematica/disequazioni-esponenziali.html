@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Proprietà delle Diseguaglianze e Disequazioni Esponenziali - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proprietà delle Diseguaglianze e Disequazioni Esponenziali - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-esponenziali" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Proprietà delle Diseguaglianze e Disequazioni Esponenziali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Approfondimento teorico sulla monotonia delle funzioni esponenziali, studio del verso delle disuguaglianze e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Richiamo sulla Monotonia e Regole Fondamentali</h2>
+            <p>
+                La risoluzione delle disequazioni esponenziali si fonda sulla proprietà di monotonia della funzione esponenziale <code>f(x) = a<sup>x</sup></code> (con <code>a > 0</code> e <code>a &ne; 1</code>).
+            </p>
+            <ul>
+                <li>Se <strong><code>a > 1</code></strong> (funzione strettamente crescente), la funzione preserva il verso della disuguaglianza: <code>a<sup>f(x)</sup> < a<sup>g(x)</sup> &iff; f(x) < g(x)</code>.</li>
+                <li>Se <strong><code>0 < a < 1</code></strong> (funzione strettamente decrescente), la funzione inverte il verso della disuguaglianza: <code>a<sup>f(x)</sup> < a<sup>g(x)</sup> &iff; f(x) > g(x)</code>.</li>
+            </ul>
+
+            <h2>2. Tipologie di Disequazioni Esponenziali</h2>
+            <ul>
+                <li><strong>Disequazioni elementari:</strong> Del tipo <code>a<sup>f(x)</sup> > b</code> (o minore). Se <code>b &le; 0</code>, la disequazione si risolve immediatamente in base al codominio dell'esponenziale (<code>a<sup>x</sup> > 0</code> è sempre vera per ogni <code>x &isin; R</code>).</li>
+                <li><strong>Disequazioni riconducibili per sostituzione:</strong> Strutturate come disequazioni di secondo grado (es. <code>A &middot; a<sup>2x</sup> + B &middot; a<sup>x</sup> + C > 0</code>), ponendo la variabile ausiliaria <code>t = a<sup>x</sup></code> con la condizione fondamentale <code>t > 0</code>.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Risolviamo la disequazione <code>2<sup>3x-1</sup> > 2<sup>x+3</sup></code>:<br>
+                    • Poiché la base è <code>2 > 1</code>, la funzione è crescente e possiamo passare direttamente agli esponenti mantenendo il verso: <code>3x - 1 > x + 3</code>.<br>
+                    • Risolviamo l'inequazione algebrica: <code>2x > 4 &rArr; x > 2</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Risolvi la disequazione esponenziale: <code>(1/3)<sup>x-2</sup> &ge; (1/3)<sup>4-x</sup></code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Verifichiamo la base: <code>a = 1/3</code>, che è compresa tra <code>0</code> e <code>1</code> (<code>0 < 1/3 < 1</code>). La funzione esponenziale è strettamente decrescente.</li>
+                    <li>Uguagliando gli argomenti, dobbiamo <strong>invertire il verso</strong> della disuguaglianza: <code>x - 2 &le; 4 - x</code>.</li>
+                    <li>Portiamo i termini con la <code>x</code> a sinistra e i numeri a destra: <code>x + x &le; 4 + 2 &rArr; 2x &le; 6</code>.</li>
+                    <li>Dividiamo per <code>2</code>: <code>x &le; 3</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione: x &le; 3</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disequazioni Esponenziali</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di varia difficoltà focalizzati sull'applicazione della monotonia, concordia/discordia delle basi e disequazioni con cambio di variabile.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 3) + 2;
+                    let c1 = (i % 3) + 1;
+                    let c2 = c1 + (i % 2) + 1;
+
+                    domanda = `Risolvi la disequazione elementare con base <code>${a} > 1</code>: <code>${a}<sup>x + ${c1}</sup> < ${a}<sup>${c2}</sup></code>.`;
+                    risposta = `<strong>x < ${c2 - c1}</strong>`;
+                    spiegazione = `
+                    1) La base <code>${a}</code> è maggiore di 1, quindi la funzione esponenziale è strettamente crescente (mantiene il verso).<br>
+                    2) Uguagliamo gli esponenti: <code>x + ${c1} < ${c2}</code>.<br>
+                    3) Isolando la <code>x</code> otteniamo <code>x < ${c2} - ${c1} &rArr; x < ${c2 - c1}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Risolvi la disequazione con base minore di 1: <code>(1/2)<sup>x - 1</sup> &ge; (1/2)<sup>3</sup></code>.`;
+                    risposta = `<strong>x &le; 4</strong>`;
+                    spiegazione = `
+                    1) La base <code>1/2</code> è compresa tra 0 e 1, perciò la funzione è strettamente decrescente (inverte il verso).<br>
+                    2) Togliendo la base e invertendo il segno: <code>x - 1 &le; 3</code>.<br>
+                    3) Risolvendo l'inequazione lineare: <code>x &le; 3 + 1 &rArr; x &le; 4</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Risolvi la disequazione riconducibile a secondo grado ponendo <code>t = 2<sup>x</sup></code>: <code>2<sup>2x</sup> - 5 &middot; 2<sup>x</sup> + 4 > 0</code>.`;
+                    risposta = `<strong>x < 0 oppure x > 2</strong>`;
+                    spiegazione = `
+                    1) Ponendo <code>t = 2<sup>x</sup></code> (con <code>t > 0</code>), otteniamo la disequazione algebrica <code>t<sup>2</sup> - 5t + 4 > 0</code>.<br>
+                    2) Le radici dell'equazione associata sono <code>t = 1</code> e <code>t = 4</code>. La disequazione esterna dà <code>t < 1</code> oppure <code>t > 4</code>.<br>
+                    3) Tornando a <code>2<sup>x</sup></code>: <code>2<sup>x</sup> < 1 &rArr; x < 0</code> oppure <code>2<sup>x</sup> > 4 &rArr; x > 2</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulle Pompe di Calore, funzionamento termodinamico, coefficiente di prestazione (COP) e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Pompa di Calore e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="pompa-di-calore" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Pompa di Calore</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Principi di funzionamento per il riscaldamento, analisi del coefficiente di prestazione ($COP$) e 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Cos'è una Pompa di Calore?</h2>
+            <p>
+                Una <strong>pompa di calore</strong> è un dispositivo termodinamico che sfrutta lo stesso principio ciclico del frigorifero, ma con l'obiettivo opposto: trasferire calore da una sorgente a bassa temperatura (l'ambiente esterno, il terreno o l'acqua di falda) verso un ambiente chiuso da riscaldare (l'interno di un edificio).
+            </p>
+
+            <h2>2. Il Coefficiente di Prestazione ($COP$)</h2>
+            <p>
+                L'efficienza di una pompa di calore si misura attraverso il <strong>Coefficiente di Prestazione</strong> ($COP$), definito come il rapporto tra il calore utile fornito all'ambiente caldo ($Q_1$) e il lavoro elettrico o meccanico speso dal compressore ($W$):
+            </p>
+            <div class="formula-box">
+                📐 <b>Formule Fondamentali della Pompa di Calore:</b>
+                $$COP = \frac{Q_1}{W} = \frac{Q_1}{Q_1 - Q_2}$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    • $Q_1$: calore utile rilasciato nell'ambiente riscaldato ($\text{J}$)<br>
+                    • $Q_2$: calore estratto dalla sorgente fredda esterna ($\text{J}$)<br>
+                    • $W$: lavoro speso dal compressore ($\text{J}$)<br><br>
+                    <i>Nota:</i> Poiché $Q_1 = Q_2 + W$, il $COP$ è sempre maggiore di $1$, il che significa che la pompa di calore immette nell'ambiente più energia termica di quanta energia elettrica consumi.
+                </p>
+            </div>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulle Pompe di Calore</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo del COP, del calore erogato e del lavoro dei compressori termici, ordinati per difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulla pompa di calore e COP
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 3;
+                if (tipo === 0) {
+                    // Calcolo COP noto Q1 e W
+                    let Q1 = 5000 + (i * 30);
+                    let W = 1200 + (i * 5);
+                    let cop = Q1 / W;
+                    let Q2 = Q1 - W;
+
+                    q = `Esercizio ${i}: Una pompa di calore fornisce $Q_1 = ${Q1}\\text{ J}$ di calore all'interno di un'abitazione consumando un lavoro elettrico $W = ${W}\\text{ J}$. Calcola il coefficiente di prestazione ($COP$) e il calore $Q_2$ estratto dall'esterno.`;
+                    r = `COP = ${cop.toFixed(2)}, calore esterno $Q_2 = ${Q2}\\text{ J}$.`;
+                    s = `Il COP si calcola come $COP = \\frac{Q_1}{W} = \\frac{${Q1}}{${W}} = ${cop.toFixed(2)}$. Il calore estratto dall'ambiente esterno è $Q_2 = Q_1 - W = ${Q1} - ${W} = ${Q2}\\text{ J}$.`;
+                
+                } else if (tipo === 1) {
+                    // Calcolo Q1 noto COP e W
+                    let W = 900 + (i * 12);
+                    let cop = 3.0 + ((i % 20) * 0.1);
+                    let Q1 = W * cop;
+                    let Q2 = Q1 - W;
+
+                    q = `Esercizio ${i}: Una pompa di calore ha un $COP = ${cop.toFixed(1)}$ e assorbe un lavoro meccanico $W = ${W}\\text{ J}$ per ciclo. Determina il calore totale $Q_1$ trasferito all'edificio e il calore $Q_2$ prelevato dall'ambiente esterno.`;
+                    r = `Calore fornito $Q_1 = ${Q1.toFixed(1)}\\text{ J}$, calore estratto $Q_2 = ${Q2.toFixed(1)}\\text{ J}$.`;
+                    s = `Dalla definizione di COP, ricaviamo il calore utile come $Q_1 = COP \\cdot W = ${cop.toFixed(1)} \\cdot ${W} = ${Q1.toFixed(1)}\\text{ J}$. Il calore prelevato all'esterno è $Q_2 = Q_1 - W = ${Q1.toFixed(1)} - ${W} = ${Q2.toFixed(1)}\\text{ J}$.`;
+                
+                } else {
+                    // Calcolo W noto Q1 e COP
+                    let Q1 = 6000 + (i * 40);
+                    let cop = 3.5 + ((i % 15) * 0.1);
+                    let W = Q1 / cop;
+                    let Q2 = Q1 - W;
+
+                    q = `Esercizio ${i}: Per riscaldare un locale, una pompa di calore con un $COP = ${cop.toFixed(1)}$ deve erogare un calore $Q_1 = ${Q1}\\text{ J}$. Calcola il lavoro elettrico $W$ necessario e il calore $Q_2$ prelevato dalla sorgente fredda.`;
+                    r = `Lavoro $W = ${W.toFixed(1)}\\text{ J}$, calore $Q_2 = ${Q2.toFixed(1)}\\text{ J}$.`;
+                    s = `Il lavoro si ottiene invertendo la formula del COP: $W = \\frac{Q_1}{COP} = \\frac{${Q1}}{${cop.toFixed(1)}} = ${W.toFixed(1)}\\text{ J}$. Il calore esterno è $Q_2 = Q_1 - W = ${Q1} - ${W.toFixed(1)} = ${Q2.toFixed(1)}\\text{ J}$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

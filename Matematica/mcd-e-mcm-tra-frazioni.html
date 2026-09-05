@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa al Massimo Comune Divisore (M.C.D.) e Minimo Comune Multiplo (m.c.m.) tra Frazioni: definizioni, formule, esempi svolti e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>M.C.D. e m.c.m. tra Frazioni: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-mcd-mcm-tra-frazioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">M.C.D. e m.c.m. tra Frazioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetti, formule matematiche generali, riduzione ai minimi termini e 100 esercizi guidati svolti passo passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Definizione e Formule Fondamentali</h2>
+            <p>
+                Il calcolo del <strong>Massimo Comune Divisore (M.C.D.)</strong> e del <strong>Minimo Comune Multiplo (m.c.m.)</strong> può essere esteso anche all'insieme dei numeri razionali (frazioni). Prima di applicare qualsiasi formula, è <strong>obbligatorio ridurre tutte le frazioni ai minimi termini</strong>.
+            </p>
+
+            <h3>1. Massimo Comune Divisore (M.C.D.) tra frazioni</h3>
+            <p>
+                Il M.C.D. tra due o più frazioni ridotte ai minimi termini è la più grande frazione che divide ciascuna delle frazioni date ottenendo come quoziente un numero intero.
+            </p>
+            <div class="formula-box">
+                📐 <strong>Formula M.C.D.:</strong><br>
+                <code>M.C.D.( <sup>a</sup>/<sub>b</sub> , <sup>c</sup>/<sub>d</sub> ) = <sup>M.C.D.(numeratori)</sup> / <sub>m.c.m.(denominatori)</sub></code>
+            </div>
+
+            <h3>2. Minimo Comune Multiplo (m.c.m.) tra frazioni</h3>
+            <p>
+                Il m.c.m. tra due o più frazioni ridotte ai minimi termini è la più piccola frazione che è multipla di ciascuna delle frazioni date (ossia che, divisa per ognuna di esse, dà come risultato un numero intero).
+            </p>
+            <div class="formula-box">
+                📐 <strong>Formula m.c.m.:</strong><br>
+                <code>m.c.m.( <sup>a</sup>/<sub>b</sub> , <sup>c</sup>/<sub>d</sub> ) = <sup>m.c.m.(numeratori)</sup> / <sub>M.C.D.(denominatori)</sub></code>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola M.C.D. e m.c.m. tra le frazioni <strong><sup>4</sup>/<sub>9</sub></strong> e <strong><sup>6</sup>/<sub>15</sub></strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Riduzione ai minimi termini:</strong> <code><sup>4</sup>/<sub>9</sub></code> è già ridotta; <code><sup>6</sup>/<sub>15</sub> = <sup>2</sup>/<sub>5</sub></code>.</li>
+                    <li><strong>Calcolo del M.C.D.:</strong>
+                        <ul>
+                            <li>Numeratori (4, 2) &rArr; M.C.D.(4, 2) = 2</li>
+                            <li>Denominatori (9, 5) &rArr; m.c.m.(9, 5) = 45</li>
+                            <li><code>M.C.D.(<sup>4</sup>/<sub>9</sub>, <sup>2</sup>/<sub>5</sub>) = <sup>2</sup>/<sub>45</sub></code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Calcolo del m.c.m.:</strong>
+                        <ul>
+                            <li>Numeratori (4, 2) &rArr; m.c.m.(4, 2) = 4</li>
+                            <li>Denominatori (9, 5) &rArr; M.C.D.(9, 5) = 1</li>
+                            <li><code>m.c.m.(<sup>4</sup>/<sub>9</sub>, <sup>2</sup>/<sub>5</sub>) = <sup>4</sup>/<sub>1</sub> = 4</code></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>M.C.D. = <sup>2</sup>/<sub>45</sub></code> ; <code>m.c.m. = 4</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su M.C.D. e m.c.m. tra Frazioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 problemi svolti e commentati di livello crescente: da coppie di frazioni semplici fino a terterne/quaterne di frazioni con riduzione ai minimi termini ed espressioni applicative.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            function gcd(a, b) {
+                while (b !== 0) {
+                    let temp = b;
+                    b = a % b;
+                    a = temp;
+                }
+                return a;
+            }
+
+            function lcm(a, b) {
+                return (a * b) / gcd(a, b);
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Coppia di frazioni già ridotte ai minimi termini
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n1 = (i % 5) + 1;
+                    let d1 = (i % 4) + 2;
+                    let n2 = (i % 3) + 2;
+                    let d2 = (i % 6) + 3;
+
+                    if (gcd(n1, d1) > 1) d1 += 1;
+                    if (gcd(n2, d2) > 1) d2 += 1;
+
+                    let isMCD = i % 2 === 1;
+
+                    if (isMCD) {
+                        let topGCD = gcd(n1, n2);
+                        let botLCM = lcm(d1, d2);
+                        domanda = `Calcola il Massimo Comune Divisore (M.C.D.) tra le frazioni: <strong><sup>${n1}</sup>/<sub>${d1}</sub></strong> e <strong><sup>${n2}</sup>/<sub>${d2}</sub></strong>.`;
+                        risposta = `<sup>${topGCD}</sup>/<sub>${botLCM}</sub>`;
+                        spiegazione = `
+                        1) Verifichiamo che le frazioni siano ridotte ai minimi termini.<br>
+                        2) Applicando la formula del M.C.D.: <code>M.C.D.(numeratori) / m.c.m.(denominatori)</code>.<br>
+                        3) Numeratori: M.C.D.(${n1}, ${n2}) = <strong>${topGCD}</strong>.<br>
+                        4) Denominatori: m.c.m.(${d1}, ${d2}) = <strong>${botLCM}</strong>.<br>
+                        5) Risultato finale: <strong><sup>${topGCD}</sup>/<sub>${botLCM}</sub></strong>.`;
+                    } else {
+                        let topLCM = lcm(n1, n2);
+                        let botGCD = gcd(d1, d2);
+                        let resStr = botGCD === 1 ? `${topLCM}` : `<sup>${topLCM}</sup>/<sub>${botGCD}</sub>`;
+                        domanda = `Calcola il Minimo Comune Multiplo (m.c.m.) tra le frazioni: <strong><sup>${n1}</sup>/<sub>${d1}</sub></strong> e <strong><sup>${n2}</sup>/<sub>${d2}</sub></strong>.`;
+                        risposta = resStr;
+                        spiegazione = `
+                        1) Verifichiamo che le frazioni siano ridotte ai minimi termini.<br>
+                        2) Applicando la formula del m.c.m.: <code>m.c.m.(numeratori) / M.C.D.(denominatori)</code>.<br>
+                        3) Numeratori: m.c.m.(${n1}, ${n2}) = <strong>${topLCM}</strong>.<br>
+                        4) Denominatori: M.C.D.(${d1}, ${d2}) = <strong>${botGCD}</strong>.<br>
+                        5) Risultato finale: <strong>${resStr}</strong>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Frazioni da semplificare prima + coppie o terterne (occupano almeno mezza riga)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let rawN1 = 4, rawD1 = 6;
+                        let rawN2 = 6, rawD2 = 10;
+                        domanda = `Determina sia il M.C.D. sia il m.c.m. per la coppia di frazioni non ancora semplificate: <strong><sup>${rawN1}</sup>/<sub>${rawD1}</sub></strong> e <strong><sup>${rawN2}</sup>/<sub>${rawD2}</sub></strong>.`;
+                        risposta = `M.C.D. = <sup>1</sup>/<sub>15</sub> ; m.c.m. = 6`;
+                        spiegazione = `
+                        1) Riduzione ai minimi termini obbligatoria: <code><sup>${rawN1}</sup>/<sub>${rawD1}</sub> = <sup>2</sup>/<sub>3</sub></code> e <code><sup>${rawN2}</sup>/<sub>${rawD2}</sub> = <sup>3</sup>/<sub>5</sub></code>.<br>
+                        2) Calcolo M.C.D.: <code>M.C.D.(2, 3) / m.c.m.(3, 5) = <sup>1</sup>/<sub>15</sub></code>.<br>
+                        3) Calcolo m.c.m.: <code>m.c.m.(2, 3) / M.C.D.(3, 5) = <sup>6</sup>/<sub>1</sub> = 6</code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Calcola il Minimo Comune Multiplo (m.c.m.) tra la terterna di frazioni: <strong><sup>3</sup>/<sub>4</sub></strong>, <strong><sup>5</sup>/<sub>6</sub></strong> e <strong><sup>7</sup>/<sub>12</sub></strong>.`;
+                        risposta = `<sup>105</sup>/<sub>2</sub>`;
+                        spiegazione = `
+                        1) Le frazioni sono già ridotte ai minimi termini.<br>
+                        2) Troviamo il m.c.m. dei numeratori: m.c.m.(3, 5, 7) = <strong>105</strong>.<br>
+                        3) Troviamo il M.C.D. dei denominatori: M.C.D.(4, 6, 12) = <strong>2</strong>.<br>
+                        4) Risultato del m.c.m. tra le tre frazioni: <strong><sup>105</sup>/<sub>2</sub></strong>.`;
+                    } else {
+                        domanda = `Calcola il Massimo Comune Divisore (M.C.D.) tra la terterna di frazioni: <strong><sup>8</sup>/<sub>15</sub></strong>, <strong><sup>12</sup>/<sub>25</sub></strong> e <strong><sup>16</sup>/<sub>35</sub></strong>.`;
+                        risposta = `<sup>4</sup>/<sub>525</sub>`;
+                        spiegazione = `
+                        1) Frazioni ridotte ai minimi termini.<br>
+                        2) Troviamo il M.C.D. dei numeratori: M.C.D.(8, 12, 16) = <strong>4</strong>.<br>
+                        3) Troviamo il m.c.m. dei denominatori: m.c.m.(15, 25, 35) = <strong>525</strong>.<br>
+                        4) Risultato del M.C.D. tra le tre frazioni: <strong><sup>4</sup>/<sub>525</sub></strong>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Esercizi MOLTO LUNGHI con quaterne di frazioni, da ridurre prima e inserite in espressioni applicative
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Svolgi l'esercizio completo: prima riduci ai minimi termini ciascuna frazione del gruppo <strong>{ <sup>12</sup>/<sub>18</sub>, <sup>20</sup>/<sub>24</sub>, <sup>15</sup>/<sub>45</sub>, <sup>14</sup>/<sub>21</sub> }</strong>, poi calcola il M.C.D. e il m.c.m. dell'intero insieme, ed infine calcola la somma tra il M.C.D. e il m.c.m. ottenuti.`;
+                        risposta = `Somma = <sup>31</sup>/<sub>6</sub>`;
+                        spiegazione = `
+                        1) <strong>Riduzione ai minimi termini:</strong><br>
+                           - <code><sup>12</sup>/<sub>18</sub> = <sup>2</sup>/<sub>3</sub></code><br>
+                           - <code><sup>20</sup>/<sub>24</sub> = <sup>5</sup>/<sub>6</sub></code><br>
+                           - <code><sup>15</sup>/<sub>45</sub> = <sup>1</sup>/<sub>3</sub></code><br>
+                           - <code><sup>14</sup>/<sub>21</sub> = <sup>2</sup>/<sub>3</sub></code><br>
+                        2) <strong>Calcolo M.C.D. dell'insieme {<sup>2</sup>/<sub>3</sub>, <sup>5</sup>/<sub>6</sub>, <sup>1</sup>/<sub>3</sub>, <sup>2</sup>/<sub>3</sub>}:</strong><br>
+                           - M.C.D.(2, 5, 1, 2) = 1<br>
+                           - m.c.m.(3, 6, 3, 3) = 6<br>
+                           &rArr; <code>M.C.D. = <sup>1</sup>/<sub>6</sub></code>.<br>
+                        3) <strong>Calcolo m.c.m. dell'insieme {<sup>2</sup>/<sub>3</sub>, <sup>5</sup>/<sub>6</sub>, <sup>1</sup>/<sub>3</sub>, <sup>2</sup>/<sub>3</sub>}:</strong><br>
+                           - m.c.m.(2, 5, 1, 2) = 10<br>
+                           - M.C.D.(3, 6, 3, 3) = 3<br>
+                           &rArr; <code>m.c.m. = <sup>10</sup>/<sub>3</sub></code>.<br>
+                        4) <strong>Somma finale:</strong> <code><sup>1</sup>/<sub>6</sub> + <sup>10</sup>/<sub>3</sub> = <sup>(1 + 20)</sup>/<sub>6</sub> = <sup>21</sup>/<sub>6</sub> = <sup>7</sup>/<sub>2</sub></code> (ovvero 3.5).`;
+                    } else if (mod === 2) {
+                        domanda = `Calcola il valore dell'espressione contenente i risultati di M.C.D. e m.c.m.: <strong>[ m.c.m.(<sup>3</sup>/<sub>8</sub>, <sup>9</sup>/<sub>20</sub>) : M.C.D.(<sup>6</sup>/<sub>25</sub>, <sup>9</sup>/<sub>35</sub>) ] × <sup>1</sup>/<sub>175</sub></strong> previa opportuna semplificazione delle frazioni componenti.`;
+                        risposta = `<sup>9</sup>/<sub>2</sub>`;
+                        spiegazione = `
+                        1) <strong>Calcolo m.c.m.(<sup>3</sup>/<sub>8</sub>, <sup>9</sup>/<sub>20</sub>):</strong><br>
+                           - m.c.m.(3, 9) = 9<br>
+                           - M.C.D.(8, 20) = 4<br>
+                           &rArr; <code>m.c.m. = <sup>9</sup>/<sub>4</sub></code>.<br>
+                        2) <strong>Calcolo M.C.D.(<sup>6</sup>/<sub>25</sub>, <sup>9</sup>/<sub>35</sub>):</strong><br>
+                           - M.C.D.(6, 9) = 3<br>
+                           - m.c.m.(25, 35) = 175<br>
+                           &rArr; <code>M.C.D. = <sup>3</sup>/<sub>175</sub></code>.<br>
+                        3) <strong>Svolgimento dell'espressione:</strong><br>
+                           - Divisione in quadra: <code><sup>9</sup>/<sub>4</sub> : <sup>3</sup>/<sub>175</sub> = <sup>9</sup>/<sub>4</sub> × <sup>175</sup>/<sub>3</sub> = <sup>525</sup>/<sub>4</sub></code>.<br>
+                           - Moltiplicazione esterna: <code><sup>525</sup>/<sub>4</sub> × <sup>1</sup>/<sub>175</sub> = <sup>3</sup>/<sub>4</sub></code>.`;
+                    } else {
+                        domanda = `Esegui l'analisi completa per la quaterna <strong>A = { <sup>18</sup>/<sub>24</sub>, <sup>24</sup>/<sub>36</sub>, <sup>30</sup>/<sub>45</sub>, <sup>40</sup>/<sub>60</sub> }</strong>: riduci ogni frazione ai minimi termini, calcola il M.C.D. e il m.c.m. dell'insieme ottenuto e dimostra se le frazioni sono tra loro equivalenti.`;
+                        risposta = `Le frazioni ridotte sono <sup>3</sup>/<sub>4</sub>, <sup>2</sup>/<sub>3</sub>, <sup>2</sup>/<sub>3</sub>, <sup>2</sup>/<sub>3</sub>. M.C.D. = <sup>1</sup>/<sub>12</sub> ; m.c.m. = 6.`;
+                        spiegazione = `
+                        1) <strong>Semplificazione:</strong><br>
+                           - <code><sup>18</sup>/<sub>24</sub> = <sup>3</sup>/<sub>4</sub></code><br>
+                           - <code><sup>24</sup>/<sub>36</sub> = <sup>2</sup>/<sub>3</sub></code><br>
+                           - <code><sup>30</sup>/<sub>45</sub> = <sup>2</sup>/<sub>3</sub></code><br>
+                           - <code><sup>40</sup>/<sub>60</sub> = <sup>2</sup>/<sub>3</sub></code><br>
+                        2) Tre frazioni su quattro sono equivalenti (pari a <sup>2</sup>/<sub>3</sub>), mentre la prima è differente (<sup>3</sup>/<sub>4</sub>).<br>
+                        3) <strong>M.C.D. dell'insieme {<sup>3</sup>/<sub>4</sub>, <sup>2</sup>/<sub>3</sub>}:</strong><br>
+                           - M.C.D.(3, 2) = 1<br>
+                           - m.c.m.(4, 3) = 12 &rArr; <code>M.C.D. = <sup>1</sup>/<sub>12</sub></code>.<br>
+                        4) <strong>m.c.m. dell'insieme {<sup>3</sup>/<sub>4</sub>, <sup>2</sup>/<sub>3</sub>}:</strong><br>
+                           - m.c.m.(3, 2) = 6<br>
+                           - M.C.D.(4, 3) = 1 &rArr; <code>m.c.m. = 6</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

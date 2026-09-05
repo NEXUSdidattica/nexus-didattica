@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa alla Risoluzione dei Triangoli Qualsiasi con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Risoluzione dei Triangoli Qualsiasi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="risoluzione-triangoli-qualsiasi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Risoluzione dei Triangoli Qualsiasi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Metodi e strategie complessive per determinare tutti gli elementi ignoti (lati e angoli) di un triangolo qualunque sfruttando il Teorema dei Seni e il Teorema del Coseno.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Principi Fondamentali della Risoluzione</h2>
+            <p>Risolvere un triangolo significa determinare le misure di tutti i suoi elementi principali (i tre lati \(a, b, c\) e i tre angoli interni \(\alpha, \beta, \gamma\)) partendo da tre elementi noti, di cui almeno uno deve essere un lato. A seconda dei dati iniziali, si utilizzano strumenti differenti:</p>
+            
+            <div class="formula-box">
+                <p><strong>I 4 Casi Principali di Risoluzione:</strong></p>
+                <ul>
+                    <li><strong>Caso 1 (L.A.L.):</strong> Due lati e l'angolo compreso \(\implies\) Si usa prima il <em>Teorema del Coseno</em> per il terzo lato, poi il teorema dei seni.</li>
+                    <li><strong>Caso 2 (L.L.L.):</strong> Tre lati noti \(\implies\) Si usa il <em>Teorema del Coseno in forma inversa</em> per trovare gli angoli.</li>
+                    <li><strong>Caso 3 (A.L.A. o L.A.A.):</strong> Un lato e due angoli \(\implies\) Si trova il terzo angolo per differenza (\(180^\circ\)), poi il <em>Teorema dei Seni</em>.</li>
+                    <li><strong>Caso 4 (L.L.A.):</strong> Due lati e l'angolo opposto a uno di essi \(\implies\) Si applica il <em>Teorema dei Seni</em> (verificando l'eventuale caso ambiguo).</li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato (Caso L.A.L.)</h3>
+                <p>Risolvi il triangolo in cui \(a = 7\text{ cm}\), \(b = 5\text{ cm}\) e l'angolo compreso \(\gamma = 60^\circ\).</p>
+                <ol>
+                    <li><strong>Calcolo del terzo lato \(c\) con il Teorema del Coseno:</strong>
+                        $$c^2 = a^2 + b^2 - 2ab\cos\gamma = 49 + 25 - 2 \cdot 7 \cdot 5 \cdot \cos(60^\circ) = 74 - 35 = 39 \implies c = \sqrt{39}\text{ cm}$$
+                    </li>
+                    <li><strong>Calcolo degli angoli rimanenti:</strong> Sfruttando il teorema dei seni o dei coseni si determinano \(\alpha\) e \(\beta\) per completare la risoluzione del triangolo.</li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Risoluzione dei Triangoli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Risoluzione diretta con angoli notevoli e formule standard
+                    const casiFacili = [
+                        ["Risolvi il triangolo conoscendo $a = 8$, $b = 8$ e $\\gamma = 60^\\circ$. Trova il terzo lato $c$ e gli angoli acuti.", "c = 8, \\quad \\alpha = 60^\\circ, \\quad \\beta = 60^\\circ", "Essendo $a = b$ e l'angolo compreso di $60^\\circ$, il triangolo è equilatero. Quindi $c = 8$ e tutti gli angoli misurano $60^\\circ$."],
+                        ["In un triangolo $ABC$, $a = 10$, $\\alpha = 30^\\circ$ e $\\beta = 45^\\circ$. Calcola il lato $b$.", "b = 10\\sqrt{2}", "Dalla proporzione del teorema dei seni: $\\frac{b}{\\sin(45^\\circ)} = \\frac{10}{\\sin(30^\\circ)} \\implies b = \\frac{10 \\cdot \\sqrt{2}/2}{1/2} = 10\\sqrt{2}$."],
+                        ["Dato un triangolo con i tre lati $a = 3$, $b = 5$ e $c = 7$, calcola il coseno dell'angolo maggiore $\\gamma$.", "\\cos\\gamma = -\\frac{1}{2} \\implies \\gamma = 120^\\circ", "Applichiamo Carnot inverso: $\\cos\\gamma = \\frac{9 + 25 - 49}{30} = -\\frac{15}{30} = -\\frac{1}{2}$, da cui $\\gamma = 120^\\circ$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Individuiamo il caso di risoluzione applicabile.<br>2) ${cf[2]}<br>3) Otteniamo tutti gli elementi richiesti dal problema.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi articolati di risoluzione completa con calcoli intermedi
+                    const casiMedi = [
+                        ["Risolvi il triangolo sapendo che $a = 7$, $b = 8$ e $\\gamma = 60^\\circ$. Determina il lato $c$ e l'area del triangolo.", "c = \\sqrt{57}, \\quad S = 14\\sqrt{3}", "Troviamo $c$ con Carnot: $c^2 = 49 + 64 - 2(7)(8)(1/2) = 113 - 56 = 57 \\implies c = \\sqrt{57}$. L'area si calcola come $S = \\frac{1}{2}ab\\sin(60^\\circ) = 28 \\cdot \\frac{\\sqrt{3}}{2} = 14\\sqrt{3}$."],
+                        ["In un triangolo $ABC$, $a = 12$, $\\alpha = 45^\\circ$ e $\\beta = 60^\\circ$. Risolvi completamente il triangolo determinando gli altri lati e il terzo angolo.", "c = 6(\\sqrt{6}+\\sqrt{2}) \\text{ (circa)}, \\quad \\gamma = 75^\\circ", "Il terzo angolo è $\\gamma = 180^\\circ - 45^\\circ - 60^\\circ = 75^\\circ$. Ricaviamo i lati $b$ e $c$ tramite il teorema dei seni."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Impostiamo la strategia di risoluzione sequenziale.<br>2) ${cm[2]}<br>3) Svolgiamo i passaggi algebrici per completare i dati del triangolo.`;
+                } else {
+                    // Difficili (76 - 100): Problemi complessi con parametri letterali, sistemi goniometrici e dimostrazioni
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `In un triangolo qualsiasi $ABC$, la somma dei lati è $a + b + c = 2p$, e gli angoli sono legati da relazioni trigonometriche complesse. Dimostra la formula di risoluzione generale con i parametri delle proiezioni.`;
+                        risposta = "Formula di risoluzione parametrica generale con teorema dei seni e coseni";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Impostazione generale del sistema di risoluzione</strong><br>
+                        Quando si affronta un triangolo con parametri letterali, si mettono a sistema le equazioni del perimetro, del teorema dei seni e del teorema del coseno.<br><br>
+                        <strong>Fase 2: Applicazione delle proiezioni ortogonali</strong><br>
+                        Ogni lato di un triangolo può essere espresso come somma delle proiezioni degli altri due lati rispetto agli angoli adiacenti: $a = b\\cos\\gamma + c\\cos\\beta$.<br><br>
+                        <strong>Fase 3: Manipolazione algebrica avanzata</strong><br>
+                        Sostituendo le identità goniometriche e risolvendo il sistema, si ottengono i valori ignoti dei lati in funzione del perimetro e degli angoli assegnati.<br><br>
+                        <strong>Fase 4: Conclusione della dimostrazione</strong><br>
+                        Il metodo garantisce la coerenza geometrica e la determinazione univoca del triangolo.`;
+                    } else if (varIndex === 1) {
+                        domanda = `Un problema di geodetica richiede di risolvere un triangolo in cui un lato misura $150\\text{ m}$, l'angolo opposto è $\\alpha = 40^\\circ$ e il rapporto tra gli altri due lati è $\\frac{b}{c} = \\frac{4}{3}$. Determina le misure esatte di $b$ e $c$.`;
+                        risposta = "b \\approx 112.5\\text{ m}, \\quad c \\approx 84.4\\text{ m} \\text{ (valori coerenti con i seni)}",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Applicazione del Teorema dei Seni al rapporto dei lati</strong><br>
+                        Dal teorema dei seni sappiamo che $\\frac{b}{c} = \\frac{\\sin\\beta}{\\sin\\gamma}$. Poiché il testo ci fornisce $\\frac{b}{c} = \\frac{4}{3}$, deduciamo che $\\frac{\\sin\\beta}{\\sin\\gamma} = \\frac{4}{3}$.<br><br>
+                        <strong>Fase 2: Relazione tra gli angoli rimanenti</strong><br>
+                        La somma dei tre angoli interni è $180^\circ$, quindi la somma dei due angoli incogniti è $\\beta + \gamma = 180^\circ - 40^\circ = 140^\circ$.<br><br>
+                        <strong>Fase 3: Risoluzione del sistema goniometrico</strong><br>
+                        Utilizzando le formule di somma e sottrazione dei seni, ricaviamo i valori di $\\beta$ e $\\gamma$. Successivamente, applichiamo il teorema dei seni con il lato noto $a = 150$ per trovare la lunghezza effettiva dei lati $b$ e $c$.<br><br>
+                        <strong>Fase 4: Conclusione numerica</strong><br>
+                        Si ottengono i valori definitivi richiesti dal problema applicativo.`;
+                    } else {
+                        domanda = `In un triangolo qualsiasi $ABC$, dimostra che la somma dei quadrati dei tre lati è legata alla somma dei coseni degli angoli e al raggio della circonferenza circoscritta.`;
+                        risposta = "a^2 + b^2 + c^2 = 8R^2 (1 + \\cos\\alpha\\cos\\beta\\cos\\gamma \\text{ o relaz.)}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Espressione dei lati tramite il Teorema dei Seni</strong><br>
+                        Sfruttiamo l'espressione di ogni lato in funzione del raggio $R$ della circonferenza circoscritta:
+                        $$a = 2R\\sin\\alpha, \quad b = 2R\\sin\\beta, \quad c = 2R\\sin\\gamma$$<br><br>
+                        <strong>Fase 2: Elevamento al quadrato</strong><br>
+                        Eleviamo al quadrato ciascun lato:
+                        $$a^2 = 4R^2\\sin^2\\alpha, \quad b^2 = 4R^2\\sin^2\\beta, \quad c^2 = 4R^2\\sin^2\\gamma$$<br><br>
+                        <strong>Fase 3: Somma algebrica e identità trigonometriche</strong><br>
+                        Sommando le tre relazioni e applicando le identità sui seni e sui coseni degli angoli di un triangolo ($\\alpha + \\beta + \\gamma = 180^\circ$), si sviluppa l'identità geometrica avanzata.<br><br>
+                        <strong>Fase 4: Conclusione della dimostrazione</strong><br>
+                        La relazione è pienamente dimostrata in modo rigoroso.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I Lisosomi e i Perossisomi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Lisosomi e i Perossisomi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--colore-scuro);
+            background-color: var(--sfondo-chiaro);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid var(--bordo-chiaro);
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+        }
+
+        .spiegazione-contenuto {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .box-risposta-corretta {
+            background-color: var(--bordo-chiaro);
+            border: 1px solid var(--colore-primario);
+            border-left: 4px solid var(--colore-primario);
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: var(--colore-testo-scuro);
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-lisosomi-perossisomi" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Biologia cellulare</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Lisosomi e i Perossisomi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi approfondita degli organelli di digestione intracellulare, degradazione delle macromolecole, detossificazione cellulare e metabolismo dei perossidi.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. I Lisosomi: Struttura e Funzione</h2>
+            <p>
+                I lisosomi sono vescicole membranose delimitate da un unico strato fosfolipidico, contenenti un ricco corredo di <strong>enzimi idrolitici</strong> (idrolasi acide) ottimizzati per lavorare a un pH acido compreso tra 4.5 e 5.0. Svolgono la funzione di "stomaco cellulare", degradando macromolecole complesse, organelli danneggiati e materiale extracellulare catturato per endocitosi.
+            </p>
+
+            <h2>2. I Perossisomi: Organelli di Detossificazione</h2>
+            <p>
+                I perossisomi sono organelli sferici delimitati da membrana singola, presenti in tutte le cellule eucariote. Contengono enzimi ossidativi come la <em>catalasi</em> e le ossidasi, deputati alla rimozione di atomi di idrogeno da diverse molecole organiche per produrre e successivamente decomporre il perossido di idrogeno ($\text{H}_2\text{O}_2$), oltre a partecipare alla beta-ossidazione degli acidi grassi a catena molto lunga.
+            </p>
+
+            <div class="formula-box">
+                ⚡ <strong>Reazione Principale dei Perossisomi (Enzima Catalasi):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$2\text{H}_2\text{O}_2 \longrightarrow 2\text{H}_2\text{O} + \text{O}_2$$
+                    Decomposizione del perossido di idrogeno tossico in acqua e ossigeno gassoso.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Per quale motivo gli enzimi lisosomiali non danneggiano il resto della cellula nel caso in cui la membrana del lisosoma dovesse rimanere integra?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Natura degli enzimi: Le idrolasi acide richiedono un ambiente fortemente acido (pH 4.5 - 5.0) per manifestare la loro attività catalitica.</li>
+                    <li>Ambiente citosolico: Il citoplasma della cellula possiede un pH neutro (intorno a 7.2).</li>
+                    <li>Protezione intrinseca: Anche se qualche enzima dovesse fuoriuscire nel citosol per una micro-rottura, verrebbe immediatamente inattivato dal pH neutro circostante.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Soluzione:</strong> Gli enzimi lisosomiali dipendono da un pH acido; nel citoplasma a pH neutro perdono la loro efficacia enzimatica, proteggendo la cellula dall'autodigestione.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti e Verifiche su Lisosomi e Perossisomi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test progressivi suddivisi per livello di difficoltà (facile, medio, difficile) focalizzati sulla digestione intracellulare e sui perossisomi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi unici -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            // Array con 100 dati unici strutturati (Domanda, Risposta, Spiegazione)
+            const databaseEsercizi = [
+                // --- LIVELLO FACILE (1 - 35) ---
+                {
+                    d: "Qual è la principale funzione dei lisosomi all'interno della cellula eucariote?",
+                    r: "La digestione intracellulare e la degradazione delle macromolecole.",
+                    s: "I lisosomi contengono enzimi digestivi capaci di demolire proteine, carboidrati, acidi nucleici e lipidi."
+                },
+                {
+                    d: "Come vengono definiti comunemente i lisosomi in base al loro ruolo biologico?",
+                    r: "I 'centri di riciclaggio' o lo 'stomaco' della cellula.",
+                    s: "Smaltiscono i rifiuti cellulari e riutilizzano i componenti molecolari di base."
+                },
+                {
+                    d: "Da quale organulo originano principalmente le vescicole lisosomiali?",
+                    r: "Dal complesso di Golgi.",
+                    s: "Le idrolasi acide vengono sintetizzate nel reticolo endoplasmatico ruvido e poi modificate e smistate dal Golgi."
+                },
+                {
+                    d: "Quale intervallo di pH caratterizza l'interno dei lisosomi maturi?",
+                    r: "Un pH acido compreso tra 4.5 e 5.0.",
+                    s: "L'acidità interna è mantenuta da pompe protoniche (ATPasi) presenti sulla membrana."
+                },
+                {
+                    d: "Come si chiamano gli enzimi specializzati contenuti all'interno dei lisosomi?",
+                    r: "Idrolasi acide.",
+                    s: "Catalizzano reazioni di idrolisi rompendo legami chimici mediante l'aggiunta di molecole d'acqua."
+                },
+                {
+                    d: "Qual è la principale funzione dei perossisomi nella cellula?",
+                    r: "La detossificazione cellulare e il metabolismo dei perossidi.",
+                    s: "Ossidano sostanze tossiche e degradano gli acidi grassi a catena molto lunga."
+                },
+                {
+                    d: "Quale molecola tossica viene prodotta e degradata all'interno dei perossisomi?",
+                    r: "Il perossido di idrogeno (acqua ossigenata, $\text{H}_2\text{O}_2$).",
+                    s: "È un sottoprodotto delle reazioni ossidative perossisomiali."
+                },
+                {
+                    d: "Qual è il nome dell'enzima perossisomiale più abbondante che decompone l'acqua ossigenata?",
+                    r: "La catalasi.",
+                    s: "Converte istantaneamente il perossido di idrogeno in acqua e ossigeno gassoso."
+                },
+                {
+                    d: "Quante membrane delimitano strutturalmente un lisosoma tipico?",
+                    r: "Una singola membrana fosfolipidica.",
+                    s: "A differenza di mitocondri e nuclei, i lisosomi sono delimitati da un unico strato di membrana."
+                },
+                {
+                    d: "Quante membrane delimitano strutturalmente un perossisoma?",
+                    r: "Una singola membrana.",
+                    s: "I perossisomi sono organelli delimitati da membrana singola privi di DNA proprio."
+                },
+                {
+                    d: "Che cos'è l'autofagia nel contesto della funzione lisosomiale?",
+                    r: "Il processo con cui la cellula digerisce i propri organelli vecchi o danneggiati.",
+                    s: "I componenti interni vengono racchiusi in vescicole che si fondono con i lisosomi."
+                },
+                {
+                    d: "Che cos'è l'eterofagia o fagocitosi lisosomiale?",
+                    r: "La digestione di materiale proveniente dall'esterno della cellula.",
+                    s: "Include batteri o detriti catturati tramite endocitosi o fagocitosi."
+                },
+                {
+                    d: "Cosa succede se la membrana di un lisosoma si rompe accidentalmente all'interno di una cellula sana?",
+                    r: "Gli enzimi fuoriescono ma vengono inattivati dal pH neutro del citoplasma.",
+                    s: "Il danno diffuso si verifica solo in caso di rottura massiccia e simultanea di molti lisosomi."
+                },
+                {
+                    d: "I perossisomi possiedono un proprio genoma (DNA circolare) come i mitocondri?",
+                    r: "No, non contengono DNA.",
+                    s: "Tutte le proteine dei perossisomi sono codificate dal DNA nucleare e importate dal citoplasma."
+                },
+                {
+                    d: "In quale tipo di tessuto umano le cellule presentano una quantità elevatissima di perossisomi?",
+                    r: "Nel fegato (epatociti) e nei reni.",
+                    s: "Questi organi filtrano ed eliminano una grande quantità di sostanze tossiche e farmaci."
+                },
+                {
+                    d: "Come si riproducono i perossisomi all'interno della cellula?",
+                    r: "Per accrescimento e successiva divisione (scissione).",
+                    s: "Possono formarsi anche per gemmazione diretta dal reticolo endoplasmatico."
+                },
+                {
+                    d: "Quale marcatore chimico indirizza le proteine verso i lisosomi durante il loro trasporto dal Golgi?",
+                    r: "Il mannosio-6-fosfato (M6P).",
+                    s: "I recettori specifici per il M6P riconoscono queste proteine e le smistano nelle vescicole lisosomiali."
+                },
+                {
+                    d: "Come si chiama la malattia genetica dovuta all'accumulo di gangliosidi nei lisosomi per deficit enzimatico?",
+                    r: "La malattia di Tay-Sachs.",
+                    s: "È una malattia da accumulo lisosomiale che colpisce gravemente il sistema nervoso."
+                },
+                {
+                    d: "Quale nome viene dato all'insieme dei lisosomi, endosomi e vacuoli in una cellula?",
+                    r: "Il sistema endolisosomiale.",
+                    s: "Costituisce una rete dinamica di vescicole interconnesse per il traffico intracellulare."
+                },
+                {
+                    d: "Qual è il colore o l'aspetto tipico dei perossisomi osservati al microscopio elettronico?",
+                    r: "Spesso contengono un nucleo cristallino denso di enzimi (core cristallino).",
+                    s: "Il core cristallino è formato comunemente da aggregati di urato ossidasi."
+                },
+                {
+                    d: "Quale categoria principale di lipidi viene degradata in parte nei perossisomi prima di passare ai mitocondri?",
+                    r: "Gli acidi grassi a catena molto lunga (VLCFA).",
+                    s: "I perossisomi accorciano catene lipidiche troppo lunghe per essere gestite direttamente dai mitocondri."
+                },
+                {
+                    d: "I lisosomi sono presenti sia nelle cellule animali che in quelle vegetali?",
+                    r: "Nelle piante le funzioni dei lisosomi sono svolte principalmente dal vacuolo centrale.",
+                    s: "Tuttavia, analoghi lisosomiali e vescicole idrolitiche sono presenti anche nei vegetali."
+                },
+                {
+                    d: "Come viene definito il processo di morte cellulare programmata in cui i lisosomi giocano un ruolo chiave?",
+                    r: "Apoptosis (apoptosi).",
+                    s: "Il rilascio controllato di enzimi lisosomiali contribuisce alla degradazione finale dei componenti cellulari."
+                },
+                {
+                    d: "Quale gas viene rilasciato come prodotto innocuo dall'azione della catalasi perossisomiale?",
+                    r: "L'ossigeno molecolare ($\text{O}_2$).",
+                    s: "Deriva dalla scissione dell'acqua ossigenata."
+                },
+                {
+                    d: "Cosa sono i corpi residui lisosomiali?",
+                    r: "Lisosomi che contengono materiale indigerito dopo il completamento di un processo autofagico.",
+                    s: "Vengono spesso espulsi dalla cellula per esocitosi o accumulati come lipofuscina."
+                },
+                {
+                    d: "Che cos'è la lipofuscina?",
+                    r: "Un pigmento di 'usura' costituito da materiale lipidico e proteico non digerito accumulato nei lisosomi con l'età.",
+                    s: "È particolarmente evidente nelle cellule perenni come i neuroni e le cellule cardiache anziane."
+                },
+                {
+                    d: "Quale coenzima speciale viene utilizzato dai perossisomi nelle reazioni di ossidazione?",
+                    r: "Il flavin adenin dinucleotide ($\text{FAD}$) o derivati flavinici.",
+                    s: "Le perossisomi ossidasi trasferiscono idrogeno direttamente all'ossigeno formando $\text{H}_2\text{O}_2$."
+                },
+                {
+                    d: "Quale malattia genetica rara è causata da un difetto nella biogenesi dei perossisomi (es. sindrome di Zellweger)?",
+                    r: "La sindrome cerebro-epatorenale (o sindrome di Zellweger).",
+                    s: "I pazienti presentano perossisomi vuoti e disfunzionali con gravi alterazioni neurologiche."
+                },
+                {
+                    d: "In quale parte della cellula vengono sintetizzati gli enzimi perossisomiali prima di essere importati?",
+                    r: "Sui ribosomi liberi nel citoplasma.",
+                    s: "Le proteine possiedono sequenze di targeting perossisomiale (PTS) che ne permettono l'ingresso."
+                },
+                {
+                    d: "Qual è il ruolo dei lisosomi nella fecondazione nei mammiferi?",
+                    r: "La reazione acrosomiale dello spermatozoo.",
+                    s: "L'acrosoma è un grande lisosoma modificato che rilascia enzimi per perforare la membrana dell'ovocita."
+                },
+                {
+                    d: "Perché le cellule della cartilagine (condrociti) o degli osteoclasti rilasciano enzimi lisosomiali all'esterno?",
+                    r: "Per riassorbire la matrice extracellulare e il tessuto osseo durante il rimodellamento.",
+                    s: "Si tratta di esocitosi di enzimi idrolitici a scopo strutturale e di accrescimento."
+                },
+                {
+                    d: "Quale interazione funzionale esiste tra reticolo endoplasmatico, Golgi e lisosomi?",
+                    r: "Un flusso vescicolare coordinato per la sintesi, maturazione e indirizzamento degli enzimi.",
+                    s: "Le proteine viaggiano dal RER al Golgi e da lì vengono impacchettate nei lisosomi primari."
+                },
+                {
+                    d: "I perossisomi partecipano alla sintesi di quali importanti lipidi strutturali del sistema nervoso?",
+                    r: "I plasmalogeni (un tipo di etere-fosfolipidi).",
+                    s: "La sintesi dei plasmalogeni inizia nei perossisomi ed è fondamentale per la mielinizzazione dei nervi."
+                },
+                {
+                    d: "Quale nome assumono i lisosomi prima di fondersi con le vescicole contenenti il materiale da degradare?",
+                    r: "Lisosomi primari.",
+                    s: "I lisosomi primari sono vescicole neoformate dal Golgi non ancora impegnate nella digestione attiva."
+                },
+                {
+                    d: "Come si chiamano i lisosomi attivi in fase di digestione?",
+                    r: "Lisosomi secondari (o eterosomi / autofagosomi fusi).",
+                    s: "Nascono dall'unione di un lisosoma primario con una vescicola di carico."
+                },
+
+                // --- LIVELLO MEDIO (36 - 70) ---
+                {
+                    d: "Quale meccanismo ionico mantiene il pH acido all'interno del lume lisosomiale?",
+                    r: "L'azione delle pompe protoniche V-ATPasi che pompano ioni $\text{H}^+$ consumando ATP.",
+                    s: "Questo trasporto attivo contro gradiente assicura il mantenimento della forte acidità interna."
+                },
+                {
+                    d: "Come sono protette le membrane interne dei lisosomi dalla autodigestione ad opera delle loro stesse idrolasi?",
+                    r: "Grazie a una fitta glicosilazione delle proteine di membrana luminali.",
+                    s: "I residui di zucchero formano uno scudo protettivo che impedisce agli enzimi di attaccare la membrana."
+                },
+                {
+                    d: "Quale patologia da accumulo lisosomiale è caratterizzata da deficit dell'enzima glucocerebrosidasi?",
+                    r: "La malattia di Gaucher.",
+                    s: "Comporta l'accumulo di glucocerebrosidi nei macrofagi, causando epatosplenomegalia e problemi ossei."
+                },
+                {
+                    d: "Qual è il difetto biochimico di fondo nella malattia di Pompe (glicogenosi di tipo II)?",
+                    r: "Il deficit dell'alfa-glucosidasi acida lisosomiale.",
+                    s: "Causa un massiccio accumulo di glicogeno all'interno dei lisosomi, specialmente nelle cellule muscolari e cardiache."
+                },
+                {
+                    d: "Quale processo consente ai perossisomi di degradare gli amminoacidi e l'acido urico producendo perossido di idrogeno?",
+                    r: "L'azione delle perossisomiali ossidasi (es. D-amminoacido ossidasi e urato ossidasi).",
+                    s: "Rimuovono idrogeno dai substrati trasferendolo direttamente all'ossigeno molecolare."
+                },
+                {
+                    d: "Che cos'è la via di importazione PTS1 per le proteine perossisomiali?",
+                    r: "Un segnale di localizzazione composto da tre amminoacidi (SKL) localizzato all'estremità C-terminale.",
+                    s: "Viene riconosciuto da una proteina recettrice citosolica (Pex5) che guida l'organello."
+                },
+                {
+                    d: "Quale ruolo svolgono le proteine chiamate 'perossine' (Pex)?",
+                    r: "Sono proteine essenziali per la biogenesi, l'importazione proteica e la divisione dei perossisomi.",
+                    s: "Mutazioni nei geni delle perossine causano gravi malattie perossisomiali ereditarie."
+                },
+                {
+                    d: "Come differisce la beta-ossidazione degli acidi grassi nei perossisomi rispetto a quella nei mitocondri?",
+                    r: "Nei perossisomi la prima fase non produce ATP ma dissipa l'energia in calore e genera $\text{H}_2\text{O}_2$.",
+                    s: "I perossisomi accorciano catene molto lunghe a catene medie che poi i mitocondri possono ossidare completamente."
+                },
+                {
+                    d: "Quale derivato vitaminico funge da coenzima fondamentale per molte idrolasi acide lisosomiali?",
+                    r: "Non richiedono coenzimi vitaminici specifici, in quanto sono enzimi idrolitici basati su residui amminoacidici attivi.",
+                    s: "La loro catalisi sfrutta residui come aspartato o cisteina nel sito attivo."
+                },
+                {
+                    d: "In che modo i lisosomi cooperano con i fagosomi durante la difesa immunitaria nei globuli bianchi?",
+                    r: "I lisosomi si fondono con i fagosomi (formando i fagolisosomi) per uccidere e digerire i batteri fagocitati.",
+                    s: "Questo meccanismo unisce enzimi litici e specie reattive dell'ossigeno per distruggere i patogeni."
+                },
+                {
+                    d: "Che cos'è la crinofagia?",
+                    r: "Un processo di degradazione autofagica in cui i granuli di secrezione in eccesso si fondono direttamente con i lisosomi.",
+                    s: "Permette alla cellula di regolare la quantità di ormoni o enzimi secretori immagazzinati."
+                },
+                {
+                    d: "Quale proteina transmembrana regola la fuoriuscita di zuccheri e amminoacidi digeriti dal lume lisosomiale al citoplasma?",
+                    r: "Specifici trasportatori di membrana e canali permeasici lisosomiali.",
+                    s: "Garantiscono che i monomeri derivati dalla digestione vengano riutilizzati dalla cellula."
+                },
+                {
+                    d: "Qual è la causa genetica e l'effetto della mucopolisaccaridosi (es. sindrome di Hurler)?",
+                    r: "Deficit di enzimi per la degradazione dei glicosaminoglicani, con accumulo lisosomiale sistemico.",
+                    s: "Provoca deformità scheletriche, ritardo mentale e ingrossamento degli organi."
+                },
+                {
+                    d: "Quale ruolo svolgono i perossisomi nella detossificazione dell'etanolo (alcol) nel fegato?",
+                    r: "Ossidano l'alcol ad aldeide acetica usando il perossido di idrogeno tramite la catalasi.",
+                    s: "Circa il 25% dell'alcol ingerito viene detossificato in questo modo nei perossisomi epatici."
+                },
+                {
+                    d: "Cosa sono gli 'endosomi tardivi' e come si relazionano con i lisosomi?",
+                    r: "Vescicole di transizione che maturano ricevendo idrolasi dal Golgi e fondendosi infine con i lisosomi.",
+                    s: "Costituiscono una tappa intermedia fondamentale nel traffico di degradazione cellulare."
+                },
+                {
+                    d: "Quale metodica citochimica permette di osservare e identificare i perossisomi al microscopio ottico ed elettronico?",
+                    r: "La reazione istochimica basata sulla diaminobenzidina (DAB) per evidenziare l'attività della catalasi.",
+                    s: "In presenza di DAB e perossido, la catalasi forma un precipitato scuro identificabile."
+                },
+                {
+                    d: "In che modo i perossisomi partecipano alla fotorespirazione nelle piante C3?",
+                    r: "Collaborano con cloroplasti e mitocondri per metabolizzare il sottoprodotto tossico della fissazione del carbonio (fosfoglicolato).",
+                    s: "Il ciclo della fotorespirazione attraversa sequenzialmente questi tre organelli vegetali."
+                },
+                {
+                    d: "Quale alterazione funzionale subiscono i lisosomi nelle malattie neurodegenerative come il morbo di Alzheimer?",
+                    r: "Una disfunzione del sistema autofagico-lisosomiale con accumulo di corpi multivescicolari e placche amiloidi.",
+                    s: "Il blocco del flusso lisosomiale contribuisce alla morte neuronale."
+                },
+                {
+                    d: "Cosa sono i lisosomi secretori presenti nei melanociti o nei linfociti T citotossici?",
+                    r: "Organelli ibridi che uniscono funzioni di degradazione e funzioni di secrezione regolata.",
+                    s: "Contengono sia enzimi idrolitici sia molecole specializzate pronte a essere liberate all'esterno."
+                },
+                {
+                    d: "Qual è il ruolo del recettore NPC1 (Niemann-Pick type C1) nella membrana lisosomiale?",
+                    r: "Il trasporto del colesterolo fuori dal lume lisosomiale verso il citoplasma.",
+                    s: "Mutazioni in NPC1 causano l'accumulo patologico di colesterolo all'interno dei lisosomi."
+                },
+                {
+                    d: "Qual è l'effetto di un pH citosolico anomalo (es. acidificazione del citoplasma) sui lisosomi?",
+                    r: "Gli enzimi lisosomiali fuoriusciti potrebbero iniziare a danneggiare i componenti cellulari.",
+                    s: "Fortunatamente i tamponi citoplasmatici mantengono rigorosamente il pH neutro."
+                },
+                {
+                    d: "Quale nome assume il processo di rimozione selettiva dei mitocondri danneggiati tramite lisosomi?",
+                    r: "Mitofagia (una forma specifica di autofagia).",
+                    s: "Protegge la cellula dallo stress ossidativo e previene l'apoptosi anomala."
+                },
+                {
+                    d: "Quali enzimi specifici permettono ai perossisomi di convertire i grassi accumulati in carboidrati nei semi in germinazione?",
+                    r: "Gli enzimi del ciclo del gliossilato (isocitrato liasi e malato sintasi).",
+                    s: "Presenti nei gliossisomi, una variante specializzata dei perossisomi vegetali."
+                },
+                {
+                    d: "Come si distingue morfologicamente un perossisoma da un lisosoma al microscopio elettronico?",
+                    r: "Il perossisoma ha una matrice granulare omogenea spesso con core cristallino ed è privo di idrolasi acide.",
+                    s: "I lisosomi hanno densità elettronica variabile e derivano dal sistema di endomembrane del Golgi."
+                },
+                {
+                    d: "Quale patologia genetica rara è legata a un difetto del trasporto di amminoacidi acidi o cistina fuori dai lisosomi?",
+                    r: "La cistinosi.",
+                    s: "Causa la formazione di cristalli di cistina all'interno dei lisosomi di vari tessuti, specialmente renali."
+                },
+                {
+                    d: "Quale proteina regola il posizionamento e il movimento dei lisosomi lungo i microtubuli del citoscheletro?",
+                    r: "Le proteine motrici chinesine e dineine, agganciate tramite complessi di adesione.",
+                    s: "Guidano il trasporto centripeto e centrifugo dei lisosomi nel citoplasma."
+                },
+                {
+                    d: "In che modo i lisosomi partecipano alla riparazione della membrana plasmatica cellulare danneggiata?",
+                    r: "Mediante l'esocitosi lisosomiale localizzata per tappare la lesione della membrana.",
+                    s: "La fusione delle vescicole lisosomiali con la membrana plasmatica ripara rapidamente la breccia."
+                },
+                {
+                    d: "Quale composto viene usato in laboratorio per inibire selettivamente l'acidificazione lisosomiale (es. bafilomicina A1)?",
+                    r: "Gli inibitori della V-ATPasi come la bafilomicina A1 o la concanamicina.",
+                    s: "Bloccano la pompa protonica, innalzando il pH lisosomiale e bloccando la degradazione enzimatica."
+                },
+                {
+                    d: "Qual è la funzione del gene TFEB nella regolazione genetica del sistema lisosomiale?",
+                    r: "È il fattore di trascrizione master che coordina la biogenesi di lisosomi e geni autofagici.",
+                    s: "In risposta a stress o digiuno, TFEB migra nel nucleo attivando l'autofagia e la sintesi lisosomiale."
+                },
+                {
+                    d: "Quali molecole lipidiche formano il doppio strato membranoso dei perossisomi e dei lisosomi?",
+                    r: "Fosfolipidi sintetizzati principalmente nel reticolo endoplasmatico liscio.",
+                    s: "La composizione lipidica viene modificata tramite proteine di trasferimento lipidico."
+                },
+                {
+                    d: "Qual è la conseguenza di una mutazione nei geni codificanti per le proteine transmembrana LAMP-1 e LAMP-2?",
+                    r: "Alterazioni nella stabilità della membrana lisosomiale e difetti nel traffico autofagico.",
+                    s: "Le LAMP (Lysosomal-associated membrane proteins) proteggono e strutturano la membrana."
+                },
+                {
+                    d: "Come si originano i perossisomi nelle cellule in divisione?",
+                    r: "Sia per divisione di perossisomi preesistenti sia per de novo a partire dal reticolo endoplasmatico.",
+                    s: "I domini di membrana del RE gemmano vescicole che incorporano le perossine."
+                },
+                {
+                    d: "Quale enzima perossisomiale è responsabile della prima reazione nella sintesi dei plasmalogeni?",
+                    r: "L'alchil-diidrossiacetone-fosfato sintasi (DHAPAT).",
+                    s: "Richiede l'integrità funzionale del perossisoma per completare la reazione."
+                },
+                {
+                    d: "Quale legame chimico viene scisso dalle idrolasi acide lisosomiali durante la digestione delle proteine?",
+                    r: "Il legame peptidico tra gli amminoacidi.",
+                    s: "Le proteasi (come le catepsine) scompongono le proteine in singoli amminoacidi."
+                },
+                {
+                    d: "Quale legame viene scisso dalle lipasi presenti nei lisosomi?",
+                    r: "Il legame estere tra glicerolo e acidi grassi.",
+                    s: "Porta alla liberazione di acidi grassi liberi e glicerolo nel citoplasma."
+                },
+
+                // --- LIVELLO DIFFICILE (71 - 100) ---
+                {
+                    d: "Qual è il meccanismo molecolare esatto mediante il quale il mannosio-6-fosfato viene riconosciuto nel trans-Golgi?",
+                    r: "Tramite recettori transmembrana per il M6P ad alto e basso peso molecolare.",
+                    s: "Il riconoscimento attiva l'inclusione delle idrolasi in vescicole rivestite di clatrina dirette ai lisosomi."
+                },
+                {
+                    d: "Quale difetto enzimatico causa la mucolipidosi II (malattia di I-cell) e quali sono le sue caratteristiche?",
+                    r: "Il deficit della N-acetilglucosammina-1-fosfotransferasi nel Golgi.",
+                    s: "Le idrolasi lisosomiali non ricevono il marcatore M6P, vengono secrete all'esterno e i lisosomi si riempiono di materiale non digerito (inclusions)."
+                },
+                {
+                    d: "Quale ruolo svolge il complesso mTORC1 sulla superficie della membrana lisosomiale in condizioni di abbondanza di nutrienti?",
+                    r: "Viene reclutato e attivato da complessi proteici lisosomiali (Rag GTPasi) per stimolare la crescita cellulare e inibire l'autofagia.",
+                    s: "Il lisosoma funge da piattaforma di segnalazione metabolica centrale."
+                },
+                {
+                    d: "Cosa succede a mTORC1 in condizioni di digiuno o carenza energetica rispetto ai lisosomi?",
+                    r: "Si stacca dalla membrana lisosomiale e si inattiva, rilasciando il fattore di trascrizione TFEB che attiva l'autofagia.",
+                    s: "Questo interruttore metabolico riorganizza il metabolismo cellulare verso il riciclo."
+                },
+                {
+                    d: "Quale via di importazione proteica alternativa (PTS2) utilizzano alcune specifiche proteine perossisomiali?",
+                    r: "Un segnale localizzato all'estremità N-terminale riconosciuto dal recettore Pex7.",
+                    s: "Richiede proteine co-recettrici addizionali per il corretto attraversamento della membrana."
+                },
+                {
+                    d: "Qual è la funzione biochimica esatta della xantina ossidasi localizzata nei perossisomi?",
+                    r: "Catalizza l'ossidazione dell'ipoxantina a xantina e di quest'ultima ad acido urico, generando $\text{H}_2\text{O}_2$.",
+                    s: "Rappresenta un passaggio chiave nel catabolismo delle purine."
+                },
+                {
+                    d: "Quale alterazione ultrastrutturale si osserva nei perossisomi di pazienti affetti da adrenoleucodistrofia X-linked (X-ALD)?",
+                    r: "Un difetto nella proteina trasportatrice ABCD1 della membrana perossisomiale.",
+                    s: "Impedisce l'importazione degli acidi grassi a catena molto lunga, che si accumulano distruggendo la mielina."
+                },
+                {
+                    d: "In che modo l'enzima tripeptidil peptidasi II (TPP2) localizzato nei lisosomi collabora con il sistema ubiquitina-proteasoma?",
+                    r: "Agisce come via di degradazione complementare per peptidi generati dal proteasoma nel citoplasma o trasportati.",
+                    s: "Garantisce il turnover proteico in condizioni di stress."
+                },
+                {
+                    d: "Qual è il ruolo del canale TRPML1 (Mucolipina-1) sulla membrana lisosomiale?",
+                    r: "È un canale per gli ioni calcio che regola l'omeostasi del $\text{Ca}^{2+}$ lisosomiale, l'esocitosi e la fusione vescicolare.",
+                    s: "Mutazioni in TRPML1 causano la mucolipidosi di tipo IV."
+                },
+                {
+                    d: "Quale meccanismo di sorting vescicolare consente alle proteine transmembrana lisosomiali di bypassare la membrana plasmatica?",
+                    r: "Segnali di smistamento basati su motivi a base di tirosina o dileucina riconosciuti da adattatori AP.",
+                    s: "Garantiscono il trasporto diretto dal trans-Golgi agli endosomi senza passare per la superficie cellulare."
+                },
+                {
+                    d: "Che cos'è l'autofagia mediata da chaperon (CMA) e come interagisce con i lisosomi?",
+                    r: "Una via selettiva in cui le proteine recanti una sequenza KFERQ vengono legate da chaperon e trasportate direttamente nel lume lisosomiale tramite il recettore LAMP-2A.",
+                    s: "Permette la degradazione mirata di singole proteine citosoliche senza formazione di vescicole autofagiche."
+                },
+                {
+                    d: "Qual è l'effetto biochimico dell'inibizione della sfingomielinasi acida lisosomiale da parte di farmaci cationici anfifilici?",
+                    r: "Accumulo di fosfolipidi e sfingolipidi nei lisosomi, inducendo una condizione di lipidosi farmacologica (tesaurismosi indotta).",
+                    s: "Altera la fluidità e la funzione del sistema endolisosomiale."
+                },
+                {
+                    d: "Quale ruolo svolgono le proteine RAB (es. Rab7) nella dinamica funzionale dei lisosomi?",
+                    r: "Sono GTPasi che regolano il trasporto vescicolare, l'ancoraggio e la fusione dei lisosomi con endosomi e autofagosomi.",
+                    s: "Assicurano la specificità e la direzione del traffico di membrana."
+                },
+                {
+                    d: "Qual è il meccanismo d'azione della toxina della difterica o di alcuni virus nell'sfruttare il sistema lisosomiale?",
+                    r: "Sfruttano l'acidità dello spazio endosomiale/lisosomiale per subire un cambio conformazionale e penetrare nel citoplasma.",
+                    s: "Il pH acido è il grilletto che attiva la tossina."
+                },
+                {
+                    d: "Quale mutazione genetica provoca la cercobilinogenuria o la malattia di Batten (lipofuscinosi ceroide neuronale)?",
+                    r: "Mutazioni in geni codificanti per enzimi lisosomiali solubili o proteine di membrana (es. CLN3, CLN2).",
+                    s: "Provoca un accumulo devastante di materiale fluorescente autofagico nei neuroni."
+                },
+                {
+                    d: "Come avviene il riciclo dei recettori di membrana attraverso il sistema endolisosomiale?",
+                    r: "I recettori legati ai ligandi vengono internalizzati negli endosomi precoci, separati dai ligandi destinati ai lisosomi e riciclati in superficie.",
+                    s: "Evita la degradazione inutile di recettori preziosi."
+                },
+                {
+                    d: "Quale ruolo svolge l'enzima colesteril estere idrolasi lisosomiale nel metabolismo delle lipoproteine LDL?",
+                    r: "Idrolizza i esteri del colesterolo contenuti nelle LDL giunte via endocitosi, rilasciando colesterolo libero nel citoplasma.",
+                    s: "Regola l'omeostasi intracellulare del colesterolo."
+                },
+                {
+                    d: "Quale alterazione perossisomiale si riscontra nella condrodisplasia punctata rizomelica (RCDP)?",
+                    r: "Un difetto nell'importazione della proteina Pex7 che impedisce la sintesi dei plasmalogeni nei perossisomi.",
+                    s: "Causa gravi difetti di accrescimento osseo e anomalie neurologiche."
+                },
+                {
+                    d: "In che modo i perossisomi collaborano con il reticolo endoplasmatico nella sintesi del dolicolo e del colesterolo?",
+                    r: "Contengono alcuni degli enzimi della via del mevalonato necessari per la sintesi degli isoprenoidi e del colesterolo.",
+                    s: "La cooperazione metabolica interorganellare è essenziale per la cellula."
+                },
+                {
+                    d: "Quale complesso proteico tethering (es. HOPS) media la fase finale di fusione tra un autofagosoma e un lisosoma?",
+                    r: "Il complesso HOPS (Homotypic fusion and vacuole protein sorting).",
+                    s: "Favorisce l'avvicinamento e la fusione delle membrane lipidiche insieme ai complessi SNARE."
+                },
+                {
+                    d: "Qual è l'impatto della disfunzione lisosomiale sull'accumulo di alfa-sinucleina nella malattia di Parkinson?",
+                    r: "Il deficit di degradazione lisosomiale impedisce lo smaltimento degli aggregati proteici tossici, favorendo la neurodegenerazione.",
+                    s: "Mutazioni nel gene GBA (codificante la glucocerebrosidasi) sono un fattore di rischio genetico maggiore."
+                },
+                {
+                    d: "Quale specifico meccanismo di perossidazione lipidica viene contrastato dalla glutatione perossidasi e dai perossisomi?",
+                    r: "La propagazione dei radicali liberi sui doppi legami degli acidi grassi polinsaturi delle membrane.",
+                    s: "Protegge l'integrità strutturale cellulare dallo stress ossidativo."
+                },
+                {
+                    d: "Come si spiega l'eterogeneità enzimatica dei lisosomi all'interno di una stessa cellula?",
+                    r: "Deriva dal continuo processo di maturazione, fusione e scambio di contenuti tra vescicole endosomiali e lisosomi.",
+                    s: "I lisosomi non sono entità statiche ma un pool vescicolare in costante evoluzione."
+                },
+                {
+                    d: "Qual è la funzione del gene PEX1 nelle malattie da biogenesi perossisomiale?",
+                    r: "Codifica un'ATPasi associata a membrana necessaria per il riciclo dei recettori PTS dal perossisoma al citoplasma.",
+                    s: "Mutazioni in PEX1 sono la causa più comune della sindrome di Zellweger."
+                },
+                {
+                    d: "Quale ruolo svolgono le catepsine lisosomiali nel contesto dell'invasione tumorale e delle metastasi?",
+                    r: "Vengono secrete all'esterno in condizioni patologiche per degradare la matrice extracellulare, facilitando il movimento delle cellule tumorali.",
+                    s: "La loro sovraespressione è associata a prognosi infausta in vari tumori."
+                },
+                {
+                    d: "In quale modo il perossisoma regola la concentrazione intracellulare di specie reattive dell'ossigeno durante il metabolismo?",
+                    r: "Bilanciando l'attività delle ossidasi produttrici di $\text{H}_2\text{O}_2$ con l'enorme capacità di分解 della catalasi.",
+                    s: "Impedisce che i radicali liberi danneggino il DNA e le proteine vicine."
+                },
+                {
+                    d: "Quale reazione catalizza la D-amminoacido ossidasi nei perossisomi renali e cerebrali?",
+                    r: "La deaminazione ossidativa dei D-amminoacidi a chetoacidi, ammoniaca e perossido di idrogeno.",
+                    s: "Contribuisce al metabolismo dei neurotrasmettitori come la D-serina nel cervello."
+                },
+                {
+                    d: "Quale complesso SNARE specifico (es. VAMP7, Syntaxin 7) è richiesto per la fusione dei lisosomi con la membrana plasmatica?",
+                    r: "Il complesso SNARE composto da VAMP7, Syntaxin 7 e Vtila.",
+                    s: "Garantisce la specificità dell'ancoraggio vescicolare per l'esocitosi lisosomiale."
+                },
+                {
+                    d: "Qual è l'effetto di un blocco cronico del traffico di acidi grassi a catena molto lunga nei perossisomi sul sistema nervoso centrale?",
+                    r: "Dismielinizzazione progressiva e grave neuroinflammazione, tipica delle adrenoleucodistrofie.",
+                    s: "L'accumulo di acidi grassi non metabolizzati altera la fluidità della guaina mielinica."
+                },
+                {
+                    d: "Come si interfaccia il reticolo endoplasmatico liscio con i perossisomi per il trasferimento di enzimi e fosfolipidi?",
+                    r: "Tramite siti di contatto di membrana (MCS) specializzati che permettono il flusso non vescicolare di lipidi e proteine.",
+                    s: "Rappresenta una via di comunicazione diretta tra organelli senza intermediazione di vescicole libere."
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                // Recupera l'esercizio corrispondente dall'array (sottraendo 1 per l'indice 0-based)
+                let item = databaseEsercizi[i - 1];
+                let diffClass, diffLabel;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">Esercizio ${i}: ${item.d}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${item.r}
+                            </div>
+                            <p style="color: var(--colore-scuro); font-weight: bold; margin-bottom: 0.5rem;">Spiegazione dettagliata:</p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

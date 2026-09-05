@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disequazioni di 2° Grado Incomplete (Spurie e Pure): metodi rapidi di risoluzione senza formula risolutiva ed esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni di 2° Grado Incomplete - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+        .info-box { background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-2-grado-incomplete" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 2° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Disequazioni Incomplete (Spurie e Pure)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Risoluzione rapida senza applicare la formula risolutiva completa.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Tipologie di Disequazioni Incomplete</h2>
+            <p>Una disequazione di 2° grado è incompleta se manca il termine noto ($c = 0$), il termine di primo grado ($b = 0$) o entrambi ($b = c = 0$).</p>
+
+            <h3>A. Disequazioni Spurie ($c = 0$)</h3>
+            <div class="formula-box">
+                $$ax^2 + bx > 0 \quad (\text{oppure } <, \ge, \le)$$
+            </div>
+            <p><strong>Metodo:</strong> Raccogliere $x$ a fattor comune $\implies x(ax + b) > 0$. L'equazione associata ammette sempre due radici reali: $x_1 = 0$ e $x_2 = -\frac{b}{a}$. Poi si applica la regola dei valori interni o esterni.</p>
+
+            <h3>B. Disequazioni Pure ($b = 0$)</h3>
+            <div class="formula-box">
+                $$ax^2 + c > 0 \quad (\text{oppure } <, \ge, \le)$$
+            </div>
+            <p><strong>Metodo:</strong> Isolare $x^2 \implies x^2 > -\frac{c}{a}$.</p>
+            <ul>
+                <li>Se $-\frac{c}{a} > 0$: radici $x = \pm \sqrt{-\frac{c}{a}}$. Valori esterni per $>$, interni per $<$.</li>
+                <li>Se $-\frac{c}{a} < 0$: ad esempio $x^2 > -5$ è sempre verificata ($\forall x \in \mathbb{R}$), mentre $x^2 < -5$ è impossibile ($\emptyset$).</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato 1 (Spuria con coefficiente frazionario)</h3>
+                <p>Risolvi la disequazione: $\frac{1}{3}x^2 - 2x \ge 0$</p>
+                <ol>
+                    <li>Moltiplichiamo per 3 per eliminare la frazione: $x^2 - 6x \ge 0$.</li>
+                    <li>Raccogliamo la $x$: $x(x - 6) \ge 0$.</li>
+                    <li>Equazione associata: $x_1 = 0, \, x_2 = 6$.</li>
+                    <li>Avendo verso $\ge 0$, la soluzione comprende i valori <strong>esterni</strong> (inclusi gli estremi):
+                        $$x \le 0 \quad \cup \quad x \ge 6$$
+                    </li>
+                </ol>
+
+                <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #cbd5e1;">
+
+                <h3>📝 Esempio Guidato 2 (Pura)</h3>
+                <p>Risolvi la disequazione: $2x^2 - 18 < 0$</p>
+                <ol>
+                    <li>Isoliamo $x^2$: $2x^2 < 18 \implies x^2 < 9$.</li>
+                    <li>Equazione associata: $x^2 = 9 \implies x = \pm 3$.</li>
+                    <li>Avendo verso $< 0$, prendiamo i valori <strong>interni</strong>:
+                        $$-3 < x < 3$$
+                    </li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Attenzione alle disequazioni pure impossibili:</strong> Un quadrato reale $x^2$ non può mai essere negativo. Quindi $x^2 < -4$ non ha alcuna soluzione ($S = \emptyset$), mentre $x^2 > -4$ è vera per qualunque numero reale ($\forall x \in \mathbb{R}$).
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disequazioni Incomplete</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let k = (i % 7) + 1;
+                let val = k * k;
+                let domanda, risposta, spiegazione;
+
+                if (i % 3 === 1) {
+                    // Spuria
+                    domanda = `Risolvi la disequazione spuria: $x^2 - ${k}x > 0$`;
+                    risposta = `x < 0 \\cup x > ${k}`;
+                    spiegazione = `1) Raccogliamo $x$: $x(x - ${k}) > 0$.<br>` +
+                                  `2) Le soluzioni dell'equazione associata sono $x_1 = 0$ e $x_2 = ${k}$.<br>` +
+                                  `3) Con verso $>$ prendiamo i valori esterni.<br>` +
+                                  `4) Soluzione: <strong>$x < 0 \\cup x > ${k}$</strong>.`;
+                } else if (i % 3 === 2) {
+                    // Pura con soluzioni reali
+                    domanda = `Risolvi la disequazione pura: $x^2 - ${val} \\le 0$`;
+                    risposta = `-${k} \\le x \\le ${k}`;
+                    spiegazione = `1) Isoliamo $x^2$: $x^2 \\le ${val}$.<br>` +
+                                  `2) Equazione associata: $x = \\pm \\sqrt{${val}} = \\pm ${k}$.<br>` +
+                                  `3) Con verso $\\le$ prendiamo l'intervallo interno compresi gli estremi.<br>` +
+                                  `4) Soluzione: <strong>$-${k} \\le x \\le ${k}$</strong>.`;
+                } else {
+                    // Pura impossibile o sempre verificata
+                    domanda = `Risolvi la disequazione pura: $x^2 + ${val} > 0$`;
+                    risposta = `\\forall x \\in \\mathbb{R}`;
+                    spiegazione = `1) Isoliamo $x^2$: $x^2 > -${val}$.<br>` +
+                                  `2) Un quadrato di un numero reale è sempre maggiore o uguale a zero, quindi sarà sempre strettamente maggiore di un numero negativo ($-${val}$).<br>` +
+                                  `3) Soluzione: <strong>$\\forall x \\in \\mathbb{R}$</strong> (sempre verificata).`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

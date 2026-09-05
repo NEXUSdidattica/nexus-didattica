@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disequazioni Intere di Primo Grado: procedimento di risoluzione, forma normale e 100 esercizi guidati passo passo con grafici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni Intere - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .grafico-svg-container {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-1-grado-intere" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Disequazioni Intere</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Risoluzione completa di disequazioni algebriche intere di primo grado, riduzione a forma normale e casi particolari.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Definizione di Disequazione Intera</h2>
+            <p>
+                Una disequazione si dice <strong>intera</strong> quando l'incognita $x$ non compare al denominatore di alcuna frazione. Una disequazione di 1° grado intera può sempre essere condotta alla sua <strong>forma normale</strong>:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Forma Normale:</strong><br>
+                $$ax > b \quad \text{oppure} \quad ax < b \quad (\text{anche con } \ge \text{ o } \le)$$
+                dove $a$ e $b$ sono numeri reali e $a \ne 0$.
+            </div>
+
+            <h2>Procedimento di Risoluzione Generale</h2>
+            <ol>
+                <li><strong>Eseguire le parentesi:</strong> Sviluppare eventuali prodotti, quadrati o prodotti notevoli.</li>
+                <li><strong>Semplificare i denominatori numerici:</strong> Se presenti frazioni con denominatori costanti, eliminare i denominatori moltiplicando tutti i termini per il $\text{m.c.m.}$.</li>
+                <li><strong>Trasporto dei termini:</strong> Spostare tutti i termini con l'incognita $x$ al 1° membro e i termini noti al 2° membro (cambiando segno).</li>
+                <li><strong>Somma dei termini simili:</strong> Ridurre la disequazione alla forma normale $ax > b$.</li>
+                <li><strong>Isolamento dell'incognita:</strong> Dividere entrambi i membri per il coefficiente $a$. 
+                    <br>⚠️ <em>Ricorda: se $a < 0$, inverti il verso della disequazione!</em>
+                </li>
+            </ol>
+
+            <h2>Casi Particolari ($a = 0$)</h2>
+            <p>Se durante la semplificazione l'incognita si annulla ($0x > b$ oppure $0x < b$):</p>
+            <ul>
+                <li><strong>Sempre Vera ($\forall x \in \mathbb{R}$):</strong> Ad esempio $0x > -5$ (è vero per qualsiasi $x$).</li>
+                <li><strong>Impossibile ($\nexists x \in \mathbb{R}$):</strong> Ad esempio $0x > 5$ (è falso per qualsiasi $x$).</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Risolvi la disequazione:</strong> $3(x - 2) - 2(2x + 1) \ge 4 - 5x$</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Sviluppiamo le parentesi: $3x - 6 - 4x - 2 \ge 4 - 5x$.</li>
+                    <li>Semplifichiamo i membri: $-x - 8 \ge 4 - 5x$.</li>
+                    <li>Trasportiamo i termini: $-x + 5x \ge 4 + 8 \implies 4x \ge 12$.</li>
+                    <li>Dividiamo per $+4$ (il verso non cambia): $x \ge \frac{12}{4} \implies x \ge 3$.</li>
+                </ol>
+                <div class="grafico-svg-container">
+                    <svg width="320" height="55" viewBox="0 0 320 55" style="font-family: sans-serif;">
+                        <line x1="20" y1="25" x2="300" y2="25" stroke="#94a3b8" stroke-width="2" />
+                        <polygon points="300,20 310,25 300,30" fill="#94a3b8" />
+                        <line x1="120" y1="25" x2="300" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="120" cy="25" r="5" fill="#2563eb" stroke="#2563eb" stroke-width="2" />
+                        <text x="116" y="45" font-size="13" font-weight="bold" fill="#0f172a">3</text>
+                    </svg>
+                </div>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione:</strong> $x \ge 3$ oppure $x \in [3, +\infty)$.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disequazioni Intere</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Risolvi le disequazioni intere sviluppando i calcoli, applicando le proprietà dei segni e visualizzando la soluzione sulla retta reale.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestionar le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            function creaSVG(verso, val) {
+                let svg = `<svg width="320" height="55" viewBox="0 0 320 55" style="font-family: sans-serif;">
+                    <line x1="20" y1="25" x2="300" y2="25" stroke="#94a3b8" stroke-width="2" />
+                    <polygon points="300,20 310,25 300,30" fill="#94a3b8" />`;
+
+                if (verso === '>' || verso === '>=') {
+                    let pieno = verso === '>=';
+                    svg += `
+                        <line x1="120" y1="25" x2="300" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="120" cy="25" r="5" fill="${pieno ? '#2563eb' : '#ffffff'}" stroke="#2563eb" stroke-width="2" />
+                        <text x="115" y="45" font-size="13" font-weight="bold" fill="#0f172a">${val}</text>`;
+                } else {
+                    let pieno = verso === '<=';
+                    svg += `
+                        <line x1="20" y1="25" x2="180" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="180" cy="25" r="5" fill="${pieno ? '#2563eb' : '#ffffff'}" stroke="#2563eb" stroke-width="2" />
+                        <text x="175" y="45" font-size="13" font-weight="bold" fill="#0f172a">${val}</text>`;
+                }
+
+                svg += `</svg>`;
+                return svg;
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione, versoFinale, valStr;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    let a = (i % 3) + 2;
+                    let b = i + 1;
+                    let c = i * 2 + 4;
+                    // a*x + b > c  =>  a*x > c - b  => x > (c-b)/a
+                    let num = c - b;
+                    let sol = (num / a).toFixed(1).replace('.0', '');
+                    versoFinale = '>';
+                    valStr = sol;
+
+                    domanda = `Risolvi la disequazione intera: <strong>${a}x + ${b} &gt; ${c}</strong>`;
+                    risposta = `x > ${sol}`;
+                    spiegazione = `
+                    1) Trasportiamo il termine noto al 2° membro: <code>${a}x &gt; ${c} - ${b}</code>.<br>
+                    2) Calcoliamo: <code>${a}x &gt; ${num}</code>.<br>
+                    3) Dividiamo per <code>${a}</code> (positivo, il verso non cambia): <code>x &gt; ${sol}</code>.`;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    let k = (i % 4) + 2;
+                    let noto = i % 5 + 3;
+                    // -k*x - noto <= 5 => -k*x <= 5 + noto => x >= -(5+noto)/k
+                    let dest = 5 + noto;
+                    let sol = (-dest / k).toFixed(1).replace('.0', '');
+                    versoFinale = '>=';
+                    valStr = sol;
+
+                    domanda = `Risolvi la disequazione con coefficiente negativo: <strong>-${k}x - ${noto} &le; 5</strong>`;
+                    risposta = `x >= ${sol}`;
+                    spiegazione = `
+                    1) Trasportiamo <code>-${noto}</code> a destra: <code>-${k}x &le; 5 + ${noto} \implies -${k}x &le; ${dest}</code>.<br>
+                    2) Dividiamo per <code>-${k}</code> e <strong>invertiamo il verso</strong> da <code>&le;</code> a <code>&ge;</code>.<br>
+                    3) Risultato: <code>x &ge; ${sol}</code>.`;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    let m = (i % 3) + 2;
+                    let n = (i % 2) + 1;
+                    // m*(x - 1) - n*x < 4 => m*x - m - n*x < 4 => (m-n)*x < 4 + m
+                    let coeff = m - n;
+                    let dest = 4 + m;
+                    let sol = (dest / coeff).toFixed(1).replace('.0', '');
+                    versoFinale = '<';
+                    valStr = sol;
+
+                    domanda = `Risolvi con parentesi: <strong>${m}(x - 1) - ${n}x &lt; 4</strong>`;
+                    risposta = `x < ${sol}`;
+                    spiegazione = `
+                    1) Sviluppiamo le parentesi: <code>${m}x - ${m} - ${n}x &lt; 4</code>.<br>
+                    2) Sommiamo i termini simili: <code>${coeff}x - ${m} &lt; 4</code>.<br>
+                    3) Trasportiamo <code>-${m}</code> a destra: <code>${coeff}x &lt; ${dest}</code>.<br>
+                    4) Dividiamo per <code>${coeff}</code>: <code>x &lt; ${sol}</code>.`;
+                }
+
+                let grafico = creaSVG(versoFinale, valStr);
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione, Grafico e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Rappresentazione sulla retta reale:</strong></p>
+                            <div class="grafico-svg-container">
+                                ${grafico}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul condensatore piano, capacità, dielettrici e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Condensatore con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="condensatore" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Condensatore</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Capacità elettrostatica, condensatore piano, energia immagazzinata e 100 esercizi interattivi dedicati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Definizione e Capacità Elettrostatica</h2>
+            <p>
+                Un <strong>condensatore</strong> è un componente elettrico in grado di immagazzinare carica ed energia elettrostatica. La <em>capacità</em> $C$ è definita come il rapporto tra la carica $Q$ presente su un'armatura e la differenza di potenziale $\Delta V$ tra le armature stesse.
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formule Principali:</b>
+                <p style="margin-top: 0.5rem;">
+                    $$C = \frac{Q}{\Delta V} \quad \text{(Farad, F)}$$
+                    Per un <strong>condensatore piano</strong> con armature di superficie $S$ distanti $d$:
+                    $$C = \varepsilon_0 \frac{S}{d}$$
+                    L'energia potenziale $U$ immagazzinata è data da:
+                    $$U = \frac{1}{2} Q \Delta V = \frac{1}{2} C (\Delta V)^2 = \frac{1}{2} \frac{Q^2}{C}$$
+                </p>
+            </div>
+
+            <h2>2. Effetto dei Dielettrici</h2>
+            <p>
+                Inserendo un materiale isolante (dielettrico) di costante dielettrica relativa $\varepsilon_r$ tra le armature, la capacità aumenta di un fattore $\varepsilon_r$:
+                $$C = \varepsilon_r \cdot \varepsilon_0 \frac{S}{d}$$
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati alla capacità, alla carica e all'energia dei condensatori:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+                const eps_0 = 8.854e-12;
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let Q_uC = 1 + (i % 15);
+                        let V_val = 50 + (i * 10);
+                        let C_nF = (Q_uC * 1e-6) / V_val * 1e9;
+
+                        q = `Esercizio ${i}: Un condensatore immagazzina una carica $Q = ${Q_uC}\\text{ }\\mu\\text{C}$ quando è sottoposto a una differenza di potenziale $\\Delta V = ${V_val}\\text{ V}$. Calcola la sua capacità $C$ espressa in nanofarad ($\\text{nF}$).`;
+                        r = `Capacità $C \\approx ${C_nF.toFixed(2)}\\text{ nF}$.`;
+                        s = `Dalla definizione $C = \\frac{Q}{\\Delta V} = \\frac{${Q_uC} \\times 10^{-6}}{${V_val}} \\approx ${( (Q_uC * 1e-6) / V_val ).toExponential(2)}\\text{ F} = ${C_nF.toFixed(2)}\\text{ nF}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let S_cm2 = 100 + (i * 10);
+                        let S_m2 = S_cm2 * 1e-4;
+                        let d_mm = 1 + (i % 5);
+                        let d_m = d_mm * 1e-3;
+                        let C_pF = (eps_0 * (S_m2 / d_m)) * 1e12;
+
+                        q = `Esercizio ${i}: Calcola la capacità $C$ in picofarad ($\\text{pF}$) di un condensatore piano avente armature di area $S = ${S_cm2}\\text{ cm}^2$ separate da una distanza $d = ${d_mm}\\text{ mm}$ nel vuoto ($\\varepsilon_0 = 8.854 \\times 10^{-12}\\text{ F/m}$).`;
+                        r = `Capacità $C \\approx ${C_pF.toFixed(2)}\\text{ pF}$.`;
+                        s = `Utilizzando la formula $C = \\varepsilon_0 \\frac{S}{d} = 8.854 \\times 10^{-12} \\cdot \\frac{${S_m2}}{${d_m}} \\approx ${C_pF.toFixed(2)} \\times 10^{-12}\\text{ F} = ${C_pF.toFixed(2)}\\text{ pF}$.`;
+                    
+                    } else {
+                        let C_uF = 2 + (i % 8);
+                        let V_val = 100 + (i * 15);
+                        let U_J = 0.5 * (C_uF * 1e-6) * Math.pow(V_val, 2);
+
+                        q = `Esercizio ${i}: Un condensatore di capacità $C = ${C_uF}\\text{ }\\mu\\text{F}$ viene caricato a una tensione $\\Delta V = ${V_val}\\text{ V}$. Calcola l'energia elettrostatica $U$ immagazzinata nel condensatore.`;
+                        r = `Energia $U \\approx ${U_J.toExponential(2)}\\text{ J}$.`;
+                        s = `Applicando la formula $U = \\frac{1}{2} C (\\Delta V)^2 = \\frac{1}{2} \\cdot (${C_uF} \\times 10^{-6}) \\cdot (${V_val})^2 \\approx ${U_J.toExponential(2)}\\text{ J}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

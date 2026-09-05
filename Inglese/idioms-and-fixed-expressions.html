@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa e glossario di Idioms and Fixed Expressions in inglese: modi di dire comuni, espressioni fisse, significati ed esempi pratici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Idioms and Fixed Expressions - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="idioms-and-fixed-expressions" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Idioms</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Idioms and Fixed Expressions</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida completa ai modi di dire inglesi e alle espressioni fisse più usate: significati figurati, suddivisione per categorie ed esempi contestualizzati.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / GUIDA ESAUSTIVA -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cosa sono gli Idioms?</h2>
+            <p>
+                Un <b>idiom</b> (modo di dire) è un'espressione figurata il cui significato complessivo non può essere compreso combinando semplicemente il significato letterale delle singole parole che la compongono. Tradurli parola per parola porta spesso a fraintendimenti o a frasi prive di senso logico in italiano.
+            </p>
+
+            <h2>2. Everyday and General Idioms (Modi di dire comuni)</h2>
+            <p>Espressioni idiomatiche ricorrenti nelle conversazioni informali di tutti i giorni.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Idiom</th><th>Significato in Italiano</th><th>Esempio pratico</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>A piece of cake</b></td><td>Molto facile / Un gioco da ragazzi</td><td><i>The math test was a piece of cake; I finished it in ten minutes.</i></td></tr>
+                    <tr><td><b>Cost an arm and a leg</b></td><td>Costare un occhio della testa / Un patrimonio</td><td><i>I'd love to buy that new smartphone, but it costs an arm and a leg.</i></td></tr>
+                    <tr><td><b>Break a leg!</b></td><td>In bocca al lupo! / Buona fortuna! (spec. spettacoli)</td><td><i>Break a leg tonight at your school musical debut!</i></td></tr>
+                    <tr><td><b>Hit the nail on the head</b></td><td>Cogliere nel segno / Indovinare esattamente</td><td><i>You hit the nail on the head with your explanation.</i></td></tr>
+                    <tr><td><b>Under the weather</b></td><td>Non sentirsi bene / Sentirsi giù di corda</td><td><i>I'm feeling a bit under the weather today, so I'll stay home.</i></td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Emotions and Reactions (Emozioni e Reazioni)</h2>
+            <p>Modi di dire ideali per esprimere stati d'animo, sentimenti intensi o reazioni emotive.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Idiom</th><th>Significato in Italiano</th><th>Esempio pratico</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Over the moon</b></td><td>Al settimo cielo / Estremamente felice</td><td><i>She was over the moon when she passed her driving test.</i></td></tr>
+                    <tr><td><b>Once in a blue moon</b></td><td>Molto raramente / Una volta ogni morte di papa</td><td><i>We only go to that expensive restaurant once in a blue moon.</i></td></tr>
+                    <tr><td><b>Spill the beans</b></td><td>Sputare il rospo / Rivelare un segreto</td><td><i>Come on, spill the beans! What are you planning for the party?</i></td></tr>
+                    <tr><td><b>Bite the bullet</b></td><td>Farsi coraggio / Stringere i denti</td><td><i>I hate going to the dentist, but I have to bite the bullet.</i></td></tr>
+                    <tr><td><b>Add insult to injury</b></td><td>Oltre il danno la beffa</td><td><i>I missed my bus, and to add insult to injury, it started pouring rain.</i></td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Fixed Expressions and Social Phrases (Espressioni Fisse)</h2>
+            <p>Formule fisse e locuzioni cristallizzate usate per reagire, prendere tempo o strutturare un discorso.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Fixed Expression</th><th>Significato in Italiano</th><th>Esempio pratico</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>So far, so good</b></td><td>Fino qui tutto bene</td><td><i>How is your new project going? So far, so good!</i></td></tr>
+                    <tr><td><b>By the way</b></td><td>A proposito / Tra l'altro</td><td><i>By the way, did you finish your history homework?</i></td></tr>
+                    <tr><td><b>Make yourself at home</b></td><td>Fai come se fossi a casa tua</td><td><i>Come in and make yourself at home while I get some water.</i></td></tr>
+                    <tr><td><b>It's up to you</b></td><td>Sta a te / Decidi tu</td><td><i>Where should we go for dinner? It's up to you.</i></td></tr>
+                    <tr><td><b>Take your time</b></td><td>Prenditi tutto il tempo che ti serve</td><td><i>Don't rush the assignment; take your time.</i></td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Consiglio di Studio: Memorizzazione e Contesto</h3>
+                <p style="margin-bottom: 0;">
+                    Gli idioms non vanno mai memorizzati isolati o tramite liste mnemoniche astratte. Il modo migliore per assimilarli è studiarli all'interno del loro contesto d'uso naturale, osservando in quali situazioni i madrelingua li scelgono per rendere il discorso più vivido, colorito ed espressivo.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

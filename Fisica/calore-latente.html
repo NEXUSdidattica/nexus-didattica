@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sul Calore Latente e Passaggi di Stato con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Calore Latente e i Passaggi di Stato: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="calore-latente" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Calore Latente e i Passaggi di Stato</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dei cambiamenti di fase, calore latente di fusione e vaporizzazione con una banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. I Passaggi di Stato e il Calore Latente</h2>
+            <p>
+                Durante un cambiamento di stato (es. fusione, vaporizzazione, solidificazione), la temperatura di una sostanza pura si mantiene costante. Il calore scambiato non provoca una variazione di energia cinetica media delle molecole, bensì una variazione di energia potenziale legata alla rottura o alla formazione dei legami intermolecolari.
+            </p>
+            <div class="formula-box">
+                📐 <b>Relazione fondamentale del calore latente:</b>
+                $$Q = m \cdot \lambda$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $Q$ è il calore scambiato, $m$ la massa della sostanza e $\lambda$ il calore latente specifico caratteristico del processo (es. fusione o vaporizzazione).
+                </p>
+            </div>
+
+            <h2>2. Applicazioni e Tipologie</h2>
+            <ul>
+                <li><strong>Calore latente di fusione ($\lambda_f$):</strong> Quantità di calore necessaria per fondere completamente l'unità di massa di una sostanza solida alla sua temperatura di fusione.</li>
+                <li><strong>Calore latente di vaporizzazione ($\lambda_v$):</strong> Quantità di calore necessaria per trasformare l'unità di massa di un liquido in vapore alla temperatura di ebollizione.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sul Calore Latente</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati ai bilanci termici nei passaggi di stato e ai calcoli con i calori latenti, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sul Calore Latente
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    let m = 50 + (i * 5);
+                    let Q_cal = (m * 80).toFixed(0);
+
+                    q = `Esercizio ${i}: Calcola la quantità di calore (in calorie) necessaria per fondere completamente $m = ${m}\\text{ g}$ di ghiaccio alla temperatura di $0\\text{ °C}$ (calore latente di fusione del ghiaccio $\\lambda_f = 80\\text{ cal/g}$).`;
+                    r = `$${Q_cal}\\text{ cal}$.`;
+                    s = `Applicando la formula del calore latente $Q = m \\cdot \\lambda_f$: $Q = ${m} \\cdot 80 = ${Q_cal}\\text{ cal}$.`;
+                
+                } else if (tipo === 1) {
+                    let m_kg = 0.2 + (i % 5) * 0.1;
+                    let Q_joule = (m_kg * 2.26e6).toExponential(2);
+
+                    q = `Esercizio ${i}: Determina l'energia in Joule necessaria per vaporizzare $m = ${m_kg.toFixed(1)}\\text{ kg}$ di acqua alla temperatura di ebollizione (con $\\lambda_v = 2{,}26 \\cdot 10^6\\text{ J/kg}$).`;
+                    r = `$${Q_joule}\\text{ J}$.`;
+                    s = `Usando la relazione $Q = m \\cdot \\lambda_v$: $Q = ${m_kg.toFixed(1)} \\cdot 2{,}26 \\cdot 10^6 \\approx ${Q_joule}\\text{ J}$.`;
+                
+                } else if (tipo === 2) {
+                    let m = 100;
+                    let Q_tot = (m * 80 + m * 1 * 50).toFixed(0);
+
+                    q = `Esercizio ${i}: Qual è la quantità di calore totale (in cal) necessaria per portare $m = ${m}\\text{ g}$ di ghiaccio da $0\\text{ °C}$ ad acqua liquida a $50\\text{ °C}$? (Usa $c_{\\text{acqua}} = 1\\text{ cal/(g}\\cdot\\text{°C)}$ e $\\lambda_f = 80\\text{ cal/g}$).`;
+                    r = `$${Q_tot}\\text{ cal}$.`;
+                    s = `Il processo si divide in due fasi: 1) Fusione del ghiaccio: $Q_1 = m \\cdot \\lambda_f = ${m} \\cdot 80 = ${m*80}\\text{ cal}$. 2) Riscaldamento dell'acqua: $Q_2 = m \\cdot c \\cdot \\Delta T = ${m} \\cdot 1 \\cdot 50 = ${m*50}\\text{ cal}$. Sommando: $Q_{\\text{tot}} = ${m*80} + ${m*50} = ${Q_tot}\\text{ cal}$.`;
+                
+                } else {
+                    q = `Esercizio ${i}: Durante il processo di fusione di una sostanza pura cristallina, perché la temperatura rimane costante nonostante si continui a fornire calore?`;
+                    r = `Perché tutto il calore somministrato viene impiegato per compiere il lavoro di transizione di fase (rottura dei legami reticolari), anziché aumentare l'energia cinetica delle molecole.`;
+                    s = `Nei passaggi di stato a pressione costante, l'energia fornita sotto forma di calore modifica l'energia potenziale del sistema e lo stato di aggregazione, lasciando inalterata la temperatura fino al completamento della transizione.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

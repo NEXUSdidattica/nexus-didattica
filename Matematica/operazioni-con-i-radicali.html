@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Operazioni con i Radicali: addizione, sottrazione, moltiplicazione, divisione e potenza con 100 esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Operazioni con i Radicali - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+
+<body data-lesson-id="radicali-operazioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Radicali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Operazioni con i Radicali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Somma algebrica di radicali simili, moltiplicazione, divisione e potenza di radicali.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Addizione e Sottrazione di Radicali Simili</h2>
+            <p>Due o più radicali si dicono **simili** se hanno lo **stesso indice** e lo **stesso radicando**.</p>
+            <p>È possibile sommare o sottrarre **solo** radicali simili, raccogliendo a fattor comune la parte radicale e sommando i rispettivi coefficienti numerici:</p>
+
+            <div class="formula-box">
+                $$a\sqrt[n]{x} + b\sqrt[n]{x} = (a + b)\sqrt[n]{x}$$
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Errore Comune:</strong> $\sqrt{a} + \sqrt{b} \neq \sqrt{a + b}$.<br>
+                Ad esempio, $\sqrt{9} + \sqrt{16} = 3 + 4 = 7$, mentre $\sqrt{9 + 16} = \sqrt{25} = 5$.
+            </div>
+
+            <h2>2. Moltiplicazione e Divisione con lo Stesso Indice</h2>
+            <p>Se due radicali hanno lo **stesso indice**, il loro prodotto (o quoziente) è un radicale che ha per indice lo stesso indice e per radicando il prodotto (o quoziente) dei radicandi:</p>
+
+            <div class="formula-box">
+                $$\sqrt[n]{a} \cdot \sqrt[n]{b} = \sqrt[n]{a \cdot b} \qquad \text{e} \qquad \frac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\frac{a}{b}}$$
+            </div>
+
+            <h2>3. Moltiplicazione e Divisione con Indici Diversi</h2>
+            <p>Se i radicali hanno indici **diversi**, prima di eseguire la moltiplicazione o la divisione occorre **ridurli al minimo comune indice (m.c.i.)**.</p>
+
+            <div class="formula-box">
+                $$\sqrt[n]{a} \cdot \sqrt[m]{b} = \sqrt[I]{a^{I/n} \cdot b^{I/m}} \quad \text{con } I = \text{m.c.m.}(n, m)$$
+            </div>
+
+            <h2>4. Potenza di un Radicale</h2>
+            <p>Per elevare un radicale ad una potenza $k$, basta elevare a $k$ il suo radicando:</p>
+
+            <div class="formula-box">
+                $$\left(\sqrt[n]{a}\right)^k = \sqrt[n]{a^k}$$
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempi Guidati</h3>
+                <ol>
+                    <li><strong>Somma di radicali simili:</strong> $3\sqrt{2} + 5\sqrt{2} - 2\sqrt{2} = (3 + 5 - 2)\sqrt{2} = 6\sqrt{2}$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Moltiplicazione (stesso indice):</strong> $\sqrt{3} \cdot \sqrt{12} = \sqrt{3 \cdot 12} = \sqrt{36} = 6$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Moltiplicazione (indici diversi):</strong> $\sqrt{2} \cdot \sqrt[3]{2}$<br>
+                        $\text{m.c.m.}(2, 3) = 6 \implies \sqrt[6]{2^3} \cdot \sqrt[6]{2^2} = \sqrt[6]{2^3 \cdot 2^2} = \sqrt[6]{2^5} = \sqrt[6]{32}$.
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Operazioni con i Radicali</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+                
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                let tipoOp = i % 4; // 0: Somma, 1: Moltiplicazione stesso indice, 2: Moltiplicazione/Divisione indici diversi, 3: Potenza/Misto
+
+                if (tipoOp === 0) {
+                    // ADDIZIONE / SOTTRAZIONE DI RADICALI SIMILI
+                    let c1 = (i % 5) + 2;
+                    let c2 = (i % 4) + 1;
+                    let rad = (i % 3) === 0 ? 3 : ((i % 3) === 1 ? 2 : 5);
+
+                    if (i <= 35) {
+                        let coeffTot = c1 + c2;
+                        domanda = `Calcola la seguente somma algebrica: $${c1}\\sqrt{${rad}} + ${c2}\\sqrt{${rad}}$`;
+                        risposta = `${coeffTot}\\sqrt{${rad}}`;
+                        spiegazione = `1) I due radicali sono simili poichè hanno lo stesso indice ($2$) e lo stesso radicando ($${rad}$).<br>` +
+                                      `2) Sommiamo i coefficienti esterni: $(${c1} + ${c2})\\sqrt{${rad}} = ${coeffTot}\\sqrt{${rad}}$.`;
+                    } else {
+                        // Con scomposizione preventiva per renderli simili
+                        let val2 = rad * 4; // es. 2*4=8
+                        domanda = `Semplifica l'espressione riconducendo ai radicali simili: $\\sqrt{${val2}} + ${c1}\\sqrt{${rad}}$`;
+                        let coeffTot = 2 + c1;
+                        risposta = `${coeffTot}\\sqrt{${rad}}`;
+                        spiegazione = `1) Portiamo fuori il fattore da $\\sqrt{${val2}} = \\sqrt{4 \\cdot ${rad}} = 2\\sqrt{${rad}}$.<br>` +
+                                      `2) Riscriviamo l'espressione: $2\\sqrt{${rad}} + ${c1}\\sqrt{${rad}}$.<br>` +
+                                      `3) Sommiamo i radicali simili: $(2 + ${c1})\\sqrt{${rad}} = ${coeffTot}\\sqrt{${rad}}$.`;
+                    }
+                } else if (tipoOp === 1) {
+                    // MOLTIPLICAZIONE / DIVISIONE STESSO INDICE
+                    let a = (i % 4) + 2;
+                    let b = (i % 3) + 2;
+                    let prod = a * b;
+
+                    if (i <= 50) {
+                        domanda = `Esegui la moltiplicazione tra radicali con lo stesso indice: $\\sqrt{${a}} \\cdot \\sqrt{${b}}$`;
+                        risposta = `\\sqrt{${prod}}`;
+                        spiegazione = `1) Avendo lo stesso indice ($2$), moltiplichiamo direttamente i radicandi.<br>` +
+                                      `2) $\\sqrt{${a} \\cdot ${b}} = \\sqrt{${prod}}$.`;
+                    } else {
+                        domanda = `Esegui la divisione: $\\frac{\\sqrt{${prod}}}{\\sqrt{${a}}}$`;
+                        risposta = `\\sqrt{${b}}`;
+                        spiegazione = `1) Applicando la proprietà della divisione di radicali con lo stesso indice: $\\sqrt{\\frac{${prod}}{${a}}}$.<br>` +
+                                      `2) Calcoliamo il quoziente sotto radice: $\\sqrt{${b}}$.`;
+                    }
+                } else if (tipoOp === 2) {
+                    // MOLTIPLICAZIONE CON INDICI DIVERSI
+                    let base = 2;
+                    domanda = `Calcola il prodotto riducendo prima allo stesso indice: $\\sqrt{${base}} \\cdot \\sqrt[3]{${base}}$`;
+                    risposta = `\\sqrt[6]{32}`;
+                    spiegazione = `1) Il $\\text{m.c.m.}$ tra gli indici $2$ e $3$ è $6$.<br>` +
+                                  `2) Trasformiamo le radici: $\\sqrt{${base}} = \\sqrt[6]{${base}^3} = \\sqrt[6]{8}$ e $\\sqrt[3]{${base}} = \\sqrt[6]{${base}^2} = \\sqrt[6]{4}$.<br>` +
+                                  `3) Moltiplichiamo i radicandi: $\\sqrt[6]{8 \\cdot 4} = \\sqrt[6]{32}$.`;
+                } else {
+                    // POTENZA DI UN RADICALE
+                    let exp = (i % 3) + 2;
+                    domanda = `Calcola la potenza del radicale: $\\left(\\sqrt[4]{3}\\right)^{${exp}}$`;
+                    let radPot = Math.pow(3, exp);
+                    risposta = `\\sqrt[4]{${radPot}}`;
+                    spiegazione = `1) Eleviamo il radicando $3$ all'esponente $${exp}$: $3^{${exp}} = ${radPot}$.<br>` +
+                                  `2) Otteniamo il radicale: $\\sqrt[4]{${radPot}}$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Render MathJax dinamico
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

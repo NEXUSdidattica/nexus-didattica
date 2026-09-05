@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Solidi di Rotazione - Sezione 3: Il Tronco di Cono - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Tronco di Cono - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Solidi di Rotazione */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="solidi-rotazione-sezione-3" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Solidi di Rotazione - Sezione 3</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Tronco di Cono</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione, genesi geometrica per troncamento o rotazione di un trapezio rettangolo, formule di superficie e volume, accompagnate da 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è un Tronco di Cono e come si genera?</h2>
+            <p>
+                Un <strong>tronco di cono</strong> a basi parallele è la parte di cono compresa tra la base e un piano secante parallelo alla base stessa. Geometricamente, si può anche considerare come il solido generato dalla rotazione completa di un <code>trapezio rettangolo</code> attorno al suo lato perpendicolare alle basi (l'altezza del tronco).
+            </p>
+            <p>
+                Gli elementi fondamentali del tronco di cono sono:
+            </p>
+            <ul>
+                <li><strong>Base inferiore (A<sub>1</sub>):</strong> il cerchio maggiore di raggio <em>R</em>.</li>
+                <li><strong>Base superiore (A<sub>2</sub>):</strong> il cerchio minore di raggio <em>r</em>.</li>
+                <li><strong>Superficie laterale (S<sub>L</sub>):</strong> la superficie tronco-conica che unisce le circonferenze delle due basi.</li>
+                <li><strong>Altezza (h):</strong> la distanza perpendicolare tra i piani delle due basi.</li>
+                <li><strong>Apotema (a):</strong> il segmento generatore compreso tra i bordi delle due basi.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Tronco di Cono) -->
+            <div class="figura-geometrica-container">
+                <svg width="460" height="320" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="460" height="320" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    <!-- Base inferiore -->
+                    <ellipse cx="230" cy="250" rx="110" ry="35" fill="#93c5fd" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <!-- Corpo tronco di cono -->
+                    <path d="M 150,90 L 120,250 A 110,35 0 0,0 340,250 L 310,90" fill="#dbeafe" stroke="none"/>
+                    <line x1="150" y1="90" x2="120" y2="250" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <line x1="310" y1="90" x2="340" y2="250" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <!-- Base superiore -->
+                    <ellipse cx="230" cy="90" rx="80" ry="25" fill="#bfdbfe" stroke="#1e3a8a" stroke-width="2.5"/>
+                    
+                    <!-- Linee di quota (Raggio maggiore R, Raggio minore r, Altezza h) -->
+                    <line x1="230" y1="250" x2="340" y2="250" stroke="#0284c7" stroke-width="2.5"/>
+                    <circle cx="230" cy="250" r="3.5" fill="#0284c7"/>
+                    
+                    <line x1="230" y1="90" x2="310" y2="90" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="4,3"/>
+                    <circle cx="230" cy="90" r="3.5" fill="#0284c7"/>
+
+                    <line x1="370" y1="90" x2="370" y2="250" stroke="#ea580c" stroke-width="2.5"/>
+                    <line x1="365" y1="90" x2="375" y2="90" stroke="#ea580c" stroke-width="2.5"/>
+                    <line x1="365" y1="250" x2="375" y2="250" stroke="#ea580c" stroke-width="2.5"/>
+
+                    <text x="270" y="275" fill="#0284c7" font-family="Arial, sans-serif" font-weight="bold" font-size="13">Raggio Maggiori (R)</text>
+                    <text x="250" y="75" fill="#0284c7" font-family="Arial, sans-serif" font-weight="bold" font-size="13">raggio minore (r)</text>
+                    <text x="380" y="175" fill="#ea580c" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Altezza (h)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Tronco di cono con raggio maggiore <code style="color:#0284c7;">R</code>, raggio minore <code style="color:#0284c7;">r</code> e altezza <code style="color:#ea580c;">h</code>.
+                </div>
+            </div>
+
+            <h2>2. Formule Fondamentali del Tronco di Cono</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Principali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Area base inferiore (A<sub>1</sub>):</strong> A<sub>1</sub> = &pi; &middot; R<sup>2</sup><br>
+                    &bull; <strong>Area base superiore (A<sub>2</sub>):</strong> A<sub>2</sub> = &pi; &middot; r<sup>2</sup><br>
+                    &bull; <strong>Apotema (a):</strong> a = &radic;[h<sup>2</sup> + (R - r)<sup>2</sup>]<br>
+                    &bull; <strong>Superficie laterale (S<sub>L</sub>):</strong> S<sub>L</sub> = &pi; &middot; (R + r) &middot; a<br>
+                    &bull; <strong>Superficie totale (S<sub>T</sub>):</strong> S<sub>T</sub> = S<sub>L</sub> + A<sub>1</sub> + A<sub>2</sub> = S<sub>L</sub> + &pi; &middot; R<sup>2</sup> + &pi; &middot; r<sup>2</sup><br>
+                    &bull; <strong>Volume (V):</strong> V = (&pi; &middot; h / 3) &middot; (R<sup>2</sup> + r<sup>2</sup> + R &middot; r)
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un tronco di cono ha il raggio di base maggiore di <code>10 cm</code>, il raggio di base minore di <code>4 cm</code> e l'altezza di <code>8 cm</code>. Calcola l'apotema e il volume del solido (esprimi il volume in funzione di &pi;).</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la differenza dei raggi: <code>R - r = 10 - 4 = 6 cm</code>.</li>
+                    <li>Troviamo l'apotema con il Teorema di Pitagora: <code>a = &radic;[h<sup>2</sup> + (R - r)<sup>2</sup>] = &radic;[8<sup>2</sup> + 6<sup>2</sup>] = &radic;[64 + 36] = &radic;100 = 10 cm</code>.</li>
+                    <li>Calcoliamo il volume con la formula specifica: <code>V = (&pi; &middot; h / 3) &middot; (R<sup>2</sup> + r<sup>2</sup> + R &middot; r)</code>.</li>
+                    <li>Sostituiamo i valori numerici: <code>V = (&pi; &middot; 8 / 3) &middot; (10<sup>2</sup> + 4<sup>2</sup> + 10 &middot; 4) = (&pi; &middot; 8 / 3) &middot; (100 + 16 + 40) = (&pi; &middot; 8 / 3) &middot; 156</code>.</li>
+                    <li>Semplifichiamo: <code>156 / 3 = 52</code>, quindi <code>V = 8 &middot; 52&pi; = 416&pi; cm<sup>3</sup></code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Apotema = 10 cm, Volume = 416&pi; cm³.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Tronco di Cono</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico su apotema, superfici e volumi di tronchi di cono con soluzioni dettagliate passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let R = (i % 3) + 6; // Raggio maggiore tra 6 e 8
+                    let r = 2;           // Raggio minore fisso a 2
+                    let h = 4;           // Altezza fissa a 4
+                    let diffR = R - r;
+                    let a = Math.sqrt(h * h + diffR * diffR);
+                    let sl = (R + r) * a;
+
+                    domanda = `Un tronco di cono ha il raggio di base maggiore di <code>${R} cm</code>, il raggio minore di <code>${r} cm</code> e l'altezza di <code>${h} cm</code>. Calcola la lunghezza dell'apotema del solido.`;
+                    risposta = `<strong>a = ${a} cm</strong>`;
+                    spiegazione = `
+                    1) Calcoliamo la differenza dei raggi: <code>R - r = ${R} - ${r} = ${diffR} cm</code>.<br>
+                    2) Applichiamo il Teorema di Pitagora: <code>a = &radic;[h<sup>2</sup> + (R - r)<sup>2</sup>] = &radic;[${h}<sup>2</sup> + ${diffR}<sup>2</sup>] = &radic;[${h*h} + ${diffR*diffR}] = &radic;${h*h + diffR*diffR} = ${a} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let R = 9;
+                    let r = 3;
+                    let h = 4;
+                    let diffR = R - r;
+                    let a = 5;
+                    let sl = (R + r) * a;
+
+                    domanda = `Un tronco di cono ha il raggio di base maggiore di <code>${R} cm</code>, il raggio minore di <code>${r} cm</code> e l'apotema di <code>${a} cm</code>. Calcola la superficie laterale del solido (esprimi il risultato in funzione di &pi;).`;
+                    risposta = `<strong>S<sub>L</sub> = ${sl}&pi; cm²</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula della superficie laterale: <code>S<sub>L</sub> = &pi; &times; (R + r) &times; a</code>.<br>
+                    2) Sostituiamo i dati: <code>S<sub>L</sub> = &pi; &times; (${R} + ${3}) &times; ${a} = &pi; &times; 12 &times; ${a} = ${sl}&pi; cm<sup>2</sup></code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let R = 10;
+                    let r = 4;
+                    let h = 8;
+                    let volVal = 416; // Valore pulito in funzione di pi greco
+
+                    domanda = `Un tronco di cono ha il raggio di base maggiore di <code>${R} cm</code>, il raggio minore di <code>${r} cm</code> e l'altezza di <code>${h} cm</code>. Calcola il volume del solido (esprimi il risultato in funzione di &pi;).`;
+                    risposta = `<strong>V = ${volVal}&pi; cm³</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula del volume: <code>V = (&pi; &times; h / 3) &times; (R<sup>2</sup> + r<sup>2</sup> + R &times; r)</code>.<br>
+                    2) Sostituiamo i dati: <code>V = (&pi; &times; 8 / 3) &times; (10<sup>2</sup> + 4<sup>2</sup> + 10 &times; 4) = (&pi; &times; 8 / 3) &times; (100 + 16 + 40) = (&pi; &times; 8 / 3) &times; 156</code>.<br>
+                    3) Semplificiamo 156 / 3 = 52, quindi <code>V = 8 &times; 52&pi; = ${volVal}&pi; cm<sup>3</sup></code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

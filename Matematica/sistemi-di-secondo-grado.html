@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa ai Sistemi di Secondo Grado: teoria di tutti i metodi (sostituzione, simmetrici, omogenei), interpretazione grafica e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi di Secondo Grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.8; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.8rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1.2rem; margin: 1.2rem 0; font-size: 1.05rem; overflow-x: auto; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="sistemi-secondo-grado" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Sistemi di Secondo Grado</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida definitiva a tutti i metodi di risoluzione (sostituzione, simmetrici elementari, omogenei), interpretazione geometrica e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è un Sistema di Secondo Grado?</h2>
+            <p>Un sistema si dice di secondo grado quando il <strong>grado complessivo</strong> del sistema è pari a 2. Il grado di un'equazione all'interno del sistema è dato dalla somma massima degli esponenti delle incognite in ciascun termine. Tipicamente, affrontiamo sistemi composti da un'equazione di 1° grado e una di 2° grado (o due equazioni di 2° grado).</p>
+            
+            <div class="formula-box">
+                $$\begin{cases} x + y = 5 \\ x^2 + y^2 = 13 \end{cases}$$
+            </div>
+
+            <h2>2. Metodo Generale: Il Metodo di Sostituzione</h2>
+            <p>Il metodo di sostituzione è universale e si applica a qualsiasi tipo di sistema non lineare:</p>
+            <ol>
+                <li>Si ricava un'incognita (preferibilmente di 1° grado) da una delle due equazioni (spesso la prima).</li>
+                <li>Si sostituisce l'espressione così ottenuta all'interno dell'altra equazione (quella di 2° grado).</li>
+                <li>Si sviluppa l'equazione risultante in un'unica incognita, riducendola in forma normale (\(ax^2 + bx + c = 0\)).</li>
+                <li>Si risolve l'equazione di secondo grado trovando i valori dell'incognita.</li>
+                <li>Si rientra nell'equazione di primo grado per calcolare i corrispondenti valori dell'altra incognita, formando le coppie di soluzioni \((x, y)\).</li>
+            </ol>
+
+            <h2>3. Metodi Particolari e Speciali</h2>
+            
+            <h3>A. Sistemi Simmetrici Elementari</h3>
+            <p>Un sistema si dice simmetrico se, scambiando tra loro le incognite \(x\) ed \(y\), le equazioni non cambiano. La forma elementare presenta la somma \(S = x + y\) e il prodotto P = xy:</p>
+            <div class="formula-box">
+                $$\begin{cases} x + y = S \\ xy = P \end{cases}$$
+            </div>
+            <p><strong>Risoluzione:</strong> Si impostano come radici di un'equazione ausiliaria di secondo grado in una nuova variabile \(t\):</p>
+            <div class="formula-box">
+                $$t^2 - St + P = 0$$
+            </div>
+            <p>Le due soluzioni \(t_1\) e \(t_2\) dell'equazione ausiliaria rappresentano direttamente i valori di \(x\) ed \(y\) (tenendo conto della simmetria delle coppie \((t_1, t_2)\) e \((t_2, t_1)\)).</p>
+
+            <h3>B. Sistemi Omogenei di Secondo Grado</h3>
+            <p>Un sistema in cui tutti i termini letterali dell'equazione di secondo grado sono di 2° grado (mentre il termine noto è zero o costante) si dice omogeneo. Un trucco risolutivo classico consiste nel porre \(y = z \cdot x\) oppure nel combinare algebricamente le equazioni per eliminare i termini di secondo grado, riconducendo il sistema a una scomposizione in fattori o a equazioni lineari fratte.</p>
+
+            <h2>4. Interpretazione Geometrica</h2>
+            <p>Risolvere un sistema di secondo grado nel piano cartesiano significa trovare le <strong>coordinate dei punti di intersezione</strong> tra curve geometriche elementari:</p>
+            <ul>
+                <li>Una retta e una parabola.</li>
+                <li>Una retta e una circonferenza (o un'ellisse / un'iperbole).</li>
+                <li>Due parabole o due circonferenze.</li>
+            </ul>
+            <p>Il numero di soluzioni reali del sistema corrisponde esattamente al numero di punti in cui le due curve si intersecano nel piano.</p>
+
+            <div class="formula-box">
+                <strong>Esempio Svolto (Metodo di Sostituzione):</strong><br>
+                Risolviamo il sistema:
+                $$\begin{cases} x - y = 1 \\ x^2 + y^2 = 25 \end{cases}$$
+                <p><em>1. Ricaviamo \(x\) dalla prima equazione:</em> \(x = y + 1\).</p>
+                <p><em>2. Sostituiamo nella seconda:</em> \((y + 1)^2 + y^2 = 25 \implies y^2 + 2y + 1 + y^2 = 25 \implies 2y^2 + 2y - 24 = 0\).</p>
+                <p><em>3. Semplifichiamo dividendo per 2:</em> \(y^2 + y - 12 = 0\).</p>
+                <p><em>4. Troviamo le radici con la formula o scomponendo:</em> \((y + 4)(y - 3) = 0 \implies y_1 = -4, \, y_2 = 3\).</p>
+                <p><em>5. Troviamo le \(x\) corrispondenti tramite la relazione \(x = y + 1\):</em></p>
+                <ul>
+                    <li>Se \(y_1 = -4 \implies x_1 = -4 + 1 = -3\) (Soluzione: \((-3, -4)\)).</li>
+                    <li>Se \(y_2 = 3 \implies x_2 = 3 + 1 = 4\) (Soluzione: \((4, 3)\)).</li>
+                </ul>
+                <p><strong>Soluzioni finali:</strong> \((-3, -4)\) e \((4, 3)\).</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Sistemi di Secondo Grado)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let solX = (i % 3) + 1;
+                let solY = (i % 4) + 2;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE (Retta - Parabola)';
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO (Simmetrici Elementari)';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (Omogenei o 2° Grado Completo)';
+                }
+
+                let somma = solX + solY;
+                let prodotto = solX * solY;
+                let domanda = "Risolvi il sistema di secondo grado:<br>\\(\\begin{cases} x + y = " + somma + " \\\\ xy = " + prodotto + " \\end{cases}\\)";
+                let risposta = "\\(" + "(" + solX + ", " + solY + "), \\, (" + solY + ", " + solX + ")" + "\\)";
+                let spiegazione = "1) Riconosciamo un sistema simmetrico elementare.<br>2) Impostiamo l'equazione ausiliaria in \\(t\\): \\(t^2 - " + somma + "t + " + prodotto + " = 0\\).<br>3) Troviamo le radici \\(t_1 = " + solX + "\\) e \\(t_2 = " + solY + "\\).<br>4) Concludiamo con le coppie simmetriche.";
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzioni:</strong> ${risposta}</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

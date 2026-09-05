@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le aldeidi e i chetoni in chimica organica: gruppo carbonilico, nomenclatura IUPAC, proprietà fisiche e differenza fondamentale spiegata bene - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le aldeidi e i chetoni - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* STILE BOX DISEGNI / SCHEMA TESTUALE */
+        .schema-disegno {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: monospace;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+            font-size: 0.92rem;
+            border: 1px solid var(--colore-primario);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .schema-disegno .evidenziato {
+            color: var(--colore-primario);
+            font-weight: bold;
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow-x: auto;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="le-aldeidi-e-i-chetoni" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar-container">
+            <div class="hotbar">
+                <a href="../index.html" class="logo-link">
+                    <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+                </a>
+
+                <h1>NEXUS didattica</h1>
+
+                <nav class="navbar">
+                    <a href="../index.html">Home</a>
+                    <a href="../chi_siamo.html">Chi Siamo</a>
+                    <a href="../materie.html" class="active">Materie</a>
+                    <a href="../contatti.html">Contatti</a>
+                    <a href="../admin.html" id="admin-link"
+                        style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                        Pannello Admin 👑
+                    </a>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica Organica / Aldeidi e Chetoni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin: 0.5rem 0 0.5rem 0;">Le Aldeidi e i Chetoni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio dei composti contenenti il gruppo carbonilico ($\text{C=O}$): disegni strutturali, nomenclatura IUPAC, proprietà fisiche e la spiegazione dettagliata della differenza fondamentale tra le due classi.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Gruppo Carbonilico</h2>
+            <p>
+                Sia le aldeidi che i chetoni contengono il <strong>gruppo carbonilico</strong>, costituito da un atomo di carbonio legato a un atomo di ossigeno mediante un doppio legame ($\text{C=O}$). L'ossigeno, essendo molto più elettronegativo del carbonio, attira verso di sé gli elettroni del legame pi greco, rendendo il carbonio parzialmente positivo ($\delta^+$) e l'ossigeno parzialmente negativo ($\delta^-$). Questa polarizzazione determina la reattività tipica di entrambe le famiglie.
+            </p>
+
+            <h2>2. La Differenza Fondamentale (Spiegata Bene)</h2>
+            <p>
+                Anche se entrambi i gruppi funzionali contengono un carbonile ($\text{C=O}$), la differenza strutturale e chimica tra un'aldeide e un chetone risiede esclusivamente <strong>nello "spazio" in cui si trova il carbonile lungo la catena carbonica e nei legami a cui è soggetto il carbonio del carbonile stesso</strong>:
+            </p>
+            <ul>
+                <li>
+                    <strong>Nelle Aldeidi ($\text{R-CHO}$):</strong> Il gruppo carbonilico si trova sempre <strong>all'estremità (terminale)</strong> della catena carbonica. Di conseguenza, il carbonio del carbonile è legato obbligatoriamente ad <strong>almeno un atomo di idrogeno</strong> ($\text{-H}$) e dall'altra parte a una catena alchilica $\text{R}$ (oppure a un secondo idrogeno nel caso della formaldeide/metanale).
+                </li>
+                <li>
+                    <strong>Nei Chetoni ($\text{R-CO-R'}$):</strong> Il gruppo carbonilico si trova <strong>all'interno</strong> della catena carbonica (in posizione non terminale). Di conseguenza, il carbonio del carbonile è legato contemporaneamente a <strong>due atomi di carbonio</strong> appartenenti a due gruppi alchilici o arilici ($\text{R}$ e $\text{R'}$). Non può mai trovarsi all'estremità e non ha legami diretti con l'idrogeno carbonilico.
+                </li>
+            </ul>
+
+            <div class="schema-disegno">
+                <span class="evidenziato">DISEGNO CONFRONTO DIRETTO: ALDEIDE vs CHETONE</span><br><br>
+                <span style="color: #94a3b8;">-- ALDEIDE (Carbonile Terminale) --</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;R — <span class="evidenziato">C</span> == O &nbsp;&nbsp;&nbsp;&nbsp;<i>(Il carbonio carbonilico è legato a un H)</i><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H<br><br>
+                <span style="color: #94a3b8;">-- CHETONE (Carbonile Interno) --</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;R — <span class="evidenziato">C</span> — R'<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;(Il carbonio carbonilico è stretto tra due catene R e R')
+            </div>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">🔍 Perché questa differenza è cruciale in chimica?</h3>
+                <p style="margin-bottom: 0;">
+                    La presenza di quell'atomo di idrogeno direttamente legato al carbonile nelle <strong>aldeidi</strong> le rende estremamente sensibili all'ossidazione: le aldeidi si ossidano facilmente trasformandosi in acidi carbossilici. I <strong>chetoni</strong>, avendo il carbonio carbonilico occupato da due catene carboniche ($\text{R}$ e $\text{R'}$), non possiedono quell'idrogeno e oppongono una forte resistenza all'ossidazione. Questa proprietà permette di distinguere facilmente le due classi in laboratorio (es. tramite il saggio di Tollens o di Fehling).
+                </p>
+            </div>
+
+            <h2>3. Nomenclatura IUPAC</h2>
+            
+            <h3>Nomenclatura delle Aldeidi</h3>
+            <p>
+                Per le aldeidi si prende come riferimento la catena più lunga contenente il carbonio del gruppo carbonilico (che occupa sempre la posizione numero 1). Si sostituisce la terminazione <em>-o</em> dell'alcano corrispondente con il suffisso <strong>-ale</strong> (es. <em>etanale</em> per $\text{CH}_3\text{CHO}$).
+            </p>
+
+            <h3>Nomenclatura dei Chetoni</h3>
+            <p>
+                Per i chetoni si individua la catena continua più lunga che contiene il gruppo carbonilico. Si sostituisce la terminazione dell'alcano con il suffisso <strong>-one</strong> e si numera la catena a partire dall'estremità più vicina al carbonile, indicando la sua posizione con un numero (es. <em>pentan-2-one</em>).
+            </p>
+
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Formula Molecolare / Strutturale</th>
+                        <th>Nome IUPAC</th>
+                        <th>Classe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$\text{HCHO}$</td>
+                        <td>Metanale (Formaldeide)</td>
+                        <td>Aldeide</td>
+                    </tr>
+                    <tr>
+                        <td>$\text{CH}_3\text{CHO}$</td>
+                        <td>Etanale (Aproaldeide / Acetaldeide)</td>
+                        <td>Aldeide</td>
+                    </tr>
+                    <tr>
+                        <td>$\text{CH}_3\text{COCH}_3$</td>
+                        <td>Propanone (Acetone)</td>
+                        <td>Chetone</td>
+                    </tr>
+                    <tr>
+                        <td>$\text{CH}_3\text{COCH}_2\text{CH}_3$</td>
+                        <td>Butan-2-one (Etilmetilchetone)</td>
+                        <td>Chetone</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>4. Proprietà Fisiche</h2>
+            <p>
+                A causa del forte dipolo del gruppo carbonilico ($\text{C=O}$), le aldeidi e i chetoni presentano forze intermolecolari di tipo dipolo-dipolo più intense rispetto agli idrocarburi o agli eteri di pari massa molecolare. Di conseguenza, i loro punti di ebollizione sono più alti di questi ultimi, ma inferiori a quelli degli alcoli corrispondenti poiché <strong>non possono formare legami a idrogeno tra molecole di se stesse</strong> (non avendo atomi di idrogeno legati a un atomo fortemente elettronegativo come l'ossigeno).
+            </p>
+            <p>
+                Tuttavia, i composti a basso peso molecolare (come la formaldeide, l'acetaldeide e l'acetone) sono perfettamente miscibili in acqua perché l'ossigeno carbonilico è in grado di accettare legami a idrogeno dalle molecole d'acqua circostanti.
+            </p>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

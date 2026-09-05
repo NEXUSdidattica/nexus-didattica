@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa allo studio della Periodicità di una funzione e calcolo del periodo minimo con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Periodicità - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-periodicita" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Periodicità di una Funzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio delle funzioni periodiche, individuazione del periodo fondamentale \(T\) e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Cos'è una Funzione Periodica</h2>
+            <p>Una funzione reale di variabile reale \(y = f(x)\) si dice <strong>periodica</strong> di periodo \(T > 0\) se, per ogni \(x\) appartenente al dominio, anche \(x + T\) appartiene al dominio e risulta:</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[f(x + T) = f(x)\]
+            </div>
+
+            <p>Il più piccolo valore positivo \(T\) per cui vale tale relazione è detto <strong>periodo fondamentale</strong> (o semplicemente periodo) della funzione.</p>
+
+            <div class="box-evidenza">
+                <h3>💡 Regole Chiave per il Calcolo del Periodo</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Funzioni Elementari:</strong> Le funzioni \(\sin(x)\), \(\cos(x)\), \(\sec(x)\) e \(\csc(x)\) hanno periodo fondamentale \(T = 2\pi\). Le funzioni \(\tan(x)\) e \(\cot(x)\) hanno periodo \(T = \pi\).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Argomento Moltiplicato (\(\omega x\)):</strong> Se una funzione elementare ha un argomento del tipo \(f(\omega x)\) (con \(\omega > 0\)), il nuovo periodo fondamentale si calcola con la formula:
+                        \[T = \frac{T_0}{\omega}\]
+                        dove \(T_0\) è il periodo della funzione originaria (\(2\pi\) o \(\pi\)).
+                    </li>
+                    <li><strong>Somma di Funzioni Periodiche:</strong> Se una funzione è data dalla somma di più funzioni periodiche con periodi \(T_1, T_2, \dots\), il periodo complessivo della funzione (se esiste) è dato dal minimo comune multiplo (\(\text{m.c.m.}\)) dei singoli periodi. Se i rapporti tra i periodi non sono numeri razionali, la funzione non è periodica.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Periodicità</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta completa di 100 esercizi interamente svolti, dai seni e coseni con argomenti scalati alle combinazioni lineari e alle funzioni trigonometriche avanzate.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sulla periodicità -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Seni e coseni con coefficiente intero semplice della x
+                        difficolta = "facile";
+                        const tipo = n % 4;
+                        const k = (n % 5) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina il periodo fondamentale della funzione \\(f(x) = \\sin(${k}x)\\).`;
+                            risultato = `\\(T = \\frac{2\\pi}{${k}}\\)`;
+                            spiegazione = `La funzione seno standard ha periodo \\(T_0 = 2\\pi\\). Per una funzione del tipo \\(\\sin(\\omega x)\\), il periodo è dato da \\(T = \\frac{2\\pi}{\\omega}\\).\nIn questo caso \\(\\omega = ${k}\\), quindi \\(T = \\frac{2\\pi}{${k}}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina il periodo fondamentale della funzione \\(f(x) = \\cos(${k}x)\\).`;
+                            risultato = `\\(T = \\frac{2\\pi}{${k}}\\)`;
+                            spiegazione = `La funzione coseno standard ha periodo \\(T_0 = 2\\pi\\). Applicando la formula del cambio di argomento con \\(\\omega = ${k}\\), si ottiene \\(T = \\frac{2\\pi}{${k}}\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina il periodo della funzione trigonometrica \\(f(x) = \\tan(${k}x)\\).`;
+                            risultato = `\\(T = \\frac{\\pi}{${k}}\\)`;
+                            spiegazione = `La funzione tangente standard ha periodo fondamentale \\(T_0 = \\pi\\). Dividendo per il coefficiente \\(\\omega = ${k}\\), otteniamo \\(T = \\frac{\\pi}{${k}}\\).`;
+                        } else {
+                            domanda = `Determina il periodo della funzione \\(f(x) = 3\\sin(${k}x) - 5\\cos(${k}x)\\).`;
+                            risultato = `\\(T = \\frac{2\\pi}{${k}}\\)`;
+                            spiegazione = `I singoli addendi trigonometrici hanno lo stesso coefficiente dell'argomento \\(\\omega = ${k}\\). Entrambi i termini sono periodici di periodo \\(T = \\frac{2\\pi}{${k}}\\), dunque l'intera combinazione lineare mantiene lo stesso periodo fondamentale.`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni con frazioni nell'argomento, quadrati trigonometrici o somme di funzioni con periodi diversi
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const num = (n % 3) + 1;
+                        const den = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina il periodo fondamentale della funzione \\(f(x) = \\sin\\left( \\frac{${num}}{${den}} x \\right)\\).`;
+                            risultato = `\\(T = \\frac{${2 * den}\\pi}{${num}}\\)`;
+                            spiegazione = `Il coefficiente dell'argomento è \\(\\omega = \\frac{${num}}{${den}}\\).\nApplicando la formula del periodo \\(T = \\frac{2\\pi}{\\omega}\\):\n\\[T = \\frac{2\\pi}{\\frac{${num}}{${den}}} = 2\\pi \\cdot \\frac{${den}}{${num}} = \\frac{${2 * den}\\pi}{${num}}\\]`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina il periodo della funzione \\(f(x) = \\cos^2(x)\\). (Nota: \\(\\cos^2(x) = \\frac{1 + \\cos(2x)}{2}\\))`;
+                            risultato = `\\(T = \\pi\\)`;
+                            spiegazione = `Utilizzando la formula di duplicazione \\(\\cos^2(x) = \\frac{1 + \\cos(2x)}{2}\\), la funzione si riscrive come una costante più \\(\\frac{1}{2}\\cos(2x)\\).\nIl termine \\(\\cos(2x)\\) ha frequenza \\(\\omega = 2\\), per cui il periodo è \\(T = \\frac{2\\pi}{2} = \\pi\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina il periodo della funzione \\(f(x) = \\sin(3x) + \\cos(2x)\\).`;
+                            risultato = `\\(T = 2\\pi\\)`;
+                            spiegazione = `1. Il primo addendo \\(\\sin(3x)\\) ha periodo \\(T_1 = \\frac{2\\pi}{3}\\).\n2. Il secondo addendo \\(\\cos(2x)\\) ha periodo \\(T_2 = \\frac{2\\pi}{2} = \\pi\\).\n3. Il periodo complessivo si ottiene calcolando il minimo comune multiplo tra i due periodi: \\(\\text{m.c.m.}\\left(\\frac{2\\pi}{3}, \\pi\\right) = 2\\pi\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina il periodo della funzione \\(f(x) = |\\sin(x)|\\).`;
+                            risultato = `\\(T = \\pi\\)`;
+                            spiegazione = `Il valore assoluto ribalta i semiarchi negativi del seno sull'asse positivo, raddoppiando la frequenza delle onde visibili nel grafico. Il periodo fondamentale si dimezza quindi da \\(2\\pi\\) a \\(\\pi\\).`;
+                        } else {
+                            domanda = `Determina il periodo della funzione \\(f(x) = \\sin(4x) + \\tan(2x)\\).`;
+                            risultato = `\\(T = \\pi\\)`;
+                            spiegazione = `1. Il periodo del seno è \\(T_1 = \\frac{2\\pi}{4} = \\frac{\\pi}{2}\\).\n2. Il periodo della tangente è \\(T_2 = \\frac{\\pi}{2}\\).\n3. Il \\(\\text{m.c.m.}\\left(\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right) = \\frac{\\pi}{2}\\)? Attenzione: verifichiamo la compatibilità. Con \\(T = \\pi\\) (che è un multiplo comune), entrambi i cicli si chiudono perfettamente: \\(\\pi\\) è il periodo fondamentale comune.`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni con argomenti complessi, composizioni di funzioni e combinazioni avanzate
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina il periodo della funzione trigonometrica composta:\n\\[f(x) = \\cos(${k}x - \\frac{\\pi}{3})\\]`;
+                            risultato = `\\(T = \\frac{2\\pi}{${k}}\\)`;
+                            spiegazione = `La presenza di una traslazione orizzontale (la fase \\(-\\frac{\\pi}{3}\\)) non altera la periodicità della funzione.\nIl periodo dipende unicamente dal coefficiente dell'argomento \\(\\omega = ${k}\\):\n\\[T = \\frac{2\\pi}{${k}}\\]`;
+                        } else if (tipo === 1) {
+                            domanda = `Stabilisci se la seguente funzione è periodica e, in caso affermativo, trovale il periodo:\n\\[f(x) = \\sin(x^2)\\]`;
+                            risultato = `NON È PERIODICA`;
+                            spiegazione = `Verifichiamo la condizione di periodicità \\(\\sin((x+T)^2) = \\sin(x^2)\\).\nEspandendo l'argomento si ottiene \\((x+T)^2 = x^2 + 2xT + T^2\\). Poiché la fase dipende da \\(x\\) tramite il termine \\(2xT\\), non esiste alcuna costante indipendente \\(T > 0\\) tale che l'equazione sia identicamente soddisfatta per ogni \\(x\\). La funzione non è periodica.`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina il periodo fondamentale della funzione:\n\\[f(x) = \\sin(${k}x) \\cdot \\cos(${k}x)\\]`;
+                            risultato = `\\(T = \\frac{\\pi}{${k}}\\)`;
+                            spiegazione = `Sfruttando la formula di duplicazione del seno \\(\\sin(2\\alpha) = 2\\sin(\\alpha)\\cos(\\alpha)\\), possiamo riscrivere la funzione come:\n\\[f(x) = \\frac{1}{2} \\cdot 2\\sin(${k}x)\\cos(${k}x) = \\frac{1}{2} \\sin(2 \\cdot ${k}x) = \\frac{1}{2} \\sin(${2 * k}x)\\]\nIl nuovo coefficiente dell'argomento è \\(\\omega = ${2 * k}\\), per cui il periodo è:\n\\[T = \\frac{2\\pi}{${2 * k}} = \\frac{\\pi}{${k}}\\]`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina il periodo della funzione:\n\\[f(x) = \\cos(${k}x) + \\sin\\left(\\frac{${k}}{2}x\\right)\\]`;
+                            risultato = `\\(T = \\frac{4\\pi}{${k}}\\)`;
+                            spiegazione = `1. Il periodo del primo termine è \\(T_1 = \\frac{2\\pi}{${k}}\\).\n2. Il periodo del secondo termine è \\(T_2 = \\frac{2\\pi}{\\frac{${k}}{2}} = \\frac{4\\pi}{${k}}\\).\n3. Calcoliamo il \\(\\text{m.c.m.}\\) tra le due frazioni periodiche. Poiché \\(\\frac{4\\pi}{${k}}\\) è un multiplo intero di \\(\\frac{2\\pi}{${k}}\\) (esattamente \\(2 \\cdot \\frac{2\\pi}{${k}}\\)), il periodo fondamentale della somma è \\(T = \\frac{4\\pi}{${k}}\\).`;
+                        } else {
+                            domanda = `Studia la periodicità della funzione trigonometrica avanzata:\n\\[f(x) = \\tan(${k}x) + \\cot(x)\\]`;
+                            risultato = `\\(T = \\pi\\)`;
+                            spiegazione = `1. Il periodo di \\(\\tan(${k}x)\\) è \\(T_1 = \\frac{\\pi}{${k}}\\) (che per \\(k \\ge 2\\) divide \\(\\pi\\) in parti intere).\n2. Il periodo di \\(\\cot(x)\\) è \\(T_2 = \\pi\\).\n3. Il minimo comune multiplo tra \\(\\frac{\\pi}{${k}}\\) e \\(\\pi\\) è proprio \\(\\pi\\), poiché \\(\\pi\\) è un multiplo intero di \\(\\frac{\\pi}{${k}}\\) (pari a \\(k \\cdot \\frac{\\pi}{${k}}\\)). La funzione è periodica di periodo \\(T = \\pi\\).`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

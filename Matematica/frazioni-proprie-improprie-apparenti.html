@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla Classificazione delle Frazioni: Proprie, Improprie e Apparenti con 100 Esercizi Svolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Frazioni Proprie, Improprie e Apparenti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-frazioni-proprie-improprie-apparenti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Frazioni Proprie, Improprie e Apparenti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Classificazione delle frazioni, confronto con l'unità, trasformazione in numeri misti e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Classificazione delle Frazioni</h2>
+            <p>
+                In base al rapporto tra il <strong>numeratore (a)</strong> e il <strong>denominatore (b)</strong>, le frazioni si dividono in tre categorie principali:
+            </p>
+
+            <ul>
+                <li>
+                    <strong>Frazioni Proprie:</strong> Il numeratore è <em>minore</em> del denominatore (<code>a < b</code>). Rappresentano sempre una quantità <strong>minore dell'intero ( < 1 )</strong>.<br>
+                    <em>Esempi:</em> <code><sup>3</sup>/<sub>5</sub></code>, <code><sup>2</sup>/<sub>9</sub></code>, <code><sup>11</sup>/<sub>12</sub></code>.
+                </li>
+                <li>
+                    <strong>Frazioni Improprie:</strong> Il numeratore è <em>maggiore</em> del denominatore (<code>a > b</code>) e non ne è un multiplo. Rappresentano una quantità <strong>maggiore dell'intero ( > 1 )</strong>.<br>
+                    <em>Esempi:</em> <code><sup>7</sup>/<sub>4</sub></code>, <code><sup>9</sup>/<sub>2</sub></code>, <code><sup>11</sup>/<sub>5</sub></code>.
+                </li>
+                <li>
+                    <strong>Frazioni Apparenti:</strong> Il numeratore è <em>uguale</em> al denominatore oppure ne è un <em>multiplo intero</em>. Corrispondono a numeri interi (<strong>1, 2, 3...</strong>).<br>
+                    <em>Esempi:</em> <code><sup>5</sup>/<sub>5</sub> = 1</code>, <code><sup>12</sup>/<sub>4</sub> = 3</code>, <code><sup>20</sup>/<sub>5</sub> = 4</code>.
+                </li>
+            </ul>
+
+            <div style="background-color: #eff6ff; border-left: 4px solid #2563eb; padding: 1.2rem; border-radius: 6px; margin: 1.5rem 0;">
+                <p style="margin: 0; font-size: 1.05rem; color: #1e3a8a; font-weight: bold;">
+                    ⚠️ Nota Importante: Le frazioni apparenti rappresentano "apparentemente" una frazione, ma equivalgono esattamente a un numero intero!
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 1 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Classificazione)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Classifica le seguenti frazioni: <strong><sup>4</sup>/<sub>9</sub></strong>, <strong><sup>15</sup>/<sub>4</sub></strong> e <strong><sup>24</sup>/<sub>6</sub></strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><code><sup>4</sup>/<sub>9</sub></code>: Il numeratore 4 è inferiore al denominatore 9 &rarr; <strong>Propria</strong>.</li>
+                    <li><code><sup>15</sup>/<sub>4</sub></code>: Il numeratore 15 è maggiore di 4 e non è divisibile per 4 &rarr; <strong>Impropria</strong>.</li>
+                    <li><code><sup>24</sup>/<sub>6</sub></code>: Il numeratore 24 è un multiplo esatto di 6 (<code>24 : 6 = 4</code>) &rarr; <strong>Apparente</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Propria, Impropria, Apparente.</p>
+            </div>
+
+            <h2>2. Trasformare una Frazione Impropria in Numero Misto</h2>
+            <p>
+                Una frazione impropria contiene uno o più interi piú una frazione propria rimanente. Può essere scritta come <strong>numero misto</strong> (somma di un intero e una frazione propria).
+            </p>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Numero Misto)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trasforma la frazione impropria <strong><sup>17</sup>/<sub>5</sub></strong> in numero misto.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Eseguiamo la divisione intera con resto: <code>17 : 5 = 3</code> con resto <code>2</code>.</li>
+                    <li>Il quoziente (<code>3</code>) indica le unità intere.</li>
+                    <li>Il resto (<code>2</code>) diventa il nuovo numeratore con lo stesso denominatore (<code>5</code>).</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>3 + <sup>2</sup>/<sub>5</sub></code> (oppure <code>3 <sup>2</sup>/<sub>5</sub></code>).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sulle Frazioni Proprie, Improprie e Apparenti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue competenze con 100 esercizi ordinati per difficoltà crescente. Clicca su ciascun esercizio per consultare la soluzione dettagliata.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Riconoscimento immediato del tipo di frazione
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let den = (i % 8) + 4;
+                        let num = (i % (den - 1)) + 1;
+                        domanda = `Classifica la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> (Propria, Impropria o Apparente).`;
+                        risposta = `Frazione Propria`;
+                        spiegazione = `Il numeratore (${num}) è minore del denominatore (${den}), quindi la frazione è <strong>propria</strong> (rappresenta un valore < 1).`;
+                    } else if (mod === 2) {
+                        let den = (i % 6) + 3;
+                        let mult = (i % 4) + 1;
+                        let num = den * mult;
+                        domanda = `Classifica la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> e indicane il valore intero.`;
+                        risposta = `Frazione Apparente, Valore: ${mult}`;
+                        spiegazione = `Il numeratore (${num}) è multiplo del denominatore (${den}). Infatti <code>${num} : ${den} = ${mult}</code>, per cui è una <strong>frazione apparente</strong>.`;
+                    } else {
+                        let den = (i % 7) + 3;
+                        let num = den + (i % 5) + 1;
+                        if (num % den === 0) num += 1;
+                        domanda = `Classifica la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> (Propria, Impropria o Apparente).`;
+                        risposta = `Frazione Impropria`;
+                        spiegazione = `Il numeratore (${num}) è maggiore del denominatore (${den}) e non ne è un multiplo intero. La frazione è <strong>impropria</strong> (rappresenta un valore > 1).`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Trasformazione in numeri misti e confronto di frazioni con 1
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let den = (i % 5) + 3;
+                        let intPart = Math.floor(i / 10) + 1;
+                        let resto = (i % (den - 1)) + 1;
+                        let num = (intPart * den) + resto;
+
+                        domanda = `Esprimi la frazione impropria <strong><sup>${num}</sup>/<sub>${den}</sub></strong> sotto forma di numero misto.`;
+                        risposta = `${intPart} + <sup>${resto}</sup>/<sub>${den}</sub>`;
+                        spiegazione = `Dividendo il numeratore per il denominatore: <code>${num} : ${den} = ${intPart}</code> con resto <code>${resto}</code>. La frazione equivale a <code>${intPart} + <sup>${resto}</sup>/<sub>${den}</sub></code>.`;
+                    } else if (mod === 2) {
+                        let den = (i % 8) + 4;
+                        let numPropria = den - 1;
+                        let numImpropria = den + 2;
+
+                        domanda = `Quale tra le due frazioni è maggiore di 1: <strong><sup>${numPropria}</sup>/<sub>${den}</sub></strong> o <strong><sup>${numImpropria}</sup>/<sub>${den}</sub></strong>?`;
+                        risposta = `<sup>${numImpropria}</sup>/<sub>${den}</sub>`;
+                        spiegazione = `Le frazioni improprie hanno il numeratore maggiore del denominatore e valgano più di 1. Pertanto <code><sup>${numImpropria}</sup>/<sub>${den}</sub> > 1</code>, mentre <code><sup>${numPropria}</sup>/<sub>${den}</sub> < 1</code>.`;
+                    } else {
+                        let k = (i % 5) + 2;
+                        let den = (i % 6) + 3;
+                        let num = den * k;
+
+                        domanda = `Trova il valore di x affinché la frazione <strong><sup>x</sup>/<sub>${den}</sub></strong> sia apparente ed equivalga al numero intero <strong>${k}</strong>.`;
+                        risposta = `x = ${num}`;
+                        spiegazione = `Affinché la frazione equivalga a ${k}, occorre che <code>x : ${den} = ${k}</code>. Moltiplicando: <code>x = ${k} × ${den} = ${num}</code>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Problemi con incognite, somme di frazioni e parametri
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let den = (i % 7) + 5;
+                        let maxNumPropria = den - 1;
+                        let minNumImpropria = den + 1;
+
+                        domanda = `Determina per quali valori naturali di x la frazione <strong><sup>x</sup>/<sub>${den}</sub></strong> è PROPRIA.`;
+                        risposta = `1 ≤ x ≤ ${maxNumPropria}`;
+                        spiegazione = `Una frazione è propria quando il numeratore è minore del denominatore (<code>x < ${den}</code>). Con numeri naturali positivi, i valori validi sono compresi tra 1 e ${maxNumPropria}.`;
+                    } else if (mod === 2) {
+                        let den = (i % 6) + 4;
+                        let n1 = den - 1; 
+                        let n2 = den + 3; 
+
+                        domanda = `Calcola la somma tra la frazione propria <strong><sup>${n1}</sup>/<sub>${den}</sub></strong> e la frazione impropria <strong><sup>${n2}</sup>/<sub>${den}</sub></strong>. Indica se il risultato è una frazione apparente.`;
+                        let sommaNum = n1 + n2;
+                        let isApparente = (sommaNum % den === 0);
+                        let valIntero = isApparente ? ` (pari all'intero ${sommaNum / den})` : '';
+
+                        risposta = `<sup>${sommaNum}</sup>/<sub>${den}</sub> (${isApparente ? 'Sì, è Apparente' : 'No, non è Apparente'})`;
+                        spiegazione = `Sommando i numeratori a pari denominatore: <code><sup>${n1}</sup>/<sub>${den}</sub> + <sup>${n2}</sup>/<sub>${den}</sub> = <sup>${sommaNum}</sup>/<sub>${den}</sub></code>. ${isApparente ? `Poiché ${sommaNum} è divisibile per ${den}, la frazione risultante è <strong>apparente</strong>${valIntero}.` : `Poiché ${sommaNum} non è multiplo di ${den}, la frazione risulta impropria.`}`;
+                    } else {
+                        let targetInt = (i % 4) + 2;
+                        let den = (i % 5) + 3;
+                        let numApparente = den * targetInt;
+
+                        domanda = `Se <sup>n</sup>/<sub>${den}</sub> è una frazione apparente pari a ${targetInt}, quanto vale la frazione propria <sup>(n - ${den + 1})</sup>/<sub>${den}</sub>?`;
+                        let nVal = numApparente;
+                        let newNum = nVal - (den + 1);
+                        
+                        risposta = `<sup>${newNum}</sup>/<sub>${den}</sub>`;
+                        spiegazione = `
+                        1) Troviamo n: <code>n = ${targetInt} × ${den} = ${nVal}</code>.<br>
+                        2) Sostituiamo nella nuova frazione: <code><sup>(${nVal} - ${den + 1})</sup>/<sub>${den}</sub> = <sup>${newNum}</sup>/<sub>${den}</sub></code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

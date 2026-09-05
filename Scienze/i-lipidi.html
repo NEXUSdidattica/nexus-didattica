@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sui Lipidi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Lipidi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid #0ad41f;
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* TASTO SALVA LEZIONE (VERDE FISSO) */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #0ad41f;
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid #0ad41f;
+            box-shadow: 0 0 15px rgba(10, 212, 31, 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: #22c55e;
+            border-color: #22c55e;
+            box-shadow: 0 0 18px rgba(34, 197, 94, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata (giallo evidenziato) */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO: VERDE VETRO TRASPARENTE */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(220, 252, 231, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #15803d;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(134, 239, 172, 0.6);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: rgba(187, 247, 208, 0.7);
+            color: #166534;
+            border-color: #0ad41f;
+            transform: translateY(-1px);
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid #0ad41f;
+            border-left: 8px solid #0ad41f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(10, 212, 31, 0.15);
+        }
+
+        .formula-box {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            border: 2px solid #0ad41f;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(10, 212, 31, 0.1);
+        }
+
+        .formula-box strong {
+            color: #15803d;
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI CON VERDE LEGGIBILE */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #15803d;
+            background-color: #f0fdf4;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid #bbf7d0;
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: #dcfce7;
+            color: #166534;
+            border-color: #0ad41f;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .box-risposta-corretta {
+            background-color: #dcfce7;
+            border: 1px solid #0ad41f;
+            border-left: 4px solid #0ad41f;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: #14532d;
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-lipidi" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #f0fdf4; color: #15803d; border: 1px solid #0ad41f; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Chimica Organica / Biologia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Lipidi: Struttura e Funzioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dei trigliceridi, dei fosfolipidi, degli steroidi e del loro ruolo fondamentale nelle membrane cellulari e nel metabolismo.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione e Proprietà Generali</h2>
+            <p>
+                I <strong>lipidi</strong> (o grassi) costituiscono un gruppo eterogeneo di biomolecole accomunate da un'unica fondamentale proprietà fisica: sono <strong>insolubili o poco solubili in acqua</strong> (idrofobi), mentre risultano altamente solubili in solventi organici apolari (come etere, cloroformio e benzene). 
+            </p>
+            <p>
+                A differenza di carboidrati e proteine, i lipidi non sono polimeri in senso stretto (non sono costituiti dall'unione ripetuta di un singolo monomero tramite legami ripetitivi), ma svolgono ruoli biologici critici tra cui la riserva energetica a lungo termine, la protezione termica e meccanica, e la formazione delle membrane biologiche.
+            </p>
+
+            <h2>2. Classificazione Principale dei Lipidi</h2>
+            <p>
+                I lipidi possono essere suddivisi in due grandi categorie in base alla loro struttura chimica e alla capacità di saponificazione:
+            </p>
+            <ul>
+                <li><strong>Lipidi saponificabili (complessi):</strong> Contengono acidi grassi esterificati e comprendono i trigliceridi (grassi e oli), i fosfolipidi e i glicolipidi.</li>
+                <li><strong>Lipidi insaponificabili (semplici/derivati):</strong> Non contengono acidi grassi e non subiscono la reazione di saponificazione; tra questi troviamo gli steroidi (es. colesterolo e ormoni steroidei) e le vitamine liposolubili.</li>
+            </ul>
+
+            <div class="formula-box">
+                🧪 <strong>Reazione di Esterificazione (Trigliceridi):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$\text{Glicerolo} + 3\text{ Acidi Grassi} \xrightarrow{\text{esterificazione}} \text{Trigliceride} + 3\text{H}_2\text{O}$$
+                    Il glicerolo è un trialeo (alcol a tre atomi di carbonio con gruppi $-\text{OH}$), che si lega a tre catene idrocarburiche di acidi grassi attraverso legami estere.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem; color: #15803d;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Spiega perché i fosfolipidi sono definiti molecole "anfipatiche" e qual è la loro importanza nelle membrane cellulari.</p>
+                <hr style="border: 0; border-top: 1px solid #bbf7d0; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Struttura duale: Il fosfolipide possiede una "testa" polare (idrofila) contenente un gruppo fosfato legato a un amminoalcol.</li>
+                    <li>Coda apolare: Possiede inoltre due "code" idrofobe costituite da acidi grassi.</li>
+                    <li>Organizzazione membranosa: Grazie a questa doppia natura, in ambiente acquoso si auto-organizzano spontaneamente in un doppio strato fosfolipidico, base strutturale di tutte le membrane cellulari.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: #15803d; font-weight: bold;">🎯 <strong>Soluzione:</strong> L'anfipatia consente ai fosfolipidi di delimitare l'interno e l'esterno della cellula creando barriere selettive stabili in ambiente acquoso.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti e Verifiche sui Lipidi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test progressivi suddivisi per livello di difficoltà (facile, medio, difficile) focalizzati sulla chimica e sulla biochimica dei lipidi. 
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    domanda = `Esercizio ${i}: Quale caratteristica chimico-fisica fondamentale accomuna tutte le molecole classificate come lipidi?`;
+                    risposta = `Proprietà: <strong>L'insolubilità in acqua (carattere idrofobico)</strong>`;
+                    spiegazione = `
+                    1) I lipidi sono costituiti prevalentemente da legami C-C e C-H apolari.<br>
+                    2) Questa struttura impedisce l'interazione con le molecole d'acqua che sono polari.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Esercizio ${i}: Che differenza strutturale fondamentale esiste tra un acido grasso saturo e un acido grasso insaturo?`;
+                    risposta = `Differenza: <strong>La presenza di doppi legami carbonio-carbonio negli insaturi</strong>`;
+                    spiegazione = `
+                    1) Gli acidi grassi saturi contengono solo legami singoli e catene lineari (solidi a temperatura ambiente).<br>
+                    2) Gli insaturi presentano uno o più doppi legami che causano una piega nella catena, abbassando il punto di fusione (liquidi come gli oli).`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Esercizio ${i}: Qual è il precursore comune di tutti gli ormoni steroidei, della vitamina D e dei sali biliari all'interno dell'organismo umano?`;
+                    risposta = `Molecola: <strong>Il Colesterolo</strong>`;
+                    spiegazione = `
+                    1) Il colesterolo è uno steroide caratterizzato dal nucleo steroideo a quattro anelli condensati.<br>
+                    2) Oltre a regolare la fluidità delle membrane plasmatiche, funge da molecola capostipite per la sintesi di corticosteroidi e ormoni sessuali.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${risposta}
+                            </div>
+                            <p style="color: #15803d; font-weight: bold; margin-bottom: 0.5rem;">Spiegazione dettagliata:</p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

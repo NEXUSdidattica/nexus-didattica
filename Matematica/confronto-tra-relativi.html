@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 3: Confronto tra relativi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Confronto tra relativi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="algebra-confronto-tra-relativi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 3: Confronto tra relativi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Regole di confronto tra numeri relativi sulla retta orientata, uso dei simboli di disuguaglianza e 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Retta Orientata e l'Ordinamento</h2>
+            <p>
+                Rappresentando i numeri relativi su una retta orientata (da sinistra verso destra), un numero è sempre <strong>maggiore</strong> di tutti i numeri che si trovano alla sua sinistra e <strong>minore</strong> di tutti quelli che si trovano alla sua destra.
+            </p>
+
+            <h2>2. Regole Pratiche per Confrontare due Numeri Relativi</h2>
+
+            <div class="formula-box">
+                ⚖️ <strong>Casi di confronto:</strong>
+                <ul>
+                    <li><strong>Positivo vs Negativo:</strong> qualsiasi numero positivo è sempre <strong>maggiore</strong> di qualsiasi numero negativo.<br>
+                        <em>Esempio:</em> <code>+2 > -100</code>.</li>
+                    <li><strong>Confronto con lo Zero:</strong> ogni numero positivo è maggiore di 0; ogni numero negativo è minore di 0.<br>
+                        <em>Esempio:</em> <code>+5 > 0</code> e <code>-3 < 0</code>.</li>
+                    <li><strong>Due numeri Positivi:</strong> è maggiore quello con la parte numerica maggiore.<br>
+                        <em>Esempio:</em> <code>+8 > +3</code>.</li>
+                    <li><strong>Due numeri Negativi:</strong> è maggiore quello con la parte numerica minore (quello più vicino allo zero).<br>
+                        <em>Esempio:</em> <code>-2 > -9</code>.</li>
+                </ul>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Inserisci il simbolo corretto (<code>></code>, <code><</code> o <code>=</code>) tra i seguenti numeri:<br>
+                a) <code>-7</code> ... <code>+2</code><br>
+                b) <code>-8</code> ... <code>-3</code><br>
+                c) <code>0</code> ... <code>-5</code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Coppia a:</strong> Un numero negativo è sempre minore di uno positivo &rArr; <code>-7 < +2</code>.</li>
+                    <li><strong>Coppia b:</strong> Tra due negativi è maggiore quello più vicino allo zero (parte numerica più piccola) &rArr; <code>-8 < -3</code>.</li>
+                    <li><strong>Coppia c:</strong> Lo zero è sempre maggiore di qualsiasi numero negativo &rArr; <code>0 > -5</code>.</li>
+                </ol>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Confronto tra Relativi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua abilità nel confrontare e ordinare numeri relativi con e senza segno.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let val = i + 1;
+                    if (i % 3 === 1) {
+                        domanda = `Inserisci il simbolo corretto (<code>></code> o <code><</code>) tra <code>+${val}</code> e <code>-${val + 2}</code>.`;
+                        risposta = `+${val} > -${val + 2}`;
+                        spiegazione = `
+                        1) Un numero positivo è sempre maggiore di un numero negativo.<br>
+                        2) Di conseguenza: <code>+${val} > -${val + 2}</code>.`;
+                    } else if (i % 3 === 2) {
+                        domanda = `Inserisci il simbolo corretto (<code>></code> o <code><</code>) tra <code>0</code> e <code>-${val}</code>.`;
+                        risposta = `0 > -${val}`;
+                        spiegazione = `
+                        1) Lo zero si trova a destra di qualsiasi numero negativo sulla retta orientata.<br>
+                        2) Pertanto: <code>0 > -${val}</code>.`;
+                    } else {
+                        domanda = `Inserisci il simbolo corretto (<code>></code> o <code><</code>) tra <code>+${val}</code> e <code>+${val + 4}</code>.`;
+                        risposta = `+${val} < +${val + 4}`;
+                        spiegazione = `
+                        1) Tra due numeri positivi è maggiore quello con la parte numerica maggiore.<br>
+                        2) Essendo <code>${val} < ${val + 4}</code>, abbiamo <code>+${val} < +${val + 4}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = i;
+                    let b = i + 3;
+                    if (i % 2 === 0) {
+                        domanda = `Inserisci il simbolo corretto (<code>></code> o <code><</code>) tra due numeri negativi: <code>-${a}</code> e <code>-${b}</code>.`;
+                        risposta = `-${a} > -${b}`;
+                        spiegazione = `
+                        1) Tra due numeri negativi, è maggiore quello con la parte numerica minore (più vicino allo zero).<br>
+                        2) Poiché <code>${a} < ${b}</code>, sulla retta orientata <code>-${a}</code> si trova più a destra di <code>-${b}</code>.<br>
+                        3) Quindi: <code>-${a} > -${b}</code>.`;
+                    } else {
+                        domanda = `Qual è il numero maggiore tra <code>-${a}</code>, <code>0</code>, <code>+${b}</code> e <code>-${b}</code>?`;
+                        risposta = `+${b}`;
+                        spiegazione = `
+                        1) I numeri negativi (<code>-${a}</code> e <code>-${b}</code>) sono minori di zero.<br>
+                        2) L'unico numero positivo del gruppo è <code>+${b}</code>.<br>
+                        3) Di conseguenza, <code>+${b}</code> è il più grande.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let n1 = -(i - 40);
+                    let n2 = +(i - 50);
+                    let n3 = -(i - 30);
+                    let n4 = +(i - 20);
+
+                    domanda = `Ordina i seguenti quattro numeri dal <strong>più piccolo al più grande</strong> (ordine crescente): <code>${n1}</code>, <code>${n2}</code>, <code>${n3}</code>, <code>${n4}</code>.`;
+
+                    let arr = [
+                        { str: `${n1}`, val: n1 },
+                        { str: `${n2}`, val: n2 },
+                        { str: `${n3}`, val: n3 },
+                        { str: `${n4}`, val: n4 }
+                    ];
+                    arr.sort((a, b) => a.val - b.val);
+
+                    let ordStr = arr.map(item => item.str).join(' < ');
+
+                    risposta = ordStr;
+                    spiegazione = `
+                    1) Confrontiamo prima i numeri negativi: tra essi è più piccolo quello con parte numerica maggiore.<br>
+                    2) Poniamo poi i numeri positivi in ordine crescente di parte numerica.<br>
+                    3) L'ordinamento crescente completo risulta: <code>${ordStr}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

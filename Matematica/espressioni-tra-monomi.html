@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 6: Espressioni con i monomi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Espressioni tra monomi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-riassuntiva {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .tabella-riassuntiva th, .tabella-riassuntiva td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .tabella-riassuntiva th {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="monomi-espressioni-tra-monomi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Monomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 6: Espressioni con i monomi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Semplificazione di espressioni algebriche con parentesi e precedenza delle operazioni, con 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Regole di Precedenza delle Operazioni</h2>
+            <p>
+                Per risolvere un'espressione algebrica contenente monomi occorre rispettare rigorosamente l'ordine di precedenza delle operazioni arithmetic-algebriche:
+            </p>
+            <ol>
+                <li><strong>Potenze:</strong> si calcolano per prime le potenze dei monomi.</li>
+                <li><strong>Moltiplicazioni e Divisioni:</strong> si eseguono da sinistra verso destra nell'ordine in cui compaiono.</li>
+                <li><strong>Addizioni e Sottrazioni:</strong> si eseguono per ultime, sommando solo i monomi che risultano **simili**.</li>
+            </ol>
+
+            <h2>2. Ordine delle Parentesi</h2>
+            <p>
+                Quando sono presenti più ordini di parentesi, le operazioni si risolvono procedendo dall'interno verso l'esterno:
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Ordine:</strong> Parentesi <strong>Tonde ( )</strong> &rarr; Parentesi <strong>Quadre [ ]</strong> &rarr; Parentesi <strong>Graffe { }</strong>
+            </div>
+
+            <h2>3. Gestione dei Segni e delle Parentesi</h2>
+            <p>
+                Se una parentesi è preceduta dal segno meno <code>-</code>, quando si rimuove la parentesi occorre <strong>cambiare il segno</strong> a tutti i termini contenuti al suo interno. Se è preceduta dal segno più <code>+</code>, i segni rimangono invariati.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Semplifica la seguente espressione: <code>[(2x²y)² : (-2x³) - 3xy] · (-2x)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la potenza dentro la parentesi quadra: <code>(2x²y)² = 4x⁴y²</code>.</li>
+                    <li>Eseguiamo la divisione: <code>(4x⁴y²) : (-2x³) = -2xy²</code>.</li>
+                    <li>L'espressione diventa: <code>[-2xy² - 3xy] · (-2x)</code>.</li>
+                    <li>Sviluppiamo il prodotto distribuendo <code>-2x</code>: <code>(-2xy²)·(-2x) + (-3xy)·(-2x) = 4x²y² + 6x²y</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 4x²y² + 6x²y</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Espressioni tra Monomi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Risolvi le espressioni tra monomi applicando correttamente l'ordine delle operazioni e le parentesi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 4) + 2;
+                    let b = (i % 3) + 1;
+                    let exp = (i % 2) + 1;
+
+                    let cTot = (a * b) - 2;
+                    domanda = `Semplifica l'espressione: <code>(${a} a<sup>${exp}</sup>) &middot; (${b} b) - 2 a<sup>${exp}</sup> b</code>.`;
+                    risposta = `<code>${cTot} a<sup>${exp}</sup> b</code>`;
+                    spiegazione = `
+                    1) Calcoliamo prima il prodotto: <code>(${a} a<sup>${exp}</sup>) &middot; (${b} b) = ${a * b} a<sup>${exp}</sup> b</code>.<br>
+                    2) Eseguiamo la sottrazione tra monomi simili: <code>${a * b} a<sup>${exp}</sup> b - 2 a<sup>${exp}</sup> b = ${cTot} a<sup>${exp}</sup> b</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let k = (i % 3) + 2;
+                    domanda = `Risolvi l'espressione con parentesi: <code>[(${k} x² y) &middot; (-3 x y²)] : (-${k} x²)</code>.`;
+                    let prodCoeff = k * -3;
+                    let resCoeff = prodCoeff / (-k);
+
+                    risposta = `<code>${resCoeff} x y³</code>`;
+                    spiegazione = `
+                    1) Eseguiamo il prodotto dentro la parentesi quadra: <code>(${k} x² y) &middot; (-3 x y²) = ${prodCoeff} x³ y³</code>.<br>
+                    2) Eseguiamo la divisione: <code>(${prodCoeff} x³ y³) : (-${k} x²) = ${resCoeff} x y³</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let val = (i % 3) + 1;
+                    domanda = `Semplifica l'espressione: <code>{ [(-2 a b²)² &middot; (3 a² b)] : (6 a³ b²) } - ${val} a b</code>.`;
+                    // (-2 ab²)^2 = 4 a² b⁴
+                    // 4 a² b⁴ * 3 a² b = 12 a⁴ b⁵
+                    // 12 a⁴ b⁵ : 6 a³ b² = 2 a b³
+                    
+                    let resCoeff = 2 - val;
+                    risposta = `<code>2 a b³ - ${val} a b</code> (non ulteriormente semplificabile in unico monomio)`;
+                    spiegazione = `
+                    1) Risolviamo la potenza: <code>(-2 a b²)² = 4 a² b⁴</code>.<br>
+                    2) Moltiplichiamo: <code>(4 a² b⁴) &middot; (3 a² b) = 12 a⁴ b⁵</code>.<br>
+                    3) Dividiamo: <code>(12 a⁴ b⁵) : (6 a³ b²) = 2 a b³</code>.<br>
+                    4) Sottraiamo <code>${val} a b</code>: poiché i due monomi non sono simili (<code>a b³</code> vs <code>a b</code>), il risultato rimane espresso come polinomio: <code>2 a b³ - ${val} a b</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

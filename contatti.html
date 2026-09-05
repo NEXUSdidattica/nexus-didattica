@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sito internet per studiare e fare esercizi">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Contatti - NEXUS didattica</title>
+</head>
+<body>
+
+    <header>
+
+        <div class="hotbar">
+
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <!-- Tasti Accesso/Registrazione per Firebase -->
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+        <section class="hero-chi-siamo">
+            <div class="hero-chi-siamo-content">
+                <span class="badge-anno">Supporto & Community</span>
+                <h1>Parla con il team di NEXUS</h1>
+                <p class="lead-text">
+                    Hai domande sulle esercitazioni, vuoi segnalare un refuso o proporre una collaborazione? Scegli il canale che preferisci.
+                </p>
+            </div>
+        </section>
+
+        <div class="contenitore-centrato">
+            <div class="layout-contatti">
+                
+                <!-- Colonna Sinistra: Cards Canali -->
+                <div class="griglia-canali">
+                    <div class="card-contatto">
+                        <div class="icona-contatto">✉️</div>
+                        <div>
+                            <h3>Email Ufficiale</h3>
+                            <p>Per richieste generali, proposte didattiche e supporto.</p>
+                            <a href="mailto:nexus.didattica@gmail.com" class="link-contatto">nexus.didattica@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="card-contatto">
+                        <div class="icona-contatto">📸</div>
+                        <div>
+                            <h3>Canale Instagram</h3>
+                            <p>Esercizi giornalieri, poll e aggiornamenti sul progetto.</p>
+                            <a href="https://www.instagram.com/nexus.didattica" target="_blank" rel="noopener noreferrer" class="link-contatto">@nexus.didattica</a>
+                        </div>
+                    </div>
+
+                    <div class="card-contatto">
+                        <div class="icona-contatto">📢</div>
+                        <div>
+                            <h3>Canale Telegram</h3>
+                            <p>Ricevi subito le soluzioni degli esercizi della settimana sul tuo telefono.</p>
+                            <a href="https://web.telegram.org/k/" target="_blank" rel="noopener noreferrer" class="link-contatto">Vai al canale Telegram</a>
+                        </div>
+                    </div>
+
+                    <div class="card-contatto info-box-risposta">
+                        <div class="icona-contatto">⚡</div>
+                        <div>
+                            <h3>Tempi di risposta</h3>
+                            <p>Leggiamo ogni messaggio. Rispondiamo solitamente entro 24/48 ore lavorative.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonna Destra: Modulo Form -->
+                <!-- Colonna Destra: Modulo Form -->
+<form class="form-contatti" id="form-contatti">
+    <h2>Invia un messaggio diretto</h2>
+    
+    <div class="campo-form">
+        <label for="nome">Il tuo nome *</label>
+        <input type="text" id="nome" name="nome" placeholder="Es. Marco Rossi" required>
+    </div>
+
+    <div class="campo-form">
+        <label for="email">Indirizzo Email *</label>
+        <input type="email" id="email" name="email" placeholder="nome@esempio.it" required>
+    </div>
+
+    <div class="campo-form">
+        <label for="motivo">Motivo del messaggio</label>
+        <select id="motivo" name="motivo">
+            <option value="Informazioni generali">Informazioni generali</option>
+            <option value="Segnalazione errore in un esercizio">Segnalazione errore in un esercizio</option>
+            <option value="Proposta di collaborazione / Docenti">Proposta di collaborazione / Docenti</option>
+            <option value="Altro">Altro</option>
+        </select>
+    </div>
+
+    <div class="campo-form">
+        <label for="messaggio">Messaggio *</label>
+        <textarea id="messaggio" name="messaggio" rows="5" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn-invia-form">Invia Messaggio</button>
+    <p id="stato-messaggio" style="margin-top: 1rem; font-weight: bold;"></p>
+</form>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+
+</body>
+</html>

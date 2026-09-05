@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Food, Drinks and Cooking in inglese: vocaboli dettagliati per cibi, bevande, pasti, utensili e tecniche di cucina - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Food, Drinks and Cooking - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="food-drinks-and-cooking" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Gastronomy</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Food, Drinks and Cooking</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo dedicato ad alimenti, bevande, pasti della giornata, ingredienti, utensili e tecniche di cucina in lingua inglese.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Meals of the Day (I Pasti della Giornata)</h2>
+            <p>I diversi momenti dedicati al cibo nel corso della giornata.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Breakfast</td><td>Colazione</td></tr>
+                    <tr><td>Brunch</td><td>Brunch (colazione rinforzata / pranzo leggero mattutino)</td></tr>
+                    <tr><td>Lunch</td><td>Pranzo</td></tr>
+                    <tr><td>Snack / Afternoon tea</td><td>Merenda / Spuntino pomeridiano</td></tr>
+                    <tr><td>Dinner / Supper</td><td>Cena</td></tr>
+                    <tr><td>Course</td><td>Portata (di un pasto)</td></tr>
+                    <tr><td>Starter / Appetizer</td><td>Antipasto</td></tr>
+                    <tr><td>Main course</td><td>Piatto principale</td></tr>
+                    <tr><td>Dessert / Sweet</td><td>Dessert / Dolce</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Fruit and Vegetables (Frutta e Verdura)</h2>
+            <p>I principali prodotti ortofrutticoli freschi.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Apple</td><td>Mela</td></tr>
+                    <tr><td>Banana</td><td>Banana</td></tr>
+                    <tr><td>Orange</td><td>Arancia</td></tr>
+                    <tr><td>Lemon</td><td>Limone</td></tr>
+                    <tr><td>Strawberry</td><td>Fragola</td></tr>
+                    <tr><td>Grapes</td><td>Uva</td></tr>
+                    <tr><td>Peach / Pear</td><td>Pesca / Pera</td></tr>
+                    <tr><td>Potato</td><td>Patata</td></tr>
+                    <tr><td>Tomato</td><td>Pomodoro</td></tr>
+                    <tr><td>Carrot</td><td>Carota</td></tr>
+                    <tr><td>Onion / Garlic</td><td>Cipolla / Aglio</td></tr>
+                    <tr><td>Lettuce / Salad</td><td>Lattuga / Insalata</td></tr>
+                    <tr><td>Cabbage / Broccoli</td><td>Cavolo / Broccoli</td></tr>
+                    <tr><td>Courgette / Zucchini (US)</td><td>Zucchina</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Meat, Fish and Dairy Products (Carne, Pesce e Latticini)</h2>
+            <p>Fonti proteiche e prodotti di origine animale.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Meat</td><td>Carne</td></tr>
+                    <tr><td>Beef / Pork / Chicken</td><td>Carne bovina / Suina / Pollo</td></tr>
+                    <tr><td>Fish / Seafood</td><td>Pesce / Frutti di mare</td></tr>
+                    <tr><td>Salmon / Tuna</td><td>Salmone / Tonno</td></tr>
+                    <tr><td>Dairy products</td><td>Prodotti lattiero-caseari</td></tr>
+                    <tr><td>Milk</td><td>Latte</td></tr>
+                    <tr><td>Cheese</td><td>Formaggio</td></tr>
+                    <tr><td>Butter</td><td>Burro</td></tr>
+                    <tr><td>Yogurt</td><td>Yogurt</td></tr>
+                    <tr><td>Eggs</td><td>Uova</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Drinks and Beverages (Bevande)</h2>
+            <p>Liquidi e bevande calde o fredde consumate ai pasti o durante la giornata.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Water (still / sparkling)</td><td>Acqua (naturale / frizzante)</td></tr>
+                    <tr><td>Coffee (espresso / cappuccino)</td><td>Caffè</td></tr>
+                    <tr><td>Tea (black / green)</td><td>Tè (nero / verde)</td></tr>
+                    <tr><td>Juice (orange / apple juice)</td><td>Succo di frutta</td></tr>
+                    <tr><td>Soft drink / Soda</td><td>Bevanda gassata / Bibita</td></tr>
+                    <tr><td>Milkshake</td><td>Frullato di latte / Frappè</td></tr>
+                    <tr><td>Wine (red / white wine)</td><td>Vino (rosso / bianco)</td></tr>
+                    <tr><td>Beer</td><td>Birra</td></tr>
+                </tbody>
+            </table>
+
+            <h2>5. Cooking Methods and Verbs (Metodi di Cottura e Verbi di Cucina)</h2>
+            <p>Azioni e tecniche impiegate per preparare e cuocere i cibi.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To cook</td><td>Cucinare</td></tr>
+                    <tr><td>To bake</td><td>Cuocere al forno (pane, dolci)</td></tr>
+                    <tr><td>To roast</td><td>Arrostire (carne, verdure al forno)</td></tr>
+                    <tr><td>To boil</td><td>Bollire / Lessare (in acqua)</td></tr>
+                    <tr><td>To fry</td><td>Friggere (in padella con olio)</td></tr>
+                    <tr><td>To grill</td><td>Grigliare / Cuocere alla griglia</td></tr>
+                    <tr><td>To steam</td><td>Cuocere a vapore</td></tr>
+                    <tr><td>To chop</td><td>Tagliare a pezzi / Tritare</td></tr>
+                    <tr><td>To slice</td><td>Affettare</td></tr>
+                    <tr><td>To peel</td><td>Sbucciare</td></tr>
+                    <tr><td>To mix / to stir</td><td>Mescolare / Amalgamare</td></tr>
+                    <tr><td>To add</td><td>Aggiungere</td></tr>
+                    <tr><td>To taste</td><td>Assaggiare</td></tr>
+                </tbody>
+            </table>
+
+            <h2>6. Kitchen Utensils and Seasonings (Utensili da Cucina e Condimenti)</h2>
+            <p>Strumenti di lavoro dello chef e insaporitori essenziali.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Recipe</td><td>Ricetta</td></tr>
+                    <tr><td>Ingredient</td><td>Ingrediente</td></tr>
+                    <tr><td>Salt / Pepper</td><td>Sale / Pepe</td></tr>
+                    <tr><td>Oil / Vinegar</td><td>Olio / Aceto</td></tr>
+                    <tr><td>Sugar / Flour</td><td>Zucchero / Farina</td></tr>
+                    <tr><td>Saucepan / Pot</td><td>Pentola / Casseruola</td></tr>
+                    <tr><td>Frying pan</td><td>Padella</td></tr>
+                    <tr><td>Whisk</td><td>Frusta (da cucina)</td></tr>
+                    <tr><td>Spatula</td><td>Spatola</td></tr>
+                    <tr><td>Peeler</td><td>Pelapatate</td></tr>
+                    <tr><td>Colander</td><td>Scolapasta</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Consiglio Culinario</h3>
+                <p style="margin-bottom: 0;">
+                    Quando segui una ricetta in lingua inglese (una <i>recipe</i>), presta molta attenzione alle unità di misura: spesso i volumi non si misurano in grammi bensì in tazze (<b>cups</b>) o cucchiai (<b>tablespoons/teaspoons</b>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

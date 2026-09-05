@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disequazioni di 2° Grado Fratte e Multifattoriali: studio del segno del Numeratore e del Denominatore, grafico della tabella dei segni ed esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni di 2° Grado Fratte - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+        .info-box { background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+        
+        /* Stili per il grafico della Tabella dei Segni Perfettamente Allineato */
+        .tabella-segni-container {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        .tabella-segni {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 1rem;
+        }
+        .tabella-segni th, .tabella-segni td {
+            text-align: center;
+            padding: 0;
+            vertical-align: middle;
+            height: 38px;
+        }
+        .tabella-segni th {
+            border-bottom: 2px solid #0f172a;
+            color: #0f172a;
+            font-weight: bold;
+            padding-bottom: 0.5rem;
+        }
+        .tabella-segni td.label-fattore {
+            text-align: left;
+            font-weight: bold;
+            color: #1e3a8a;
+            width: 140px;
+            border-right: 2px solid #0f172a;
+            padding-right: 0.8rem;
+        }
+        .tabella-segni tr.riga-totale {
+            border-top: 2px solid #0f172a;
+            font-weight: bold;
+            background-color: #f1f5f9;
+        }
+        
+        /* Larghezze Colonne */
+        .col-intervallo {
+            width: 20%;
+        }
+        .col-valore {
+            width: 32px;
+        }
+
+        /* Linee orizzontali del segno */
+        .linea-continua {
+            width: 100%;
+            height: 3px;
+            background-color: #2563eb;
+        }
+        .linea-tratteggiata {
+            width: 100%;
+            height: 3px;
+            background-image: linear-gradient(to right, #94a3b8 50%, transparent 50%);
+            background-size: 8px 100%;
+        }
+        
+        /* Pallini Solitari Centrati sotto i Valori Verticali (senza riga tagliata) */
+        .punto-incluso {
+            width: 12px;
+            height: 12px;
+            background-color: #2563eb;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .punto-escluso {
+            width: 12px;
+            height: 12px;
+            background-color: #ffffff;
+            border: 3px solid #dc2626;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .segno-esito {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .segno-piu { color: #16a34a; }
+        .segno-meno { color: #dc2626; }
+        .intervallo-selezionato {
+            background-color: #dcfce7;
+            border: 2px dashed #16a34a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-2-grado-fratte" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 2° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 3: Disequazioni Fratte Multifattoriali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio del segno con più fattori al Numeratore e al Denominatore con grafico allineato.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Procedimento per Disequazioni Fratte Complesse</h2>
+            <p>Quando la disequazione fratta presenta più fattori sia al numeratore che al denominatore, ad esempio:</p>
+            <div class="formula-box">
+                $$\frac{A(x) \cdot B(x) \cdot C(x)}{D(x) \cdot E(x)} \ge 0$$
+            </div>
+
+            <p>Si procede ponendo **ciascun singolo fattore $\ge 0$ se si trova al Numeratore**, oppure **$> 0$ (strettamente) se si trova al Denominatore**.</p>
+
+            <div class="warning-box">
+                <strong>⚠️ Condizioni di Esistenza (C.E.):</strong> I fattori del Denominatore vanno <strong>SEMPRE espressi con $> 0$</strong> per evitare la divisione per zero. I loro valori di azzeramento sul grafico corrispondono sempre a un pallino rosso escluso 🔴 e all'esito $\nexists$.
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato con Quadro dei Segni Allineato</h3>
+                <p>Risolvi la disequazione fratta: $$\frac{x^2 - 9}{x - 1} \le 0$$</p>
+
+                <h4>Studio dei Segni:</h4>
+                <ul>
+                    <li><strong>Numeratore:</strong> $N(x) \ge 0 \implies x^2 - 9 \ge 0 \implies x \le -3 \quad \cup \quad x \ge 3$ (punti inclusi 🔵 in $-3$ e $3$)</li>
+                    <li><strong>Denominatore:</strong> $D(x) > 0 \implies x - 1 > 0 \implies x > 1$ (punto escluso 🔴 in $1$)</li>
+                </ul>
+
+                <!-- Tabella grafica perfettamente allineata -->
+                <div class="tabella-segni-container">
+                    <table class="tabella-segni">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Fattore</th>
+                                <th class="col-intervallo"></th>
+                                <th class="col-valore">-3</th>
+                                <th class="col-intervallo"></th>
+                                <th class="col-valore">1</th>
+                                <th class="col-intervallo"></th>
+                                <th class="col-valore">3</th>
+                                <th class="col-intervallo"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Riga Numeratore -->
+                            <tr>
+                                <td class="label-fattore">N: $x^2 - 9 \ge 0$</td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="punto-incluso" title="x = -3 incluso"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="punto-incluso" title="x = 3 incluso"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                            </tr>
+                            <!-- Riga Denominatore -->
+                            <tr>
+                                <td class="label-fattore">D: $x - 1 > 0$</td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="punto-escluso" title="x = 1 escluso"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                            </tr>
+                            <!-- Riga Esito Finale -->
+                            <tr class="riga-totale">
+                                <td class="label-fattore">Esito Frazione</td>
+                                <td class="intervallo-selezionato"><span class="segno-esito segno-meno">-</span></td>
+                                <td><span class="segno-esito">0</span></td>
+                                <td><span class="segno-esito segno-piu">+</span></td>
+                                <td><span class="segno-esito segno-meno" style="color: #dc2626;">∄</span></td>
+                                <td class="intervallo-selezionato"><span class="segno-esito segno-meno">-</span></td>
+                                <td><span class="segno-esito">0</span></td>
+                                <td><span class="segno-esito segno-piu">+</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>Soluzione Finale:</strong> $$x \le -3 \quad \cup \quad 1 < x \le 3$$</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (da Semplici a Multifattoriali Avanzati)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dei 100 esercizi con grado di complessità crescente
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 30 ? 'livello-facile' : (i <= 65 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 30 ? 'FACILE' : (i <= 65 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 30) {
+                    // LIVELLO FACILE (Frazioni base a 2 fattori)
+                    let a = (i % 5) + 1;
+                    let b = a * 2;
+                    domanda = `Risolvi la disequazione fratta: $$\\frac{x^2 - ${a*a}}{x + ${b}} \\ge 0$$`;
+                    risposta = `-${b} < x \\le -${a} \\quad \\cup \\quad x \\ge ${a}`;
+                    spiegazione = `1) <strong>$N \\ge 0$:</strong> $x^2 - ${a*a} \\ge 0 \\implies x \\le -${a} \\cup x \\ge ${a}$.<br>` +
+                                  `2) <strong>$D > 0$:</strong> $x + ${b} > 0 \\implies x > -${b}$.<br>` +
+                                  `3) Dalla combinazione dei segni otteniamo che la frazione è positiva o nulla per: <strong>$-${b} < x \\le -${a} \\cup x \\ge ${a}$</strong>.`;
+                } 
+                else if (i <= 65) {
+                    // LIVELLO MEDIO (3 Fattori)
+                    let k = (i % 4) + 1;
+                    domanda = `Risolvi la disequazione fratta a 3 fattori: $$\\frac{(2x - ${k})(x + ${k+1})}{3x - 6} \\le 0$$`;
+                    risposta = `x \\le -${k+1} \\quad \\cup \\quad \\frac{${k}}{2} \\le x < 2`;
+                    spiegazione = `1) <strong>$F_1 \\ge 0$:</strong> $2x - ${k} \\ge 0 \\implies x \\ge \\frac{${k}}{2}$.<br>` +
+                                  `2) <strong>$F_2 \\ge 0$:</strong> $x + ${k+1} \\ge 0 \\implies x \\ge -${k+1}$.<br>` +
+                                  `3) <strong>$D > 0$:</strong> $3x - 6 > 0 \\implies x > 2$.<br>` +
+                                  `4) Analizzando i segni nei 4 intervalli generati da $-${k+1}$, $\\frac{${k}}{2}$ e $2$, l'esito è $\\le 0$ per <strong>$x \\le -${k+1} \\cup \\frac{${k}}{2} \\le x < 2$</strong>.`;
+                } 
+                else {
+                    // LIVELLO DIFFICILE (Multifattoriali con molti termini)
+                    let idx = i - 65;
+                    if (idx % 3 === 1) {
+                        domanda = `Risolvi la disequazione fratta multifattoriale: $$\\frac{(3x - 2)(4x + 5)(3x + 4)}{(5x^2 + 2)(18x - 6)} \\ge 0$$`;
+                        risposta = `-\\frac{5}{4} \\le x \\le -\\frac{4}{3} \\quad \\cup \\quad x > \\frac{1}{3} \\quad (\\text{con } x = \\frac{2}{3} \\text{ compreso})`;
+                        spiegazione = `1) <strong>Fattore 1 ($N$):</strong> $3x - 2 \\ge 0 \\implies x \\ge \\frac{2}{3}$.<br>` +
+                                      `2) <strong>Fattore 2 ($N$):</strong> $4x + 5 \\ge 0 \\implies x \\ge -\\frac{5}{4}$.<br>` +
+                                      `3) <strong>Fattore 3 ($N$):</strong> $3x + 4 \\ge 0 \\implies x \\ge -\\frac{4}{3}$.<br>` +
+                                      `4) <strong>Fattore 4 ($D$):</strong> $5x^2 + 2 > 0 \\implies \\forall x \\in \\mathbb{R}$ (trinomi con $\\Delta < 0$ e $a > 0$ sempre positivi).<br>` +
+                                      `5) <strong>Fattore 5 ($D$):</strong> $18x - 6 > 0 \\implies x > \\frac{1}{3}$.<br>` +
+                                      `6) Posizionando i capisaldi in ordine ($-\\frac{4}{3}, -\\frac{5}{4}, \\frac{1}{3}, \\frac{2}{3}$) sulla tabella dei segni, il prodotto complessivo risulta $\\ge 0$ per <strong>$-\\frac{5}{4} \\le x \\le -\\frac{4}{3} \\cup x > \\frac{1}{3}$</strong>.`;
+                    } else if (idx % 3 === 2) {
+                        domanda = `Risolvi la disequazione con prodotti e trinomi: $$\\frac{(2x - 1)(x^2 - 4)(3x + 6)}{(x^2 + 1)(4x - 8)} < 0$$`;
+                        risposta = `x < -2 \\quad \\cup \\quad \\frac{1}{2} < x < 2`;
+                        spiegazione = `1) Scomponiamo i fattori di 2° grado: $x^2 - 4 = (x - 2)(x + 2)$.<br>` +
+                                      `2) Riconosciamo i fattori uguali al numeratore e al denominatore verificando le C.E. ($x \\neq 2, x \\neq -2$).<br>` +
+                                      `3) Il fattore $x^2 + 1 > 0$ è sempre positivo per ogni $x \\in \\mathbb{R}$.<br>` +
+                                      `4) Compilando la tabella a 5 righe per i segni, la frazione risulta strettamente minore di zero ($< 0$) per <strong>$x < -2 \\cup \\frac{1}{2} < x < 2$</strong>.`;
+                    } else {
+                        domanda = `Risolvi la disequazione multifattoriale ad alta densità: $$\\frac{(x^2 - 5x + 6)(2x + 8)}{(x - 1)(x^2 + 4x + 5)} \\le 0$$`;
+                        risposta = `x \\le -4 \\quad \\cup \\quad 1 < x \\le 2 \\quad \\cup \\quad x = 3`;
+                        spiegazione = `1) Scomponiamo il trinomio $x^2 - 5x + 6 = (x - 2)(x - 3)$.<br>` +
+                                      `2) Il trinomio $x^2 + 4x + 5$ ha $\\Delta = 16 - 20 = -4 < 0$, quindi è **sempre positivo** $\\forall x \\in \\mathbb{R}$.<br>` +
+                                      `3) Studiamo i fattori lineari: $x - 2 \\ge 0 \\implies x \\ge 2$; $x - 3 \\ge 0 \\implies x \\ge 3$; $2x + 8 \\ge 0 \\implies x \\ge -4$; $x - 1 > 0 \\implies x > 1$.<br>` +
+                                      `4) Inserendo i punti $-4, 1, 2, 3$ nel grafico dei segni, il segno totale è negativo o nullo per <strong>$x \\le -4 \\cup 1 < x \\le 2 \\cup x = 3$</strong>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sull'Impulso di una Forza e la Quantità di Moto - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Impulso di una Forza e la Quantità di Moto - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="impulso-di-una-forza" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica e Quantità di Moto</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Impulso di una Forza e la Quantità di Moto</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio dell'impulso meccanico, della quantità di moto, del teorema dell'impulso e del principio di conservazione.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Definizione di Impulso e Quantità di Moto</h2>
+            <p>
+                L'<strong>impulso</strong> ($I$) di una forza costante agente su un corpo per un intervallo di tempo $\Delta t$ è definito come il prodotto della forza per l'intervallo di tempo stesso. La <strong>quantità di moto</strong> ($p$) di un corpo di massa $m$ in movimento con velocità $v$ è il prodotto della massa per la velocità.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule Fondamentali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$I = F \cdot \Delta t \quad (\text{unità: N}\cdot\text{s})$$
+                    $$p = m \cdot v \quad (\text{unità: kg}\cdot\text{m/s})$$
+                </p>
+            </div>
+
+            <h2>2. Il Teorema dell'Impulso</h2>
+            <p>
+                Il <em>teorema dell'impulso</em> stabilisce che l'impulso della forza totale applicata a un corpo è uguale alla variazione della quantità di moto del corpo stesso:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Teorema dell'Impulso:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$I = \Delta p = p_f - p_i = m v_f - m v_i$$
+                </p>
+            </div>
+
+            <h2>3. Esercizi Guidati</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esercizi = [
+                {
+                    d: "facile",
+                    q: "Una forza costante di $10\text{ N}$ viene applicata a un carrello per un intervallo di tempo di $2\text{ s}$. Qual è l'impulso della forza?",
+                    r: "$20\text{ N}\cdot\text{s}$.",
+                    s: "$I = F \cdot \Delta t = 10 \cdot 2 = 20\text{ N}\cdot\text{s}$."
+                },
+                {
+                    d: "facile",
+                    q: "Calcola la quantità di moto di un pallone di massa $0,4\text{ kg}$ che viaggia alla velocità di $15\text{ m/s}$.",
+                    r: "$6\text{ kg}\cdot\text{m/s}$.",
+                    s: "$p = m \cdot v = 0,4 \cdot 15 = 6\text{ kg}\cdot\text{m/s}$."
+                },
+                {
+                    d: "medio",
+                    q: "Un corpo di massa $2\text{ kg}$ passa da una velocità di $3\text{ m/s}$ a una velocità di $9\text{ m/s}$ in linea retta. Qual è l'impulso ricevuto dal corpo?",
+                    r: "$12\text{ N}\cdot\text{s}$ (o $\text{kg}\cdot\text{m/s}$).",
+                    s: "Per il teorema dell'impulso, $I = \Delta p = m(v_f - v_i) = 2 \cdot (9 - 3) = 2 \cdot 6 = 12\text{ N}\cdot\text{s}$."
+                },
+                {
+                    d: "medio",
+                    q: "Una forza media di $50\text{ N}$ agisce su un oggetto variandone la quantità di moto di $150\text{ kg}\cdot\text{m/s}$. Per quanto tempo ha agito la forza?",
+                    r: "$3\text{ s}$.",
+                    s: "Dal teorema dell'impulso $I = F \cdot \Delta t = \Delta p \implies \Delta t = \frac{\Delta p}{F} = \frac{150}{50} = 3\text{ s}$."
+                },
+                {
+                    d: "difficile",
+                    q: "Un proiettile di massa $20\text{ g}$ ($0,02\text{ kg}$) viaggia a $300\text{ m/s}$ e si infissa in un blocco di legno di $2\text{ kg}$ inizialmente fermo su una superficie liscia. Qual è la velocità finale del sistema (blocco + proiettile)?",
+                    r: "$2,97\text{ m/s}$ (circa $3,0\text{ m/s}$).",
+                    s: "Per il principio di conservazione della quantità di moto: $m_{\text{proiettile}} \cdot v_{\text{i}} = (m_{\text{proiettile}} + m_{\text{blocco}}) \cdot v_f \implies 0,02 \cdot 300 = (0,02 + 2) \cdot v_f \implies 6 = 2,02 \cdot v_f \implies v_f = \frac{6}{2,02} \approx 2,97\text{ m/s}$."
+                }
+            ];
+
+            esercizi.forEach((item, index) => {
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${item.d}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${index + 1}</h3>
+                        <span class="badge-difficolta ${item.d}">${item.d}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Guidato:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            });
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

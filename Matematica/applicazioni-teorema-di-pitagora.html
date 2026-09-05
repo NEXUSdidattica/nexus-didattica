@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 10: Applicazioni del Teorema di Pitagora alle Figure Geometriche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Applicazioni del Teorema di Pitagora - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-10" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 10</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Applicazioni del Teorema di Pitagora</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Utilizzo del teorema nei triangoli isosceli, equilateri, nei quadrilateri e nei poligoni regolari, con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Applicazione nei Triangoli Isosceli e Equilateri</h2>
+            <p>
+                Il Teorema di Pitagora non si limita ai triangoli rettangoli puri, ma permette di risolvere problemi complessi in altre figure geometriche tracciandone le altezze interne per formare triangoli rettangoli ausiliari:
+            </p>
+            <ul>
+                <li><strong>Triangolo Isoscele:</strong> Tracciando l'altezza relativa alla base, il triangolo viene diviso in due triangoli rettangoli identici. L'ipotenusa corrisponde al lato obliquo <code>l</code>, un cateto è l'altezza <code>h</code> e l'altro cateto è metà della base <code>b/2</code>.</li>
+                <li><strong>Triangolo Equilatero:</strong> L'altezza interna divide il triangolo equilatero in due triangoli rettangoli aventi angoli acuti di <code>30&deg;</code> e <code>60&deg;</code>. L'altezza si calcola con la formula fissa <code>h = l &times; (&radic;3)/2</code>.</li>
+                <li><strong>Quadrato e Rettangolo:</strong> La diagonale divide la figura in due triangoli rettangoli congruenti, dove la diagonale stessa agisce da ipotenusa. Nel quadrato, la diagonale è legata al lato dalla relazione <code>d = l &times; &radic;2</code>.</li>
+            </ul>
+
+            <h2>2. Formule Principali per le Figure Geometriche</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Utili per le Applicazioni:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Altezza triangolo isoscele: <code>h = &radic;(l&sup2; - (b/2)&sup2;)</code><br>
+                    • Lato obliquo triangolo isoscele: <code>l = &radic;(h&sup2; + (b/2)&sup2;)</code><br>
+                    • Altezza triangolo equilatero: <code>h = (l &times; &radic;3) / 2</code><br>
+                    • Diagonale del quadrato: <code>d = l &times; &radic;2</code>
+                </p>
+            </div>
+
+            <h2>3. Applicazione nei Rombi e Trapezi</h2>
+            <p>
+                Nei <strong>rombi</strong>, le due diagonali (maggiore <code>D</code> e minore <code>d</code>) si intersecano perpendicolarmente nel loro punto medio, suddividendo il rombo in quattro triangoli rettangoli congruenti. L'ipotenusa di ciascuno di questi triangoli rettangoli coincide con il lato <code>l</code> del rombo, mentre i cateti sono la metà delle due diagonali (<code>D/2</code> e <code>d/2</code>). Nei <strong>trapezi rettangoli o isosceli</strong>, tracciando le altezze dai vertici della base minore si isolano triangoli rettangoli utili per calcolare proiezioni e lati obliqui.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In un triangolo isoscele, la base misura <code>12 cm</code> e l'altezza relativa alla base misura <code>8 cm</code>. Calcola la lunghezza del lato obliquo.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>L'altezza divide la base a metà formando un triangolo rettangolo. La misura di metà base è: <code>12 cm / 2 = 6 cm</code>.</li>
+                    <li>I cateti del triangolo rettangolo ausiliario sono l'altezza (<code>8 cm</code>) e metà base (<code>6 cm</code>). Il lato obliquo è l'ipotenusa.</li>
+                    <li>Applichiamo il Teorema di Pitagora: <code>l = &radic;(8&sup2; + 6&sup2;)</code>.</li>
+                    <li>Sviluppiamo i quadrati e sommiamo: <code>&radic;(64 + 36) = &radic;100 = 10 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: La misura del lato obliquo è 10 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Applicazioni di Pitagora</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi su triangoli isosceli, triangoli equilateri, quadrati, rombi e trapezi mediante l'uso del Teorema di Pitagora.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    // Triangolo isoscele con terna 3-4-5 moltiplicata per k
+                    let k = (i % 4) + 1;
+                    let metaBase = 3 * k;
+                    let altezza = 4 * k;
+                    let base = metaBase * 2;
+                    let latoObl = 5 * k;
+                    domanda = `In un triangolo isoscele, la base misura <code>${base} cm</code> e l'altezza è di <code>${altezza} cm</code>. Calcola la lunghezza del lato obliquo.`;
+                    risposta = `<strong>${latoObl} cm</strong>`;
+                    spiegazione = `
+                    1) Troviamo metà base: <code>${base} cm / 2 = ${metaBase} cm</code>.<br>
+                    2) Applichiamo Pitagora con i cateti pari all'altezza e a metà base: <code>l = &radic;(${altezza}&sup2; + ${metaBase}&sup2;)</code>.<br>
+                    3) Calcoliamo: <code>&radic;(${altezza*altezza} + ${metaBase*metaBase}) = &radic;${altezza*altezza + metaBase*metaBase} = ${latoObl} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    // Rombo con metà diagonali ricavate da terne
+                    let k2 = (i % 4) + 1;
+                    let d1_mezza = 5 * k2;
+                    let d2_mezza = 12 * k2;
+                    let D1 = d1_mezza * 2;
+                    let D2 = d2_mezza * 2;
+                    let latoRombo = 13 * k2;
+                    domanda = `Le diagonali di un rombo misurano <code>${D1} cm</code> e <code>${D2} cm</code>. Calcola la misura del lato del rombo.`;
+                    risposta = `<strong>${latoRombo} cm</strong>`;
+                    spiegazione = `
+                    1) Calcoliamo le semidiagonali: <code>${D1} / 2 = ${d1_mezza} cm</code> e <code>${D2} / 2 = ${d2_mezza} cm</code>.<br>
+                    2) Il lato del rombo si ottiene applicando Pitagora sulle semidiagonali: <code>l = &radic;(${d1_mezza}&sup2; + ${d2_mezza}&sup2;)</code>.<br>
+                    3) Sviluppando i calcoli: <code>&radic;(${d1_mezza*d1_mezza} + ${d2_mezza*d2_mezza}) = &radic;${d1_mezza*d1_mezza + d2_mezza*d2_mezza} = ${latoRombo} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let latoQuadrato = (i % 9) + 6;
+                    let diagApprox = (latoQuadrato * Math.SQRT2).toFixed(2);
+                    domanda = `Un quadrato ha il lato lungo <code>${latoQuadrato} cm</code>. Calcola la misura della sua diagonale arrotondando alla seconda cifra decimale.`;
+                    risposta = `<strong>&approx; ${diagApprox} cm</strong>`;
+                    spiegazione = `
+                    1) La formula della diagonale del quadrato basata sul Teorema di Pitagora è <code>d = l &times; &radic;2</code>.<br>
+                    2) Sostituiamo il valore del lato: <code>d = ${latoQuadrato} &times; 1.4142...</code>.<br>
+                    3) Risultato finale arrotondato: <code>&approx; ${diagApprox} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

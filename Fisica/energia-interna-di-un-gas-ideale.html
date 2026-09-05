@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sull'Energia Interna di un Gas Ideale con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Energia Interna di un Gas Ideale: Teoria, Termodinamica e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="energia-interna-di-un-gas-ideale" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width0="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Energia Interna di un Gas Ideale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Dipendenza dell'energia interna dalla temperatura assoluta, gradi di libertà molecolari e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Definizione e Dipendenza dalla Temperatura</h2>
+            <p>
+                L'<strong>energia interna</strong> ($U$) di un gas ideale è definita come la somma dell'energia cinetica e dell'energia potenziale di tutte le molecole che lo costituiscono. Poiché nel modello di gas ideale si assumono nulle le forze intermolecolari a distanza, non vi è energia potenziale d'interazione: di conseguenza, l'energia interna coincide unicamente con la somma delle energie cinetiche delle molecole.
+            </p>
+            <div class="formula-box">
+                📐 <b>Formula per Gas Monoatomici:</b>
+                $$U = \frac{3}{2} n R T$$
+                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #475569;">
+                    Per un gas biatomico, tenendo conto dei gradi di libertà rotazionali, l'espressione diventa $U = \frac{5}{2} n R T$. L'energia interna dipende esclusivamente dalla temperatura assoluta $T$.
+                </p>
+            </div>
+
+            <h2>2. Proprietà Fondamentali dell'Energia Interna</h2>
+            <ul>
+                <li><strong>Funzione di stato:</strong> La variazione di energia interna ($\Delta U$) in una trasformazione termodinamica dipende unicamente dallo stato iniziale e finale del sistema, e non dal percorso seguito.</li>
+                <li><strong>Isoterme:</strong> In una trasformazione isoterma ($\Delta T = 0$), la variazione di energia interna è sempre nulla ($\Delta U = 0$).</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sull'Energia Interna</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo dell'energia interna e delle sue variazioni, ordinati per difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sull'Energia Interna di un Gas Ideale
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // Calcolo di U = (3/2) n R T per gas monoatomico
+                    let n = 1.0 + (i % 5) * 0.5; // mol
+                    let T_C = 20 + (i % 6) * 10; // °C
+                    let T_K = T_C + 273.15; // K
+                    let R = 8.31;
+                    let U_val = 1.5 * n * R * T_K;
+
+                    q = `Esercizio ${i}: Calcola l'energia interna $U$ di $n = ${n.toFixed(1)}\\text{ moli}$ di un gas perfetto monoatomico alla temperatura di $${T_C}\\text{ °C}$ ($R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$).`;
+                    r = `$${U_val.toFixed(1)}\\text{ J}$.`;
+                    s = `La temperatura in Kelvin è $T = ${T_C} + 273{,}15 = ${T_K.toFixed(2)}\\text{ K}$. Applicando la formula $U = \\frac{3}{2} n R T = 1{,}5 \\cdot ${n.toFixed(1)} \\cdot 8{,}31 \\cdot ${T_K.toFixed(2)} \\approx ${U_val.toFixed(1)}\\text{ J}$.`;
+                
+                } else if (tipo === 1) {
+                    // Calcolo della variazione di energia interna Delta U = (3/2) n R Delta T
+                    let n = 2.0;
+                    let T1_C = 10;
+                    let T2_C = 60 + (i % 4) * 20;
+                    let Delta_T = T2_C - T1_C;
+                    let R = 8.31;
+                    let dU = 1.5 * n * R * Delta_T;
+
+                    q = `Esercizio ${i}: Un campione di $n = ${n}\\text{ moli}$ di gas perfetto monoatomico subisce una variazione di temperatura passando da $T_1 = ${T1_C}\\text{ °C}$ a $T_2 = ${T2_C}\\text{ °C}$. Calcola la variazione di energia interna $\\Delta U$ ($R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$).`;
+                    r = `$${dU.toFixed(1)}\\text{ J}$.`;
+                    s = `La variazione di temperatura in Kelvin corrisponde a $\\Delta T = ${T2_C} - ${T1_C} = ${Delta_T}\\text{ K}$. Sfruttando la relazione $\\Delta U = \\frac{3}{2} n R \\Delta T = 1{,}5 \\cdot 2 \\cdot 8{,}31 \\cdot ${Delta_T} \\approx ${dU.toFixed(1)}\\text{ J}$.`;
+                
+                } else if (tipo === 2) {
+                    // Calcolo per gas biatomico U = (5/2) n R T
+                    let n = 1.0;
+                    let T_C = 0;
+                    let T_K = 273.15;
+                    let R = 8.31;
+                    let U_bi = 2.5 * n * R * T_K;
+
+                    q = `Esercizio ${i}: Determina l'energia interna $U$ di $n = ${n}\\text{ mole}$ di un gas perfetto biatomico alla temperatura di fusione del ghiaccio ($0\\text{ °C}$) ($R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$).`;
+                    r = `$${U_bi.toFixed(1)}\\text{ J}$.`;
+                    s = `Per un gas biatomico l'energia interna si calcola con $U = \\frac{5}{2} n R T$. Sostituendo $T = 273{,}15\\text{ K}$, otteniamo $U = 2{,}5 \\cdot 1 \\cdot 8{,}31 \\cdot 273{,}15 \\approx ${U_bi.toFixed(1)}\\text{ J}$.`;
+                
+                } else {
+                    // Domanda concettuale su trasformazione isoterma
+                    q = `Esercizio ${i}: Durante un'espansione isoterma di un gas perfetto, come varia la sua energia interna? Giuistifica la risposta.`;
+                    r = `La variazione di energia interna è nulla ($\\Delta U = 0$) poiché la temperatura del gas rimane costante.`;
+                    s = `L'energia interna di un gas ideale dipende esclusivamente dalla temperatura assoluta ($U \\propto T$). Se la temperatura non cambia in una trasformazione isoterma, anche $U$ resta costante.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

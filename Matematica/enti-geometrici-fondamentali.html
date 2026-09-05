@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 1: Enti geometrici fondamentali (punto, retta e piano) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Enti geometrici fondamentali (punto, retta e piano) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-lezione-1" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Euclidea Piana / Lezione 1</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Enti geometrici fondamentali (punto, retta e piano)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Introduzione ai concetti primitivi della geometria euclidea, assiomi di appartenenza, postulati fondamentali e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. I Concetti Primitivi</h2>
+            <p>
+                La geometria euclidea si fonda su alcuni enti definiti <strong>primitivi</strong>, ovvero nozioni intuitive di cui non si dà una definizione formale, ma che vengono descritte tramite le loro proprietà fondamentali:
+            </p>
+            <ul>
+                <li><strong>Il Punto:</strong> È l'ente geometrico fondamentale privo di dimensioni (né lunghezza, né larghezza, né spessore). Si indica solitamente con le lettere maiuscole dell'alfabeto (es. <code>A</code>, <code>B</code>, <code>P</code>).</li>
+                <li><strong>La Retta:</strong> È un insieme infinito di punti che si estende in entrambe le direzioni senza fine, possiede una sola dimensione (la lunghezza) e non ha spessore. Si indica con le lettere minuscole (es. <code>r</code>, <code>s</code>) o mediante due suoi punti (es. <code>AB</code>).</li>
+                <li><strong>Il Piano:</strong> È un insieme infinito di punti e di rette che si estende indefinitamente in due dimensioni (lunghezza e larghezza), privo di spessore. Si indica solitamente con le lettere dell'alfabeto greco (es. <code>&alpha;</code>, <code>&beta;</code>).</li>
+            </ul>
+
+            <h2>2. Postulati Fondamentali (Assiomi)</h2>
+            <p>
+                Gli assiomi sono le regole di base accettate senza dimostrazione su cui si regge l'intera costruzione geometrica:
+            </p>
+            <ul>
+                <li><strong>Assioma della retta:</strong> Per un punto del piano passano infinite rette; per due punti distinti passa <em>una e una sola</em> retta.</li>
+                <li><strong>Assioma del piano:</strong> Per tre punti non allineati passa uno e un solo piano. Inoltre, se due punti di una retta appartengono a un piano, allora l'intera retta appartiene a quel piano.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Proprietà di Appartinenza:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Si dice che un punto <em>appartiene</em> a una retta (o a un piano) se giace su di essa.<br>
+                    • Due o più rette che appartengono allo stesso piano si dicono <strong>coplanari</strong>.<br>
+                    • Se due rette hanno un solo punto in comune, si dicono <em>incidenti</em>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Quante rette passano per un unico punto assegnato <code>P</code> nel piano?</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Richiamiamo il postulato fondamentale relativo ai punti e alle rette.</li>
+                    <li>Per un singolo punto <code>P</code> passano <em>infinite</em> rette (fascio proprio o improprio a seconda del contesto, in questo caso un fascio proprio di centro <code>P</code>).</li>
+                    <li>Per determinare in modo univoco una sola retta sono necessari almeno <em>due</em> punti distinti.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Infinite rette</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sugli Enti Geometrici Fondamentali</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di logica geometrica, posizioni reciproche tra punti, rette e piani, e combinatoria di base degli enti primitivi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let puntiNum = (i % 5) + 2;
+                    domanda = `Quante rette distinte passano per <code>${puntiNum}</code> punti allineati sullo stesso piano?`;
+                    risposta = `<strong>Esattamente 1 retta</strong>`;
+                    spiegazione = `
+                    1) Per definizione geometrica, se i punti sono allineati appartengono tutti alla medesima retta.<br>
+                    2) L'assioma fondamentale stabilisce che due punti distinti determinano una sola retta.<br>
+                    3) Di conseguenza, la retta passante per tutti i <code>${puntiNum}</code> punti dati è unica.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let nPunti = (i % 4) + 3;
+                    let retteTot = (nPunti * (nPunti - 1)) / 2;
+                    domanda = `Dati <code>${nPunti}</code> punti complanari a tre a tre non allineati, quante rette si possono tracciare congiungendoli a due a due?`;
+                    risposta = `<strong>${retteTot} rette</strong>`;
+                    spiegazione = `
+                    1) Ciascuna retta è individuata da una coppia di punti distinti.<br>
+                    2) Il numero di coppie possibili tra <code>${nPunti}</code> elementi si calcola con le combinazioni semplici <code>C<sub>n,2</sub> = n(n-1)/2</code>.<br>
+                    3) Sostituendo i valori otteniamo <code>(${nPunti} &middot; ${nPunti-1}) / 2 = ${retteTot}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let nPiani = (i % 3) + 4;
+                    domanda = `Qual è il numero massimo di regioni in cui lo spazio viene suddiviso da <code>${nPiani}</code> piani paralleli distinti?`;
+                    risposta = `<strong>${nPiani + 1} regioni</strong>`;
+                    spiegazione = `
+                    1) Un singolo piano divide lo spazio in 2 regioni.<br>
+                    2) Ogni piano parallelo successivo aggiunto nello spazio aggiunge una ulteriore partizione per ciascuna regione attraversata.<br>
+                    3) Con <code>${nPiani}</code> piani paralleli si ottengono <code>${nPiani} + 1 = ${nPiani + 1}</code> regioni spaziali distinte.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

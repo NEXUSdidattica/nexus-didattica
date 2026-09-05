@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Circonferenza e Cerchio - Sezione 3: Tangenti a una Circonferenza da un Punto Esterno - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Tangenti a una Circonferenza da un Punto Esterno - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="circonferenza-cerchio-sezione-3" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Circonferenza e Cerchio - Sezione 3</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Tangenti a una Circonferenza da un Punto Esterno</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Proprietà delle rette tangenti, teoremi sui segmenti di tangenza, triangoli rettangoli associati e Teorema di Pitagora, con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Proprietà della Retta Tangente</h2>
+            <p>
+                Una retta si dice <strong>tangente</strong> a una circonferenza quando ha in comune con essa un unico punto, chiamato <em>punto di tangenza</em>. 
+            </p>
+            <ul>
+                <li><strong>Perpendicolarità al Raggio:</strong> Il raggio condotto nel punto di tangenza è sempre <em>perpendicolare</em> alla retta tangente <code>(r &perp; t)</code>, formando un angolo di <code>90&deg;</code>.</li>
+                <li><strong>Tangenti da un Punto Esterno:</strong> Da un punto <code>P</code> situato all'esterno di una circonferenza è possibile condurre esattamente <em>due rette tangenti</em> alla circonferenza stessa.</li>
+            </ul>
+
+            <h2>2. Il Teorema dei Segmenti di Tangente</h2>
+            <p>
+                I segmenti di tangente compresi tra il punto esterno e i rispettivi punti di contatto sulla circonferenza godono di una importantissima proprietà geometrica:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Proprietà e Formule Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Congruenza: <em>I due segmenti di tangente condotti da un punto esterno a una circonferenza sono congruenti (uguali)</em> <code>(PA &cong; PB)</code>.<br>
+                    • Bisettrice: Il segmento che congiunge il punto esterno con il centro della circonferenza è la bisettrice dell'angolo formato dalle due tangenti.<br>
+                    • Teorema di Pitagora: Congiungendo il centro <code>O</code> con il punto esterno <code>P</code> e con il punto di tangenza <code>A</code>, si forma un triangolo rettangolo <code>OAP</code> (rettangolo in <code>A</code>). Vale quindi la relazione: <code>OP&sup2; = OA&sup2; + PA&sup2;</code>.<br>
+                    • Formula inversa per il segmento di tangente: <code>PA = &radic;(OP&sup2; - OA&sup2;)</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Da un punto <code>P</code> distante <code>13 cm</code> dal centro di una circonferenza viene condotta una tangente. Sapendo che il raggio della circonferenza misura <code>5 cm</code>, calcola la lunghezza del segmento di tangente compreso tra il punto <code>P</code> e il punto di contatto.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Consideriamo il triangolo rettangolo formato dal raggio <code>OA</code>, dalla distanza dal centro <code>OP</code> e dal segmento di tangente <code>PA</code>.</li>
+                    <li>Applichiamo il Teorema di Pitagora in forma inversa: <code>PA = &radic;(OP&sup2; - OA&sup2;)</code>.</li>
+                    <li>Sostituiamo i valori numerici: <code>PA = &radic;(13&sup2; - 5&sup2;) = &radic;(169 - 25) = &radic;144</code>.</li>
+                    <li>Eseguiamo la radice quadrata: <code>PA = 12 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Il segmento di tangente misura 12 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Tangenti da Punto Esterno</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi geometrici applicati sui segmenti di tangenza, proprietà di congruenza e calcoli con il Teorema di Pitagora.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let lenTan = (i % 15) + 6; // Tra 6 e 20
+                    domanda = `Da un punto esterno <code>P</code> vengono condotte due tangenti a una circonferenza, individuando i punti di contatto <code>A</code> e <code>B</code>. Se il segmento <code>PA</code> misura <code>${lenTan} cm</code>, quanto misura il segmento <code>PB</code>?`;
+                    risposta = `<strong>${lenTan} cm</strong>`;
+                    spiegazione = `
+                    1) Per il teorema dei segmenti di tangente, i segmenti condotti da un punto esterno sono congruenti: <code>PA &cong; PB</code>.<br>
+                    2) Di conseguenza, anche <code>PB</code> misura esattamente <code>${lenTan} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    // Triterne pitagoriche classiche (es: 3-4-5, 6-8-10, 5-12-13, 8-15-17)
+                    let triplette = [
+                        { r: 3, t: 4, op: 5 },
+                        { r: 6, t: 8, op: 10 },
+                        { r: 5, t: 12, op: 13 },
+                        { r: 8, t: 15, op: 17 },
+                        { r: 9, t: 12, op: 15 }
+                    ];
+                    let trip = triplette[i % triplette.length];
+                    let raggioM = trip.r;
+                    let tangM = trip.t;
+                    let distOp = trip.op;
+
+                    domanda = `Una circonferenza ha il raggio di <code>${raggioM} cm</code>. Da un punto <code>P</code> distante <code>${distOp} cm</code> dal centro viene tracciata una tangente. Calcola la lunghezza del segmento di tangente.`;
+                    risposta = `<strong>${tangM} cm</strong>`;
+                    spiegazione = `
+                    1) Applichiamo il Teorema di Pitagora al triangolo rettangolo formato da raggio e distanza dal centro: <code>PA = &radic;(OP&sup2; - OA&sup2;)</code>.<br>
+                    2) Sostituiamo i valori: <code>&radic;(${distOp}&sup2; - ${raggioM}&sup2;) = &radic;(${distOp * distOp} - ${raggioM * raggioM}) = &radic;(${distOp * distOp - raggioM * raggioM}) = ${tangM} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let raggioD = (i % 6) + 5;
+                    let tangD = (i % 8) + 12;
+                    let opCalc = Math.sqrt(raggioD * raggioD + tangD * tangD).toFixed(2);
+                    domanda = `Il raggio di una circonferenza misura <code>${raggioD} cm</code> e un segmento di tangente condotto da un punto esterno <code>P</code> è lungo <code>${tangD} cm</code>. Calcola la distanza del punto <code>P</code> dal centro della circonferenza (arrotondata a due decimali).`;
+                    risposta = `<strong>&approx; ${opCalc} cm</strong>`;
+                    spiegazione = `
+                    1) Troviamo l'ipotenusa del triangolo rettangolo con il Teorema di Pitagora: <code>OP = &radic;(OA&sup2; + PA&sup2;)</code>.<br>
+                    2) Sostituiamo i dati: <code>&radic;(${raggioD}&sup2; + ${tangD}&sup2;) = &radic;(${raggioD * raggioD} + ${tangD * tangD}) = &radic;(${raggioD * raggioD + tangD * tangD}) &approx; ${opCalc} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa alle Reti LAN (Local Area Network), componenti hardware, dispositivi di interconnessione e simulatore interattivo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Reti LAN & Componenti di Interconnessione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive (Tema Arancione NEXUS) -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+            /* Arancione scuro / Terracotta */
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #ea580c;
+        }
+
+        .terminal-container {
+            background: #18181b;
+            color: #fdba74;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #f97316;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #27272a;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #fb923c;
+            font-weight: bold;
+        }
+
+        .mem-controls {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #27272a;
+            color: #fdba74;
+            border: 1px solid #52525b;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .mem-output {
+            background-color: #09090b;
+            border: 1px solid #27272a;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #f97316;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        button.btn-os:hover {
+            background-color: #ea580c;
+        }
+
+        .code-snippet {
+            background: #18181b;
+            color: #fed7aa;
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border: 1px solid #3f3f46;
+            margin: 1.5rem 0;
+        }
+
+        table.tag-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        table.tag-table th,
+        table.tag-table td {
+            border: 1px solid #fed7aa;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        table.tag-table th {
+            background-color: #fff7ed;
+            color: #c2410c;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="rete-lan" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.path || history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #c2410c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Guida Definitiva</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Reti LAN &
+                    Componenti di Interconnessione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Architettura delle reti locali (Local Area Network), standard Ethernet, dispositivi attivi (Switch,
+                    Router) e gestione del traffico dati.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #f97316; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è una Rete LAN (Local Area Network)</h2>
+            <p>
+                Una <strong>LAN</strong> (<em>Local Area Network</em>) è una rete di calcolatori che collega dispositivi
+                all'interno di un'area geografica circoscritta, come un'abitazione, un ufficio, un'azienda o un istituto
+                scolastico. A differenza delle WAN, le LAN offrono velocità di trasmissione dati molto elevate (da 1
+                Gbps fino a 10+ Gbps) e tassi di errore estremamente bassi grazie all'utilizzo di mezzi trasmissivi
+                dedicati.
+            </p>
+
+            <div class="code-snippet">
+                <span style="color: #71717a;">/* Caratteristiche principali di una LAN */</span>
+                <span style="color: #fb923c;">Proprietà</span>: Privata (gestita interamente dall'utente o
+                dall'organizzazione).
+                <span style="color: #fb923c;">Topologia tipica</span>: Stella o Stella Estesa basata su Switch Ethernet.
+                <span style="color: #fb923c;">Condivisione</span>: Risorse hardware (stampanti, scanner) e software
+                (file server, database locali).
+            </div>
+
+            <h2>2. Dispositivi di Interconnessione e Apparati di Rete</h2>
+            <p>Per costruire e gestire il flusso dei pacchetti all'interno di una rete LAN si utilizzano specifici
+                dispositivi operanti a differenti livelli del modello ISO/OSI:</p>
+
+            <table class="tag-table">
+                <thead>
+                    <tr>
+                        <th>Dispositivo</th>
+                        <th>Livello OSI</th>
+                        <th>Funzione e Caratteristiche Principali</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Repeater / Hub</strong></td>
+                        <td>Livello 1 (Fisico)</td>
+                        <td>Rigenera e ripete il segnale elettrico in broadcast su tutte le porte. Causa collisioni di
+                            traffico.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bridge / Switch</strong></td>
+                        <td>Livello 2 (Collegamento)</td>
+                        <td>Inoltra i frame basandosi sugli indirizzi MAC. Lo switch crea domini di collisione isolati
+                            per ciascuna porta.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Router</strong></td>
+                        <td>Livello 3 (Rete)</td>
+                        <td>Instrada i pacchetti tra reti differenti (es. tra la LAN locale e Internet) basandosi sugli
+                            indirizzi IP.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Simulatore Interattivo: Analizzatore di Apparati LAN</h2>
+            <p>Seleziona un dispositivo di rete per verificare il comportamento operativo e il trattamento dei dati in
+                transito.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">lan-core@nexus-sys:~#</span>
+                    <span style="font-size: 0.8rem; color: #a1a1aa;">Device Inspector</span>
+                </div>
+
+                <div class="mem-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #a1a1aa; display: block; margin-bottom: 4px;">Seleziona
+                            Apparato LAN:</label>
+                        <select id="lanOpSelect" class="code-input">
+                            <option value="switch">Switch Ethernet (Livello 2)</option>
+                            <option value="router">Router di Frontiera (Livello 3)</option>
+                            <option value="hub">Hub / Ripetitore (Livello 1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <button class="btn-os" onclick="simulaLanOp()">ESEGUI TEST APPARATO 🔌</button>
+                </div>
+
+                <div class="mem-output" id="memOutputLan">
+                    > Seleziona un apparato di rete e avvia il test per visualizzare le specifiche di funzionamento.
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore LAN -->
+    <script>
+        window.simulaLanOp = function () {
+            const op = document.getElementById('lanOpSelect').value;
+            const output = document.getElementById('memOutputLan');
+
+            let snippet = "";
+            if (op === 'switch') {
+                snippet = `> Apparato: <strong>Switch Ethernet</strong><br>` +
+                    `&nbsp;&nbsp;↳ Funzionamento: Legge l'indirizzo MAC di destinazione e invia il frame unicamente alla porta associata.<br>` +
+                    `&nbsp;&nbsp;↳ Vantaggio: Elimina le collisioni di dominio e ottimizza la banda passante disponibile per ciascun host.`;
+            } else if (op === 'router') {
+                snippet = `> Apparato: <strong>Router</strong><br>` +
+                    `&nbsp;&nbsp;↳ Funzionamento: Analizza l'indirizzo IP logico e consulta la tabella di routing per inoltrare i pacchetti verso reti remote.<br>` +
+                    `&nbsp;&nbsp;↳ Vantaggio: Separa i domini di broadcast e gestisce la connessione con reti WAN esterne.`;
+            } else {
+                snippet = `> Apparato: <strong>Hub (Ripetitore Multiporta)</strong><br>` +
+                    `&nbsp;&nbsp;↳ Funzionamento: Riceve un segnale elettrico su una porta e lo ritrasmette identico su tutte le altre porte collegate.<br>` +
+                    `&nbsp;&nbsp;↳ Svantaggio: Condivisione totale della banda e alto rischio di collisioni di pacchetti sulla linea.`;
+            }
+
+            output.style.color = "#fdba74";
+            output.innerHTML = snippet;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

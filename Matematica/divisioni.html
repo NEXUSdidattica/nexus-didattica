@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa ed esercizi pratici sulle Divisioni">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <title>La Divisione: Teoria e 100 Esercizi - NEXUS didattica</title>
+</head>
+
+<body data-lesson-id="aritmetica-divisioni" data-materia="Matematica">
+
+    <!-- Header di navigazione -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- Pulsante Torna Indietro -->
+        <div style="margin-bottom: 1rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- Hero lezione -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1>La Divisione e la Proprietà Invariantiva</h1>
+                <p class="lead-text">
+                    Scopri l'operazione inversa della moltiplicazione, gestisci i resti, applica la proprietà invariantiva e risolvi 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- Contenuto Teorico -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è la Divisione?</h2>
+            <p>
+                La <strong>divisione</strong> è l'operazione aritmetica inversa della moltiplicazione. Serve a ripartire una quantità in parti uguali o a stabilire quante volte un numero è contenuto in un altro. Il simbolo utilizzato è il diviso (<strong>:</strong> o <strong>÷</strong>).
+            </p>
+
+            <div class="box-evidenza">
+                💡 <strong>Terminologia:</strong> Nella scrittura <code>a : b = c</code>:<br>
+                • <code>a</code> si chiama <strong>dividendo</strong>.<br>
+                • <code>b</code> si chiama <strong>divisore</strong>.<br>
+                • <code>c</code> si chiama <strong>quoziente</strong> (se la divisione ha resto 0 si dice <em>quoto</em>).<br>
+                ⚠️ <strong>La divisione per zero è IMPOSSIBILE:</strong> <code>a : 0</code> non ha significato matematico!
+            </div>
+
+            <h2>2. La Proprietà Invariantiva della Divisione</h2>
+            <p>Come la sottrazione, anche la divisione **non è commutativa** (<code>12 : 4 ≠ 4 : 12</code>). Gode però della seguente fondamentale proprietà:</p>
+            <ul>
+                <li><strong>Proprietà Invariantiva:</strong> Moltiplicando o dividendo sia il dividendo che il divisore per uno stesso numero diverso da zero, il risultato (il quoziente) <strong>non cambia</strong>.</li>
+                <li><em>Esempio con moltiplicazione:</em> <code>15 : 2.5</code> &rarr; Moltiplichiamo per 2 entrambi: <code>(15 × 2) : (2.5 × 2) = 30 : 5 = 6</code>.</li>
+                <li><em>Esempio con divisione:</em> <code>120 : 40</code> &rarr; Dividiamo per 10 entrambi: <code>(120 : 10) : (40 : 10) = 12 : 4 = 3</code>.</li>
+            </ul>
+        </article>
+
+        <!-- Sezione Esercizi Pratici (100 Esercizi Generati) -->
+        <section class="sezione-esercizi">
+            <h2>✏️ 100 Esercizi Pratici per Allenarsi</h2>
+            <p>Di seguito trovi 100 divisioni divise in tre livelli di difficoltà crescente, comprensive di calcoli con resto, proprietà invariantiva e decimali. Clicca su "Mostra Soluzione" per verificare i tuoi calcoli.</p>
+
+            <div id="lista-esercizi">
+                <!-- Verranno inseriti automaticamente i 100 esercizi via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+    </footer>
+
+    <!-- Script Generatore dei 100 Esercizi per la Divisione -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 40) {
+                    // 40 FACILI (Verde): Divisioni esatte entro le tabelline + termini/regole dello 0
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 5 === 0) {
+                        let a = Math.floor(Math.random() * 50) + 5;
+                        domanda = `Quanto fa <strong>${a} : 0</strong>?`;
+                        risposta = `Impossibile`;
+                        spiegazione = `La divisione per zero non è definita nell'aritmetica. Non esiste alcun numero che moltiplicato per 0 dia ${a}.`;
+                    } else if (i % 4 === 0) {
+                        let d = Math.floor(Math.random() * 40) + 10;
+                        let div = Math.floor(Math.random() * 8) + 2;
+                        let q = Math.floor(d / div);
+                        domanda = `Nella divisione <strong>${d} : ${div}</strong>, come si chiama il numero <strong>${div}</strong>?`;
+                        risposta = `Divisore`;
+                        spiegazione = `Il primo numero è il <strong>dividendo</strong>, mentre il secondo (quello per cui si divide) è il <strong>divisore</strong>.`;
+                    } else {
+                        let b = Math.floor(Math.random() * 9) + 2;
+                        let q = Math.floor(Math.random() * 9) + 2;
+                        let a = b * q;
+                        domanda = `Calcola il quoziente esatto: <strong>${a} : ${b}</strong>`;
+                        risposta = q;
+                        spiegazione = `Trova il numero che moltiplicato per ${b} dà ${a}: ${a} : ${b} = ${q}.`;
+                    }
+
+                } else if (i <= 75) {
+                    // 35 MEDI (Giallo): Divisioni con resto e Proprietà Invariantiva
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let divBase = Math.floor(Math.random() * 8) + 2;
+                        let qBase = Math.floor(Math.random() * 15) + 5;
+                        let diviD = divBase * qBase;
+                        let factor = 10;
+                        domanda = `Applica la <strong>proprietà invariantiva</strong> moltiplicando per ${factor} sia il dividendo che il divisore per calcolare: <strong>${diviD} : ${divBase}</strong>`;
+                        risposta = `(${diviD} × ${factor}) : (${divBase} × ${factor}) = ${diviD * factor} : ${divBase * factor} = ${qBase}`;
+                        spiegazione = `Moltiplicando per ${factor} entrambi i numeri otteniamo <code>${diviD * factor} : ${divBase * factor}</code>. Il quoziente rimane invariato: <strong>${qBase}</strong>.`;
+                    } else {
+                        let b = Math.floor(Math.random() * 7) + 3;
+                        let q = Math.floor(Math.random() * 12) + 4;
+                        let resto = Math.floor(Math.random() * (b - 1)) + 1;
+                        let a = (b * q) + resto;
+                        domanda = `Calcola la divisione con resto: <strong>${a} : ${b}</strong>`;
+                        risposta = `Quoziente ${q} con resto ${resto}`;
+                        spiegazione = `Il divisore ${b} sta nel ${a} per ${q} volte con un resto di ${resto} (infatti ${b} × ${q} + ${resto} = ${a}).`;
+                    }
+
+                } else {
+                    // 25 DIFFICILI (Rosso): Invariantiva con divisione e calcoli con decimali
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 3 === 0) {
+                        let div = 20;
+                        let q = Math.floor(Math.random() * 15) + 5;
+                        let d = div * q;
+                        domanda = `Usa la <strong>proprietà invariantiva</strong> dividendo entrambi i termini per 10 per facilitare la divisione <strong>${d} : ${div}</strong>`;
+                        risposta = `(${d} : 10) : (${div} : 10) = ${d / 10} : ${div / 10} = ${q}`;
+                        spiegazione = `Dividendo per 10 entrambi i termini eliminiamo gli zeri: ${d / 10} : ${div / 10} = ${q}.`;
+                    } else {
+                        let div = Math.floor(Math.random() * 4) + 2;
+                        let q = (Math.random() * 20 + 5).toFixed(1);
+                        let d = (q * div).toFixed(1);
+                        domanda = `Calcola la divisione decimale: <strong>${d} : ${div}</strong>`;
+                        risposta = q;
+                        spiegazione = `Esegui la divisione mettendo la virgola al quoziente appena abbassi la prima cifra decimale del dividendo: ${d} : ${div} = ${q}.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script Moduli Esterni -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Present Continuous in English: regole di coniugazione, variazioni ortografiche della forma in -ing, usi e differenze con il Present Simple - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Present Continuous - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="present-continuous" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Ausiliari e Present Tenses</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">The Present Continuous</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi approfondita del tempo progressivo in inglese: struttura, variazioni ortografiche della forma in -ing, usi principali e differenze fondamentali rispetto al Present Simple.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Quando si usa il Present Continuous?</h2>
+            <p>
+                Il <strong>Present Continuous</strong> (noto anche come <em>Present Progressive</em>) si forma combinando il verbo ausiliare <em>to be</em> coniugato al presente e la forma in <em>-ing</em> (participio presente) del verbo principale. Si utilizza principalmente nei seguenti contesti:
+            </p>
+            <ul>
+                <li><strong>Azioni in corso di svolgimento nel momento in cui si parla:</strong> descrive ciò che sta accadendo adesso (es. <em>Look! It is raining outside.</em>).</li>
+                <li><strong>Azioni temporanee:</strong> situazioni che si verificano in un periodo limitato di tempo, ma non necessariamente in questo esatto secondo (es. <em>I am staying with my grandparents this week.</em>).</li>
+                <li><strong>Situazioni in mutamento o evoluzione:</strong> processi di cambiamento graduale (es. <em>The climate is changing very fast.</em>).</li>
+                <li><strong>Programmi futuri già definiti (Arrangements):</strong> piani personali stabili con data e ora fissate (es. <i>I am meeting my friends tomorrow evening.</i>).</li>
+            </ul>
+
+            <h2>2. Coniugazione e Struttura</h2>
+            <p>
+                La struttura della frase affermativa richiede il soggetto, il verbo ausiliare <strong>to be</strong> concordato e il verbo principale con la desinenza <strong>-ing</strong>.
+            </p>
+
+            <div class="formula-box">
+                🇬🇧 <strong>Schema della forma affermativa:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    \(\text{[Soggetto]} + \text{[am / is / are]} + \text{[Verbo base]}-\mathbf{ing} + \text{[Complementi]}\) <br>
+                    <em>Esempio:</em> We <strong>are studying</strong> English right now.
+                </p>
+            </div>
+
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Pronome Personale</th>
+                        <th>Verbo (Esempio: <em>to work</em>)</th>
+                        <th>Traduzione italiana</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I</strong></td>
+                        <td>I <strong>am working</strong> (I'm working)</td>
+                        <td>sto lavorando</td>
+                    </tr>
+                    <tr>
+                        <td><strong>You</strong></td>
+                        <td>You <strong>are working</strong> (You're working)</td>
+                        <td>stai lavorando</td>
+                    </tr>
+                    <tr>
+                        <td><strong>He / She / It</strong></td>
+                        <td>He / She / It <strong>is working</strong> (He's working)</td>
+                        <td>sta lavorando</td>
+                    </tr>
+                    <tr>
+                        <td><strong>We</strong></td>
+                        <td>We <strong>are working</strong> (We're working)</td>
+                        <td>stiamo lavorando</td>
+                    </tr>
+                    <tr>
+                        <td><strong>You</strong></td>
+                        <td>You <strong>are working</strong> (You're working)</td>
+                        <td>state lavorando</td>
+                    </tr>
+                    <tr>
+                        <td><strong>They</strong></td>
+                        <td>They <strong>are working</strong> (They're working)</td>
+                        <td>stanno lavorando</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Regole Ortografiche per la Aggiunta di "-ing"</h2>
+            <p>
+                Quando trasformiamo un verbo nella sua forma in <em>-ing</em>, dobbiamo applicare alcune precise regole ortografiche basate sulla terminazione dell'infinito:
+            </p>
+            <ul>
+                <li><strong>Regola generale:</strong> si aggiunge semplicemente <em>-ing</em> alla forma base del verbo. <br>
+                    <em>Esempio:</em> play $\rightarrow$ play<strong>ing</strong>, read $\rightarrow$ read<strong>ing</strong>, go $\rightarrow$ go<strong>ing</strong>.
+                </li>
+                <li><strong>Verbi che terminano con una "e" muta:</strong> la "e" finale cade e si aggiunge <em>-ing</em>. <br>
+                    <em>Esempio:</em> writ<strong>e</strong> $\rightarrow$ writ<strong>ing</strong>, mak<strong>e</strong> $\rightarrow$ mak<strong>ing</strong>, hav<strong>e</strong> $\rightarrow$ hav<strong>ing</strong>. <br>
+                    <em>Eccezione:</em> I verbi che terminano in <em>-ee</em> mantengono la doppia vocale (es. <em>see $\rightarrow$ seeing</em>).
+                </li>
+                <li><strong>Verbi di una sola sillaba che terminano in consonante-vocale-consonante (CVC):</strong> raddoppiano la consonante finale prima di aggiungere <em>-ing</em>. <br>
+                    <em>Esempio:</em> run $\rightarrow$ ru<strong>nn</strong>ing, sit $\rightarrow$ si<strong>tt</strong>ing, swim $\rightarrow$ swi<strong>mm</strong>ing. <br>
+                    <em>Nota bene:</em> Non raddoppiano mai se terminano in <em>-w, -x, -y</em> (es. <em>play $\rightarrow$ playing, fix $\rightarrow$ fixing</em>).
+                </li>
+                <li><strong>Verbi di due o più sillabe con accento sull'ultima sillaba (CVC):</strong> raddoppiano la consonante finale. <br>
+                    <em>Esempio:</em> begi<strong>n</strong> $\rightarrow$ begi<strong>nn</strong>ing, admI<strong>t</strong> $\rightarrow$ admi<strong>tt</strong>ing.
+                </li>
+                <li><strong>Verbi che terminano in "-ie":</strong> la terminazione <em>-ie</em> si trasforma in <strong>-y</strong> prima di aggiungere <em>-ing</em>. <br>
+                    <em>Esempio:</em> l<strong>ie</strong> $\rightarrow$ l<strong>ying</strong>, d<strong>ie</strong> $\rightarrow$ d<strong>ying</strong>.
+                </li>
+            </ul>
+
+            <h2>4. Forma Negativa, Interrogativa e Risposte Brevi</h2>
+            <p>
+                La costruzione della forma negativa e interrogativa segue lo schema standard dei verbi ausiliari con il verbo <em>to be</em>:
+            </p>
+
+            <div class="formula-box">
+                🇬🇧 <strong>Forma Negativa e Interrogativa:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                    • <strong>Negativa:</strong> \(\text{[Soggetto]} + \text{[am/is/are]} + \mathbf{not} + \text{[Verbo]}-ing\) <br>
+                    <em>Esempio:</em> She <strong>isn't listening</strong> to music.
+                </p>
+                <p style="margin-top: 0; margin-bottom: 0;">
+                    • <strong>Interrogativa:</strong> \(\text{[Am/Is/Are]} + \text{[Soggetto]} + \text{[Verbo]}-ing + \mathbf{?}\) <br>
+                    <em>Esempio:</em> <strong>Are</strong> you <strong>coming</strong> with us?
+                </p>
+            </div>
+
+            <p>
+                Le risposte brevi (<em>Short Answers</em>) si compongono riutilizzando il pronome e l'ausiliare corrispondente:
+            </p>
+            <ul>
+                <li><em>Are you listening?</em> $\rightarrow$ Yes, I <strong>am</strong>. / No, I'm <strong>not</strong>.</li>
+                <li><em>Is it raining?</em> $\rightarrow$ Yes, it <strong>is</strong>. / No, it <strong>isn't</strong>.</li>
+            </ul>
+
+            <h2>5. Indicatori Temporali Frequenti</h2>
+            <p>
+                Il Present Continuous si accompagna spesso a espressioni che evidenziano la temporalità immediata dell'azione:
+            </p>
+            <ul>
+                <li><em>now</em> (ora), <em>right now</em> (proprio adesso), <em>at the moment</em> (al momento), <em>currently</em> (attualmente).</li>
+                <li>Frasi esclamative attrattive come <em>Look!</em> (Guarda!), <em>Listen!</em> (Ascolta!), <em>Be quiet!</em> (Fai silenzio!). <br>
+                    <em>Esempio:</em> <strong>Listen!</strong> The baby <strong>is crying</strong>.
+                </li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Distinzione Chiave: Present Simple vs Present Continuous</h3>
+                <p style="margin-bottom: 0;">
+                    Ricorda la regola fondamentale: usa il <strong>Present Simple</strong> per ciò che è abituale, fisso o una legge generale (es. <i>I work every day</i>); usa invece il <strong>Present Continuous</strong> per ciò che è in corso adesso, temporaneo o legato a un momento specifico (es. <i>Right now, I am working on my laptop</i>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

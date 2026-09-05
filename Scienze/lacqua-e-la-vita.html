@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L'acqua e la vita - Lezione di Scienze - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'acqua e la vita - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid #0ad41f;
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTI GENERALI (COLORE FISSO HOVER) */
+        .btn-custom-azione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #0ad41f;
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid #0ad41f;
+            box-shadow: 0 0 15px rgba(10, 212, 31, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-custom-azione:hover {
+            background-color: #09c21b;
+            box-shadow: 0 0 18px rgba(10, 212, 31, 0.7);
+            transform: translateY(-1px);
+        }
+
+        /* TASTO TORNA INDIETRO: VERDE VETRO TRASPARENTE */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(220, 252, 231, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #15803d;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(134, 239, 172, 0.6);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: rgba(187, 247, 208, 0.7);
+            color: #166534;
+            border-color: #0ad41f;
+            transform: translateY(-1px);
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid #0ad41f;
+            border-left: 8px solid #0ad41f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(10, 212, 31, 0.15);
+        }
+
+        .formula-box {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            border: 2px solid #0ad41f;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(10, 212, 31, 0.1);
+        }
+
+        .formula-box strong {
+            color: #15803d;
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI CON VERDE LEGGIBILE */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #15803d;
+            background-color: #f0fdf4;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid #bbf7d0;
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: #dcfce7;
+            color: #166534;
+            border-color: #0ad41f;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .box-risposta-corretta {
+            background-color: #dcfce7;
+            border: 1px solid #0ad41f;
+            border-left: 4px solid #0ad41f;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: #14532d;
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lacqua-e-la-vita" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #f0fdf4; color: #15803d; border: 1px solid #0ad41f; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Scienze / Biologia & Chimica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Acqua e la Vita</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Proprietà chimico-fisiche della molecola d'acqua, legami a idrogeno, polarità e ruolo fondamentale nei sistemi biologici.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione" class="btn-custom-azione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Struttura e Polarità della Molecola d'Acqua</h2>
+            <p>
+                L'acqua (\(H_2O\)) è la sostanza fondamentale per l'origine e il mantenimento della vita sulla Terra. Ciascuna molecola è costituita da un atomo di ossigeno legato a due atomi di idrogeno tramite legami covalenti polari. 
+            </p>
+            <p>
+                Poiché l'ossigeno possiede una maggiore <em>elettronegatività</em> rispetto all'idrogeno, esso attrae con più forza gli elettroni di legame. Questo crea una distribuzione asimmetrica della carica elettrica: l'ossigeno acquisisce una parziale carica negativa (\(\delta^-\)), mentre gli idrogeni presentano una parziale carica positiva (\(\delta^+\)). Per questa ragione, la molecola d'acqua è un <strong>dipolo elettrico</strong>.
+            </p>
+
+            <div class="formula-box">
+                💧 <strong>Geometria Molecolare:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    La molecola ha una forma a "V" (o angolata) con un angolo di legame di circa \(104.5^\circ\), fattore geometrico cruciale che impedisce la cancellazione dei momenti dipolari.
+                </p>
+            </div>
+
+            <h2>2. Il Legame a Idrogeno e le Proprietà Emergenti</h2>
+            <p>
+                La natura polare dell'acqua consente alle singole molecole di attrarsi reciprocamente: la parziale carica negativa dell'ossigeno di una molecola attira la parziale carica positiva degli idrogeni di molecole adiacenti. Questo legame intermolecolare debole ma estremamente diffuso è il <strong>legame a idrogeno</strong>.
+            </p>
+            <p>
+                Grazie ai legami a idrogeno, l'acqua manifesta proprietà uniche e vitali:
+            </p>
+            <ul>
+                <li><strong>Coesione e Adesione:</strong> Le molecole d'acqua tendono a rimanere unite tra loro (coesione, responsabile dell'alta tensione superficiale) e ad aderire a superfici polari (adesione, fondamentale per la capillarità nei vasi linfatici e lignei delle piante).</li>
+                <li><strong>Elevato Calore Specifico:</strong> L'acqua richiede una grande quantità di energia termica per innalzare la sua temperatura di \(1^\circ C\), poiché gran parte del calore viene impiegata per rompere i legami a idrogeno anziché accelerare il moto molecolare. Questo stabilisce un tampone termico essenziale per gli organismi viventi e gli ecosistemi globali.</li>
+                <li><strong>Calore Latente di Vaporizzazione Elevato:</strong> Per passare dallo stato liquido a quello gassoso, l'acqua assorbe enormi quantità di calore, consentendo meccanismi di termoregolazione efficienti come la traspirazione e la sudorazione.</li>
+                <li><strong>Densità anomala del ghiaccio:</strong> A differenza della maggior parte delle sostanze, l'acqua allo stato solido (ghiaccio) forma un reticolo cristallino aperto in cui le molecole sono più distanti rispetto allo stato liquido. Di conseguenza, il ghiaccio è meno denso dell'acqua liquida e galleggia, isolando termicamente i corpi d'acqua sottostanti e preservando la vita acquatica durante l'inverno.</li>
+            </ul>
+
+            <h2>3. L'Acqua come Solvente Universale</h2>
+            <p>
+                L'acqua è definita il <strong>solvente universale</strong> per le sostanze idrofile (polari e ioniche). Quando un composto ionico come il cloruro di sodio (\(NaCl\)) viene immerso in acqua, le cariche parziali delle molecole d'acqua circondano gli ioni (\(Na^+\) e \(Cl^-\)), separandoli e neutralizzando le forze di attrazione elettrostatica che li tenevano uniti. Questo processo prende il nome di <em>solratazione</em> o <em>idratazione</em>.
+            </p>
+            <p>
+                Al contrario, le sostanze apolari (idrofobe), come i lipidi e gli idrocarburi, non riescono a stabilire interazioni energeticamente favorevoli con i dipoli dell'acqua e tendono a segregarsi spontaneamente (interazione idrofobica), un principio fondamentale per la formazione delle membrane cellulari biologiche (doppio strato fosfolipidico).
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem; color: #15803d;">📝 Esercizio Esempio Guidato (Ragionamento)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Se un laghetto alpino gela interamente partendo dal fondo anziché dalla superficie, quale conseguenza ecologica e biochimica si verificherebbe per la sopravvivenza della fauna ittica e perché?</p>
+                <hr style="border: 0; border-top: 1px solid #bbf7d0; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione logica passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Analisi della densità: Il ghiaccio affonderebbe se fosse più denso dell'acqua liquida, portando al congelamento progressivo dal basso verso l'alto.</li>
+                    <li>Scomparsa del rifugio termico: L'intera colonna d'acqua si solidificherebbe, impedendo ai pesci e agli organismi bentonici di muoversi e sopravvivere alla temperatura costante di circa \(4^\circ C\) sul fondo.</li>
+                    <li>Interruzione metabolica: I processi enzimatici della vita acquatica verrebbero irreversibilmente bloccati dal congelamento dei tessuti cellulari.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: #15803d; font-weight: bold;">🎯 <strong>Soluzione:</strong> L'ecosistema acquatico collasserebbe poiché la proprietà naturale della densità anomala dell'acqua (che fa galleggiare il ghiaccio) verrebbe invertita, eliminando lo strato isolante inferiore.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI DI SOLO RAGIONAMENTO -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti di Ragionamento su L'Acqua e la Vita</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test analitici basati esclusivamente sul ragionamento logico e applicativo, suddivisi per livello di difficoltà.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi di Solo Ragionamento -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    domanda = `Esercizio ${i} (Ragionamento): Se potessimo sostituire l'acqua con un ipotetico liquido privo di legami a idrogeno ma con simile punto di ebollizione, quale proprietà termica corporea degli animali verrebbe compromessa per prima durante un forte sforzo fisico e perché?`;
+                    risposta = `La capacità di termoregolazione tramite evaporazione del sudore, a causa di un <strong>calore latente di vaporizzazione inferiore</strong>.`;
+                    spiegazione = `
+                    1) L'efficacia della sudorazione si basa sull'elevata energia richiesta per vaporizzare l'acqua (grazie ai legami a idrogeno).<br>
+                    2) Senza di essi, il liquido evaporerebbe troppo rapidamente o assorbirebbe meno calore corporeo, causando un surriscaldamento tissutale.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Esercizio ${i} (Ragionamento): Un insetto riesce a camminare sulla superficie dell'acqua senza affondare. Se aggiungessimo all'acqua un tensioattivo (es. un detergente) che rompe parzialmente i legami a idrogeno superficiali, quale sarebbe la deduzione logica immediata sulla stabilità dell'insetto?`;
+                    risposta = `L'insetto <strong>affonderebbe</strong> poiché verrebbe ridotta drasticamente la forza di coesione superficiale (tensione superficiale).`;
+                    spiegazione = `
+                    1) La tensione superficiale deriva dalla forte coesione generata dai legami a idrogeno tra le molecole d'acqua superficiali.<br>
+                    2) L'introduzione di un tensioattivo diminuisce questa forza coesiva, rendendo la superficie incapace di sostenere il peso dell'insetto.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Esercizio ${i} (Ragionamento): In un esperimento ipotetico, si altera geneticamente una pianta terrestre affinché i suoi lipidi cellulari diventino altamente polari e idrofili anziché idrofobi. Quale sarebbe l'effetto strutturale immediato e irreversibile sulle membrane plasmatiche delle sue cellule?`;
+                    risposta = `Il <strong>disfacimento strutturale del doppio strato lipidico</strong>, poiché verrebbe a mancare la forza idrofobica che guida l'auto-assemblaggio della membrana in ambiente acquoso.`;
+                    spiegazione = `
+                    1) Le membrane cellulari dipendono strettamente dalla segregazione termodinamica tra teste idrofile esterne e code idrofobe interne.<br>
+                    2) Se i lipidi diventassero idrofili, non si separerebbero dall'acqua circostante e la struttura di compartimentazione cellulare cesserebbe di esistere.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${risposta}
+                            </div>
+                            <p style="color: #15803d; font-weight: bold; margin-bottom: 0.5rem;">Spiegazione del ragionamento:</p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

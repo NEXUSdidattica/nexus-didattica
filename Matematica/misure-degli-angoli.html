@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Approfondimento sulle misure degli angoli in goniometria: conversione tra gradi sessagesimali e radianti, formule e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Misure degli Angoli: Gradi e Radianti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stili specifici per la lezione -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .badge-argomento.goniometria {
+            background-color: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="misure-degli-angoli" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno goniometria">Matematica / Goniometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Misure degli Angoli: Gradi e Radianti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Introduciamo i sistemi di misura degli angoli in goniometria, esplorando il sistema sessagesimale e la misura in radianti, con le relative formule di conversione.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>I Sistemi di Misura degli Angoli</h2>
+            <p>
+                In goniometria un angolo orientato può essere misurato principalmente attraverso due unità di misura: i <strong>gradi sessagesimali</strong> e i <strong>radianti</strong>.
+            </p>
+            
+            <ul>
+                <li><strong>Gradi Sessagesimali (\(^\circ\)):</strong> L'angolo giro viene suddiviso in \(360\) parti uguali. Ciascuna parte è un grado. Ogni grado si divide in \(60\) primi (\('\)) e ogni primo in \(60\) secondi (\(''\)).</li>
+                <li><strong>Radianti (\(\text{rad}\)):</strong> Un radiante è l'ampiezza di un angolo al centro che intercetta sulla circonferenza un arco di lunghezza pari al raggio della circonferenza stessa.</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3>🎯 Relazione Fondamentale e Conversioni</h3>
+                <p>
+                    L'angolo giro misura \(360^\circ\) oppure \(2\pi\) radianti. Da ciò deriva la relazione fondamentale di proporzionalità:
+                </p>
+                <div class="formula-box">
+                    $$\frac{\alpha^\circ}{180^\circ} = \frac{\alpha_{\text{rad}}}{\pi}$$
+                </div>
+                <p style="margin-bottom: 0;">
+                    Le formule inverse per convertire le unità sono:
+                    <br>• Da gradi a radianti: \(\alpha_{\text{rad}} = \alpha^\circ \cdot \frac{\pi}{180^\circ}\)
+                    <br>• Da radianti a gradi: \(\alpha^\circ = \alpha_{\text{rad}} \cdot \frac{180^\circ}{\pi}\)
+                </p>
+            </div>
+
+            <h2>Tabella degli Angoli Notevoli</h2>
+            <p>
+                Di seguito sono riassunti i principali angoli notevoli convertiti tra i due sistemi di misura:
+            </p>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: center;">
+                    <thead>
+                        <tr style="background-color: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">Gradi (\(^\circ\))</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">0°</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">30°</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">45°</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">60°</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">90°</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">180°</th>
+                            <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">360°</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0; font-weight: 600;">Radianti</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(0\)</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(\frac{\pi}{6}\)</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(\frac{\pi}{4}\)</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(\frac{\pi}{3}\)</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(\frac{\pi}{2}\)</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(\pi\)</td>
+                            <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">\(2\pi\)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Guidato di Conversione</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Convertire l'angolo di \(135^\circ\) in radianti.</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Applichiamo la formula di conversione moltiplicando per \(\frac{\pi}{180^\circ}\):
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$\alpha_{\text{rad}} = 135^\circ \cdot \frac{\pi}{180^\circ}$$
+                        </div>
+                    </li>
+                    <li>Semplifichiamo numeratore e denominatore dividendo entrambi per il loro massimo comun divisore (\(45\)):
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$\frac{135}{45} = 3 \quad \text{e} \quad \frac{180}{45} = 4 \implies \frac{3\pi}{4}$$
+                        </div>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> L'angolo misura \(\frac{3\pi}{4}\) radianti.</p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Misura degli Angoli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sulla conversione tra gradi e radianti. Clicca sulle card per visualizzare il procedimento passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Array di angoli base in gradi per generare esercizi vari nei 100 slot
+            const angoliBase = [30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let gradi = (i * 15) % 360;
+                if (gradi === 0) gradi = 30; // Evita 0 se preferito, oppure gestito
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                // Calcolo semplificato frazione pi greco
+                // gcd di gradi e 180
+                function mcd(a, b) {
+                    return b === 0 ? a : mcd(b, a % b);
+                }
+                let divisor = mcd(gradi, 180);
+                let num = gradi / divisor;
+                let den = 180 / divisor;
+                let radStr = den === 1 ? (num === 1 ? '\\pi' : num + '\\pi') : (num === 1 ? '\\frac{\\pi}{' + den + '}' : '\\frac{' + num + '\\pi}{' + den + '}');
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Converti l'angolo di \\(${gradi}^\\circ\\) in radianti.</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Soluzione:</strong> \\(${radStr}\\) radianti.</p>
+                            <p>📝 <strong>Procedimento:</strong><br>
+                            1) Si imposta la formula di conversione moltiplicando per \\(\\frac{\\pi}{180^\\circ}\\):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;\\(${gradi}^\\circ \\cdot \\frac{\\pi}{180^\\circ} = \\frac{${gradi}\\pi}{180}\\)<br>
+                            2) Si riduce la frazione dividendo numeratore e denominatore per il loro M.C.D. (pari a \\(${divisor}\\)):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;\\(${radStr}\\).</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

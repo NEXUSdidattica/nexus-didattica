@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 3: Monomi simili, uguali e opposti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Monomi simili, uguali e opposti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="monomi-simili-uguali-opposti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Monomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 3: Monomi simili, uguali e opposti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Confronto tra monomi, definizioni di simiglianza, uguaglianza e opposizione con 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Monomi Simili</h2>
+            <p>
+                Due o più monomi si dicono <strong>simili</strong> quando hanno la <strong>stessa identica parte letterale</strong>, cioè le stesse lettere con gli stessi identici esponenti. I coefficienti numerici possono invece essere diversi.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>3 a² b</code> e <code>-7 a² b</code> sono <strong>simili</strong> perché condividono la parte letterale <code>a² b</code>.
+            </div>
+
+            <h2>2. Monomi Uguali</h2>
+            <p>
+                Due monomi si dicono <strong>uguali</strong> quando hanno sia la <strong>stessa parte letterale</strong> sia lo <strong>stesso coefficiente numerico</strong> (compreso il segno).
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>5 x y³</code> e <code>5 x y³</code> sono <strong>uguali</strong>.
+            </div>
+
+            <h2>3. Monomi Opposti</h2>
+            <p>
+                Due monomi si dicono <strong>opposti</strong> quando hanno la <strong>stessa parte letterale</strong> ma coefficienti numerici <strong>opposti</strong> (stesso valore assoluto, segno contrario).
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>+4 a b²</code> e <code>-4 a b²</code> sono <strong>opposti</strong>. La loro somma è sempre uguale a <code>0</code>.
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Stabilisci la relazione tra la coppia di monomi: <code>A = -2 x³ y²</code> e <code>B = +2 x³ y²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Confrontiamo le parti letterali: sia <em>A</em> sia <em>B</em> hanno parte letterale <code>x³ y²</code> &rarr; sono <strong>simili</strong>.</li>
+                    <li>Confrontiamo i coefficienti: <em>A</em> ha <code>-2</code> e <em>B</em> ha <code>+2</code>. I coefficienti sono numeri opposti.</li>
+                    <li>Conclusione: <em>A</em> e <em>B</em> sono monomi <strong>opposti</strong> (e quindi anche simili).</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Relazione: Monomi Opposti</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Monomi Simili, Uguali e Opposti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Riconosci la relazione esistente tra due o più monomi dati.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let exp = (i % 3) + 1;
+                    let tipo = i % 3; // 0 = simili, 1 = uguali, 2 = opposti
+
+                    if (tipo === 0) {
+                        domanda = `Stabilisci se i monomi <code>3 a<sup>${exp}</sup> b</code> e <code>-8 a<sup>${exp}</sup> b</code> sono simili.`;
+                        risposta = `Sì, sono <strong>monomi simili</strong>.`;
+                        spiegazione = `Hanno la stessa identica parte letterale (<code>a<sup>${exp}</sup> b</code>) con coefficienti numerici differenti (<code>3</code> e <code>-8</code>).`;
+                    } else if (tipo === 1) {
+                        domanda = `Come si definiscono i monomi <code>4 x y<sup>${exp}</sup></code> e <code>4 x y<sup>${exp}</sup></code>?`;
+                        risposta = `Sono <strong>monomi uguali</strong>.`;
+                        spiegazione = `Hanno sia la stessa parte letterale (<code>x y<sup>${exp}</sup></code>) sia lo stesso coefficiente numerico (<code>+4</code>).`;
+                    } else {
+                        domanda = `I monomi <code>-5 a<sup>${exp}</sup></code> e <code>+5 a<sup>${exp}</sup></code> sono opposti?`;
+                        risposta = `Sì, sono <strong>monomi opposti</strong>.`;
+                        spiegazione = `Condividono la parte letterale (<code>a<sup>${exp}</sup></code>) e i loro coefficienti (<code>-5</code> e <code>+5</code>) sono numeri opposti.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let expA = (i % 2) + 1;
+                    let expB = (i % 3) + 1;
+
+                    if (i % 2 === 0) {
+                        domanda = `Individua la relazione tra <code>7 x<sup>${expA}</sup> y<sup>${expB}</sup></code> e <code>-7 x<sup>${expB}</sup> y<sup>${expA}</sup></code> (con expA &ne; expB).`;
+                        let sonoUgualiExp = expA === expB;
+                        risposta = sonoUgualiExp ? `Monomi Opposti` : `<strong>Né simili, né uguali, né opposti</strong>`;
+                        spiegazione = sonoUgualiExp ? 
+                            `Hanno la stessa parte letterale e coefficienti opposti.` : 
+                            `Gli esponenti abbinati alle lettere non coincidono (<code>x<sup>${expA}</sup> &ne; x<sup>${expB}</sup></code>), quindi le parti letterali sono diverse.`;
+                    } else {
+                        domanda = `Quale deve essere il valore di <em>k</em> affinché <code>k a² b³</code> sia opposto a <code>-9 a² b³</code>?`;
+                        risposta = `<code>k = +9</code>`;
+                        spiegazione = `Affinché siano opposti, il coefficiente <em>k</em> deve essere l'opposto di <code>-9</code>, ossia <code>+9</code>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let valA = (i % 4) + 2;
+                    domanda = `Date le espressioni non ridotte <code>A = (2) &middot; (${valA} x² y)</code> e <code>B = (-${valA * 2}) &middot; (x² y)</code>, determina se sono simili, uguali o opposti.`;
+                    let coeffA = 2 * valA;
+                    let coeffB = -valA * 2;
+                    
+                    risposta = `Sono <strong>monomi opposti</strong> (coefficienti: <code>+${coeffA}</code> e <code>${coeffB}</code>).`;
+                    spiegazione = `
+                    1) Riduciamo A in forma normale: <code>+${coeffA} x² y</code>.<br>
+                    2) Riduciamo B in forma normale: <code>${coeffB} x² y</code>.<br>
+                    3) Avendo parti letterali identiche e coefficienti opposti (<code>+${coeffA}</code> e <code>${coeffB}</code>), i monomi sono <strong>opposti</strong>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

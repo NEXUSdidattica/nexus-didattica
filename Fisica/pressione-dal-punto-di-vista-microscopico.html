@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Pressione dal Punto di Vista Microscopico e Teoria Cinetica dei Gas con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Pressione dal Punto di Vista Microscopico: Teoria Cinetica e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="pressione-dal-punto-di-vista-microscopico" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Pressione dal Punto di Vista Microscopico</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Teoria cinetica dei gas, interpretazione molecolare della pressione, energia cinetica media e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. L'Origine Microscopica della Pressione</h2>
+            <p>
+                Macroscopicamente la pressione è la forza esercitata da un gas per unità di superficie. Dal punto di vista <strong>microscopico</strong>, essa è il risultato degli innumerevoli urti elastici che le molecole del gas compiono contro le pareti del recipiente. Ogni urto trasferisce quantità di moto alla parete; la media temporale di questa forza microscopica genera la pressione macroscopica misurabile.
+            </p>
+            <div class="formula-box">
+                📐 <b>Relazione Fondamentale della Teoria Cinetica:</b>
+                $$P = \frac{2}{3} \frac{N}{V} \left( \frac{1}{2} m \overline{v^2} \right) = \frac{2}{3} \frac{N}{V} K_{\text{media}}$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $N$ è il numero di molecole, $V$ il volume, $m$ la massa della singola molecola, $\overline{v^2}$ il quadrato medio della velocità e $K_{\text{media}} = \frac{1}{2} m \overline{v^2}$ l'energia cinetica traslazionale media di una molecola.
+                </p>
+            </div>
+
+            <h2>2. Temperatura e Energia Cinetica</h2>
+            <ul>
+                <li><strong>Interpretazione cinetica della temperatura:</strong> La temperatura assoluta $T$ di un gas è direttamente proporzionale all'energia cinetica media delle sue molecole: $K_{\text{media}} = \frac{3}{2} k_B T$ (dove $k_B$ è la costante di Boltzmann).</li>
+                <li><strong>Velocità quadratica media ($v_{qm}$):</strong> La radice quadrata di $\overline{v^2}$, calcolata come $v_{qm} = \sqrt{\frac{3RT}{M}}$, dove $M$ è la massa molare.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Teoria Cinetica</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati alla pressione microscopica, velocità quadratica media ed energia cinetica, ordinati per difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulla Pressione Microscopica e Teoria Cinetica
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // Calcolo dell'energia cinetica media K_media = (3/2) * k_B * T
+                    let T_C = 20 + (i % 6) * 15; // °C
+                    let T_K = T_C + 273.15; // K
+                    let k_B = 1.38e-23; // J/K
+                    let K_med = 1.5 * k_B * T_K;
+
+                    q = `Esercizio ${i}: Calcola l'energia cinetica traslazionale media $K_{\\text{media}}$ di una molecola di gas perfetto alla temperatura di $${T_C}\\text{ °C}$ ($k_B = 1{,}38 \\cdot 10^{-23}\\text{ J/K}$).`;
+                    r = `$${K_med.toExponential(2)}\\text{ J}$.`;
+                    s = `Convertiamo la temperatura in Kelvin: $T = ${T_C} + 273{,}15 = ${T_K.toFixed(2)}\\text{ K}$. Applicando la formula $K_{\\text{media}} = \\frac{3}{2} k_B T = 1{,}5 \\cdot 1{,}38 \\cdot 10^{-23} \\cdot ${T_K.toFixed(2)} \\approx ${K_med.toExponential(2)}\\text{ J}$.`;
+                
+                } else if (tipo === 1) {
+                    // Calcolo della velocità quadratica media v_qm = sqrt(3RT / M)
+                    let T_C = 0 + (i % 5) * 50; // °C
+                    let T_K = T_C + 273.15;
+                    let R = 8.31;
+                    // Es. gas elio o azoto (M = 0.028 kg/mol per N2)
+                    let M = 0.028; 
+                    let v_qm = Math.sqrt((3 * R * T_K) / M);
+
+                    q = `Esercizio ${i}: Determina la velocità quadratica media $v_{qm}$ delle molecole di azoto ($M = 0{,}028\\text{ kg/mol}$) alla temperatura di $${T_C}\\text{ °C}$ ($R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$).`;
+                    r = `$${v_qm.toFixed(1)}\\text{ m/s}$.`;
+                    s = `La temperatura assoluta è $T = ${T_K.toFixed(2)}\\text{ K}$. Dalla formula della teoria cinetica $v_{qm} = \\sqrt{\\frac{3RT}{M}} = \\sqrt{\\frac{3 \\cdot 8{,}31 \\cdot ${T_K.toFixed(2)}}{0{,}028}} \\approx ${v_qm.toFixed(1)}\\text{ m/s}$.`;
+                
+                } else if (tipo === 2) {
+                    // Domanda teorica sull'origine della pressione
+                    q = `Esercizio ${i}: Spiega perché, dal punto di vista microscopico, un aumento della temperatura di un gas racchiuso in un volume fisso provoca un aumento della pressione.`;
+                    r = `Aumentando la temperatura, cresce l'energia cinetica media e quindi la velocità delle molecole; di conseguenza, gli urti contro le pareti diventano più frequenti e più violenti, incrementando la pressione.`;
+                    s = `La teoria cinetica lega la pressione macroscopica direttamente alla frequenza e all'intensità degli urti molecolari, governati dall'agitazione termica del sistema.`;
+                
+                } else {
+                    // Calcolo della pressione tramite la densità e la velocità media
+                    let N_V = 2.5e25; // molecole / m^3
+                    let m = 4.65e-26; // kg (es. massa molecola ossigeno)
+                    let v2_media = 250000; // (m/s)^2
+                    let P_val = (2 / 3) * N_V * 0.5 * m * v2_media;
+
+                    q = `Esercizio ${i}: Un gas presenta una concentrazione molecolare $\\frac{N}{V} = 2{,}5 \\cdot 10^{25}\\text{ m}^{-3}$ e un'energia cinetica media molecolare $K_{\\text{media}} = 6{,}0 \\cdot 10^{-21}\\text{ J}$. Calcola la pressione $P$ del gas.`;
+                    r = `$${P_val.toLocaleString('it-IT', {maximumFractionDigits: 0})}\\text{ Pa}$.`;
+                    s = `Sfruttando la relazione fondamentale $P = \\frac{2}{3} \\frac{N}{V} K_{\\text{media}} = \\frac{2}{3} \\cdot (2{,}5 \\cdot 10^{25}) \\cdot (6{,}0 \\cdot 10^{-21}) = 100000\\text{ Pa}$ (circa $1\\text{ atm}$).`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

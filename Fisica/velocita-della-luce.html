@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulla velocità della luce, propagazione nel vuoto e nei mezzi materiali, indice di rifrazione e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Velocità della Luce e Mezzi di Propagazione con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="velocita-della-luce" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Velocità della Luce e Mezzi di Propagazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi della velocità nel vuoto e nei mezzi trasparenti, indice di rifrazione assoluto e 100 esercizi interattivi unici con parametri dinamici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. La Costante Universale $c$</h2>
+            <p>
+                Nel vuoto, la luce si propaga alla massima velocità possibile nell'universo, indicata con la lettera $c$ ed esattamente pari a $c = 299\,792\,458\text{ m/s}$ (solitamente approssimata a $3 \times 10^8\text{ m/s}$ o $300\,000\text{ km/s}$).
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Relazioni fondamentali tra velocità e indice di rifrazione:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Indice di rifrazione assoluto ($n$):</b> Rapporto tra la velocità della luce nel vuoto $c$ e la velocità $v$ della luce nel mezzo considerato:<br>
+                    $$n = \frac{c}{v} \implies v = \frac{c}{n}$$
+                    • Poiché in qualsiasi mezzo materiale la luce rallenta ($v < c$), l'indice di rifrazione è sempre maggiore o uguale a $1$ ($n \ge 1$).
+                </p>
+            </div>
+
+            <h2>2. Tempi di Percorrenza Astronomici</h2>
+            <p>
+                La velocità finita della luce comporta che i segnali luminosi impieghino del tempo per coprire distanze cosmiche:
+            </p>
+            <ul>
+                <li>La luce impiega circa <strong>8 minuti e 20 secondi</strong> per viaggiare dal Sole alla Terra ($\approx 150\text{ milioni di km}$).</li>
+                <li>Un <strong>anno luce</strong> è la distanza percorsa dalla luce nel vuoto in un anno solare ($\approx 9.46 \times 10^{12}\text{ km}$).</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo della velocità della luce, tempi di tragitto e indici ottici:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        // Script autonomo e protetto per la generazione immediata dei 100 esercizi unici
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container || container.children.length > 0) return;
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 4;
+                    if (tipo === 0) {
+                        // Calcolo velocità in un mezzo con indice n personalizzato
+                        let n = 1.2 + (i % 15) * 0.05; // tra 1.20 e 1.90
+                        let c_km = 300000;
+                        let v = c_km / n;
+
+                        q = `Esercizio ${i}: Determina la velocità di propagazione $v$ della luce all'interno di un particolare cristallo sintetico caratterizzato da un indice di rifrazione assoluto $n = ${n.toFixed(2)}$ (assumi $c = 300000\\text{ km/s}$).`;
+                        r = `Velocità $v \\approx ${v.toFixed(0)}\\text{ km/s}$.`;
+                        s = `La velocità della luce nel mezzo si calcola dividendo la velocità nel vuoto per l'indice di rifrazione del materiale: $v = \\frac{c}{n} = \\frac{300000}{${n.toFixed(2)}} \\approx ${v.toFixed(0)}\\text{ km/s}$.`;
+                    
+                    } else if (tipo === 1) {
+                        // Calcolo tempo di percorrenza su distanza terrestre o spaziale
+                        let distanza_km = 1000000 + i * 250000; // km
+                        let c_km = 300000;
+                        let tempo_s = distanza_km / c_km;
+
+                        q = `Esercizio ${i}: Un segnale luminoso laser viaggia nel vuoto coprendo una distanza di $d = ${distanza_km.toLocaleString()}?\\text{ km}$ tra due stazioni di rilevamento spaziale. Quanto tempo impiega la luce a percorrere questa distanza?`;
+                        r = `Tempo di volo $t \\approx ${tempo_s.toFixed(3)}\\text{ s}$.`;
+                        s = `Il tempo di percorrenza nel vuoto si ottiene dividendo lo spazio per la velocità costante della luce: $t = \\frac{d}{c} = \\frac{${distanza_km}}{300000} \\approx ${tempo_s.toFixed(3)}\\text{ s}$.`;
+                    
+                    } else if (tipo === 2) {
+                        // Calcolo indice di rifrazione conoscendo la velocità ridotta
+                        let v_misurata = 150000 + (i % 30) * 3000; // km/s
+                        let c_km = 300000;
+                        let n_calc = c_km / v_misurata;
+
+                        q = `Esercizio ${i}: All'interno di un liquido trasparente non identificato, la velocità della luce viene misurata sperimentalmente ed è pari a $v = ${v_misurata.toLocaleString()}\\text{ km/s}$. Calcola l'indice di rifrazione assoluto $n$ del liquido.`;
+                        r = `Indice di rifrazione $n \\approx ${n_calc.toFixed(3)}$.`;
+                        s = `L'indice di rifrazione si ricava dal rapporto tra la velocità della luce nel vuoto e quella nel mezzo: $n = \\frac{c}{v} = \\frac{300000}{${v_misurata}} \\approx ${n_calc.toFixed(3)}$.`;
+                    
+                    } else {
+                        // Calcolo distanza coperta in un certo intervallo di tempo
+                        let secondi = 5 + (i % 25);
+                        let c_km = 300000;
+                        let spazio = c_km * secondi;
+
+                        q = `Esercizio ${i}: Calcola quale distanza spaziale (espressa in chilometri) percorre un impulso di luce nel vuoto in un intervallo di tempo pari a $\\Delta t = ${secondi}\\text{ s}$.`;
+                        r = `Distanza percorsa $d = ${spazio.toLocaleString()}\\text{ km}$.`;
+                        s = `Lo spazio percorso a velocità costante nel vuoto è dato dal prodotto tra la velocità della luce e il tempo: $d = c \\cdot \\Delta t = 300000 \\times ${secondi} = ${spazio.toLocaleString()}\\text{ km}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Codifica Unicode e UTF-8: Guida completa e teoria - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Codifica Unicode e UTF-8 - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+        }
+
+        .card-esercizio.facile { border-left: 6px solid #10b981; }
+        .card-esercizio.medio { border-left: 6px solid #f59e0b; }
+        .card-esercizio.difficile { border-left: 6px solid #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .badge-difficolta.facile { background-color: #10b981; }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #ea580c;
+            padding: 0.5rem 0;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #fff7ed;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .box-risposta-corretta {
+            background-color: #ffedd5;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            color: #9a3412;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="codifica-unicode-e-utf-8" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Lezione & Esercitazione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Codifica Unicode e UTF-8</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida approfondita al repertorio universale Unicode e alla sua codifica a lunghezza variabile UTF-8, con calcolatore ed esercizi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Il Limite dell'ASCII e la Nasciata di Unicode</h2>
+            <p>
+                Il codice ASCII tradizionale usava 7 o 8 bit, consentendo di rappresentare al massimo 128 o 256 caratteri (sufficienti per l'alfabeto inglese ma inadatti per caratteri accentati complessi, cirillico, cinese, arabo o emoji). <strong>Unicode</strong> nasce per unire tutti i sistemi di scrittura del mondo in un unico repertorio standardizzato, assegnando a ciascun carattere un codice univoco identificato dalla forma <code>U+XXXX</code>.
+            </p>
+
+            <h2>2. Il Meccanismo di Codifica UTF-8</h2>
+            <p>
+                <strong>UTF-8</strong> (<em>Unicode Transformation Format - 8-bit</em>) è lo schema di codifica a lunghezza variabile più diffuso al mondo sul Web. È retrocompatibile con l'ASCII e utilizza da 1 a 4 byte (da 8 a 32 bit) per rappresentare i caratteri in base al loro intervallo numerico Unicode:
+            </p>
+            <ul>
+                <li><strong>1 Byte (7 bit utili):</strong> per codici da <code>U+0000</code> a <code>U+007F</code> (caratteri ASCII standard). Formato binario: <code>0xxxxxxx</code>.</li>
+                <li><strong>2 Byte (11 bit utili):</strong> per codici da <code>U+0080</code> a <code>U+07FF</code>. Formato binario: <code>110xxxxx 10xxxxxx</code>.</li>
+                <li><strong>3 Byte (16 bit utili):</strong> per codici da <code>U+0800</code> a <code>U+FFFF</code> (inclusi i caratteri multilingua comuni). Formato binario: <code>1110xxxx 10xxxxxx 10xxxxxx</code>.</li>
+                <li><strong>4 Byte (21 bit utili):</strong> per codici da <code>U+10000</code> a <code>U+10FFFF</code> (es. emoji e simboli storici). Formato binario: <code>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code>.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Proprietà chiave:</strong> UTF-8 è autoriconoscibile (è impossibile perdere l'allineamento dei caratteri leggendo un flusso di byte) ed è completamente compatibile all'indietro con i vecchi file ASCII a 7 bit.
+            </div>
+
+            <!-- CALCOLATORE INTERATTIVO -->
+            <h2>3. Calcolatore Interattivo UTF-8</h2>
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">utf8@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">Unicode Hex & Bytes</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Inserisci un carattere o testo:</label>
+                        <input type="text" id="utfInput" class="code-input" value="Aè🚀">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-esegui" onclick="calcolaUTF8()" style="width: 100%;">Analizza ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Inserisci una stringa e premi analizza...</div>
+            </div>
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span style="font-size: 1.5rem;">✏️</span>
+                <h2 style="color: #c2410c; margin: 0;">100 Esercizi Obbligatori</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi progressivi suddivisi per livello di difficoltà (facile, medio, difficile) focalizzati sulla conversione e l'analisi dei byte in UTF-8 e Unicode.
+            </p>
+
+            <!-- CONTENITORE DINAMICO DEI 100 ESERCIZI -->
+            <div id="lista-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Calcolatore Interattivo e Generatore 100 Esercizi -->
+    <script>
+        function calcolaUTF8() {
+            let str = document.getElementById('utfInput').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            if (!str) {
+                outputDiv.style.color = '#f87171';
+                outputDiv.innerHTML = `> Errore: Inserisci almeno un carattere.`;
+                return;
+            }
+
+            let resultHTML = `> Analisi UTF-8 per "${str}":<br>`;
+            
+            for (let i = 0; i < str.length; i++) {
+                let char = str[i];
+                let codePoint = char.codePointAt(0);
+                let hexCode = codePoint.toString(16).toUpperCase().padStart(4, '0');
+                
+                let encoder = new TextEncoder();
+                let bytes = encoder.encode(char);
+                let byteHex = Array.from(bytes).map(b => '0x' + b.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+
+                resultHTML += `&nbsp;&nbsp;[${char}] -> Unicode: U+${hexCode} | Byte UTF-8 (${bytes.length} byte): <span style="color:#f97316;">${byteHex}</span><br>`;
+                
+                // Gestione caratteri alti (surrogate pairs nelle stringhe JS)
+                if (codePoint > 0xFFFF) {
+                    i++; 
+                }
+            }
+
+            outputDiv.style.color = '#38bdf8';
+            outputDiv.innerHTML = resultHTML;
+        }
+
+        const eserciziDatabase = [];
+        for (let i = 1; i <= 100; i++) {
+            let livello = i <= 35 ? 'facile' : (i <= 75 ? 'medio' : 'difficile');
+            let testo = "";
+            let soluzione = "";
+            let spiegazione = "";
+
+            if (livello === 'facile') {
+                testo = `Esercizio ${i}: Determina quanti byte occupa in codifica UTF-8 un carattere ASCII standard con codice Unicode <strong>U+00${(i % 90 + 10).toString(16)}</strong>.`;
+                soluzione = `1 Byte`;
+                spiegazione = `I caratteri compresi nell'intervallo U+0000 a U+007F richiedono esattamente 1 byte e mantengono la compatibilità con l'ASCII a 7 bit (struttura 0xxxxxxx).`;
+            } else if (livello === 'medio') {
+                testo = `Esercizio ${i}: Calcola la struttura in byte UTF-8 (numero di byte e maschera di bit) per il carattere con codice Unicode <strong>U+0${(200 + i).toString(16).toUpperCase()}</strong>.`;
+                soluzione = `2 Byte (Formato: 110xxxxx 10xxxxxx)`;
+                spiegazione = `Il codice rientra nell'intervallo da U+0080 a U+07FF, pertanto richiede l'uso di 2 byte secondo lo standard di codifica a lunghezza variabile UTF-8.`;
+            } else {
+                testo = `Esercizio ${i}: Analizza la rappresentazione a 4 byte UTF-8 per l'emoji o il carattere speciale con codice Unicode avanzato <strong>U+1F${(100 + i).toString(16).toUpperCase()}</strong>: indica il numero di bit utili di dati trasferiti.`;
+                soluzione = `21 bit utili distribuiti su 4 byte.`;
+                spiegazione = `I codici superiori a U+FFFF usano 4 byte con schema 11110xxx seguito da tre byte di continuazione 10xxxxxx, totalizzando 21 bit di dati effettivi.`;
+            }
+
+            eserciziDatabase.push({ id: i, livello: livello, testo: testo, soluzione: soluzione, spiegazione: spiegazione });
+        }
+
+        function renderizzaEsercizi() {
+            const container = document.getElementById('lista-100-esercizi');
+            if (!container) return;
+            container.innerHTML = '';
+
+            eserciziDatabase.forEach(ex => {
+                let badgeClass = ex.livello;
+                let badgeText = ex.livello.toUpperCase();
+                
+                let card = document.createElement('div');
+                card.className = `card-esercizio ${ex.livello}`;
+                card.innerHTML = `
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${ex.id}</h3>
+                        <span class="badge-difficolta ${badgeClass}">${badgeText}</span>
+                    </div>
+                    <p class="testo-domanda">${ex.testo}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> <strong>${ex.soluzione}</strong>
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${ex.spiegazione}</p>
+                        </div>
+                    </details>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderizzaEsercizi();
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

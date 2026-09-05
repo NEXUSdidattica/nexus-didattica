@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Quadrilateri - Sezione 5: I Quadrati e le loro Proprietà - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Quadrati e le loro Proprietà - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="quadrilateri-sezione-5" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Quadrilateri - Sezione 5</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">I Quadrati e le loro Proprietà</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizioni, simmetrie, diagonali congruenti e ortogonali, formule di area, perimetro e diagonale, con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Proprietà Geometriche del Quadrato</h2>
+            <p>
+                Un <strong>quadrato</strong> è un quadrilatero regolare che unisce le caratteristiche del rettangolo e del rombo: possiede infatti <em>quattro lati congruenti</em> e <em>quattro angoli retti</em> (ciascuno di <code>90&deg;</code>). È considerato la figura geometrica piana più simmetrica e regolare tra i quadrilateri.
+            </p>
+            <ul>
+                <li><strong>Lati e Angoli:</strong> Tutti i lati sono uguali fra loro e tutti gli angoli interni sono retti.</li>
+                <li><strong>Diagonali:</strong> Le diagonali del quadrato godono di tre proprietà straordinarie contemporaneamente: sono <em>congruenti</em> (uguali), <em>perpendicolari</em> tra loro e agiscono come <em>bisettrici</em> degli angoli interni (formando angoli di <code>45&deg;</code> con i lati).</li>
+                <li><strong>Relazione con la Diagonale:</strong> Per via del Teorema di Pitagora applicato ai lati uguali, la diagonale di un quadrato è sempre uguale alla misura del lato moltiplicata per la radice quadrata di due <code>(d = l &times; &radic;2 &approx; l &times; 1,414)</code>.</li>
+            </ul>
+
+            <h2>2. Formule di Area, Perimetro e Diagonale</h2>
+            <p>
+                Il calcolo delle grandezze nel quadrato è estremamente diretto, poiché dipende interamente dalla misura del suo unico lato <code>l</code>.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule Fondamentali del Quadrato:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Perimetro: <code>2p = 4 &times; l</code><br>
+                    • Formula inversa lato da perimetro: <code>l = 2p / 4</code><br>
+                    • Area: <code>A = l&sup2;</code><br>
+                    • Formula inversa lato da area: <code>l = &radic;A</code><br>
+                    • Diagonale: <code>d = l &times; &radic;2</code> (oppure <code>d &approx; l &times; 1,414</code>)<br>
+                    • Formula inversa lato da diagonale: <code>l = d / &radic;2</code> (oppure <code>l &approx; d / 1,414</code>)
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un quadrato ha il lato lungo <code>10 cm</code>. Calcola il perimetro, l'area e la lunghezza della sua diagonale (approssimata a due decimali).</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo il perimetro: <code>2p = 4 &times; 10 = 40 cm</code>.</li>
+                    <li>Calcoliamo l'area elevando al quadrato il lato: <code>A = 10&sup2; = 100 cm&sup2;</code>.</li>
+                    <li>Calcoliamo la diagonale usando la formula fissa <code>d = l &times; &radic;2</code>: <code>10 &times; 1,414 = 14,14 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Perimetro 40 cm, Area 100 cm&sup2;, Diagonale &approx; 14,14 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Quadrati</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di geometria su perimetri, aree, formule inverse con radice quadrata e calcolo delle diagonali.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let latoVal = (i % 12) + 5; // Tra 5 e 16
+                    let areaVal = latoVal * latoVal;
+                    domanda = `Un quadrato ha il lato lungo <code>${latoVal} cm</code>. Calcola l'area del quadrato.`;
+                    risposta = `<strong>${areaVal} cm&sup2;</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la formula dell'area del quadrato: <code>A = l&sup2;</code>.<br>
+                    2) Eleviamo al quadrato la misura del lato: <code>${latoVal}&sup2; = ${areaVal} cm&sup2;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let latoM = (i % 15) + 6;
+                    let perimVal = 4 * latoM;
+                    domanda = `Calcola il perimetro di un quadrato avente il lato di <code>${latoM} cm</code>.`;
+                    risposta = `<strong>${perimVal} cm</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula del perimetro del quadrato: <code>2p = 4 &times; l</code>.<br>
+                    2) Moltiplichiamo il lato per 4: <code>4 &times; ${latoM} = ${perimVal} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    // Esercizi sulla diagonale o formula inversa dell'area
+                    if (i % 2 === 0) {
+                        let latoD = (i % 10) + 8;
+                        let diagCalc = (latoD * Math.sqrt(2)).toFixed(2);
+                        domanda = `Un quadrato ha il lato di <code>${latoD} cm</code>. Calcola la lunghezza della sua diagonale arrotondata a due decimali.`;
+                        risposta = `<strong>&approx; ${diagCalc} cm</strong>`;
+                        spiegazione = `
+                        1) Applichiamo la formula della diagonale: <code>d = l &times; &radic;2</code>.<br>
+                        2) Svolgiamo il calcolo: <code>${latoD} &times; 1,4142 &approx; ${diagCalc} cm</code>.`;
+                    } else {
+                        let areaQ = (i % 8) * 20 + 100; // Aree tipo 100, 120, etc. ma cerchiamo quadrati perfetti o approssimazioni
+                        let latoQ = Math.sqrt(areaQ).toFixed(2);
+                        domanda = `Un quadrato ha un'area di <code>${areaQ} cm&sup2;</code>. Calcola la misura del lato arrotondata a due decimali usando la formula inversa.`;
+                        risposta = `<strong>&approx; ${latoQ} cm</strong>`;
+                        spiegazione = `
+                        1) Applichiamo la formula inversa del lato: <code>l = &radic;A</code>.<br>
+                        2) Estraiamo la radice quadrata dell'area: <code>&radic;${areaQ} &approx; ${latoQ} cm</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

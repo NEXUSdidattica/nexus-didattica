@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 3: Scomposizione mediante prodotti notevoli - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Scomposizione mediante prodotti notevoli - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="scomposizioni-prodotti-notevoli" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Scomposizioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 3: Scomposizione mediante prodotti notevoli</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Riconoscimento delle formule inverse: differenza di quadrati, quadrati e cubi di binomio, somma e differenza di cubi e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Riconoscere i Prodotti Notevoli in Inverso</h2>
+            <p>
+                Scomporre un polinomio tramite i prodotti notevoli significa leggere le formule dello sviluppo in direzione opposta. L'obiettivo è riconoscere la "struttura" del polinomio dal numero dei suoi termini e dalla presenza di potenze perfette.
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Binomi (2 termini):</strong><br>
+                • Differenza di quadrati: <code>A² - B² = (A + B)(A - B)</code><br>
+                • Somma di cubi: <code>A³ + B³ = (A + B)(A² - AB + B²)</code><br>
+                • Differenza di cubi: <code>A³ - B³ = (A - B)(A² + AB + B²)</code><br><br>
+                🔹 <strong>Trinomi (3 termini):</strong><br>
+                • Quadrato di binomio: <code>A² ± 2AB + B² = (A ± B)²</code><br><br>
+                🔹 <strong>Quadrinomi (4 termini):</strong><br>
+                • Cubo di binomio: <code>A³ + 3A²B + 3AB² + B³ = (A + B)³</code>
+            </div>
+
+            <h2>2. Strategia di Riconoscimento</h2>
+            <ul>
+                <li><strong>Conta i termini:</strong> Un binomio può essere solo una differenza di quadrati o una somma/differenza di cubi. Un trinomio con due quadrati perfetti è candidato a essere un quadrato di binomio.</li>
+                <li><strong>Verifica sempre i termini intermedi:</strong> Non fermarti alle sole potenze! In un trinomio controlla che il terzo termine sia esattamente il <em>doppio prodotto</em> <code>2·A·B</code>. In un quadrinomio controlla i due <em>tripli prodotti</em>.</li>
+                <li><strong>Falso trinomio:</strong> Nelle scomposizioni di somme/differenze di cubi si ottiene un trinomio del tipo <code>(A² ∓ AB + B²)</code> definito "falso quadrato": **non** si può scomporre ulteriormente nei reali.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Scomponi in fattori il polinomio: <code>27x³ - 8y³</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Identifichiamo la struttura:</strong> È un binomio con il segno meno tra due cubi perfetti → <strong>Differenza di cubi</strong> <code>A³ - B³ = (A - B)(A² + AB + B²)</code>.</li>
+                    <li><strong>Troviamo le basi A e B:</strong> <code>A = 3x</code> (poiché <code>(3x)³ = 27x³</code>) e <code>B = 2y</code> (poiché <code>(2y)³ = 8y³</code>).</li>
+                    <li><strong>Costruiamo il primo fattore (binomio):</strong> <code>(A - B) = (3x - 2y)</code>.</li>
+                    <li><strong>Costruiamo il secondo fattore (falso quadrato):</strong>
+                        <br>• <code>A² = (3x)² = 9x²</code>
+                        <br>• <code>+ AB = +(3x)(2y) = +6xy</code>
+                        <br>• <code>B² = (2y)² = 4y²</code>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: (3x - 2y)(9x² + 6xy + 4y²)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Scomposizione con Prodotti Notevoli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (differenza di quadrati e quadrati di binomio immediati), medio (somma e differenza di cubi, frazioni) e difficile (scomposizioni a cascata, combinazione con raccoglimento totale e cubi di binomio).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 2 === 0) {
+                        let a = (i % 5) + 2;
+                        domanda = `Scomponi la differenza di quadrati: <br>
+                        <code>x² - ${a*a}</code>.`;
+
+                        risposta = `<code>(x + ${a})(x - ${a})</code>`;
+                        spiegazione = `
+                        1) Riconosciamo i due quadrati perfetti: <code>x² = (x)²</code> e <code>${a*a} = (${a})²</code>.<br>
+                        2) Applichiamo la regola della differenza di quadrati <code>A² - B² = (A + B)(A - B)</code>.<br>
+                        3) Risultato finale: <code>(x + ${a})(x - ${a})</code>.`;
+                    } else {
+                        let a = (i % 4) + 1;
+                        domanda = `Scomponi il trinomio quadrato di binomio: <br>
+                        <code>x² + ${2*a}x + ${a*a}</code>.`;
+
+                        risposta = `<code>(x + ${a})²</code>`;
+                        spiegazione = `
+                        1) Troviamo i due quadrati perfetti: <code>x² = (x)²</code> e <code>${a*a} = (${a})²</code>.<br>
+                        2) Verifichiamo il doppio prodotto: <code>2 · x · ${a} = ${2*a}x</code> (corrisponde al termine centrale).<br>
+                        3) Il trinomio è un quadrato di binomio perfetto: <code>(x + ${a})²</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let a = (i % 3) + 2;
+                        let a3 = a * a * a;
+                        domanda = `Scomponi la somma o differenza di cubi: <br>
+                        <code>x³ + ${a3}</code>.`;
+
+                        risposta = `<code>(x + ${a})(x² - ${a}x + ${a*a})</code>`;
+                        spiegazione = `
+                        1) Identifichiamo i cubi: <code>x³ = (x)³</code> e <code>${a3} = (${a})³</code>.<br>
+                        2) Applichiamo la formula <code>A³ + B³ = (A + B)(A² - AB + B²)</code>.<br>
+                        3) Sostituiamo A = x e B = ${a}:
+                        <br>• Primo fattore: <code>(x + ${a})</code>
+                        <br>• Secondo fattore (falso quadrato): <code>(x² - ${a}x + ${a*a})</code>.<br>
+                        4) Risultato finale: <code>(x + ${a})(x² - ${a}x + ${a*a})</code>.`;
+                    } else {
+                        let num = 1;
+                        let den = (i % 3) + 2;
+                        domanda = `Scomponi il trinomio con frazioni: <br>
+                        <code>a² - ${2*num}/${den} a + ${num*num}/${den*den}</code>.`;
+
+                        risposta = `<code>(a - ${num}/${den})²</code>`;
+                        spiegazione = `
+                        1) Identifichiamo le basi dei due quadrati: <code>a² = (a)²</code> e <code>${num*num}/${den*den} = (${num}/${den})²</code>.<br>
+                        2) Verifichiamo il doppio prodotto con il segno meno: <code>- 2 · a · (${num}/${den}) = - ${2*num}/${den} a</code> (corretto).<br>
+                        3) Risultato finale: <code>(a - ${num}/${den})²</code>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Effettua prima un raccoglimento totale e poi scomponi tramite prodotto notevole: <br>
+                        <code>3x³ - 12x</code>.`;
+
+                        risposta = `<code>3x(x + 2)(x - 2)</code>`;
+                        spiegazione = `
+                        1) Effettuiamo prima il raccoglimento totale del M.C.D. <code>3x</code>: <code>3x(x² - 4)</code>.<br>
+                        2) Riconosciamo che dentro la parentesi c'è una differenza di quadrati: <code>x² - 4 = (x + 2)(x - 2)</code>.<br>
+                        3) Uniamo i fattori per la scomposizione completa: <code>3x(x + 2)(x - 2)</code>.`;
+                    } else {
+                        domanda = `Scomponi il quadrinomio riconoscendo il cubo di un binomio: <br>
+                        <code>x³ - 6x² + 12x - 8</code>.`;
+
+                        risposta = `<code>(x - 2)³</code>`;
+                        spiegazione = `
+                        1) Riconosciamo i due cubi perfetti ai capi: <code>x³ = (x)³</code> e <code>-8 = (-2)³</code>.<br>
+                        2) Verifichiamo il primo triplo prodotto: <code>3 · (x)² · (-2) = -6x²</code> (corretto).<br>
+                        3) Verifichiamo il secondo triplo prodotto: <code>3 · (x) · (-2)² = 3 · x · 4 = +12x</code> (corretto).<br>
+                        4) Il quadrinomio è lo sviluppo completo del cubo: <code>(x - 2)³</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

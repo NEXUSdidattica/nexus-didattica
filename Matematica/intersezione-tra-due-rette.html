@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Analitica - Sezione Retta: Intersezione tra Due Rette - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Intersezione tra Due Rette - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Analitica */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-analitica-retta-sezione-8" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">La Retta - Sezione 8</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Intersezione tra Due Rette</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come calcolare il punto d'incontro tra due rette incidenti risolvendo il corrispondente sistema lineare, con 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Metodo algebrico: Sistemi Lineari</h2>
+            <p>
+                Date due rette nel piano cartesiano descritte dalle equazioni <code>r: a<sub>1</sub>x + b<sub>1</sub>y + c<sub>1</sub> = 0</code> e <code>s: a<sub>2</sub>x + b<sub>2</sub>y + c<sub>2</sub> = 0</code>, trovare il loro punto d'intersezione <code>P(x<sub>P</sub>, y<sub>P</sub>)</code> significa trovare la coppia di valori <code>(x, y)</code> che soddisfa contemporaneamente entrambe le equazioni.
+            </p>
+            <p>
+                Dal punto di vista operativo, si imposta e si risolve il <strong>sistema lineare</strong> associato:
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>{ a<sub>1</sub>x + b<sub>1</sub>y + c<sub>1</sub> = 0</code><br>
+                    <code>{ a<sub>2</sub>x + b<sub>2</sub>y + c<sub>2</sub> = 0</code>
+                </p>
+            </div>
+
+            <h2>2. Interpretazione geometrica e tipologie di soluzioni</h2>
+            <p>
+                A seconda dei coefficienti angolari <code>m<sub>1</sub></code> e <code>m<sub>2</sub></code> e dei termini noti, il sistema può presentare tre diverse casistiche:
+            </p>
+            <ul>
+                <li><strong>Rette incidenti (<code>m<sub>1</sub> &neq; m<sub>2</sub></code>):</strong> Il sistema è <em>determinato</em> e ammette un'unica soluzione, che corrisponde alle coordinate esatte del punto d'intersezione <code>P(x, y)</code>.</li>
+                <li><strong>Rette parallele distinte (<code>m<sub>1</sub> = m<sub>2</sub></code> e <code>q<sub>1</sub> &neq; q<sub>2</sub></code>):</strong> Il sistema è <em>impossibile</em>, poiché le rette non si incontrano mai in alcun punto del piano.</li>
+                <li><strong>Rette coincidenti (<code>m<sub>1</sub> = m<sub>2</sub></code> e <code>q<sub>1</sub> = q<sub>2</sub></code>):</strong> Il sistema è <em>indeterminato</em>, poiché possiede infinite soluzioni in comune (tutti i punti della retta).</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Intersezione tra rette) -->
+            <div class="figura-geometrica-container">
+                <svg width="420" height="280" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="420" height="280" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    
+                    <!-- Assi cartesiani di riferimento -->
+                    <line x1="40" y1="240" x2="380" y2="240" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+                    <line x1="80" y1="260" x2="80" y2="30" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+
+                    <!-- Retta 1 -->
+                    <line x1="50" y1="220" x2="350" y2="60" stroke="#2563eb" stroke-width="2.5"/>
+                    <text x="320" y="55" fill="#2563eb" font-family="Arial, sans-serif" font-weight="bold" font-size="12">r</text>
+
+                    <!-- Retta 2 -->
+                    <line x1="60" y1="80" x2="360" y2="220" stroke="#10b981" stroke-width="2.5"/>
+                    <text x="340" y="235" fill="#10b981" font-family="Arial, sans-serif" font-weight="bold" font-size="12">s</text>
+
+                    <!-- Punto di Intersezione P -->
+                    <circle cx="210" cy="140" r="6" fill="#ef4444"/>
+                    <text x="222" y="136" fill="#ef4444" font-family="Arial, sans-serif" font-weight="bold" font-size="13">P(x, y)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Punto d'intersezione <code style="color:#ef4444;">P</code> tra due rette incidenti <code style="color:#2563eb;">r</code> e <code style="color:#10b981;">s</code>.
+                </div>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola le coordinate del punto d'intersezione tra le rette <code>r: y = 2x - 1</code> e <code>s: y = -x + 5</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo il sistema lineare uguagliando le due espressioni della <code>y</code> (metodo del confronto): <code>2x - 1 = -x + 5</code>.</li>
+                    <li>Risolviamo l'equazione di primo grado nell'incognita <code>x</code>: <code>2x + x = 5 + 1</code> &rArr; <code>3x = 6</code> &rArr; <code>x = 2</code>.</li>
+                    <li>Sostituiamo il valore di <code>x = 2</code> in una delle due equazioni di partenza (ad esempio nella prima) per trovare <code>y</code>: <code>y = 2(2) - 1</code> &rArr; <code>y = 4 - 1 = 3</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Il punto d'intersezione è <code>P(2, 3)</code>.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sull'Intersezione tra Rette</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di calcolo del punto d'incontro tramite risoluzione di sistemi lineari associati a coppie di rette nel piano.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    domanda = `Trova il punto d'intersezione tra le rette <code>y = x</code> e <code>y = 3x - 4</code>.`;
+                    risposta = `<strong>P(2, 2)</strong>`;
+                    spiegazione = `
+                    1) Uguagliamo le espressioni: <code>x = 3x - 4</code>.<br>
+                    2) Risolviamo: <code>x - 3x = -4</code> &rArr; <code>-2x = -4</code> &rArr; <code>x = 2</code>.<br>
+                    3) Troviamo <code>y</code> sostituendo: <code>y = 2</code>. Il punto è <code>P(2, 2)</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Trova il punto d'intersezione tra le rette <code>y = 2x + 1</code> e <code>y = -x + 4</code>.`;
+                    risposta = `<strong>P(1, 3)</strong>`;
+                    spiegazione = `
+                    1) Uguagliamo: <code>2x + 1 = -x + 4</code>.<br>
+                    2) Risolviamo: <code>2x + x = 4 - 1</code> &rArr; <code>3x = 3</code> &rArr; <code>x = 1</code>.<br>
+                    3) Sostituiamo per trovare <code>y</code>: <code>y = 2(1) + 1 = 3</code>. Il punto è <code>P(1, 3)</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Verifica la posizione reciproca e calcola l'intersezione tra le rette <code>y = 3x - 2</code> e <code>y = 3x + 5</code>.`;
+                    risposta = `<strong>Nessuna intersezione (rette parallele distinte)</strong>`;
+                    spiegazione = `
+                    1) Confrontiamo i coefficienti angolari: entrambe hanno <code>m = 3</code>, quindi sono parallele.<br>
+                    2) I termini noti sono diversi (<code>-2 &neq; 5</code>), perciò le rette sono parallele distinte.<br>
+                    3) Il sistema associato è impossibile e non esiste alcun punto d'intersezione.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

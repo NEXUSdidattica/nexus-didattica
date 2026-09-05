@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Protocollo NAT (Network Address Translation), NAT statico, dinamico, PAT/NAPT e simulatore interattivo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Protocollo NAT & NAPT (PAT) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .mem-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        @media(max-width: 768px) {
+            .mem-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .mem-output {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+
+        table.tag-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        table.tag-table th,
+        table.tag-table td {
+            border: 1px solid #fed7aa;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        table.tag-table th {
+            background-color: #fff7ed;
+            color: #c2410c;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="protocollo-nat" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Protocollo
+                    NAT e PAT (NAPT)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Funzionamento della traduzione degli indirizzi di rete, tipologie di NAT, gestione delle porte e
+                    simulatore interattivo di routing.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è il NAT (Network Address Translation)</h2>
+            <p>
+                Il <strong>NAT</strong> è una tecnica utilizzata dai router per modificare le informazioni relative agli
+                indirizzi IP presenti nell'intestazione dei pacchetti IP mentre transitano attraverso un confine di
+                routing (tipicamente tra una rete locale privata e Internet). Il suo obiettivo primario è mitigare
+                l'esaurimento degli indirizzi IPv4 mappando un intero pool di IP privati su uno o pochi indirizzi IP
+                pubblici.
+            </p>
+
+            <div class="formula-box">
+                <strong>Obiettivi Principali:</strong>
+                <ul>
+                    <div><em>Conservazione degli IP:</em> Permette a centinaia di dispositivi locali di condividere un
+                        unico IP pubblico.</div>
+                    <div><em>Sicurezza e Privacy:</em> Nasconde la struttura topologica della rete interna agli
+                        osservatori esterni su Internet.</div>
+                </ul>
+            </div>
+
+            <h2>2. Tipologie di NAT</h2>
+            <p>Esistono diverse varianti implementative del NAT a seconda di come viene effettuata l'associazione:</p>
+
+            <table class="tag-table">
+                <thead>
+                    <tr>
+                        <th>Tipologia NAT</th>
+                        <th>Descrizione del Meccanismo</th>
+                        <th>Caso d'Uso Tipico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NAT Statico (1-to-1)</strong></td>
+                        <td>Associazione fissa e permanente tra un indirizzo IP privato e un indirizzo IP pubblico
+                            dedicato.</td>
+                        <td>Esporre server interni (es. Web o Mail server) accessibili dall'esterno.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NAT Dinamico (Pool)</strong></td>
+                        <td>Associa un IP privato a un indirizzo IP pubblico preso da un pool disponibile al momento
+                            della connessione.</td>
+                        <td>Reti aziendali con un numero limitato di IP pubblici disponibili per i dipendenti.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PAT / NAPT (Many-to-1)</strong></td>
+                        <td>Più dispositivi condividono un unico IP pubblico distinguendo le sessioni tramite le
+                            <strong>porte TCP/UDP</strong>.</td>
+                        <td>Reti domestiche e SOHO (es. router Wi-Fi di casa).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Come funziona il PAT (Port Address Translation)</h2>
+            <p>
+                Nel <strong>PAT</strong> (noto anche come NAT overload), il router modifica sia l'indirizzo IP sorgente
+                che la porta di livello di trasporto. Quando un pacchetto esce dalla LAN, il router memorizza in una
+                tabella di traduzione la corrispondenza tra <code>IP_Privato:Porta_Privata</code> e
+                <code>IP_Pubblico:Porta_Pubblica</code>, consentendo di smistare correttamente le risposte in arrivo.
+            </p>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>4. Simulatore Interattivo: Tabella di Traduzione NAT/PAT</h2>
+            <p>Simula il transito di un pacchetto attraverso il router per osservare la traduzione degli indirizzi e
+                delle porte di trasporto.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">nat-router@nexus-sys:~#</span>
+                    <span style="font-size: 0.8rem; color: #888;">NAPT / PAT Translation Engine</span>
+                </div>
+
+                <div class="mem-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona
+                            Flusso di Traffico:</label>
+                        <select id="natOpSelect" class="code-input">
+                            <option value="pc1_web">PC 1 (192.168.1.10:51200) richiede pagina web esterna
+                                (93.184.216.34:80)</option>
+                            <option value="pc2_game">PC 2 (192.168.1.25:60050) si connette a server di gioco
+                                (198.51.100.15:27015)</option>
+                            <option value="inbound_reply">Arrivo pacchetto di risposta da Internet verso l'IP pubblico
+                                del router</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-os" onclick="simulaNatOp()">ELABORA PAT ⚙️</button>
+                    </div>
+                </div>
+
+                <div class="mem-output" id="memOutputNat">
+                    > Seleziona un flusso di traffico e avvia la simulazione NAT per visualizzare la tabella di routing.
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore NAT/PAT -->
+    <script>
+        window.simulaNatOp = function () {
+            const op = document.getElementById('natOpSelect').value;
+            const output = document.getElementById('memOutputNat');
+
+            let snippet = "";
+            if (op === 'pc1_web') {
+                snippet = `> Elaborazione Pacchetto in Uscita (PAT):<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetto Interno: <code>192.168.1.10:51200</code> ➔ <code>93.184.216.34:80</code><br>` +
+                    `&nbsp;&nbsp;↳ Aggiornamento Tabella NAT: Assegnazione porta pubblica <code>40001</code>.<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetto Tradotto in Uscita: <strong>87.14.200.51:40001</strong> ➔ <code>93.184.216.34:80</code>`;
+            } else if (op === 'pc2_game') {
+                snippet = `> Elaborazione Pacchetto in Uscita (PAT):<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetto Interno: <code>192.168.1.25:60050</code> ➔ <code>198.51.100.15:27015</code><br>` +
+                    `&nbsp;&nbsp;↳ Aggiornamento Tabella NAT: Assegnazione porta pubblica <code>40002</code>.<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetto Tradotto in Uscita: <strong>87.14.200.51:40002</strong> ➔ <code>198.51.100.15:27015</code>`;
+            } else {
+                snippet = `> Elaborazione Pacchetto in Entrata (Risposta Web):<br>` +
+                    `&nbsp;&nbsp;↳ Pacchetto Ricevuto dall'Esterno: <code>93.184.216.34:80</code> ➔ <strong>87.14.200.51:40001</strong><br>` +
+                    `&nbsp;&nbsp;↳ Consultazione Tabella NAT: La porta 40001 corrisponde a <code>192.168.1.10:51200</code>.<br>` +
+                    `&nbsp;&nbsp;↳ Inoltro Interno: Il router riscrive la destinazione e consegna il pacchetto a <strong>192.168.1.10:51200</strong>.`;
+            }
+
+            output.style.color = "#4ade80";
+            output.innerHTML = snippet;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

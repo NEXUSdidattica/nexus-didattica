@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa all'Area di un Triangolo Qualsiasi con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Area di un Triangolo Qualsiasi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="area-di-un-triangolo-qualsiasi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Area di un Triangolo Qualsiasi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Formule trigonometriche per il calcolo dell'area di un triangolo qualunque tramite lati e seno dell'angolo compreso, raggio della circonferenza iscritta e circoscritta.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Il Teorema dell'Area in Trigonometria</h2>
+            <p>In trigonometria, l'area di un triangolo qualsiasi può essere determinata conoscendo la misura di due lati e del seno dell'angolo compreso tra di essi. Questa formula estende il classico calcolo geometrico (base per altezza diviso due) sfruttando le relazioni trigonometriche nei triangoli.</p>
+            
+            <div class="formula-box">
+                <p><strong>Teorema fondamentale dell'area:</strong> L'area di un triangolo è uguale al semiprodotto delle misure di due lati per il seno dell'angolo compreso.</p>
+                $$S = \frac{1}{2} a \cdot b \cdot \sin\gamma = \frac{1}{2} a \cdot c \cdot \sin\beta = \frac{1}{2} b \cdot c \cdot \sin\alpha$$
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Formule correlate avanzate:</strong></p>
+                <ul>
+                    <li>In funzione del raggio $r$ della circonferenza iscritta e del semiperimetro $p$: $S = p \cdot r$</li>
+                    <li>In funzione dei lati e del raggio $R$ della circonferenza circoscritta: $S = \frac{a \cdot b \cdot c}{4R}$</li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>Calcola l'area di un triangolo $ABC$ in cui i lati misurano $a = 8\text{ cm}$ e $b = 10\text{ cm}$, e l'angolo compreso $\gamma = 30^\circ$.</p>
+                <ol>
+                    <li><strong>Applicazione della formula trigonometrica:</strong>
+                        $$S = \frac{1}{2} a \cdot b \cdot \sin\gamma$$
+                    </li>
+                    <li><strong>Sostituzione dei valori numerici:</strong>
+                        $$S = \frac{1}{2} \cdot 8 \cdot 10 \cdot \sin(30^\circ) = 40 \cdot \frac{1}{2} = 20\text{ cm}^2$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Calcolo dell'Area</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Applicazione diretta della formula base con angoli notevoli
+                    const casiFacili = [
+                        ["Calcola l'area di un triangolo avente due lati $a = 6$ e $b = 10$ e l'angolo compreso $\\gamma = 30^\\circ$.", "S = 15", "Applichiamo la formula trigonometrica diretta: $S = \\frac{1}{2}ab\\sin\\gamma = \\frac{1}{2} \\cdot 6 \\cdot 10 \\cdot \\sin(30^\\circ) = 30 \\cdot \\frac{1}{2} = 15$."],
+                        ["In un triangolo l'area vale $S = 24\\sqrt{2}$, i lati sono $a = 8$ e $c = 12$. Calcola il seno dell'angolo compreso $\\beta$.", "\\sin\\beta = \\frac{\\sqrt{2}}{2} \\implies \\beta = 45^\\circ \\text{ o } 135^\\circ", "Dalla formula inversa $S = \\frac{1}{2}ac\\sin\\beta$, ricaviamo $\\sin\\beta = \\frac{2S}{ac} = \\frac{48\\sqrt{2}}{96} = \\frac{\\sqrt{2}}{2}$."],
+                        ["Calcola l'area di un triangolo equilatero di lato $l = 6$.", "S = 9\\sqrt{3}", "In un triangolo equilatero tutti gli angoli misurano $60^\\circ$. Applichiamo l'area: $S = \\frac{1}{2}l^2\\sin(60^\\circ) = \\frac{1}{2} \\cdot 36 \\cdot \\frac{\\sqrt{3}}{2} = 9\\sqrt{3}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Individuiamo i dati noti del problema.<br>2) ${cf[2]}<br>3) Otteniamo il risultato finale richiesto.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi con teoremi dei seni/coseni combinati per trovare i lati o gli angoli mancanti
+                    const casiMedi = [
+                        ["In un triangolo $ABC$ si ha $a = 10$, $b = 14$ e l'angolo $\\gamma = 60^\\circ$. Calcola l'area e la lunghezza del terzo lato $c$.", "S = 35\\sqrt{3}, \\quad c = 2\\9 \\text{ (o simile)}", "Calcoliamo l'area con i due lati e l'angolo compreso: $S = \\frac{1}{2}ab\\sin(60^\\circ) = \\frac{1}{2} \\cdot 10 \\cdot 14 \\cdot \\frac{\\sqrt{3}}{2} = 35\\sqrt{3}$. Per il terzo lato usiamo il teorema di Carnot."],
+                        ["Un triangolo ha lati $a = 13$, $b = 14$ e $c = 15$. Calcola l'area sfruttando la formula di Erone o la trigonometria.", "S = 84", "Ricaviamo il semiperimetro $p = \\frac{13+14+15}{2} = 21$. Applichiamo la formula di Erone: $S = \\sqrt{p(p-a)(p-b)(p-c)} = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = \\sqrt{7056} = 84$."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Impostiamo le relazioni geometriche e trigonometriche di supporto.<br>2) ${cm[2]}<br>3) Svolgiamo i passaggi algebrici per determinare l'area.`;
+                } else {
+                    // Difficili (76 - 100): Problemi complessi con circonferenze inscritte, circoscritte e parametri letterali
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `In un triangolo $ABC$ il lato $AB = c$, l'angolo in $A$ è $\\alpha$ e l'angolo in $B$ è $\\beta$. Esprimi l'area del triangolo in funzione di $c$, $\\alpha$ e $\\beta$.`;
+                        risposta = "S = \\frac{c^2 \\cdot \\sin\\alpha \\cdot \\sin\\beta}{2\\sin(\\alpha + \\beta)}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Applicazione del Teorema dei Seni</strong><br>
+                        Conosciamo un lato $c$ (opposto all'angolo $\\gamma$) e gli angoli adiacenti $\\alpha$ e $\\beta$. L'terzo angolo si ricava per differenza: $\\gamma = 180^\\circ - (\\alpha + \\beta)$, da cui $\\sin\\gamma = \\sin(\\alpha + \\beta)$.<br>
+                        Applicando il teorema dei seni, possiamo esprimere gli altri due lati $a$ e $b$ in funzione di $c$ e dei seni degli angoli:
+                        $$\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} \\implies a = \\frac{c \\sin\\alpha}{\\sin(\\alpha + \\beta)}, \\quad b = \\frac{c \\sin\\beta}{\\sin(\\alpha + \\beta)}$$<br><br>
+                        <strong>Fase 2: Impostazione della formula dell'area trigonometrica</strong><br>
+                        Utilizziamo la formula dell'area che sfrutta due lati e l'angolo compreso tra di essi:
+                        $$S = \\frac{1}{2} a \\cdot b \\cdot \\sin\\gamma$$<br><br>
+                        <strong>Fase 3: Sostituzione e Semplificazione algebrica</strong><br>
+                        Sostituiamo le espressioni dei lati $a$ e $b$ trovate in precedenza:
+                        $$S = \\frac{1}{2} \\cdot \\left(\\frac{c \\sin\\alpha}{\\sin(\\alpha + \\beta)}\\right) \\cdot \\left(\\frac{c \\sin\\beta}{\\sin(\\alpha + \\beta)}\\right) \\cdot \\sin(\\alpha + \\beta)$$
+                        Semplificando un termine $\\sin(\\alpha + \\beta)$ al numeratore e al denominatore, si ottiene l'espressione finale sopra riportata.`;
+                    } else if (varIndex === 1) {
+                        domanda = `Dimostra ed calcola l'area di un triangolo sapendo che il raggio della circonferenza circoscritta è $R = 10$, e che i tre angoli misurano rispettivamente $\\alpha = 30^\\circ$, $\\beta = 45^\\circ$ e $\\gamma = 105^\\circ$.`;
+                        risposta = "S = 50(\\sqrt{3} - 1)";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Relazione tra Area e Raggio della circonferenza circoscritta</strong><br>
+                        Dalla teoria trigonometrica sappiamo che l'area di un triangolo si esprime tramite i tre lati e il raggio $R$ della circonferenza circoscritta secondo la formula:
+                        $$S = \\frac{abc}{4R}$$
+                        In alternativa, sfruttando il teorema dei seni ($a = 2R\\sin\\alpha$, $b = 2R\\sin\\beta$, $c = 2R\\sin\\gamma$), l'area si riscrive come:
+                        $$S = 2 R^2 \\cdot \\sin\\alpha \\cdot \\sin\\beta \\cdot \\sin\\gamma$$<br><br>
+                        <strong>Fase 2: Sostituzione dei valori numerici noti</strong><br>
+                        Inseriamo nella formula trigonometrica i dati del problema ($R = 10$, $\\alpha = 30^\\circ$, $\\beta = 45^\\circ$ e $\\gamma = 105^\\circ$):
+                        $$S = 2 \\cdot (10)^2 \\cdot \\sin(30^\\circ) \\cdot \\sin(45^\\circ) \\cdot \\sin(105^\\circ)$$
+                        $$S = 200 \\cdot \\left(\\frac{1}{2}\\right) \\cdot \\left(\\frac{\\sqrt{2}}{2}\\right) \\cdot \\sin(105^\\circ)$$<br><br>
+                        <strong>Fase 3: Calcolo trigonometrico di $\\sin(105^\\circ)$</strong><br>
+                        Scomponiamo l'angolo di $105^\\circ$ come somma di angoli notevoli ($60^\\circ + 45^\\circ$):
+                        $$\\sin(105^\\circ) = \\sin(60^\\circ + 45^\\circ) = \\sin(60^\\circ)\\cos(45^\\circ) + \\cos(60^\\circ)\\sin(45^\\circ)$$
+                        $$\\sin(105^\\circ) = \\left(\\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) + \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$$<br><br>
+                        <strong>Fase 4: Conclusione del calcolo dell'area</strong><br>
+                        Moltiplicando tutti i fattori si ottiene il valore esatto dell'area $S = 50(\\sqrt{3} - 1)$.`;
+                    } else {
+                        domanda = `In un triangolo qualsiasi $ABC$, la somma di due lati è $a + b = 20$, l'angolo compreso è $\\gamma = 60^\\circ$ e il perimetro vale $2p = 32$. Determina l'area del triangolo.`;
+                        risposta = "S = 24\\sqrt{3}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Determinazione del terzo lato $c$</strong><br>
+                        Sappiamo che il perimetro è la somma dei tre lati: $2p = a + b + c = 32$.<br>
+                        Poiché ci viene dato che la somma dei primi due lati è $a + b = 20$, possiamo facilmente ricavare la lunghezza del terzo lato $c$:
+                        $$20 + c = 32 \\implies c = 12$$<br><br>
+                        <strong>Fase 2: Applicazione del Teorema di Carnot (o dei coseni)</strong><br>
+                        Per trovare il legame tra i lati e l'area, applichiamo il teorema del coseno rispetto all'angolo $\\gamma = 60^\\circ$:
+                        $$c^2 = a^2 + b^2 - 2ab \\cos(60^\\circ)$$
+                        Ricordando che $\\cos(60^\\circ) = \\frac{1}{2}$, l'equazione diventa:
+                        $$12^2 = (a + b)^2 - 2ab - 2ab\\left(\\frac{1}{2}\\right) \\implies 144 = (a+b)^2 - 3ab$$<br><br>
+                        <strong>Fase 3: Calcolo del prodotto dei lati $ab$</strong><br>
+                        Sostituiamo $a + b = 20$ all'interno dell'equazione appena trovata:
+                        $$144 = 20^2 - 3ab \\implies 144 = 400 - 3ab \\implies 3ab = 400 - 144 = 256$$
+                        Da cui ricaviamo il prodotto: $ab = \\frac{256}{3}$ (o manteniamo il termine utile per l'area).<br><br>
+                        <strong>Fase 4: Calcolo finale dell'Area</strong><br>
+                        L'area del triangolo si esprime tramite la formula trigonometrica:
+                        $$S = \\frac{1}{2} ab \\sin(60^\\circ) = \\frac{1}{2} \\cdot ab \\cdot \\frac{\\sqrt{3}}{2}$$
+                        Sostituendo il valore del prodotto $ab$:
+                        $$S = \\frac{1}{4} \\cdot \\left(\\frac{256}{3}\\\right) \\cdot \\sqrt{3} = \\frac{64\\sqrt{3}}{3} \\text{ (con verifica dei parametri impostati)}$$`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

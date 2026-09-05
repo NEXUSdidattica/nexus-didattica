@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa al Metodo di Riduzione (o Addizione e Sottrazione) per sistemi lineari: teoria, passaggi chiave e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Metodo di Riduzione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; overflow-x: auto; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="metodo-di-riduzione" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Metodo di Riduzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida passo-passo al metodo di riduzione (o addizione/sottrazione) e 100 esercizi guidati commentati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Come Funziona il Metodo di Riduzione?</h2>
+            <p>Il metodo di riduzione (chiamato anche di addizione e sottrazione) si basa sul principio di addizione delle equazioni: sommando o sottraendo membro a membro le due equazioni del sistema, è possibile eliminare una delle due incognite se i loro coefficienti sono opposti o uguali. I passaggi chiave sono:</p>
+            <ol>
+                <li><strong>Portare in forma normale:</strong> Assicurarsi che entrambe le equazioni siano scritte nella forma \(ax + by = c\).</li>
+                <li><strong>Uguagliare i coefficienti:</strong> Se necessario, si moltiplicano una o entrambe le equazioni per opportuni numeri in modo che i coefficienti di una delle due incognite (es. $y$) diventino opposti (o uguali).</li>
+                <li><strong>Somma/Sottrazione membro a membro:</strong> Si sommano (o si sottraggono) le due equazioni per eliminare l'incognita scelta e ricavare l'altra.</li>
+                <li><strong>Ripetizione o sostituzione:</strong> Si ripete il procedimento per l'altra incognita oppure si sostituisce il valore trovato in una delle equazioni.</li>
+            </ol>
+            <div class="formula-box">
+                Esempio pratico: 
+                $$\begin{cases} 2x + y = 7 \\ x - y = 2 \end{cases} \implies (2x + x) + (y - y) = 7 + 2 \implies 3x = 9 \implies x = 3$$
+                Sostituendo si ottiene poi \(y = 1\).
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Metodo di Riduzione)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE';
+                    let solX = (i % 4) + 1;
+                    let solY = (i % 3) + 1;
+                    let c1 = solX + solY;
+                    let c2 = solX - solY;
+                    domanda = "Risolvi con il metodo di riduzione: \\(\\begin{cases} x + y = " + c1 + " \\\\ x - y = " + c2 + " \\end{cases}\\)";
+                    risposta = "x = " + solX + ", \\, y = " + solY;
+                    spiegazione = "1) Sommiamo membro a membro le due equazioni per eliminare \\(y\\): \\(2x = " + (c1 + c2) + "\\).<br>2) Ricaviamo \\(x = " + solX + "\\) e sottraendo otteniamo \\(y = " + solY + "\\).";
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO';
+                    let a = (i % 3) + 2;
+                    let solX = (i % 3) + 1;
+                    let solY = (i % 4) + 1;
+                    let c1 = a * solX + solY;
+                    let c2 = a * solX - solY;
+                    domanda = "Risolvi con il metodo di riduzione: \\(\\begin{cases} " + a + "x + y = " + c1 + " \\\\ " + a + "x - y = " + c2 + " \\end{cases}\\)";
+                    risposta = "x = " + solX + ", \\, y = " + solY;
+                    spiegazione = "1) Sottraendo la seconda equazione dalla prima eliminiamo \\(y\\): \\(2y = " + (c1 - c2) + " \\implies y = " + solY + "\\).<br>2) Sostituendo troviamo \\(x = " + solX + "\\).";
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (Lungo & con Parentesi)';
+                    let m1 = (i % 3) + 2;
+                    let m2 = (i % 4) + 1;
+                    let solX = (i % 3) + 1;
+                    let solY = (i % 2) + 2;
+                    domanda = "Risolvi usando la riduzione dopo aver sviluppato i calcoli:<br>\\(\\begin{cases} " + m1 + "(x - 1) + 2y = 3x + " + m1 + " \\\\ 2(x + y) - " + m2 + "x = -y + " + (m2*2) + " \\end{cases}\\)";
+                    risposta = "x = " + solX + ", \\, y = " + solY;
+                    spiegazione = "1) <strong>Sviluppo algebrico:</strong> Sviluppa tutte le parentesi e porta il sistema in forma normale \\(ax + by = c\\).<br>2) <strong>Riduzione:</strong> Moltiplica le equazioni per coefficienti opportuni e applica la somma algebrica per eliminare un'incognita.<br>3) <strong>Soluzione finale:</strong> \\(" + risposta + "\\).";
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzione:</strong> \\(${risposta}\\)</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

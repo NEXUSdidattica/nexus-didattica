@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Forme dei Vulcani: Vulcani a scudo, stratovulcani, coni di scorie e duomi di lava con schemi illustrativi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Forme dei Vulcani - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia e Disegni Vulcani -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        /* --- STILI PER I DISEGNI / SCHEMI DEI VULCANI IN CSS --- */
+        .schema-vulcano-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .schema-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #475569;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Forme geometriche stilizzate per i vulcani */
+        .vulcano-disegno {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* 1. Vulcano a Scudo (largo e basso) */
+        .forma-scudo {
+            width: 280px;
+            height: 50px;
+            background: linear-gradient(to bottom, #cbd5e1, #64748b);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            position: relative;
+            border-bottom: 4px solid #334155;
+        }
+        .forma-scudo::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 6px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ef4444;
+        }
+
+        /* 2. Stratovulcano (alto, conico, simmetrico a strati) */
+        .forma-strato {
+            width: 200px;
+            height: 110px;
+            background: linear-gradient(135deg, #94a3b8 30%, #475569 70%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            position: relative;
+            border-bottom: 4px solid #1e293b;
+        }
+        .forma-strato::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 8px;
+            background: #f97316;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #f97316;
+        }
+
+        /* 3. Cono di Scorie (ripido e piccolo) */
+        .forma-cono {
+            width: 140px;
+            height: 100px;
+            background: linear-gradient(135deg, #b45309, #78350f);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            position: relative;
+            border-bottom: 4px solid #451a03;
+        }
+        .forma-cono::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ef4444;
+        }
+
+        /* 4. Duomo di Lava (a cupola ripida) */
+        .forma-duomo {
+            width: 130px;
+            height: 85px;
+            background: linear-gradient(to top, #334155, #64748b);
+            border-radius: 60px 60px 0 0 / 80px 80px 0 0;
+            position: relative;
+            border-bottom: 4px solid #0f172a;
+        }
+        .forma-duomo::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 6px;
+            background: #f97316;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-le-forme-dei-vulcani" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia" style="display: inline-block; margin-bottom: 0.6rem;">Scienze / Scienze della Terra / Vulcanismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0; margin-bottom: 0.5rem;">Le Forme dei Vulcani</h1>
+                <p style="color: #64748b; font-size: 1.05rem; margin-bottom: 0;">
+                    Analisi morfologica degli edifici vulcanici: vulcani a scudo, stratovulcani, coni di scorie e duomi di lava con schemi illustrativi.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione alla Morfologia Vulcanica</h2>
+            <p>
+                La forma esterna (morfologia) di un vulcano non è casuale: essa dipende direttamente dalla <strong>composizione chimica del magma</strong> eruttato (in particolare dal contenuto di silice), dalla sua <strong>viscosità</strong>, dal tipo di attività eruttiva (effusiva o esplosiva) e dalla frequenza delle eruzioni nel corso del tempo geologico.
+            </p>
+
+            <h2>2. I Vulcani a Scudo</h2>
+            <p>
+                I <strong>vulcani a scudo</strong> sono caratterizzati da una base molto ampia e da pendii dolci e poco inclinati. Questa forma ricorda appunto uno scudo da guerriero appoggiato al suolo.
+            </p>
+            <ul>
+                <li><strong>Tipo di Magma:</strong> Basico (femico), povero di silice e estremamente fluido.</li>
+                <li><strong>Dinamica:</strong> L'elevata fluidità della lava le consente di scorrere per chilometri prima di solidificare, impedendo la formazione di un cono ripido.</li>
+                <li><strong>Esempi Famosi:</strong> Il Mauna Loa e il Kilauea nelle isole Hawaii.</li>
+            </ul>
+
+            <!-- SCHEMA / DISEGNO 1: VULCANO A SCUDO -->
+            <div class="schema-vulcano-container">
+                <span class="schema-title">Schema Strutturale: Vulcano a Scudo</span>
+                <div class="vulcano-disegno">
+                    <div class="forma-scudo"></div>
+                </div>
+            </div>
+
+            <h2>3. Gli Stratovulcani</h2>
+            <p>
+                Gli <strong>stratovulcani</strong> (o vulcani composti) presentano la classica forma conica simmetrica con fianchi piuttosto ripidi. Devono il loro nome alla struttura a "strati" alternati, formata dalla sovrapposizione nel corso dei secoli di colate laviche solide e strati di materiale piroclastico (ceneri, lapilli, bombe).
+            </p>
+            <ul>
+                <li><strong>Tipo di Magma:</strong> Intermedio o acido, viscoso.</li>
+                <li><strong>Dinamica:</strong> Attività mista, caratterizzata sia da fasi effusive che da violente esplosioni.</li>
+                <li><strong>Esempi Famosi:</strong> Il Vesuvio, l'Etna (nella sua struttura complessa), lo Stromboli e il monte Fuji in Giappone.</li>
+            </ul>
+
+            <!-- SCHEMA / DISEGNO 2: STRATOVULCANO -->
+            <div class="schema-vulcano-container">
+                <span class="schema-title">Schema Strutturale: Stratovulcano (Strati alternati di lava e ceneri)</span>
+                <div class="vulcano-disegno">
+                    <div class="forma-strato"></div>
+                </div>
+            </div>
+
+            <h2>4. I Coni di Scorie</h2>
+            <p>
+                I <strong>coni di scorie</strong> sono edifici vulcanici di piccole dimensioni, caratterizzati da pendenze molto ripide e da un cratere sommitale a imbuto. Si formano in seguito a una singola eruzione o a un ciclo eruttivo breve.
+            </p>
+            <ul>
+                <li><strong>Tipo di Magma:</strong> Ricco di gas, magmi basaltici o intermedi con forte attività esplosiva stromboliana.</li>
+                <li><strong>Dinamica:</strong> Il materiale lavico viene lanciato in aria frammentato in scorie e lapilli che ricadono attorno al condotto, accumulandosi per gravità.</li>
+                <li><strong>Esempi Famosi:</strong> Il cono di Paricutín in Messico.</li>
+            </ul>
+
+            <!-- SCHEMA / DISEGNO 3: CONO DI SCORIE -->
+            <div class="schema-vulcano-container">
+                <span class="schema-title">Schema Strutturale: Cono di Scorie (Pareti ripide di materiale piroclastico)</span>
+                <div class="vulcano-disegno">
+                    <div class="forma-cono"></div>
+                </div>
+            </div>
+
+            <h2>5. I Duomi di Lava (o Guglie)</h2>
+            <p>
+                I <strong>duomi di lava</strong> (o cupole di risalita) si formano quando una lava estremamente viscosa e densa (in genere acida o riolitica) fuoriesce dal condotto ma, a causa della sua altissima densità, non riesce a scorrere e si accumula verticalmente sopra la bocca eruttiva formando una massa a cupola o a torre ripida.
+            </p>
+            <ul>
+                <li><strong>Tipo di Magma:</strong> Acido, ricco di silice ($\text{SiO}_2 > 65\%$).</li>
+                <li><strong>Dinamica:</strong> Estremamente pericolosi per la tendenza a generare collassi gravitazionali e flussi piroclastici violenti.</li>
+                <li><strong>Esempi Famosi:</strong> Il duomo del Monte Saint Helens negli Stati Uniti.</li>
+            </ul>
+
+            <!-- SCHEMA / DISEGNO 4: DUOMO DI LAVA -->
+            <div class="schema-vulcano-container">
+                <span class="schema-title">Schema Strutturale: Duomo di Lava (Massa densa accumulata verticalmente)</span>
+                <div class="vulcano-disegno">
+                    <div class="forma-duomo"></div>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                🌋 <strong>Tabella Riassuntiva Morfologia - Viscosità:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$\text{Fluido / Bassa Silice} \longrightarrow \text{Vulcano a Scudo (es. Hawaiani)}$$
+                    $$\text{Intermedio / Misto} \longrightarrow \text{Stratovulcano (es. Vesuvio, Etna)}$$
+                    $$\text{Viscoso / Acido} \longrightarrow \text{Duomo di Lava / Guglie (es. St. Helens)}$$
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Svolto: Correlazione tra Morfologia e Magma</h3>
+                <p style="margin-bottom: 0.8rem;">Un geologo sta esaminando i dati di un pianeta roccioso extrasolare e individua un enorme edificio vulcanico caratterizzato da una base di centinaia di chilometri quadrati ma con pendenze estremamente dolci (inferiori ai 5-10 gradi). Quale tipo di magma e quale stile di colata ci si deve attendere su questo vulcano?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento analitico:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Analisi morfologica:</strong> Una base vastissima associata a pendii molto dolci corrisponde esattamente alla morfologia di un <strong>vulcano a scudo</strong>.</li>
+                    <li><strong>Proprietà del magma:</strong> I vulcani a scudo sono alimentati esclusivamente da colate di lava basaltica molto fluida e povera di silice.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> Il vulcano è alimentato da magmi <strong>basici e fluidi</strong> che danno luogo prevalentemente a un'attività effusiva a colate estese.</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

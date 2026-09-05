@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa agli Insiemi Numerici N, Z, Q, R: proprietà, inclusioni ed esercizi svolti passo-passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Gli Insiemi Numerici (N, Z, Q, R): Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-insiemi-numerici" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica & Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Gli Insiemi Numerici: ℕ, ℤ, ℚ, ℝ</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida dettagliata alle strutture numeriche, alla loro catena d'inclusione, alle operazioni interne e ai numeri irrazionali.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. L'Insieme dei Numeri Naturali (ℕ)</h2>
+            <p>
+                L'insieme <strong>ℕ</strong> rappresenta l'insieme dei numeri usati per contare: 
+                <code>ℕ = {0, 1, 2, 3, 4, 5, ...}</code>.
+            </p>
+            <ul>
+                <li><strong>Proprietà:</strong> È un insieme infinito, ordinato e dotato di un elemento minimo (lo <code>0</code>). Ogni numero ha un successore.</li>
+                <li><strong>Operazioni Interne:</strong> L'addizione e la moltiplicazione sono operazioni interne (il risultato appartiene sempre a ℕ). La sottrazione e la divisione <em>non sempre</em> si possono eseguire in ℕ (es. <code>3 - 5</code> o <code>7 : 2</code> non producono numeri naturali).</li>
+            </ul>
+
+            <h2>2. L'Insieme dei Numeri Interi Relativi (ℤ)</h2>
+            <p>
+                Per permettere l'operazione di sottrazione in ogni caso, nasce l'insieme dei numeri interi <strong>ℤ</strong>:
+                <code>ℤ = {..., -3, -2, -1, 0, +1, +2, +3, ...}</code>.
+            </p>
+            <ul>
+                <li><strong>Inclusione:</strong> Ogni numero naturale è anche un numero intero positivo (<code>ℕ ⊂ ℤ</code>).</li>
+                <li><strong>Proprietà:</strong> Introduce il concetto di <em>valore assoluto (modulo)</em> e di <em>numero opposto</em> (es. l'opposto di <code>+4</code> è <code>-4</code>).</li>
+                <li><strong>Operazioni Interne:</strong> Addizione, sottrazione e moltiplicazione sono sempre interne a ℤ. La divisione non è sempre possibile.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Operazioni in ℤ)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il valore dell'espressione in ℤ: <code>-7 + ( -3 ) × ( -4 ) - ( -10 ) : 2</code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Eseguiamo la moltiplicazione mantenendo la regola dei segni (<code>- × - = +</code>): <code>(-3) × (-4) = +12</code>.</li>
+                    <li>Eseguiamo la divisione: <code>(-10) : 2 = -5</code>.</li>
+                    <li>Sostituiamo nell'espressione: <code>-7 + 12 - (-5)</code>.</li>
+                    <li>Rimuoviamo la parentesi ricordando che il meno davanti alla parentesi cambia segno: <code>-7 + 12 + 5</code>.</li>
+                    <li>Calcoliamo da sinistra verso destra: <code>-7 + 12 = 5</code> &rarr; <code>5 + 5 = 10</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>10 ∈ ℕ ⊂ ℤ</code></p>
+            </div>
+
+            <h2>3. L'Insieme dei Numeri Razionali (ℚ)</h2>
+            <p>
+                L'insieme <strong>ℚ</strong> nasce per consentire la divisione tra due qualsiasi numeri interi (con denominatore diverso da zero):
+                <code>ℚ = { a / b | a ∈ ℤ, b ∈ ℤ, b ≠ 0 }</code>.
+            </p>
+            <ul>
+                <li><strong>Rappresentazione Decimale:</strong> I numeri razionali si trasformano in decimali <strong>finiti</strong> (es. <code>3/4 = 0,75</code>) o decimali <strong>illimitati periodici</strong> (es. <code>1/3 = 0,333... = 0,3̄</code>).</li>
+                <li><strong>Operazioni Interne:</strong> Addizione, sottrazione, moltiplicazione e divisione (tranne quella per zero) sono tutte operazioni interne a ℚ.</li>
+                <li><strong>Inclusione:</strong> <code>ℤ ⊂ ℚ</code> poiché ogni intero <code>n</code> si può scrivere come frazione <code>n/1</code>.</li>
+            </ul>
+
+            <h2>4. Numeri Irrazionali (𝕀) e L'Insieme dei Numeri Reali (ℝ)</h2>
+            <p>
+                Esistono numeri che non possono essere scritti sotto forma di frazione, ovvero decimali illimitati <strong>non periodici</strong>. Questi costituiscono l'insieme dei numeri irrazionali <strong>𝕀</strong> (o <code>ℝ \ ℚ</code>), come ad esempio <code>√2</code>, <code>√3</code>, <code>π (Pi Greco)</code> o <code>e (Numero di Eulero)</code>.
+            </p>
+            <p>
+                L'unione dell'insieme dei numeri razionali ℚ e dei numeri irrazionali 𝕀 forma l'insieme dei <strong>Numeri Reali (ℝ)</strong>: <code>ℝ = ℚ ∪ 𝕀</code>.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 4 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Catena di Inclusione)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Classifica i seguenti numeri indicando l'insieme più piccolo a cui appartengono: <code>8/2</code>, <code>-5</code>, <code>3/4</code>, <code>√7</code>, <code>0,666...</code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><code>8/2 = 4</code> &rarr; È un numero intero positivo, quindi l'insieme minimo è <strong>ℕ</strong>.</li>
+                    <li><code>-5</code> &rarr; È un numero intero negativo, appartiene a <strong>ℤ</strong> (ma non a ℕ).</li>
+                    <li><code>3/4 = 0,75</code> &rarr; È una frazione non riducibile a intero (decimale finito), appartiene a <strong>ℚ</strong>.</li>
+                    <li><code>√7</code> &rarr; Non è un quadrato perfetto, è un decimale illimitato non periodico, appartiene a <strong>𝕀</strong> (e quindi a <strong>ℝ</strong>).</li>
+                    <li><code>0,666... = 2/3</code> &rarr; È un decimale periodico semplice, appartiene a <strong>ℚ</strong>.</li>
+                </ol>
+            </div>
+
+            <h2>5. Schema Sintetico delle Inclusioni</h2>
+            <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1.2rem; margin-top: 1.5rem;">
+                <p style="font-size: 1.1rem; font-weight: bold; color: #1e40af; text-align: center; margin-bottom: 0.5rem;">
+                    ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ
+                </p>
+                <p style="text-align: center; color: #334155; margin-bottom: 0;">
+                    Ogni numero Naturale è Intero, ogni Intero è Razionale e ogni Razionale è Reale.
+                </p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sugli Insiemi Numerici</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua comprensione con 100 esercizi organizzati per livello di difficoltà crescente. 
+                Espandi ciascuna scheda per consultare la soluzione e la spiegazione teorica passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Solo Testo Puro) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Classificazione base di singoli numeri e appartenenza (N, Z)
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let num = (i * 3) + 2;
+                        domanda = `Stabilisci se il numero <strong>${num}</strong> appartiene all'insieme ℕ dei numeri naturali.`;
+                        risposta = `Sì, ${num} ∈ ℕ`;
+                        spiegazione = `I numeri naturali sono gli interi non negativi {0, 1, 2, 3, ...}. Poiché ${num} è un intero positivo, appartiene a ℕ.`;
+                    } else if (mod === 2) {
+                        let num = -((i % 15) + 1);
+                        domanda = `Indica l'insieme numerico fondamentale più piccolo a cui appartiene il numero <strong>${num}</strong>.`;
+                        risposta = `ℤ (Numeri Interi Relativi)`;
+                        spiegazione = `Il numero ${num} ha segno negativo ed è intero. Non appartiene a ℕ (che contiene solo i non negativi), ma appartiene a ℤ.`;
+                    } else if (mod === 3) {
+                        let a = (i % 6) + 2;
+                        let b = a * (i % 4 + 1);
+                        domanda = `Semplifica la frazione <strong>${b}/${a}</strong> e determina il suo insieme numerico d'appartenenza più piccolo.`;
+                        risposta = `ℕ (Numeri Naturali)`;
+                        spiegazione = `Semplificando la frazione si ottiene <code>${b} : ${a} = ${b / a}</code>. Essendo un numero intero positivo, l'insieme più piccolo è ℕ.`;
+                    } else {
+                        let a = (i % 5) + 3;
+                        let b = (i % 7) + 10;
+                        let diff = a - b;
+                        domanda = `Calcola <strong>${a} - ${b}</strong> e indica se il risultato appartiene a ℕ oppure a ℤ.`;
+                        risposta = `${diff} ∈ ℤ (non appartiene a ℕ)`;
+                        spiegazione = `<code>${a} - ${b} = ${diff}</code>. Poiché il risultato è negativo, la sottrazione non è possibile in ℕ, dunque il risultato appartiene a ℤ.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Razionali Q, frazioni non riducibili, decimali periodici, espressioni in Z e Q
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione in ℤ:<br><code>[ -12 + ( -4 ) × ( -3 ) ] - ( -15 : 3 )</code>`;
+                        risposta = `5`;
+                        spiegazione = `
+                        1) Esegui la moltiplicazione: <code>(-4) × (-3) = +12</code>.<br>
+                        2) Risolvi la quadra: <code>[-12 + 12] = 0</code>.<br>
+                        3) Esegui la divisione: <code>(-15) : 3 = -5</code>.<br>
+                        4) Calcolo finale: <code>0 - (-5) = +5</code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Classifica il numero decimale periodico <strong>1,333... (1,3̄)</strong> individuando l'insieme più piccolo a cui appartiene e la sua frazione generatrice.`;
+                        risposta = `4/3 ∈ ℚ`;
+                        spiegazione = `Tutti i decimali illimitati periodici possono essere scritti sotto forma di frazione (in questo caso <code>(13 - 1)/9 = 12/9 = 4/3</code>), quindi appartengono a ℚ (Numeri Razionali).`;
+                    } else if (mod === 3) {
+                        domanda = `Risolvi la seguente espressione con frazioni in ℚ:<br><code>( 3/4 - 1/2 ) : ( 5/8 + 1/8 )</code>`;
+                        risposta = `1/3`;
+                        spiegazione = `
+                        1) Prima tonda: <code>3/4 - 1/2 = 3/4 - 2/4 = 1/4</code>.<br>
+                        2) Seconda tonda: <code>5/8 + 1/8 = 6/8 = 3/4</code>.<br>
+                        3) Divisione tra frazioni: <code>(1/4) : (3/4) = 1/4 × 4/3 = 1/3</code>.`;
+                    } else {
+                        domanda = `Verifica la veridicità della seguente affermazione: <em>"L'operazione di divisione è un'operazione sempre interna all'insieme dei numeri interi ℤ"</em>. Spiega il perché.`;
+                        risposta = `Falsa`;
+                        spiegazione = `La divisione non è un'operazione interna in ℤ perché la divisione tra due numeri interi non sempre dà come risultato un numero intero (es. <code>3 : 2 = 1,5 ∉ ℤ</code>). L'insieme in cui la divisione (escluso lo 0) è interna è ℚ.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Reali R, Irrazionali, radici non perfette, espressioni articolate in Q e R con proprietà
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Determina se i seguenti tre numeri sono Razionali (ℚ) o Irrazionali (𝕀):<br>
+                        <code>A = √16</code>, <code>B = √18</code>, <code>C = π - 2</code>`;
+                        risposta = `A ∈ ℚ, B ∈ 𝕀, C ∈ 𝕀`;
+                        spiegazione = `
+                        • <code>A = √16 = 4</code> &rarr; È un intero, quindi appartiene a ℚ.<br>
+                        • <code>B = √18 = 3√2</code> &rarr; Non essendo 18 un quadrato perfetto, è un numero irrazionale (𝕀).<br>
+                        • <code>C = π - 2</code> &rarr; La differenza tra un numero irrazionale (π) e un razionale (2) è un numero irrazionale (𝕀).`;
+                    } else if (mod === 2) {
+                        domanda = `Risolvi l'espressione in ℚ applicando le proprietà delle potenze e determina l'insieme minimo del risultato:<br>
+                        <code>[ ( -1/2 )<sup>3</sup> × ( -1/2 )<sup>2</sup> ] : ( -1/2 )<sup>4</sup> + 3/2</code>`;
+                        risposta = `1 ∈ ℕ`;
+                        spiegazione = `
+                        1) Prodotto di potenze con stessa base: <code>(-1/2)<sup>3+2</sup> = (-1/2)<sup>5</sup></code>.<br>
+                        2) Quoziente di potenze: <code>(-1/2)<sup>5</sup> : (-1/2)<sup>4</sup> = (-1/2)<sup>5-4</sup> = (-1/2)<sup>1</sup> = -1/2</code>.<br>
+                        3) Calcolo finale: <code>-1/2 + 3/2 = 2/2 = 1</code>.<br>
+                        4) Il risultato <code>1</code> è un numero naturale, quindi l'insieme minimo è ℕ.`;
+                    } else {
+                        domanda = `Stabilisci se l'insieme dei numeri irrazionali 𝕀 è chiuso rispetto all'addizione (ovvero se la somma di due numeri irrazionali è SEMPRE irrazionale). Giustifica con un controesempio.`;
+                        risposta = `No (non è chiuso)`;
+                        spiegazione = `L'insieme dei numeri irrazionali non è chiuso rispetto all'addizione. Controesempio: consideriamo i due numeri irrazionali <code>x = √5</code> e <code>y = -√5</code>. La loro somma è <code>√5 + (-√5) = 0</code>, che è un numero razionale (0 ∈ ℚ).`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

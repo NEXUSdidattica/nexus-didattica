@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa al Massimo Comune Divisore (M.C.D.), Metodi di Calcolo ed Esercizi Svolti Passo-Passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Massimo Comune Divisore (M.C.D.): Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-massimo-comune-divisore" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Massimo Comune Divisore (M.C.D.)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione, metodi di calcolo tramite fattorizzazione e Algoritmo di Euclide, casi particolari e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione di Massimo Comune Divisore</h2>
+            <p>
+                Il <strong>Massimo Comune Divisore (M.C.D.)</strong> tra due o più numeri naturali (diversi da zero) è il **più grande tra tutti i divisori che i numeri hanno in comune**.
+            </p>
+            <ul>
+                <li><strong>Interpretazione pratica:</strong> Rappresenta la massima dimensione possibile in cui si possono dividere o raggruppare equamente più quantità senza avere resti o scarti.</li>
+                <li><strong>Casi particolari:</strong> Se due o più numeri hanno come unico divisore comune il numero <code>1</code>, il loro M.C.D. è 1 e i numeri si definiscono <strong>primi tra loro (coprimi)</strong>.</li>
+            </ul>
+
+            <h2>2. Regola per il Calcolo tramite Fattorizzazione</h2>
+            <p>Per calcolare il M.C.D. di due o più numeri tramite scomposizione in fattori primi si applica la seguente regola fondamentale:</p>
+            <div style="background-color: #eff6ff; border-left: 4px solid #2563eb; padding: 1.2rem; border-radius: 6px; margin: 1.5rem 0;">
+                <p style="margin: 0; font-size: 1.05rem; color: #1e3a8a; font-weight: bold;">
+                    📌 Regola del M.C.D.: Si scompongono i numeri in fattori primi e si moltiplicano tra loro SOLTANTO i fattori COMUNI a tutti i numeri, presi una sola volta e con l'ESPONENTE MINORE.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Metodo Standard)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il M.C.D. tra <strong>48</strong>, <strong>72</strong> e <strong>120</strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scomponiamo in fattori primi ciascun numero:
+                        <ul>
+                            <li><code>48 = 2⁴ × 3</code></li>
+                            <li><code>72 = 2³ × 3²</code></li>
+                            <li><code>120 = 2³ × 3 × 5</code></li>
+                        </ul>
+                    </li>
+                    <li>Individuiamo i fattori primi in comune: i fattori presenti in tutte e tre le scomposizioni sono <strong>2</strong> e <strong>3</strong> (il fattore 5 è solo nel 120, quindi si scarta).</li>
+                    <li>Selezioniamo ciascun fattore comune con l'esponente più piccolo:
+                        <ul>
+                            <li>Per il 2: il minimo esponente è <strong>3</strong> &rarr; <code>2³</code></li>
+                            <li>Per il 3: il minimo esponente è <strong>1</strong> &rarr; <code>3¹</code></li>
+                        </ul>
+                    </li>
+                    <li>Moltiplichiamo i fattori selezionati: <code>M.C.D.(48, 72, 120) = 2³ × 3 = 8 × 3 = 24</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>M.C.D.(48, 72, 120) = 24</code></p>
+            </div>
+
+            <h2>3. L'Algoritmo delle Divisioni Successive di Euclide</h2>
+            <p>
+                Per numeri di grandi dimensioni, la scomposizione in primi può risultare lunga. In questi casi si usa l'<strong>Algoritmo di Euclide</strong>:
+            </p>
+            <ol>
+                <li>Si divide il numero maggiore per il numero minore.</li>
+                <li>Se il resto della divisione è <code>0</code>, il divisore corrente è il M.C.D.</li>
+                <li>Se c'è un resto, si sostituisce il dividendo con il divisore e il divisore con il resto, ripetendo la divisione finché non si ottiene resto zero.</li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 3 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Algoritmo di Euclide)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola <code>M.C.D.(252, 105)</code> con il metodo delle divisioni successive.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Dividiamo 252 per 105: <code>252 : 105 = 2</code> con resto <strong>42</strong>.</li>
+                    <li>Dividiamo il vecchio divisore (105) per il resto (42): <code>105 : 42 = 2</code> con resto <strong>21</strong>.</li>
+                    <li>Dividiamo il nuovo divisore (42) per il nuovo resto (21): <code>42 : 21 = 2</code> con resto <strong>0</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> L'ultimo resto diverso da zero è <strong>21</strong>, quindi <code>M.C.D.(252, 105) = 21</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sul Massimo Comune Divisore (M.C.D.)</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua comprensione con 100 esercizi graduali sul M.C.D. Apri ogni scheda per scoprire la fattorizzazione, i fattori scelti e il procedimento completo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Testo Puro) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            function factorize(n) {
+                let temp = n, factors = {};
+                for (let d = 2; d * d <= temp; d++) {
+                    while (temp % d === 0) {
+                        factors[d] = (factors[d] || 0) + 1;
+                        temp /= d;
+                    }
+                }
+                if (temp > 1) factors[temp] = (factors[temp] || 0) + 1;
+                return factors;
+            }
+
+            function getGCD(a, b) {
+                return b === 0 ? a : getGCD(b, a % b);
+            }
+
+            function formatFactors(factors) {
+                return Object.keys(factors)
+                    .map(k => factors[k] > 1 ? `${k}<sup>${factors[k]}</sup>` : `${k}`)
+                    .join(' × ');
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i * 3) + 6;
+                    let b = (i * 2) + 4;
+                    let gcdVal = getGCD(a, b);
+                    let fa = factorize(a), fb = factorize(b);
+
+                    domanda = `Calcola il M.C.D. tra i numeri <strong>${a}</strong> e <strong>${b}</strong>.`;
+                    risposta = `M.C.D.(${a}, ${b}) = ${gcdVal}`;
+                    spiegazione = `
+                    Scomposizioni in fattori primi:<br>
+                    • ${a} = <code>${formatFactors(fa)}</code><br>
+                    • ${b} = <code>${formatFactors(fb)}</code><br>
+                    Prendendo i soli fattori primi comuni con l'esponente minore, otteniamo <strong>${gcdVal}</strong>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let a = 12 + (i * 2);
+                        let b = 18 + (i * 3);
+                        let c = 24 + (i * 4);
+                        let gcdVal = getGCD(a, getGCD(b, c));
+                        let fa = factorize(a), fb = factorize(b), fc = factorize(c);
+
+                        domanda = `Calcola il M.C.D. della terna di numeri <strong>${a}</strong>, <strong>${b}</strong> e <strong>${c}</strong>.`;
+                        risposta = `M.C.D.(${a}, ${b}, ${c}) = ${gcdVal}`;
+                        spiegazione = `
+                        Scomposizioni:<br>
+                        • ${a} = <code>${formatFactors(fa)}</code><br>
+                        • ${b} = <code>${formatFactors(fb)}</code><br>
+                        • ${c} = <code>${formatFactors(fc)}</code><br>
+                        Prendendo i fattori presenti in tutte tre le scomposizioni con l'esponente più piccolo si ottiene <strong>${gcdVal}</strong>.`;
+                    } else if (mod === 2) {
+                        let n1 = 15 + i;
+                        let n2 = 28 + i;
+                        let gcdVal = getGCD(n1, n2);
+                        let isCoprime = (gcdVal === 1);
+
+                        domanda = `Determina se i numeri <strong>${n1}</strong> e <strong>${n2}</strong> sono primi tra loro calcolando il loro M.C.D.`;
+                        risposta = isCoprime ? `M.C.D.(${n1}, ${n2}) = 1 (Sono coprimi)` : `M.C.D.(${n1}, ${n2}) = ${gcdVal} (Non coprimi)`;
+                        spiegazione = isCoprime 
+                            ? `Le scomposizioni di ${n1} e ${n2} non hanno alcun fattore primo in comune. Il loro M.C.D. è 1, quindi sono primi tra loro.`
+                            : `Il divisore comune più grande tra ${n1} e ${n2} è ${gcdVal}.`;
+                    } else {
+                        let a = 40 + (i * 3);
+                        let b = 15 + i;
+                        let gcdVal = getGCD(a, b);
+                        domanda = `Usa l'Algoritmo di Euclide per calcolare <code>M.C.D.(${a}, ${b})</code>.`;
+                        risposta = `M.C.D.(${a}, ${b}) = ${gcdVal}`;
+                        spiegazione = `Eseguendo le divisioni successive col resto: la catena di resti termina con l'ultimo resto non nullo pari a <strong>${gcdVal}</strong>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 2;
+                    if (mod === 1) {
+                        let baseA = 100 + (i * 5);
+                        let baseB = 60 + (i * 3);
+                        let gcdVal = getGCD(baseA, baseB);
+                        let fa = factorize(baseA), fb = factorize(baseB);
+
+                        domanda = `Calcola il M.C.D. dei numeri di tre cifre <strong>${baseA}</strong> e <strong>${baseB}</strong>.`;
+                        risposta = `M.C.D.(${baseA}, ${baseB}) = ${gcdVal}`;
+                        spiegazione = `
+                        Scomposizione:<br>
+                        • ${baseA} = <code>${formatFactors(fa)}</code><br>
+                        • ${baseB} = <code>${formatFactors(fb)}</code><br>
+                        Il prodotto dei fattori primi comuni con esponente minimo restituisce <strong>${gcdVal}</strong>.`;
+                    } else {
+                        let a = 24 * (i - 70);
+                        let b = 36 * (i - 70);
+                        let c = 60 * (i - 70);
+                        let gcdVal = getGCD(a, getGCD(b, c));
+                        domanda = `Un falegname ha tre assi di legno lunghe rispettivamente <strong>${a} cm</strong>, <strong>${b} cm</strong> e <strong>${c} cm</strong>. Vuole tagliarle in pezzi tutti uguali della massima lunghezza possibile senza avanzare legno. Quanto deve misurare ogni pezzo?`;
+                        risposta = `Lunghezza massima = ${gcdVal} cm`;
+                        spiegazione = `Il problema richiede di trovare la massima misura comune per dividere le tre lunghezze senza resti, cioè il <code>M.C.D.(${a}, ${b}, ${c})</code>, che vale <strong>${gcdVal} cm</strong>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

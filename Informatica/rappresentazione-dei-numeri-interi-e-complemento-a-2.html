@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Rappresentazione Numeri Interi e Complemento a Due - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Rappresentazione Numeri Interi e Complemento a Due - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Tema Arancione Informatica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+        }
+
+        /* Linee a sinistra più spesse per gli esercizi */
+        .card-esercizio.livello-facile {
+            border-left: 6px solid #10b981;
+        }
+
+        .card-esercizio.livello-medio {
+            border-left: 6px solid #f59e0b;
+        }
+
+        .card-esercizio.livello-difficile {
+            border-left: 6px solid #ef4444;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .badge-difficolta.facile { background-color: #10b981; }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #ea580c;
+            padding: 0.5rem 0;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #fff7ed;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .box-risposta-corretta {
+            background-color: #ffedd5;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            color: #9a3412;
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stili specifici per il simulatore interattivo */
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input, select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input.code-input:focus, select.code-input:focus {
+            border-color: #ea580c;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="rappresentazione-numeri-interi-e-completamento-a-due" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Architettura</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Rappresentazione Numeri Interi e Complemento a Due</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Gestione dei numeri con segno, overflow aritmetico, simulatore interattivo di codifica binaria e 100 esercizi obbligatori.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Numeri Interi e Gestione del Segno</h2>
+            <p>
+                Nei sistemi di elaborazione digitale, la memoria è composta da sequenze di bit (0 e 1). Per rappresentare i numeri interi negativi e positivi a livello hardware senza ambiguità, si ricorre a codifiche standardizzate. Storicamente sono stati ideati tre metodi principali: 
+                <strong>Modulo e Segno</strong> (dove il bit più significativo o MSB indica il segno: 0 per positivo, 1 per negativo), 
+                <strong>Complemento a Uno</strong> (inversione bit a bit dei numeri positivi), e il 
+                <strong>Complemento a Due</strong>, che rappresenta lo standard industriale odierno in quanto elimina il problema del doppio zero ($+0$ e $-0$) e semplifica drasticamente i circuiti aritmetici della ALU.
+            </p>
+
+            <h2>2. L'Algoritmo del Complemento a Due</h2>
+            <p>
+                Dato un numero intero negativo in un formato a <code>n</code> bit, la sua codifica in complemento a due si ottiene mediante la seguente procedura algebrica:
+            </p>
+            <ul>
+                <li><strong>Passo 1:</strong> Si considera il valore assoluto del numero e lo si converte in binario puro su <code>n</code> bit.</li>
+                <li><strong>Passo 2:</strong> Si esegue il <em>Complemento a Uno</em> invertendo tutti i bit (gli <code>0</code> diventano <code>1</code> e gli <code>1</code> diventano <code>0</code>).</li>
+                <li><strong>Passo 3:</strong> Si somma algebricamente <code>1</code> al bit meno significativo (LSB) ignorando eventuali riporti oltre gli <code>n</code> bit stabiliti.</li>
+            </ul>
+
+            <div class="formula-box" style="border-color: #fed7aa; background-color: #fff7ed;">
+                📐 <strong>Proprietà e Intervalli di Rappresentazione ($n$ bit):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • <strong>Intervallo Numerico Gestibile:</strong> da $-2^{n-1}$ fino a $+2^{n-1} - 1$.<br>
+                    • <strong>Esempio su 8 bit ($1 byte$):</strong> da $-128$ a $+127$.<br>
+                    • <strong>Controllo del Segno:</strong> Se l'MSB è <code>1</code>, il numero è negativo; se è <code>0</code>, il numero è positivo o nullo.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #9a3412; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Rappresenta il numero decimale <code>-5</code> in codice binario a complemento a due su 8 bit.</p>
+                <hr style="border: 0; border-top: 1px solid #fed7aa; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scriviamo il valore assoluto $+5$ su 8 bit: <code>00000101</code>.</li>
+                    <li>Invertiamo tutti i bit (Complemento a 1): <code>11111010</code>.</li>
+                    <li>Sommiamo <code>1</code> al numero ottenuto: <code>11111010 + 1 = 11111011</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione: 11111011<sub>2</sub></strong></p>
+            </div>
+
+            <h2>3. Simulatore Interattivo di Complemento a Due</h2>
+            <p>
+                Inserisci un numero decimale compreso tra -128 e 127 per calcolarne la rappresentazione binaria a 8 bit in complemento a due in tempo reale.
+            </p>
+
+            <!-- STRUMENTO INTERATTIVO -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">twos-complement@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">8-bit Binary ALU</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 0.8rem; color: #888; display: block; margin-bottom: 4px;">Numero Decimale (-128 a 127):</label>
+                        <input type="number" id="valoreDecimale" class="code-input" value="-5" min="-128" max="127">
+                    </div>
+                    <div style="display: flex; align-items: flex-end;">
+                        <button class="btn-esegui" style="width: 100%;" onclick="calcolaComplemento()">Elabora ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Risultato: In attesa di input...</div>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2 style="color: #c2410c;">✏️ 100 Esercizi Obbligatori sui Numeri Interi e Complemento a Due</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi progressivi suddivisi in 35 facili (1-35), 40 medi (36-75) e 25 difficili ed estremamente complessi (76-100) focalizzati su overflow, somme algebriche e conversioni avanzate.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore Interattivo -->
+    <script>
+        function calcolaComplemento() {
+            let val = parseInt(document.getElementById('valoreDecimale').value);
+            const outputDiv = document.getElementById('terminalOutput');
+
+            try {
+                if (isNaN(val) || val < -128 || val > 127) {
+                    throw new Error("Inserisci un valore decimale valido compreso tra -128 e 127 (formato 8 bit).");
+                }
+                
+                let binStr = "";
+                if (val >= 0) {
+                    binStr = val.toString(2).padStart(8, '0');
+                } else {
+                    let posVal = 256 + val;
+                    binStr = posVal.toString(2);
+                }
+
+                outputDiv.style.color = '#38bdf8';
+                outputDiv.innerHTML = `> Conversione 8-bit: ${val}<sub>10</sub> = <strong>${binStr}<sub>2</sub></strong> (MSB = ${binStr[0]}, segno ${binStr[0] === '1' ? 'Negativo' : 'Positivo'})`;
+            } catch (error) {
+                outputDiv.style.color = '#f87171';
+                outputDiv.innerHTML = `> Errore: ${error.message}`;
+            }
+        }
+    </script>
+
+    <!-- Script Generatore dei 100 Esercizi Obbligatori -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // LIVELLO FACILE (1-35)
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let decVal = (i % 60) - 30; // Numeri tra -30 e +29
+                    let bits = 8;
+                    let binRes = "";
+                    if (decVal >= 0) {
+                        binRes = decVal.toString(2).padStart(bits, '0');
+                    } else {
+                        binRes = (Math.pow(2, bits) + decVal).toString(2);
+                    }
+
+                    domanda = `Converti il numero intero con segno <code>${decVal}<sub>10</sub></code> in binario a complemento a due su ${bits} bit.`;
+                    risposta = `${binRes}<sub>2</sub>`;
+                    spiegazione = `
+                    1) Se il numero è positivo, si converte direttamente in binario puro su <code>${bits}</code> bit.<br>
+                    2) Se il numero è negativo, si parte dal valore assoluto, si applica il complemento a uno e si aggiunge <code>1</code>.<br>
+                    3) Il risultato binario finale su 8 bit è <code>${binRes}</code>.`;
+
+                } else if (i <= 75) {
+                    // LIVELLO MEDIO (36-75)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let op1 = (i % 50) - 20;
+                    let op2 = (i % 40) - 15;
+                    let somma = op1 + op2;
+                    let overflow = (somma > 127 || somma < -128);
+                    let binSum = "N/A (Overflow)";
+                    if (!overflow) {
+                        binSum = (somma >= 0 ? somma.toString(2).padStart(8, '0') : (256 + somma).toString(2));
+                    }
+
+                    domanda = `Esegui la somma algebrica in complemento a due su 8 bit tra i numeri decimali <code>${op1}</code> e <code>${op2}</code>. Verifica se si verifica condizione di overflow e indica la stringa binaria risultante.`;
+                    risposta = overflow ? `Overflow aritmetico (risultato ${somma} fuori range [-128, 127])` : `${binSum}<sub>2</sub> (Decimale: ${somma})`;
+                    spiegazione = `
+                    1) Si convertono entrambi gli operandi nelle rispettive configurazioni a complemento a due su 8 bit.<br>
+                    2) Si esegue la somma bit a bit propagando gli eventuali riporti.<br>
+                    3) ${overflow ? 'I riporti sul 7° e 8° bit differiscono, generando un errore di <strong>overflow</strong>.' : 'La somma rientra nei limiti e produce il valore binario <code>' + binSum + '</code>.'}`;
+
+                } else {
+                    // LIVELLO DIFFICILE (76-100) - Molto complessi
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 3 === 0) {
+                        let hexIn = ((i * 13) % 250 + 10).toString(16).toUpperCase();
+                        let decVal = parseInt(hexIn, 16);
+                        if (decVal > 127) decVal -= 256;
+                        domanda = `Dato il byte esadecimale <code>0x${hexIn}</code> interpretato come numero intero con segno in complemento a due a 8 bit, determina il suo valore decimale equivalente ed esegui l'inversione di segno (negazione aritmetica) esprimendo il risultato in esadecimale.`;
+                        let negatedDec = -decVal;
+                        let negHex = (negatedDec < 0 ? (256 + negatedDec) : negatedDec).toString(16).toUpperCase().padStart(2, '0');
+                        risposta = `Valore decimale: ${decVal}<sub>10</sub> | Negazione in esadecimale: <code>0x${negHex}</code>`;
+                        spiegazione = `
+                        1) Verificando l'MSB del byte <code>0x${hexIn}</code>, deduciamo se il numero è negativo o positivo.<br>
+                        2) Convertendo il codice otteniamo il valore decimale <code>${decVal}</code>.<br>
+                        3) Applicando nuovamente il complemento a due per cambiare di segno, otteniamo la rappresentazione esadecimale <code>0x${negHex}</code>.`;
+                    } else if (i % 3 === 1) {
+                        let valExt = (i % 90) - 45;
+                        let bin8 = (valExt >= 0 ? valExt.toString(2).padStart(8, '0') : (256 + valExt).toString(2));
+                        let bin16 = (valExt >= 0 ? valExt.toString(2).padStart(16, '0') : (65536 + valExt).toString(2));
+                        domanda = `Esegui l'operazione di <strong>estensione del segno</strong> (sign extension) del numero intero <code>${bin8}<sub>2</sub></code> (rappresentato su 8 bit in complemento a due) portandandolo a un formato di 16 bit. Riporta la stringa binaria finale a 16 bit.`;
+                        risposta = `${bin16}<sub>2</sub>`;
+                        spiegazione = `
+                        1) Si individua il bit più significativo (MSB) del numero a 8 bit, che rappresenta il segno (<code>${bin8[0]}</code>).<br>
+                        2) Per estendere il segno senza alterare il valore numerico, si replicano copie del bit di segno nelle posizioni più elevate.<br>
+                        3) Si ottiene la stringa a 16 bit riempiendo a sinistra con <code>${bin8[0]}</code>: <code>${bin16}</code>.`;
+                    } else {
+                        let a = (i % 60) - 30;
+                        let b = (i % 50) - 25;
+                        let prod = a * b;
+                        domanda = `Considera la moltiplicazione tra due numeri interi in complemento a due: $(${a}) \\times (${b})$. Spiega come si comporta l'hardware nell'estensione della word di destinazione (che richiede $n + m$ bit) per evitare il troncamento dei dati.`;
+                        risposta = `Prodotto decimale: ${prod} (Richiede almeno 16 bit per evitare overflow nel formato esteso)`;
+                        spiegazione = `
+                        1) Il prodotto di due numeri a <code>n</code> bit in complemento a due può richiedere fino a $2n$ bit per essere memorizzato senza perdita di dati.<br>
+                        2) La ALU esegue moltiplicazioni successive tramite shift e somme parziali gestendo i bit di segno estesi.<br>
+                        3) Il risultato numerico atteso dell'operazione è <code>${prod}</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

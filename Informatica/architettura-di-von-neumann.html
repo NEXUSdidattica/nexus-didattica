@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Architettura di Von Neumann: Componenti, CPU, Memoria e Teoria - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Architettura di Von Neumann - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input, select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="architettura-di-von-neumann" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Architettura di Von Neumann</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio approfondito del modello teorico dei calcolatori elettronici basato su CPU, memoria condivisa e bus di sistema.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Introduzione all'Architettura di Von Neumann</h2>
+            <p>
+                L'<strong>Architettura di Von Neumann</strong> è un modello teorico di computer digitale ideato dal matematico John von Neumann nel 1945. La sua intuizione principale è stata quella di memorizzare sia i dati che le istruzioni dei programmi all'interno della stessa identica memoria centrale (principio del programma memorizzato).
+            </p>
+
+            <h2>2. I Componenti Principali del Sistema</h2>
+            <p>
+                Il modello si compone di sottosistemi interconnessi che cooperano per l'esecuzione dei calcoli:
+            </p>
+            <ul>
+                <li><strong>CPU (Central Processing Unit):</strong> Il "cervello" del computer, a sua volta suddiviso in <em>ALU</em> (Unità Aritmetico-Logica per i calcoli) e <em>CU</em> (Unità di Controllo che dirige il flusso delle operazioni).</li>
+                <li><strong>Memoria Centrale (RAM):</strong> Conserva sia i dati elaborati sia le istruzioni del software in esecuzione tramite celle indirizzabili.</li>
+                <li><strong>Dispositivi di I/O (Input/Output):</strong> Interfacce per la comunicazione con il mondo esterno (tastiera, monitor, memorie di massa).</li>
+                <li><strong>Bus di Sistema:</strong> Canali fisici di comunicazione (Bus Dati, Bus Indirizzi e Bus di Controllo) che collegano CPU e memoria.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Il Collo di Bottiglia (Von Neumann Bottleneck):</strong> Poiché dati e istruzioni condividono lo stesso bus e la stessa memoria, la CPU non può leggere un'istruzione e scrivere/leggere un dato nello stesso istante, limitando la velocità massima teorica del sistema.
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore del Ciclo Fetch-Decode-Execute</h2>
+            <p>Seleziona un'istruzione dal menu a tendina ed esegui la simulazione per vedere i passaggi che la CPU compie al suo interno.</p>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">vonneumann@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">CPU Cycle Simulator</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona Istruzione da Eseguire:</label>
+                        <select id="cpuInstruction" class="code-input" style="background-color: #111; color: #f97316;">
+                            <option value="ADD">ADD R1, R2 (Somma registri)</option>
+                            <option value="LOAD">LOAD R1, [0x0040] (Carica da memoria)</option>
+                            <option value="STORE">STORE R1, [0x0050] (Salva in memoria)</option>
+                            <option value="JUMP">JUMP 0x0100 (Salto incondizionato)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Ciclo CPU:</label>
+                        <button class="btn-esegui" onclick="simulaCicloCPU()" style="width: 100%;">Esegui ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Seleziona un'istruzione per avviare la simulazione del ciclo macchina...</div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore -->
+    <script>
+        function simulaCicloCPU() {
+            let inst = document.getElementById('cpuInstruction').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            let steps = "";
+            if (inst === "ADD") {
+                steps = `1. [FETCH]: La CU preleva l'istruzione ADD dalla RAM.<br>` +
+                        `2. [DECODE]: L'Unità di Controllo decodifica l'operazione aritmetica.<br>` +
+                        `3. [EXECUTE]: L'ALU somma i contenuti dei registri R1 e R2 salvando il risultato.`;
+            } else if (inst === "LOAD") {
+                steps = `1. [FETCH]: La CU legge l'istruzione di caricamento.<br>` +
+                        `2. [DECODE]: Viene interpretato l'indirizzo di memoria sorgente [0x0040].<br>` +
+                        `3. [EXECUTE]: Il dato viene trasferito dalla RAM al registro R1 tramite il bus dati.`;
+            } else if (inst === "STORE") {
+                steps = `1. [FETCH]: Prelievo dell'istruzione di salvataggio.<br>` +
+                        `2. [DECODE]: Identificazione della destinazione in memoria [0x0050].<br>` +
+                        `3. [EXECUTE]: Il contenuto del registro R1 viene scritto nella RAM.`;
+            } else {
+                steps = `1. [FETCH]: Prelievo dell'istruzione di salto.<br>` +
+                        `2. [DECODE]: Decodifica della nuova locazione di programma.<br>` +
+                        `3. [EXECUTE]: Il Program Counter (PC) viene aggiornato all'indirizzo 0x0100.`;
+            }
+
+            outputDiv.style.color = '#38bdf8';
+            outputDiv.innerHTML = `> Simulazione ciclo per <strong>${inst}</strong>:<br>` + steps;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 1: Cos'è un polinomio - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Cos'è un polinomio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-riassuntiva {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .tabella-riassuntiva th, .tabella-riassuntiva td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .tabella-riassuntiva th {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polinomi-cose-un-polinomio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Polinomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Cos'è un polinomio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Introduzione ai polinomi: definizione, termini, classificazione e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione di Polinomio</h2>
+            <p>
+                Un <strong>polinomio</strong> è un'espressione algebrica data dalla <strong>somma algebrica di due o più monomi</strong>.
+            </p>
+            <p>
+                I singoli monomi che compongono il polinomio si chiamano <strong>termini del polinomio</strong>.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>3x² - 5xy + 2y³</code> è un polinomio formato da tre termini: <code>+3x²</code>, <code>-5xy</code> e <code>+2y³</code>.
+            </div>
+
+            <h2>2. Classificazione in base al Numero di Termini</h2>
+            <p>
+                A seconda di quanti termini compongono un polinomio (ridotto in forma normale), esso prende un nome specifico:
+            </p>
+            <ul>
+                <li><strong>Monomio:</strong> formato da <code>1</code> solo termine (es. <code>4x²</code>).</li>
+                <li><strong>Binomio:</strong> formato da <code>2</code> termini (es. <code>a + b</code>).</li>
+                <li><strong>Trinomio:</strong> formato da <code>3</code> termini (es. <code>x² + 2x - 3</code>).</li>
+                <li><strong>Quadrinomio:</strong> formato da <code>4</code> termini (es. <code>a³ + b³ + 3a²b + 3ab²</code>).</li>
+            </ul>
+
+            <h2>3. Termine Noto</h2>
+            <p>
+                Un termine privo di parte letterale (ossia costituito solo da un numero) prende il nome di <strong>termine noto</strong>.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> Nel trinomio <code>2x² - 7x + 5</code>, il termine noto è <code>+5</code>.
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Classifica la seguente espressione e individua i suoi termini ed il termine noto: <code>P = 4a²b - 3ab + 7</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Contiamo i termini del polinomio: <code>+4a²b</code>, <code>-3ab</code>, <code>+7</code> (in totale 3 termini).</li>
+                    <li>Poiché ha 3 termini, si tratta di un <strong>trinomio</strong>.</li>
+                    <li>L'unico termine privo di lettere è <code>+7</code>, che rappresenta il <strong>termine noto</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Classificazione: Trinomio con termine noto +7</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Cos'è un Polinomio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Riconosci i polinomi, conta i loro termini e ordinali in base alla tipologia.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        domanda = `Classifica il polinomio: <code>3x² - 5x + 2</code> in base al numero dei suoi termini.`;
+                        risposta = `È un <strong>trinomio</strong> (3 termini).`;
+                        spiegazione = `I termini sono <code>+3x²</code>, <code>-5x</code> e <code>+2</code>. Avendo tre termini è un trinomio.`;
+                    } else if (tipo === 1) {
+                        domanda = `Individua il termine noto nell'espressione: <code>4a³ - 2a + 9</code>.`;
+                        risposta = `Il termine noto è <code>+9</code>.`;
+                        spiegazione = `Il termine noto è la costante priva di parte letterale, in questo caso <code>+9</code>.`;
+                    } else {
+                        domanda = `Come si chiama un polinomio formato esattamente da 2 termini?`;
+                        risposta = `<strong>Binomio</strong>.`;
+                        spiegazione = `Un polinomio formato da due soli monomi (es. <code>a + b</code>) si chiama binomio.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let num = (i % 5) + 1;
+                        domanda = `Stabilisci se l'espressione <code>3x² + ${num}/y</code> è un polinomio.`;
+                        risposta = `<strong>No, non è un polinomio</strong>.`;
+                        spiegazione = `Nel termine <code>${num}/y</code> la variabile si trova al denominatore (esponente negativo), quindi non è un monomio e l'espressione non è un polinomio.`;
+                    } else {
+                        domanda = `Elenca tutti i termini che compongono il polinomio: <code>-2x³y + 5xy² - 7x + 1</code>.`;
+                        risposta = `I termini sono: <code>-2x³y</code>, <code>+5xy²</code>, <code>-7x</code>, <code>+1</code>.`;
+                        spiegazione = `Il polinomio (un quadrinomio) è composto dai 4 monomi indicati, presi ciascuno con il proprio segno.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let a = (i % 4) + 2;
+                    domanda = `L'espressione <code>P(x) = ${a}x³ - 2x² + ${a}x³ + 5</code> è un trinomio o un quadrinomio? Spiega il perché.`;
+                    let sum = a + a;
+                    risposta = `Dopo la riduzione è un <strong>trinomio</strong> (<code>${sum}x³ - 2x² + 5</code>).`;
+                    spiegazione = `
+                    1) Apparentemente sembra un quadrinomio a 4 termini.<br>
+                    2) Tuttavia contiene i monomi simili <code>${a}x³</code> e <code>${a}x³</code>.<br>
+                    3) Sommandoli otteniamo <code>${sum}x³ - 2x² + 5</code>, che è un trinomio in forma normale.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

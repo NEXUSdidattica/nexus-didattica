@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Teoria della Deriva dei Continenti: Alfred Wegener, Pangea, Prove Geologiche e Paleontologiche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Teoria della Deriva dei Continenti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-la-teoria-della-deriva-dei-continenti" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia" style="display: inline-block; margin-bottom: 0.6rem;">Scienze / Scienze della Terra / Geologia Storica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0; margin-bottom: 0.5rem;">La Teoria della Deriva dei Continenti</h1>
+                <p style="color: #64748b; font-size: 1.05rem; margin-bottom: 0;">
+                    L'intuizione rivoluzionaria di Alfred Wegener, il supercontinente Pangea, le prove interdisciplinari e i motivi del rifiuto iniziale.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. L'Intuizione di Alfred Wegener e la Pangea</h2>
+            <p>
+                Nei primi decenni del Novecento (precisamente nel 1912), il meteorologo e geofisico tedesco <strong>Alfred Wegener</strong> formulò una teoria destinata a sconvolgere le scienze della Terra: la <strong>teoria della deriva dei continenti</strong>.
+            </p>
+            <p>
+                Wegener ipotizzò che, circa 200 milioni di anni fa (durante il periodo Mesozoico), tutte le terre emerse del pianeta non fossero separate come oggi, ma fossero riunite in un unico immenso supercontinente chiamato <strong>Pangea</strong> ("tutta la terra"), circondato da un unico vasto oceano globale denominato <strong>Panthalassa</strong>. Successivamente, la Pangea avrebbe iniziato a frammentarsi, e i vari blocchi continentali avrebbero "derivato" lentamente attraverso i fondali oceanici fino ad assumere la posizione attuale.
+            </p>
+
+            <h2>2. Le Prove a Supporto della Teoria</h2>
+            <p>
+                Per dimostrare la validità della sua ipotesi, Wegener raccolse una serie straordinaria di indizi provenienti da discipline diverse:
+            </p>
+            <ul>
+                <li><strong>Prove Geografiche (o Morfologiche):</strong> L'evidente complementarità delle linee di costa ai lati dell'Oceano Atlantico, in particolare la straordinaria corrispondenza geometrica tra il margine orientale del Sud America e il margine occidentale dell'Africa (come pezzi di un gigantesco puzzle).</li>
+                <li><strong>Prove Paleontologiche:</strong> La presenza di fossili di identiche specie animali e vegetali (come il rettile d'acqua dolce <em>Mesosaurus</em> o la felce fossile <em>Glossopteris</em>) su continenti oggi separati da migliaia di chilometri di oceano profondo, impossibili da spiegare con la sola dispersione transoceanica.</li>
+                <li><strong>Prove Stratigrafiche e Geologiche:</strong> La continuità strutturale di catene montuose e formazioni rocciose simili (ad esempio le rocce della catena appalachiana in Nord America che si raccordano perfettamente con la catena caledoniana in Europa e le rocce del Sud Africa con quelle del Brasile).</li>
+                <li><strong>Prove Paleoclimatiche:</strong> La presenza di depositi di origine glaciale risalenti al Carbonifero-Permiano in aree che oggi si trovano a latitudini equatoriali o tropicali (Africa meridionale, India, Australia e Sud America), dimostrando che un tempo queste terre si trovavano in prossimità del polo sud.</li>
+            </ul>
+
+            <h2>3. Il Rifiuto della Teoria: Il Problema del Motore</h2>
+            <p>
+                Nonostante la mole impressionante di prove indiziarie, la comunità geologica ufficiale dell'epoca respinse categoricamente la teoria di Wegener per un motivo fondamentale: <strong>l'assenza di un meccanismo fisico plausibile</strong> in grado di spiegare come pesanti blocchi di sial (crosta continentale) potessero farsi strada strisciando attraverso i fondali oceanici rigidi (simatici).
+            </p>
+            <p>
+                Le forze proposte da Wegener (come la forza di marea e la forza centrifuga legata alla rotazione terrestre) si rivelarono quantitativamente del tutto insufficienti a muovere i continenti. Senza un "motore" valido, l'intuizione di Wegener fu accantonata per decenni, fino alla nascita della moderna tettonica delle placche negli anni '60.
+            </p>
+
+            <div class="formula-box">
+                🌍 <strong>La Velocità della Deriva:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Oggi sappiamo che i continenti si muovono davvero, sospinti dai moti convettivi del mantello sottostante. La velocità media di allontanamento o avvicinamento delle placche litosferiche viene misurata con precisione millimetrica tramite satelliti GPS e sistemi laser:
+                    $$v \approx 2 - 10\text{ cm all'anno}$$
+                    Questa velocità, apparentemente impercettibile su scala umana, è più che sufficiente a ricostruire la geografia terrestre passata e a ridisegnare i profili dei continenti nel corso delle ere geologiche.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Pratico: L'Analisi dei Fossili e dei Climi Antichi</h3>
+                <p style="margin-bottom: 0.8rem;">Durante una spedizione geologica, vengono rinvenuti fossili della felce <em>Glossopteris</em> e tracce di antiche morene glaciali in sezioni rocciose situate in zone equatoriali dell'Africa centrale. Come si concilia questo riscontro con la dinamica della Pangea?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento analitico:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Incompatibilità climatica:</strong> I ghiacciai continentali richiedono condizioni climatiche polari o subpolari per formarsi e lasciare segni di abrasione sulle rocce sottostanti; non possono svilupparsi in climi tropicali attuali.</li>
+                    <li><strong>Ricostruzione paleogeografica:</strong> Posizionando l'Africa all'interno del supercontinente Pangea meridionale, l'area in questione risultava geograficamente vicina al Polo Sud geologico, giustificando la glaciazione e la distribuzione dei fossili.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> Il dato paleoclimatico conferma che sono stati i continenti a spostarsi nel corso del tempo geologico attraverso diverse fasce climatiche, validando l'intuizione di Wegener.</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

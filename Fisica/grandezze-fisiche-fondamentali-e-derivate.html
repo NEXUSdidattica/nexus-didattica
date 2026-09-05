@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione su Grandezze Fisiche Fondamentali e Derivate - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Grandezze Fisiche Fondamentali e Derivate - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive (Tema Viola Fisica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-sistema {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .tabella-sistema th, .tabella-sistema td {
+            border: 1px solid #e9d5ff;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .tabella-sistema th {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .tabella-sistema tr:nth-child(even) {
+            background-color: #faf5ff;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="grandezze-fisiche-fondamentali-e-derivate" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Misura</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Grandezze Fisiche Fondamentali e Derivate</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione di grandezza fisica, il Sistema Internazionale (SI), unità di misura di base e grandezze derivate.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è una Grandezza Fisica?</h2>
+            <p>
+                In fisica, una grandezza fisica è una proprietà di un corpo o di un fenomeno naturale che può essere misurata oggettivamente. Misurare significa confrontare la grandezza stessa con un campione omogeneo preso come unità di misura, ottenendo un numero seguito da un'unità.
+            </p>
+
+            <h2>2. Grandezze Fondamentali del Sistema Internazionale (SI)</h2>
+            <p>
+                Il Sistema Internazionale di unità di misura stabilisce sette grandezze fondamentali, dalle quali derivano tutte le altre grandezze impiegate in fisica:
+            </p>
+
+            <table class="tabella-sistema">
+                <thead>
+                    <tr>
+                        <th>Grandezza Fisica</th>
+                        <th>Unità di Misura (SI)</th>
+                        <th>Simbolo dell'Unità</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lunghezza</td>
+                        <td>Metro</td>
+                        <td>$\text{m}$</td>
+                    </tr>
+                    <tr>
+                        <td>Massa</td>
+                        <td>Chilogrammo</td>
+                        <td>$\text{kg}$</td>
+                    </tr>
+                    <tr>
+                        <td>Tempo</td>
+                        <td>Secondo</td>
+                        <td>$\text{s}$</td>
+                    </tr>
+                    <tr>
+                        <td>Intensità di corrente elettrica</td>
+                        <td>Ampere</td>
+                        <td>$\text{A}$</td>
+                    </tr>
+                    <tr>
+                        <td>Temperatura termodinamica</td>
+                        <td>Kelvin</td>
+                        <td>$\text{K}$</td>
+                    </tr>
+                    <tr>
+                        <td>Quantità di sostanza</td>
+                        <td>Mole</td>
+                        <td>$\text{mol}$</td>
+                    </tr>
+                    <tr>
+                        <td>Intensità luminosa</td>
+                        <td>Candela</td>
+                        <td>$\text{cd}$</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Grandezze Derivate</h2>
+            <p>
+                Le grandezze derivate sono quelle che si ottengono mediante operazioni matematiche (moltiplicazioni o divisioni) a partire dalle grandezze fondamentali. 
+            </p>
+            <p>
+                Un esempio classico è l'area di una superficie o la velocità:
+            </p>
+
+            <div class="formula-box" style="border-color: #e9d5ff; background-color: #faf5ff;">
+                ⚛️ <strong>Esempi di legami dimensionali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    La velocità ($v$) deriva dal rapporto tra la lunghezza ($s$) e il tempo ($t$):
+                    $$v = \frac{s}{t} \quad \rightarrow \quad [\text{m} \cdot \text{s}^{-1}]$$
+                    La densità ($\rho$) deriva dal rapporto tra la massa ($m$) e il volume ($V$, che a sua volta è $\text{m}^3$):
+                    $$\rho = \frac{m}{V} \quad \rightarrow \quad [\text{kg} \cdot \text{m}^{-3}]$$
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

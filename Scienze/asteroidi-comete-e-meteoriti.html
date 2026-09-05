@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asteroidi, Comete e Meteoriti: Corpi Minori del Sistema Solare - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Asteroidi, Comete e Meteoriti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* TABELLA COMPARATIVA */
+        .tabella-confronto {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabella-confronto th, 
+        .tabella-confronto td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-confronto th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: bold;
+        }
+
+        .tabella-confronto tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-asteroidi-comete-e-meteoriti" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Astronomia / Corpi Minori</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Asteroidi, Comete e Meteoriti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dei corpi minori del sistema solare: origine, composizione chimica, orbite e interazione con l'atmosfera terrestre.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. I Corpi Minori del Sistema Solare</h2>
+            <p>
+                Oltre ai pianeti e al Sole, il sistema solare ospita una vasta popolazione di corpi celesti di piccole dimensioni, collettivamente noti come <strong>corpi minori</strong>. Essi rappresentano i residui primordiali della nebulosa solare da cui, circa 4,6 miliardi di anni fa, si sono originati i pianeti maggiori. Questa categoria comprende gli asteroidi, le comete e i meteoroidi.
+            </p>
+
+            <h2>2. Gli Asteroidi</h2>
+            <p>
+                Gli asteroidi sono corpi rocciosi e metallici di forma irregolare, privi di atmosfera. La maggior parte di essi si concentra nella <em>fascia principale degli asteroidi</em>, situata tra le orbite di Marte e Giove.
+            </p>
+            <ul>
+                <li><strong>Composizione:</strong> Prevalentemente rocce silicate, ferro e nichel. Alcuni presentano anche composti carboniosi.</li>
+                <li><strong>Dimensioni:</strong> Variano da pochi metri fino a centinaia di chilometri (il più grande è Cerere, oggi classificato anche come pianeta nano).</li>
+                <li><strong>Orbite:</strong> Oltre alla fascia principale, esistono asteroidi detti <em>Near-Earth Objects (NEO)</em>, le cui orbite possono incrociare quella della Terra, rendendo cruciale il loro monitoraggio costante.</li>
+            </ul>
+
+            <h2>3. Le Comete</h2>
+            <p>
+                Le comete sono corpi celesti ghiacciati provenienti dalle regioni più periferiche e remote del sistema solare, come la <em>Nube di Oort</em> o la <em>Fascia di Kuiper</em>. Vengono spesso descritte metaforicamente come "palle di neve sporca".
+            </p>
+            <ul>
+                <li><strong>Struttura:</strong> Quando sono lontane dal Sole consistono solo in un piccolo **nucleo** solido fatto di ghiacci d'acqua, anidride carbonica, metano e polveri minerali.</li>
+                <li><strong>La Chioma e le Code:</strong> Avvicinandoci al Sole, il calore fa sublimare i ghiacci, creando una nube gassosa luminosa chiamata <em>chioma</em> e due distinte code orientate in direzione opposta al Sole: la <em>coda di polveri</em> e la <em>coda di gas ionizzati</em> (plasma), spinta dal vento solare.</li>
+            </ul>
+
+            <h2>4. Meteoroidi, Meteore e Meteoriti</h2>
+            <p>
+                Spesso si fa confusione tra questi tre termini, che descrivono stadi successivi dello stesso frammento roccioso in rotta di collisione con la Terra:
+            </p>
+            <ul>
+                <li><strong>Meteoroide:</strong> Un piccolo frammento di asteroide o cometa che viaggia nello spazio interplanetario.</li>
+                <li><strong>Meteora (o "Stella cadente"):</strong> Il fenomeno luminoso visibile quando un meteoroide entra a grande velocità nell'atmosfera terrestre, bruciando a causa dell'attrito con i gas atmosferici.</li>
+                <li><strong>Meteorite:</strong> La porzione di meteoroide che sopravvive all'attraversamento dell'atmosfera e impatta effettivamente contro la superficie della Terra.</li>
+            </ul>
+
+            <!-- TABELLA COMPARATIVA -->
+            <h2>5. Tabella Sintetica dei Corpi Minori</h2>
+            <table class="tabella-confronto">
+                <thead>
+                    <tr>
+                        <th>Corpo Celeste</th>
+                        <th>Composizione Principale</th>
+                        <th>Luogo d'Origine / Collocazione</th>
+                        <th>Fenomeni / Caratteristiche</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Asteroidi</strong></td>
+                        <td>Rocce, metalli (ferro/nichel)</td>
+                        <td>Fascia principale (tra Marte e Giove)</td>
+                        <td>Forma irregolare, assenza di code</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comete</strong></td>
+                        <td>Ghiacci volatili e polveri</td>
+                        <td>Fascia di Kuiper / Nube di Oort</td>
+                        <td>Sviluppano chioma e code vicine al Sole</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meteoroidi</strong></td>
+                        <td>Frammenti rocciosi o metallici</td>
+                        <td>Spazio interplanetario</td>
+                        <td>Generano meteore e meteoriti all'impatto</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                ☄️ <strong>L'Energia Cinetica d'Impatto:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Quando un meteorite di massa $m$ colpisce l'atmosfera o la superficie terrestre a una velocità elevatissima $v$, libera un'enorme quantità di energia cinetica secondo la formula classica:
+                    $$E_k = \frac{1}{2} m v^2$$
+                    Anche piccoli frammenti, viaggiando a decine di chilometri al secondo, possiedono una potenza distruttiva notevole a causa del fattore quadratico della velocità ($v^2$).
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Pratico: Distinzione Terminologica</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Problema:</strong> Durante una notte d'agosto osservi una scia luminosa nel cielo (una "stella cadente"). Spiega scientificamente cosa sta accadendo e qual è il termine corretto per definire il corpo celeste in quel momento e se dovesse toccare il suolo.</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Analisi del fenomeno:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Prima di entrare nell'atmosfera, il detrito spaziale è un <strong>meteoroide</strong>.</li>
+                    <li>Nel momento in cui entra in contatto con l'alta atmosfera terrestre ad alta velocità, l'attrito surriscalda l'aria e vaporizza il materiale, generando la scia luminosa visibile: questo fenomeno ottico è la <strong>meteora</strong>.</li>
+                    <li>Se un pezzo di quel sasso non si consuma del tutto e cade al suolo, prende il nome di <strong>meteorite</strong>.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> La scia luminosa non è una stella, ma una meteora prodotta dalla ionizzazione dei gas atmosferici attorno al frammento in disintegrazione.</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa sui Numeri Primi e Composti, il Crivello di Eratostene ed Esercizi Svolti Passo-Passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Numeri Primi e Composti: Guida Completa ed Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-numeri-primi-composti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Numeri Primi e Numeri Composti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetti fondamentali, differenze tra primi e composti, ricerca dei divisori e il Crivello di Eratostene.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizioni di Base: Primo vs Composto</h2>
+            <p>
+                Nel mondo dei numeri naturali maggiori di 1 (<code>n > 1</code>), ogni numero appartiene a una di queste due categorie:
+            </p>
+            <ul>
+                <li>
+                    <strong>Numero Primo:</strong> Un numero intero maggiore di 1 che ammette <strong>soltanto due divisori distinti</strong>: 1 e se stesso. 
+                    I primi dieci numeri primi sono: <code>2, 3, 5, 7, 11, 13, 17, 19, 23, 29</code>.
+                </li>
+                <li>
+                    <strong>Numero Composto:</strong> Un numero intero maggiore di 1 che ammette <strong>più di due divisori</strong> (ovvero almeno un divisore oltre a 1 e se stesso). Esempi: <code>4, 6, 8, 9, 10, 12, 15, ...</code>
+                </li>
+                <li>
+                    <strong>I casi particolari 0 e 1:</strong> Il numero <code>1</code> ha un solo divisore (se stesso), quindi non è né primo né composto. Il numero <code>0</code> ha infiniti divisori, dunque anch'esso non appartiene a nessuna delle due categorie.
+                </li>
+            </ul>
+
+            <div style="background-color: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem 1.2rem; margin: 1.5rem 0;">
+                <p style="margin: 0; color: #92400e; font-weight: 600;">
+                    💡 Proprietà Fondamentale: Il numero <strong>2</strong> è l'unico numero primo pari. Qualsiasi altro numero pari maggiore di 2 è divisibile per 2 ed è quindi composto.
+                </p>
+            </div>
+
+            <h2>2. Il Crivello di Eratostene</h2>
+            <p>
+                Il <strong>Crivello di Eratostene</strong> è un antico algoritmo ideato dal matematico greco Eratostene per trovare tutti i numeri primi fino a un determinato limite <code>N</code>.
+            </p>
+            <ol>
+                <li>Si scrivono in griglia i numeri da 2 a N.</li>
+                <li>Si evidenzia il 2 (primo numero primo) e si cancellano tutti i suoi multipli (4, 6, 8, 10...).</li>
+                <li>Si passa al numero successivo non cancellato (il 3) e si elidono tutti i suoi multipli.</li>
+                <li>Si ripete il procedimento finché non si raggiunge la radice quadrata di N. I numeri rimasti sono tutti <strong>numeri primi</strong>.</li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Identificare un numero primo)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Stabilisci se il numero <strong>37</strong> è primo o composto verificando i suoi divisori.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la radice quadrata approssimata di 37: <code>√37 ≈ 6,08</code>.</li>
+                    <li>Dobbiamo controllare la divisibilità solo per i numeri primi minori o uguali a 6, cioè: <strong>2, 3 e 5</strong>.</li>
+                    <li>37 è dispari &rarr; non è divisibile per 2.</li>
+                    <li>La somma delle cifre (<code>3 + 7 = 10</code>) non è multiplo di 3 &rarr; non è divisibile per 3.</li>
+                    <li>L'ultima cifra non è né 0 né 5 &rarr; non è divisibile per 5.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> Non avendo divisori tra 2 e 6, <strong>37 è un Numero Primo</strong> (i suoi unici divisori sono 1 e 37).</p>
+            </div>
+
+            <h2>3. Numeri Primi tra Loro (Coprimi)</h2>
+            <p>
+                Due numeri interi si dicono <strong>primi tra loro</strong> (o <em>coprimi</em> o <em>relativamente primi</em>) se il loro unico divisore comune è il numero <strong>1</strong>.
+            </p>
+            <ul>
+                <li><strong>Importante:</strong> Due numeri non devono per forza essere numeri primi per essere primi tra loro! Ad esempio <code>8</code> (composto) e <code>9</code> (composto) non hanno divisori comuni tranne 1, quindi 8 e 9 sono primi tra loro.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 3 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Coprimolarità)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Determina se i numeri <strong>14</strong> e <strong>25</strong> sono primi tra loro.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Elenchiamo i divisori di 14: <code>D(14) = {1, 2, 7, 14}</code>.</li>
+                    <li>Elenchiamo i divisori di 25: <code>D(25) = {1, 5, 25}</code>.</li>
+                    <li>Confrontiamo i divisori in comune: l'unico numero presente in entrambi gli insiemi è <strong>1</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> 14 e 25 sono <strong>primi tra loro</strong>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati su Numeri Primi e Composti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua abilità con 100 esercizi strutturati in ordine di difficoltà crescente. 
+                Apri ciascuna scheda per visualizzare la risposta corretta e la spiegazione passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Testo Puro) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const primiPiccoli = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Riconoscere primi e composti < 100, lista divisori e concetti base
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let candidate = (i * 2) + 3;
+                        let isP = primiPiccoli.includes(candidate);
+                        domanda = `Stabilisci se il numero <strong>${candidate}</strong> è un numero primo o un numero composto.`;
+                        risposta = isP ? `Numero Primo` : `Numero Composto`;
+                        spiegazione = isP 
+                            ? `Il numero ${candidate} non è divisibile per nessun altro intero se non per 1 e per ${candidate}.` 
+                            : `Il numero ${candidate} possiede altri divisori oltre a 1 e se stesso (es. è divisibile per ${candidate % 3 === 0 ? 3 : (candidate % 5 === 0 ? 5 : 7)}).`;
+                    } else if (mod === 2) {
+                        let num = 30 + i * 2;
+                        domanda = `Spiega se il numero <strong>${num}</strong> è un numero primo oppure composto.`;
+                        risposta = `Numero Composto`;
+                        spiegazione = `Essendo un numero pari maggiore di 2, ${num} è certamente divisibile per 2. Ha quindi più di due divisori.`;
+                    } else if (mod === 3) {
+                        let a = [6, 8, 9, 10, 12, 14, 15, 18, 20, 21, 25, 27][i % 12];
+                        let divs = [];
+                        for(let d = 1; d <= a; d++) { if(a % d === 0) divs.push(d); }
+                        domanda = `Trova tutti i divisori del numero <strong>${a}</strong> e definisci la sua natura.`;
+                        risposta = `Divisori: {${divs.join(', ')}} (Numero Composto)`;
+                        spiegazione = `I divisori di ${a} sono <code>${divs.join(', ')}</code>. Avendo ${divs.length} divisori (più di due), è un numero composto.`;
+                    } else {
+                        domanda = `Qual è l'unico numero primo pari e perché non ne esistono altri?`;
+                        risposta = `Il numero 2`;
+                        spiegazione = `Il 2 ha solo due divisori (1 e 2). Tutti gli altri numeri pari (4, 6, 8...) ammettono 2 tra i propri divisori e sono quindi composti.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Coprimolarità, Crivello di Eratostene, ricerca divisori fino a √N
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let n1 = 6 + (i % 7);
+                        let n2 = 35 + (i % 5);
+                        let gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+                        let g = gcd(n1, n2);
+                        let coprime = (g === 1);
+                        domanda = `Verifica se la coppia di numeri <strong>${n1}</strong> e <strong>${n2}</strong> è formata da numeri primi tra loro (coprimi).`;
+                        risposta = coprime ? `Sì, sono primi tra loro (M.C.D. = 1)` : `No, non sono coprimi (M.C.D. = ${g})`;
+                        spiegazione = coprime 
+                            ? `I numeri ${n1} e ${n2} non hanno alcun divisore comune all'fuori di 1.` 
+                            : `Entrambi i numeri sono divisibili per <code>${g}</code>, quindi non sono coprimi.`;
+                    } else if (mod === 2) {
+                        let num = 40 + i;
+                        let limit = Math.floor(Math.sqrt(num));
+                        let isP = primiPiccoli.includes(num);
+                        domanda = `Per stabilire se <strong>${num}</strong> è primo, per quali numeri primi dobbiamo verificare la divisibilità?`;
+                        let testPrimes = primiPiccoli.filter(p => p <= limit);
+                        risposta = `Occorre testare solo i primi fino a ${limit}: ${testPrimes.join(', ')}`;
+                        spiegazione = `Poiché √${num} ≈ ${Math.sqrt(num).toFixed(2)}, è sufficiente controllare i numeri primi minori o uguali a ${limit} (${testPrimes.join(', ')}). ${num} risulta ${isP ? 'PRIMO' : 'COMPOSTO'}.`;
+                    } else if (mod === 3) {
+                        domanda = `Nel Crivello di Eratostene fino a 50, qual è il primo numero che viene cancellato quando si considerano i multipli del numero 5?`;
+                        risposta = `25`;
+                        spiegazione = `I multipli 10, 15, 20 sono già stati cancellati precedentemente dai primi 2 e 3. Il primo nuovo multiplo cancellato dal 5 è <code>5 × 5 = 25</code>.`;
+                    } else {
+                        domanda = `Spiega per quale motivo il numero <code>1</code> non viene considerato un numero primo.`;
+                        risposta = `Ha solo 1 divisore (se stesso), mentre i primi devono averne 2.`;
+                        spiegazione = `Per definizione, un numero primo deve avere esattamente due divisori distinti (1 e il numero stesso). Il numero 1 possiede un solo divisore.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Analisi teoriche, somme/prodotti di primi, test su numeri > 100
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let candidate = 101 + ((i % 10) * 2);
+                        if (candidate === 105) candidate = 107;
+                        if (candidate === 111) candidate = 113;
+                        let isP = true;
+                        for(let d=2; d*d<=candidate; d++) {
+                            if(candidate % d === 0) { isP = false; break; }
+                        }
+                        domanda = `Utilizza i criteri di divisibilità per verificare se il numero <strong>${candidate}</strong> è primo o composto.`;
+                        risposta = isP ? `Numero Primo` : `Numero Composto`;
+                        spiegazione = isP 
+                            ? `Verificando la divisibilità per i primi fino a 10 (2, 3, 5, 7), nessuna divisione dà resto 0. Dunque ${candidate} è primo.` 
+                            : `Il numero ${candidate} è composto (ammette divisori oltre a 1 e se stesso).`;
+                    } else if (mod === 2) {
+                        domanda = `Se <code>p</code> e <code>q</code> sono due numeri primi diversi maggiori di 2, la loro somma <code>p + q</code> è un numero primo o composto?`;
+                        risposta = `Sempre un numero composto`;
+                        spiegazione = `Tutti i numeri primi maggiori di 2 sono dispari. La somma di due numeri dispari <code>p + q</code> genera sempre un numero PARI maggiore di 2, il quale è sempre divisibile per 2 e dunque composto.`;
+                    } else {
+                        domanda = `Dimostra se il prodotto di due numeri primi distinti <code>p × q</code> possiede esattamente 4 divisori.`;
+                        risposta = `Vero (possiede esattamente 4 divisori)`;
+                        spiegazione = `Se p e q sono primi e distinti, gli unici divisori del loro prodotto <code>N = p × q</code> sono: <code>1</code>, <code>p</code>, <code>q</code> e <code>p × q</code>. In totale sono esattamente 4 divisori.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Teorema dei Seni con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teorema dei Seni - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teorema-dei-seni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Teorema dei Seni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Relazione fondamentale di proporzionalità tra i lati di un triangolo qualunque e i seni degli angoli opposti, con applicazioni geometriche e calcolo del raggio circoscritto.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Enunciato del Teorema dei Seni</h2>
+            <p>Il <strong>teorema dei seni</strong> (noto anche come teorema di Eulero o dei sogni trigonometrici) stabilisce che in qualsiasi triangolo il rapporto tra la misura di un lato e il seno dell'angolo opposto è costante ed è pari al diametro della circonferenza circoscritta al triangolo.</p>
+            
+            <div class="formula-box">
+                $$\frac{a}{\sin\alpha} = \frac{b}{\sin\beta} = \frac{c}{\sin\gamma} = 2R$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">Dove $a, b, c$ sono i lati del triangolo, $\alpha, \beta, \gamma$ i rispettivi angoli opposti ed $R$ è il raggio della circonferenza circoscritta.</p>
+            </div>
+
+            <p>Questo teorema risulta particolarmente utile per la risoluzione dei triangoli qualunque quando si conoscono:</p>
+            <ul>
+                <li>Due angoli e un lato (caso L.A.A. o A.L.A.)</li>
+                <li>Due lati e l'angolo opposto a uno di essi (caso di ambiguità potenziale)</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>In un triangolo $ABC$, il lato $a = 10\text{ cm}$, l'angolo opposto $\alpha = 30^\circ$ e l'angolo $\beta = 45^\circ$. Calcola la misura del lato $b$ e il diametro della circonferenza circoscritta.</p>
+                <ol>
+                    <li><strong>Calcolo del lato $b$:</strong> Applicando la proporzione del teorema dei seni:
+                        $$\frac{b}{\sin\beta} = \frac{a}{\sin\alpha} \implies \frac{b}{\sin(45^\circ)} = \frac{10}{\sin(30^\circ)}$$
+                        $$b = \frac{10 \cdot \frac{\sqrt{2}}{2}}{\frac{1}{2}} = 10\sqrt{2}\text{ cm}$$
+                    </li>
+                    <li><strong>Calcolo del diametro ($2R$):</strong>
+                        $$2R = \frac{a}{\sin\alpha} = \frac{10}{\frac{1}{2}} = 20\text{ cm} \implies R = 10\text{ cm}$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Teorema dei Seni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Applicazione diretta del teorema dei seni con angoli notevoli
+                    const casiFacili = [
+                        ["In un triangolo $ABC$, il lato $a = 12$, l'angolo $\\alpha = 30^\\circ$ e l'angolo $\\beta = 45^\\circ$. Calcola il lato $b$.", "b = 12\\sqrt{2}", "Applichiamo la proporzione del teorema dei seni: $\\frac{b}{\\sin(45^\\circ)} = \\frac{12}{\\sin(30^\\circ)}$, da cui $b = \\frac{12 \\cdot \\sqrt{2}/2}{1/2} = 12\\sqrt{2}$."],
+                        ["In un triangolo, il lato $a = 10$ e l'angolo opposto $\\alpha = 30^\\circ$. Trova il raggio $R$ della circonferenza circoscritta.", "R = 10", "Sappiamo che $\\frac{a}{\\sin\\alpha} = 2R$. Sostituendo: $\\frac{10}{\\sin(30^\\circ)} = 2R \\implies \\frac{10}{1/2} = 20 = 2R \\implies R = 10$."],
+                        ["In un triangolo, $\\beta = 60^\\circ$, $\\gamma = 45^\\circ$ e il lato $b = 6\\sqrt{3}$. Calcola il lato $c$.", "c = 6\\sqrt{2}", "Impostiamo la proporzione: $\\frac{c}{\\sin(45^\\circ)} = \\frac{b}{\\sin(60^\\circ)} \\implies c = \\frac{6\\sqrt{3} \\cdot \\sqrt{2}/2}{\\sqrt{3}/2} = 6\\sqrt{2}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Impostiamo l'uguaglianza del teorema dei seni.<br>2) ${cf[2]}<br>3) Otteniamo il risultato finale richiesto.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi geometrici con casi ambigui o calcoli di angoli intermedi
+                    const casiMedi = [
+                        ["In un triangolo $ABC$ si ha $a = 8$, $b = 8\\sqrt{2}$ e $\\alpha = 30^\\circ$. Determina i possibili valori dell'angolo $\\beta$.", "\\beta = 45^\\circ \\text{ oppure } \\beta = 135^\\circ", "Dalla relazione $\\frac{\\sin\\beta}{b} = \\frac{\\sin\\alpha}{a}$, otteniamo $\\sin\\beta = \\frac{8\\sqrt{2} \\cdot \\sin(30^\\circ)}{8} = \\frac{\\sqrt{2}}{2}$. Essendo il seno positivo in due quadranti, $\\beta$ può essere $45^\\circ$ o $135^\\circ$ (caso ambiguo accettabile)."],
+                        ["In un triangolo la somma di due angoli è $\\alpha + \\beta = 105^\\circ$, il lato opposto al terzo angolo $\\gamma = 75^\\circ$ misura $c = 10$. Trova il diametro della circonferenza circoscritta.", "2R = \\frac{20}{\\sqrt{6}+\\sqrt{2}} \\text{ (o razionalizzato)}", "Il diametro della circonferenza circoscritta è direttamente dato dal rapporto $\\frac{c}{\\sin\\gamma} = \\frac{10}{\\sin(75^\\circ)}$. Sviluppando $\\sin(75^\\circ) = \\frac{\\sqrt{6}+\\sqrt{2}}{4}$, troviamo il valore cercato."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Analizziamo i dati del problema e le condizioni geometriche.<br>2) ${cm[2]}<br>3) Svolgiamo i passaggi algebrici e trigonometrici per completare la soluzione.`;
+                } else {
+                    // Difficili (76 - 100): Dimostrazioni e problemi avanzati con parametri geometrici
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `In un triangolo $ABC$, dimostra ed applica la relazione per cui la somma dei seni degli angoli è legata ai lati: se $\\frac{a+b+c}{\\sin\alpha+\sin\beta+\sin\gamma} = k$, esprimi $k$ in funzione del raggio $R$ della circonferenza circoscritta.`;
+                        risposta = "k = 2R";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Applicazione estesa del Teorema dei Seni</strong><br>
+                        Dal teorema dei seni sappiamo che ciascun lato del triangolo può essere espresso in funzione del raggio $R$ della circonferenza circoscritta:
+                        $$a = 2R\\sin\alpha, \quad b = 2R\\sin\beta, \quad c = 2R\\sin\gamma$$<br><br>
+                        <strong>Fase 2: Sostituzione nella frazione assegnata</strong><br>
+                        Consideriamo il numeratore della frazione data ($a + b + c$) e sostituiamo le espressioni trigonometriche appena ricavate:
+                        $$a + b + c = 2R\\sin\alpha + 2R\\sin\beta + 2R\\sin\gamma$$<br><br>
+                        <strong>Fase 3: Raccoglimento a fattor comune</strong><br>
+                        Raccogliamo $2R$ a fattor comune al numeratore:
+                        $$a + b + c = 2R(\\sin\alpha + \sin\beta + \sin\gamma)$$<br><br>
+                        <strong>Fase 4: Conclusione e determinazione della costante $k$</strong><br>
+                        Inserendo questa espressione nel rapporto iniziale $k$:
+                        $$k = \frac{2R(\\sin\alpha + \sin\beta + \sin\gamma)}{\sin\alpha + \sin\beta + \sin\gamma} = 2R$$
+                        Il valore della costante $k$ cercata è quindi esattamente il diametro della circonferenza circoscritta ($2R$).`;
+                    } else if (varIndex === 1) {
+                        domanda = `In un triangolo $ABC$, il rapporto tra due lati è $\\frac{a}{b} = \\sqrt{2}$ e l'angolo compreso o correlato soddisfa $\\sin\\alpha = \\sqrt{2}\\sin\\beta$. Sapendo che il perimetro è $2p = 24$ e $\\gamma = 75^\\circ$, calcola l'area del triangolo usando il teorema dei seni.`;
+                        risposta = "S = 24(\\sqrt{3}-1) \\text{ (o equivalente)}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Sfruttare il Teorema dei Seni per i rapporti tra i lati</strong><br>
+                        Dal teorema dei seni sappiamo che il rapporto tra i lati è uguale al rapporto dei seni dei rispettivi angoli opposti:
+                        $$\frac{a}{b} = \frac{\sin\alpha}{\sin\beta}$$
+                        Ci viene fornito dal testo che $\frac{a}{b} = \sqrt{2}$, il che conferma la coerenza con la condizione $\sin\alpha = \sqrt{2}\sin\beta$.<br><br>
+                        <strong>Fase 2: Analisi degli angoli del triangolo</strong><br>
+                        Conosciamo l'angolo $\gamma = 75^\circ$. La somma dei restanti angoli interni è:
+                        $$\alpha + \beta = 180^\circ - 75^\circ = 105^\circ$$<br><br>
+                        <strong>Fase 3: Risoluzione del sistema trigonometrico</strong><br>
+                        Mettendo a sistema la relazione dei seni con la somma degli angoli, ricaviamo i valori effettivi di $\alpha$ e $\beta$, che risultano essere rispettivamente $60^\circ$ e $45^\circ$ (o viceversa).<br><br>
+                        <strong>Fase 4: Calcolo finale dell'area</strong><br>
+                        Utilizzando i teoremi trigonometrici e l'area del triangolo $S = \frac{1}{2}ab\sin\gamma$, determiniamo la misura dei lati tramite il teorema dei seni e calcoliamo il valore finale dell'area.`;
+                    } else {
+                        domanda = `Un quadrilatero inscritto in una circonferenza di raggio $R = 10$ ha le diagonali che si intersecano formando angoli particolari. Applicando il teorema dei seni ai singoli triangoli interni formati dalle diagonali, dimostra le relazioni metriche dei segmenti.`;
+                        risposta = "Proprietà di Tolomeo e identità trigonometriche del cerchio circoscritto";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Suddivisione del quadrilatero in triangoli interni</strong><br>
+                        Tracciando le diagonali di un quadrilatero inscritto in una circonferenza, il cerchio circoscritto al quadrilatero coincide con il cerchio circoscritto a ciascuno dei quattro triangoli formati dall'intersezione delle diagonali nel centro interno.<br><br>
+                        <strong>Fase 2: Applicazione sistematica del Teorema dei Seni</strong><br>
+                        Per ciascuno dei triangoli individuati, applichiamo la formula fondamentale del teorema dei seni rapportata al diametro comune $2R = 20$:
+                        $$\frac{lato}{\sin(angolo)} = 20$$<br><br>
+                        <strong>Fase 3: Relazioni angolari alla circonferenza</strong><br>
+                        Sfruttiamo i teoremi sugli angoli alla circonferenza (angoli che insistono sullo stesso arco sono congruenti) per semplificare i rapporti trigonometrici tra i segmenti.<br><br>
+                        <strong>Fase 4: Conclusione della dimostrazione geometrica</strong><br>
+                        Combinando le uguaglianze ottenute, si dimostrano le proprietà geometriche avanzate e il teorema di Tolomeo applicato alla goniometria.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

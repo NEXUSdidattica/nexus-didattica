@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Equazioni di 2° Grado Incomplete: equazioni pure, spurie e monomie, regole di risoluzione rapida ed esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Pure, Spurie e Monomie - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-pure-spurie-monomie" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Equazioni di 2° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Equazioni Pure, Spurie e Monomie</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Risoluzione di equazioni di secondo grado incomplete nei casi in cui $b = 0$, $c = 0$ oppure entrambi.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Le Equazioni Incomplete</h2>
+            <p>Un'equazione di secondo grado in forma normale $ax^2 + bx + c = 0$ si dice <strong>incompleta</strong> se almeno uno dei coefficienti $b$ o $c$ è uguale a zero (fermo restando che $a \neq 0$).</p>
+
+            <h3>1. Equazione Spuria ($c = 0, b \neq 0$)</h3>
+            <p>Si presenta nella forma <strong>$ax^2 + bx = 0$</strong>. Si risolve raccogliendo a fattor comune l'incognita $x$ ed applicando la <strong>legge di annullamento del prodotto</strong>:</p>
+            <div class="formula-box">
+                $$x(ax + b) = 0 \implies x_1 = 0 \quad \text{oppure} \quad ax + b = 0 \implies x_2 = -\frac{b}{a}$$
+            </div>
+            <p>Un'equazione spuria ha <strong>sempre due soluzioni reali e distinte</strong>, di cui una è sempre $x = 0$.</p>
+
+            <h3>2. Equazione Pura ($b = 0, c \neq 0$)</h3>
+            <p>Si presenta nella forma <strong>$ax^2 + c = 0$</strong>. Si risolve isolando il termine $x^2$:</p>
+            <div class="formula-box">
+                $$x^2 = -\frac{c}{a}$$
+            </div>
+            <ul>
+                <li>Se $-\frac{c}{a} > 0$ (cioè $a$ e $c$ hanno segni opposti), ci sono <strong>due soluzioni reali opposte</strong>: $x = \pm\sqrt{-\frac{c}{a}}$.</li>
+                <li>Se $-\frac{c}{a} < 0$ (cioè $a$ e $c$ hanno lo stesso segno), l'equazione è <strong>impossibile</strong> in $\mathbb{R}$.</li>
+            </ul>
+
+            <h3>3. Equazione Monomia ($b = 0$ e $c = 0$)</h3>
+            <p>Si presenta nella forma <strong>$ax^2 = 0$</strong>. Dividendo per $a$ si ottiene $x^2 = 0$, che ammette un'unica soluzione reale coincidente:</p>
+            <div class="formula-box">
+                $$x_1 = x_2 = 0$$
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempi Guidati</h3>
+                <ol>
+                    <li><strong>Spuria:</strong> $3x^2 - 12x = 0 \implies 3x(x - 4) = 0 \implies x_1 = 0, \, x_2 = 4$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Pura (reale):</strong> $2x^2 - 18 = 0 \implies 2x^2 = 18 \implies x^2 = 9 \implies x = \pm 3$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Pura (impossibile):</strong> $x^2 + 16 = 0 \implies x^2 = -16 \implies \text{Impossibile in } \mathbb{R}$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Monomia:</strong> $-5x^2 = 0 \implies x = 0$.</li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Equazioni Pure, Spurie e Monomie</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                let tipo = i % 4;
+
+                if (tipo === 0) {
+                    // Spuria
+                    let a = (i % 3) + 1;
+                    let k = (i % 5) + 2;
+                    let b = a * k;
+
+                    domanda = `Risolvi l'equazione spuria: $${a === 1 ? '' : a}x^2 - ${b}x = 0$`;
+                    risposta = `x_1 = 0, \\; x_2 = ${k}`;
+                    spiegazione = `1) Raccogliamo $x$ a fattor comune: $x(${a === 1 ? '' : a}x - ${b}) = 0$.<br>` +
+                                  `2) Per la legge di annullamento del prodotto, poniamo $x = 0$ oppure $${a === 1 ? '' : a}x - ${b} = 0$.<br>` +
+                                  `3) Dalla seconda equazione ricaviamo: $x = \\frac{${b}}{${a}} = ${k}$.<br>` +
+                                  `4) Le soluzioni sono <strong>$x_1 = 0$</strong> e <strong>$x_2 = ${k}$</strong>.`;
+                } else if (tipo === 1) {
+                    // Pura con soluzioni reali
+                    let k = (i % 6) + 1;
+                    let val = k * k;
+
+                    domanda = `Risolvi l'equazione pura: $x^2 - ${val} = 0$`;
+                    risposta = `x = \\pm ${k}`;
+                    spiegazione = `1) Isoliamo $x^2$ portando il termine noto a destra: $x^2 = ${val}$.<br>` +
+                                  `2) Estraiamo la radice quadrata in entrambi i membri: $x = \\pm\\sqrt{${val}}$.<br>` +
+                                  `3) Le soluzioni reali sono <strong>$x_1 = -${k}$</strong> e <strong>$x_2 = ${k}$</strong>.`;
+                } else if (tipo === 2) {
+                    // Pura impossibile
+                    let val = (i % 5) + 2;
+
+                    domanda = `Risolvi l'equazione pura: $x^2 + ${val} = 0$`;
+                    risposta = `\\text{Impossibile in } \\mathbb{R}`;
+                    spiegazione = `1) Isoliamo $x^2$: $x^2 = -${val}$.<br>` +
+                                  `2) Poiché un quadrato nel campo dei numeri reali non può mai essere negativo, l'equazione <strong>non ammette soluzioni reali</strong>.`;
+                } else {
+                    // Monomia
+                    let coeff = (i % 7) + 2;
+
+                    domanda = `Risolvi l'equazione monomia: $${coeff}x^2 = 0$`;
+                    risposta = `x_1 = x_2 = 0`;
+                    spiegazione = `1) Dividiamo entrambi i membri per $${coeff}$: $x^2 = 0$.<br>` +
+                                  `2) L'unica soluzione reale è <strong>$x = 0$</strong> (con molteplicità 2).`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

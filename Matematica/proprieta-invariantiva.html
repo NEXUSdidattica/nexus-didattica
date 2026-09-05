@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla Proprietà Invariantiva dei Radicali: semplificazione di radicali, riduzione allo stesso indice e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proprietà Invariantiva dei Radicali - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+    </style>
+</head>
+
+<body data-lesson-id="radicali-proprieta-invariantiva" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Radicali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Proprietà Invariantiva dei Radicali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Semplificazione di radicali e riduzione allo stesso indice comune con 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Enunciato della Proprietà Invariantiva</h2>
+            <p>Moltiplicando o dividendo l'<strong>indice della radice</strong> e l'<strong>esponente del radicando</strong> per uno stesso numero intero positivo $k > 0$, il valore del radicale non cambia (assumendo il radicando $a \ge 0$):</p>
+
+            <div class="formula-box">
+                $$\sqrt[n]{a^m} = \sqrt[n \cdot k]{a^{m \cdot k}} \quad \text{e viceversa} \quad \sqrt[n \cdot k]{a^{m \cdot k}} = \sqrt[n]{a^m}$$
+            </div>
+
+            <h2>Applicazioni Principali</h2>
+            <ol>
+                <li><strong>Semplificazione di Radicali:</strong> Se l'indice $n$ e l'esponente $m$ hanno un divisore comune $d = \text{M.C.D.}(n, m)$, si divide sia l'indice sia l'esponente per $d$.
+                    <ul>
+                        <li>Esempio: $\sqrt[6]{2^4} = \sqrt[6:2]{2^{4:2}} = \sqrt[3]{2^2} = \sqrt[3]{4}$.</li>
+                    </ul>
+                </li>
+                <li><strong>Riduzione di più Radicali allo Stesso Indice:</strong> Utile per confrontare o moltiplicare radicali con indici diversi. Si trova il $\text{m.c.m.}$ tra gli indici e si applica la proprietà invariantiva.
+                    <ul>
+                        <li>Esempio: per $\sqrt{3}$ (indice 2) e $\sqrt[3]{2}$ (indice 3), il $\text{m.c.m.}(2, 3) = 6$.<br>
+                        $\sqrt{3} = \sqrt[2 \cdot 3]{3^{1 \cdot 3}} = \sqrt[6]{27}$ e $\sqrt[3]{2} = \sqrt[3 \cdot 2]{2^{1 \cdot 2}} = \sqrt[6]{4}$.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato di Semplificazione</h3>
+                <p>Semplifica il radicale $\sqrt[12]{x^8}$ (assumendo $x \ge 0$):</p>
+                <ul>
+                    <li>Trova il massimo comune divisore tra l'indice $12$ e l'esponente $8$: $\text{M.C.D.}(12, 8) = 4$.</li>
+                    <li>Dividi sia l'indice che l'esponente per $4$: $\sqrt[12:4]{x^{8:4}} = \sqrt[3]{x^2}$.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Proprietà Invariantiva</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Funzione di utilità per calcolare il M.C.D.
+            function gcd(a, b) {
+                return b === 0 ? a : gcd(b, a % b);
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+                
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    // Semplificazione semplice di potenze
+                    let k = (i % 3) + 2; // fattore comune 2, 3, 4
+                    let n = 2 * k;
+                    let m = 1 * k;
+                    let base = (i % 5) + 2;
+                    
+                    domanda = `Semplifica il radicale applicando la proprietà invariantiva: $\\sqrt[${n}]{${base}^{${m}}}$`;
+                    
+                    let div = gcd(n, m);
+                    let n_sempl = n / div;
+                    let m_sempl = m / div;
+                    
+                    risposta = n_sempl === 1 ? `${Math.pow(base, m_sempl)}` : `\\sqrt[${n_sempl}]{${base}^{${m_sempl}}}`;
+                    
+                    spiegazione = `1) Calcoliamo il M.C.D. tra l'indice $${n}$ e l'esponente $${m}$: $\\text{M.C.D.}(${n}, ${m}) = ${div}$.<br>` +
+                                  `2) Dividiamo indice ed esponente per $${div}$: $\\sqrt[${n}:${div}]{${base}^{${m}:${div}}} = \\sqrt[${n_sempl}]{${base}^{${m_sempl}}}$.`;
+                    if (n_sempl === 1) {
+                        spiegazione += `<br>3) Poiché l'indice è diventato $1$, il simbolo di radice cade: $${Math.pow(base, m_sempl)}$.`;
+                    }
+                } else if (i <= 70) {
+                    // Semplificazione con basi letterali
+                    let factor = (i % 3) + 2;
+                    let n = 3 * factor;
+                    let m = 2 * factor;
+                    
+                    domanda = `Semplifica il seguente radicale letterale (con $a \\ge 0$): $\\sqrt[${n}]{a^{${m}}}$`;
+                    let div = gcd(n, m);
+                    let n_sempl = n / div;
+                    let m_sempl = m / div;
+
+                    risposta = `\\sqrt[${n_sempl}]{a^{${m_sempl}}}`;
+                    spiegazione = `1) Troviamo il M.C.D. tra l'indice $${n}$ e l'esponente $${m}$, che è $${div}$.<br>` +
+                                  `2) Dividiamo l'indice e l'esponente per $${div}$.<br>` +
+                                  `3) Otteniamo: $\\sqrt[${n_sempl}]{a^{${m_sempl}}}$.`;
+                } else {
+                    // Riduzione di due radicali allo stesso indice
+                    let ind1 = (i % 2 === 0) ? 2 : 3;
+                    let ind2 = (i % 2 === 0) ? 3 : 4;
+                    let mcm = (ind1 * ind2) / gcd(ind1, ind2);
+                    let exp1 = mcm / ind1;
+                    let exp2 = mcm / ind2;
+
+                    domanda = `Riduci allo stesso minimo comune indice le radici $\\sqrt[${ind1}]{2}$ e $\\sqrt[${ind2}]{3}$`;
+                    risposta = `\\sqrt[${mcm}]{2^{${exp1}}} \\text{ e } \\sqrt[${mcm}]{3^{${exp2}}}`;
+                    spiegazione = `1) Calcoliamo il $\\text{m.c.m.}$ tra gli indici $${ind1}$ e $${ind2}$: $\\text{m.c.m.}(${ind1}, ${ind2}) = ${mcm}$.<br>` +
+                                  `2) Per $\\sqrt[${ind1}]{2}$: moltiplichiamo indice ed esponente per $${exp1} \\implies \\sqrt[${mcm}]{2^{${exp1}}}$.<br>` +
+                                  `3) Per $\\sqrt[${ind2}]{3}$: moltiplichiamo indice ed esponente per $${exp2} \\implies \\sqrt[${mcm}]{3^{${exp2}}}$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Rendering MathJax sugli elementi inseriti nel DOM
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sul Punto Materiale - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Punto Materiale e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="punto-materiale" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Cinematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Punto Materiale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Scopri il modello fisico del punto materiale (o particella) con 100 esercizi interattivi guidati ed esempi pratici reali.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è il Punto Materiale?</h2>
+            <p>
+                In fisica, un <strong>punto materiale</strong> (o particella) è un modello ideale che rappresenta un corpo le cui dimensioni e la cui struttura interna possono essere trascurate rispetto al contesto in cui si muove.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Esempio pratico di applicazione:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Un treno lungo 200 metri che viaggia sulla tratta Roma-Milano puo essere considerato un punto materiale poiche le sue dimensioni sono irrilevanti rispetto alla distanza percorsa di centinaia di chilometri.
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esempi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Quando un corpo puo essere considerato un punto materiale?", 
+                    r: "Quando le sue dimensioni sono trascurabili rispetto allo spazio in cui si muove.", 
+                    s: "Esempio guidato: se studiamo il moto di un aereo in volo da Milano a New York, le dimensioni fisiche del velivolo (circa 70 metri) sono irrilevanti rispetto alle migliaia di chilometri del tragitto." 
+                },
+                { 
+                    q: "Un'automobile che percorre un viaggio autostradale di 300 km puo essere considerata un punto materiale?", 
+                    r: "Si, perche le dimensioni dell'auto sono piccolissime rispetto ai 300 km del tragitto.", 
+                    s: "Esempio guidato: la lunghezza di 4 metri dell'auto non influenza il calcolo della traiettoria complessiva su una distanza autostradale." 
+                },
+                { 
+                    q: "Quale tra questi oggetti NON puo essere considerato un punto materiale se si studia la sua rotazione interna?", 
+                    r: "Una trottola o una ruota panoramica in movimento.", 
+                    s: "Esempio guidato: se l'interesse e rivolto al movimento dei singoli punti interni o alla rotazione, le dimensioni e la forma contano eccome." 
+                },
+                { 
+                    q: "Se consideriamo la Terra nel suo moto di rivoluzione attorno al Sole, puo essere considerata un punto materiale?", 
+                    r: "Si, perche il raggio terrestre e trascurabile rispetto alla distanza Terra-Sole.", 
+                    s: "Esempio guidato: la distanza media tra la Terra e il Sole e di circa 150 milioni di chilometri, valore enorme rispetto ai 6371 km di raggio del pianeta." 
+                },
+                { 
+                    q: "Qual e lo scopo principale dell'introduzione del modello del punto materiale in cinematica?", 
+                    r: "Semplificare lo studio della traiettoria eliminando la complessita di forma e rotazione.", 
+                    s: "Esempio guidato: ci permette di concentrare l'analisi unicamente sulla posizione, sulla velocita e sull'accelerazione del corpo." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un ciclista che partecipa a una tappa del Giro d'Italia di 200 km puo essere approssimato a un punto materiale?", 
+                    r: "Si, perche l'estensione del corridore e minima rispetto alla lunghezza della tappa.", 
+                    s: "Esempio guidato: le dimensioni fisiche del corpo umano e della bicicletta non alterano la misurazione dello spazio percorso lungo il tracciato stradale." 
+                },
+                { 
+                    q: "Un blocco di marmo di 2 metri spinto su un banco di prova di 5 metri puo essere considerato un punto materiale?", 
+                    r: "No, perche le dimensioni del blocco (2 metri) sono paragonabili alla lunghezza totale del banco (5 metri).", 
+                    s: "Esempio guidato: quando le dimensioni dell'oggetto sono confrontabili con lo spazio di movimento, non si puo trascurare la sua estensione." 
+                },
+                { 
+                    q: "Nell'analisi del lancio di una palla da basket verso il canestro da una distanza di 7 metri, la palla puo essere considerata un punto materiale?", 
+                    r: "Si, il diametro della palla (24 cm) e trascurabile rispetto ai 7 metri del tiro.", 
+                    s: "Esempio guidato: la traiettoria parabolica puo essere calcolata considerando la massa concentrata nel suo baricentro." 
+                },
+                { 
+                    q: "In quale situazione un insetto in volo dentro una stanza di 4x4 metri NON puo essere considerato un punto materiale?", 
+                    r: "Quando studiamo i battiti delle sue ali e l'orientamento microscopico del suo corpo.", 
+                    s: "Esempio guidato: se l'obiettivo e analizzare i dettagli strutturali e l'aerodinamica interna, il modello puntiforme non e piu adeguato." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un satellite artificiale in orbita geostazionaria attorno alla Terra puo essere trattato come un punto materiale?", 
+                    r: "Si, perche le sue dimensioni fisiche sono infinitesime rispetto al raggio dell'orbita (circa 36000 km).", 
+                    s: "Esempio guidato: la meccanica orbitale calcola la posizione del satellite trattandolo come una massa puntiforme attratta dalla gravita terrestre." 
+                },
+                { 
+                    q: "Quando si studia l'atterraggio di un aereo di linea su una pista di 3 km, e corretto considerarlo un punto materiale?", 
+                    r: "Dipende dalla fase: non piu durante il contatto e la frenata di precisione, dove l'assetto e l'apertura alare contano.", 
+                    s: "Esempio guidato: nelle fasi di manovra a terra e contatto ruote, le dimensioni geometriche e l'attrito dei carrelli diventano determinanti." 
+                },
+                { 
+                    q: "Se un vagone ferroviario lungo 20 metri attraversa una galleria lunga 50 metri, puo essere considerato un punto materiale?", 
+                    r: "No, perche la lunghezza del vagone (20 m) e significativa rispetto alla lunghezza totale della galleria (50 m).", 
+                    s: "Esempio guidato: per calcolare il tempo esatto in cui il treno si trova interamente dentro la galleria, la lunghezza del treno non puo essere ignorata." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

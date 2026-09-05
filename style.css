@@ -1,0 +1,2805 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+
+/* Previene il lampo bianco e imposta il colore di base immediato */
+html {
+    background-color: #0b0f19;
+    /* Imposta lo sfondo scuro nativo di base */
+    color-scheme: light;
+    /* Dice al browser che la pagina supporta il tema scuro */
+}
+
+/* Evita animazioni di transizione del colore al primo caricamento */
+html:not(.theme-loaded) * {
+    transition: none !important;
+}
+
+
+/* INDEX.HTML */
+/* ---------- 1. Design tokens ---------- */
+:root {
+    /* Colori base */
+    --color-bg: #f5f7fb;
+    --color-paper: #ffffff;
+    --color-grid-line: rgba(42, 62, 177, 0.07);
+    --color-ink: #1b2140;
+    --color-ink-soft: #565d84;
+    --color-ink-faint: #8b91b3;
+
+    /* Colore principale: inchiostro blu */
+    --color-primary: #2a3eb1;
+    --color-primary-dark: #1a2570;
+    --color-primary-soft: #eef0fb;
+
+    /* Accento: evidenziatore giallo */
+    --color-accent: #ffc93c;
+    --color-accent-dark: #e0a819;
+
+    /* Accento secondario: penna corallo */
+    --color-coral: #ff6b4a;
+
+    /* Colori materie (in ordine di comparsa nella pagina) */
+    --subj-matematica: #2a3eb1;
+    --subj-fisica: #ff6b4a;
+    --subj-inglese: #1f9d6f;
+    --subj-italiano: #c23b6b;
+    --subj-informatica: #009aa6;
+    --subj-scienze: #7a5cfa;
+
+    --border-radius-s: 8px;
+    --border-radius-m: 14px;
+    --border-radius-l: 22px;
+
+    --shadow-card: 0 2px 4px rgba(27, 33, 64, 0.04),
+        0 10px 24px -12px rgba(27, 33, 64, 0.14);
+    --shadow-card-hover: 0 6px 12px rgba(27, 33, 64, 0.06),
+        0 20px 40px -16px rgba(27, 33, 64, 0.22);
+
+    --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+    --font-body: "Inter", "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+    --max-width: 1180px;
+    --transition-fast: 180ms ease;
+    --transition-base: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- 2. Reset & base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+
+    /* Carta a quadretti: griglia sottilissima su tutto il sito */
+    background-image: linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+p {
+    color: var(--color-ink-soft);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+section,
+.nascita,
+.faq {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5rem 1.5rem;
+}
+
+:focus-visible {
+    outline: 2.5px solid var(--color-accent-dark);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- 3. Header / Navbar ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(27, 33, 64, 0.08);
+}
+
+.hotbar {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* ---------- 3. Header / Navbar (Ingrandita) ---------- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    /* Spazio tra logo e testo */
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+.logo-link:hover {
+    transform: scale(1.03);
+    /* Effetto zoom al passaggio del mouse */
+}
+
+.logo-link img {
+    width: 58px;
+    /* Ingrandito (prima era 44px) */
+    height: 58px;
+    /* Ingrandito (prima era 44px) */
+    border-radius: var(--border-radius-s);
+    object-fit: contain;
+}
+
+header h1 {
+    font-size: 1.65rem;
+    /* Ingrandito (prima era 1.25rem) */
+    font-weight: 800;
+    /* Più marcato e visibile */
+    letter-spacing: -0.03em;
+    color: var(--color-primary-dark);
+    white-space: nowrap;
+    margin-right: auto;
+}
+
+.navbar {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.navbar a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-ink-soft);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--border-radius-s);
+    transition: color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.navbar a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.btn-login,
+.btn-register {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+    border-radius: 999px;
+    transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), background-color var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn-login {
+    color: var(--color-primary);
+    border: 1.5px solid rgba(42, 62, 177, 0.25);
+}
+
+.btn-login:hover {
+    background-color: var(--color-primary-soft);
+    border-color: var(--color-primary);
+}
+
+.btn-register {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 6px 16px -6px rgba(42, 62, 177, 0.55);
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -6px rgba(42, 62, 177, 0.6);
+}
+
+/* ---------- 4. Hero — chiaro, energico, "app di esercizi" ---------- */
+.hero-banner {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg);
+    /* eredita la carta a quadretti globale */
+    padding: 6.5rem 1.5rem 7.5rem;
+    text-align: center;
+    isolation: isolate;
+}
+
+/* Macchie di colore sfocate: energia da "app di esercizi", non da hero istituzionale */
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background: radial-gradient(46rem 26rem at 82% 8%,
+            rgba(255, 201, 60, 0.55),
+            transparent 60%),
+        radial-gradient(38rem 24rem at 8% 92%,
+            rgba(255, 107, 74, 0.35),
+            transparent 60%),
+        radial-gradient(30rem 20rem at 50% 30%,
+            rgba(42, 62, 177, 0.12),
+            transparent 65%);
+    filter: blur(2px);
+    animation: nexusDrift 16s ease-in-out infinite;
+}
+
+/* Grafico a nodi connessi in SVG: rappresenta letteralmente il "nexus"
+      fra le materie, ora in inchiostro blu su carta chiara. Nessun HTML/JS aggiunto. */
+.hero-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.65;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Cg fill='none' stroke='%232a3eb1' stroke-opacity='0.22' stroke-width='1.4'%3E%3Cline x1='120' y1='120' x2='300' y2='210'/%3E%3Cline x1='300' y1='210' x2='210' y2='360'/%3E%3Cline x1='300' y1='210' x2='480' y2='160'/%3E%3Cline x1='480' y1='160' x2='650' y2='260'/%3E%3Cline x1='650' y1='260' x2='790' y2='150'/%3E%3Cline x1='650' y1='260' x2='700' y2='430'/%3E%3Cline x1='210' y1='360' x2='380' y2='450'/%3E%3Cline x1='380' y1='450' x2='560' y2='420'/%3E%3Cline x1='560' y1='420' x2='700' y2='430'/%3E%3Cline x1='120' y1='120' x2='60' y2='300'/%3E%3C/g%3E%3Cg fill='%23ff6b4a'%3E%3Ccircle cx='120' cy='120' r='6'/%3E%3Ccircle cx='480' cy='160' r='5'/%3E%3Ccircle cx='790' cy='150' r='6'/%3E%3Ccircle cx='560' cy='420' r='5'/%3E%3C/g%3E%3Cg fill='%232a3eb1'%3E%3Ccircle cx='300' cy='210' r='7'/%3E%3Ccircle cx='210' cy='360' r='5'/%3E%3Ccircle cx='650' cy='260' r='7'/%3E%3Ccircle cx='700' cy='430' r='5'/%3E%3Ccircle cx='380' cy='450' r='4'/%3E%3Ccircle cx='60' cy='300' r='4'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 130% auto;
+    animation: nexusDrift 14s ease-in-out infinite reverse;
+}
+
+@keyframes nexusDrift {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-1.5%, 1.5%, 0) scale(1.03);
+    }
+}
+
+/* Etichetta sopra il titolo: dichiara subito "è un'app di esercizi" */
+.hero-banner h2 {
+    font-size: clamp(2.6rem, 6vw, 4.25rem);
+    background: linear-gradient(100deg,
+            var(--color-primary-dark) 20%,
+            var(--color-primary) 55%,
+            var(--color-coral) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    animation: heroRise 700ms var(--transition-base) both;
+}
+
+.hero-banner h2::before {
+    content: "Esercizi interattivi, subito";
+    display: block;
+    font-family: var(--font-mono);
+    -webkit-text-fill-color: initial;
+    background: none;
+    color: var(--color-coral);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 1rem;
+}
+
+.hero-banner p {
+    color: var(--color-ink-soft);
+    font-size: 1.15rem;
+    max-width: 34rem;
+    margin: 1.1rem auto 0;
+    animation: heroRise 700ms var(--transition-base) 100ms both;
+}
+
+@keyframes heroRise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-materie {
+    display: inline-block;
+    margin-top: 2.25rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: var(--color-coral);
+    padding: 0.9rem 2rem;
+    border-radius: 999px;
+    box-shadow: 0 14px 28px -10px rgba(255, 107, 74, 0.55);
+    transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), background-color var(--transition-fast);
+    animation: heroRise 700ms var(--transition-base) 200ms both;
+}
+
+.btn-materie:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px -10px rgba(42, 62, 177, 0.5);
+}
+
+/* ---------- 5. Esercizio della settimana ---------- */
+.es-settimana {
+    text-align: center;
+}
+
+.es-settimana>h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+}
+
+.sottotitolo-esercizio {
+    max-width: 38rem;
+    margin: 0.75rem auto 3rem;
+    font-size: 1.05rem;
+}
+
+.vecchia-soluzione,
+.quesito {
+    text-align: left;
+    border-radius: var(--border-radius-l);
+    padding: 2.25rem 2.5rem;
+    margin-bottom: 1.75rem;
+}
+
+/* Card "risolta": aspetto di foglio corretto */
+.vecchia-soluzione {
+    background-color: var(--color-paper);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    box-shadow: var(--shadow-card);
+    position: relative;
+}
+
+.vecchia-soluzione::before {
+    content: "✓";
+    position: absolute;
+    top: -14px;
+    left: 2.25rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--subj-inglese);
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(31, 157, 111, 0.4);
+}
+
+.materia-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+}
+
+.materia-badge.passato {
+    background-color: rgba(31, 157, 111, 0.12);
+    color: #16794f;
+}
+
+.vecchia-soluzione h3,
+.quesito h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.soluzione-contenuto p {
+    color: var(--color-ink);
+    margin-bottom: 0.6rem;
+}
+
+.soluzione-contenuto strong {
+    font-family: var(--font-mono);
+    color: var(--color-primary);
+}
+
+.soluzione-contenuto ul {
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius-s);
+    padding: 1rem 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.soluzione-contenuto li {
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    color: var(--color-ink-soft);
+    padding: 0.2rem 0;
+}
+
+/* Card "sfida attiva": foglio di lavoro ancora da completare */
+.quesito {
+    background-color: var(--color-primary-soft);
+    border: 1.5px dashed rgba(42, 62, 177, 0.35);
+}
+
+.quesito h1 {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-coral);
+    margin-bottom: 0.6rem;
+}
+
+.testo-esercizio {
+    color: var(--color-ink);
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+}
+
+.avviso-prossima-settimana {
+    background-color: rgba(255, 201, 60, 0.25);
+    border-left: 3px solid var(--color-accent-dark);
+    border-radius: var(--border-radius-s);
+    padding: 0.85rem 1.1rem;
+}
+
+.avviso-prossima-settimana p {
+    color: var(--color-ink);
+    font-size: 0.92rem;
+}
+
+/* ---------- 6. Nascita di NEXUS ---------- */
+.nascita {
+    text-align: center;
+    max-width: 46rem;
+}
+
+.nascita h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.nascita p {
+    font-size: 1.05rem;
+}
+
+/* ---------- 7. FAQ / Struttura ---------- */
+.faq {
+    max-width: 44rem;
+}
+
+.faq h3 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.faq>p {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.faq ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq li {
+    background-color: var(--color-paper);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    border-radius: var(--border-radius-m);
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+}
+
+.faq li::before {
+    content: "→";
+    color: var(--color-primary);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.faq li strong {
+    font-family: var(--font-display);
+    color: var(--color-primary-dark);
+}
+
+/* ---------- 8. Metodo di studio ---------- */
+.sezione-metodo {
+    text-align: center;
+}
+
+.sezione-metodo>h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+}
+
+.sottotitolo-metodo {
+    max-width: 36rem;
+    margin: 0.75rem auto 3rem;
+}
+
+.metodo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    text-align: left;
+}
+
+.metodo-immagine img {
+    border-radius: var(--border-radius-l);
+    box-shadow: var(--shadow-card-hover);
+    border: 6px solid var(--color-paper);
+}
+
+.metodo-passi {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Linea di percorso: qui i tre passi SONO una sequenza reale,
+      quindi una connessione visibile è giustificata. */
+.metodo-passi::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    width: 2px;
+    background: linear-gradient(var(--color-primary) 0%,
+            rgba(42, 62, 177, 0.15) 100%);
+}
+
+.passo-card {
+    position: relative;
+    padding-left: 3.5rem;
+}
+
+.passo-card::before {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    top: 0.3rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    border: 3px solid var(--color-primary);
+}
+
+.passo-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+}
+
+.passo-card p {
+    font-size: 0.98rem;
+}
+
+/* ---------- 9. Materie ---------- */
+.sezione-materie {
+    text-align: center;
+}
+
+.sezione-materie h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+    max-width: 40rem;
+    margin: 0 auto 3rem;
+}
+
+.materie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.materia-card {
+    background-color: var(--color-paper);
+    border-radius: var(--border-radius-m);
+    padding: 1.75rem 1.6rem;
+    border: 1px solid rgba(27, 33, 64, 0.07);
+    border-top: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.materia-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.materia-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.materia-card li {
+    font-size: 0.92rem;
+    color: var(--color-ink-soft);
+    padding: 0.3rem 0;
+    padding-left: 1.1rem;
+    position: relative;
+}
+
+.materia-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.5;
+}
+
+/* Colore per materia: */
+/* Rende il link un contenitore pulito */
+.materia-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Bordi superiori e colori dei titoli gestiti tramite classi dirette */
+/* Matematica - Azzurro */
+.materia-matematica .materia-card {
+    border-top-color: #00b4d8 !important;
+}
+
+.materia-matematica h3 {
+    color: #00b4d8 !important;
+}
+
+/* Fisica - Fucsia/Viola */
+.materia-fisica .materia-card {
+    border-top-color: #b700f9 !important;
+}
+
+.materia-fisica h3 {
+    color: #b700f9 !important;
+}
+
+/* Inglese - Rosa */
+.materia-inglese .materia-card {
+    border-top-color: #e396c6 !important;
+}
+
+.materia-inglese h3 {
+    color: #e39ec6 !important;
+}
+
+/* Italiano - Rosso */
+.materia-italiano .materia-card {
+    border-top-color: #ff0000 !important;
+}
+
+.materia-italiano h3 {
+    color: #ff0000 !important;
+}
+
+/* Informatica - Arancione */
+.materia-informatica .materia-card {
+    border-top-color: #ff7b00 !important;
+}
+
+.materia-informatica h3 {
+    color: #ff7b00 !important;
+}
+
+/* Scienze - Verde Acceso */
+.materia-scienze .materia-card {
+    border-top-color: #17e91a !important;
+}
+
+.materia-scienze h3 {
+    color: #17e91a !important;
+}
+
+
+/* ---------- 9bis. CTA finale ---------- */
+.sezione-cta-finale {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+}
+
+.cta-box {
+    position: relative;
+    max-width: 38rem;
+    margin: 0 auto;
+}
+
+.cta-box h2 {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    color: var(--color-ink);
+    margin-bottom: 1.1rem;
+}
+
+/* Stesso tratto da evidenziatore del titolo dell'hero, qui come richiamo finale */
+.cta-box h2::after {
+    content: "";
+    position: absolute;
+    left: -0.1em;
+    right: -0.1em;
+    bottom: 0.08em;
+    height: 0.28em;
+    background-color: var(--color-accent);
+    opacity: 0.55;
+    z-index: -1;
+    transform: rotate(-1deg);
+}
+
+.cta-box p {
+    color: var(--color-ink-soft);
+    font-size: 1.08rem;
+    max-width: 30rem;
+    margin: 0 auto 2.1rem;
+}
+
+.btn-registrati-finale {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: var(--color-coral);
+    padding: 0.95rem 2.3rem;
+    border-radius: 999px;
+    box-shadow: 0 14px 28px -10px rgba(255, 107, 74, 0.5);
+    transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn-registrati-finale:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px -10px rgba(42, 62, 177, 0.45);
+}
+
+/* ---------- 10. Footer ---------- */
+footer {
+    background-color: var(--color-primary-dark);
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding: 3rem 1.5rem 2.5rem;
+    margin-top: 2rem;
+}
+
+footer p:first-child {
+    font-family: var(--font-display);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+footer a {
+    display: inline-block;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.5rem 0.75rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+footer a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* ---------- 11. Responsive ---------- */
+@media (max-width: 900px) {
+    .metodo-container {
+        grid-template-columns: 1fr;
+    }
+
+    .metodo-immagine {
+        order: -1;
+    }
+}
+
+@media (max-width: 720px) {
+    .hotbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 0.9rem;
+        padding: 1.1rem 1.25rem 1.35rem;
+        row-gap: 0.85rem;
+    }
+
+    /* Riga 1: logo + titolo insieme, come un unico blocco */
+    .logo-link {
+        order: -1;
+    }
+
+    .logo-link img {
+        width: 34px;
+        height: 34px;
+    }
+
+    header h1 {
+        order: -1;
+        margin-right: 0;
+        font-size: 1.1rem;
+    }
+
+    /* Riga 2: navigazione, ben distanziata */
+    .navbar {
+        order: 1;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.35rem;
+        padding-top: 0.6rem;
+        border-top: 1px solid rgba(27, 33, 64, 0.08);
+    }
+
+    .navbar a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    /* Riga 3: accesso/registrazione, occupano tutta la larghezza */
+    .auth-buttons {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        gap: 0.7rem;
+    }
+
+    .btn-login,
+    .btn-register {
+        flex: 1 1 0;
+        text-align: center;
+        max-width: 11rem;
+    }
+
+    .hero-banner {
+        padding: 5rem 1.25rem 6rem;
+    }
+
+    section,
+    .nascita,
+    .faq {
+        padding: 3.5rem 1.25rem;
+    }
+
+    .vecchia-soluzione,
+    .quesito {
+        padding: 1.75rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.88rem;
+    }
+
+    .btn-login,
+    .btn-register {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+}
+
+
+
+
+
+
+
+
+/* PRIVACY_POLICI.HTML */
+
+.documento-legale {
+    max-width: 52rem;
+    margin: 4rem auto;
+    background-color: var(--color-paper);
+    border-radius: var(--border-radius-m);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    box-shadow: var(--shadow-card);
+    padding: 4rem 4.5rem;
+    text-align: left;
+}
+
+.documento-legale h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary-dark);
+}
+
+.documento-legale .data-aggiornamento {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1.5px dashed rgba(42, 62, 177, 0.15);
+}
+
+.documento-legale h3 {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.documento-legale p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    color: var(--color-ink);
+}
+
+.documento-legale ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.documento-legale li {
+    font-size: 1.05rem;
+    color: var(--color-ink-soft);
+    position: relative;
+    padding: 0.4rem 0 0.4rem 1.25rem;
+}
+
+.documento-legale li::before {
+    content: "•";
+    position: absolute;
+    left: -0.5rem;
+    color: var(--color-coral);
+    font-size: 1.5rem;
+    line-height: 1;
+    top: 0.2rem;
+}
+
+.documento-legale a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(42, 62, 177, 0.3);
+    transition: text-decoration-color var(--transition-fast);
+}
+
+.documento-legale a:hover {
+    text-decoration-color: var(--color-primary);
+}
+
+/* Adattamento mobile per il documento legale */
+@media (max-width: 720px) {
+    .documento-legale {
+        margin: 2rem 1.25rem;
+        padding: 2.5rem 1.75rem;
+    }
+}
+
+
+
+
+
+/* CHI_SIAMO.HTML */
+
+/* Layout Base per Chi Siamo */
+body.page-chi-siamo main {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* 1. Hero Editoriale Isolata (Nessun effetto sulla Home) */
+body.page-chi-siamo .hero-banner {
+    max-width: 100% !important;
+    margin: 0 auto 2rem !important;
+    padding: 4.5rem 1.5rem 3rem !important;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-primary-soft) 0%, transparent 100%) !important;
+    border-bottom: 1px solid rgba(27, 33, 64, 0.05);
+}
+
+/* Rimuove i punti e le linee dello sfondo SOLO su chi_siamo.html */
+body.page-chi-siamo .hero-banner::before,
+body.page-chi-siamo .hero-banner::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Reset del testo Hero per la sola pagina Chi Siamo */
+body.page-chi-siamo .hero-banner h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem) !important;
+    color: var(--color-primary-dark) !important;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    animation: none !important;
+}
+
+body.page-chi-siamo .hero-banner h2::before {
+    display: none !important;
+}
+
+body.page-chi-siamo .hero-banner p {
+    font-size: 1.2rem !important;
+    line-height: 1.6;
+    color: var(--color-ink-soft);
+    max-width: 44rem;
+    margin: 0 auto;
+    animation: none !important;
+}
+
+/* 2. Sezione Manifesto & Filosofia */
+.sezione-manifesto {
+    max-width: 48rem;
+    margin: 3rem auto 4rem;
+    background-color: var(--color-paper);
+    padding: 3.5rem;
+    border-radius: var(--border-radius-l);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    box-shadow: var(--shadow-card);
+    position: relative;
+}
+
+.sezione-manifesto h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    margin-top: 0.8rem;
+    margin-bottom: 1.25rem;
+}
+
+.sezione-manifesto p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+    color: var(--color-ink);
+}
+
+.citazione-nexus {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--color-primary-dark);
+    background-color: var(--color-primary-soft);
+    border-left: 4px solid var(--color-coral);
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0 1rem;
+    border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+}
+
+/* 3. Metodo Pedagogico (Layout Asimmetrico a 2 Colonne) */
+.sezione-metodo-pedagogico {
+    max-width: var(--max-width);
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
+
+.sezione-metodo-pedagogico h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--color-primary-dark);
+}
+
+.griglia-pilastri {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.pilastro-item {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-left: 3px solid var(--color-primary);
+    padding: 1.5rem 1.75rem;
+    border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+    transition: background-color var(--transition-fast);
+}
+
+.pilastro-item:hover {
+    background-color: var(--color-paper);
+}
+
+.pilastro-item h3 {
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+.pilastro-item ul li {
+    font-size: 0.95rem;
+    color: var(--color-ink-soft);
+    padding: 0.25rem 0;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.pilastro-item ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-coral);
+    font-weight: 700;
+}
+
+/* 4. Statistiche Minimali */
+/* 4. Statistiche in Card Arancioni */
+.sezione-statistiche {
+    max-width: var(--max-width);
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.sezione-statistiche h2 {
+    font-size: 2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 2.5rem;
+}
+
+.griglia-statistiche {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background-color: #ffffff;
+    /* Bordo arancione elegante e sottile ombreggiatura */
+    border: 2px solid var(--color-coral, #ff6b4a);
+    border-top: 5px solid var(--color-coral, #ff6b4a);
+    /* Accento superiore più marcato */
+    border-radius: var(--border-radius-m, 12px);
+    padding: 1.75rem 2rem;
+    min-width: 260px;
+    flex: 1;
+    max-width: 320px;
+    box-shadow: 0 10px 25px rgba(255, 107, 74, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(255, 107, 74, 0.15);
+}
+
+.stat-numero {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+}
+
+.stat-etichetta {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-soft);
+}
+
+/* 5. Timeline Evoluzione Verticale */
+.timeline-sezione {
+    max-width: 46rem;
+    margin: 5rem auto;
+    padding: 0 1.5rem;
+}
+
+.timeline-sezione h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-sezione .sottotitolo-metodo {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid rgba(42, 62, 177, 0.15);
+}
+
+.timeline-step {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-step:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-step::before {
+    content: "";
+    position: absolute;
+    left: -2.45rem;
+    top: 0.35rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-coral);
+    border: 3px solid var(--color-bg);
+}
+
+.timeline-step h3 {
+    font-size: 1.2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.4rem;
+}
+
+.timeline-step p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+/* Responsive Chi Siamo */
+@media (max-width: 768px) {
+    .griglia-pilastri {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .sezione-manifesto {
+        padding: 2rem 1.5rem;
+    }
+
+    .griglia-statistiche {
+        gap: 1.5rem;
+    }
+
+    .stat-numero {
+        font-size: 2.8rem;
+    }
+}
+
+
+
+
+
+/* TERMINI_CONDIZIONI.HTML */
+
+/* Articolo stile documento contrattuale */
+article.documento-legale {
+    border-top: 5px solid var(--color-accent);
+    box-shadow: 0 4px 20px rgba(27, 33, 64, 0.06);
+    background: #ffffff;
+    padding: 3.5rem 3rem;
+    border-radius: var(--border-radius-m);
+    margin: 2.5rem auto 4rem;
+}
+
+/* Numerazione dei capitoli legale */
+article.documento-legale h2 {
+    font-size: 1.35rem;
+    color: var(--color-primary-dark);
+    margin: 2.2rem 0 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px dashed rgba(27, 33, 64, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+article.documento-legale h2:first-of-type {
+    margin-top: 0;
+}
+
+/* Paragrafi e testo normativo */
+article.documento-legale p {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--color-ink-soft);
+    margin-bottom: 1rem;
+}
+
+article.documento-legale strong {
+    color: var(--color-ink);
+}
+
+/* Elenchi con freccia personalizzata (Diverso dalla Privacy) */
+article.documento-legale ul {
+    margin: 1rem 0 1.5rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+article.documento-legale ul li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--color-ink-soft);
+}
+
+article.documento-legale ul li::before {
+    content: "➔";
+    position: absolute;
+    left: 0.2rem;
+    top: 0;
+    color: var(--color-coral);
+    font-size: 0.85rem;
+}
+
+/* Box speciale per "Contatti e Supporto" */
+article.documento-legale h2:last-of-type {
+    border-bottom: none;
+}
+
+article.documento-legale p:last-child {
+    background-color: var(--color-primary-soft);
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--border-radius-s);
+    border-left: 3px solid var(--color-primary);
+    margin-top: 1rem;
+}
+
+/* Adattamento Mobile */
+@media (max-width: 600px) {
+    article.documento-legale {
+        padding: 2rem 1.25rem;
+    }
+}
+
+
+
+
+
+
+
+/* CONTATTI.HTML */
+
+/* Layout principale e contenitore centrato */
+.contenitore-centrato {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero-chi-siamo {
+    text-align: center;
+    padding: 4rem 1.5rem 2rem;
+}
+
+.hero-chi-siamo-content {
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.badge-anno {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-coral);
+    background-color: rgba(255, 107, 74, 0.1);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+
+.hero-chi-siamo-content h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+}
+
+.lead-text {
+    font-size: 1.1rem;
+    color: var(--color-ink-soft);
+}
+
+/* Griglia asimmetrica a due colonne per i contatti */
+.layout-contatti {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3rem;
+    margin: 3rem 0 6rem;
+    align-items: start;
+}
+
+/* Colonna Sinistra: Cards Canali */
+.griglia-canali {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.card-contatto {
+    background-color: var(--color-paper);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    border-radius: var(--border-radius-m);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.card-contatto:hover {
+    transform: translateY(-3px);
+    border-color: rgba(42, 62, 177, 0.25);
+}
+
+.icona-contatto {
+    font-size: 1.8rem;
+    line-height: 1;
+    background-color: var(--color-primary-soft);
+    padding: 0.7rem;
+    border-radius: var(--border-radius-s);
+    flex-shrink: 0;
+}
+
+.card-contatto h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.3rem;
+}
+
+.card-contatto p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-bottom: 0.5rem;
+}
+
+.link-contatto {
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-coral);
+}
+
+.link-contatto:hover {
+    text-decoration: underline;
+}
+
+.badge-status {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-ink-faint);
+    background: var(--color-bg);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.info-box-risposta {
+    background-color: var(--color-primary-soft);
+    border: 1.5px dashed rgba(42, 62, 177, 0.25);
+}
+
+/* Colonna Destra: Form di Contatto */
+.form-contatti {
+    background-color: var(--color-paper);
+    border-radius: var(--border-radius-m);
+    padding: 2.5rem;
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    box-shadow: var(--shadow-card);
+}
+
+.form-contatti h2 {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+}
+
+.campo-form {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.campo-form label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.campo-form input,
+.campo-form select,
+.campo-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(27, 33, 64, 0.12);
+    border-radius: var(--border-radius-s);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    background-color: var(--color-bg);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.campo-form input:focus,
+.campo-form select:focus,
+.campo-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+}
+
+.btn-invia-form {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.9rem;
+    border: none;
+    border-radius: var(--border-radius-s);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    margin-top: 0.5rem;
+}
+
+.btn-invia-form:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsiveness Mobile */
+@media (max-width: 850px) {
+    .layout-contatti {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenitore-centrato {
+        padding: 0 1.25rem;
+    }
+
+    .form-contatti {
+        padding: 1.75rem 1.25rem;
+    }
+}
+
+
+
+
+
+
+/* LOGIN.HTML */
+
+/* Layout base centrato per Login */
+body.page-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(180deg, var(--color-primary-soft) 0%, var(--color-bg) 100%);
+}
+
+/* Card Contenitore Login */
+body.page-login .auth-container {
+    max-width: 420px;
+    width: 90%;
+    margin: 1.5rem auto 3rem;
+    background-color: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-l, 16px);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    box-shadow: 0 15px 35px rgba(27, 33, 64, 0.06);
+}
+
+body.page-login main.auth-container {
+    margin: auto;
+    /* Centra perfettamente il box verticalmente e orizzontalmente */
+}
+
+body.page-login .auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+body.page-login .auth-header h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+body.page-login .auth-header p {
+    font-size: 0.95rem;
+    color: var(--color-ink-soft);
+}
+
+/* Form e Campi Input Login */
+body.page-login .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+body.page-login .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+}
+
+body.page-login .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+body.page-login .form-group input {
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(27, 33, 64, 0.15);
+    border-radius: var(--border-radius-m, 8px);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.page-login .form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(42, 62, 177, 0.12);
+}
+
+/* Bottone Login */
+body.page-login .btn-auth {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.5rem;
+    background-color: var(--color-coral, #ff6b4a);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius-m, 8px);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+body.page-login .btn-auth:hover {
+    background-color: #e55a39;
+    transform: translateY(-1px);
+}
+
+/* Messaggio di Errore Login */
+body.page-login .auth-error-msg {
+    color: #d93025;
+    background-color: #fce8e6;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: none;
+    text-align: center;
+    border: 1px solid rgba(217, 48, 37, 0.2);
+}
+
+/* Link Footer Login */
+body.page-login .auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+}
+
+body.page-login .auth-footer a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body.page-login .auth-footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* REGISTRATI.HTML */
+
+/* Layout base centrato per Registrati */
+body.page-registrati {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(180deg, var(--color-primary-soft) 0%, var(--color-bg) 100%);
+}
+
+/* Card Contenitore Registrati (Leggermente più alta per fare spazio a Nome e Cognome) */
+body.page-registrati .auth-container {
+    max-width: 460px;
+    width: 90%;
+    margin: 2.5rem auto;
+    background-color: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-l, 16px);
+    border: 1px solid rgba(27, 33, 64, 0.08);
+    box-shadow: 0 15px 35px rgba(27, 33, 64, 0.06);
+}
+
+body.page-registrati .auth-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+body.page-registrati .auth-header h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+body.page-registrati .auth-header p {
+    font-size: 0.95rem;
+    color: var(--color-ink-soft);
+}
+
+/* Form e Campi Input Registrati */
+body.page-registrati .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+body.page-registrati .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+}
+
+body.page-registrati .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+body.page-registrati .form-group input {
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(27, 33, 64, 0.15);
+    border-radius: var(--border-radius-m, 8px);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.page-registrati .form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(42, 62, 177, 0.12);
+}
+
+/* Bottone Registrati */
+body.page-registrati .btn-auth {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.5rem;
+    background-color: var(--color-coral, #ff6b4a);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius-m, 8px);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+body.page-registrati .btn-auth:hover {
+    background-color: #e55a39;
+    transform: translateY(-1px);
+}
+
+/* Messaggio di Errore Registrati */
+body.page-registrati .auth-error-msg {
+    color: #d93025;
+    background-color: #fce8e6;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: none;
+    text-align: center;
+    border: 1px solid rgba(217, 48, 37, 0.2);
+}
+
+/* Link Footer Registrati */
+body.page-registrati .auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+}
+
+body.page-registrati .auth-footer a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body.page-registrati .auth-footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* BOTTONE PROFILO E LOGOUT */
+.btn-profile {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-primary, #2563eb);
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(37, 99, 235, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.btn-profile:hover {
+    background-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Tasto Logout */
+.btn-logout {
+    background: transparent;
+    border: 1px solid rgba(27, 33, 64, 0.2);
+    color: #ef4444;
+    /* Rosso */
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+
+
+
+
+
+
+/* PROFILO.HTML */
+/* ---------- PROFILO NAVBAR CUSTOM ---------- */
+/* Contenitore principale utente */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Box pillola con nome utente e icona */
+.user-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #eef0fb;
+    /* var(--color-primary-soft) */
+    color: #2a3eb1;
+    /* var(--color-primary) */
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    /* var(--border-radius-s) */
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+/* Icona omino SVG/font dentro la pillola */
+.user-pill::before {
+    content: "👤";
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Bottone Esci/Logout con contorno rosso leggero */
+.btn-logout-pill {
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-logout-pill:hover {
+    background-color: rgba(239, 68, 68, 0.08);
+    border-color: #ef4444;
+}
+
+
+/* MATERIE.HTML*/
+
+.materie-container {
+    max-width: 1000px;
+    margin: 3rem auto 5rem auto;
+    padding: 0 1.5rem;
+}
+
+.materie-header-text {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.materie-header-text h1 {
+    color: #0f172a;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.materie-header-text p {
+    color: #64748b;
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Lista verticale a scheda intera */
+.materie-list-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* Card orizzontale */
+.materia-row-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+
+.materia-row-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.08);
+    border-color: #cbd5e1;
+}
+
+.materia-row-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.materia-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.materia-titolo {
+    font-size: 1.45rem;
+    color: #0f172a;
+    margin: 0 0 0.35rem 0;
+    font-weight: 700;
+}
+
+.materia-desc {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.98rem;
+    line-height: 1.45;
+}
+
+/* Sezione Tag Inferiore */
+.materia-row-body {
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 1.2rem;
+}
+
+.materia-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tag {
+    background: #f8fafc;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.materia-row-card:hover .tag {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+/* Colori di sfondo per le icone delle materie */
+.mat-icon {
+    background: #e0f2fe;
+}
+
+.inf-icon {
+    background: #f0fdf4;
+}
+
+.fis-icon {
+    background: #fef3c7;
+}
+
+.sci-icon {
+    background: #fce7f3;
+}
+
+.uma-icon {
+    background: #f3e8ff;
+}
+
+.lin-icon {
+    background: #ccfbf1;
+}
+
+/* Prossimi argomenti*/
+.roadmap-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 2px solid #f1f5f9;
+}
+
+.roadmap-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.roadmap-header h2 {
+    font-size: 1.8rem;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.roadmap-header p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.roadmap-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-3px);
+    border-color: #cbd5e1;
+    background: #ffffff;
+}
+
+.roadmap-badge {
+    display: inline-block;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.8rem;
+}
+
+.badge-soon {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.badge-planned {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.roadmap-title {
+    font-size: 1.1rem;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+}
+
+.roadmap-desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.45;
+}
+
+
+
+/* Animazioni argomenti di materie.html cliccabili */
+.tag-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.tag-link:hover {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.tag-link-m:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.48);
+}
+
+
+/* Stile base delle schede con bordo spesso */
+.materia-row-card {
+    border-width: 3px !important;
+    border-style: solid !important;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Bordi colorati per ogni materia */
+.card-matematica {
+    border-color: #00a2ff !important;
+    /* Blu */
+}
+
+.card-informatica {
+    border-color: #ff7c02 !important;
+    /* Azzurro/Ciano */
+}
+
+.card-fisica {
+    border-color: #a600ff !important;
+    /* Arancione/Giallo */
+}
+
+.card-scienze {
+    border-color: #0ad41f !important;
+    /* Verde */
+}
+
+.card-inglese {
+    border-color: #feadad !important;
+    /* Viola */
+}
+
+.card-italiano {
+    border-color: #ff0000 !important;
+    /* Rosso */
+}
+
+
+/* 1. Imposta lo sfondo della pagina e corregge l'overscrolling */
+html {
+    height: 100%;
+    background-color: #ffffff;
+    /* Evita lo sfondo nero durante lo scroll elastico (overscroll) */
+}
+
+/* 2. Trasforma il body in un contenitore Flex verticale a tutta altezza */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+/* 3. Spinge il footer in fondo al contenuto se la pagina è corta */
+main,
+.materie-container {
+    flex: 1;
+    /* Occupa tutto lo spazio vuoto disponibile */
+}
+
+
+/* Utilizza lo stesso valore di altezza (px) della tua hotbar/header */
+.materia-row-card {
+    scroll-margin-top: 100px;
+}
+
+
+
+/* Contenitore principale stilizzato a foglio di lavoro */
+.contenitore-centrato {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Hero della lezione */
+.hero-lezione {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 2rem;
+}
+
+.hero-lezione h1 {
+    font-size: 2.2rem;
+    color: #0f172a;
+    margin: 0.5rem 0 1rem 0;
+}
+
+/* Card bianche opache per la teoria e gli esercizi */
+.contenuto-lezione,
+.sezione-esercizi {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.contenuto-lezione h2,
+.sezione-esercizi h2 {
+    color: #1e293b;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+/* Box per formule o regole */
+.box-evidenza {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    border-radius: 0 12px 12px 0;
+    color: #1e40af;
+}
+
+/* Singoli esercizi stilizzati */
+.card-esercizio {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card-esercizio h3 {
+    margin-top: 0;
+    color: #0f172a;
+}
+
+/* Menu a tendina per la soluzione */
+.soluzione-box {
+    margin-top: 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+}
+
+.soluzione-box summary {
+    font-weight: 600;
+    color: #2563eb;
+    cursor: pointer;
+}
+
+.soluzione-contenuto {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f1f5f9;
+    color: #166534;
+}
+
+
+/* Card Esercizio */
+.card-esercizio {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.testo-domanda {
+    font-size: 1.05rem;
+    color: #334155;
+    margin-bottom: 1rem;
+}
+
+/* Box Risposta Verde */
+.box-risposta-corretta {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Dropdown Spiegazione */
+.spiegazione-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.spiegazione-box summary {
+    font-weight: 600;
+    color: #2563eb;
+    cursor: pointer;
+    user-select: none;
+}
+
+.spiegazione-contenuto {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed #cbd5e1;
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+/* COOKIE BANNER: */
+/* Styling Banner Cookie */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+.cookie-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cookie-content h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #f8fafc;
+}
+
+.cookie-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+.cookie-content a {
+    color: #38bdf8;
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.btn-cookie {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.btn-cookie.accept {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-cookie.accept:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-cookie.reject {
+    background-color: #475569;
+    color: #ffffff;
+}
+
+.btn-cookie.reject:hover {
+    background-color: #334155;
+}
+
+
+
+
+
+/* Esercizi per difficoltà: */
+/* Layout Intestazione Esercizio */
+.header-esercizio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.header-esercizio h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+/* Stile Base Badge Difficoltà */
+.badge-difficolta {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* --- LIVELLO FACILE (VERDINO CHIARO) --- */
+.card-esercizio.livello-facile {
+    background-color: #f0fdf4;
+    /* Verdino molto chiaro */
+    border: 1px solid #bbf7d0;
+    border-left: 6px solid #22c55e;
+    /* Bordo verde forte a sinistra */
+}
+
+.card-esercizio.livello-facile .header-esercizio h3 {
+    color: #14532d;
+}
+
+.badge-difficolta.facile {
+    background-color: #22c55e;
+    color: #ffffff;
+}
+
+
+/* --- LIVELLO MEDIO (GIALLINO/CREMA CHIARO) --- */
+.card-esercizio.livello-medio {
+    background-color: #fefce8;
+    /* Giallino caldo molto chiaro */
+    border: 1px solid #fef08a;
+    border-left: 6px solid #eab308;
+    /* Bordo giallo/oro a sinistra */
+}
+
+.card-esercizio.livello-medio .header-esercizio h3 {
+    color: #713f12;
+}
+
+.badge-difficolta.medio {
+    background-color: #eab308;
+    color: #ffffff;
+}
+
+
+/* --- LIVELLO DIFFICILE (ROSSINO CHIARO) --- */
+.card-esercizio.livello-difficile {
+    background-color: #fef2f2;
+    /* Rossino/rosa tenue */
+    border: 1px solid #fecaca;
+    border-left: 6px solid #ef4444;
+    /* Bordo rosso a sinistra */
+}
+
+.card-esercizio.livello-difficile .header-esercizio h3 {
+    color: #7f1d1d;
+}
+
+.badge-difficolta.difficile {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+
+
+
+/* Box Risposta Corretta in Azzurro Chiaro ma Ben Visibile */
+.spiegazione-contenuto .box-risposta-corretta {
+    background-color: #e0f2fe;
+    /* Azzurro turchese ben marcato */
+    border: 2px solid #38bdf8;
+    /* Bordo azzurro definito */
+    border-left: 6px solid #0284c7;
+    /* Bordo blu forte a sinistra */
+    color: #0369a1;
+    /* Testo blu scuro ad alto contrasto */
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.spiegazione-contenuto .box-risposta-corretta strong {
+    color: #0c4a6e;
+    /* Blu molto scuro per far risaltare il grassetto */
+}
+
+
+
+
+
+/* Spaziatura generale per i titoli all'interno delle lezioni */
+article.contenuto-lezione h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+article.contenuto-lezione h3 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Distacco per i titoli delle sezioni principali */
+.sezione-esercizi h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+}
+
+
+
+
+/* =======================================================
+    RESPONSIVE COMPLETO (Sotto i 768px di larghezza)
+   ======================================================= */
+@media screen and (max-width: 767px) {
+
+    /* 1. Contenitore principale flessibile */
+    .contenitore-centrato,
+    main {
+        width: 100% !important;
+        padding: 1.5rem 1rem !important;
+        /* Riduce il padding solo su mobile */
+        box-sizing: border-box;
+    }
+
+    /* 2. Header e Navigation Bar */
+    header .hotbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .navbar,
+    .auth-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    /* 3. Hero Section e Titoli */
+    .hero-lezione {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    h1 {
+        font-size: clamp(1.5rem, 5vw, 2.2rem) !important;
+        word-break: break-word;
+    }
+
+    /* 4. Card Lezioni e Pagine Liste (solo su mobile) */
+    .materie-list-vertical>div,
+    .card-lezione,
+    .card-esercizio,
+    .box-evidenza {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 1.25rem !important;
+        background: #ffffff;
+        border-radius: 12px;
+    }
+
+    /* Layout mobile compattezza: affianca Numero e Titolo */
+    .materie-list-vertical>div>div,
+    .card-lezione>div {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        width: 100%;
+    }
+
+    /* Divisore per numero lezione */
+    .materie-list-vertical .numero-lezione,
+    .card-lezione .numero-lezione {
+        border-right: 2px solid #e2e8f0 !important;
+        border-bottom: none !important;
+        padding-right: 0.8rem !important;
+        padding-bottom: 0 !important;
+        margin: 0 !important;
+        flex-shrink: 0;
+        text-align: center;
+    }
+
+    /* Titoli affiancati */
+    .materie-list-vertical h2,
+    .materie-list-vertical h3,
+    .card-lezione h2,
+    .card-lezione h3 {
+        margin: 0 !important;
+        font-size: 1.1rem !important;
+        text-align: left !important;
+        line-height: 1.3;
+    }
+
+    /* Bottoni mobile a tutta larghezza */
+    .card-esercizio a,
+    .card-esercizio button,
+    .materie-list-vertical a,
+    .materie-list-vertical button,
+    .card-lezione a,
+    .card-lezione button {
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 0.2rem !important;
+        padding: 0.75rem 1rem !important;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    /* 5. Immagini e Tabelle responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+
+
+
+
+
+
+
+

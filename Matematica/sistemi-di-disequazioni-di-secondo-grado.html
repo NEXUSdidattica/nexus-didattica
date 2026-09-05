@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa ai Sistemi di Disequazioni di Secondo Grado: metodo di risoluzione, schema grafico delle intersezioni e 100 esercizi guidati da facili a difficilissimi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi di Disequazioni di Secondo Grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        /* Stili per la Tabella dello Schema Grafico delle Soluzioni (Intersezioni) */
+        .tabella-segni-container {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+        }
+        .tabella-segni {
+            width: 100%;
+            max-width: 620px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.95rem;
+        }
+        .tabella-segni th, .tabella-segni td {
+            text-align: center;
+            padding: 0;
+            vertical-align: middle;
+            height: 38px;
+        }
+        .tabella-segni th {
+            border-bottom: 2px solid #0f172a;
+            color: #0f172a;
+            font-weight: bold;
+            padding-bottom: 0.4rem;
+        }
+        .tabella-segni td.label-fattore {
+            text-align: left;
+            font-weight: bold;
+            color: #1e3a8a;
+            width: 160px;
+            border-right: 2px solid #0f172a;
+            padding-right: 0.6rem;
+        }
+        .tabella-segni tr.riga-totale {
+            border-top: 2px solid #0f172a;
+            font-weight: bold;
+            background-color: #f1f5f9;
+        }
+        
+        .col-intervallo { width: 25%; }
+        .col-valore { width: 32px; }
+
+        .linea-continua { width: 100%; height: 3px; background-color: #2563eb; }
+        .linea-tratteggiata { width: 100%; height: 3px; background-image: linear-gradient(to right, #94a3b8 50%, transparent 50%); background-size: 8px 100%; }
+        
+        .punto-incluso { width: 12px; height: 12px; background-color: #2563eb; border-radius: 50%; margin: 0 auto; }
+        .punto-escluso { width: 12px; height: 12px; background-color: #ffffff; border: 3px solid #dc2626; border-radius: 50%; margin: 0 auto; }
+
+        .intervallo-selezionato { background-color: #dcfce7; border: 2px dashed #16a34a; }
+        
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+        .badge-difficolta.difficilissimo { background-color: #f3e8ff; color: #7e22ce; font-weight: 800; }
+    </style>
+</head>
+
+<body data-lesson-id="sistemi-disequazioni-2-grado" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 2° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Sistemi di Disequazioni di Secondo Grado</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Metodo di risoluzione per intersezione, schema grafico delle soluzioni comuni e 100 esercizi guidati scalati per difficoltà.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Cosa è un Sistema di Disequazioni di 2° Grado?</h2>
+            <p>Un sistema di disequazioni raccoglie due o più disequazioni (di cui almeno una di secondo grado) che devono essere verificate <strong>contemporaneamente</strong> per lo stesso valore dell'incognita $x$. Le soluzioni del sistema sono date dall'<strong>intersezione</strong> degli insiemi di soluzioni delle singole disequazioni.</p>
+            <div class="formula-box">
+                $$\left\{ \begin{array}{l} ax^2 + bx + c > 0 \\ dx^2 + ex + f \le 0 \end{array} \right.$$
+            </div>
+
+            <h2>Metodo di Risoluzione Passo dopo Passo</h2>
+            <ol>
+                <li><strong>Risoluzione Singola:</strong> Risolvi ciascuna disequazione del sistema separatamente, portandola in forma normale, calcolandone il $\Delta$ o scomponendola in fattori e individuandone l'intervallo di validità.</li>
+                <li><strong>Rappresentazione Grafica (Schema delle Intersezioni):</strong> Riporta tutte le soluzioni su un'unica retta reale. Usa linee continue per i tratti in cui la disequazione è verificata e linee tratteggiate (o spazi vuoti) per i tratti non verificati.</li>
+                <li><strong>Scelta dell'Intersezione Comune:</strong> Cerca gli intervalli verticali in cui <strong>tutte</strong> le linee sono continue (sovrapposizione di tutte le condizioni). Se un punto estremo è incluso in tutte le disequazioni, fa parte della soluzione.</li>
+            </ol>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato Corretto</h3>
+                <p><strong>Risolvi il seguente sistema:</strong></p>
+                <div class="formula-box">
+                    $$\left\{ \begin{array}{l} x^2 - 5x + 6 > 0 \\ x^2 - 9 \le 0 \end{array} \right.$$
+                </div>
+                <ul>
+                    <li><strong>Prima disequazione ($x^2 - 5x + 6 > 0$):</strong> Scomponendo in fattori $(x - 2)(x - 3) > 0$, le soluzioni esterne sono: <strong>$x < 2 \cup x > 3$</strong>.</li>
+                    <li><strong>Seconda disequazione ($x^2 - 9 \le 0$):</strong> Scomponendo $(x - 3)(x + 3) \le 0$, le soluzioni interne sono: <strong>$-3 \le x \le 3$</strong>.</li>
+                    <li><strong>Schema Grafico delle Soluzioni (Intersezioni corretto):</strong></li>
+                </ul>
+
+                <!-- Tabella Schema Grafico d'esempio corretto -->
+                <div class="tabella-segni-container">
+                    <table class="tabella-segni">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Disequazione</th>
+                                <th class="col-intervallo">$x < -3$</th>
+                                <th class="col-valore">-3</th>
+                                <th class="col-intervallo">$-3 < x < 2$</th>
+                                <th class="col-valore">2</th>
+                                <th class="col-intervallo">$2 < x < 3$</th>
+                                <th class="col-valore">3</th>
+                                <th class="col-intervallo">$x > 3$</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-fattore">1°: $x^2-5x+6>0$</td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="punto-escluso"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="punto-escluso"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                            </tr>
+                            <tr>
+                                <td class="label-fattore">2°: $x^2-9 \le 0$</td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="punto-incluso"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="punto-incluso"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                            </tr>
+                            <tr class="riga-totale">
+                                <td class="label-fattore">Sistema (Intersezione)</td>
+                                <td></td>
+                                <td></td>
+                                <td class="intervallo-selezionato"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>🎯 <strong>Soluzione del Sistema:</strong> Dall'intersezione dei grafici si ottiene l'unico intervallo comune reale: <strong>$-3 \le x < 2$</strong>.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (da Facili a Difficilissimi)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                if (i <= 25) {
+                    diffClass = 'livello-facile'; diffLabel = 'FACILE';
+                } else if (i <= 50) {
+                    diffClass = 'livello-medio'; diffLabel = 'MEDIO';
+                } else if (i <= 75) {
+                    diffClass = 'livello-difficile'; diffLabel = 'DIFFICILE';
+                } else {
+                    diffClass = 'livello-difficilissimo'; diffLabel = 'DIFFICILISSIMO';
+                }
+                
+                let domanda, risposta, spiegazione;
+
+                if (i <= 25) {
+                    let a = (i % 3) + 1;
+                    let b = a * a;
+                    domanda = `Risolvi il sistema di disequazioni: $$\left\{ \begin{array}{l} x^2 - ${b} \le 0 \\ x - ${a} > 0 \end{array} \right.$$`;
+                    risposta = `\text{Impossibile } (\text{nessuna soluzione comune})`;
+                    spiegazione = `1) La 1ª disequazione dà $-${a} \le x \le ${a}$.<br>2) La 2ª disequazione dà $x > ${a}$.<br>3) Incrociando i grafici, l'intervallo $x > ${a}$ non ha punti in comune con l'intervallo chiuso $[- ${a}, ${a}]$, poiché $x = ${a}$ è escluso dalla seconda. Pertanto il sistema è <strong>impossibile</strong>.`;
+                } else if (i <= 50) {
+                    let n = (i % 4) + 2;
+                    domanda = `Risolvi il sistema: $$\left\{ \begin{array}{l} x^2 - ${n*n} < 0 \\ x^2 - (${n}-1)x > 0 \end{array} \right.$$`;
+                    risposta = `-${n} < x < 0 \quad \cup \quad ${n-1} < x < ${n}`;
+                    spiegazione = `1) 1ª disequazione: $-${n} < x < ${n}$.<br>2) 2ª disequazione: $x < 0 \cup x > ${n-1}$.<br>3) Facendo l'intervallo comune tramite il grafico dei segni, si ottengono le due porzioni sovrapposte: <strong>$-${n} < x < 0 \cup ${n-1} < x < ${n}$</strong>.`;
+                } else if (i <= 75) {
+                    let m = (i % 3) + 2;
+                    domanda = `Risolvi il sistema avanzato: $$\left\{ \begin{array}{l} 2x^2 - (${m}+2)x + ${m} \le 0 \\ x^2 - ${m*m} \ge 0 \end{array} \right.$$`;
+                    risposta = `x = ${m} \quad (\text{soluzione puntuale})`;
+                    spiegazione = `1) Scomponendo il primo trinomio si ottiene $1 \le x \le \frac{${m}}{2}$.<br>2) La seconda dà $x \le -${m} \cup x \ge ${m}$.<br>3) Intersecando le condizioni si verifica che l'unico valore comune compatibile risulta essere l'estremo ${m}.`;
+                } else {
+                    let k = (i % 3) + 1;
+                    domanda = `[DIFFICILISSIMO] Risolvi il sistema di grado superiore con parametro e frazioni: $$\left\{ \begin{array}{l} \frac{x^2 - ${k*k}}{x} \ge 0 \\ x^2 - 2${k}x + ${k*k} \le 0 \end{array} \right.$$`;
+                    risposta = `x = ${k}`;
+                    spiegazione = `1) La seconda disequazione corrisponde al quadrato perfetto $(x - ${k})^2 \le 0$, verificata esclusivamente per $x = ${k}$.<br>2) Verificando se $x = ${k}$ soddisfa anche la prima disequazione fratta, otteniamo che rende il numeratore zero e appartiene al C.E. ($x \neq 0$).<br>3) La soluzione comune al sistema è pertanto l'elemento puntuale <strong>$x = ${k}$</strong>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}" style="padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box" style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Schema e Soluzione</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta" style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Risultato:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezioni ed esercizi di Geometria - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Geometria - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="materie-container">
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="../materie.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">← Torna a tutte le Materie</a>
+        </div>
+
+        <div class="materie-header-text">
+            <h1>Geometria Euclidea Piana</h1>
+            <p>Seleziona l'argomento o la lezione che desideri approfondire per accedere alle spiegazioni e agli esercizi pratici.</p>
+        </div>
+
+        <!-- LISTA DELLE LEZIONI / ARGOMENTI -->
+        <div class="materie-list-vertical">
+
+            <!-- 1. BASE DELLA GEOMETRIA EUCLIDEA PIANA -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">📏</div>
+                    <div>
+                        <h2 class="materia-titolo">Basi della Geometria Euclidea Piana</h2>
+                        <p class="materia-desc">Punti, rette, piani, segmenti, angoli, assiomi di Euclide e concetti di congruenza.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="basi_geometria_piana.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 2. TRIANGOLI -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">🔺</div>
+                    <div>
+                        <h2 class="materia-titolo">Triangoli</h2>
+                        <p class="materia-desc">Criteri di congruenza, proprietà dei triangoli isosceli, rettangoli e teoremi fondamentali.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="triangoli.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 3. QUADRILATERI -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">🔲</div>
+                    <div>
+                        <h2 class="materia-titolo">Quadrilateri</h2>
+                        <p class="materia-desc">Parallelogrammi, rettangoli, rombi, quadrati, trapezi e relative proprietà geometriche.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="quadrilateri.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 4. CIRCONFERENZE E POLIGONI GENERICI -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">⭕</div>
+                    <div>
+                        <h2 class="materia-titolo">Circonferenze e Poligoni Generici</h2>
+                        <p class="materia-desc">Cerchio, corde, archi, angoli al centro e alla circonferenza, poligoni inscritti e circoscritti.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="circonferenze_poligoni.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 5. SIMILITUDINI E TALETE -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">📐</div>
+                    <div>
+                        <h2 class="materia-titolo">Similitudini e Teorema di Talete</h2>
+                        <p class="materia-desc">Fascio di rette parallele, rapporto di similitudine, teoremi di Euclid e criteri di similitudine.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="similitudini_talete.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

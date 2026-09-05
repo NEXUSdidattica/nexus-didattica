@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Solida - Sezione 3: Superficie e Volume dei Solidi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Superficie e Volume - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Solida */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-solida-sezione-3" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Solida - Sezione 3</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Superficie e Volume</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Calcolo della superficie laterale, totale e del volume dei principali solidi geometrici (prisma, cilindro, piramide, sfera), con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione alle Grandezze dei Solidi</h2>
+            <p>
+                Quando passiamo allo studio quantitativo dei solidi nello spazio tridimensionale, le due grandezze fondamentali da determinare sono l'estensione della superficie esterna (misurata in unità quadrate, es. <code>cm²</code>) e la misura dello spazio interno occupato, ovvero il volume (misurato in unità cubiche, es. <code>cm³</code>).
+            </p>
+
+            <h2>2. Classificazione delle Superfici</h2>
+            <ul>
+                <li><strong>Superficie Laterale ($S_L$):</strong> L'area di tutte le facce laterali che circondano il solido, escluse le basi.</li>
+                <li><strong>Superficie Totale ($S_T$):</strong> La somma della superficie laterale e dell'area di tutte le basi del solido ($S_T = S_L + 2 \cdot A_{base}$ per i solidi a due basi).</li>
+                <li><strong>Volume ($V$):</strong> La misura della capacità geometrica tridimensionale racchiusa dal solido.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Un Cilindro con Raggio e Altezza evidenziati) -->
+            <div class="figura-geometrica-container">
+                <svg width="520" height="340" viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sfondo interno decorativo -->
+                    <rect width="520" height="340" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+                    <!-- Base inferiore ellittica (piena) -->
+                    <ellipse cx="260" cy="260" rx="100" ry="35" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2.5"/>
+
+                    <!-- Superficie laterale del cilindro (sfumatura/trasparenza interna) -->
+                    <path d="M 160,95 L 160,260 A 100 35 0 0 0 360 260 L 360,95" fill="#eff6ff" opacity="0.6"/>
+
+                    <!-- Linee generatrici laterali -->
+                    <line x1="160" y1="95" x2="160" y2="260" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <line x1="360" y1="95" x2="360" y2="260" stroke="#1e3a8a" stroke-width="2.5"/>
+
+                    <!-- Base superiore ellittica -->
+                    <ellipse cx="260" cy="95" rx="100" ry="35" fill="#bfdbfe" stroke="#1e3a8a" stroke-width="2.5"/>
+
+                    <!-- Raggio della base (r) evidenziato in verde -->
+                    <line x1="260" y1="95" x2="360" y2="95" stroke="#059669" stroke-width="3"/>
+                    <circle cx="260" cy="95" r="4" fill="#059669"/>
+                    <circle cx="360" cy="95" r="4" fill="#059669"/>
+                    <text x="305" y="82" fill="#059669" font-family="Arial, sans-serif" font-weight="bold" font-size="14">r</text>
+
+                    <!-- Altezza del cilindro (h) evidenziata in arancione -->
+                    <line x1="410" y1="95" x2="410" y2="260" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="4,4"/>
+                    <line x1="400" y1="95" x2="420" y2="95" stroke="#ea580c" stroke-width="2.5"/>
+                    <line x1="400" y1="260" x2="420" y2="260" stroke="#ea580c" stroke-width="2.5"/>
+                    <text x="425" y="185" fill="#ea580c" font-family="Arial, sans-serif" font-weight="bold" font-size="14">h</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Modello geometrico di un cilindro retto con raggio di base <code style="color:#059669;">r</code> e altezza <code style="color:#ea580c;">h</code>.
+                </div>
+            </div>
+
+            <h2>3. Formule Chiave per i Solidi Principali</h2>
+            <div class="formula-box">
+                📐 <strong>Formule di Superficie e Volume:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Cubo di spigolo <em>l</em>:</strong> $S_T = 6 \cdot l^2$ | $V = l^3$<br>
+                    &bull; <strong>Parallelepipedo rettangolo ($a, b, c$):</strong> $S_T = 2 \cdot (ab + ac + bc)$ | $V = a \cdot b \cdot c$<br>
+                    &bull; <strong>Cilindro ($r, h$):</strong> $S_L = 2\pi \cdot r \cdot h$ | $S_T = S_L + 2\pi \cdot r^2$ | $V = \pi \cdot r^2 \cdot h$<br>
+                    &bull; <strong>Sfera ($r$):</strong> $S = 4\pi \cdot r^2$ | $V = \frac{4}{3}\pi \cdot r^3$
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola la superficie totale e il volume di un cubo avente lo spigolo lungo <code>5 cm</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la superficie totale usando la formula del cubo ($S_T = 6 \cdot l^2$): $S_T = 6 \cdot (5)^2 = 6 \cdot 25 = 150 \text{ cm}^2$.</li>
+                    <li>Calcoliamo il volume usando la formula del cubo ($V = l^3$): $V = 5^3 = 5 \cdot 5 \cdot 5 = 125 \text{ cm}^3$.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: La superficie totale è 150 cm² e il volume è 125 cm³.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Superficie e Volume</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico applicati a cubi, parallelepipedi, cilindri e sfere con soluzioni dettagliate.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let l = (i % 6) + 3; // Spigolo cubo tra 3 e 8
+                    let st = 6 * l * l;
+                    let vol = l * l * l;
+
+                    domanda = `Calcola la superficie totale e il volume di un cubo avente lo spigolo lungo <code>${l} cm</code>.`;
+                    risposta = `<strong>Superficie Totale = ${st} cm²</strong>, <strong>Volume = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Superficie totale del cubo: <code>S<sub>T</sub> = 6 &times; (${l})<sup>2</sup> = 6 &times; ${l*l} = ${st} cm<sup>2</sup></code>.<br>
+                    2) Volume del cubo: <code>V = (${l})<sup>3</sup> = ${vol} cm<sup>3</sup></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 4) + 2; // Dimensioni parallelepipedo
+                    let b = (i % 5) + 3;
+                    let c = (i % 3) + 4;
+                    let st = 2 * (a*b + a*c + b*c);
+                    let vol = a * b * c;
+
+                    domanda = `Un parallelepipedo rettangolo ha le dimensioni di base e altezza rispettivamente pari a <code>${a} cm</code>, <code>${b} cm</code> e <code>${c} cm</code>. Calcola la superficie totale e il volume.`;
+                    risposta = `<strong>Superficie Totale = ${st} cm²</strong>, <strong>Volume = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Superficie totale: <code>S<sub>T</sub> = 2 &times; (${a}&times;${b} + ${a}&times;${c} + ${b}&times;${c}) = 2 &times; (${a*b} + ${a*c} + ${b*c}) = 2 &times; ${a*b + a*c + b*c} = ${st} cm<sup>2</sup></code>.<br>
+                    2) Volume: <code>V = ${a} &times; ${b} &times; ${c} = ${vol} cm<sup>3</sup></code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let r = (i % 3) + 2; // Raggio cilindro tra 2 e 4
+                    let h = (i % 5) + 5; // Altezza cilindro tra 5 e 9
+                    let sl = (2 * Math.PI * r * h).toFixed(1);
+                    let st = (2 * Math.PI * r * (r + h)).toFixed(1);
+                    let vol = (Math.PI * r * r * h).toFixed(1);
+
+                    domanda = `Un cilindro retto ha il raggio di base di <code>${r} cm</code> e l'altezza di <code>${h} cm</code>. Calcola la superficie laterale, la superficie totale e il volume (usa &pi; &approx; 3.14).`;
+                    risposta = `<strong>S<sub>L</sub> &approx; ${sl} cm²</strong>, <strong>S<sub>T</sub> &approx; ${st} cm²</strong>, <strong>V &approx; ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Superficie laterale: <code>S<sub>L</sub> = 2 &times; 3.14 &times; ${r} &times; ${h} = ${sl} cm<sup>2</sup></code>.<br>
+                    2) Superficie totale: <code>S<sub>T</sub> = S<sub>L</sub> + 2 &times; (3.14 &times; ${r}<sup>2</sup>) = ${sl} + ${ (2 * 3.14 * r * r).toFixed(1) } = ${st} cm<sup>2</sup></code>.<br>
+                    3) Volume: <code>V = 3.14 &times; (${r})<sup>2</sup> &times; ${h} = ${vol} cm<sup>3</sup></code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

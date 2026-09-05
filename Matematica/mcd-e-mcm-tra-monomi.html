@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: M.C.D. e m.c.m. tra monomi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>M.C.D. e m.c.m. tra monomi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-riassuntiva {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .tabella-riassuntiva th, .tabella-riassuntiva td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .tabella-riassuntiva th {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="monomi-mcd-mcm" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Monomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 5: M.C.D. e m.c.m. tra monomi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come calcolare il Massimo Comune Divisore e il minimo comune multiplo tra due o più monomi, con 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Massimo Comune Divisore (M.C.D.)</h2>
+            <p>
+                Il **Massimo Comune Divisore** tra due o più monomi è il monomio di grado massimo che divide esattamente tutti i monomi dati.
+            </p>
+            <ul>
+                <li><strong>Coefficiente numerico:</strong> M.C.D. dei valori assoluti dei coefficienti (se sono interi). Se i coefficienti sono frazioni o numeri decimali, si prende di norma <code>1</code>.</li>
+                <li><strong>Parte letterale:</strong> si prendono soltanto le lettere **comuni** a tutti i monomi, ciascuna presa una sola volta con l'**esponente minore**.</li>
+            </ul>
+            <div class="formula-box">
+                🔹 <strong>Esempio M.C.D.:</strong> Tra <code>12 x³ y²</code> e <code>8 x² y⁴ z</code>:<br>
+                - M.C.D.(12, 8) = <code>4</code><br>
+                - Lettere comuni con esponente minore: <code>x² y²</code><br>
+                &rarr; <strong>M.C.D. = 4 x² y²</strong>
+            </div>
+
+            <h2>2. minimo comune multiplo (m.c.m.)</h2>
+            <p>
+                Il **minimo comune multiplo** tra due o più monomi è il monomio di grado minimo che è divisibile per ciascuno dei monomi dati.
+            </p>
+            <ul>
+                <li><strong>Coefficiente numerico:</strong> m.c.m. dei valori assoluti dei coefficienti (se interi). Se ci sono frazioni, si sceglie convenzionalmente <code>1</code>.</li>
+                <li><strong>Parte letterale:</strong> si prendono tutte le lettere **comuni e non comuni**, ciascuna presa una sola volta con l'**esponente maggiore**.</li>
+            </ul>
+            <div class="formula-box">
+                🔹 <strong>Esempio m.c.m.:</strong> Tra <code>12 x³ y²</code> e <code>8 x² y⁴ z</code>:<br>
+                - m.c.m.(12, 8) = <code>24</code><br>
+                - Lettere comuni e non comuni con esponente maggiore: <code>x³ y⁴ z</code><br>
+                &rarr; <strong>m.c.m. = 24 x³ y⁴ z</strong>
+            </div>
+
+            <h2>3. Schema Riassuntivo</h2>
+            <table class="tabella-riassuntiva">
+                <thead>
+                    <tr>
+                        <th>Operazione</th>
+                        <th>Coefficiente Numerico</th>
+                        <th>Scelta delle Lettere</th>
+                        <th>Scelta degli Esponenti</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>M.C.D.</strong></td>
+                        <td>M.C.D. dei coefficienti</td>
+                        <td>Solo lettere <strong>COMUNI</strong></td>
+                        <td>Esponente <strong>MINORE</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>m.c.m.</strong></td>
+                        <td>m.c.m. dei coefficienti</td>
+                        <td>Tutte le lettere (<strong>COMUNI e NON COMUNI</strong>)</td>
+                        <td>Esponente <strong>MAGGIORE</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il M.C.D. e il m.c.m. tra i monomi: <code>A = 6 a² b³</code> e <code>B = 15 a⁴ b c²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Coefficienti:</strong> M.C.D.(6, 15) = <code>3</code> | m.c.m.(6, 15) = <code>30</code>.</li>
+                    <li><strong>M.C.D. Parte letterale:</strong> lettere comuni con esponente minore &rarr; <code>a² b</code>.</li>
+                    <li><strong>m.c.m. Parte letterale:</strong> tutte le lettere con esponente maggiore &rarr; <code>a⁴ b³ c²</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">
+                    🎯 <strong>M.C.D. = 3 a² b</strong><br>
+                    🎯 <strong>m.c.m. = 30 a⁴ b³ c²</strong>
+                </p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su M.C.D. e m.c.m. tra Monomi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati nel calcolo di Massimo Comune Divisore e minimo comune multiplo tra monomi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        // Funzioni di supporto algebrico
+        function gcd(a, b) {
+            return b === 0 ? a : gcd(b, a % b);
+        }
+
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n1 = (i % 4 + 1) * 2;
+                    let n2 = (i % 3 + 1) * 3;
+                    let expA1 = (i % 3) + 1;
+                    let expA2 = expA1 + 1;
+
+                    let coeffMCD = gcd(n1, n2);
+                    let coeffMCM = lcm(n1, n2);
+
+                    if (i % 2 === 0) {
+                        domanda = `Trova il **M.C.D.** tra <code>${n1} x<sup>${expA1}</sup> y²</code> e <code>${n2} x<sup>${expA2}</sup> y</code>.`;
+                        risposta = `<code>${coeffMCD} x<sup>${expA1}</sup> y</code>`;
+                        spiegazione = `M.C.D. dei coefficienti (${n1}, ${n2}) = <code>${coeffMCD}</code>. Lettere comuni con esponente minore: <code>x<sup>${expA1}</sup> y</code>.`;
+                    } else {
+                        domanda = `Trova il **m.c.m.** tra <code>${n1} a<sup>${expA1}</sup></code> e <code>${n2} a<sup>${expA2}</sup> b</code>.`;
+                        risposta = `<code>${coeffMCM} a<sup>${expA2}</sup> b</code>`;
+                        spiegazione = `m.c.m. dei coefficienti (${n1}, ${n2}) = <code>${coeffMCM}</code>. Tutte le lettere con esponente maggiore: <code>a<sup>${expA2}</sup> b</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let n1 = 4 * ((i % 3) + 1);
+                    let n2 = 6 * ((i % 2) + 1);
+                    let n3 = 10;
+
+                    let coeffMCD = gcd(gcd(n1, n2), n3);
+                    let coeffMCM = lcm(lcm(n1, n2), n3);
+
+                    domanda = `Determina M.C.D. e m.c.m. tra <code>${n1} a² b³</code>, <code>${n2} a³ b c</code> e <code>${n3} a b² c²</code>.`;
+                    risposta = `<strong>M.C.D.</strong> = <code>${coeffMCD} a b</code> | <strong>m.c.m.</strong> = <code>${coeffMCM} a³ b³ c²</code>`;
+                    spiegazione = `
+                    1) Coefficienti: M.C.D.(${n1}, ${n2}, ${n3}) = <code>${coeffMCD}</code>, m.c.m.(${n1}, ${n2}, ${n3}) = <code>${coeffMCM}</code>.<br>
+                    2) M.C.D. parti letterali: lettere comuni a tutti e 3 con esponente minore &rarr; <code>a b</code>.<br>
+                    3) m.c.m. parti letterali: tutte le lettere presenti con esponente maggiore &rarr; <code>a³ b³ c²</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let n1 = 12;
+                    let n2 = 18;
+                    let n3 = 24;
+
+                    domanda = `Dati i tre monomi <code>A = -${n1} x⁴ y² z³</code>, <code>B = +${n2} x² y⁵</code> e <code>C = -${n3} x³ y³ z</code>, calcola M.C.D. e m.c.m.`;
+                    
+                    let coeffMCD = gcd(gcd(n1, n2), n3);
+                    let coeffMCM = lcm(lcm(n1, n2), n3);
+
+                    risposta = `<strong>M.C.D.</strong> = <code>${coeffMCD} x² y²</code> | <strong>m.c.m.</strong> = <code>${coeffMCM} x⁴ y⁵ z³</code>`;
+                    spiegazione = `
+                    1) Consideriamo i valori assoluti dei coefficienti |-${n1}|, |+${n2}|, |-${n3}| &rarr; M.C.D.(12, 18, 24) = <code>${coeffMCD}</code>, m.c.m.(12, 18, 24) = <code>${coeffMCM}</code>.<br>
+                    2) Per il M.C.D. si scelgono solo le lettere comuni (<em>x</em> e <em>y</em>) con gli esponenti più piccoli: <code>x² y²</code> (la <em>z</em> non è presente in B).<br>
+                    3) Per il m.c.m. si scelgono tutte le lettere (<em>x</em>, <em>y</em> e <em>z</em>) con gli esponenti più grandi: <code>x⁴ y⁵ z³</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

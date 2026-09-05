@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L'energia di prima ionizzazione: definizione, fattori influenti e andamento periodico - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'energia di prima ionizzazione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* STILE CONTENITORE DISEGNO / SCHEMA VISIVO SVG */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, var(--sfondo-chiaro) 100%);
+            border: 1px solid var(--bordo-chiaro);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="energia-di-prima-ionizzazione" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica / Proprietà Periodiche</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'energia di prima ionizzazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione quantitativa, fattori determinanti e andamento periodico dell'energia di ionizzazione nella tavola degli elementi.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è l'energia di prima ionizzazione?</h2>
+            <p>
+                L'<strong>energia di prima ionizzazione</strong> ($EI_1$) è definita come la quantità minima di energia richiesta per rimuovere un elettrone da un atomo isolato allo stato gassoso, trasformandolo in uno ione positivo (catione) con carica $+1$.
+            </p>
+            <p>
+                Questo processo endotermico (che assorbe energia) viene comunemente espresso in kilojoule per mole ($\text{kJ/mol}$) o in elettronvolt per atomo ($\text{eV}$).
+            </p>
+
+            <div class="formula-box">
+                🔬 <strong>Processo di Ionizzazione:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$\text{X}_{(g)} + \text{Energia} \rightarrow \text{X}^+_{(g)} + e^-$$
+                    Maggiore è il valore dell'energia di ionizzazione, più l'elettrone è fortemente attratto dal nucleo e, di conseguenza, più l'atomo risulta difficile da ossidare o da ionizzare.
+                </p>
+            </div>
+
+            <h2>2. Fattori che influenzano l'energia di ionizzazione</h2>
+            <p>
+                L'energia di prima ionizzazione dipende direttamente da tre parametri strutturali dell'atomo:
+            </p>
+            <ul>
+                <li><strong>Carica nucleare ($Z$):</strong> Più protoni sono presenti nel nucleo, maggiore è l'attrazione elettrostatica esercitata sugli elettroni periferici, rendendo necessaria più energia per strapparne uno.</li>
+                <li><strong>Distanza dal nucleo (Raggio atomico):</strong> Più un elettrone si trova lontano dal nucleo (livelli energetici più esterni), minore è l'attrazione subita e, di conseguenza, minore sarà l'energia richiesta per rimuoverlo.</li>
+                <li><strong>Effetto schermo:</strong> Gli elettroni più interni degli strati inferiori schermano parzialmente la carica positiva del nucleo nei confronti degli elettroni di valenza più esterni, riducendone l'attrazione effettiva.</li>
+            </ul>
+
+            <!-- SCHEMA VISIVO RAPPRESENTATIVO SVG ANDAMENTO ENERGIA DI IONIZZAZIONE -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="200" viewBox="0 0 550 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="550" height="200" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- Rappresentazione Tavola Periodica semplificata con frecce -->
+                    <rect x="40" y="30" width="470" height="135" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+                    
+                    <!-- Testo indicativo angoli -->
+                    <text x="65" y="145" font-family="Arial" font-size="12" fill="#15803d" font-weight="bold">Energia più bassa (in basso a sinistra)</text>
+                    <text x="290" y="55" font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">Energia più alta (in alto a destra)</text>
+
+                    <!-- Freccia Su (Gruppo) -->
+                    <g transform="translate(80, 130)">
+                        <line x1="0" y1="0" x2="0" y2="-55" stroke="#16a34a" stroke-width="3" marker-end="url(#arrowGreenUp)"/>
+                        <text x="10" y="-30" font-family="Arial" font-size="11" fill="#15803d" font-weight="bold">Aumenta</text>
+                        <text x="10" y="-15" font-family="Arial" font-size="11" fill="#15803d">salendo</text>
+                    </g>
+
+                    <!-- Freccia Destra (Periodo) -->
+                    <g transform="translate(70, 95)">
+                        <line x1="0" y1="0" x2="110" y2="0" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlueRight)"/>
+                        <text x="15" y="-10" font-family="Arial" font-size="11" fill="#1d4ed8" font-weight="bold">Aumenta</text>
+                        <text x="15" y="15" font-family="Arial" font-size="11" fill="#1d4ed8">a destra</text>
+                    </g>
+
+                    <!-- Definizione frecce marker -->
+                    <defs>
+                        <marker id="arrowGreenUp" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                          <path d="M0,6 L6,0 L12,6 z" fill="#16a34a" />
+                        </marker>
+                        <marker id="arrowBlueRight" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                          <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Andamento generale dell'energia di prima ionizzazione nella tavola periodica (cresce verso l'alto e verso destra).
+                </div>
+            </div>
+
+<h2>3. Andamento periodico nella tavola degli elementi</h2>
+            <p>
+                L'energia di prima ionizzazione mostra una forte periodicità in accordo con la struttura atomica:
+            </p>
+            <ul>
+                <li><strong>Lungo un periodo (da sinistra a destra):</strong> L'energia di ionizzazione <strong>aumenta progressivamente</strong>. La carica nucleare cresce e il raggio diminuisce, rendendo più difficile strappare l'elettrone. I valori massimi si registrano in corrispondenza dei gas nobili.</li>
+                <li><strong>Lungo un gruppo (dall'alto verso il basso):</strong> L'energia di ionizzazione <strong>diminuisce progressivamente</strong>. Gli elettroni esterni sono più distanti dal nucleo e risentono maggiormente dell'effetto schermo dei gusci interni. I metalli alcalini mostrano i valori minimi.</li>
+            </ul>
+
+            <h2>4. Energie successive di ionizzazione</h2>
+            <p>
+                Oltre alla prima ionizzazione, è possibile rimuovere ulteriori elettroni da un atomo ottenendo energie di seconda ($EI_2$), terza ($EI_3$) e successiva ionizzazione.
+            </p>
+            <p>
+                È una regola generale che l'energia necessaria aumenti sempre ad ogni stadio successivo ($\text{EI}_1 < \text{EI}_2 < \text{EI}_3$), poiché si sta strappando un elettrone da un corpo già carico positivamente. Inoltre, si osserva un salto energetico straordinariamente elevato quando la rimozione dell'elettrone intacca un guscio elettronico interno completo (configurazione da gas nobile).
+            </p>
+
+            <h2>5. Tabella riassuntiva dei trend periodici</h2>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Direzione di Movimento</th>
+                        <th>Variazione dell'Energia di Ionizzazione</th>
+                        <th>Motivo Principale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Da sinistra a destra (lungo un periodo)</td>
+                        <td><strong>Aumenta</strong></td>
+                        <td>Aumento della carica nucleare e riduzione del raggio atomico.</td>
+                    </tr>
+                    <tr>
+                        <td>Dall'alto verso il basso (lungo un gruppo)</td>
+                        <td><strong>Diminuisce</strong></td>
+                        <td>Maggiore distanza dell'elettrone dal nucleo e aumento dell'effetto schermo.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- APPROFONDIMENTO DIDATTICO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Le piccole irregolarità nei periodi</h3>
+                <p style="margin-bottom: 0;">
+                    Osservando attentamente l'andamento nei periodi si notano lievi anomalie, come tra il Gruppo 2 e il Gruppo 13 (es. Be e B) o tra il Gruppo 15 e il Gruppo 16 (es. N e O). Queste piccole eccezioni sono dovute alla particolare stabilità dei sublevelli completamente pieni o semipieni ($s^2$ o $p^3$), che richiedono un surplus di energia per essere alterati.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

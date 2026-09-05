@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L'Atmosfera: Struttura e Composizione chimica, strati atmosferici e gradienti termici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Atmosfera: Struttura e Composizione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-l-atmosfera-struttura-e-composizione" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-registrati">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia" style="display: inline-block; margin-bottom: 0.6rem;">Scienze / Scienze della Terra / Meteorologia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0; margin-bottom: 0.5rem;">L'Atmosfera: Struttura e Composizione</h1>
+                <p style="color: #64748b; font-size: 1.05rem; margin-bottom: 0;">
+                    Composizione chimica dell'aria, suddivisione in strati termici (troposfera, stratosfera, mesosfera, termosfera) e variazioni di pressione.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è l'Atmosfera e la sua Composizione Chimica</h2>
+            <p>
+                L'<strong>atmosfera</strong> è l'involucro gassoso che circonda la Terra, trattenuto dalla forza di gravità del pianeta. Svolge un ruolo biologico e climatico fondamentale: filtra le radiazioni solari nocive, modera la temperatura superficiale tramite l'effetto serra e contiene i gas indispensabili per la vita (come l'ossigeno e l'anidride carbonica).
+            </p>
+            <p>
+                Fino a un'altitudine di circa \(80-100 \text{ km}\) (regione nota come <em>omosphera</em> o omosfera), la composizione chimica dell'aria secca al suolo è estremamente omogenea ed è costituita principalmente da:
+            </p>
+            <ul>
+                <li><strong>Azoto (\(N_2\)):</strong> Circa il \(78.08\%\) in volume. È un gas chimicamente poco reattivo ma essenziale per i cicli biologici.</li>
+                <li><strong>Ossigeno (\(O_2\)):</strong> Circa il \(20.95\%\) in volume. Indispensabile per la respirazione cellulare e la combustione.</li>
+                <li><strong>Argo (\(Ar\)):</strong> Circa lo \(0.93\%\), un gas nobile inerte.</li>
+                <li><strong>Anidride carbonica (\(CO_2\)):</strong> Circa lo \(0.04\%\), fondamentale per la fotosintesi clorofilliana e per regolare l'effetto serra naturale.</li>
+                <li>Tracce di gas nobili (elio, neon, kripton, xeno), vapore acqueo (\(H_2O\), variabile dallo \(0\%\) al \(4\%\)) e aerosol atmosferici (pulviscolo, pollini, cristalli di sale).</li>
+            </ul>
+
+            <h2>2. La Stratificazione Termica dell'Atmosfera</h2>
+            <p>
+                In base all'andamento della temperatura all'aumentare della quota, l'atmosfera viene suddivisa verticalmente in quattro sfere principali, separate da zone di transizione denominate <strong>tropopause, stratopause e mesopause</strong>:
+            </p>
+            <ul>
+                <li>
+                    <strong>1. Troposfera (da \(0\) a \(12-16 \text{ km}\)):</strong> È lo strato inferiore, a contatto con la superficie terrestre, in cui si concentra circa l'\(80\%\) della massa totale dell'aria e quasi tutto il vapore acqueo. Qui si verificano i fenomeni meteorologici. La temperatura <em>diminuisce</em> con l'altitudine (gradiente termico verticale di circa \(6.5^\circ\text{C}\) ogni \(1000 \text{ m}\)).
+                </li>
+                <li>
+                    <strong>2. Stratosfera (da \(12-16 \text{ km}\) a \(50 \text{ km}\)):</strong> Caratterizzata da una forte stabilità verticale e assenza di moti turbolenti. La temperatura <em>aumenta</em> con la quota a causa dell'assorbimento delle radiazioni ultraviolette solari da parte dello strato di <strong>ozono</strong> (\(O_3\)), concentrato nella cosiddetta <em>ozonosfera</em>.
+                </li>
+                <li>
+                    <strong>3. Mesosfera (da \(50 \text{ km}\) a \(80-85 \text{ km}\)):</strong> In questo strato la temperatura torna a <em>diminuire</em> drasticamente con la quota, raggiungendo i valori minimi di tutta l'atmosfera (fino a \(-90^\circ\text{C}\)). È la zona in cui si incendiano le meteore (stelle cadenti).
+                </li>
+                <li>
+                    <strong>4. Termosfera o Ionosfera (da \(85 \text{ km}\) a oltre \(500 \text{ km}\)):</strong> La temperatura torna ad <em>aumentare</em> vertiginosamente a causa dell'assorbimento dei raggi X e UV estremi del Sole da parte dei gas ionizzati. In questa regione si formano le aurore boreali.
+                </li>
+            </ul>
+
+            <div class="formula-box">
+                barometrica 📊 <strong>La Pressione Atmosferica e la Legge di Stevino:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    La pressione atmosferica (\(P\)) rappresenta il peso della colonna d'aria sovrastante per unità di superficie. Poiché la densità dell'aria diminuisce esponenzialmente con l'altezza, la pressione decresce rapidamente all'aumentare della quota secondo la legge di diminuzione barometrica. Al livello del mare la pressione standard vale:
+                    $$1 \text{ atm} = 1013.25 \text{ hPa} = 760 \text{ mmHg}$$
+                    Circa la metà della massa gassosa totale dell'atmosfera è compressa nei primi \(5.5 \text{ km}\) di altezza.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Svolto: Calcolo della Temperatura in Troposfera</h3>
+                <p style="margin-bottom: 0.8rem;">Sapendo che al livello del mare (quota \(0 \text{ m}\)) la temperatura dell'aria è di \(+20^\circ\text{C}\) e considerando un gradiente termico verticale medio di \(0.65^\circ\text{C}\) ogni \(100 \text{ m}\), calcolare la temperatura stimata alla quota di \(3000 \text{ m}\) all'interno della troposfera.</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento analitico:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Calcolo del dislivello in centinaia di metri:</strong> 
+                        $$\text{Numero di ettometri} = \frac{3000 \text{ m}}{100 \text{ m}} = 30$$
+                    </li>
+                    <li><strong>Calcolo della diminuzione complessiva di temperatura:</strong> 
+                        $$\Delta T = 30 \cdot 0.65^\circ\text{C} = 19.5^\circ\text{C}$$
+                    </li>
+                    <li><strong>Determinazione della temperatura alla quota data:</strong> 
+                        $$T_{3000} = 20^\circ\text{C} - 19.5^\circ\text{C} = +0.5^\circ\text{C}$$
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> Alla quota di \(3000 \text{ metri}\), la temperatura stimata sarà di <strong>\(+0.5^\circ\text{C}\)</strong>.</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

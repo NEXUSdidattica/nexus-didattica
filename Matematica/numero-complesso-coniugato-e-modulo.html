@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Numero Complesso Coniugato e Modulo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Numero Complesso Coniugato e Modulo - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="coniugato-e-modulo" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Numeri Complessi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Numero Complesso Coniugato e Modulo</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione geometrica e algebrica del coniugato, calcolo del modulo (valore assoluto), proprietà fondamentali e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Numero Complesso Coniugato</h2>
+            <p>
+                Dato un numero complesso in forma algebrica <code>z = a + ib</code>, si definisce suo <strong>coniugato</strong> (indicato con il simbolo <code>z&#772;</code> o <code>z*</code>) il numero complesso ottenuto cambiando di segno alla parte immaginaria:
+            </p>
+            <ul>
+                <li><strong>Definizione:</strong> <code>z&#772; = a - ib</code>.</li>
+                <li><strong>Proprietà geometrica:</strong> Nel piano di Argand-Gauss, il coniugato <code>z&#772;</code> rappresenta il punto simmetrico di <code>z</code> rispetto all'asse delle ascisse (asse reale).</li>
+                <li><strong>Prodotto notevole:</strong> Il prodotto di un numero complesso per il suo coniugato dà sempre un numero reale non negativo pari al quadrato del suo modulo: <code>z &middot; z&#772; = a<sup>2</sup> + b<sup>2</sup></code>.</li>
+            </ul>
+
+            <h2>2. Il Modulo di un Numero Complesso</h2>
+            <p>
+                Il <strong>modulo</strong> (o valore assoluto) di un numero complesso <code>z = a + ib</code> è un numero reale non negativo che misura la distanza del punto <code>(a, b)</code> dall'origine degli assi nel piano complesso.
+            </p>
+            <ul>
+                <li><strong>Definizione:</strong> <code>|z| = &radic;(a<sup>2</sup> + b<sup>2</sup>)</code>.</li>
+                <li>Il modulo estende il concetto di valore assoluto dei numeri reali ed è sempre maggiore o uguale a zero (<code>|z| &ge; 0</code>), annullandosi solo se <code>z = 0</code>.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico (Coniugato e Modulo):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Dato il numero complesso <code>z = 3 - 4i</code>:<br>
+                    • Il suo coniugato è <code>z&#772; = 3 + 4i</code>.<br>
+                    • Il suo modulo è <code>|z| = &radic;(3<sup>2</sup> + (-4)<sup>2</sup>) = &radic;(9 + 16) = &radic;25 = 5</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il modulo del numero complesso <code>z = 5 + 12i</code> e verifica che <code>z &middot; z&#772; = |z|<sup>2</sup></code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo il modulo: <code>|z| = &radic;(5<sup>2</sup> + 12<sup>2</sup>) = &radic;(25 + 144) = &radic;169 = 13</code>.</li>
+                    <li>Eleviamo al quadrato il modulo: <code>|z|<sup>2</sup> = 13<sup>2</sup> = 169</code>.</li>
+                    <li>Calcoliamo il prodotto tra <code>z = 5 + 12i</code> e il suo coniugato <code>z&#772; = 5 - 12i</code>:<br>
+                        <code>(5 + 12i)(5 - 12i) = 5<sup>2</sup> - (12i)<sup>2</sup> = 25 - 144( -1) = 25 + 144 = 169</code>.
+                    </li>
+                    <li>L'uguaglianza è verificata: <code>z &middot; z&#772; = |z|<sup>2</sup> = 169</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Modulo = 13, Verifica Convalidata</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Coniugato e Modulo</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di determinazione del coniugato, calcolo dei moduli con radicali esatti e proprietà dei numeri complessi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 8) - 3;
+                    let b = (i % 6) + 1;
+                    let segnoB = b >= 0 ? `- ${b}` : `+ ${Math.abs(b)}`;
+                    domanda = `Scrivi il numero coniugato <code>z&#772;</code> del numero complesso <code>z = ${a} + ${b}i</code>.`;
+                    risposta = `<strong>${a} ${segnoB}i</strong>`;
+                    spiegazione = `
+                    1) La parte reale rimane invariata: <code>${a}</code>.<br>
+                    2) Cambiamo segno alla parte immaginaria: da <code>+${b}i</code> a <code>${segnoB}i</code>.<br>
+                    3) Il coniugato è <code>${a} ${segnoB}i</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let cat1 = (i % 4) + 1;
+                    let cat2 = (i % 3) + 1;
+                    let sumSq = cat1*cat1 + cat2*cat2;
+
+                    domanda = `Calcola il modulo del numero complesso <code>z = ${cat1} + ${cat2}i</code>.`;
+                    risposta = `<strong>&radic;${sumSq}</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la formula del modulo: <code>|z| = &radic;(a<sup>2</sup> + b<sup>2</sup>)</code>.<br>
+                    2) Sostituiamo i valori: <code>&radic;(${cat1}<sup>2</sup> + ${cat2}<sup>2</sup>) = &radic;(${cat1*cat1} + ${cat2*cat2})</code>.<br>
+                    3) Il modulo risulta <code>&radic;${sumSq}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let k = (i % 5) + 2;
+                    domanda = `Calcola il prodotto <code>z &middot; z&#772;</code> sapendo che <code>z = ${k} - 3i</code>.`;
+                    let prodVal = k*k + 9;
+                    risposta = `<strong>${prodVal}</strong>`;
+                    spiegazione = `
+                    1) Il prodotto di un numero complesso per il suo coniugato è dato da <code>a<sup>2</sup> + b<sup>2</sup></code>.<br>
+                    2) Sostituiamo i valori di <code>a = ${k}</code> e <code>b = -3</code>.<br>
+                    3) Calcoliamo: <code>${k}<sup>2</sup> + (-3)<sup>2</sup> = ${k*k} + 9 = ${prodVal}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

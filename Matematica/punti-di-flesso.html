@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa allo studio dei punti di flesso (orizzontali, obliqui, ascendenti e discendenti) con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Punti di Flesso - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-flessi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Punti di Flesso</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio approfondito dei punti di flesso (orizzontali e obliqui, ascendenti e discendenti) tramite la derivata seconda.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Definizione e Tipologie di Flesso</h2>
+            <p>Un punto \(x_0\) del dominio di una funzione continua \(f(x)\) si dice <strong>punto di flesso</strong> se in esso il grafico della funzione cambia la propria concavità (passando da concava a convessa, o viceversa).</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[f''(x_0) = 0 \quad \text{e} \quad f''(x) \text{ cambia segno in } x_0\]
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Classificazione Geometrica dei Flessi</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Flesso a Tangente Obliqua:</strong> La derivata prima nel punto è diversa da zero (\(f'(x_0) \neq 0\)). A seconda del segno di \(f'(x_0)\), il flesso può essere <em>ascendente</em> (\(f'(x_0) > 0\)) o <em>discendente</em> (\(f'(x_0) < 0\)).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Flesso a Tangente Orizzontale (o a Sella):</strong> La derivata prima si annulla nel punto (\(f'(x_0) = 0\)), pur essendovi un cambio di concavità (es. in \(f(x) = x^3\) nell'origine).</li>
+                    <li><strong>Condizione Sufficiente:</strong> Se \(f''(x_0) = 0\) e la prima derivata non nulla successiva è di ordine dispari, allora il punto è un flesso.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Punti di Flesso</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta strutturata di 100 esercizi interamente svolti dedicati all'individuazione e alla classificazione meticolosa dei punti di flesso.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sui punti di flesso -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Cubiche e polinomi elementari con flesso evidente
+                        difficolta = "facile";
+                        const tipo = n % 3;
+                        const a = (n % 4) + 1;
+                        const b = (n % 6) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova il punto di flesso della funzione cubica \\(f(x) = x^3 - ${3 * b}x^2 + ${b * 3}x\\).`;
+                            const yF = b*b*b - 3*b*(b*b) + 3*b*b;
+                            risultato = `Flesso in \\((${b}, ${yF})\\) a tangente obliqua ascendente`;
+                            spiegazione = `1. \\(f'(x) = 3x^2 - ${6 * b}x + ${3 * b}\\).\n2. \\(f''(x) = 6x - ${6 * b}\\).\n3. \\(f''(x) = 0 \\implies 6x = ${6 * b} \\implies x = ${b}\\).\n4. Poiché \\(f'(${b}) = 3(${b})^2 - ${6 * b}(${b}) + ${3 * b} = -3b^2 < 0\\) (oppure studiando il cambio di segno della derivata seconda), il punto è un **flesso** in \\((${b}, ${yF})\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina il punto di flesso della funzione \\(f(x) = x^3 + ${6 * a}x\\).`;
+                            risultato = `Flesso nell'origine \\((0, 0)\\) a tangente obliqua ascendente`;
+                            spiegazione = `1. \\(f'(x) = 3x^2 + ${6 * a}\\).\n2. \\(f''(x) = 6x = 0 \\implies x = 0\\).\n3. La derivata seconda passa da \\(-\\) a \\(\\+\\) in \\(x = 0\\). Essendo \\(f'(0) = ${6 * a} > 0\\), si tratta di un **flesso ascendente** in \\((0,0)\\).`;
+                        } else {
+                            domanda = `Studia il punto di flesso della funzione \\(f(x) = (x - ${a})^3 + ${b}\\).`;
+                            risultato = `Flesso in \\((${a}, ${b})\\) a tangente orizzontale`;
+                            spiegazione = `1. \\(f'(x) = 3(x - ${a})^2\\).\n2. \\(f''(x) = 6(x - ${a}) = 0 \\implies x = ${a}\\).\n3. In \\(x = ${a}\\) la derivata prima vale \\(0\\) (tangente orizzontale) e la derivata seconda cambia segno. Il punto \\((${a}, ${b})\\) è un **flesso a sella**.`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni fratte, esponenziali e polinomi di grado 4
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova i punti di flesso della funzione \\(f(x) = x e^x\\).`;
+                            risultato = `Flesso in \\((-2, -2e^{-2})\\)`;
+                            spiegazione = `1. \\(f'(x) = e^x(x + 1)\\).\n2. \\(f''(x) = e^x(x + 2)\\).\n3. \\(f''(x) = 0 \\implies x = -2\\).\n4. La derivata seconda cambia segno da negativa a positiva in \\(x = -2\\), confermando un **punto di flesso**.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina gli eventuali flessi della funzione \\(f(x) = \\frac{1}{x^2 + ${k}}\\) (con \\(x \\in \\mathbb{R}\\)).`;
+                            risultato = `Flessi in \\((- \\sqrt{\\frac{${k}}{3}}, \\frac{3}{4${k}}\\)! e simmetrico`;
+                            spiegazione = `1. \\(f''(x) = \\frac{6x^2 - 2${k}}{(x^2 + ${k})^3}\\).\n2. \\(f''(x) = 0 \\implies 6x^2 = 2${k} \\implies x = \\pm \\sqrt{\\frac{${k}}{3}}\\).\n3. Il cambio di segno della derivata seconda nei due punti individua due **punti di flesso**.`;
+                        } else if (tipo === 2) {
+                            domanda = `Studia i flessi della funzione \\(f(x) = x^4 - 6x^2 + ${k}x\\).`;
+                            risultato = `Due punti di flesso in \\(x = -1\\) e \\(x = 1\\)`;
+                            spiegazione = `1. \\(f'(x) = 4x^3 - 12x + ${k}\\).\n2. \\(f''(x) = 12x^2 - 12 = 12(x^2 - 1) = 0 \\implies x = -1 \\lor x = 1\\).\n3. In \\(x = -1\\) e \\(x = 1\\) la derivata seconda cambia segno: si hanno due **flessi**.`;
+                        } else if (tipo === 3) {
+                            domanda = `Trova il flesso della funzione \\(f(x) = x^3 e^x\\) (studio locale).`;
+                            risultato = `Flessi nei punti di annullamento di \\(x^2 + 6x + 6 = 0\\)`;
+                            spiegazione = `1. \\(f'(x) = e^x(x^3 + 3x^2)\\).\n2. \\(f''(x) = e^x(x^3 + 6x^2 + 6x) = e^x x(x^2 + 6x + 6)\\).\n3. Annullamento in \\(x = 0\\) e nelle soluzioni di \\(x^2 + 6x + 6 = 0\\), che generano tre **punti di flesso**.`;
+                        } else {
+                            domanda = `Determina la presenza di flessi in \\(f(x) = \\ln(x^2 + ${k})\\).`;
+                            risultato = `Flessi in \\((- \\sqrt{${k}}, \\ln(${2 * k}))\\) e \\((\\sqrt{${k}}, \\ln(${2 * k}))\\)`;
+                            spiegazione = `1. \\(f'(x) = \\frac{2x}{x^2 + ${k}}\\).\n2. \\(f''(x) = \\frac{2(x^2 + ${k}) - 2x(2x)}{(x^2 + ${k})^2} = \\frac{2(${k} - x^2)}{(x^2 + ${k})^2}\\).\n3. \\(f''(x) = 0 \\implies x^2 = ${k} \\implies x = \\pm \\sqrt{${k}}\\), punti in cui si verificano due **flessi**.`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Logaritmiche, trigonometriche e composte avanzate
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova i punti di flesso della funzione:\n\\[f(x) = x^2 \\ln(x)\\] (con \\(x > 0\\))`;
+                            risultato = `Flesso in \\((e^{-3/2}, \\frac{3}{2e^3})\\)`;
+                            spiegazione = `1. **Dominio:** \\(x > 0\\).\n2. \\(f'(x) = 2x\\ln(x) + x = x(2\\ln(x) + 1)\\).\n3. \\(f''(x) = (2\\ln(x) + 1) + x\\left(\\frac{2}{x}\\right) = 2\\ln(x) + 3\\).\n4. \\(f''(x) = 0 \\implies 2\\ln(x) = -3 \\implies \\ln(x) = -\\frac{3}{2} \\implies x = e^{-3/2}\\), punto di **flesso**.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina tutti i flessi della funzione trigonometrica in \\([0, 2\\pi]\\):\n\\[f(x) = \\sin(x) + \\cos(x)\\]`;
+                            risultato = `Flessi in \\(\\frac{3}{4}\\pi\\) e \\(\\frac{7}{4}\\pi\\)`;
+                            spiegazione = `1. \\(f'(x) = \\cos(x) - \\sin(x)\\).\n2. \\(f''(x) = -\\sin(x) - \\cos(x) = -(\\sin(x) + \\cos(x))\\).\n3. \\(f''(x) = 0 \\implies \\sin(x) + \\cos(x) = 0 \\implies \\tan(x) = -1\\).\n4. Nell'intervallo dato, le soluzioni sono \\(x = \\frac{3}{4}\\pi\\) e \\(x = \\frac{7}{4}\\pi\\), dove la funzione presenta due **flessi**.`;
+                        } else if (tipo === 2) {
+                            domanda = `Studia i flessi della funzione esponenziale:\n\\[f(x) = e^{-x^2}\\]`;
+                            risultato = `Flessi in \\((\\pm \\frac{1}{\\sqrt{2}}, e^{-1/2})\\)`;
+                            spiegazione = `1. \\(f'(x) = -2x e^{-x^2}\\).\n2. \\(f''(x) = 2e^{-x^2}(2x^2 - 1)\\).\n3. \\(f''(x) = 0 \\implies 2x^2 - 1 = 0 \\implies x = \\pm \\frac{1}{\\sqrt{2}}\\).\n4. Il cambio di segno della derivata seconda conferma i due **punti di flesso**.`;
+                        } else if (tipo === 3) {
+                            domanda = `Trova i flessi della funzione:\n\\[f(x) = \\frac{\\ln(x)}{x}\\] (con \\(x > 0\\))`;
+                            risultato = `Flesso in \\((e^{3/2}, \\frac{3}{2}e^{-3/2})\\)`;
+                            spiegazione = `1. \\(f'(x) = \\frac{1 - \\ln(x)}{x^2}\\).\n2. \\(f''(x) = \\frac{-\\frac{1}{x}x^2 - (1 - \\ln(x))2x}{x^4} = \\frac{-3 + 2\\ln(x)}{x^3}\\).\n3. \\(f''(x) = 0 \\implies 2\\ln(x) = 3 \\implies \\ln(x) = \\frac{3}{2} \\implies x = e^{3/2}\\), **punto di flesso**.`;
+                        } else {
+                            domanda = `Determina i punti di flesso della funzione:\n\\[f(x) = x^3 \\ln(x)\\] (con \\(x > 0\\))`;
+                            risultato = `Flesso in \\((\\exp(-\\frac{5}{6}), ...)\\)`;
+                            spiegazione = `1. \\(f'(x) = x^2(3\\ln(x) + 1)\\).\n2. \\(f''(x) = x(6\\ln(x) + 5)\\).\n3. \\(f''(x) = 0 \\implies 6\\ln(x) + 5 = 0 \\implies x = e^{-5/6}\\).\n4. Il cambio di segno della derivata seconda individua il **punto di flesso**.`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

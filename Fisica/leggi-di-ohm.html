@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulle leggi di Ohm, prima e seconda legge, resistività e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Leggi di Ohm con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="leggi-di-ohm" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-credits">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Leggi di Ohm</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Prima e seconda legge di Ohm, resistività dei materiali, dipendenza geometrica e 100 esercizi interattivi dedicati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Prima Legge di Ohm</h2>
+            <p>
+                La **prima legge di Ohm** stabilisce che, per un conduttore metallico a temperatura costante (resistore ohmico), la differenza di potenziale $\Delta V$ applicata ai suoi capi è direttamente proporzionale all'intensità di corrente $I$ che lo attraversa. Il fattore di proporzionalità è la resistenza elettrica $R$.
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formule Chiave:</b>
+                <p style="margin-top: 0.5rem;">
+                    <strong>Prima Legge:</strong>
+                    $$\Delta V = R \cdot I \implies R = \frac{\Delta V}{I} \implies I = \frac{\Delta V}{R}$$
+                    dove $\Delta V$ è in Volt ($\text{V}$), $I$ in Ampere ($\text{A}$) e $R$ in Ohm ($\Omega$).
+                </p>
+                <p style="margin-top: 0.8rem;">
+                    <strong>Seconda Legge di Ohm:</strong>
+                    $$R = \rho \cdot \frac{l}{S}$$
+                    dove $\rho$ è la resistività del materiale ($\Omega \cdot \text{m}$), $l$ è la lunghezza del conduttore ($\text{m}$) e $S$ è l'area della sezione trasversale ($\text{m}^2$).
+                </p>
+            </div>
+
+            <h2>2. Seconda Legge di Ohm e Resistività</h2>
+            <p>
+                La **seconda legge di Ohm** descrive come la resistenza elettrica di un conduttore dipenda dalle sue caratteristiche geometriche e fisiche. In particolare, la resistenza è direttamente proporzionale alla lunghezza del conduttore e inversamente proporzionale alla sua sezione, oltre a dipendere dal tipo di materiale attraverso il coefficiente di resistività $\rho$.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati alla prima e alla seconda legge di Ohm:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let R_ohm = 5 + (i % 45);
+                        let I_A = 0.2 + ((i % 15) * 0.1);
+                        let dV_V = R_ohm * I_A;
+
+                        q = `Esercizio ${i}: Ai capi di un resistore di resistenza $R = ${R_ohm}\\text{ }\\Omega$ scorre una corrente di intensità $I = ${I_A.toFixed(1)}\\text{ A}$. Calcola la differenza di potenziale $\\Delta V$ applicata.`;
+                        r = `Differenza di potenziale $\\Delta V = ${dV_V.toFixed(2)}\\text{ V}$.`;
+                        s = `Applicando la prima legge di Ohm: $\\Delta V = R \\cdot I = ${R_ohm} \\cdot ${I_A.toFixed(1)} = ${dV_V.toFixed(2)}\\text{ V}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let dV_V = 12 + (i % 24);
+                        let R_ohm = 10 + (i % 40);
+                        let I_A = dV_V / R_ohm;
+
+                        q = `Esercizio ${i}: Un conduttore ohmico con resistenza $R = ${R_ohm}\\text{ }\\Omega$ è sottoposto a una tensione $\\Delta V = ${dV_V}\\text{ V}$. Calcola l'intensità di corrente $I$ che lo attraversa.`;
+                        r = `Intensità di corrente $I \\approx ${I_A.toFixed(2)}\\text{ A}$.`;
+                        s = `Dalla prima legge di Ohm ricaviamo la corrente: $I = \\frac{\\Delta V}{R} = \\frac{${dV_V}}{${R_ohm}} \\approx ${I_A.toFixed(2)}\\text{ A}$.`;
+                    
+                    } else {
+                        let rho = 1.7e-8; // Rame
+                        let l_m = 2 + (i % 18);
+                        let r_mm = 0.1 + ((i % 5) * 0.05);
+                        let r_m = r_mm * 1e-3;
+                        let S_m2 = Math.PI * Math.pow(r_m, 2);
+                        let R_ohm = rho * (l_m / S_m2);
+
+                        q = `Esercizio ${i}: Calcola la resistenza $R$ di un filo di rame ($\\rho = 1.7 \\times 10^{-8}\\text{ }\\Omega\\cdot\\text{m}$) lungo $l = ${l_m}\\text{ m}$ e con raggio della sezione trasversale $r = ${r_mm.toFixed(2)}\\text{ mm}$.`;
+                        r = `Resistenza $R \\approx ${R_ohm.toFixed(4)}\\text{ }\\Omega$.`;
+                        s = `L'area della sezione è $S = \\pi r^2 = \\pi (${r_m.toExponential(1)})^2 \\approx ${S_m2.toExponential(2)}\\text{ m}^2$. Applicando la seconda legge di Ohm: $R = \\rho \\frac{l}{S} = 1.7 \\times 10^{-8} \\cdot \\frac{${l_m}}{${S_m2.toExponential(2)}} \\approx ${R_ohm.toFixed(4)}\\text{ }\\Omega$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 2: Segmenti adiacenti, consecutivi, confronto e operazioni - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Segmenti adiacenti, consecutivi, confronto e operazioni - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-lezione-2" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Euclidea Piana / Lezione 2</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Segmenti adiacenti, consecutivi, confronto e operazioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio delle relazioni tra segmenti, posizioni reciproche, somma, differenza, multipli, sottomultipli e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Segmenti Consecutivi e Adiacenti</h2>
+            <p>
+                Un <strong>segmento</strong> è la parte di retta compresa tra due suoi punti, detti estremi. Esaminando le reciproche posizioni di due segmenti su un piano, distinguiamo:
+            </p>
+            <ul>
+                <li><strong>Segmenti Consecutivi:</strong> Due segmenti che hanno in comune <em>soltanto un estremo</em> (es. il segmento <code>AB</code> e il segmento <code>BC</code> hanno in comune il punto <code>B</code>).</li>
+                <li><strong>Segmenti Adiacenti:</strong> Due segmenti consecutivi che giacciono sulla <em>stessa retta</em> e formano con essa un unico blocco continuo (es. <code>AB</code> e <code>BC</code> sono adiacenti se i punti <code>A</code>, <code>B</code>, <code>C</code> sono allineati sulla medesima retta).</li>
+            </ul>
+
+            <h2>2. Confronto e Operazioni tra Segmenti</h2>
+            <p>
+                Il confronto tra due segmenti permette di stabilire se uno è maggiore, minore o congruente (uguale) rispetto all'altro, sovrapponendoli tramite un movimento rigido. Tra i segmenti si possono definire le seguenti operazioni algebriche geometriche:
+            </p>
+            <ul>
+                <li><strong>Somma:</strong> Dati due segmenti <code>AB</code> e <code>CD</code>, la loro somma è il segmento ottenuto disponendoli in modo consecutivo (e adiacente se posti sulla stessa retta).</li>
+                <li><strong>Differenza:</strong> Dati due segmenti con <code>AB &gt; CD</code>, la differenza è quel segmento che, aggiunto a <code>CD</code>, ricostruisce <code>AB</code>.</li>
+                <li><strong>Punto Medio:</strong> È quel punto che divide un segmento in due parti perfettamente congruenti (uguali).</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule e Relazioni Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Se <code>M</code> è il punto medio di <code>AB</code>, allora <code>AM = MB = AB / 2</code>.<br>
+                    • La somma di due segmenti <code>AB + BC</code> aventi <code>B</code> in comune ed allineati genera il segmento totale <code>AC</code>.<br>
+                    • Due segmenti si dicono <strong>congruenti</strong> (<code>AB &cong; CD</code>) se hanno la stessa lunghezza.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un segmento <code>AB</code> misura <code>18 cm</code>. Trova la misura del segmento <code>AM</code> sapendo che <code>M</code> è il suo punto medio.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo la definizione di punto medio: esso divide il segmento in due parti uguali.</li>
+                    <li>Impostiamo la relazione algebrica: <code>AM = AB / 2</code>.</li>
+                    <li>Sostituiamo il valore numerico dato: <code>AM = 18 cm / 2 = 9 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: AM = 9 cm</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Segmenti, Confronti e Operazioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici sulla somma, differenza, punti medi e rapporti tra segmenti consecutivi e adiacenti.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let val1 = (i % 10) + 4;
+                    let val2 = (i % 7) + 3;
+                    let somma = val1 + val2;
+                    domanda = `Due segmenti adiacenti <code>AB</code> e <code>BC</code> misurano rispettivamente <code>${val1} cm</code> e <code>${val2} cm</code>. Calcola la lunghezza del segmento totale <code>AC</code>.`;
+                    risposta = `<strong>AC = ${somma} cm</strong>`;
+                    spiegazione = `
+                    1) I segmenti sono adiacenti, quindi appartengono alla stessa retta e condividono l'estremo <code>B</code>.<br>
+                    2) La misura del segmento somma <code>AC</code> si ottiene sommando le singole lunghezze: <code>AC = AB + BC</code>.<br>
+                    3) Sostituendo i dati numerici: <code>${val1} cm + ${val2} cm = ${somma} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let abVal = ((i % 6) + 3) * 4;
+                    domanda = `Il segmento <code>AB</code> misura <code>${abVal} cm</code> ed è diviso in due parti uguali dal punto medio <code>M</code>. Calcola la misura di <code>AM</code> e stabilisci se <code>AM</code> e <code>MB</code> sono adiacenti.`;
+                    let meta = abVal / 2;
+                    risposta = `<strong>AM = ${meta} cm, MB = ${meta} cm (sono consecutivi ma non adiacenti se considerati come parti distinte in un unico segmento giacente, formano l'intero AB)</strong>`;
+                    spiegazione = `
+                    1) Per definizione, il punto medio divide il segmento in parti congruenti: <code>AM = MB = AB / 2</code>.<br>
+                    2) Eseguiamo il calcolo: <code>${abVal} cm / 2 = ${meta} cm</code>.<br>
+                    3) I due segmenti <code>AM</code> e <code>MB</code> hanno in comune l'estremo <code>M</code> e giacciono sulla stessa retta, ricostruendo l'intero segmento <code>AB</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let totVal = ((i % 5) + 4) * 6;
+                    let fattore = (i % 2) === 0 ? 2 : 3;
+                    domanda = `La somma di due segmenti <code>AB</code> e <code>CD</code> è <code>${totVal} cm</code> e <code>AB</code> è il triplo di <code>CD</code> (<code>AB = 3CD</code>). Calcola la lunghezza di entrambi i segmenti.`;
+                    let cdVal = totVal / 4;
+                    let abValDiff = cdVal * 3;
+                    risposta = `<strong>CD = ${cdVal} cm, &nbsp; AB = ${abValDiff} cm</strong>`;
+                    spiegazione = `
+                    1) Rappresentiamo i segmenti in unità frazionarie: <code>CD</code> è 1 unità, <code>AB</code> è 3 unità.<br>
+                    2) Il totale è composto da <code>1 + 3 = 4</code> unità uguali pari a <code>${totVal} cm</code>.<br>
+                    3) Valore di 1 unità (<code>CD</code>): <code>${totVal} / 4 = ${cdVal} cm</code>. Di conseguenza <code>AB = 3 &middot; ${cdVal} = ${abValDiff} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

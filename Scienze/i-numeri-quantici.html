@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I numeri quantici: Principale, Secondario, Magnetico e di Spin - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I numeri quantici - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive (Design coerente con Chimica) -->
+    <style>
+        body[data-materia="Chimica"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #15803d;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #15803d;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #16a34a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Stile Tabelle Didattiche */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #bbf7d0;
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: #f0fdf4;
+            color: #15803d;
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Stile Contenitore Disegno / Schema Visivo SVG */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 100%);
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #15803d;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            background: #f0fdf4;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #bbf7d0;
+            transition: all 0.2s;
+        }
+
+        .btn-torna-indietro:hover {
+            background: #dcfce7;
+        }
+
+        .badge-anno-materia {
+            background-color: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #0ad41f;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="i-numeri-quantici" data-materia="Chimica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-registrati">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia" style="display: inline-block; margin-bottom: 0.6rem;">Chimica / Struttura della Materia / L'Atomo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top:0; margin-bottom: 0.5rem;">I numeri quantici</h1>
+                <p style="color: #64748b; margin-bottom: 0; font-size: 1.05rem;">
+                    Principi e caratteristiche dei quattro numeri quantici che definiscono lo stato energetico e spaziale degli elettroni.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione ai numeri quantici</h2>
+            <p>
+                In base al modello quantomeccanico dell'atomo, lo stato di un elettrone all'interno di un orbitali atomico viene descritto univocamente da <strongZ>quattro parametri</strongZ> chiamati <strongZ>numeri quantici</strongZ>. Essi derivano dalla risoluzione dell'equazione d'onda di Schrödinger e specificano l'energia, la forma, l'orientamento spaziale dell'orbitale e il senso di rotazione dell'elettrone.
+            </p>
+
+            <h2>2. I quattro numeri quantici</h2>
+            <p>
+                Analizziamo nel dettaglio ciascuno dei quattro numeri quantici:
+            </p>
+
+            <h3>A. Numero quantico principale ($n$)</h3>
+            <p>
+                Il <strongZ>numero quantico principale ($n$)</strongZ> indica il <strongZ>livello energetico principale</strongZ> (o guscio) in cui si trova l'elettrone e definisce principalmente le dimensioni dell'orbitale e la sua distanza media dal nucleo. 
+            </p>
+            <ul>
+                <li><strongZ>Valori ammessi:</strongZ> Numeri interi positivi ($n = 1, 2, 3, 4, \dots$).</li>
+                <li>All'aumentare di $n$, aumenta l'energia dell'elettrone e la sua distanza dal nucleo.</li>
+            </ul>
+
+            <h3>B. Numero quantico secondario o azimutale ($l$)</h3>
+            <p>
+                Il <strongZ>numero quantico secondario ($l$)</strongZ> descrive la <strongZ>forma geometrica dell'orbitale</strongZ> (o sottolivello). 
+            </p>
+            <ul>
+                <li><strongZ>Valori ammessi:</strongZ> Numeri interi da $0$ a $(n - 1)$ per ciascun valore di $n$.</li>
+                <li>A ciascun valore di $l$ corrisponde una lettera identificativa del sottolivello:
+                    <ul style="margin-top: 0.4rem;">
+                        <li>$l = 0 \rightarrow$ sottolivello <strongZ>s</strongZ> (forma sferica)</li>
+                        <li>$l = 1 \rightarrow$ sottolivello <strongZ>p</strongZ> (forma a globo bilobato)</li>
+                        <li>$l = 2 \rightarrow$ sottolivello <strongZ>d</strongZ> (forma complessa a quadrifoglio)</li>
+                        <li>$l = 3 \rightarrow$ sottolivello <strongZ>f</strongZ> (forme molto complesse)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>C. Numero quantico magnetico ($m_l$)</h3>
+            <p>
+                Il <strongZ>numero quantico magnetico ($m_l$)</strongZ> specifica l'<strongZ>orientamento spaziale dell'orbitale</strongZ> nello spazio tridimensionale quando l'atomo è immerso in un campo magnetico esterno.
+            </p>
+            <ul>
+                <li><strongZ>Valori ammessi:</strongZ> Tutti i numeri interi compresi tra $-l$ e $+l$, compreso lo zero ($-\dots, 0, \dots$).</li>
+                <li>Il numero totale di valori di $m_l$ per un dato $l$ indica quanti orbitali esistono in quel sottolivello (es. per $l = 1$, $m_l$ può essere $-1, 0, +1$, cioè 3 orbitali $p$).</li>
+            </ul>
+
+            <h3>D. Numero quantico di spin ($m_s$)</h3>
+            <p>
+                Il <strongZ>numero quantico di spin ($m_s$)</strongZ> non descrive l'orbitale, bensì la proprietà intrinseca dell'elettrone stesso: il suo <strongZ>senso di rotazione (spin)</strongZ> attorno al proprio asse.
+            </p>
+            <ul>
+                <li><strongZ>Valori ammessi:</strongZ> Solo due valori possibili, pari a <strongZ>$+\frac{1}{2}$</strongZ> (spesso rappresentato come spin up, $\uparrow$) e <strongZ>$-\frac{1}{2}$</strongZ> (spin down, $\downarrow$).</li>
+            </ul>
+
+            <!-- SCHEMA VISIVO RAPPRESENTATIVO SVG NUMERI QUANTICI -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="200" viewBox="0 0 550 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="550" height="200" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- n Box -->
+                    <g transform="translate(20, 20)">
+                        <rect width="115" height="155" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                        <text x="57" y="25" text-anchor="middle" font-family="Arial" font-size="13" fill="#15803d" font-weight="bold">Principale (n)</text>
+                        <text x="57" y="60" text-anchor="middle" font-family="Arial" font-size="20" fill="#16a34a">1, 2, 3...</text>
+                        <text x="57" y="105" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">Livello energetico</text>
+                        <text x="57" y="125" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">e dimensione</text>
+                    </g>
+
+                    <!-- l Box -->
+                    <g transform="translate(148, 20)">
+                        <rect width="115" height="155" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+                        <text x="57" y="25" text-anchor="middle" font-family="Arial" font-size="13" fill="#1d4ed8" font-weight="bold">Secondario (l)</text>
+                        <text x="57" y="60" text-anchor="middle" font-family="Arial" font-size="20" fill="#2563eb">0 a (n-1)</text>
+                        <text x="57" y="105" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">Forma orbitale</text>
+                        <text x="57" y="125" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">(s, p, d, f)</text>
+                    </g>
+
+                    <!-- ml Box -->
+                    <g transform="translate(276, 20)">
+                        <rect width="115" height="155" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                        <text x="57" y="25" text-anchor="middle" font-family="Arial" font-size="13" fill="#b45309" font-weight="bold">Magnetico (ml)</text>
+                        <text x="57" y="60" text-anchor="middle" font-family="Arial" font-size="20" fill="#d97706">-l a +l</text>
+                        <text x="57" y="105" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">Orientamento</text>
+                        <text x="57" y="125" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">spaziale</text>
+                    </g>
+
+                    <!-- ms Box -->
+                    <g transform="translate(404, 20)">
+                        <rect width="115" height="155" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+                        <text x="57" y="25" text-anchor="middle" font-family="Arial" font-size="13" fill="#7e22ce" font-weight="bold">Spin (ms)</text>
+                        <text x="57" y="60" text-anchor="middle" font-family="Arial" font-size="18" fill="#9333ea">± 1/2</text>
+                        <text x="57" y="105" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">Rotazione</text>
+                        <text x="57" y="125" text-anchor="middle" font-family="Arial" font-size="11" fill="#334155">intrinseca</text>
+                    </g>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Schema riassuntivo dei quattro numeri quantici, dei loro intervalli di valori e del significato fisico associato.
+                </div>
+            </div>
+
+            <h2>3. Tabella riassuntiva dei parametri quantici</h2>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Nome del Numero Quantico</th>
+                        <th>Simbolo</th>
+                        <th>Significato Fisico</th>
+                        <th>Valori Possibili</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Principale</td>
+                        <td>$n$</td>
+                        <td>Livello energetico e dimensione</td>
+                        <td>Interi positivi ($1, 2, 3, \dots$)</td>
+                    </tr>
+                    <tr>
+                        <td>Secondario (Azimutale)</td>
+                        <td>$l$</td>
+                        <td>Forma del sottolivello ($s, p, d, f$)</td>
+                        <td>Da $0$ a $(n - 1)$</td>
+                    </tr>
+                    <tr>
+                        <td>Magnetico</td>
+                        <td>$m_l$</td>
+                        <td>Orientamento spaziale dell'orbitale</td>
+                        <td>Da $-l$ a $+l$ (passando per $0$)</td>
+                    </tr>
+                    <tr>
+                        <td>Di Spin</td>
+                        <td>$m_s$</td>
+                        <td>Direzione di rotazione dell'elettrone</td>
+                        <td>$+\frac{1}{2}$ oppure $-\frac{1}{2}$</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- APPROFONDIMENTO DIDATTICO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #15803d; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Il principio di esclusione di Pauli</h3>
+                <p style="margin-bottom: 0;">
+                    Un'importante conseguenza dei numeri quantici è il <strongZ>principio di esclusione di Pauli</strongZ>, secondo il quale in un atomo non possono coesistere due elettroni con la stessa <strongZ>quaterna identica</strongZ> di numeri quantici ($n, l, m_l, m_s$). Poiché i primi tre definiscono l'orbitale, in ogni orbitale possono risiedere al massimo due elettroni, i quali devono necessariamente possedere <strongZ>spin opposto</strongZ>.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

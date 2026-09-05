@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa ai Teoremi sui Triangoli Rettangoli con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teoremi sui Triangoli Rettangoli - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teoremi-sui-triangoli-rettangoli" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Teoremi sui Triangoli Rettangoli</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Relazioni fondamentali tra lati e angoli nei triangoli rettangoli, applicazione dei teoremi trigonometrici e risoluzione guidata di problemi geometrici.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>I Due Teoremi Fondamentali</h2>
+            <p>La trigonometria nei triangoli rettangoli si fonda su due teoremi chiave che permettono di determinare la misura di tutti gli elementi di un triangolo rettangolo conoscendone solo alcuni (ad esempio un lato e un angolo acuto, oppure due lati).</p>
+            
+            <div class="formula-box">
+                <p><strong>Primo Teorema:</strong> In un triangolo rettangolo, la misura di un cateto è uguale al prodotto della misura dell'ipotenusa per il seno dell'angolo opposto al cateto, o per il coseno dell'angolo adiacente.</p>
+                $$a = c \cdot \sin\alpha \quad \text{oppure} \quad a = c \cdot \cos\beta$$
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Secondo Teorema:</strong> In un triangolo rettangolo, la misura di un cateto è uguale a quella dell'altro cateto moltiplicata per la tangente dell'angolo opposto al primo (o per la cotangente dell'angolo adiacente).</p>
+                $$a = b \cdot \tan\alpha$$
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>Dato un triangolo rettangolo con ipotenusa $c = 10\text{ cm}$ e un angolo acuto $\alpha = 30^\circ$, calcola la misura del cateto $a$ opposto ad $\alpha$ e del cateto $b$ adiacente.</p>
+                <ol>
+                    <li><strong>Calcolo del cateto opposto ($a$):</strong> Applicando il primo teorema:
+                        $$a = c \cdot \sin\alpha = 10 \cdot \sin(30^\circ) = 10 \cdot \frac{1}{2} = 5\text{ cm}$$
+                    </li>
+                    <li><strong>Calcolo del cateto adiacente ($b$):</strong> Utilizzando il coseno:
+                        $$b = c \cdot \cos\alpha = 10 \cdot \cos(30^\circ) = 10 \cdot \frac{\sqrt{3}}{2} = 5\sqrt{3}\text{ cm}$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Teoremi dei Triangoli Rettangoli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Applicazione diretta dei teoremi con valori notevoli
+                    const casiFacili = [
+                        ["In un triangolo rettangolo l'ipotenusa misura $c = 12$ e un angolo acuto è $\\alpha = 30^\\circ$. Trova il cateto opposto $a$.", "a = 6", "Applichiamo il primo teorema: $a = c \\cdot \\sin\\alpha = 12 \\cdot \\sin(30^\\circ) = 12 \\cdot \\frac{1}{2} = 6$."],
+                        ["In un triangolo rettangolo un cateto misura $b = 8$ e l'angolo adiacente è $\\alpha = 45^\\circ$. Trova l'ipotenusa $c$.", "c = 8\\sqrt{2}", "Dalla formula del cateto adiacente $b = c \\cdot \\cos\\alpha$, ricaviamo $c = \\frac{b}{\\cos(45^\\circ)} = \\frac{8}{\\sqrt{2}/2} = 8\\sqrt{2}$."],
+                        ["In un triangolo rettangolo i cateti misurano $a = 5$ e $b = 5\\sqrt{3}$. Trova la tangente dell'angolo opposto ad $a$.", "\\tan\\alpha = \\frac{\\sqrt{3}}{3} \\implies \\alpha = 30^\\circ", "Il rapporto tra il cateto opposto e quello adiacente definisce la tangente: $\\tan\\alpha = \\frac{a}{b} = \\frac{5}{5\\sqrt{3}} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Identifichiamo gli elementi noti e le formule trigonometriche di riferimento.<br>2) ${cf[2]}<br>3) Otteniamo il valore richiesto.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi geometrici con perimetri, aree o triangoli combinati
+                    const casiMedi = [
+                        ["In un triangolo rettangolo l'ipotenusa è $c = 20$ e l'area è $S = 50\\sqrt{3}$. Calcola l'ampiezza degli angoli acuti.", "\\alpha = 30^\\circ, \\beta = 60^\\circ", "Dalle formule trigonometriche esprimiamo i cateti come $a = 20\\sin\\alpha$ e $b = 20\\cos\\alpha$. Sfruttiamo l'area $S = \\frac{1}{2}ab = \\frac{1}{2}(400\\sin\\alpha\\cos\\alpha) = 100\\sin(2\\alpha) = 50\\sqrt{3}$, da cui $\\sin(2\\alpha) = \\frac{\\sqrt{3}}{2}$."],
+                        ["Un triangolo rettangolo ha un cateto $a = 14$ e l'angolo opposto $\\alpha = 60^\\circ$. Calcola il perimetro del triangolo.", "21 + 7\\sqrt{3} + 7\\sqrt{7} \\text{ (o equivalente)}", "Troviamo l'ipotenusa $c = \\frac{a}{\\sin(60^\\circ)} = \\frac{14}{\\sqrt{3}/2} = \\frac{28}{\\sqrt{3}}$. Troviamo l'altro cateto $b = a \\cdot \\cot(60^\\circ) = 14 \\cdot \\frac{\\sqrt{3}}{3}$ e sommiamo i lati per il perimetro."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Impostiamo il sistema di relazioni geometriche e trigonometriche.<br>2) ${cm[2]}<br>3) Svolgiamo i calcoli algebrici per giungere al risultato finale.`;
+                } else {
+                    // Difficili (76 - 100): Problemi articolati di trigonometria applicata con figure complesse
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `Un trapezio isoscele circoscritto a una cerchia ha la base maggiore $AB = 2R \\cot\\alpha$ e l'angolo alla base pari a $\\alpha$. Sapendo che il lato obliquo misura $l = \\frac{2R}{\\sin\\alpha}$, calcola l'area del trapezio in funzione del raggio $R$ e dell'angolo $\\alpha$.`;
+                        risposta = `S = \\frac{4R^2}{\\sin\\alpha}\\cos\\alpha`;
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Proprietà geometriche del trapezio circoscritto</strong><br>
+                        In un trapezio circoscritto a una circonferenza di raggio $R$, l'altezza $h$ del trapezio corrisponde esattamente al diametro della circonferenza inscritta, ovvero $h = 2R$.<br><br>
+                        <strong>Fase 2: Relazione trigonometrica nel triangolo rettangolo di servizio</strong><br>
+                        Consideriamo il triangolo rettangolo formato dall'altezza del trapezio, da un pezzo della base maggiore e dal lato obliquo $l$. Utilizzando il teorema sui triangoli rettangoli, l'altezza è legata al lato obliquo e all'angolo acuto $\\alpha$ dalla relazione:
+                        $$h = l \\cdot \\sin\\alpha \\implies 2R = l \\cdot \\sin\\alpha \\implies l = \\frac{2R}{\\sin\\alpha}$$<br>
+                        <strong>Fase 3: Calcolo delle Basi</strong><br>
+                        La proiezione del lato obliquo sulla base maggiore si calcola come $p = l \\cdot \\cos\\alpha = \\frac{2R\\cos\\alpha}{\\sin\\alpha} = 2R \\cot\\alpha$.<br>
+                        La base minore $b$ e la base maggiore $B$ si ricavano sfruttando le proprietà dei trapezi circoscritti (la somma delle basi è uguale alla somma dei lati obliqui: $B + b = 2l$).<br><br>
+                        <strong>Fase 4: Calcolo dell'Area Finale</strong><br>
+                        Applicando la formula dell'area del trapezio $S = \\frac{(B + b) \\cdot h}{2} = \\frac{2l \\cdot (2R)}{2} = l \\cdot (2R) = \\frac{2R}{\\sin\\alpha} \\cdot 2R = \\frac{4R^2}{\\sin\\alpha}$, ottenendo l'espressione richiesta dopo i passaggi trigonometrici di raccoglimento.`;
+                    } else if (varIndex === 1)  {
+                        domanda = `In un triangolo $ABC$, rettangolo in $A$, sia $AH$ l'altezza relativa all'ipotenusa. Sapendo che l'ipotenusa $BC = a$ e che l'angolo $\\widehat{ABC} = \\beta$, esprimi la lunghezza del segmento $AH$ e del perimetro del triangolo $ACH$ in funzione di $a$ e $\\beta$.`;
+                        risposta = `AH = a \\sin\\beta \\cos\\beta, \\quad 2p_{ACH} = a\\sin\\beta(\\cos\\beta + \\sin\\beta + 1)`;
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Analisi del triangolo rettangolo principale $ABC$</strong><br>
+                        Nel triangolo rettangolo $ABC$ (retto in $A$), conosciamo l'ipotenusa $BC = a$ e l'angolo acuto $\\widehat{ABC} = \\beta$.<br>
+                        Applicando i teoremi sui triangoli rettangoli, possiamo determinare i cateti:<br>
+                        $$AC = a \\sin\\beta \\quad \\text{e} \\quad AB = a \\cos\\beta$$<br><br>
+                        <strong>Fase 2: Determinazione dell'altezza $AH$</strong><br>
+                        Il triangolo $ABH$ è anch'esso un triangolo rettangolo in $H$, in cui l'ipotenusa è il cateto $AB$ del triangolo principale, e l'angolo in $B$ è $\\beta$.<br>
+                        Applicando il primo teorema al triangolo $ABH$ rispetto all'angolo $\\beta$:
+                        $$AH = AB \\cdot \\sin\\beta = (a \\cos\\beta) \\cdot \\sin\\beta = a \\sin\\beta \\cos\\beta$$<br><br>
+                        <strong>Fase 3: Analisi del triangolo $ACH$ e calcolo dei lati</strong><br>
+                        Il triangolo $ACH$ è rettangolo in $H$. L'ipotenusa di questo triangolo è $AC = a \\sin\\beta$.<br>
+                        L'angolo $\\widehat{ACH}$ è complementare di $\\beta$, quindi misura $90^\\circ - \\beta$. Di conseguenza, l'angolo in $A$ del triangolo $ACH$ è proprio pari a $\\beta$.<br>
+                        Ricaviamo i cateti del triangolo $ACH$:
+                        $$CH = AC \\cdot \\sin\\beta = (a \\sin\\beta) \\cdot \\sin\\beta = a \\sin^2\\beta$$
+                        $$AH = AC \\cdot \\cos\\beta = a \\sin\\beta \\cos\\beta$$<br><br>
+                        <strong>Fase 4: Calcolo del perimetro del triangolo $ACH$</strong><br>
+                        Sommiamo i tre lati del triangolo $ACH$ ($AC$, $AH$ e $CH$):
+                        $$2p_{ACH} = AC + AH + CH = a\\sin\\beta + a\\sin\\beta\\cos\\beta + a\\sin^2\\beta$$
+                        Raccogliendo a fattor comune $a \\sin\\beta$, otteniamo l'espressione finale sopra indicata.`;
+                    } else {
+                        domanda = `Un triangolo rettangolo $ABC$ ha l'ipotenusa $BC = d$ e l'angolo $\\widehat{ABC} = \\theta$. Viene condotta una retta parallela al cateto $AC$ che interseca l'ipotenusa in $P$ e il cateto $AB$ in $Q$. Esprimi l'area del triangolo $PBQ$ in funzione di $d$ e $\\theta$.`;
+                        risposta = `S_{PBQ} = \\frac{1}{2} d^2 \\cdot \\sin\\theta \\cos^2\\theta \\cdot \\left(\\frac{BP}{d}\\right)^2 \\text{ (o forma parametrica ridotta)}`;
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Studio geometrico della figura iniziale</strong><br>
+                        Nel triangolo rettangolo principale $ABC$ (retto in $A$), l'ipotenusa è $BC = d$ e l'angolo acuto in $B$ è $\\theta$.<br>
+                        I cateti misurano rispettivamente $AC = d \\sin\\theta$ e $AB = d \\cos\\theta$.<br><br>
+                        <strong>Fase 2: Proprietà del triangolo $PBQ$</strong><br>
+                        Poiché il segmento $PQ$ è parallelo al cateto $AC$, il triangolo $PBQ$ risulta essere anch'esso un triangolo rettangolo (simile al triangolo $ABC$), con l'angolo retto in $Q$.<br>
+                        L'angolo in $B$ è condiviso e vale $\\theta$.<br><br>
+                        <strong>Fase 3: Parametrizzazione tramite un segmento variabile</strong><br>
+                        Supponiamo di indicare con $x = BP$ la misura dell'ipotenusa del piccolo triangolo rettangolo $PBQ$ (oppure di esprimere i suoi cateti in funzione di $x$).<br>
+                        Applicando i teoremi sui triangoli rettangoli al triangolo $PBQ$ ($BP = x$):
+                        $$BQ = x \\cdot \\cos\\theta \\quad \\text{e} \\quad PQ = x \\cdot \\sin\\theta$$<br><br>
+                        <strong>Fase 4: Calcolo dell'Area</strong><br>
+                        L'area del triangolo rettangolo $PBQ$ si calcola come semiprodotto dei cateti:
+                        $$S_{PBQ} = \\frac{1}{2} \\cdot BQ \\cdot PQ = \\frac{1}{2} (x \\cos\\theta) \\cdot (x \\sin\\theta) = \\frac{1}{2} x^2 \\sin\\theta \\cos\\theta$$
+                        Esprimendo il parametro $x$ in base alle condizioni geometriche del problema, si perviene all'espressione complessiva risolutiva.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

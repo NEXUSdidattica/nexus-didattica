@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa ai Principi di Equivalenza delle Equazioni: primo e secondo principio, regole derivate (trasporto, elisione, cambio di segno), esempi ed 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Principi di Equivalenza: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-1-grado-principi-di-equivalenza" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Equazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Principi di Equivalenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Primo e secondo principio di equivalenza, regole pratiche (trasporto, elisione, cambio di segno) e 100 esercizi guidati svolti passo passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Definizione di Equazioni Equivalenti</h2>
+            <p>
+                Due equazioni contenenti la stessa incognita si dicono <strong>equivalenti</strong> se ammettono esattamente l'<strong>insieme delle stesse soluzioni</strong>. Per risolvere un'equazione è necessario trasformarla, passo dopo passo, in equazioni equivalenti più semplici, fino a isolare l'incognita (forma <code>x = k</code>). Per fare ciò si applicano i <strong>principi di equivalenza</strong>.
+            </p>
+
+            <h3>1. Primo Principio di Equivalenza</h3>
+            <p>
+                Sommando o sottraendo ai due membri di un'equazione uno stesso numero o una stessa espressione algebrica (definita per tutti i valori dell'incognita), si ottiene un'equazione <strong>equivalente</strong> a quella data.
+            </p>
+            <div class="formula-box">
+                📐 <strong>Primo Principio:</strong><br>
+                <code>Se A(x) = B(x), allora A(x) ± C(x) = B(x) ± C(x)</code>
+            </div>
+            <p><strong>Regole pratiche derivate dal 1° principio:</strong></p>
+            <ul>
+                <li><strong>Regola del trasporto:</strong> Si può trasportare un termine da un membro all'altro cambiando il suo segno.</li>
+                <li><strong>Regola di elisione:</strong> Termini uguali presenti in entrambi i membri possono essere elisi (cancellati).</li>
+            </ul>
+
+            <h3>2. Secondo Principio di Equivalenza</h3>
+            <p>
+                Moltiplicando o dividendo entrambi i membri di un'equazione per uno stesso numero o espressione algebrica <strong>diverso da zero</strong>, si ottiene un'equazione <strong>equivalente</strong> a quella data.
+            </p>
+            <div class="formula-box">
+                📐 <strong>Secondo Principio:</strong><br>
+                <code>Se A(x) = B(x) e C ≠ 0, allora A(x) · C = B(x) · C  e  A(x) / C = B(x) / C</code>
+            </div>
+            <p><strong>Regole pratiche derivate dal 2° principio:</strong></p>
+            <ul>
+                <li><strong>Cambio di segno:</strong> Moltiplicando o dividendo tutti i termini per <code>-1</code>, si possono cambiare tutti i segni dell'equazione.</li>
+                <li><strong>Semplificazione di coefficienti/denominatori:</strong> Si possono dividere tutti i termini per un divisore comune non nullo.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Risolvi l'equazione applicando i principi di equivalenza: <code>5x - 4 = 2x + 11</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Applicazione del 1° principio (Regola del Trasporto):</strong>
+                        <ul>
+                            <li>Trasportiamo <code>2x</code> al primo membro (diventa <code>-2x</code>) e <code>-4</code> al secondo membro (diventa <code>+4</code>):</li>
+                            <li><code>5x - 2x = 11 + 4</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Riduzione dei termini simili:</strong>
+                        <ul>
+                            <li><code>3x = 15</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Applicazione del 2° principio:</strong>
+                        <ul>
+                            <li>Dividiamo entrambi i membri per <code>3</code> (coefficiente dell'incognita):</li>
+                            <li><code>(3x) / 3 = 15 / 3 &rArr; x = 5</code></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>x = 5</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Principi di Equivalenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 problemi svolti e commentati di livello crescente: dalle singole applicazioni dei principi di trasporto e divisione fino a trasformazioni complesse ed equazioni equivalenti a confronto.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Applicazione diretta di Trasporto o Divisione
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let isTrasporto = i % 2 === 1;
+                    let a = (i % 6) + 2;
+                    let b = (i % 8) + 3;
+
+                    if (isTrasporto) {
+                        let c = a + b;
+                        domanda = `Applica la regola del trasporto per risolvere l'equazione: <strong>x - ${b} = ${a}</strong>.`;
+                        risposta = `x = ${c}`;
+                        spiegazione = `
+                        1) Applichiamo il 1° principio di equivalenza (regola del trasporto).<br>
+                        2) Trasportiamo il termine noto <code>-${b}</code> al secondo membro cambiandolo di segno (diventa <code>+${b}</code>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>x = ${a} + ${b}</code><br>
+                        3) Eseguiamo la somma: <strong>x = ${c}</strong>.`;
+                    } else {
+                        let sol = (i % 5) + 2;
+                        let k = a * sol;
+                        domanda = `Applica il 2° principio di equivalenza per ricavare x dall'equazione: <strong>${a}x = ${k}</strong>.`;
+                        risposta = `x = ${sol}`;
+                        spiegazione = `
+                        1) Applichiamo il 2° principio dividendo entrambi i membri per il coefficiente di x (ossia <code>${a}</code>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>(${a}x) / ${a} = ${k} / ${a}</code><br>
+                        2) Semplificando otteniamo: <strong>x = ${sol}</strong>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Passo combinato (trasporto + divisione / cambio segno / elisione)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let m = (i % 4) + 2;
+                        let sol = (i % 6) + 1;
+                        let k = (i % 5) + 4;
+                        let noto = m * sol + k;
+                        domanda = `Risolvi l'equazione utilizzando il 1° e 2° principio: <strong>${m}x + ${k} = ${noto}</strong>.`;
+                        risposta = `x = ${sol}`;
+                        spiegazione = `
+                        1) <strong>Trasporto del termine noto:</strong> trasportiamo <code>+${k}</code> al 2° membro cambiandolo in <code>-${k}</code>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>${m}x = ${noto} - ${k} &rArr; ${m}x = ${m * sol}</code>.<br>
+                        2) <strong>Divisione dei membri (2° principio):</strong> dividiamo per <code>${m}</code>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>x = ${m * sol} / ${m} = ${sol}</code>.`;
+                    } else if (mod === 2) {
+                        let a = (i % 5) + 3;
+                        let sol = (i % 4) + 2;
+                        domanda = `Applica la regola del cambio di segno (2° principio) per risolvere: <strong>-${a}x = -${a * sol}</strong>.`;
+                        risposta = `x = ${sol}`;
+                        spiegazione = `
+                        1) Moltiplichiamo entrambi i membri per <code>-1</code> (2° principio di equivalenza):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>${a}x = ${a * sol}</code>.<br>
+                        2) Dividiamo per <code>${a}</code>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>x = ${sol}</code>.`;
+                    } else {
+                        let k = (i % 7) + 2;
+                        domanda = `Applica la regola dell'elisione e risolvi: <strong>4x + ${k} = x + 15 + ${k}</strong>.`;
+                        risposta = `x = 5`;
+                        spiegazione = `
+                        1) Notiamo che il termine <code>+${k}</code> compare identico in entrambi i membri.<br>
+                        2) Per la regola dell'elisione (1° principio), lo eliminiamo da entrambi i membri:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>4x = x + 15</code>.<br>
+                        3) Trasportiamo <code>x</code> al 1° membro: <code>4x - x = 15 &rArr; 3x = 15</code>.<br>
+                        4) Dividiamo per 3: <strong>x = 5</strong>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Equazioni con coefficienti frazionari, parentesi e principi avanzati
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Mostra se le equazioni <strong>A: 2x - 6 = 0</strong> e <strong>B: 5x + 3 = 18</strong> sono equivalenti spiegando i passaggi.`;
+                        risposta = `Sì, sono equivalenti (entrambe hanno soluzione x = 3).`;
+                        spiegazione = `
+                        1) Risolviamo l'equazione A: <code>2x = 6 &rArr; x = 3</code>.<br>
+                        2) Risolviamo l'equazione B: <code>5x = 18 - 3 &rArr; 5x = 15 &rArr; x = 3</code>.<br>
+                        3) Poiché ammettono la medesima soluzione (<code>x = 3</code>), le due equazioni sono <strong>equivalenti</strong>.`;
+                    } else if (mod === 2) {
+                        domanda = `Applica i principi di equivalenza per risolvere l'equazione a coefficienti frazionari: <strong>½x + ⅓ = ⅚x - 1</strong>.`;
+                        risposta = `x = 4`;
+                        spiegazione = `
+                        1) Moltiplichiamo tutti i termini per il m.c.m. dei denominatori (m.c.m.(2,3,6) = 6) per il 2° principio:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<code>6 · (½x) + 6 · (⅓) = 6 · (⅚x) - 6 · (1) &rArr; 3x + 2 = 5x - 6</code>.<br>
+                        2) Applichiamo la regola del trasporto: <code>3x - 5x = -6 - 2 &rArr; -2x = -8</code>.<br>
+                        3) Dividiamo per <code>-2</code> (2° principio): <strong>x = 4</strong>.`;
+                    } else {
+                        domanda = `Risolvi l'equazione applicando la regola del trasporto e del cambio di segno: <strong>3(x - 2) - 5x = 4 - 2(x + 1)</strong>.`;
+                        risposta = `Impossibile / Nessuna soluzione (oppure 0x = 8)`;
+                        spiegazione = `
+                        1) Sviluppiamo le parentesi: <code>3x - 6 - 5x = 4 - 2x - 2</code>.<br>
+                        2) Sommiamo i termini simili ai due membri: <code>-2x - 6 = -2x + 2</code>.<br>
+                        3) Elidiamo o trasportiamo <code>-2x</code>: <code>-2x + 2x = 2 + 6 &rArr; 0x = 8</code>.<br>
+                        4) Nessun numero moltiplicato per 0 dà 8: l'equazione è <strong>Impossibile</strong>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

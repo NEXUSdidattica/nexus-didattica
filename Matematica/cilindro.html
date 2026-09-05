@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Solidi di Rotazione - Sezione 1: Il Cilindro - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Cilindro - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Solidi di Rotazione */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="solidi-rotazione-sezione-1" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Solidi di Rotazione - Sezione 1</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Cilindro</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione geometrica, genesi per rotazione, formule di superficie e volume del cilindro circolare retto, corredate da 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è un Cilindro e come si genera?</h2>
+            <p>
+                Un <strong>cilindro circolare retto</strong> (chiamato comunemente cilindro) è un solido di rotazione generato dalla rotazione completa di un <code>rettangolo</code> attorno a uno dei suoi lati. Il lato attorno a cui avviene la rotazione costituisce l'altezza del cilindro, mentre il lato adiacente descrive il raggio delle basi.
+            </p>
+            <p>
+                Gli elementi principali del cilindro sono:
+            </p>
+            <ul>
+                <li><strong>Basi (A<sub>b</sub>):</strong> due cerchi congruenti e paralleli (base superiore e base inferiore) di raggio <em>r</em>.</li>
+                <li><strong>Superficie laterale (S<sub>L</sub>):</strong> la superficie curva che unisce le due basi.</li>
+                <li><strong>Altezza (h):</strong> la distanza tra i due piani delle basi (corrispondente al lato del rettangolo generatore).</li>
+                <li><strong>Asse:</strong> il segmento che congiunge i centri delle due basi.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Cilindro Circolare Retto) -->
+            <div class="figura-geometrica-container">
+                <svg width="460" height="320" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="460" height="320" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    <!-- Base inferiore -->
+                    <ellipse cx="230" cy="250" rx="90" ry="30" fill="#93c5fd" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <!-- Corpo cilindro -->
+                    <path d="M 140,70 L 140,250 A 90,30 0 0,0 320,250 L 320,70" fill="#dbeafe" stroke="none"/>
+                    <line x1="140" y1="70" x2="140" y2="250" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <line x1="320" y1="70" x2="320" y2="250" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <path d="M 140,70 A 90,30 0 0,1 320,70" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <path d="M 140,70 A 90,30 0 0,0 320,70" fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-dasharray="5,4"/>
+                    <!-- Raggio e Altezza -->
+                    <line x1="230" y1="250" x2="320" y2="250" stroke="#0284c7" stroke-width="2.5"/>
+                    <circle cx="230" cy="250" r="3.5" fill="#0284c7"/>
+                    <line x1="345" y1="70" x2="345" y2="250" stroke="#ea580c" stroke-width="2.5"/>
+                    <line x1="340" y1="70" x2="350" y2="70" stroke="#ea580c" stroke-width="2.5"/>
+                    <line x1="340" y1="250" x2="350" y2="250" stroke="#ea580c" stroke-width="2.5"/>
+                    <text x="260" y="275" fill="#0284c7" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Raggio (r)</text>
+                    <text x="355" y="165" fill="#ea580c" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Altezza (h)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Cilindro circolare retto con raggio di base <code style="color:#0284c7;">r</code> e altezza <code style="color:#ea580c;">h</code>.
+                </div>
+            </div>
+
+            <h2>2. Formule Fondamentali del Cilindro</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Principali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Area di una base (A<sub>b</sub>):</strong> A<sub>b</sub> = &pi; &middot; r<sup>2</sup><br>
+                    &bull; <strong>Circonferenza di base (C):</strong> C = 2 &middot; &pi; &middot; r<br>
+                    &bull; <strong>Superficie laterale (S<sub>L</sub>):</strong> S<sub>L</sub> = C &middot; h = 2 &middot; &pi; &middot; r &middot; h<br>
+                    &bull; <strong>Superficie totale (S<sub>T</sub>):</strong> S<sub>T</sub> = S<sub>L</sub> + 2 &middot; A<sub>b</sub> = 2 &middot; &pi; &middot; r &middot; h + 2 &middot; &pi; &middot; r<sup>2</sup><br>
+                    &bull; <strong>Volume (V):</strong> V = A<sub>b</sub> &middot; h = &pi; &middot; r<sup>2</sup> &middot; h<br>
+                    &bull; <strong>Formule inverse:</strong> h = V / A<sub>b</sub>, &nbsp; r = &radic;(V / (&pi; &middot; h))
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un cilindro circolare retto ha il raggio di base di <code>4 cm</code> e l'altezza di <code>10 cm</code>. Calcola l'area di base, la superficie laterale, la superficie totale e il volume del solido (esprimi i risultati in funzione di &pi;).</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Area di base: <code>A<sub>b</sub> = &pi; &middot; r<sup>2</sup> = &pi; &middot; 4<sup>2</sup> = 16&pi; cm<sup>2</sup></code>.</li>
+                    <li>Superficie laterale: <code>S<sub>L</sub> = 2 &middot; &pi; &middot; r &middot; h = 2 &middot; &pi; &middot; 4 &middot; 10 = 80&pi; cm<sup>2</sup></code>.</li>
+                    <li>Superficie totale: <code>S<sub>T</sub> = S<sub>L</sub> + 2 &middot; A<sub>b</sub> = 80&pi; + 2 &middot; 16&pi; = 80&pi; + 32&pi; = 112&pi; cm<sup>2</sup></code>.</li>
+                    <li>Volume: <code>V = A<sub>b</sub> &middot; h = 16&pi; &middot; 10 = 160&pi; cm<sup>3</sup></code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: A<sub>b</sub> = 16&pi; cm², S<sub>L</sub> = 80&pi; cm², S<sub>T</sub> = 112&pi; cm², V = 160&pi; cm³.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Cilindro</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico su superfici e volumi di cilindri circolari retti con soluzioni dettagliate passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let r = (i % 5) + 2; // Raggio tra 2 e 6
+                    let h = (i % 6) + 5; // Altezza tra 5 e 10
+                    let ab = r * r;
+                    let sl = 2 * r * h;
+                    let st = sl + (2 * ab);
+
+                    domanda = `Un cilindro ha il raggio di base di <code>${r} cm</code> e l'altezza di <code>${h} cm</code>. Calcola la superficie laterale e la superficie totale del solido (esprimi i risultati in funzione di &pi;).`;
+                    risposta = `<strong>S<sub>L</sub> = ${sl}&pi; cm²</strong>, <strong>S<sub>T</sub> = ${st}&pi; cm²</strong>`;
+                    spiegazione = `
+                    1) Area di base: <code>A<sub>b</sub> = &pi; &times; ${r}<sup>2</sup> = ${ab}&pi; cm<sup>2</sup></code>.<br>
+                    2) Superficie laterale: <code>S<sub>L</sub> = 2 &times; &pi; &times; ${r} &times; ${h} = ${sl}&pi; cm<sup>2</sup></code>.<br>
+                    3) Superficie totale: <code>S<sub>T</sub> = S<sub>L</sub> + 2 &times; A<sub>b</sub> = ${sl}&pi; + 2 &times; ${ab}&pi; = ${st}&pi; cm<sup>2</sup></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let r = (i % 4) + 3;
+                    let h = (i % 7) + 6;
+                    let ab = r * r;
+                    let vol = ab * h;
+
+                    domanda = `Un cilindro circolare retto ha il raggio di base di <code>${r} cm</code> e l'altezza di <code>${h} cm</code>. Calcola l'area di base e il volume del solido (esprimi il volume in funzione di &pi;).`;
+                    risposta = `<strong>A<sub>b</sub> = ${ab}&pi; cm²</strong>, <strong>V = ${vol}&pi; cm³</strong>`;
+                    spiegazione = `
+                    1) Area di base: <code>A<sub>b</sub> = &pi; &times; ${r}<sup>2</sup> = ${ab}&pi; cm<sup>2</sup></code>.<br>
+                    2) Volume: <code>V = A<sub>b</sub> &times; h = ${ab}&pi; &times; ${h} = ${vol}&pi; cm<sup>3</sup></code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let volVal = ((i % 5) + 3) * 50; // Valore pulito per il volume
+                    let r = 5;
+                    let ab = 25;
+                    let hVal = (volVal / ab).toFixed(1);
+
+                    domanda = `Un cilindro ha il volume di <code>${volVal}&pi; cm³</code> e il raggio di base di <code>${r} cm</code>. Calcola la misura dell'altezza del cilindro.`;
+                    risposta = `<strong>h = ${hVal} cm</strong>`;
+                    spiegazione = `
+                    1) Calcoliamo l'area di base: <code>A<sub>b</sub> = &pi; &times; 5<sup>2</sup> = 25&pi; cm<sup>2</sup></code>.<br>
+                    2) Usiamo la formula inversa dell'altezza: <code>h = V / A<sub>b</sub> = ${volVal}&pi; / 25&pi; = ${hVal} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

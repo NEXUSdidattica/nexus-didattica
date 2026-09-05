@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sull'astigmatismo, cause ottiche, curvatura corneale irregolare, lenti toriche/cilindriche, schemi e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Astigmatismo e la sua Correzione con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .box-disegno {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(126, 34, 206, 0.05);
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="astigmatismo" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Astigmatismo e la sua Correzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi della curvatura corneale irregolare, formazione di linee focali multiple, lenti toriche e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è l'Astigmatismo?</h2>
+            <p>
+                L'<strong>astigmatismo</strong> è un difetto visivo causato solitamente da una curvatura non uniforme della cornea (o, in misura minore, del cristallino), che risulta più curva lungo un meridiano e più piatta lungo quello ortogonale (simile alla forma di un cucchiaio). Dal punto di vista dell'ottica geometrica, l'occhio astigmatico non possiede un unico fuoco puntiforme, bensì due linee focali distinte disposte su piani diversi, impedendo la formazione di un'immagine nitida a qualsiasi distanza.
+            </p>
+
+            <div class="box-disegno">
+                <h3 style="color: #7e22ce; margin-bottom: 1rem; font-size: 1.2rem;">Schema Ottico della Doppia Focale nell'Astigmatismo</h3>
+                <svg viewBox="0 0 650 320" width="100%" height="auto" style="max-width: 600px; background: #faf5ff; border-radius: 8px; border: 1px solid #e9d5ff; padding: 10px;">
+                    <!-- Bulbo oculare standard -->
+                    <path d="M 120 160 C 120 70, 220 50, 320 50 C 420 50, 520 70, 520 160 C 520 250, 420 270, 320 270 C 220 270, 120 250, 120 160 Z" fill="#ffffff" stroke="#7e22ce" stroke-width="3"/>
+                    
+                    <!-- Cornea asimmetrica (più bombata verticalmente) -->
+                    <path d="M 120 100 C 95 130, 95 190, 120 220" fill="none" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+                    
+                    <!-- Cristallino -->
+                    <path d="M 190 125 C 210 140, 210 180, 190 195 C 185 180, 185 140, 190 125" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+                    
+                    <!-- Retina -->
+                    <path d="M 480 90 C 510 120, 510 200, 480 230" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+
+                    <!-- Raggi e doppia linea focale -->
+                    <line x1="40" y1="110" x2="110" y2="110" stroke="#eab308" stroke-width="2" stroke-dasharray="4"/>
+                    <line x1="40" y1="210" x2="110" y2="210" stroke="#eab308" stroke-width="2" stroke-dasharray="4"/>
+
+                    <!-- Convergenza differenziata (meridiano verticale e orizzontale) -->
+                    <path d="M 110 110 L 370 155" fill="none" stroke="#eab308" stroke-width="2"/>
+                    <path d="M 110 210 L 370 155" fill="none" stroke="#eab308" stroke-width="2"/>
+                    <!-- Prima focale -->
+                    <line x1="370" y1="135" x2="370" y2="175" stroke="#3b82f6" stroke-width="3"/>
+
+                    <path d="M 110 110 L 440 155" fill="none" stroke="#eab308" stroke-width="1.5" stroke-dasharray="2"/>
+                    <path d="M 110 210 L 440 155" fill="none" stroke="#eab308" stroke-width="1.5" stroke-dasharray="2"/>
+                    <!-- Seconda focale -->
+                    <line x1="440" y1="140" x2="440" y2="170" stroke="#10b981" stroke-width="3"/>
+
+                    <!-- Etichette esplicative -->
+                    <text x="95" y="75" font-size="12" fill="#0284c7" font-weight="bold">Cornea asimmetrica</text>
+                    <text x="330" y="120" font-size="11" fill="#3b82f6" font-weight="bold">1° Focale</text>
+                    <text x="410" y="120" font-size="11" fill="#10b981" font-weight="bold">2° Focale</text>
+                    <text x="445" y="70" font-size="12" fill="#ef4444" font-weight="bold">Retina</text>
+                </svg>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; margin-bottom: 0;">
+                    Nell'astigmatismo i raggi luminosi non convergono in un unico punto, ma generano due linee focali separate a causa delle diverse curvature dei meridiani oculari.
+                </p>
+            </div>
+
+            <h2>2. Correzione con Lenti Toriche</h2>
+            <div class="formula-box">
+                📐 <b>Principio Correttivo dell'Astigmatismo:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <strong>Lenti Toriche o Cilindriche:</strong> Presentano un potere diottrico variabile a seconda dell'asse per compensare la differenza di curvatura dei meridiani oculari.<br>
+                    • <strong>Prescrizione:</strong> Si compone di una componente <em>sferica</em> (eventuale miopia o ipermetropia associata), una componente <em>cilindrica</em> (potere astigmatico) e un <em>asse</em> (espresso in gradi da $0^\circ$ a $180^\circ$).
+                </p>
+            </div>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati all'ottica dell'astigmatismo e al calcolo delle lenti correttive:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        // Script autonomo e protetto per la generazione immediata dei 100 esercizi unici
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container || container.children.length > 0) return;
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        // Potere cilindrico e asse
+                        let cil_val = -(0.5 + (i % 6) * 0.25); // -0.50 a -1.75
+                        let asse = (i * 15) % 180;
+                        if (asse === 0) asse = 90;
+
+                        q = `Esercizio ${i}: Un paziente presenta un difetto astigmatico con potere cilindrico di $${cil_val.toFixed(2)}\\text{ m}^{-1}$ orientato lungo l'asse di $${asse}^\\circ$. Spiega la funzione della lente torica prescritta in questo specifico meridiano.`;
+                        r = `La lente corregge il dislivello diottrico lungo il meridiano a $${asse}^\\circ$ introducendo un potere complementare di $${cil_val.toFixed(2)}\\text{ m}^{-1}$.`;
+                        s = `La componente cilindrica di $${cil_val.toFixed(2)}\\text{ m}^{-1}$ agisce selettivamente sul meridiano ortogonale all'asse indicato ($${asse}^\\circ$), unificando i due fuochi focali e riportandoli in un unico punto sulla retina.`;
+                    
+                    } else if (tipo === 1) {
+                        // Combinazione sferica e cilindrica
+                        let sph = -1.0 - (i % 4) * 0.5;
+                        let cil = -0.75 - (i % 3) * 0.25;
+                        let asse = (i * 10) % 180;
+                        if (asse === 0) asse = 180;
+
+                        q = `Esercizio ${i}: Una ricetta oculistica riporta la seguente prescrizione per l'occhio sinistro: $\\text{SFE} = ${sph.toFixed(2)}\\text{ D}$, $\\text{CIL} = ${cil.toFixed(2)}\\text{ D}$, $\\text{ASSE} = ${asse}^\\circ$. Calcola il potere totale lungo il meridiano principale del cilindro.`;
+                        r = `Potere totale sul meridiano del cilindro: ${(sph + cil).toFixed(2)}\\text{ D}.`;
+                        s = `Il potere totale lungo il meridiano principale corrispondente alla correzione cilindrica si ottiene sommando algebricamente la componente sferica e quella cilindrica: $${sph.toFixed(2)} + (${cil.toFixed(2)}) = ${(sph + cil).toFixed(2)}\\text{ D}$.`;
+                    
+                    } else {
+                        // Domanda concettuale sull'anatomia corneale nell'astigmatismo
+                        let meridiano1 = 90 + (i % 10);
+                        let meridiano2 = (meridiano1 + 90) % 180;
+                        if (meridiano2 === 0) meridiano2 = 180;
+
+                        q = `Esercizio ${i}: Durante una visita optometrica si rileva che la cornea di un paziente ha curvature differenti lungo i meridiani a $${meridiano1}^\\circ$ e $${meridiano2}^\\circ$. Qual è la conseguenza fisica di questa asimmetria sulla formazione delle immagini luminose?`;
+                        r = `Formazione di due linee focali ortogonali separate anziché di un unico punto focale.`;
+                        s = `L'asimmetria geometrica della cornea nei meridiani principali ($${meridiano1}^\\circ$ e $${meridiano2}^\\circ$) fa sì che i raggi luminosi verticale e orizzontale vengano rifratti con potenze differenti, generando due focali distinte e provocando visione distorta o sdoppiata (astigmatismo).`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

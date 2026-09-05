@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Quadrilateri - Sezione 3: I Rettangoli e le loro Proprietà - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Rettangoli e le loro Proprietà - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="quadrilateri-sezione-3" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Quadrilateri - Sezione 3</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">I Rettangoli e le loro Proprietà</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizioni, particolarità delle diagonali, formule metriche, legame con il teorema di Pitagora e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Proprietà Geometriche del Rettangolo</h2>
+            <p>
+                Un <strong>rettangolo</strong> è un parallelogramma particolare che possiede <em>quattro angoli interni retti</em> (ciascuno di <code>90&deg;</code>). Oltre alle proprietà comuni dei parallelogrammi (lati opposti paralleli e congruenti), il rettangolo gode di caratteristiche uniche:
+            </p>
+            <ul>
+                <li><strong>Angoli:</strong> Tutti e quattro gli angoli sono congruenti e retti.</li>
+                <li><strong>Diagonali:</strong> Le diagonali di un rettangolo sono <em>congruenti</em> (della stessa lunghezza) e si intersecano dividendosi reciprocamente a metà.</li>
+                <li><strong>Relazione con Pitagora:</strong> Tracciando una diagonale, il rettangolo viene diviso in due triangoli rettangoli identici, dove la diagonale rappresenta l'ipotenusa e le dimensioni (base e altezza) i cateti. Di conseguenza, vale la formula <code>d = &radic;(b&sup2; + h&sup2;)</code>.</li>
+            </ul>
+
+            <h2>2. Formule di Area, Perimetro e Diagonale</h2>
+            <p>
+                Le grandezze fondamentali del rettangolo si calcolano facilmente conoscendo le sue due dimensioni principali: la base <code>b</code> e l'altezza <code>h</code>.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule Fondamentali del Rettangolo:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Perimetro: <code>2p = 2 &times; (b + h)</code><br>
+                    • Area: <code>A = b &times; h</code><br>
+                    • Diagonale (Teorema di Pitagora): <code>d = &radic;(b&sup2; + h&sup2;)</code><br>
+                    • Formule inverse dimensioni: <code>b = A / h</code> oppure <code>h = A / b</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un rettangolo ha la base di <code>12 cm</code> e l'altezza di <code>9 cm</code>. Calcola la misura della sua diagonale.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Applichiamo il Teorema di Pitagora sfruttando le dimensioni come cateti: <code>d = &radic;(b&sup2; + h&sup2;)</code>.</li>
+                    <li>Eleviamo al quadrato base e altezza: <code>12&sup2; = 144</code> e <code>9&sup2; = 81</code>.</li>
+                    <li>Sommiamo i valori sotto radice: <code>144 + 81 = 225</code>.</li>
+                    <li>Estraiamo la radice quadrata: <code>&radic;225 = 15 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: La diagonale del rettangolo misura 15 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Rettangoli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di geometria su perimetri, aree, calcolo delle diagonali tramite Pitagora e formule inverse.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let bVal = (i % 7) + 10; // Tra 10 e 16
+                    let hVal = (i % 5) + 5;  // Tra 5 e 9
+                    let areaVal = bVal * hVal;
+                    domanda = `Un rettangolo ha la base di <code>${bVal} cm</code> e l'altezza di <code>${hVal} cm</code>. Calcola l'area del rettangolo.`;
+                    risposta = `<strong>${areaVal} cm&sup2;</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la formula dell'area: <code>A = b &times; h</code>.<br>
+                    2) Sostituiamo i valori: <code>${bVal} &times; ${hVal} = ${areaVal} cm&sup2;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let bM = (i % 6) + 12;
+                    let hM = (i % 4) + 8;
+                    let perimVal = 2 * (bM + hM);
+                    domanda = `Calcola il perimetro di un rettangolo avente la base di <code>${bM} cm</code> e l'altezza di <code>${hM} cm</code>.`;
+                    risposta = `<strong>${perimVal} cm</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula del perimetro: <code>2p = 2 &times; (b + h)</code>.<br>
+                    2) Sommiamo base e altezza: <code>${bM} + ${hM} = ${bM + hM} cm</code>.<br>
+                    3) Moltiplichiamo per 2: <code>2 &times; ${bM + hM} = ${perimVal} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    // Scelta di terne pitagoriche o valori con radice
+                    let cat1, cat2;
+                    if (i % 3 === 0) { cat1 = 9; cat2 = 12; }
+                    else if (i % 3 === 1) { cat1 = 8; cat2 = 15; }
+                    else { cat1 = 12; cat2 = 16; }
+
+                    let diagVal = Math.sqrt(cat1*cat1 + cat2*cat2).toFixed(1);
+                    domanda = `Un rettangolo ha le dimensioni di <code>${cat1} cm</code> e <code>${cat2} cm</code>. Calcola la lunghezza della sua diagonale.`;
+                    risposta = `<strong>${diagVal} cm</strong>`;
+                    spiegazione = `
+                    1) Applichiamo il Teorema di Pitagora: <code>d = &radic;(b&sup2; + h&sup2;)</code>.<br>
+                    2) Calcoliamo i quadrati: <code>${cat1}&sup2; = ${cat1*cat1}</code> e <code>${cat2}&sup2; = ${cat2*cat2}</code>.<br>
+                    3) Sommiamo ed estraiamo la radice: <code>&radic;(${cat1*cat1} + ${cat2*cat2}) = &radic;${cat1*cat1 + cat2*cat2} = ${diagVal} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

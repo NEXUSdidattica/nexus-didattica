@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 2: Quadrato di un trinomio - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Quadrato di un trinomio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polinomi-quadrato-di-trinomio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Prodotti Notevoli</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Quadrato di un trinomio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Regola fondamentale, sviluppo dei 3 quadrati e dei 3 doppi prodotti, gestione dei segni e delle frazioni, con 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Formula del Quadrato di Trinomio</h2>
+            <p>
+                Il quadrato di un trinomio è il prodotto notevole che permette di sviluppare la potenza seconda di un polinomio formato da tre termini. La regola generale afferma che il quadrato di un trinomio è uguale alla <strong>somma dei quadrati dei tre termini</strong> più i <strong>tre doppi prodotti</strong> di ciascun termine per gli altri due presi a coppie.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Formula generale:</strong> <code>(A + B + C)² = A² + B² + C² + 2AB + 2AC + 2BC</code>
+            </div>
+
+            <h2>2. Regole sui Segni e Passaggi Fondamentali</h2>
+            <p>
+                Quando si applica lo sviluppo del quadrato di un trinomio, bisogna fare attenzione a due aspetti principali:
+            </p>
+            <ul>
+                <li>I <strong>tre quadrati</strong> (<code>A²</code>, <code>B²</code> e <code>C²</code>) sono <strong>sempre positivi</strong>.</li>
+                <li>I <strong>tre doppi prodotti</strong> (<code>2AB</code>, <code>2AC</code>, <code>2BC</code>) assumono il segno positivo se i due termini considerati hanno lo stesso segno (concordi), e segno negativo se hanno segni opposti (discordi).</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Sviluppa il seguente quadrato di trinomio: <code>( 2x - y + 3z )²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>I tre quadrati:</strong>
+                        <br>• <code>(2x)² = 4x²</code>
+                        <br>• <code>(-y)² = +y²</code>
+                        <br>• <code>(3z)² = +9z²</code>
+                    </li>
+                    <li><strong>I tre doppi prodotti:</strong>
+                        <br>• 1° e 2° termine: <code>2 · (2x) · (-y) = -4xy</code>
+                        <br>• 1° e 3° termine: <code>2 · (2x) · (3z) = +12xz</code>
+                        <br>• 2° e 3° termine: <code>2 · (-y) · (3z) = -6yz</code>
+                    </li>
+                    <li>Uniamo tutti e 6 i termini ottenuti: <code>4x² + y² + 9z² - 4xy + 12xz - 6yz</code></li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 4x² + y² + 9z² - 4xy + 12xz - 6yz</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Quadrato di Trinomio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (coefficienti interi), medio (con frazioni e potenze) e difficile (espressioni combinate e scomposizioni).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 3) + 1;
+                    let b = (i % 2) + 1;
+                    let c = (i % 4) + 1;
+                    let sign1 = i % 2 === 0 ? '+' : '-';
+                    let sign2 = i % 3 === 0 ? '-' : '+';
+
+                    domanda = `Sviluppa il quadrato del trinomio: <code>(${a}x ${sign1} ${b}y ${sign2} ${c})²</code>.`;
+                    
+                    let sqA = a * a;
+                    let sqB = b * b;
+                    let sqC = c * c;
+                    
+                    let s1 = sign1 === '+' ? 1 : -1;
+                    let s2 = sign2 === '+' ? 1 : -1;
+
+                    let dp1 = 2 * a * (b * s1);
+                    let dp2 = 2 * a * (c * s2);
+                    let dp3 = 2 * (b * s1) * (c * s2);
+
+                    let strDp1 = dp1 >= 0 ? `+ ${dp1}` : `- ${Math.abs(dp1)}`;
+                    let strDp2 = dp2 >= 0 ? `+ ${dp2}` : `- ${Math.abs(dp2)}`;
+                    let strDp3 = dp3 >= 0 ? `+ ${dp3}` : `- ${Math.abs(dp3)}`;
+
+                    risposta = `<code>${sqA}x² + ${sqB}y² + ${sqC} ${strDp1}xy ${strDp2}x ${strDp3}y</code>`;
+                    spiegazione = `
+                    1) Calcoliamo i tre quadrati: <code>(${a}x)² = ${sqA}x²</code>, <code>(${sign1}${b}y)² = +${sqB}y²</code>, <code>(${sign2}${c})² = +${sqC}</code>.<br>
+                    2) Calcoliamo i tre doppi prodotti:
+                    <br>• 1° · 2°: <code>2 · (${a}x) · (${sign1}${b}y) = ${strDp1}xy</code>
+                    <br>• 1° · 3°: <code>2 · (${a}x) · (${sign2}${c}) = ${strDp2}x</code>
+                    <br>• 2° · 3°: <code>2 · (${sign1}${b}y) · (${sign2}${c}) = ${strDp3}y</code>.<br>
+                    3) Uniamo i 6 termini: <code>${sqA}x² + ${sqB}y² + ${sqC} ${strDp1}xy ${strDp2}x ${strDp3}y</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let num1 = (i % 2) + 1;
+                    let den1 = (i % 3) + 2;
+                    let num2 = 1;
+                    let den2 = (i % 2) + 2;
+
+                    domanda = `Sviluppa il seguente quadrato di trinomio con frazioni: <br>
+                    <code>( ${num1}/${den1} a - ${num2}/${den2} b + 1 )²</code>.`;
+
+                    let sqA = `${num1 * num1}/${den1 * den1}`;
+                    let sqB = `${num2 * num2}/${den2 * den2}`;
+
+                    let dp1Num = 2 * num1 * num2;
+                    let dp1Den = den1 * den2;
+                    let dp2Num = 2 * num1;
+                    let dp2Den = den1;
+                    let dp3Num = 2 * num2;
+                    let dp3Den = den2;
+
+                    risposta = `<code>${sqA} a² + ${sqB} b² + 1 - ${dp1Num}/${dp1Den} ab + ${dp2Num}/${dp2Den} a - ${dp3Num}/${dp3Den} b</code>`;
+                    spiegazione = `
+                    1) Quadrati dei tre termini: <code>(${num1}/${den1} a)² = ${sqA} a²</code>, <code>(-${num2}/${den2} b)² = +${sqB} b²</code>, <code>(1)² = 1</code>.<br>
+                    2) Doppi prodotti:
+                    <br>• <code>2 · (${num1}/${den1} a) · (-${num2}/${den2} b) = - ${dp1Num}/${dp1Den} ab</code>
+                    <br>• <code>2 · (${num1}/${den1} a) · 1 = + ${dp2Num}/${dp2Den} a</code>
+                    <br>• <code>2 · (-${num2}/${den2} b) · 1 = - ${dp3Num}/${dp3Den} b</code>.<br>
+                    3) Sommiamo algebricamente tutti i termini.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Semplifica la seguente espressione con quadrati di trinomio: <br>
+                        <code>( x - 2y + z )² - ( x + 2y - z )² + 8xy</code>.`;
+
+                        risposta = `<code>4xz</code>`;
+                        spiegazione = `
+                        1) Sviluppiamo il primo trinomio: <code>x² + 4y² + z² - 4xy + 2xz - 4yz</code>.<br>
+                        2) Sviluppiamo il secondo trinomio: <code>x² + 4y² + z² + 4xy - 2xz - 4yz</code>.<br>
+                        3) Eseguiamo la sottrazione cambiando i segni del secondo sviluppo:
+                        <br><code>(x² + 4y² + z² - 4xy + 2xz - 4yz) - (x² + 4y² + z² + 4xy - 2xz - 4yz) = -8xy + 4xz</code>.<br>
+                        4) Aggiungiamo <code>+ 8xy</code>: <code>-8xy + 4xz + 8xy = 4xz</code>.`;
+                    } else {
+                        domanda = `Riconosci il trinomio di partenza (scomposizione): <br>
+                        <code>4a² + 9b² + c² - 12ab + 4ac - 6bc</code>.`;
+
+                        risposta = `<code>( 2a - 3b + c )²</code>`;
+                        spiegazione = `
+                        1) Identifichiamo i tre quadrati principali: <code>4a² = (2a)²</code>, <code>9b² = (3b)²</code>, <code>c² = (c)²</code>.<br>
+                        2) Verifichiamo i segni analizzando i doppi prodotti:
+                        <br>• <code>-12ab</code> ha segno meno, quindi <code>2a</code> e <code>3b</code> hanno segni discordi.
+                        <br>• <code>+4ac</code> ha segno più, quindi <code>2a</code> e <code>c</code> hanno segni concordi.
+                        <br>• <code>-6bc</code> ha segno meno, confermando che <code>3b</code> ha segno opposto rispetto a <code>c</code>.<br>
+                        3) Ricostruiamo il trinomio elevato al quadrato: <code>(2a - 3b + c)²</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

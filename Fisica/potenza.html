@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulla Potenza in Fisica - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Potenza e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="potenza" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica ed Energia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Potenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione di potenza media e istantanea, unità di misura e relazioni con la velocità, con 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Potenza?</h2>
+            <p>
+                In fisica, la <strong>potenza</strong> ($P$) misura la rapidità con cui un lavoro viene compiuto o, equivalentemente, con cui l'energia viene trasferita o trasformata nel tempo. A parità di lavoro svolto, un sistema possiede tanta più potenza quanto minore è il tempo impiegato per compierlo.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule Fondamentali della Potenza:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • <strong>Potenza media:</strong> 
+                    $$P_m = \frac{W}{\Delta t}$$
+                    Dove $W$ è il lavoro e $\Delta t$ è l'intervallo di tempo.<br>
+                    • <strong>Potenza istantanea in funzione della forza e della velocità:</strong>
+                    $$P = \vec{F} \cdot \vec{v} = F \cdot v \cdot \cos(\alpha)$$
+                    • <strong>Unità di misura:</strong> Il Watt ($\text{W}$), equivalente a $1\text{ J/s}$ ($\text{Joule al secondo}$). Unità storiche frequenti includono il Cavallo Vapore ($\text{CV} \approx 735,5\text{ W}$).
+                </p>
+            </div>
+
+            <h2>2. Proprietà e Applicazioni</h2>
+            <p>
+                • <strong>Relazione con la velocità:</strong> Se una forza costante spinge un corpo a velocità costante lungo la sua stessa direzione, la potenza istantanea è semplicemente il prodotto del modulo della forza per la velocità del corpo ($P = F \cdot v$).<br>
+                • <strong>Energia e tempo:</strong> Poiché $W = \Delta E$, la potenza esprime anche la variazione di energia per unità di tempo ($\frac{\Delta E}{\Delta t}$).
+            </p>
+
+            <h2>3. Batteria di 100 Esercizi con Esercizi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Qual è l'unità di misura della potenza nel Sistema Internazionale?", 
+                    r: "Il Watt ($\text{W}$), che corrisponde a $\text{J/s}$ ($\text{Joule al secondo}$).", 
+                    s: "Esempio guidato: derivato dal rapporto tra l'unità di lavoro (Joule) e l'unità di tempo (secondi)." 
+                },
+                { 
+                    q: "Se un motore compie un lavoro di $1000\text{ J}$ in un intervallo di tempo di $10\text{ s}$, qual è la sua potenza media?", 
+                    r: "$100\text{ W}$.", 
+                    s: "Esempio guidato: $P_m = \frac{W}{\Delta t} = \frac{1000\text{ J}}{10\text{ s}} = 100\text{ W}$." 
+                },
+                { 
+                    q: "A quanti Watt corrisponde approssimativamente un Cavallo Vapore (CV)?", 
+                    r: "Circa $735,5\text{ W}$ (o $0,7355\text{ kW}$).", 
+                    s: "Esempio guidato: unità di misura tradizionale spesso utilizzata per i motori a combustione e veicoli." 
+                },
+                { 
+                    q: "Se il tempo impiegato per compiere un certo lavoro si dimezza, come varia la potenza media?", 
+                    r: "Raddoppia.", 
+                    s: "Esempio guidato: essendoci una proporzionalità inversa con il tempo ($P = W / \Delta t$), se il denominatore si dimezza, il valore della potenza raddoppia." 
+                },
+                { 
+                    q: "Quale relazione lega la potenza istantanea alla forza $\vec{F}$ e alla velocità $\vec{v}$ di un corpo?", 
+                    r: "$P = \vec{F} \cdot \vec{v}$ (il prodotto scalare tra forza e velocità).", 
+                    s: "Esempio guidato: $P = F \cdot v \cdot \cos(\alpha)$, dove $\alpha$ è l'angolo tra forza e velocità." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un'automobile esercita una forza costante di trazione pari a $1500\text{ N}$ mentre viaggia a una velocità costante di $20\text{ m/s}$ ($72\text{ km/h}$). Calcola la potenza sviluppata dal motore.", 
+                    r: "$30000\text{ W}$ (o $30\text{ kW}$).", 
+                    s: "Esempio guidato: $P = F \cdot v = 1500\text{ N} \cdot 20\text{ m/s} = 30000\text{ W}$." 
+                },
+                { 
+                    q: "Un ascensore solleva un carico totale di massa $500\text{ kg}$ a un'altezza di $12\text{ m}$ in un tempo di $10\text{ s}$ a velocità costante ($g \approx 9,81\text{ m/s}^2$). Calcola la potenza media erogata.", 
+                    r: "$5886\text{ W}$ (circa $5,89\text{ kW}$).", 
+                    s: "Esempio guidato: $W = m \cdot g \cdot h = 500 \cdot 9,81 \cdot 12 = 58860\text{ J}$. La potenza è $P_m = \frac{58860}{10} = 5886\text{ W}$." 
+                },
+                { 
+                    q: "Una gru solleva un blocco compiendo un lavoro di $50\text{ kJ}$ ($50000\text{ J}$) in $20\text{ secondi}$. Qual è la potenza media sviluppata?", 
+                    r: "$2500\text{ W}$ ($2,5\text{ kW}$).", 
+                    s: "Esempio guidato: $P_m = \frac{50000\text{ J}}{20\text{ s}} = 2500\text{ W}$." 
+                },
+                { 
+                    q: "Un ciclista sviluppa una potenza costante di $250\text{ W}$ per pedalare a una velocità di $10\text{ m/s}$ su strada orizzontale. Qual è il modulo della forza totale resistente contraria al moto?", 
+                    r: "$25\text{ N}$.", 
+                    s: "Esempio guidato: a velocità costante la forza motrice eguaglia la resistenza: $F = \frac{P}{v} = \frac{250\text{ W}}{10\text{ m/s}} = 25\text{ N}$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un corpo di massa $2\text{ kg}$ parte da fermo e subisce un'accelerazione costante pari a $3\text{ m/s}^2$. Calcola la potenza istantanea sviluppata dalla forza applicata all'istante $t = 4\text{ s}$.", 
+                    r: "$72\text{ W}$.", 
+                    s: "Esempio guidato: la forza è $F = m \cdot a = 2 \cdot 3 = 6\text{ N}$. La velocità a $t = 4\text{ s}$ è $v = a \cdot t = 3 \cdot 4 = 12\text{ m/s}$. La potenza istantanea è $P = F \cdot v = 6 \cdot 12 = 72\text{ W}$." 
+                },
+                { 
+                    q: "Una pompa idraulica solleva acqua con una portata massica di $5\text{ kg/s}$ a un'altezza di $20\text{ m}$. Calcola la potenza minima richiesta dalla pompa ($g \approx 9,81\text{ m/s}^2$).", 
+                    r: "$981\text{ W}$.", 
+                    s: "Esempio guidato: la potenza è il lavoro per unità di tempo: $P = \frac{\Delta (mgh)}{\Delta t} = \left(\frac{m}{\Delta t}\right) g h = 5\text{ kg/s} \cdot 9,81\text{ m/s}^2 \cdot 20\text{ m} = 981\text{ W}$." 
+                },
+                { 
+                    q: "La potenza fornita da un motore in funzione del tempo varia secondo la legge $P(t) = (4t^3 + 2t)\text{ W}$. Calcola il lavoro totale compiuto dal motore nell'intervallo di tempo da $t = 0$ a $t = 3\text{ s}$.", 
+                    r: "$90\text{ J}$.", 
+                    s: "Esempio guidato: il lavoro è l'integrale della potenza nel tempo: $W = \int_{0}^{3} (4t^3 + 2t) dt = \left[ t^4 + t^2 \right]_0^3 = (3^4 + 3^2) - (0) = 81 + 9 = 90\text{ J}$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

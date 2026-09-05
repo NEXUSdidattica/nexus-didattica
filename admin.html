@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pannello Admin per NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Pannello Admin - NEXUS didattica</title>
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="hotbar">
+
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <!-- Tasti Accesso/Registrazione per Firebase -->
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main style="max-width: 800px; margin: 2rem auto; padding: 1rem;">
+
+
+        <!-- GESTIONE MODALITÀ MANUTENZIONE -->
+        <div
+            style="background: #fff; padding: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h2 style="margin: 0; color: #0f172a; font-size: 1.25rem;">🚧 Modalità Manutenzione</h2>
+                    <p style="margin: 0.2rem 0 0 0; color: #64748b; font-size: 0.85rem;">Se attiva, gli utenti non
+                        potranno consultare le pagine del sito.</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span id="stato-manutenzione-badge"
+                        style="background: #e2e8f0; color: #475569; padding: 0.4rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">Stato:
+                        DISATTIVATA</span>
+                    <button id="btn-toggle-manutenzione"
+                        style="background: #e11d48; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                        Attiva Manutenzione
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- STATISTICHE E MONITORAGGIO -->
+        <div
+            style="background: #fff; padding: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <h2 style="margin: 0 0 1rem 0; color: #0f172a; font-size: 1.25rem;">📊 Statistiche del Sito</h2>
+            <div id="griglia-statistiche"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                <div
+                    style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; text-align: center;">
+                    <div id="stat-visite" style="font-size: 1.6rem; font-weight: bold; color: #2563eb;">–</div>
+                    <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">Visite Totali</div>
+                </div>
+                <div
+                    style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; text-align: center;">
+                    <div id="stat-utenti" style="font-size: 1.6rem; font-weight: bold; color: #16a34a;">–</div>
+                    <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">Utenti Registrati</div>
+                </div>
+                <div
+                    style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; text-align: center;">
+                    <div id="stat-messaggi" style="font-size: 1.6rem; font-weight: bold; color: #f59e0b;">–</div>
+                    <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">Messaggi Ricevuti</div>
+                </div>
+                <div
+                    style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; text-align: center;">
+                    <div id="stat-esercizi" style="font-size: 1.6rem; font-weight: bold; color: #9333ea;">–</div>
+                    <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">Esercizi in Archivio</div>
+                </div>
+                <div
+                    style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; text-align: center;">
+                    <div id="stat-roadmap" style="font-size: 1.6rem; font-weight: bold; color: #ef4444;">–</div>
+                    <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">Argomenti Roadmap</div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2>Gestione Esercizio della Settimana 💡</h2>
+        <p>Pubblica un nuovo quesito: sostituirà automaticamente quello vecchio visibile in Home Page.</p>
+
+        <form id="form-sfida"
+            style="display: flex; flex-direction: column; gap: 1rem; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 1.5rem;">
+
+            <label><strong>Materia e Titolo:</strong></label>
+            <input type="text" id="materia-titolo" placeholder="Es. Fisica: Calcola la velocità media" required
+                style="padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;">
+
+            <label><strong>Testo della Nuova Sfida:</strong></label>
+            <textarea id="testo-sfida" rows="3" placeholder="Es. Un'automobile percorre 150 km in 2 ore..." required
+                style="padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+
+            <hr style="margin: 1rem 0; border: 0; border-top: 1px solid #eee;">
+
+            <label><strong>Soluzione della Sfida Precedente (da mostrare agli utenti):</strong></label>
+            <input type="text" id="titolo-passato" placeholder="Es. Equazione di 2° grado (x² - 5x + 6 = 0)"
+                style="padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;">
+
+            <textarea id="soluzione-passata" rows="3"
+                placeholder="Scrivi il risultato e lo svolgimento della sfida scorsa..."
+                style="padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+
+            <button type="submit"
+                style="background-color: #2a3eb1; color: white; padding: 0.75rem; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Aggiorna
+                Esercizio 🚀</button>
+        </form>
+        
+
+        <!-- GESTIONE BLOCCO FORM / CONTATTI -->
+        <div
+            style="background: #fff; padding: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; margin-top: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h2 style="margin: 0; color: #0f172a; font-size: 1.25rem;">🔕 Stato Moduli e Contatti</h2>
+                    <p style="margin: 0.2rem 0 0 0; color: #64748b; font-size: 0.85rem;">Consente di disabilitare
+                        temporaneamente l'invio di nuovi messaggi dal form contatti.</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span id="stato-form-badge"
+                        style="background: #dcfce7; color: #166534; padding: 0.4rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">Form:
+                        ATTIVI 🟢</span>
+                    <button id="btn-toggle-form"
+                        style="background: #f59e0b; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                        Blocca Invio Form
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SEZIONE MESSAGGI RICEVUTI DA CONTATTI -->
+        <div
+            style="margin-top: 2rem; background: #fff; padding: 2rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: #0f172a;">📬 Messaggi Ricevuti dagli Utenti</h2>
+                <button id="btn-svuota-messaggi"
+                    style="background: #ef4444; color: white; border: none; padding: 0.6rem 1.1rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    🗑️ Svuota Messaggi
+                </button>
+            </div>
+            <div id="lista-messaggi">Caricamento messaggi in corso...</div>
+        </div>
+
+        <p id="stato-sfida" style="margin-top: 1rem; font-weight: bold;"></p>
+
+
+        <!-- GESTIONE AVVISO GLOBALE -->
+        <div
+            style="background: #fff; padding: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <h2 style="margin-bottom: 1rem; color: #0f172a; font-size: 1.25rem;">📢 Avviso Globale del Sito</h2>
+
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <input type="text" id="input-avviso" placeholder="Es. Oggi nuova lezione di Matematica!"
+                    style="flex: 1; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+                <button id="btn-pubblica-avviso"
+                    style="background: #2563eb; color: white; border: none; padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: bold; cursor: pointer;">Pubblica
+                    Avviso</button>
+                <button id="btn-rimuovi-avviso"
+                    style="background: #ef4444; color: white; border: none; padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: bold; cursor: pointer;">Rimuovi
+                    Banner</button>
+            </div>
+            <p id="stato-avviso-admin" style="margin: 0; font-weight: bold; font-size: 0.9rem;"></p>
+        </div>
+
+
+        <!-- GESTIONE POP-UP NOTIZIA FLASH -->
+        <div
+            style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 2rem; border: 1px solid #e2e8f0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0; color: #1e293b; font-size: 1.2rem;">⚡ Pop-Up Notizia Flash (Modal)</h3>
+                <span id="stato-popup-badge"
+                    style="padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; background: #e2e8f0; color: #475569;">Stato:
+                    DISATTIVATO</span>
+            </div>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Mostra una finestra pop-up al centro
+                dello schermo quando gli utenti visitano il sito.</p>
+
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <input type="text" id="popup-titolo"
+                    placeholder="Titolo della notizia (es. 📢 Nuova Lezione Disponibile!)"
+                    style="padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+                <textarea id="popup-testo" rows="3" placeholder="Scrivi qui il contenuto del pop-up..."
+                    style="padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; resize: vertical;"></textarea>
+
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                    <button id="btn-pubblica-popup"
+                        style="background: #2563eb; color: white; border: none; padding: 0.75rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Attiva
+                        e Pubblica Pop-Up</button>
+                    <button id="btn-disattiva-popup"
+                        style="background: #ef4444; color: white; border: none; padding: 0.75rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Disattiva
+                        Pop-Up</button>
+                </div>
+                <span id="stato-operazione-popup"
+                    style="font-size: 0.85rem; font-weight: 600; margin-top: 0.25rem;"></span>
+            </div>
+        </div>
+
+
+        <!-- FORM PUBBLICAZIONE ROADMAP -->
+        <section
+            style="background: white; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
+            <h2 style="margin-top: 0; color: #1e293b;">🚀 Aggiungi Argomento in Roadmap</h2>
+            <form id="form-roadmap">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem;">Stato:</label>
+                    <select id="roadmap-stato-badge"
+                        style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <option value="In Arrivo">In Arrivo (Giallo)</option>
+                        <option value="Programmato">Programmato (Blu)</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem;">Titolo Argomento (con
+                        Icona/Materia):</label>
+                    <input type="text" id="roadmap-titolo" placeholder="es. 📐 Matematica: Integrali Definiti" required
+                        style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1;">
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem;">Descrizione:</label>
+                    <textarea id="roadmap-descrizione" rows="3"
+                        placeholder="Breve spiegazione di cosa verrà pubblicato..." required
+                        style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1;"></textarea>
+                </div>
+
+                <button type="submit"
+                    style="background: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    Pubblica in Roadmap 📌
+                </button>
+                <span id="stato-salvataggio-roadmap" style="margin-left: 1rem; font-weight: 600;"></span>
+            </form>
+
+            <div style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1.5rem; color: #1e293b; font-size: 1.2rem;">📌 Gestisci/Elimina Argomenti
+                    Esistenti</h3>
+                <div class="roadmap-grid" id="lista-roadmap-dinamica">
+                    <!-- Verranno caricati gli elementi con il tasto Elimina -->
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- MOSTRA TEMPLATE DELL LEZIONI -->
+        <div
+            style="margin-top: 3rem; background: #fff; padding: 2rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: #0f172a;">📖 Aspetto predefinito delle lezioni</h2>
+                <button id="btn-svuota-messaggi" onclick="window.location.href='prove/template-lezioni.html'"
+                    style="background: #a600ff; color: #fff; font-size: 17px; border: none; padding: 1rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    🎓 Visualizza
+                </button>
+            </div>
+            <div id="lista-messaggi">Visualizza l'aspetto predefinito di ogni file delle lezioni</div>
+        </div>
+
+
+
+        <!-- ARCHIVIO STORICO ESERCIZI (SOLO ADMIN) -->
+        <div
+            style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 2rem; margin-top: 3rem; border: 1px solid #e2e8f0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0; color: #1e293b; font-size: 1.2rem;">📚 Archivio Storico Esercizi Settimanali</h3>
+                <span id="totale-esercizi-storico"
+                    style="padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; background: #e2e8f0; color: #475569;">0
+                    Quesiti Salvati</span>
+            </div>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Tutti gli esercizi che pubblichi vengono
+                salvati qui in automatico. Solo tu puoi consultarli.</p>
+
+            <div id="lista-storico-esercizi"
+                style="max-height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+                <p style="color: #64748b; font-size: 0.9rem;">Caricamento archivio in corso...</p>
+            </div>
+        </div>
+
+
+
+        <!-- SEZIONE TABELLA UTENTI ISCRITTI -->
+        <div
+            style="background: #fff; padding: 2rem; border-radius: 16px; border: 1px solid #e2e8f0; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: #0f172a;">👥 Utenti Iscritti alla Piattaforma</h2>
+                <span id="totale-utenti"
+                    style="background: #e0e7ff; color: #3730a3; padding: 0.4rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">0
+                    Iscritti</span>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0; color: #475569;">
+                            <th style="padding: 0.75rem 1rem;">Nome Utente</th>
+                            <th style="padding: 0.75rem 1rem;">Email</th>
+                            <th style="padding: 0.75rem 1rem;">Data Registrazione</th>
+                            <th style="padding: 0.75rem 1rem;">Ruolo / Stato</th>
+                            <th style="padding: 0.75rem 1rem; text-align: center;">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabella-utenti-body">
+                        <tr>
+                            <td colspan="5" style="padding: 1rem; text-align: center; color: #64748b;">Caricamento
+                                utenti in corso...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Grafico di Funzione - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Grafico di Funzione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stili specifici per il tracciamento dei grafici */
+        .canvas-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #bfdbfe;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .controls {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            padding: 10px 14px;
+            font-size: 16px;
+            width: 320px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2563eb;
+        }
+
+        button.btn-disegna {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-disegna:hover {
+            background-color: #1d4ed8;
+        }
+
+        canvas {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #ffffff;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="grafico-di-funzione" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Studio e Grafico di Funzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Teoria completa sul piano cartesiano, proprietà analitiche, strumento di tracciamento interattivo e 100 esercizi obbligatori suddivisi per difficoltà.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è il Grafico di una Funzione</h2>
+            <p>
+                Dato una funzione <code>y = f(x)</code> definita su un sottoinsieme del piano reale, si chiama <strong>grafico della funzione</strong> l'insieme di tutti i punti <code>P(x, y)</code> del piano cartesiano tali che <code>x</code> appartiene al dominio e <code>y = f(x)</code>. In altre parole, è la rappresentazione geometrica della relazione che lega la variabile indipendente <code>x</code> alla variabile dipendente <code>y</code>.
+            </p>
+
+            <h2>2. Elementi Fondamentali dello Studio di Funzione</h2>
+            <p>
+                Per tracciare e comprendere correttamente l'andamento di una curva nel piano cartesiano, si segue solitamente uno schema logico di analisi:
+            </p>
+            <ul>
+                <li><strong>Dominio (o Campo di Esistenza):</strong> L'insieme dei valori di <code>x</code> per cui la funzione è definita (evitando divisioni per zero, argomenti di logaritmi negativi o radici a indice pari di quantità negative).</li>
+                <li><strong>Intersezioni con gli assi:</strong> Punti in cui il grafico incontra l'asse delle ascisse (ponendo <code>y = 0</code>) o l'asse delle ordinate (ponendo <code>x = 0</code>).</li>
+                <li><strong>Segno della funzione:</strong> Determinare per quali intervalli di <code>x</code> il grafico si trova sopra l'asse x (<code>f(x) > 0</code>) o sotto (<code>f(x) < 0</code>).</li>
+                <li><strong>Simmetrie e Periodicità:</strong> Verificare se la funzione è pari, dispari o periodica.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Teorico Guidato:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Consideriamo la funzione polinomiale <code>f(x) = x<sup>2</sup> - 4</code>:<br>
+                    • <strong>Dominio:</strong> Tutto <code>R</code>, trattandosi di un polinomio.<br>
+                    • <strong>Intersezione asse y:</strong> <code>f(0) = 0<sup>2</sup> - 4 = -4</code>, quindi passa per <code>(0, -4)</code>.<br>
+                    • <strong>Intersezioni asse x:</strong> <code>x<sup>2</sup> - 4 = 0</code> da cui <code>x = 2</code> e <code>x = -2</code>.<br>
+                    • Il grafico risulta essere una parabola con vertice in <code>(0, -4)</code> rivolta verso l'alto.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trova le intersezioni con l'asse x della funzione lineare <code>f(x) = 3x - 6</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Poniamo la funzione uguale a zero: <code>3x - 6 = 0</code>.</li>
+                    <li>Isoliamo il termine con la x: <code>3x = 6</code>.</li>
+                    <li>Dividiamo per 3: <code>x = 2</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione: Punto di intercetta sull'asse x pari a (2, 0)</strong></p>
+            </div>
+
+            <h2>3. Strumento di Tracciamento Interattivo</h2>
+            <p>
+                Utilizza il riquadro sottostante per testare in tempo reale l'andamento di diverse funzioni matematiche inserendo espressioni basate sull'oggetto <code>Math</code> di JavaScript.
+            </p>
+
+            <!-- STRUMENTO GRAFICO INTERATTIVO -->
+            <div class="canvas-container">
+                <h3 style="margin-top: 0; color: #1e3a8a;">Tracciatore di Funzioni in Tempo Reale</h3>
+                <div class="controls">
+                    <input type="text" id="fnInput" value="Math.sin(x) * x" placeholder="Es. Math.sin(x), x*x - 4, Math.cos(x)">
+                    <button class="btn-disegna" onclick="draw()">Disegna Grafico</button>
+                </div>
+                <canvas id="canvas" width="600" height="400"></canvas>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Obbligatori sul Grafico e Studio di Funzione</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi progressivi suddivisi per livello di difficoltà (facile, medio, difficile) per padroneggiare l'analisi grafica e cartesiana.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Logica Canvas per il Grafico Interattivo -->
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Griglia di sfondo
+            ctx.strokeStyle = '#f1f5f9';
+            ctx.lineWidth = 1;
+            const scale = 40;
+
+            for (let x = width / 2 % scale; x < width; x += scale) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            for (let y = height / 2 % scale; y < height; y += scale) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+
+            // Assi cartesiani principali X e Y
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 2;
+
+            ctx.beginPath();
+            ctx.moveTo(0, height / 2);
+            ctx.lineTo(width, height / 2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(width / 2, 0);
+            ctx.lineTo(width / 2, height);
+            ctx.stroke();
+
+            // Valutazione funzione utente
+            const fnString = document.getElementById('fnInput').value;
+            
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+
+            let first = true;
+
+            for (let px = 0; px < width; px++) {
+                let x = (px - width / 2) / scale;
+                let y;
+
+                try {
+                    y = eval(fnString);
+                } catch (e) {
+                    y = NaN;
+                }
+
+                let py = height / 2 - y * scale;
+
+                if (isNaN(py) || !isFinite(py)) {
+                    first = true;
+                    continue;
+                }
+
+                if (first) {
+                    ctx.moveTo(px, py);
+                    first = false;
+                } else {
+                    ctx.lineTo(px, py);
+                }
+            }
+            ctx.stroke();
+        }
+
+        // Render iniziale all'avvio
+        draw();
+    </script>
+
+    <!-- Script Generatore dei 100 Esercizi Obbligatori -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let c = (i % 5) - 2; 
+                    domanda = `Data la funzione lineare <code>f(x) = 2x + ${c}</code>, determina l'ordinata del punto del grafico avente ascissa <code>x = 3</code>.`;
+                    let val = 2 * 3 + c;
+                    risposta = `f(3) = <strong>${val}</strong>`;
+                    spiegazione = `
+                    1) Sostituiamo <code>x = 3</code> all'interno dell'equazione della retta: <code>f(3) = 2(3) + (${c})</code>.<br>
+                    2) Eseguiamo i calcoli algebrici ottenendo <code>${val}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 3) + 1;
+                    let c = (i % 7) - 3;
+                    domanda = `Trova l'intersezione con l'asse delle ascisse (zeri della funzione) per la parabola <code>f(x) = ${a}x<sup>2</sup> - ${Math.abs(c)}</code>.`;
+                    risposta = `x = <strong>±√( ${Math.abs(c)} / ${a} )</strong>`;
+                    spiegazione = `
+                    1) Poniamo la funzione pari a zero: <code>${a}x<sup>2</sup> - ${Math.abs(c)} = 0</code>.<br>
+                    2) Isoliamo il termine con la x quadrata: <code>x<sup>2</sup> = ${Math.abs(c)} / ${a}</code>.<br>
+                    3) Ricaviamo le due soluzioni reali estraendo la radice quadrata.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Data la funzione fratta <code>f(x) = 1 / (x - ${i % 5 + 1})</code>, individua l'equazione dell'asintoto verticale del grafico.`;
+                    let asintoto = i % 5 + 1;
+                    risposta = `x = <strong>${asintoto}</strong>`;
+                    spiegazione = `
+                    1) L'asintoto verticale si trova annullando il denominatore della funzione fratta.<br>
+                    2) Poniamo <code>x - ${asintoto} = 0</code>, da cui ricaviamo direttamente <code>x = ${asintoto}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

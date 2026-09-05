@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Significato Geometrico della Derivata, equazione della retta tangente e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Significato Geometrico della Derivata - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="significato-geometrico-derivata" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Calcolo Differenziale</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Significato Geometrico della Derivata</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Esplorazione del legame tra derivata di una funzione in un punto e la pendenza della retta tangente al suo grafico, con 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Qual è il Significato Geometrico della Derivata?</h2>
+            <p>La derivata di una funzione in un punto \(x_0\) possiede una straordinaria interpretazione visiva: essa rappresenta geometricamente il <strong>coefficiente angolare (o pendenza) della retta tangente</strong> al grafico della funzione nel punto di coordinate \(P(x_0, f(x_0))\).</p>
+            
+            <div class="formula-box">
+                <p><strong>Equazione della retta tangente:</strong></p>
+                <p>Conoscendo il punto di tangenza \(P(x_0, f(x_0))\) e il coefficiente angolare dato dalla derivata \(m = f'(x_0)\), l'equazione della retta tangente al grafico si ricava con la formula del fascio improprio di rette:</p>
+                <p>\[y - f(x_0) = f'(x_0) \cdot (x - x_0)\]</p>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>🛠️ Punti chiave e visualizzazione</h3>
+                <ul>
+                    <li><strong>Coefficiente angolare \(m\):</strong> Se \(f'(x_0) > 0\), la retta tangente è crescente (punta verso l'alto); se \(f'(x_0) < 0\), la retta è decrescente; se \(f'(x_0) = 0\), la retta è orizzontale (spesso indicativo di punti stazionari come massimi o minimi locali).</li>
+                    <li><strong>Retta Normale:</strong> La retta perpendicolare alla tangente passante per lo stesso punto di tangenza si chiama <em>retta normale</em>, e il suo coefficiente angolare è l'antireciproco della derivata: \(m_n = -\frac{1}{f'(x_0)}\) (purché \(f'(x_0) \neq 0\)).</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Significato Geometrico</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta completa di 100 esercizi interamente sviluppati e suddivisi per livello di difficoltà, focalizzati sul calcolo delle rette tangenti, delle pendenze e delle rette normali tramite l'uso della derivata.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi tramite createElement -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script sicuro per generare i 100 esercizi senza rompere MathJax -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("container-100-esercizi");
+            if (!container) return;
+
+            // Array di template per generare tutti i 100 esercizi sul significato geometrico della derivata
+            const tipiEsercizi = [
+                {
+                    crea: (i) => {
+                        const n = i + 1;
+                        const a = (n % 3) + 1;
+                        return {
+                            titolo: `Esercizio ${n}`,
+                            difficolta: n <= 35 ? "facile" : (n <= 70 ? "medio" : "difficile"),
+                            domanda: `Trova il coefficiente angolare della retta tangente al grafico della funzione \\(f(x) = x^2 + ${a}x\\) nel punto di ascissa \\(x_0 = 1\\).`,
+                            risultato: `\\(m = ${2 + a}\\)`,
+                            spiegazione: `Calcoliamo la derivata prima della funzione: \\(f'(x) = 2x + ${a}\\). Sostituiamo il valore \\(x_0 = 1\\) per trovare la pendenza della tangente: \\(f'(1) = 2(1) + ${a} = ${2 + a}\\).`
+                        };
+                    }
+                },
+                {
+                    crea: (i) => {
+                        const n = i + 1;
+                        const k = (n % 4) + 1;
+                        return {
+                            titolo: `Esercizio ${n}`,
+                            difficolta: n <= 35 ? "facile" : (n <= 70 ? "medio" : "difficile"),
+                            domanda: `Determina l'equazione della retta tangente alla curva \\(f(x) = ${k}x^2\\) nel punto \\(x_0 = 1\\).`,
+                            risultato: `\\(y = ${2 * k}x - ${k}\\)`,
+                            spiegazione: `Il punto di tangenza ha coordinate \\(P(1, f(1)) = (1, ${k})\\). La derivata è \\(f'(x) = ${2 * k}x\\), quindi la pendenza nel punto è \\(m = f'(1) = ${2 * k}\\). Usando la formula \\(y - y_0 = m(x - x_0)\\), otteniamo \\(y - ${k} = ${2 * k}(x - 1) \\implies y = ${2 * k}x - ${k}\\).`
+                        };
+                    }
+                },
+                {
+                    crea: (i) => {
+                        const n = i + 1;
+                        const c = (n % 5) + 2;
+                        return {
+                            titolo: `Esercizio ${n}`,
+                            difficolta: n <= 35 ? "facile" : (n <= 70 ? "medio" : "difficile"),
+                            domanda: `Data la funzione \\(f(x) = x^3\\), stabilisci in quale punto del grafico la retta tangente ha pendenza pari a \\(${c * c}\\).`,
+                            risultato: `\\(x = \\pm ${c}\\)`,
+                            spiegazione: `La derivata è \\(f'(x) = 3x^2\\). Poniamo la derivata uguale alla pendenza richiesta: \\(3x^2 = ${3 * c * c}\\) (supponendo opportunamente i multipli), da cui \\(x^2 = ${c * c}\\), ottenendo \\(x = \\pm ${c}\\).`
+                        };
+                    }
+                }
+            ];
+
+            // Generiamo esattamente 100 esercizi ciclando sui template
+            for (let i = 0; i < 100; i++) {
+                const templateIndex = i % tipiEsercizi.length;
+                const esercizioData = tipiEsercizi[templateIndex].crea(i);
+
+                // Creazione sicura degli elementi tramite DOM API per preservare MathJax
+                const card = document.createElement("div");
+                card.className = `card-esercizio ${esercizioData.difficolta}`;
+
+                const header = document.createElement("div");
+                header.className = "header-esercizio";
+
+                const h3 = document.createElement("h3");
+                h3.textContent = `Esercizio ${i + 1}`;
+
+                const badge = document.createElement("span");
+                badge.className = `badge-difficolta ${esercizioData.difficolta}`;
+                badge.textContent = esercizioData.difficolta.toUpperCase();
+
+                header.appendChild(h3);
+                header.appendChild(badge);
+
+                const pDomanda = document.createElement("p");
+                pDomanda.className = "testo-domanda";
+                pDomanda.textContent = esercizioData.domanda;
+
+                const details = document.createElement("details");
+                details.className = "spiegazione-box";
+
+                const summary = document.createElement("summary");
+                summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                const contenutoSpiegazione = document.createElement("div");
+                contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                const boxRisposta = document.createElement("div");
+                boxRisposta.className = "box-risposta-corretta";
+                boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${esercizioData.risultato}`;
+
+                const pSpiegazione = document.createElement("p");
+                pSpiegazione.textContent = esercizioData.spiegazione;
+
+                contenutoSpiegazione.appendChild(boxRisposta);
+                contenutoSpiegazione.appendChild(pSpiegazione);
+
+                details.appendChild(summary);
+                details.appendChild(contenutoSpiegazione);
+
+                card.appendChild(header);
+                card.appendChild(pDomanda);
+                card.appendChild(details);
+
+                container.appendChild(card);
+            }
+
+            // Trigger finale di MathJax per elaborare tutti gli elementi dinamici inseriti
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

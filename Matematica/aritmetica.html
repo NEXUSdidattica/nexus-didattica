@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezioni ed esercizi di Aritmetica - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Aritmetica - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="materie-container">
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="../materie.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">← Torna a tutte le Materie</a>
+        </div>
+
+        <div class="materie-header-text">
+            <h1>Aritmetica</h1>
+            <p>Seleziona l'argomento o la lezione che desideri approfondire per accedere alle spiegazioni e agli esercizi pratici.</p>
+        </div>
+
+        <!-- LISTA DELLE LEZIONI / ARGOMENTI -->
+        <div class="materie-list-vertical">
+
+            <!-- SEZIONE 1: LE 5 OPERAZIONI -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">➕</div>
+                    <div>
+                        <h2 class="materia-titolo">Le 5 Operazioni ed Espressioni Base</h2>
+                        <p class="materia-desc">Addizione, sottrazione, moltiplicazione, divisione, elevamento a potenza ed espressioni base.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="cinque_operazioni.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">
+                        Apri Lezione ➔
+                    </a>
+                </div>
+            </div>
+
+            <!-- SEZIONE 2: INSIEMI NUMERICI E DIVISIBILITÀ -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">🔢</div>
+                    <div>
+                        <h2 class="materia-titolo">Insiemi Numerici e Divisibilità</h2>
+                        <p class="materia-desc">Numeri naturali, interi, criteri di divisibilità, scomposizione in fattori primi, MCD e mcm.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="insiemi_divisibilita.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">
+                        Apri Lezione ➔
+                    </a>
+                </div>
+            </div>
+
+            <!-- SEZIONE 3: FRAZIONI E DECIMAL -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">🧩</div>
+                    <div>
+                        <h2 class="materia-titolo">Frazioni e Decimali</h2>
+                        <p class="materia-desc">Operazioni con le frazioni, semplificazione, numeri decimali limitati e periodici, e frazioni generatrici.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="frazioni_decimali.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">
+                        Apri Lezione ➔
+                    </a>
+                </div>
+            </div>
+
+            <!-- SEZIONE 4: PROPORZIONI E PERCENTUALI -->
+            <div class="materia-row-card card-matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">📊</div>
+                    <div>
+                        <h2 class="materia-titolo">Proporzioni e Percentuali</h2>
+                        <p class="materia-desc">Proprietà fondamentali delle proporzioni, proporzionalità diretta/inversa, calcolo di percentuali e sconti.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="proporzioni_percentuali.html" class="tag tag-link-m" style="background-color: #2563eb; color: white; padding: 0.6rem 1.2rem;">
+                        Apri Lezione ➔
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

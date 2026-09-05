@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida alle Equazioni Frazionarie di 2° Grado: Condizioni di Esistenza (C.E.), eliminazione dei denominatori ed esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Frazionarie di 2° Grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .warning-box {
+            background-color: #fff1f2;
+            border-left: 4px solid #f43f5e;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-2-grado-frazionarie" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Equazioni di 2° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 9: Equazioni Frazionarie
+                    di 2° Grado</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Risoluzione delle equazioni in cui l'incognita appare al
+                    denominatore.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Procedimento di Risoluzione</h2>
+            <p>Un'equazione si dice <strong>frazionaria</strong> se l'incognita $x$ figura in almeno un denominatore.
+                Per risolverla:</p>
+
+            <ol>
+                <li><strong>Scomporre in fattori</strong> tutti i denominatori.</li>
+                <li><strong>Determinare le Condizioni di Esistenza (C.E.):</strong> imporre che ciascun fattore presente
+                    al denominatore sia diverso da zero ($\neq 0$).</li>
+                <li><strong>Calcolare il m.c.m.</strong> dei denominatori e moltiplicare entrambi i membri per
+                    eliminarlo.</li>
+                <li><strong>Risolvere l'equazione intera di 2° grado</strong> risultante.</li>
+                <li><strong>Verificare le C.E.:</strong> accettare solo le soluzioni che non annullano i denominatori
+                    iniziali.</li>
+            </ol>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>Risolvi l'equazione frazionaria: $\frac{x}{x-2} + \frac{2}{x+2} = \frac{8}{x^2-4}$</p>
+                <ol>
+                    <li>Scomponiamo il denominatore: $x^2 - 4 = (x-2)(x+2)$.</li>
+                    <li>Imponiamo le Condizioni di Esistenza (C.E.):
+                        $$\text{C.E.: } x \neq 2 \quad \text{e} \quad x \neq -2$$
+                    </li>
+                    <li>Moltiplichiamo per il m.c.m. $(x-2)(x+2)$:
+                        $$x(x+2) + 2(x-2) = 8 \implies x^2 + 2x + 2x - 4 = 8 \implies x^2 + 4x - 12 = 0$$
+                    </li>
+                    <li>Risolviamo l'equazione di 2° grado associata:
+                        $$\Delta = 16 - 4(1)(-12) = 64 \implies x_{1,2} = \frac{-4 \pm 8}{2} \implies x_1 = 2, \, x_2 =
+                        -6$$
+                    </li>
+                    <li>Confrontiamo con le C.E.: $x_1 = 2$ <strong>non è accettabile</strong>. L'unica soluzione è
+                        <strong>$x = -6$</strong>.</li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Attenzione:</strong> Le soluzioni trovate che violano le Condizioni di Esistenza (C.E.) sono
+                dette <strong>non accettabili</strong> o spurie e vanno scartate.
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Equazioni Frazionarie</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let k = (i % 6) + 1;
+                let val = k * k;
+
+                let domanda = `Risolvi l'equazione frazionaria: $\\frac{x^2 - ${val}}{x - ${k}} = 0$`;
+                let risposta = `x = -${k} \\quad (\\text{C.E.: } x \\neq ${k})`;
+
+                let spiegazione = `1) <strong>C.E.:</strong> $x - ${k} \\neq 0 \\implies x \\neq ${k}$.<br>` +
+                    `2) Uguagliamo il numeratore a zero: $x^2 - ${val} = 0 \\implies x^2 = ${val} \\implies x = \\pm ${k}$.<br>` +
+                    `3) Confrontiamo con le C.E.: la soluzione $x = ${k}$ non è accettabile.<br>` +
+                    `4) L'unica soluzione accettabile è <strong>$x = -${k}$</strong>.`;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le soluzioni tampone: definizione, funzionamento, equazione di Henderson-Hasselbalch e applicazioni biologiche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le soluzioni tampone - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="la-soluzione-tampone" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar-container">
+            <div class="hotbar">
+                <a href="../index.html" class="logo-link">
+                    <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+                </a>
+
+                <h1>NEXUS didattica</h1>
+
+                <nav class="navbar">
+                    <a href="../index.html">Home</a>
+                    <a href="../chi_siamo.html">Chi Siamo</a>
+                    <a href="../materie.html" class="active">Materie</a>
+                    <a href="../contatti.html">Contatti</a>
+                    <a href="../admin.html" id="admin-link"
+                        style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                        Pannello Admin 👑
+                    </a>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica / Chimica delle Soluzioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin: 0.5rem 0 0.5rem 0;">Le soluzioni tampone</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Meccanismo d'azione, composizione chimica, equazione di Henderson-Hasselbalch e importanza biologica dei sistemi tampone.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è una soluzione tampone?</h2>
+            <p>
+                Una <strong>soluzione tampone</strong> è una particolare soluzione acquosa capace di opporsi a variazioni significative del proprio pH quando a essa vengono aggiunte piccole quantità di un acido forte o di una base forte. 
+            </p>
+            <p>
+                Sebbene il pH non resti immobile in assoluto, la variazione risulta estremamente ridotta rispetto a quella che si registrerebbe aggiungendo la stessa quantità di acido o base all'acqua pura o a una normale soluzione salina.
+            </p>
+
+            <h2>2. Composizione chimica di un tampone</h2>
+            <p>
+                Una soluzione tampone si ottiene mescolando due componenti fondamentali:
+            </p>
+            <ul>
+                <li>Un <strong>acido debole</strong> insieme al suo sale formato con una base forte (che fornisce la sua <em>base coniugata</em> in alta concentrazione). Esempio classico: acido acetico ($\text{CH}_3\text{COOH}$) e acetato di sodio ($\text{CH}_3\text{COONa}$).</li>
+                <li>Una <strong>base debole</strong> insieme al suo sale formato con un acido forte (che fornisce il suo <em>acido coniugato</em> in alta concentrazione). Esempio classico: ammoniaca ($\text{NH}_3$) e cloruro di ammonio ($\text{NH}_4\text{Cl}$).</li>
+            </ul>
+
+            <h2>3. Come funziona il meccanismo di tamponamento?</h2>
+            <p>
+                Il segreto dell'azione tampone risiede nella presenza simultanea di una specie capace di neutralizzare gli ioni $\text{H}^+$ in arrivo e di un'altra capace di neutralizzare gli ioni $\text{OH}^-$:
+            </p>
+            <ul>
+                <li><strong>Se si aggiunge un acido forte ($\text{H}^+$):</strong> Gli ioni idronio in eccesso reagiscono con la base coniugata presente in grande quantità nel tampone, trasformandosi nell'acido debole indissociato, che altera pochissimo il pH.</li>
+                <li><strong>Se si aggiunge una base forte ($\text{OH}^-$):</strong> Gli ioni ossidrile in eccesso vengono neutralizzati dall'acido debole del tampone, che dona un protone trasformandosi nella sua base coniugata e in acqua.</li>
+            </ul>
+            <div class="formula-box">
+                <em>Esempio di tampone acetato:</em>
+                $$\text{CH}_3\text{COO}^- + \text{H}_3\text{O}^+ \rightleftharpoons \text{CH}_3\text{COOH} + \text{H}_2\text{O}$$
+                $$\text{CH}_3\text{COOH} + \text{OH}^- \rightleftharpoons \text{CH}_3\text{COO}^- + \text{H}_2\text{O}$$
+            </div>
+
+            <h2>4. L'equazione di Henderson-Hasselbalch</h2>
+            <p>
+                Per calcolare il pH di una soluzione tampone acida si utilizza la celebre <strong>equazione di Henderson-Hasselbalch</strong>, ricavata direttamente dall'espressione della costante di ionizzazione acida $K_a$:
+            </p>
+            <div class="formula-box">
+                $$\text{pH} = \text{p}K_a + \log \left( \frac{[\text{Base Coniugata}]}{[\text{Acido Debole}]} \right)$$
+            </div>
+            <p>
+                Analogamente, per un tampone costituito da una base debole e dal suo sale:
+            </p>
+            <div class="formula-box">
+                $$\text{pOH} = \text{p}K_b + \log \left( \frac{[\text{Acido Coniugato}]}{[\text{Base Debole}]} \right)$$
+            </div>
+            <p>
+                Da questa equazione si deduce che il pH di un tampone dipende principalmente dal valore di $\text{p}K_a$ della coppia scelta e dal rapporto tra le concentrazioni del sale e dell'acido. Quando la concentrazione del sale è uguale a quella dell'acido, il logaritmo si azzera e il $\text{pH} = \text{p}K_a$, condizione in cui il potere tampone è massimo.
+            </p>
+
+            <!-- TABELLA RIASSUNTIVA -->
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Tipo di Tampone</th>
+                        <th>Componenti Principali</th>
+                        <th>Formula / Equazione di riferimento</th>
+                        <th>Intervallo utile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tampone Acido</strong></td>
+                        <td>Acido debole + Sale con base forte</td>
+                        <td>$\text{pH} = \text{p}K_a + \log \left(\frac{[\text{Sale}]}{[\text{Acido}]}\right)$</td>
+                        <td>$\text{pH} \approx \text{p}K_a \pm 1$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tampone Basico</strong></td>
+                        <td>Base debole + Sale con acido forte</td>
+                        <td>$\text{pOH} = \text{p}K_b + \log \left(\frac{[\text{Sale}]}{[\text{Base}]}\right)$</td>
+                        <td>$\text{pOH} \approx \text{p}K_b \pm 1$</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>5. Sistemi tampone nei sistemi biologici</h2>
+            <p>
+                I tamponi chimici sono di vitale importanza negli organismi viventi, dove la maggior parte degli enzimi e delle reazioni cellulari richiede un intervallo di pH estremamente ristretto:
+            </p>
+            <ul>
+                <li><strong>Nel sangue umano:</strong> Il pH deve rimanere rigorosamente compreso tra $7,35$ e $7,45$. Il principale sistema tampone extracellulare è basato sulla coppia <strong>acido carbonico/ione idrogenocarbonato ($\text{H}_2\text{CO}_3 / \text{HCO}_3^-$)</strong>, coadiuvato dalla respirazione polmonare e dalla funzione renale.</li>
+                <li><strong>Nei fluidi intracellulari:</strong> Il tampone <strong>fosfato diidrogeno / fosfato idrogeno ($\text{H}_2\text{PO}_4^- / \text{HPO}_4^{2-}$)</strong> gioca un ruolo chiave nel mantenere stabile l'acidità all'interno delle cellule.</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Il concetto di "Capacità Tampone"</h3>
+                <p style="margin-bottom: 0;">
+                    Il potere o <strong>capacità tampone</strong> indica la quantità massima di acido o base forte che una soluzione tampone può neutralizzare prima che il pH subisca una variazione significativa. Questa capacità dipende dalle concentrazioni assolute dei componenti: maggiore è la concentrazione di acido debole e sale presenti nella soluzione, maggiore sarà la quantità di acidi/basi neutralizzabili e, di conseguenza, maggiore risulterà la capacità tampone.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

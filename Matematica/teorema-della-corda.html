@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Teorema della Corda con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teorema della Corda - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teorema-della-corda" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Teorema della Corda</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Relazione geometrica fondamentale che lega la misura di una corda di una circonferenza al diametro e al seno di uno qualunque degli angoli alla circonferenza che insistono su di essa.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Enunciato del Teorema della Corda</h2>
+            <p>Il <strong>teorema della corda</strong> afferma che in una circonferenza la misura di una corda è uguale al prodotto del diametro per il seno di uno qualsiasi degli angoli alla circonferenza che insistono sulla corda stessa.</p>
+            
+            <div class="formula-box">
+                $$\text{Corda } AB = 2R \cdot \sin(\alpha)$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">Dove $R$ è il raggio della circonferenza (quindi $2R$ è il diametro) e $\alpha$ è l'angolo alla circonferenza sotteso dalla corda $AB$.</p>
+            </div>
+
+            <p>Da questa relazione fondamentale derivano importanti formule inverse utili nella risoluzione di problemi di geometria e trigonometria:</p>
+            <ul>
+                <li>Calcolo della corda conoscendo raggio e angolo: $c = 2R\sin\alpha$</li>
+                <li>Calcolo del diametro conoscendo corda e angolo: $2R = \frac{c}{\sin\alpha}$</li>
+                <li>Calcolo del seno dell'angolo: $\sin\alpha = \frac{c}{2R}$</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>In una circonferenza di raggio $R = 10\text{ cm}$, calcola la misura di una corda $AB$ che sottende un angolo alla circonferenza $\alpha = 30^\circ$.</p>
+                <ol>
+                    <li><strong>Impostazione della formula del teorema della corda:</strong>
+                        $$AB = 2R \cdot \sin(\alpha)$$
+                    </li>
+                    <li><strong>Sostituzione numerica dei dati:</strong>
+                        $$AB = 2 \cdot 10 \cdot \sin(30^\circ)$$
+                        $$AB = 20 \cdot \frac{1}{2} = 10\text{ cm}$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Teorema della Corda</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Applicazione diretta del teorema della corda con angoli notevoli
+                    const casiFacili = [
+                        ["In una circonferenza di raggio $R = 8$, calcola la lunghezza della corda che sottende un angolo alla circonferenza di $30^\\circ$.", "c = 8", "Applichiamo il teorema della corda: $c = 2R\\sin(30^\\circ) = 2 \\cdot 8 \\cdot \\frac{1}{2} = 16 \\cdot \\frac{1}{2} = 8$."],
+                        ["Una corda misura $10\\sqrt{3}$ ed è tracciata in una circonferenza di raggio $R = 10$. Calcola l'angolo alla circonferenza sotteso dalla corda (considerando l'angolo acuto).", "\\alpha = 60^\\circ", "Dalla formula inversa del teorema della corda: $\\sin\\alpha = \\frac{c}{2R} = \\frac{10\\sqrt{3}}{20} = \\frac{\\sqrt{3}}{2}$, da cui l'angolo acuto è $\\alpha = 60^\\circ$."],
+                        ["In una circonferenza, una corda misura $12$ e l'angolo alla circonferenza corrispondente è $\\alpha = 45^\\circ$. Calcola il diametro $2R$ della circonferenza.", "2R = 12\\sqrt{2}", "Ricaviamo il diametro: $2R = \\frac{c}{\\sin(45^\\circ)} = \\frac{12}{\\sqrt{2}/2} = \\frac{24}{\\sqrt{2}} = 12\\sqrt{2}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Individuiamo i dati noti del problema.<br>2) ${cf[2]}<br>3) Otteniamo il risultato finale richiesto.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi geometrici con distanze dal centro e angoli correlati
+                    const casiMedi = [
+                        ["In una circonferenza di raggio $R = 10$, una corda ha distanza $d = 6$ dal centro. Calcola la lunghezza della corda.", "c = 16", "La semicorda, la distanza dal centro e il raggio formano un triangolo rettangolo. Applicando il teorema di Pitagora sulla semicorda $h$: $h = \\sqrt{R^2 - d^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8$. La corda intera è $c = 2h = 16$."],
+                        ["Due corde parallele si trovano da parti opposte rispetto al centro di una circonferenza di raggio $R = 5$. La prima corda misura $6$ e la seconda corda misura $8$. Calcola la distanza tra le due corde.", "d = 7", "Utilizziamo la distanza dal centro per ciascuna corda: $d_1 = \\sqrt{R^2 - (c_1/2)^2} = \\sqrt{25 - 9} = 4$, e $d_2 = \\sqrt{25 - 16} = 3$. Trovandosi da parti opposte, la distanza totale è la somma $d_1 + d_2 = 4 + 3 = 7$."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Analizziamo le proprietà geometriche della corda e della distanza dal centro.<br>2) ${cm[2]}<br>3) Completiamo i passaggi per determinare la misura richiesta.`;
+                } else {
+                    // Difficili (76 - 100): Dimostrazioni avanzate, parametri letterali e problemi complessi
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `Dimostra il teorema della corda utilizzando le proprietà trigonometriche dei triangoli inscritti e il teorema dei seni applicato al triangolo formato dai due estremi della corda e dal centro (o da un punto della circonferenza).`;
+                        risposta = "c = 2R\\sin\\alpha \\quad \\text{(Dimostrazione geometrico-trigonometrica valida)}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Costruzione geometrica di riferimento</strong><br>
+                        Sia data una circonferenza di centro $O$ e raggio $R$, e sia $AB$ una corda qualsiasi. Consideriamo un punto $C$ sulla circonferenza tale che l'angolo $\\acb$ sia l'angolo alla circonferenza $\\alpha$ che insiste sull'arco $AB$.<br><br>
+                        <strong>Fase 2: Applicazione del Teorema dei Seni</strong><br>
+                        Il triangolo $ABC$ è inscritto nella circonferenza di raggio $R$. Per il teorema dei seni, il rapporto tra un lato e il seno dell'angolo opposto è pari al diametro:
+                        $$\frac{AB}{\\sin\alpha} = 2R$$<br><br>
+                        <strong>Fase 3: Esplicitazione della corda</strong><br>
+                        Moltiplicando entrambi i membri per $\\sin\\alpha$, otteniamo direttamente la formula del teorema della corda:
+                        $$AB = 2R\\sin\alpha$$<br><br>
+                        <strong>Fase 4: Conclusione della dimostrazione</strong><br>
+                        La dimostrazione è universale e valida sia per angoli acuti che ottusi (considerando le proprietà del supplementare per il quadrilatero inscritto).`;
+                    } else if (varIndex === 1) {
+                        domanda = `In una circonferenza di raggio $R$, due corde intersecantesi $AB$ e $CD$ formano angoli particolari. Applicando il teorema della corda ai segmenti determinati dall'intersezione, dimostra la relazione del prodotto dei segmenti delle corde ($AP \\cdot PB = CP \\cdot PD$).`;
+                        risposta = "AP \\cdot PB = CP \\cdot PD \\quad \\text{(Teorema delle corde che si intersecano)}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Posizione delle corde nel cerchio</strong><br>
+                        Siano $AB$ e $CD$ due corde di una circonferenza che si intersecano in un punto interno $P$. Si formano così i segmenti $AP, PB$ e $CP, PD$.<br><br>
+                        <strong>Fase 2: Considerazione dei triangoli simili</strong><br>
+                        Tracciando i segmenti $AC$ e $BD$, consideriamo i triangoli $APC$ e $DPB$. Essi sono simili poiché hanno gli angoli opposti al vertice in $P$ uguali e gli angoli alla circonferenza che insistono sugli stessi archi rispettivamente congruenti.<br><br>
+                        <strong>Fase 3: Proporzionalità geometrica</strong><br>
+                        Dalla similitudine dei triangoli $APC \\sim DPB$, scriviamo la proporzione tra i lati corrispondenti:
+                        $$\frac{AP}{PD} = \frac{CP}{PB}$$<br><br>
+                        <strong>Fase 4: Conclusione algebrica</strong><br>
+                        Moltiplicando in croce si ottiene la celebre identità del prodotto dei segmenti:
+                        $$AP \\cdot PB = CP \\cdot PD$$`;
+                    } else {
+                        domanda = `In un triangolo $ABC$ inscritto in una circonferenza di raggio $R = 10$, le corde corrispondenti ai lati misurano $a = 12$ e $b = 16$. Applicando il teorema della corda, calcola i seni dei rispettivi angoli alla circonferenza e determina l'area del triangolo.`;
+                        risposta = "S = 96 \\text{ oppure valore geometrico coerente}",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Calcolo dei seni tramite il Teorema della Corda</strong><br>
+                        Il diametro della circonferenza è $2R = 20$. Sfruttando la formula inversa del teorema della corda per ciascun lato:
+                        $$\sin\alpha = \frac{a}{2R} = \frac{12}{20} = \frac{3}{5}$$
+                        $$\sin\beta = \frac{b}{2R} = \frac{16}{20} = \frac{4}{5}$$<br><br>
+                        <strong>Fase 2: Verifica geometrica dei triangoli rettangoli</strong><br>
+                        Notiamo che i valori dei lati ($12, 16$ e l'eventuale terzo lato $20$) sono multipli della terna pitagorica $3-4-5$ ($3\\cdot 4 = 12$, $4\\cdot 4 = 16$, $5\\cdot 4 = 20$). Ciò significa che il triangolo è un triangolo rettangolo inscritto in una semicirconferenza.<br><br>
+                        <strong>Fase 3: Calcolo dell'area del triangolo</strong><br>
+                        Essendo un triangolo rettangolo con i cateti che coincidono con le corde $a = 12$ e $b = 16$, l'area si calcola semplicemente come:
+                        $$S = \frac{1}{2} \cdot a \cdot b = \frac{1}{2} \cdot 12 \cdot 16 = 6 \cdot 16 = 96$$<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        Il risultato analitico e geometrico è confermato con assoluta coerenza.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

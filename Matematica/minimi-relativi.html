@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa allo studio dei minimi relativi e assoluti con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Minimi Relativi e Assoluti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-minimi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Minimi Relativi e Assoluti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Individuazione e classificazione dei punti di minimo tramite l'analisi del cambio di segno della derivata prima.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Definizione e Criterio di Determinazione</h2>
+            <p>Un punto \(x_0\) del dominio di una funzione \(f(x)\) è un punto di <strong>minimo relativo</strong> se esiste un intorno di \(x_0\) tale che per ogni \(x\) di quell'intorno si ha \(f(x) \ge f(x_0)\).</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[f'(x_0) = 0 \quad \text{e} \quad f'(x) \text{ passa da negativa a positiva } (-\,\to\,+)\]
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Regole Operative per il Minimo</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Annullamento della Derivata:</strong> Si calcola la derivata prima \(f'(x)\) e si risolve l'equazione \(f'(x) = 0\) per trovare i punti stazionari.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Studio del Segno:</strong> Si analizza il segno di \(f'(x)\) a sinistra e a destra del punto candidato \(x_0\). Se la derivata passa da <strong>negativa a positiva</strong>, la funzione prima scende e poi sale, confermando la presenza di un minimo.</li>
+                    <li><strong>Minimo Assoluto:</strong> Il valore più basso assunto dalla funzione in tutto il suo dominio prende il nome di minimo assoluto (o globale).</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Minimi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta strutturata di 100 esercizi interamente svolti dedicati esclusivamente al calcolo e alla verifica dei punti di minimo.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sui minimi -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Parabole con concavità verso l'alto e polinomi semplici
+                        difficolta = "facile";
+                        const tipo = n % 3;
+                        const a = (n % 4) + 1;
+                        const b = (n % 6) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova il punto di minimo della funzione quadratica \\(f(x) = x^2 - ${b * 2}x + ${b * b + 1}\\).`;
+                            risultato = `Minimo in \\((${b}, 1)\\)`;
+                            spiegazione = `1. **Derivata prima:** \\(f'(x) = 2x - ${b * 2}\\).\n2. **Annullamento:** \\(2x - ${b * 2} = 0 \\implies x = ${b}\\).\n3. **Studio del segno:** \\(f'(x) < 0\\) per \\(x < ${b}\\) e \\(f'(x) > 0\\) per \\(x > ${b}\\). Il passaggio da \\(-\\) a \\(\\+\\) in \\(x = ${b}\\) individua un **minimo** di valore \\(f(${b}) = 1\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina l'eventuale punto di minimo della funzione \\(f(x) = 2x^2 - ${a * 4}x\\).`;
+                            risultato = `Minimo in \\((${a}, -${2 * a * a})\\)`;
+                            spiegazione = `1. \\(f'(x) = 4x - ${a * 4}\\).\n2. \\(f'(x) = 0 \\implies 4x = ${a * 4} \\implies x = ${a}\\).\n3. La derivata è negativa a sinistra di \\(${a}\\) e positiva a destra: si ha un **minimo** in \\((${a}, -${2 * a * a})\\).`;
+                        } else {
+                            domanda = `Trova il punto di minimo della funzione cubica \\(f(x) = x^3 - ${3 * a * a}x\\).`;
+                            risultato = `Minimo in \\((${a}, -${2 * a * a * a})\\)`;
+                            spiegazione = `1. \\(f'(x) = 3x^2 - ${3 * a * a} = 3(x^2 - ${a * a})\\).\n2. Annullamento in \\(x = \\pm ${a}\\).\n3. In \\(x = ${a}\\) la derivata passa da negativa a positiva, generando un **minimo** in \\((${a}, -${2 * a * a * a})\\).`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni fratte, polinomi di grado superiore e prodotti
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova il punto di minimo della funzione fratta \\(f(x) = x + \\frac{${k * k}}{x}\\) (con \\(x > 0\\)).`;
+                            risultato = `Minimo in \\(({k}, ${2 * k})\\)`;
+                            spiegazione = `1. **Dominio:** \\(x > 0\\).\n2. \\(f'(x) = 1 - \\frac{${k * k}}{x^2} = \\frac{x^2 - ${k * k}}{x^2}\\).\n3. Ponendo \\(f'(x) = 0 \\implies x = ${k}\\) (la soluzione negativa è scartata dal dominio).\n4. Per \\(0 < x < ${k}\\) la derivata è negativa, per \\(x > ${k}\\) è positiva. In \\(x = ${k}\\) vi è un **minimo** di valore \\(${2 * k}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina i punti di minimo della funzione \\(f(x) = x^4 - ${2 * k * k}x^2\\).`;
+                            risultato = `Minimi in \\((- ${k}, -${k * k * k * k})\\) e \\(({k}, -${k * k * k * k})\\)`;
+                            spiegazione = `1. \\(f'(x) = 4x^3 - ${4 * k * k}x = 4x(x^2 - ${k * k})\\).\n2. Annullamento in \\(x = 0\\), \\(x = -${k}\\), \\(x = ${k}\\).\n3. Nei punti \\(x = -${k}\\) e \\(x = ${k}\\) la derivata passa da \\(-\\) a \\(\\+\\), individuando due **minimi** relativi e assoluti simmetrici.`;
+                        } else if (tipo === 2) {
+                            domanda = `Studia i minimi della funzione \\(f(x) = \\frac{x^2 + ${k}}{x}\\) (con \\(x > 0\\)).`;
+                            risultato = `Minimo in \\((\\sqrt{${k}}, 2\\sqrt{${k}})\\)`;
+                            spiegazione = `1. \\(f(x) = x + \\frac{${k}}{x}\\).\n2. \\(f'(x) = 1 - \\frac{${k}}{x^2} = 0 \\implies x^2 = ${k} \\implies x = \\sqrt{${k}}\\_[positivo]\\).\n3. Il cambio di segno da \\(-\\) a \\(\\+\\) in \\(x = \\sqrt{${k}}\\) conferma la presenza di un **minimo**.`;
+                        } else if (tipo === 3) {
+                            domanda = `Trova il punto di minimo della funzione \\(f(x) = (x - 1)^2 + ${k}\\).`;
+                            risultato = `Minimo in \\((1, ${k})\\)`;
+                            spiegazione = `1. \\(f'(x) = 2(x - 1)\\).\n2. \\(f'(x) = 0 \\implies x = 1\\).\n3. Essendo un quadrato, \\(f'(x) < 0\\) per \\(x < 1\\) e \\(f'(x) > 0\\) per \\(x > 1\\). Il punto \\((1, ${k})\\) è il **minimo** assoluto.`;
+                        } else {
+                            domanda = `Determina i minimi della funzione \\(f(x) = x^2 e^x\\).`;
+                            risultato = `Minimo in \\((-2, 4e^{-2})\\)`;
+                            spiegazione = `1. \\(f'(x) = 2x e^x + x^2 e^x = x e^x (2 + x)\\).\n2. Annullamento in \\(x = 0\\) e \\(x = -2\\).\n3. In \\(x = -2\\) la derivata passa da \\(-\\) a \\(\\+\\), determinando un **minimo** relativo.`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni logaritmiche, irrazionali e trigonometriche
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova il punto di minimo della funzione:\n\\[f(x) = x - \\ln(x)\\]`;
+                            risultato = `Minimo in \\((1, 1)\\)`;
+                            spiegazione = `1. **Dominio:** \\(x > 0\\).\n2. \\(f'(x) = 1 - \\frac{1}{x} = \\frac{x - 1}{x}\\).\n3. \\(f'(x) = 0 \\implies x = 1\\).\n4. Per \\(0 < x < 1\\) la derivata è negativa, per \\(x > 1\\) è positiva. Il punto \\((1, 1)\\) è un **minimo** assoluto.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina i minimi della funzione trigonometrica in \\([0, 2\\pi]\\):\n\\[f(x) = \\sin(x)\\]`;
+                            risultato = `Minimo in \\((\\frac{3\\pi}{2}, -1)\\)`;
+                            spiegazione = `1. \\(f'(x) = \\cos(x)\\).\n2. \\(f'(x) = 0 \\implies x = \\frac{\\pi}{2} \\lor x = \\frac{3\\pi}{2}\\).\n3. In \\(x = \\frac{3\\pi}{2}\\) la derivata passa da \\(-\\) a \\(\\+\\), generando un **minimo** di valore \\(-1\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Trova il punto di minimo della funzione irrazionale:\n\\[f(x) = \\sqrt{x^2 + ${k * k}}\\]`;
+                            risultato = `Minimo in \\((0, ${k})\\)`;
+                            spiegazione = `1. **Dominio:** \\(\\mathbb{R}\\).\n2. \\(f'(x) = \\frac{x}{\\sqrt{x^2 + ${k * k}}}\\).\n3. \\(f'(x) = 0 \\implies x = 0\\).\n4. A sinistra di \\(0\\) la derivata è negativa, a destra è positiva: in \\((0, ${k})\\) vi è un **minimo**.`;
+                        } else if (tipo === 3) {
+                            domanda = `Studia i minimi della funzione:\n\\[f(x) = x^2 \\ln(x)\\]`;
+                            risultato = `Minimo in \\((\\frac{1}{\\sqrt{e}}, -\\frac{1}{2e})\\)`;
+                            spiegazione = `1. **Dominio:** \\(x > 0\\).\n2. \\(f'(x) = x(2\\ln(x) + 1)\\).\n3. \\(f'(x) = 0 \\implies \\ln(x) = -\\frac{1}{2} \\implies x = e^{-1/2}\\).\n4. Studio del segno: il passaggio da \\(-\\) a \\(\\+\\) in \\(x = e^{-1/2}\\) conferma il **minimo**.`;
+                        } else {
+                            domanda = `Determina i minimi della funzione:\n\\[f(x) = e^x + e^{-x}\\]`;
+                            risultato = `Minimo in \\((0, 2)\\)`;
+                            spiegazione = `1. \\(f'(x) = e^x - e^{-x} = e^x - \\frac{1}{e^x} = \\frac{e^{2x} - 1}{e^x}\\).\n2. \\(f'(x) = 0 \\implies e^{2x} = 1 \\implies x = 0\\).\n3. Per \\(x < 0\\) la derivata è negativa, per \\(x > 0\\) è positiva. Il punto \\((0, 2)\\) è un **minimo** assoluto.`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Family Members and Relationships in inglese: vocaboli, gradi di parentela, relazioni e dinamiche affettive - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Family Members and Relationships - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="family-members-and-relationship" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Lexicon</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Family Members and Relationships</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo sui membri della famiglia, gradi di parentela, relazioni affettive, stato sentimentale e dinamiche sociali.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Nuclear Family (Famiglia Nucleare e Gradi Diretti)</h2>
+            <p>I componenti primari e stretti del nucleo familiare.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Parents</td><td>Genitori</td></tr>
+                    <tr><td>Mother / Mum / Mom</td><td>Madre / Mamma</td></tr>
+                    <tr><td>Father / Dad / Papa</td><td>Padre / Papà</td></tr>
+                    <tr><td>Children</td><td>Figli</td></tr>
+                    <tr><td>Son</td><td>Figlio</td></tr>
+                    <tr><td>Daughter</td><td>Figlia</td></tr>
+                    <tr><td>Siblings</td><td>Fratelli / Sorelle (termini collettivi)</td></tr>
+                    <tr><td>Brother</td><td>Fratello</td></tr>
+                    <tr><td>Sister</td><td>Sorella</td></tr>
+                    <tr><td>Twin brother / Twin sister</td><td>Fratello gemello / Sorella gemella</td></tr>
+                    <tr><td>Only child</td><td>Figlio unico / Figlia unica</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Extended Family (Famiglia Allargata e Altri Parenti)</h2>
+            <p>Termini per indicare nonni, zii, cugini e parenti di secondo o terzo grado.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Grandparents</td><td>Nonni</td></tr>
+                    <tr><td>Grandfather / Grandpa</td><td>Nonno</td></tr>
+                    <tr><td>Grandmother / Grandma</td><td>Nonna</td></tr>
+                    <tr><td>Grandchidren</td><td>Nipoti (di nonni)</td></tr>
+                    <tr><td>Grandson</td><td>Nipote maschio (di nonni)</td></tr>
+                    <tr><td>Granddaughter</td><td>Nipote femmina (di nonni)</td></tr>
+                    <tr><td>Great-grandfather / Great-grandmother</td><td>Bisnonno / Bisnonna</td></tr>
+                    <tr><td>Uncle</td><td>Zio</td></tr>
+                    <tr><td>Aunt</td><td>Zia</td></tr>
+                    <tr><td>Nephew</td><td>Nipote maschio (di zii)</td></tr>
+                    <tr><td>Niece</td><td>Nipote femmina (di zii)</td></tr>
+                    <tr><td>Cousin</td><td>Cugino / Cugina</td></tr>
+                    <tr><td>Relatives / Relations</td><td>Parenti</td></tr>
+                    <tr><td>Ancestor</td><td>Antenato</td></tr>
+                    <tr><td>Descendant</td><td>Discendente</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. In-laws and Blended Family (Parenti Acquisiti e Famiglia Ricostituita)</h2>
+            <p>Termini per descrivere i legami acquisiti tramite matrimonio o nuove unioni familiari.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Mother-in-law</td><td>Suocera</td></tr>
+                    <tr><td>Father-in-law</td><td>Suocero</td></tr>
+                    <tr><td>Son-in-law</td><td>Genero</td></tr>
+                    <tr><td>Daughter-in-law</td><td>Nuora</td></tr>
+                    <tr><td>Brother-in-law</td><td>Cognato</td></tr>
+                    <tr><td>Sister-in-law</td><td>Cognata</td></tr>
+                    <tr><td>Stepfather</td><td>Patrigno / Matrigna (marito della madre)</td></tr>
+                    <tr><td>Stepmother</td><td>Matrigna</td></tr>
+                    <tr><td>Stepson</td><td>Figliastro</td></tr>
+                    <tr><td>Stepdaughter</td><td>Figliastra</td></tr>
+                    <tr><td>Stepbrother</td><td>Fratellastro</td></tr>
+                    <tr><td>Stepsister</td><td>Sorellastra</td></tr>
+                    <tr><td>Half-brother / Half-sister</td><td>Fratellastro / Sorellastra (con un solo genitore in comune)</td></tr>
+                    <tr><td>Godfather</td><td>Padrino</td></tr>
+                    <tr><td>Godmother</td><td>Madrina</td></tr>
+                    <tr><td>Godson / Goddaughter</td><td>Figlioccio / Figlioccia</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Romantic Relationships and Status (Relazioni Sentimentali e Stato Sentimentale)</h2>
+            <p>Vocaboli relativi alle coppie, al corteggiamento, allo stato civile e ai legami d'amore.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Partner</td><td>Partner / Compagno / Compagna</td></tr>
+                    <tr><td>Boyfriend</td><td>Fidanzato</td></tr>
+                    <tr><td>Girlfriend</td><td>Fidanzata</td></tr>
+                    <tr><td>Fiancé / Fiancée</td><td>Promesso sposo / Promessa sposa</td></tr>
+                    <tr><td>Husband</td><td>Marito</td></tr>
+                    <tr><td>Wife</td><td>Moglie</td></tr>
+                    <tr><td>Ex-husband / Ex-wife</td><td>Ex marito / Ex moglie</td></tr>
+                    <tr><td>Single</td><td>Single / Celibe / Nubile</td></tr>
+                    <tr><td>In a relationship</td><td>In una relazione</td></tr>
+                    <tr><td>Engaged</td><td>Fidanzato ufficialmente / Promesso</td></tr>
+                    <tr><td>Married</td><td>Sposato / Sposata</td></tr>
+                    <tr><td>Divorced</td><td>Divorziato / Divorziata</td></tr>
+                    <tr><td>Widowed</td><td>Vedovo / Vedova</td></tr>
+                    <tr><td>Separated</td><td>Separato / Separata</td></tr>
+                    <tr><td>Civil partnership / Civil union</td><td>Unione civile</td></tr>
+                    <tr><td>Cohabitation / Living together</td><td>Convivenza</td></tr>
+                </tbody>
+            </table>
+
+            <h2>5. Social Dynamics and Relationship Verbs (Dinamiche Sociali e Verbi di Relazione)</h2>
+            <p>Espressioni verbali e sostantivi chiave per descrivere l'evoluzione e la qualità dei rapporti interpersonali.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To fall in love</td><td>Innamorarsi</td></tr>
+                    <tr><td>To date someone</td><td>Uscire con qualcuno / Frequentarsi</td></tr>
+                    <tr><td>To propose (to someone)</td><td>Chiedere in moglie / Fare la proposta</td></tr>
+                    <tr><td>To get married</td><td>Sposarsi</td></tr>
+                    <tr><td>Wedding</td><td>Matrimonio (cerimonia)</td></tr>
+                    <tr><td>Marriage</td><td>Matrimonio (istituzione / legame)</td></tr>
+                    <tr><td>Anniversary</td><td>Anniversario</td></tr>
+                    <tr><td>To break up / To split up</td><td>Lasciarsi / Rompere una relazione</td></tr>
+                    <tr><td>To get divorced</td><td>Divorziare</td></tr>
+                    <tr><td>Friendship</td><td>Amicizia</td></tr>
+                    <tr><td>Best friend / Close friend</td><td>Migliore amico / Amico stretto</td></tr>
+                    <tr><td>Acquaintance</td><td>Conoscente</td></tr>
+                    <tr><td>Colleague / Coworker</td><td>Collega</td></tr>
+                    <tr><td>Neighbour</td><td>Vicino di casa</td></tr>
+                    <tr><td>To get on well with someone</td><td>Andare d'accordo con qualcuno</td></tr>
+                    <tr><td>To argue / To quarrel</td><td>Litigare / Discutere</td></tr>
+                    <tr><td>To make up</td><td>Pacificarsi / Fare pace</td></tr>
+                    <tr><td>To rely on someone</td><td>Contare su qualcuno / Affidarsi</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Consiglio di Studio per le Relazioni</h3>
+                <p style="margin-bottom: 0;">
+                    Ricorda la differenza fondamentale tra <i>nephew/niece</i> (nipoti di zii) e <i>grandson/granddaughter</i> (nipoti di nonni), che spesso genera confusione. Esercitati a tracciare un piccolo albero genealogico (<i>family tree</i>) descrivendo ogni legame in inglese!
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

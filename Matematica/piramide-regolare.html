@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Solida - Sezione 6: La Piramide Regolare - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Piramide Regolare - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Solida */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-solida-sezione-6" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Solida - Sezione 6</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Piramide Regolare</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Proprietà geometriche, apotema, formule di superficie, volume e relazioni fondamentali della piramide regolare a base quadrata, corredate da 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è una Piramide Regolare?</h2>
+            <p>
+                Una <strong>piramide</strong> è un solido delimitato da un poligono di base (che può essere un triangolo, un quadrato, un pentagono, ecc.) e da tanti triangoli quanti sono i lati del poligono di base, aventi tutti un vertice in comune detto <em>vertice della piramide</em>.
+            </p>
+            <p>
+                Una piramide si dice <strong>regolare</strong> se ha per base un poligono regolare (come un triangolo equilatero o un quadrato) e il piede dell'altezza coincide con il centro della circonferenza inscritta nella base. In questa lezione ci concentriamo sulla <em>piramide retta a base quadrata</em>.
+            </p>
+            <p>
+                Gli elementi chiave della piramide sono:
+            </p>
+            <ul>
+                <li><strong>Lato di base (l):</strong> il lato del poligono regolare di base.</li>
+                <li><strong>Altezza della piramide (h):</strong> il segmento perpendicolare condotto dal vertice al piano di base.</li>
+                <li><strong>Apotema della piramide (a<sub>p</sub>):</strong> l'altezza di una delle facce laterali (triangoli).</li>
+                <li><strong>Apotema di base (a<sub>b</sub>):</strong> il raggio della circonferenza inscritta nella base (nel caso del quadrato, equivale a metà del lato: <em>l / 2</em>).</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Piramide Regolare a Base Quadrata) -->
+            <div class="figura-geometrica-container">
+                <svg width="520" height="340" viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sfondo interno decorativo -->
+                    <rect width="520" height="340" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+                    <!-- Faccia inferiore (base quadrata in prospettiva) -->
+                    <polygon points="140,240 320,240 380,180 200,180" fill="#dbeafe" opacity="0.6"/>
+
+                    <!-- Spigolo posteriore di base (tratteggiato) -->
+                    <line x1="200" y1="180" x2="380" y2="180" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5"/>
+
+                    <!-- Altezza interna (h) in arancione tratteggiata dal centro base al vertice -->
+                    <line x1="260" y1="210" x2="260" y2="60" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="6,4"/>
+
+                    <!-- Apotema della piramide (a_p) in verde sul lato anteriore destro -->
+                    <line x1="320" y1="240" x2="260" y2="60" stroke="#059669" stroke-width="3"/>
+
+                    <!-- Spigoli laterali della piramide (blu scuro pieno) -->
+                    <g stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                        <!-- Perimetro di base visibile -->
+                        <line x1="140" y1="240" x2="320" y2="240" />
+                        <line x1="320" y1="240" x2="380" y2="180" />
+                        <line x1="140" y1="240" x2="200" y2="180" />
+                        <!-- Spigoli laterali verso il vertice (2 visibili, 1 tratteggiato) -->
+                        <line x1="140" y1="240" x2="260" y2="60" />
+                        <line x1="320" y1="240" x2="260" y2="60" />
+                    </g>
+                    <!-- Spigolo laterale posteriore sinistro (tratteggiato) -->
+                    <line x1="200" y1="180" x2="260" y2="60" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5"/>
+
+                    <!-- Etichette Dimensioni -->
+                    <text x="210" y="260" fill="#0284c7" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Lato di base (l)</text>
+                    <text x="270" y="140" fill="#ea580c" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Altezza (h)</text>
+                    <text x="315" y="150" fill="#059669" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Apotema (a<sub>p</sub>)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Piramide regolare a base quadrata con altezza <code style="color:#ea580c;">h</code>, apotema <code style="color:#059669;">a<sub>p</sub></code> e lato di base <code style="color:#0284c7;">l</code>.
+                </div>
+            </div>
+
+            <h2>2. Formule Fondamentali della Piramide</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Principali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Perimetro di base (P):</strong> P = l &middot; 4 (per base quadrata)<br>
+                    &bull; <strong>Area di base (A<sub>b</sub>):</strong> A<sub>b</sub> = l<sup>2</sup><br>
+                    &bull; <strong>Superficie Laterale (S<sub>L</sub>):</strong> S<sub>L</sub> = (P &middot; a<sub>p</sub>) / 2<br>
+                    &bull; <strong>Superficie Totale (S<sub>T</sub>):</strong> S<sub>T</sub> = S<sub>L</sub> + A<sub>b</sub><br>
+                    &bull; <strong>Volume (V):</strong> V = (A<sub>b</sub> &middot; h) / 3<br>
+                    &bull; <strong>Teorema di Pitagora nel triangolo interno:</strong> a<sub>p</sub><sup>2</sup> = h<sup>2</sup> + a<sub>b</sub><sup>2</sup> (dove a<sub>b</sub> = l / 2)
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Una piramide retta ha per base un quadrato con il lato lungo <code>10 cm</code>. Sapendo che l'apotema della piramide misura <code>13 cm</code>, calcola la superficie totale e il volume del solido (altezza h = 12 cm).</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Area di base: A<sub>b</sub> = l<sup>2</sup> = 10<sup>2</sup> = 100 cm<sup>2</sup>.</li>
+                    <li>Perimetro di base: P = 10 &middot; 4 = 40 cm.</li>
+                    <li>Superficie laterale: S<sub>L</sub> = (P &middot; a<sub>p</sub>) / 2 = (40 &middot; 13) / 2 = 520 / 2 = 260 cm<sup>2</sup>.</li>
+                    <li>Superficie totale: S<sub>T</sub> = S<sub>L</sub> + A<sub>b</sub> = 260 + 100 = 360 cm<sup>2</sup>.</li>
+                    <li>Volume: V = (A<sub>b</sub> &middot; h) / 3 = (100 &middot; 12) / 3 = 1200 / 3 = 400 cm<sup>3</sup>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Superficie totale = 360 cm², Volume = 400 cm³.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Piramide Regolare</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico su superfici, volumi e apotemi di piramidi regolari a base quadrata con soluzioni dettagliate passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let l = (i % 4) + 6; // Lato base tra 6 e 9 cm
+                    let ap = (i % 3) + 10; // Apotema tra 10 e 12 cm
+                    let ab = l * l;
+                    let per = l * 4;
+                    let sl = (per * ap) / 2;
+                    let st = sl + ab;
+
+                    domanda = `Una piramide retta a base quadrata ha il lato di base di <code>${l} cm</code> e l'apotema di <code>${ap} cm</code>. Calcola la superficie laterale e la superficie totale.`;
+                    risposta = `<strong>S<sub>L</sub> = ${sl} cm²</strong>, <strong>S<sub>T</sub> = ${st} cm²</strong>`;
+                    spiegazione = `
+                    1) Perimetro di base: <code>P = ${l} &times; 4 = ${per} cm</code>.<br>
+                    2) Superficie laterale: <code>S<sub>L</sub> = (P &times; a<sub>p</sub>) / 2 = (${per} &times; ${ap}) / 2 = ${sl} cm<sup>2</sup></code>.<br>
+                    3) Area di base: <code>A<sub>b</sub> = ${l}<sup>2</sup> = ${ab} cm<sup>2</sup></code>.<br>
+                    4) Superficie totale: <code>S<sub>T</sub> = S<sub>L</sub> + A<sub>b</sub> = ${sl} + ${ab} = ${st} cm<sup>2</sup></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let l = 6;
+                    let h = 4;
+                    let ab_dist = l / 2; // 3
+                    let ap = Math.sqrt(h*h + ab_dist*ab_dist); // 5
+                    let ab = l * l; // 36
+                    let per = l * 4; // 24
+                    let sl = (per * ap) / 2; // 60
+                    let st = sl + ab; // 96
+                    let vol = (ab * h) / 3; // 48
+
+                    domanda = `Una piramide regolare a base quadrata ha il lato di base di <code>6 cm</code> e l'altezza di <code>4 cm</code>. Calcola l'apotema, la superficie totale e il volume.`;
+                    risposta = `<strong>a<sub>p</sub> = ${ap} cm</strong>, <strong>S<sub>T</sub> = ${st} cm²</strong>, <strong>V = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Apotema con Pitagora: <code>a<sub>p</sub> = &radic;(h<sup>2</sup> + (l/2)<sup>2</sup>) = &radic;(4<sup>2</sup> + 3<sup>2</sup>) = &radic;(16 + 9) = &radic;25 = ${ap} cm</code>.<br>
+                    2) Superficie totale: <code>S<sub>T</sub> = S<sub>L</sub> + A<sub>b</sub> = ${st} cm<sup>2</sup></code>.<br>
+                    3) Volume: <code>V = (A<sub>b</sub> &times; h) / 3 = (36 &times; 4) / 3 = ${vol} cm<sup>3</sup></code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let l = 10;
+                    let ap = 13;
+                    let ab_dist = l / 2; // 5
+                    let h = Math.sqrt(ap*ap - ab_dist*ab_dist); // 12
+                    let ab = l * l; // 100
+                    let per = l * 4; // 40
+                    let sl = (per * ap) / 2; // 260
+                    let st = sl + ab; // 360
+                    let vol = (ab * h) / 3; // 400
+
+                    domanda = `Una piramide regolare ha il perimetro di base di <code>40 cm</code> e l'apotema di <code>13 cm</code>. Calcolane l'altezza, la superficie totale e il volume (lato base = 10 cm).`;
+                    risposta = `<strong>h = ${h} cm</strong>, <strong>S<sub>T</sub> = ${st} cm²</strong>, <strong>V = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Altezza con Pitagora: <code>h = &radic;(a<sub>p</sub><sup>2</sup> - (l/2)<sup>2</sup>) = &radic;(13<sup>2</sup> - 5<sup>2</sup>) = &radic;(169 - 25) = &radic;144 = ${h} cm</code>.<br>
+                    2) Superficie totale: <code>S<sub>T</sub> = ${st} cm<sup>2</sup></code>.<br>
+                    3) Volume: <code>V = (A<sub>b</sub> &times; h) / 3 = (100 &times; 12) / 3 = ${vol} cm<sup>3</sup></code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

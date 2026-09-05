@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa sul Valore Assoluto con definizione, proprietà e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Valore Assoluto e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="valore-assoluto-definizione" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi e Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Valore Assoluto (Modulo)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Lezione 1: Definizione geometrica e analitica, proprietà fondamentali e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è il Valore Assoluto? (Significato Geometrico)</h2>
+            <p>In matematica, il <strong>valore assoluto</strong> (o <em>modulo</em>) di un numero reale $x$, indicato con il simbolo \(\lvert x \rvert\), rappresenta la sua <strong>distanza dallo zero</strong> sulla retta dei numeri reali, indipendentemente dal verso.</p>
+            <div class="formula-box">
+                $$\lvert 5 \rvert = 5 \quad \text{e} \quad \lvert -5 \rvert = 5$$
+            </div>
+
+            <h2>2. Definizione Analitica (A Pezzi)</h2>
+            <div class="formula-box">
+                $$\lvert x \rvert = \begin{cases} x & \text{se } x \ge 0 \\ -x & \text{se } x < 0 \end{cases}$$
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+    </footer>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+    
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+    
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE';
+                    let k = (i % 8) + 1;
+                    domanda = "Calcola il valore dell'espressione con modulo: \\(| " + (k - 5) + " |\\)";
+                    risposta = Math.abs(k - 5);
+                    spiegazione = "1) Applichiamo la definizione di valore assoluto.<br>2) Se il numero è positivo resta invariato, se è negativo ne prendiamo l'opposto.<br>3) Risultato: <strong>" + risposta + "</strong>.";
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO';
+                    let c = (i % 5) + 2;
+                    domanda = "Semplifica l'espressione con modulo sapendo che \\(x < 0\\): \\(| " + c + "x |\\)";
+                    risposta = "-" + c + "x";
+                    spiegazione = "1) Poiché \\(x < 0\\), la quantità algebrica dentro il modulo è negativa.<br>2) Per eliminare il modulo cambiamo segno all'argomento.<br>3) Risultato: <strong>" + risposta + "</strong>.";
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE';
+                    let p = (i % 3) + 2;
+                    domanda = "Risolvi l'equazione con valore assoluto elementare: \\(|x - " + p + "| = " + (p + 1) + "\\)";
+                    risposta = "x = -1 \\lor x = " + (2 * p + 1);
+                    spiegazione = "1) Sdoppiamo nei due casi: \\(x - " + p + " = " + (p+1) + "\\) oppure \\(x - " + p + " = -" + (p+1) + "\\).<br>2) Ricaviamo le soluzioni finali.";
+                }
+    
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}" style="padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box" style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta" style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Risultato:</strong> \\(${risposta}\\)</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+    
+            container.innerHTML = htmlEsercizi;
+    
+            // Forza il rendering di MathJax sugli elementi appena iniettati
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

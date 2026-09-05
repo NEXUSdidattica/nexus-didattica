@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sull'intensità e il verso della corrente elettrica, verso convenzionale e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Intensità e Verso della Corrente Elettrica con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="intensita-e-verso-della-corrente-elettrica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Intensità e Verso della Corrente Elettrica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi del verso convenzionale e reale della corrente, portatori di carica, calcolo dell'intensità e 100 esercizi interattivi dedicati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Il Verso della Corrente Elettrica</h2>
+            <p>
+                Per convenzione storica stabilita da Benjamin Franklin prima della scoperta dell'elettrone, il **verso convenzionale** della corrente elettrica va dal polo positivo (+) al polo negativo (-) del generatore. Tuttavia, nei conduttori metallici solidi, i portatori di carica mobili sono gli elettroni (che hanno carica negativa), i quali si muovono fisicamente in **verso opposto**, ovvero dal polo negativo verso quello positivo.
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formule Chiave:</b>
+                <p style="margin-top: 0.5rem;">
+                    $$I = \frac{\Delta Q}{\Delta t} \quad \text{[Ampere, A]}$$
+                    La carica totale $\Delta Q$ trasportata da un numero $N$ di elettroni (ciascuno con carica elementare $e = 1.602 \times 10^{-19}\text{ C}$) è data da:
+                    $$\Delta Q = N \cdot e$$
+                </p>
+            </div>
+
+            <h2>2. Portatori di Carica e Intensità</h2>
+            <p>
+                L'intensità di corrente misura quanta carica attraversa una sezione trasversale del conduttore nell'unità di tempo. Maggiore è il numero di elettroni in movimento o maggiore è la loro velocità di migrazione, maggiore sarà l'intensità di corrente $I$ misurata in Ampere.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo dell'intensità di corrente, della carica e del numero di elettroni:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+                const e_charge = 1.602e-19;
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let Q_C = 2 + (i % 20);
+                        let dt_s = 1 + (i % 12);
+                        let I_A = Q_C / dt_s;
+
+                        q = `Esercizio ${i}: Una sezione trasversale di un conduttore è attraversata da una carica $\\Delta Q = ${Q_C}\\text{ C}$ in un intervallo di tempo $\\Delta t = ${dt_s}\\text{ s}$. Calcola l'intensità della corrente elettrica $I$.`;
+                        r = `Intensità $I \\approx ${I_A.toFixed(2)}\\text{ A}$.`;
+                        s = `Utilizzando la definizione di intensità di corrente: $I = \\frac{\\Delta Q}{\\Delta t} = \\frac{${Q_C}\\text{ C}}{${dt_s}\\text{ s}} \\approx ${I_A.toFixed(2)}\\text{ A}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let I_mA = 50 + (i * 15);
+                        let I_A = I_mA / 1000;
+                        let dt_s = 5 + (i % 25);
+                        let Q_C = I_A * dt_s;
+
+                        q = `Esercizio ${i}: Un circuito è percorso da una corrente costante di intensità $I = ${I_mA}\\text{ mA}$. Calcola la carica totale $\\Delta Q$ che attraversa una sezione del conduttore in $\\Delta t = ${dt_s}\\text{ s}$.`;
+                        r = `Carica totale $\\Delta Q \\approx ${Q_C.toFixed(3)}\\text{ C}$.`;
+                        s = `Dalla formula $I = \\frac{\\Delta Q}{\\Delta t}$, ricaviamo la carica: $\\Delta Q = I \\cdot \\Delta t = (${I_A}\\text{ A}) \\cdot (${dt_s}\\text{ s}) = ${Q_C.toFixed(3)}\\text{ C}$.`;
+                    
+                    } else {
+                        let N_elettroni = (1e18) * (2 + (i % 9));
+                        let dt_s = 2;
+                        let Q_tot = N_elettroni * e_charge;
+                        let I_A = Q_tot / dt_s;
+
+                        q = `Esercizio ${i}: In un conduttore transitano $N = ${N_elettroni.toExponential(1)}$ elettroni in un tempo $\\Delta t = ${dt_s}\\text{ s}$ (carica dell'elettrone $e = 1.602 \\times 10^{-19}\\text{ C}$). Calcola l'intensità di corrente $I$.`;
+                        r = `Intensità $I \\approx ${I_A.toExponential(2)}\\text{ A}$.`;
+                        s = `Calcoliamo prima la carica totale $\\Delta Q = N \\cdot e = (${N_elettroni.toExponential(1)}) \\cdot (1.602 \\times 10^{-19}) \\approx ${Q_tot.toExponential(2)}\\text{ C}$. Poi troviamo la corrente: $I = \\frac{\\Delta Q}{\\Delta t} = \\frac{${Q_tot.toExponential(2)}}{${dt_s}} \\approx ${I_A.toExponential(2)}\\text{ A}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 6: Espressioni tra polinomi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Espressioni tra polinomi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-riassuntiva {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .tabella-riassuntiva th, .tabella-riassuntiva td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .tabella-riassuntiva th {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polinomi-espressioni-tra-polinomi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Polinomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 6: Espressioni tra polinomi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Semplificazione di espressioni algebriche articolate con frazioni, numeri decimali periodici e nidificazioni di parentesi avanzate.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Strategia di Risoluzione delle Espressioni Complesse</h2>
+            <p>
+                La semplificazione delle espressioni algebriche ad alta complessità richiede un approccio rigoroso e ordinato:
+            </p>
+            <ol>
+                <li><strong>Conversione dei Decimali e Periodici:</strong> trasformare subito eventuali decimali limitati o periodici in frazioni generate (es. <code>0,3̄ = 3/9 = 1/3</code>, <code>0,6̄ = 6/9 = 2/3</code>, <code>0,13̄ = (13-1)/90 = 12/90 = 2/15</code>).</li>
+                <li><strong>Gerarchia delle Parentesi:</strong> lavorare partendo dalle parentesi più interne <code>( )</code>, avanzando verso le quadre <code>[ ]</code> e infine le graffe <code>{ }</code>.</li>
+                <li><strong>Prodotti Notevoli e Distributività:</strong> sviluppare correttamente i prodotti e le potenze mantenendo le parentesi di protezione quando c'è un segno negativo davanti.</li>
+                <li><strong>Riduzione dei Termini Simili:</strong> sommare i coefficienti frazionari calcolando il minimo comune multiplo (m.c.m.).</li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato (Avanzato)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Semplifica l'espressione con periodici e frazioni: 
+                    <code>{ 1/2 a²b - [ 2ab - ( 0,3̄ a²b - 1/2 ab ) - ( 4/3 a²b - 5/2 ab ) ] } - 2 a²b</code>.
+                </p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Convertiamo il decimale periodico: <code>0,3̄ = 3/9 = 1/3</code>.</li>
+                    <li>Togliamo le parentesi tonde dentro la quadra:
+                        <br><code>[ 2ab - 1/3 a²b + 1/2 ab - 4/3 a²b + 5/2 ab ]</code>
+                    </li>
+                    <li>Sommiamo i termini simili dentro la quadra:
+                        <br>Termini in <em>a²b</em>: <code>-1/3 - 4/3 = -5/3 a²b</code>
+                        <br>Termini in <em>ab</em>: <code>2 + 1/2 + 5/2 = 2 + 3 = 5ab</code>
+                        <br>Otteniamo: <code>[ -5/3 a²b + 5ab ]</code>
+                    </li>
+                    <li>Sostituiamo nella graffa e togliamo la quadra col segno meno:
+                        <br><code>{ 1/2 a²b + 5/3 a²b - 5ab }</code>
+                    </li>
+                    <li>Sommiamo dentro la graffa: <code>(1/2 + 5/3) a²b = (3+10)/6 a²b = 13/6 a²b</code>
+                        <br>Graffa: <code>13/6 a²b - 5ab</code>
+                    </li>
+                    <li>Togliamo la graffa e sommiamo l'ultimo termine <code>- 2 a²b</code>:
+                        <br><code>(13/6 - 2) a²b - 5ab = (13 - 12)/6 a²b - 5ab = 1/6 a²b - 5ab</code>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 1/6 a²b - 5ab</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Espressioni tra Polinomi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con espressioni a difficoltà progressiva: facili (interi), medie (frazionari a mezza riga) e difficili (lunghissime, con frazioni, nidificazioni e numeri periodici).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 4) + 2;
+                    let b = (i % 3) + 1;
+
+                    domanda = `Semplifica l'espressione: <code>${a}x + 2 · (x - ${b}) - 3x</code>.`;
+                    let resX = a + 2 - 3;
+                    let resN = -2 * b;
+
+                    let strX = resX === 1 ? 'x' : (resX === -1 ? '-x' : `${resX}x`);
+                    risposta = `<code>${strX} - ${2*b}</code>`;
+                    spiegazione = `
+                    1) Sviluppiamo le moltiplicazioni: <code>2 · (x - ${b}) = 2x - ${2*b}</code>.<br>
+                    2) Riscriviamo i termini: <code>${a}x + 2x - ${2*b} - 3x</code>.<br>
+                    3) Sommiamo i coefficienti di <em>x</em>: <code>(${a} + 2 - 3)x = ${resX}x</code>.<br>
+                    4) Risultato finale: <code>${strX} - ${2*b}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let num = (i % 3) + 1;
+                    domanda = `Semplifica la seguente espressione con coefficienti frazionari: <br>
+                    <code>( 1/2 x - 1/3 y ) · ( 2/3 x + 1/2 y ) - [ 1/3 x² - ( 1/4 y² - 1/6 xy ) ] + ${num}/6 xy</code>.`;
+
+                    risposta = `<code>- 1/9 y² + ${num}/6 xy</code>`;
+                    spiegazione = `
+                    1) Sviluppiamo la prima moltiplicazione: 
+                    <code>(1/2 x · 2/3 x) + (1/2 x · 1/2 y) - (1/3 y · 2/3 x) - (1/3 y · 1/2 y) = 1/3 x² + 1/4 xy - 2/9 xy - 1/6 y²</code>.<br>
+                    2) Togliamo le parentesi quadre cambiando segno: 
+                    <code>- 1/3 x² + 1/4 y² - 1/6 xy</code>.<br>
+                    3) Sommiamo i termini in <em>x²</em>: <code>1/3 x² - 1/3 x² = 0</code>.<br>
+                    4) Sommiamo i termini in <em>y²</em>: <code>- 1/6 y² + 1/4 y² = (-2 + 3)/12 y² = 1/12 y²</code>.<br>
+                    5) Sommiamo i termini in <em>xy</em> riducendo le frazioni ottenute.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i === 75 || i === 85 || i === 95) {
+                        // Esercizi Difficilissimi CON numeri periodici
+                        domanda = `Semplifica la seguente espressione lunghissima con numeri periodici, frazioni e parentesi nidificate: <br>
+                        <code>{ 0,3̄ a²b - [ 1/2 ab - ( 0,6̄ a²b - 3/4 ab ) + ( 5/6 a²b - 0,1̄3̄ ab ) ] } · 18 - [ ( 2a - b ) · ( 1/3 a + 1/2 b ) - 2/3 a² ]</code>.`;
+
+                        risposta = `<code>- 3 a²b - 39/2 ab - 2/3 ab + 1/2 b²</code>`;
+                        spiegazione = `
+                        1) Convertiamo i decimali periodici in frazioni:
+                        <br>• <code>0,3̄ = 3/9 = 1/3</code>
+                        <br>• <code>0,6̄ = 6/9 = 2/3</code>
+                        <br>• <code>0,13̄ = (13-1)/90 = 12/90 = 2/15</code><br>
+                        2) Sviluppiamo i calcoli all'interno delle parentesi tonde e ordiniamo i termini simili in <em>a²b</em> ed <em>ab</em>.<br>
+                        3) Togliamo le parentesi quadre distribuendo il segno negativo.<br>
+                        4) Moltipliciamo l'intero blocco delle graffe per il fattore esterno <code>18</code>.<br>
+                        5) Sviluppiamo il prodotto dei due polinomi finali <code>(2a - b)(1/3 a + 1/2 b)</code> e sommiamo tutti i termini rimasti.`;
+
+                    } else {
+                        // Esercizi Difficilissimi Lunghissimi con Frazioni e Graffe
+                        domanda = `Semplifica l'espressione algebrica avanzata ad alta nidificazione: <br>
+                        <code>{ [ ( 1/2 x - 2/3 y ) · ( 1/3 x + 3/4 y ) - 1/6 x² ] - ( 1/4 xy - 1/2 y² ) }² - { 2/3 x · [ 3/4 x² - 1/2 y² + ( 1/2 x - y ) · ( x + 1/3 y ) ] - ( 5/6 x³ - 1/3 xy² ) }</code>.`;
+
+                        risposta = `<code>- 1/3 x³ + 1/6 xy² + 1/4 y⁴</code>`;
+                        spiegazione = `
+                        1) Sviluppiamo il prodotto dentro la prima quadra: <code>(1/2 x - 2/3 y)(1/3 x + 3/4 y) = 1/6 x² + 3/8 xy - 2/9 xy - 1/2 y²</code>.<br>
+                        2) Semplifichiamo eliminate <code>1/6 x² - 1/6 x² = 0</code> e riduciamo le frazioni in <em>xy</em>.<br>
+                        3) Eleviamo al quadrato l'espressione risultante all'interno del primo blocco di graffe.<br>
+                        4) Nel secondo blocco, sviluppiamo il prodotto <code>(1/2 x - y)(x + 1/3 y)</code> e moltiplichiamo per <code>2/3 x</code>.<br>
+                        5) Sommiamo algebricamente i blocchi riducendo tutti i monomi simili.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

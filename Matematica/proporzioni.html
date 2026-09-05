@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alle Proporzioni: proprietà fondamentale, proprietà del permutare, invertire, comporre e scomporre, calcolo dell'incognita X e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proporzioni: Guida Completa e Proprietà - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-proporzioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Le Proporzioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetto di proporzione, terminologia (estremi e medi), proprietà fondamentale e proprietà derivate con 100 esercizi guidati passo passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è una Proporzione?</h2>
+            <p>
+                Una <strong>proporzione</strong> è un'uguaglianza tra due rapporti. Si scrive nella forma:
+            </p>
+            <div class="formula-box" style="text-align: center; font-weight: bold; font-size: 1.2rem;">
+                A : B = C : D
+            </div>
+            <p>Si legge: <em>"A sta a B come C sta a D"</em>.</p>
+            <ul>
+                <li><strong>A e D</strong> si chiamano <strong>Estremi</strong>.</li>
+                <li><strong>B e C</strong> si chiamano <strong>Medi</strong>.</li>
+                <li><strong>A e C</strong> sono i <em>Antecedenti</em>; <strong>B e D</strong> sono i <em>Conseguenti</em>.</li>
+            </ul>
+
+            <h2>2. La Proprietà Fondamentale</h2>
+            <p>
+                In ogni proporzione valida, il **prodotto dei medi è uguale al prodotto degli estremi**:
+            </p>
+            <div class="formula-box">
+                📐 <strong>Proprietà Fondamentale:</strong><br>
+                <code>Se A : B = C : D  &rArr;  A &times; D = B &times; C</code>
+            </div>
+
+            <h2>3. Calcolo dell'Incognita (X)</h2>
+            <p>Per trovare il termine incognito <code>X</code> in una proporzione:</p>
+            <ul>
+                <li><strong>Se X è un Estremo:</strong> <code>X = (Prodotto dei Medi) / (Estremo noto)</code></li>
+                <li><strong>Se X è un Medio:</strong> <code>X = (Prodotto degli Estremi) / (Medio noto)</code></li>
+                <li><strong>Proporzione Continua (A : X = X : B):</strong> <code>X = &radic;(A &times; B)</code></li>
+            </ul>
+
+            <h2>4. Proprietà delle Proporzioni</h2>
+            <div class="formula-box">
+                🔄 <strong>Invertire:</strong> Scambiando ogni antecedente con il proprio conseguente si ottiene ancora una proporzione valida.<br>
+                <code>A : B = C : D &rArr; B : A = D : C</code>
+            </div>
+
+            <div class="formula-box">
+                🔀 <strong>Permutare:</strong> Scambiando tra loro i due medi o i due estremi la proporzione rimane valida.<br>
+                <code>Permutare i medi: A : C = B : D</code> | <code>Permutare gli estremi: D : B = C : A</code>
+            </div>
+
+            <div class="formula-box">
+                ➕ <strong>Comporre e Scomporre:</strong><br>
+                <code>(A + B) : A = (C + D) : C</code> oppure <code>(A + B) : B = (C + D) : D</code><br>
+                <code>(A - B) : A = (C - D) : C</code> (con A > B e C > D)
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il valore dell'incognita $x$ nella proporzione: <strong>12 : x = 8 : 10</strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>L'incognita $x$ si trova nella posizione di un <strong>medio</strong>.</li>
+                    <li>Applicando la formula: $x = \frac{\text{Prodotto degli Estremi}}{\text{Medio Noto}}$.</li>
+                    <li>Moltiplichiamo gli estremi $12 \times 10 = 120$.</li>
+                    <li>Dividiamo per il medio noto $8$: $x = \frac{120}{8} = 15$.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>x = 15</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Proporzioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue conoscenze con 100 esercizi svolti di livello crescente: verifichi proporzioni, calcolo delle incognite, proporzioni continue e applicazione delle proprietà.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari per personalizzare gli annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 2 === 1) {
+                        let a = i * 2;
+                        let b = i * 3;
+                        let c = i * 4;
+                        let d = i * 6;
+                        domanda = `Verifica se la seguente uguaglianza forma una proporzione valida: <strong>${a} : ${b} = ${c} : ${d}</strong>.`;
+                        let p1 = a * d;
+                        let p2 = b * c;
+                        risposta = `Sì, è una proporzione valida (${p1} = ${p2}).`;
+                        spiegazione = `
+                        1) Applichiamo la proprietà fondamentale: Prodotto degli Estremi = Prodotto dei Medi.<br>
+                        2) Prodotto degli estremi: <code>${a} &times; ${d} = ${p1}</code>.<br>
+                        3) Prodotto dei medi: <code>${b} &times; ${c} = ${p2}</code>.<br>
+                        4) Poiché ${p1} = ${p2}, la proporzione è corretta!`;
+                    } else {
+                        let b = i + 2;
+                        let c = 5;
+                        let d = 10;
+                        let x = (b * c) / d;
+                        domanda = `Trova il valore dell'incognita X nella proporzione: <strong>x : ${b} = ${c} : ${d}</strong>.`;
+                        risposta = `x = ${x}`;
+                        spiegazione = `
+                        1) L'incognita <strong>x</strong> è un estremo.<br>
+                        2) Formula: <code>x = (Medio 1 &times; Medio 2) / Estremo Noto</code>.<br>
+                        3) Calcolo: <code>x = (${b} &times; ${c}) / ${d} = ${b * c} / ${d} = ${x}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let a = i;
+                        let b = i + 5;
+                        domanda = `Risolvi la proporzione con l'incognita al medio: <strong>${a} : x = 10 : ${b}</strong>.`;
+                        let res = (a * b) / 10;
+                        risposta = `x = ${res}`;
+                        spiegazione = `
+                        1) L'incognita <strong>x</strong> si trova nei medi.<br>
+                        2) Formula: <code>x = (Estremo 1 &times; Estremo 2) / Medio Noto</code>.<br>
+                        3) Calcolo: <code>x = (${a} &times; ${b}) / 10 = ${a * b} / 10 = ${res}</code>.`;
+                    } else if (mod === 2) {
+                        let k = (i % 6) + 2;
+                        let sq = k * k;
+                        domanda = `Determina il valore di x nella proporzione continua: <strong>4 : x = x : ${sq * 4}</strong>.`;
+                        risposta = `x = ${4 * k}`;
+                        spiegazione = `
+                        1) È una proporzione continua poiché i due medi sono uguali (x).<br>
+                        2) Proprietà fondamentale: <code>x² = 4 &times; ${sq * 4} = ${16 * sq}</code>.<br>
+                        3) Estraendo la radice quadrata: <code>x = &radic;${16 * sq} = ${4 * k}</code>.`;
+                    } else {
+                        domanda = `Applica la proprietà dell'invertire alla proporzione <strong>15 : 5 = 12 : 4</strong> e verifica la validità del risultato.`;
+                        risposta = `5 : 15 = 4 : 12 (Valida, entrambi i rapporti valgono 1/3)`;
+                        spiegazione = `
+                        1) La proprietà dell'invertire scambia l'antecedente con il conseguente in ciascun rapporto.<br>
+                        2) Nuova proporzione: <code>5 : 15 = 4 : 12</code>.<br>
+                        3) Verifica: <code>5 &times; 12 = 60</code> e <code>15 &times; 4 = 60</code>. La proporzione è confermata.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 2;
+                    if (mod === 1) {
+                        domanda = `Trova due numeri la cui somma è ${i * 5} sapendo che stanno tra loro come 2 sta a 3 (ossia <strong>x : y = 2 : 3</strong> con <strong>x + y = ${i * 5}</strong>).`;
+                        let somma = i * 5;
+                        let x = (somma * 2) / 5;
+                        let y = (somma * 3) / 5;
+                        risposta = `x = ${x}, y = ${y}`;
+                        spiegazione = `
+                        1) Applichiamo la proprietà del comporre: <code>(x + y) : x = (2 + 3) : 2</code>.<br>
+                        2) Sostituiamo la somma noto (${somma}): <code>${somma} : x = 5 : 2</code>.<br>
+                        3) Calcoliamo x: <code>x = (${somma} &times; 2) / 5 = ${x}</code>.<br>
+                        4) Calcoliamo y per differenza: <code>y = ${somma} - ${x} = ${y}</code>.`;
+                    } else {
+                        domanda = `Risolvi la seguente proporzione applicando la proprietà del comporre o dello scomporre: <strong>(15 - x) : x = 12 : 4</strong>.`;
+                        risposta = `x = 3.75 (o 15/4)`;
+                        spiegazione = `
+                        1) Applichiamo la proprietà del comporre: <code>[(15 - x) + x] : x = (12 + 4) : 4</code>.<br>
+                        2) Semplificando il primo termine: <code>15 : x = 16 : 4</code>.<br>
+                        3) Calcoliamo x: <code>x = (15 &times; 4) / 16 = 60 / 16 = 3,75</code> (ridotto in frazione: <code>15/4</code>).`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

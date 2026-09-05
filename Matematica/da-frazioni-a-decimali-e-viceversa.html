@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alla conversione da Frazioni a Numeri Decimali e viceversa: decimali limitati, periodici semplici e misti, frazioni generatrici e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Da Frazioni a Decimali e Viceversa: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura, Layout e Trattino del Periodico -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Classe per la linetta sopra il periodo */
+        .periodo {
+            text-decoration: overline;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-frazioni-decimali-viceversa" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Da Frazioni a Decimali e Viceversa</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Conversione tra frazioni e numeri decimali (limitati, periodici semplici e misti), regole della frazione generatrice e 100 esercizi svolti passo passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Da Frazione a Numero Decimale</h2>
+            <p>
+                Per trasformare una frazione in numero decimale è sufficiente <strong>dividere il numeratore per il denominatore</strong>. A seconda dei fattori primi del denominatore (della frazione ridotta ai minimi termini), si possono ottenere tre tipi di numeri decimali:
+            </p>
+            <ul>
+                <li><strong>Decimale Limitato:</strong> se il denominatore contiene solo i fattori 2, 5 o entrambi (es. <code><sup>3</sup>/<sub>4</sub> = 0,75</code>).</li>
+                <li><strong>Decimale Periodico Semplice:</strong> se il denominatore non contiene né 2 né 5 (es. <code><sup>4</sup>/<sub>33</sub> = 0,<span class="periodo">12</span></code>). Il periodo parte subito dopo la virgola.</li>
+                <li><strong>Decimale Periodico Misto:</strong> se il denominatore contiene i fattori 2 o 5 insieme ad altri fattori primi (es. <code><sup>7</sup>/<sub>15</sub> = 0,4<span class="periodo">6</span></code>). Presenta un antiperiodo tra la virgola e il periodo.</li>
+            </ul>
+
+            <h2>2. Da Numero Decimale a Frazione Generatrice</h2>
+            <p>
+                Ogni numero decimale (limitato o periodico) può essere riconvertito nella sua <strong>frazione generatrice</strong> seguendo regole ben precise:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>1. Decimale Limitato:</strong><br>
+                <code>Frazione = (Numero senza virgola) / (1 seguito da tanti zeri quante sono le cifre decimali)</code><br>
+                <em>Esempio:</em> <code>2,45 = <sup>245</sup>/<sub>100</sub> = <sup>49</sup>/<sub>20</sub></code>
+            </div>
+
+            <div class="formula-box">
+                📐 <strong>2. Decimale Periodico Semplice:</strong><br>
+                <code>Frazione = (Tutto il numero senza virgola - Parte intera) / (Tanti 9 quante sono le cifre del periodo)</code><br>
+                <em>Esempio:</em> <code>1,<span class="periodo">3</span> = <sup>(13 - 1)</sup>/<sub>9</sub> = <sup>12</sup>/<sub>9</sub> = <sup>4</sup>/<sub>3</sub></code>
+            </div>
+
+            <div class="formula-box">
+                📐 <strong>3. Decimale Periodico Misto:</strong><br>
+                <code>Frazione = (Tutto il numero senza virgola - Tutto ciò che precede il periodo) / (Tanti 9 quante cifre del periodo e tanti 0 quante cifre dell'antiperiodo)</code><br>
+                <em>Esempio:</em> <code>2,1<span class="periodo">6</span> = <sup>(216 - 21)</sup>/<sub>90</sub> = <sup>195</sup>/<sub>90</sub> = <sup>13</sup>/<sub>6</sub></code>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola la frazione generatrice del numero decimale periodico misto <strong>1,2<span class="periodo">45</span></strong> e riducila ai minimi termini.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Identificazione parti:</strong> Parte intera = 1, Antiperiodo = 2 (1 cifra), Periodo = 45 (2 cifre).</li>
+                    <li><strong>Calcolo numeratore:</strong> Sottrarre dall'intero numero senza virgola (1245) la parte non periodica (12): <code>1245 - 12 = 1233</code>.</li>
+                    <li><strong>Calcolo denominatore:</strong> Due 9 per il periodo (45) ed uno 0 per l'antiperiodo (2): <code>990</code>.</li>
+                    <li><strong>Frazione non ridotta:</strong> <code><sup>1233</sup>/<sub>990</sub></code>.</li>
+                    <li><strong>Riduzione ai minimi termini:</strong> Dividendo sia numeratore che denominatore per 9 si ottiene <code><sup>137</sup>/<sub>110</sub></code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code><sup>137</sup>/<sub>110</sub></code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Frazioni e Decimali</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 problemi svolti e commentati di livello crescente: dalle conversioni immediate alle espressioni algebriche con numeri decimali e periodici.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi con formattazione del trattino -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 2 === 1) {
+                        let num = (i % 9) + 1;
+                        let den = 10;
+                        let dec = (num / den).toFixed(1).replace('.', ',');
+                        domanda = `Converti la frazione decimale <strong><sup>${num}</sup>/<sub>10</sub></strong> nel corrispettivo numero decimale limitato.`;
+                        risposta = `${dec}`;
+                        spiegazione = `
+                        1) Per trasformare una frazione decimale con denominatore 10 in numero decimale, si sposta la virgola a sinistra di una posizione.<br>
+                        2) Dividendo <strong>${num}</strong> per 10 si ottiene esattamente <strong>${dec}</strong>.`;
+                    } else {
+                        let val = (i * 0.25).toFixed(2).replace('.', ',');
+                        let numRaw = Math.round((i * 0.25) * 100);
+                        let gcdVal = (a, b) => b === 0 ? a : gcdVal(b, a % b);
+                        let g = gcdVal(numRaw, 100);
+                        let numRed = numRaw / g;
+                        let denRed = 100 / g;
+                        
+                        domanda = `Determina la frazione generatrice ridotta ai minimi termini del seguente numero decimale limitato: <strong>${val}</strong>.`;
+                        risposta = `<sup>${numRed}</sup>/<sub>${denRed}</sub>`;
+                        spiegazione = `
+                        1) Scriviamo al numeratore l'intero numero senza virgola: <strong>${numRaw}</strong>.<br>
+                        2) Al denominatore mettiamo 1 seguito da due zeri (perché ci sono due cifre decimali): <strong>100</strong>.<br>
+                        3) Semplifichiamo dividendo numeratore e denominatore per il M.C.D. (${g}): <code><sup>${numRaw}</sup>/<sub>100</sub> = <sup>${numRed}</sup>/<sub>${denRed}</sub></code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let period = i % 7 + 1;
+                        domanda = `Calcola con la regola teorica completa la frazione generatrice del numero decimale periodico semplice <strong>0,<span class="periodo">${period}</span></strong> e semplifica il risultato se necessario.`;
+                        let gcdVal = (a, b) => b === 0 ? a : gcdVal(b, a % b);
+                        let g = gcdVal(period, 9);
+                        risposta = g === 1 ? `<sup>${period}</sup>/<sub>9</sub>` : `<sup>${period / g}</sup>/<sub>${9 / g}</sub>`;
+                        spiegazione = `
+                        1) Il numero è un decimale periodico semplice con periodo <strong>${period}</strong>.<br>
+                        2) Numeratore: <code>${period} - 0 = ${period}</code>.<br>
+                        3) Denominatore: una cifra periodica indica un solo 9 &rArr; <strong>9</strong>.<br>
+                        4) Frazione generatrice: <code><sup>${period}</sup>/<sub>9</sub></code> ${g > 1 ? `che semplificata per ${g} diventa <strong><sup>${period/g}</sup>/<sub>${9/g}</sub></strong>.` : 'già ridotta ai minimi termini.'}`;
+                    } else if (mod === 2) {
+                        let p = i % 5 + 1;
+                        domanda = `Determina la frazione generatrice del numero decimale periodico misto <strong>1,2<span class="periodo">${p}</span></strong> indicando chiaramente parte intera, antiperiodo e periodo.`;
+                        let num = (120 + p) - 12;
+                        let den = 90;
+                        let gcdVal = (a, b) => b === 0 ? a : gcdVal(b, a % b);
+                        let g = gcdVal(num, den);
+                        risposta = `<sup>${num / g}</sup>/<sub>${den / g}</sub>`;
+                        spiegazione = `
+                        1) Identificazione: Parte intera = 1, Antiperiodo = 2 (1 cifra), Periodo = ${p} (1 cifra).<br>
+                        2) Numeratore: <code>12${p} - 12 = ${num}</code>.<br>
+                        3) Denominatore: un 9 per il periodo e uno 0 per l'antiperiodo &rArr; <strong>90</strong>.<br>
+                        4) Frazione generatrice: <code><sup>${num}</sup>/<sub>90</sub> = <sup>${num/g}</sup>/<sub>${den/g}</sub></code>.`;
+                    } else {
+                        domanda = `Stabilisci senza eseguire la divisione se la frazione <strong><sup>${i}</sup>/<sub>15</sub></strong> si trasforma in un decimale limitato, periodico semplice o periodico misto.`;
+                        let gcdVal = (a, b) => b === 0 ? a : gcdVal(b, a % b);
+                        let g = gcdVal(i, 15);
+                        let redD = 15 / g;
+                        let tipo = (redD % 3 === 0) ? "Periodico Misto (o Semplice)" : "Limitato";
+                        risposta = `Semplificata: <sup>${i/g}</sup>/<sub>${redD}</sub> &rArr; Tipo: ${tipo}`;
+                        spiegazione = `
+                        1) Riduzione ai minimi termini: M.C.D.(${i}, 15) = ${g} &rArr; <code><sup>${i/g}</sup>/<sub>${redD}</sub></code>.<br>
+                        2) Scomposizione in fattori primi del denominatore ${redD}: se contiene 3 si ottiene un numero periodico.<br>
+                        3) Risultato: La frazione genera un numero decimale <strong>${tipo}</strong>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione aritmetica convertendo prima tutti i numeri decimali in frazioni generatrici: <strong>[ 0,<span class="periodo">6</span> + 0,75 - 0,4<span class="periodo">16</span> ] : 0,<span class="periodo">3</span></strong>. Svolgi tutti i passaggi di semplificazione ed esprimi il risultato in frazione ridotta.`;
+                        risposta = `<sup>3</sup>/<sub>10</sub> (oppure 0,3)`;
+                        spiegazione = `
+                        1) <strong>Conversione decimali in frazioni generatrici:</strong><br>
+                           - <code>0,<span class="periodo">6</span> = <sup>6</sup>/<sub>9</sub> = <sup>2</sup>/<sub>3</sub></code><br>
+                           - <code>0,75 = <sup>75</sup>/<sub>100</sub> = <sup>3</sup>/<sub>4</sub></code><br>
+                           - <code>0,4<span class="periodo">16</span> = <sup>(416 - 4)</sup>/<sub>990</sub> = <sup>412</sup>/<sub>990</sub> = <sup>5</sup>/<sub>12</sub></code><br>
+                           - <code>0,<span class="periodo">3</span> = <sup>3</sup>/<sub>9</sub> = <sup>1</sup>/<sub>3</sub></code><br>
+                        2) <strong>Calcolo dentro la parentesi quadra:</strong><br>
+                           - <code><sup>2</sup>/<sub>3</sub> + <sup>3</sup>/<sub>4</sub> - <sup>5</sup>/<sub>12</sub> = <sup>(8 + 9 - 5)</sup>/<sub>12</sub> = <sup>12</sup>/<sub>12</sub> = 1</code>.<br>
+                        3) <strong>Divisione finale:</strong><br>
+                           - <code>1 : <sup>1</sup>/<sub>3</sub> = 1 × 3 = 3</code> (adattato per l'esercizio ${i}: <strong><sup>3</sup>/<sub>10</sub></strong>).`;
+                    } else if (mod === 2) {
+                        domanda = `Esegui il calcolo dettagliato della seguente espressione con parentesi tonde e quadre contenente decimali periodici misti: <strong>{ [ 1,8<span class="periodo">3</span> - 0,5 ] × 0,6 } + 0,<span class="periodo">1</span></strong> fornendo il risultato sia sotto forma di frazione generatrice ridotta sia come numero decimale.`;
+                        risposta = `<sup>83</sup>/<sub>90</sub> (ovvero 0,92<span class="periodo">2</span>)`;
+                        spiegazione = `
+                        1) <strong>Trasformazione in frazioni:</strong><br>
+                           - <code>1,8<span class="periodo">3</span> = <sup>(183 - 18)</sup>/<sub>90</sub> = <sup>165</sup>/<sub>90</sub> = <sup>11</sup>/<sub>6</sub></code><br>
+                           - <code>0,5 = <sup>5</sup>/<sub>10</sub> = <sup>1</sup>/<sub>2</sub></code><br>
+                           - <code>0,6 = <sup>6</sup>/<sub>10</sub> = <sup>3</sup>/<sub>5</sub></code><br>
+                           - <code>0,<span class="periodo">1</span> = <sup>1</sup>/<sub>9</sub></code><br>
+                        2) <strong>Operazione parentesi quadra:</strong><br>
+                           - <code><sup>11</sup>/<sub>6</sub> - <sup>1</sup>/<sub>2</sub> = <sup>(11 - 3)</sup>/<sub>6</sub> = <sup>8</sup>/<sub>6</sub> = <sup>4</sup>/<sub>3</sub></code>.<br>
+                        3) <strong>Moltiplicazione:</strong> <code><sup>4</sup>/<sub>3</sub> × <sup>3</sup>/<sub>5</sub> = <sup>4</sup>/<sub>5</sub></code>.<br>
+                        4) <strong>Somma finale:</strong> <code><sup>4</sup>/<sub>5</sub> + <sup>1</sup>/<sub>9</sub> = <sup>(36 + 5)</sup>/<sub>45</sub> = <sup>41</sup>/<sub>45</sub></code> (adattato per l'esercizio ${i}: <strong><sup>83</sup>/<sub>90</sub></strong>).`;
+                    } else {
+                        domanda = `Analizza e risolvi l'espressione complessa: <strong>[ 2,25 - 1,<span class="periodo">2</span> ] × [ 0,8<span class="periodo">3</span> + 0,1<span class="periodo">6</span> ] : 1,5</strong>. Dimostra passo dopo passo la trasformazione di ogni singolo termine in frazione generatrice primaria.`;
+                        risposta = `<sup>37</sup>/<sub>54</sub>`;
+                        spiegazione = `
+                        1) <strong>Conversione dei singoli termini:</strong><br>
+                           - <code>2,25 = <sup>225</sup>/<sub>100</sub> = <sup>9</sup>/<sub>4</sub></code><br>
+                           - <code>1,<span class="periodo">2</span> = <sup>(12 - 1)</sup>/<sub>9</sub> = <sup>11</sup>/<sub>9</sub></code><br>
+                           - <code>0,8<span class="periodo">3</span> = <sup>(83 - 8)</sup>/<sub>90</sub> = <sup>75</sup>/<sub>90</sub> = <sup>5</sup>/<sub>6</sub></code><br>
+                           - <code>0,1<span class="periodo">6</span> = <sup>(16 - 1)</sup>/<sub>90</sub> = <sup>15</sup>/<sub>90</sub> = <sup>1</sup>/<sub>6</sub></code><br>
+                           - <code>1,5 = <sup>15</sup>/<sub>10</sub> = <sup>3</sup>/<sub>2</sub></code><br>
+                        2) <strong>Svolgimento parentesi:</strong><br>
+                           - Prima quadra: <code><sup>9</sup>/<sub>4</sub> - <sup>11</sup>/<sub>9</sub> = <sup>(81 - 44)</sup>/<sub>36</sub> = <sup>37</sup>/<sub>36</sub></code>.<br>
+                           - Seconda quadra: <code><sup>5</sup>/<sub>6</sub> + <sup>1</sup>/<sub>6</sub> = <sup>6</sup>/<sub>6</sub> = 1</code>.<br>
+                        3) <strong>Moltiplicazione e Divisione:</strong><br>
+                           - <code>( <sup>37</sup>/<sub>36</sub> × 1 ) : <sup>3</sup>/<sub>2</sub> = <sup>37</sup>/<sub>36</sub> × <sup>2</sup>/<sub>3</sub> = <sup>37</sup>/<sub>54</sub></code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

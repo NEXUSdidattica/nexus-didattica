@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Parte Reale e Parte Immaginaria - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Parte Reale e Parte Immaginaria - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="parte-reale-e-immaginaria" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Numeri Complessi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Parte Reale e Parte Immaginaria</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi approfondita degli operatori Re(z) e Im(z), riconoscimento dei componenti, uguaglianza tra numeri complessi e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Operatori di Estrazione</h2>
+            <p>
+                Dato un numero complesso scritto in forma algebrica <code>z = a + ib</code> (con <code>a, b &isin; R</code>), le sue componenti fondamentali assumono nomi ben precisi definiti tramite operatori lineari:
+            </p>
+            <ul>
+                <li><strong>Parte Reale <code>Re(z)</code>:</strong> È il numero reale <code>a</code> che non contiene l'unità immaginaria <code>i</code>.</li>
+                <li><strong>Parte Immaginaria <code>Im(z)</code>:</strong> È il coefficiente reale <code>b</code> che moltiplica l'unità immaginaria <code>i</code> (attenzione: <strong>non</strong> comprende la lettera <code>i</code>).</li>
+                <li><strong>Uguaglianza tra Numeri Complessi:</strong> Due numeri complessi <code>z<sub>1</sub> = a<sub>1</sub> + ib<sub>1</sub></code> e <code>z<sub>2</sub> = a<sub>2</sub> + ib<sub>2</sub></code> sono uguali se e solo se sono uguali separatamente le loro parti reali e le loro parti immaginarie: <code>a<sub>1</sub> = a<sub>2</sub></code> e <code>b<sub>1</sub> = b<sub>2</sub></code>.</li>
+            </ul>
+
+            <h2>2. Proprietà e Casi Particolari</h2>
+            <p>
+                L'analisi di <code>Re(z)</code> e <code>Im(z)</code> consente di classificare istantaneamente la natura geometrica e algebrica del numero nel piano complesso (di Argand-Gauss):
+            </p>
+            <ul>
+                <li>Se <code>Im(z) = 0</code>, allora <code>z</code> è un numero reale puro (giace sull'asse delle ascisse).</li>
+                <li>Se <code>Re(z) = 0</code> e <code>Im(z) &ne; 0</code>, allora <code>z</code> è un numero immaginario puro (giace sull'asse delle ordinate).</li>
+                <li>Il numero complesso nullo <code>z = 0 + 0i</code> ha sia parte reale che parte immaginaria nulle.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico di Estrazione:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Dato il numero complesso <code>z = -4 + 7i</code>:<br>
+                    • La parte reale è <code>Re(z) = -4</code>.<br>
+                    • La parte immaginaria è <code>Im(z) = 7</code> (nota bene: senza la <code>i</code>).
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trova i valori reali di <code>x</code> e <code>y</code> tali per cui vale l'uguaglianza complessa: <code>(2x - 1) + 3iy = 5 - 6i</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Uguagliamo le parti reali dei due membri: <code>2x - 1 = 5</code>.</li>
+                    <li>Risolviamo l'equazione di primo grado in <code>x</code>: <code>2x = 6 &rArr; x = 3</code>.</li>
+                    <li>Uguagliamo le parti immaginarie dei due membri: <code>3y = -6</code>.</li>
+                    <li>Risolviamo l'equazione in <code>y</code>: <code>y = -2</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione: x = 3, y = -2</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Parte Reale e Parte Immaginaria</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di estrazione di componenti, determinazione di parametri tramite uguaglianza complessa e classificazione di numeri.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 9) - 4;
+                    let b = (i % 7) + 1;
+                    domanda = `Dato il numero complesso <code>z = ${a} + ${b}i</code>, individua la parte reale e la parte immaginaria.`;
+                    risposta = `<strong>Re(z) = ${a}, Im(z) = ${b}</strong>`;
+                    spiegazione = `
+                    1) La parte reale corrisponde al termine noto senza la <code>i</code>, ovvero <code>${a}</code>.<br>
+                    2) La parte immaginaria corrisponde al coefficiente di <code>i</code>, ovvero <code>${b}</code> (senza includere la lettera <code>i</code>).`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let coeffX = (i % 4) + 2;
+                    let notoR = (i % 10) + 1;
+                    let valIm = (i % 6) + 1;
+
+                    domanda = `Determina il valore di <code>x</code> affinché la parte reale di <code>z = (${coeffX}x - 1) + ${valIm}i</code> sia uguale a <code>${notoR * coeffX + 3}</code> (o risolvi ponendo <code>${coeffX}x - 1 = ${notoR}</code>).`;
+                    let solX = (notoR + 1) / coeffX;
+                    // Semplificiamo la risposta numerica pulita basata sull'equazione lineare
+                    risposta = `<strong>x = ${(notoR + 1)} / ${coeffX}</strong>`;
+                    spiegazione = `
+                    1) Isastriamo l'espressione della parte reale: <code>Re(z) = ${coeffX}x - 1</code>.<<br>
+                    2) Poniamo la parte reale uguale al valore assegnato <code>${notoR}</code>.<br>
+                    3) Risolviamo l'equazione lineare ricavando <code>x = ${(notoR + 1)} / ${coeffX}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let p1 = (i % 5) + 1;
+                    let p2 = (i % 3) + 2;
+                    domanda = `Trova i valori reali di <code>x</code> e <code>y</code> tali che <code>(x + ${p1}) + i(y - ${p2}) = 0</code>.`;
+                    risposta = `<strong>x = -${p1}, y = ${p2}</strong>`;
+                    spiegazione = `
+                    1) Un numero complesso è nullo se e solo se sono nulle sia la parte reale che la parte immaginaria.<br>
+                    2) Poniamo <code>x + ${p1} = 0 &rArr; x = -${p1}</code>.<br>
+                    3) Poniamo <code>y - ${p2} = 0 &rArr; y = ${p2}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezioni ed esercizi di Scienze della Terra - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Scienze della Terra - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="materie-container">
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="../materie.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">← Torna a tutte le Materie</a>
+        </div>
+
+        <div class="materie-header-text">
+            <h1>Scienze della Terra</h1>
+            <p>Seleziona l'argomento o la lezione che desideri approfondire per accedere alle spiegazioni e agli esercizi pratici.</p>
+        </div>
+
+        <!-- LISTA DELLE LEZIONI / ARGOMENTI -->
+        <div class="materie-list-vertical">
+
+            <!-- 1. ASTRONOMIA E IL SISTEMA SOLARE -->
+            <div class="materia-row-card card-scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">🌌</div>
+                    <div>
+                        <h2 class="materia-titolo">Astronomia e il Sistema Solare</h2>
+                        <p class="materia-desc">Sfera celeste, stelle, evoluzione stellare, Sole, pianeti, moti della Terra e orientamento.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="astronomia_sistema_solare.html" class="tag tag-link-m" style="background-color: #0ad41f; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 2. I MINERALI E LE ROCCE -->
+            <div class="materia-row-card card-scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">💎</div>
+                    <div>
+                        <h2 class="materia-titolo">I Minerali e le Rocce</h2>
+                        <p class="materia-desc">Struttura cristallina dei minerali, processo magmatico, sedimentario e metamorfico, ciclo delle rocce.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="minerali_rocce.html" class="tag tag-link-m" style="background-color: #0ad41f; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 3. GEODINAMICA INTERNA E TETTONICA DELLE PLACCHE -->
+            <div class="materia-row-card card-scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">🌍</div>
+                    <div>
+                        <h2 class="materia-titolo">Geodinamica Interna e Tettonica delle Placche</h2>
+                        <p class="materia-desc">Struttura interna della Terra, deriva dei continenti, espansione dei fondali oceanici e margini di placca.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="geodinamica_tettonica.html" class="tag tag-link-m" style="background-color: #0ad41f; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 4. VULCANOLOGIA E SISMOLOGIA -->
+            <div class="materia-row-card card-scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">🌋</div>
+                    <div>
+                        <h2 class="materia-titolo">Vulcanologia e Sismologia</h2>
+                        <p class="materia-desc">Tipi di eruzione, struttura dei vulcani, onde sismiche, epicentro, ipocentro, magnitudo e scala Richter/Mercalli.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="vulcanologia_sismologia.html" class="tag tag-link-m" style="background-color: #0ad41f; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 5. ATMOSFERA E CLIMATOLOGIA -->
+            <div class="materia-row-card card-scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">🌤️</div>
+                    <div>
+                        <h2 class="materia-titolo">Atmosfera e Climatologia</h2>
+                        <p class="materia-desc">Composizione e strati dell'atmosfera, bilancio radiativo, circolazione generale, venti e cambiamenti climatici.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="atmosfera_climatologia.html" class="tag tag-link-m" style="background-color: #0ad41f; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 6. L'IDROSFERA E IL MODELLAMENTO DEI RILIEVI -->
+            <div class="materia-row-card card-scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">🏞️</div>
+                    <div>
+                        <h2 class="materia-titolo">L'Idrosfera e il Modellamento dei Rilievi</h2>
+                        <p class="materia-desc">Ciclo dell'acqua, acque sotterranee, fiumi, ghiacciai, erosione superficiale e agenti esogeni.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="idrosfera_rilievi.html" class="tag tag-link-m" style="background-color: #0ad41f; color: white; padding: 0.6rem 1.2rem;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Limite Infinito all'Infinito con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Limite Infinito all'Infinito - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        /* Card con sfondo colorato e bordo spesso a sinistra */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="limite-infinito-all-infinito" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi Matematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Limite Infinito all'Infinito</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio del comportamento di una funzione quando la variabile indipendente cresce o decresce illimitatamente (\(x \to \pm\infty\)) e anche i valori della funzione divergono a più o meno infinito (\(\pm\infty\)).</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Definizione e Significato Geometrico</h2>
+            <p>Si dice che la funzione \(f(x)\) ha per limite più infinito per \(x\) che tende a più infinito, e si scrive \(\lim_{x \to +\infty} f(x) = +\infty\), se comunque si scelga un numero reale positivo grande \(M\), esiste un valore oltre il quale i valori della funzione superano \(M\).</p>
+            
+            <div class="formula-box">
+                <p><strong>Definizione formale (\(M\)-\(M\)):</strong></p>
+                <p>\(\lim_{x \to +\infty} f(x) = +\infty \iff \forall M > 0, \exists K > 0 \text{ tale che } \forall x > K \implies f(x) > M\)</p>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📐 Interpretazione Geometrica e Crescita</h3>
+                <p>Geometricamente, indica che la funzione non si stabilizza su un asintoto orizzontale, ma cresce o decresce senza tregua all'aumentare o al diminuire di \(x\). Spesso apre la strada allo studio degli <strong>asintoti obliqui</strong>.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ Esercizi Guidati sul Limite Infinito all'Infinito</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Sezione di esercizi pratici suddivisi per livello di difficoltà con risoluzione passo-passo.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+
+                <!-- ESERCIZIO 1 (Facile) -->
+                <div class="card-esercizio facile">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 1</h3>
+                        <span class="badge-difficolta facile">FACILE</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite di un polinomio semplice: \(\lim_{x \to +\infty} (3x^2 + 5)\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(+\infty\)</div>
+                            <p>Per \(x \to +\infty\), il termine di grado massimo \(3x^2\) domina incontrastato, portando l'espressione a più infinito.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ESERCIZIO 2 (Facile) -->
+                <div class="card-esercizio facile">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 2</h3>
+                        <span class="badge-difficolta facile">FACILE</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite con coefficiente negativo: \(\lim_{x \to +\infty} (-2x^2 + 10)\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(-\infty\)</div>
+                            <p>Il termine di grado massimo ha segno negativo (\(-2x^2\)) e domina sull'additivo costante, facendo divergere il limite a \(-\infty\).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ESERCIZIO 3 (Facile) -->
+                <div class="card-esercizio facile">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 3</h3>
+                        <span class="badge-difficolta facile">FACILE</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite di una potenza con esponente dispari: \(\lim_{x \to -\infty} (x^3 - 4x)\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(-\infty\)</div>
+                            <p>Il termine cubico \(x^3\) prevale per \(x \to -\infty\), risultando negativo e portando il limite a \(-\infty\).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ESERCIZIO 4 (Medio) -->
+                <div class="card-esercizio medio">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 4</h3>
+                        <span class="badge-difficolta medio">MEDIO</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite di una funzione razionale fratta: \(\lim_{x \to +\infty} \frac{x^2 + 5x}{x + 1}\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(+\infty\)</div>
+                            <p>Il numeratore ha grado superiore rispetto al denominatore (\(2 > 1\)), quindi il rapporto diverge a \(+\infty\).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ESERCIZIO 5 (Medio) -->
+                <div class="card-esercizio medio">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 5</h3>
+                        <span class="badge-difficolta medio">MEDIO</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite con radice quadrata: \(\lim_{x \to +\infty} \sqrt{x^2 + 3x + 1}\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(+\infty\)</div>
+                            <p>Raccogliendo \(x^2\) sotto radice si ottiene \(|x|\sqrt{1 + \frac{3}{x} + \frac{1}{x^2}}\), che per \(x \to +\infty\) tende a \(+\infty\).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ESERCIZIO 6 (Difficile) -->
+                <div class="card-esercizio difficile">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 6</h3>
+                        <span class="badge-difficolta difficile">DIFFICILE</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite con crescita esponenziale: \(\lim_{x \to +\infty} \left( 2^x - 100x^3 \right)\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(+\infty\)</div>
+                            <p>L'esponenziale cresce molto più rapidamente di qualsiasi potenza algebrica (gerarchia degli infiniti), determinando un risultato pari a \(+\infty\).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ESERCIZIO 7 (Difficile) -->
+                <div class="card-esercizio difficile">
+                    <div class="header-esercizio">
+                        <h3>Esercizio 7</h3>
+                        <span class="badge-difficolta difficile">DIFFICILE</span>
+                    </div>
+                    <p class="testo-domanda">Calcola il limite con logaritmo e potenza: \(\lim_{x \to +\infty} \left( x - \ln(5x) \right)\).</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> \(+\infty\)</div>
+                            <p>La funzione potenza \(x\) è un infinito di ordine superiore rispetto al logaritmo \(\ln(x)\), perciò prevale il termine lineare positivo.</p>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

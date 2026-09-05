@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Analitica - Sezione Retta: Rette Parallele agli Assi Cartesiani - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Rette Parallele agli Assi Cartesiani - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Analitica */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-analitica-retta-sezione-3" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">La Retta - Sezione 3</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Rette Parallele agli Assi Cartesiani</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi delle equazioni particolari per le rette orizzontali e verticali nel piano cartesiano, con 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Rette Orizzontali (Parallele all'asse x)</h2>
+            <p>
+                Una retta parallela all'asse delle ascisse (asse x) è caratterizzata dal fatto che <strong>tutti i suoi punti hanno la stessa ordinata <code>y</code></strong>. 
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>y = k</code> &nbsp;&nbsp;(con <code>k &in; R</code> costante)
+                </p>
+            </div>
+            <ul>
+                <li>Il coefficiente angolare vale <code>m = 0</code> (assenza di pendenza).</li>
+                <li>Se <code>k = 0</code>, l'equazione <code>y = 0</code> coincide esattamente con l'asse delle x.</li>
+            </ul>
+
+            <h2>2. Rette Verticali (Parallele all'asse y)</h2>
+            <p>
+                Una retta parallela all'asse delle ordinate (asse y) è caratterizzata dal fatto che <strong>tutti i suoi punti hanno la stessa ascissa <code>x</code></strong>.
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>x = h</code> &nbsp;&nbsp;(con <code>h &in; R</code> costante)
+                </p>
+            </div>
+            <ul>
+                <li>Il coefficiente angolare <code>m</code> <strong>non è definito</strong> (divisione per zero).</li>
+                <li>Se <code>h = 0</code>, l'equazione <code>x = 0</code> coincide esattamente con l'asse delle y.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Rette parallele agli assi) -->
+            <div class="figura-geometrica-container">
+                <svg width="420" height="300" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="420" height="300" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    
+                    <!-- Assi Cartesiani -->
+                    <line x1="40" y1="200" x2="380" y2="200" stroke="#0f172a" stroke-width="2"/>
+                    <line x1="200" y1="270" x2="200" y2="30" stroke="#0f172a" stroke-width="2"/>
+
+                    <!-- Retta Orizzontale y = 3 (ipotizzando un'unità di 30px, y=200 - 90 = 110) -->
+                    <line x1="60" y1="110" x2="360" y2="110" stroke="#2563eb" stroke-width="3"/>
+                    <text x="310" y="100" fill="#2563eb" font-family="Arial, sans-serif" font-weight="bold" font-size="13">y = k</text>
+
+                    <!-- Retta Verticale x = 2 (ipotizzando x=200 + 60 = 260) -->
+                    <line x1="260" y1="50" x2="260" y2="250" stroke="#10b981" stroke-width="3"/>
+                    <text x="270" y="70" fill="#10b981" font-family="Arial, sans-serif" font-weight="bold" font-size="13">x = h</text>
+
+                    <!-- Etichette Origine e Assi -->
+                    <text x="370" y="218" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="14">x</text>
+                    <text x="182" y="42" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="14">y</text>
+                    <text x="182" y="217" fill="#0f172a" font-family="Arial, sans-serif" font-size="12">O</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Esempio di retta orizzontale <code style="color:#2563eb;">y = k</code> e retta verticale <code style="color:#10b981;">x = h</code>.
+                </div>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Scrivi l'equazione della retta passante per il punto <code>P(-3, 4)</code> e parallela all'asse delle ascisse.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo che una retta parallela all'asse x ha equazione generale del tipo <code>y = k</code>.</li>
+                    <li>La retta deve passare obbligatoriamente per il punto <code>P(-3, 4)</code>, il che significa che la sua coordinata <code>y</code> deve essere pari a <code>4</code>.</li>
+                    <li>Sostituiamo il valore dell'ordinata ottenendo direttamente la costante <code>k = 4</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: L'equazione della retta è <code>y = 4</code>.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Rette Parallele agli Assi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di riconoscimento e scrittura di equazioni parallele agli assi x e y dati punti di passaggio.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    domanda = `Scrivi l'equazione della retta passante per il punto <code>P(2, 5)</code> e parallela all'asse <code>x</code>.`;
+                    risposta = `<strong>y = 5</strong>`;
+                    spiegazione = `
+                    1) Una retta parallela all'asse <code>x</code> ha equazione del tipo <code>y = k</code>.<br>
+                    2) Preleviamo la coordinata <code>y</code> del punto <code>P</code>, che vale <code>5</code>.<br>
+                    3) L'equazione cercata è quindi <code>y = 5</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Scrivi l'equazione della retta passante per il punto <code>Q(-4, 3)</code> e parallela all'asse <code>y</code>.`;
+                    risposta = `<strong>x = -4</strong>`;
+                    spiegazione = `
+                    1) Una retta parallela all'asse <code>y</code> ha equazione del tipo <code>x = h</code>.<br>
+                    2) Preleviamo la coordinata <code>x</code> del punto <code>Q</code>, che vale <code>-4</code>.<br>
+                    3) L'equazione cercata è quindi <code>x = -4</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Data la retta passante per i punti <code>A(2, 7)</code> e <code>B(-5, 7)</code>, individua la sua equazione e specifica se è parallela a un asse cartesiano.`;
+                    risposta = `<strong>y = 7 &nbsp;(parallela all'asse x)</strong>`;
+                    spiegazione = `
+                    1) Notiamo che i due punti hanno la stessa ordinata <code>y = 7</code>.<br>
+                    2) Poiché la coordinata verticale non varia, tutti i punti della retta mantengono <code>y = 7</code>.<br>
+                    3) Si tratta dunque di una retta orizzontale parallela all'asse <code>x</code> di equazione <code>y = 7</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

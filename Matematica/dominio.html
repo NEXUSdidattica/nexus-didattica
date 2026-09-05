@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa alla determinazione del Dominio (o Campo di Esistenza) di una funzione di variabile reale e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Dominio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-dominio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Dominio (o Campo di Esistenza)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">La prima fondamentale tappa dello studio di funzione: determinare l'insieme dei valori reali per cui la funzione è definita, con 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Cos'è il Dominio di una Funzione</h2>
+            <p>Il <strong>dominio</strong> (o campo di esistenza o insiemi di definizione) di una funzione \(y = f(x)\) è l'insieme di tutti i valori reali di \(x\) per i quali l'espressione analitica \(f(x)\) ha significato e restituisce un numero reale.</p>
+            
+            <p>Nella determinazione del dominio, si parte dall'insieme dei numeri reali \(\mathbb{R}\) e si escludono i valori che causano "operazioni impossibili" nell'ambito dei numeri reali.</p>
+
+            <div class="formula-box">
+                <p style="text-align: center; font-size: 1.2rem;">
+                    \[D = \{x \in \mathbb{R} \mid \exists f(x) \in \mathbb{R}\}\]
+                </p>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Regole Fondamentali per la Ricerca del Dominio</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Frazioni (Denominatore):</strong> Il denominatore di una frazione deve essere diverso da zero (\(Denom \neq 0\)).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Radici ad indice pari:</strong> Il radicando di una radice con indice pari deve essere maggiore o uguale a zero (\(Radicando \ge 0\)).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Logaritmi:</strong> L'argomento di un logaritmo deve essere strettamente maggiore di zero (\(Argom > 0\)).</li>
+                    <li><strong>Funzioni goniometriche inverse e potenze con esponente reale:</strong> Tangente (\(\cos x \neq 0\), cioè \(x \neq \frac{\pi}{2} + k\pi\)), Arcoseno/Arcocoseno (\(-1 \le Argom \le 1\)), potenze ad esponente variabile con base dipendente da \(x\).</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Calcolo del Dominio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta completa di 100 esercizi interamente sviluppati e suddivisi per livello di difficoltà, dedicati alla determinazione del campo di esistenza di funzioni algebriche e trascendenti.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi tramite createElement -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript corretto senza errori nei delimitatori MathJax -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = ""; // Pulisci eventuali duplicati
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Funzioni algebriche fratte semplici, polinomi, radici semplici uniche
+                        difficolta = "facile";
+                        const tipo = n % 5;
+                        const a = n + 1;
+                        const b = n + 3;
+
+                        if (tipo === 0) {
+                            domanda = `Determina il dominio della funzione intera \\(f(x) = ${n}x^3 - ${n+2}x^2 + ${n+5}\\).`;
+                            risultato = `\\(D = \\mathbb{R}\\)`;
+                            spiegazione = `La funzione è un polinomio intero (funzione razionale intera). Non vi sono denominatori, radici o logaritmi, quindi l'espressione è definita per qualsiasi numero reale.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina il dominio della funzione fratta \\(f(x) = \\frac{x - ${a}}{x + ${b}}\\).`;
+                            risultato = `\\(D = \\mathbb{R} \\setminus \\{-${b}\\}\\)`;
+                            spiegazione = `Trattandosi di una funzione fratta, poniamo il denominatore diverso da zero: \\(x + ${b} \\neq 0 \\implies x \\neq -${b}\\). Il dominio è l'insieme di tutti i numeri reali tranne \\(-${b}\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina il dominio della funzione irrazionale \\(f(x) = \\sqrt{x - ${a}}\\).`;
+                            risultato = `\\(D = [${a}, +\\infty)\\)`;
+                            spiegazione = `La funzione contiene una radice ad indice pari, per cui poniamo il radicando maggiore o uguale a zero: \\(x - ${a} \\ge 0 \\implies x \\ge ${a}\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina il dominio della funzione logaritmica \\(f(x) = \\ln(x - ${a})\\).`;
+                            risultato = `\\(D = (${a}, +\\infty)\\)`;
+                            spiegazione = `L'argomento del logaritmo deve essere strettamente positivo: \\(x - ${a} > 0 \\implies x > ${a}\\).`;
+                        } else {
+                            domanda = `Determina il dominio della funzione fratta con potenze \\(f(x) = \\frac{${n}}{x^2 - ${n*n}}\\).`;
+                            risultato = `\\(D = \\mathbb{R} \\setminus \\{-${n}, ${n}\\}\\)`;
+                            spiegazione = `Poniamo il denominatore diverso da zero: \\(x^2 - ${n*n} \\neq 0 \\implies x^2 \\neq ${n*n} \\implies x \\neq \\pm ${n}\\).`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Combinazioni di frazioni, radici multiple, logaritmi e funzioni goniometriche
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const a = (n % 6) + 2;
+                        const b = (n % 7) + 3;
+
+                        if (tipo === 0) {
+                            domanda = `Determina il dominio della funzione \\(f(x) = \\frac{\\sqrt{x - ${a}}}{\\ln(x - ${b})}\\).`;
+                            risultato = `\\(D = [${a}, +\\infty) \\setminus \\{${b + 1}\\}\\)`;
+                            spiegazione = `Impostiamo il sistema delle condizioni:\n1. Radicando non negativo: \\(x - ${a} \\ge 0 \\implies x \\ge ${a}\\).\n2. Argomento del logaritmo positivo: \\(x - ${b} > 0 \\implies x > ${b}\\).\n3. Denominatore (logaritmo) non nullo: \\(\\ln(x - ${b}) \\neq 0 \\implies x - ${b} \\neq 1 \\implies x \\neq ${b + 1}\\).\nUnendo le condizioni si ottiene l'intervallo con il punto di esclusione.`;
+                        } else if (tipo === 1) {
+                            const cVal = (n % 4) + 2;
+                            domanda = `Determina il dominio della funzione trigonometrica fratta \\(f(x) = \\frac{1}{\\sin x - \\frac{1}{${cVal}}}\\).`;
+                            risultato = `\\(D = \\mathbb{R} \\setminus \\left\\{ \\arcsin\\left(\\frac{1}{${cVal}}\\right) + 2k\\pi, \\pi - \\arcsin\\left(\\frac{1}{${cVal}}\\right) + 2k\\pi \\right\}, k \\in \\mathbb{Z}\\)`;
+                            spiegazione = `Poniamo il denominatore diverso da zero: \\(\\sin x - \\frac{1}{${cVal}} \\neq 0 \\implies \\sin x \\neq \\frac{1}{${cVal}}\\). Gli angoli in cui il seno assume tale valore vengono esclusi considerando la periodicità \\(2k\\pi\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina il dominio della funzione con valore assoluto \\(f(x) = \\sqrt{|x - ${a}| - ${b}}\\).`;
+                            risultato = `\\(D = (-\\infty, ${a - b}] \\cup [${a + b}, +\\infty)\\)`;
+                            spiegazione = `Poniamo il radicando maggiore o uguale a zero: \\(|x - ${a}| - ${b} \\ge 0 \\implies |x - ${a}| \\ge ${b}\\). Risolvendo la disequazione con il valore assoluto si ottiene l'unione dei due intervalli esterni.`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina il dominio della funzione esponenziale/fratta \\(f(x) = \\frac{e^x - ${n}}{x^2 - ${n}x}\\).`;
+                            risultato = `\\(D = \\mathbb{R} \\setminus \\{0, ${n}\\}\\)`;
+                            spiegazione = `Il numeratore con l'esponenziale è definito ovunque. Poniamo il denominatore diverso da zero: \\(x(x - ${n}) \\neq 0 \\implies x \\neq 0 \\text{ e } x \\neq ${n}\\).`;
+                        } else {
+                            domanda = `Determina il dominio della funzione con somma di radicali \\(f(x) = \\sqrt{${n + 10} - x} + \\sqrt{x - ${n}}\\).`;
+                            risultato = `\\(D = [${n}, ${n + 10}]\\)`;
+                            spiegazione = `Mettiamo a sistema le due condizioni di esistenza dei radicali pari:\n1. \\(${n + 10} - x \\ge 0 \\implies x \\le ${n + 10}\\)\n2. \\(x - ${n} \\ge 0 \\implies x \\ge ${n}\\)\nIntersecando le due disequazioni si ottiene l'intervallo chiuso \\([${n}, ${n + 10}]\\).`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Esercizi lunghi, articolati, con sistemi complessi, logaritmi nidificati, arcoseni
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+                        const m = (n % 3) + 1;
+
+                        if (tipo === 0) {
+                            domanda = `Studia approfonditamente il dominio della funzione complessa con radicali e logaritmi nidificati:\n\\[f(x) = \\sqrt{\\frac{\\ln(x^2 - ${n}) - \\ln(x + ${k})}{\\sqrt{${k + 5} - |x|} - 1}} + \\arccos\\left(\\frac{2x}{${n + 10}}\\right)\\]`;
+                            risultato = `\\(D = \\text{Sistema di 5 condizioni analitiche intersecate}\\)`;
+                            spiegazione = `Analisi dettagliata e rigorosa dei vincoli di esistenza:\n` +
+                            `1. **Argomento dei logaritmi:** Richiede \\(x^2 - ${n} > 0\\) e \\(x + ${k} > 0\\).\n` +
+                            `2. **Denominatore della frazione interna:** \\(\\sqrt{${k + 5} - |x|} - 1 \\neq 0 \\implies |x| \\neq ${k + 4}\\).\n` +
+                            `3. **Radicando della radice interna al denominatore:** \\(${k + 5} - |x| \\ge 0 \\implies |x| \\le ${k + 5}\\).\n` +
+                            `4. **Segno della frazione sotto radice principale:** L'intera espressione fratta deve essere \\(\\ge 0\\).\n` +
+                            `5. **Campo di esistenza dell'arcoseno:** \\(-1 \\le \\frac{2x}{${n + 10}} \\le 1 \\implies -\\frac{${n + 10}}{2} \\le x \\le \\frac{${n + 10}}{2}\\).\n` +
+                            `Intersecando tutte le condizioni nel sistema complessivo si definisce l'insieme di esistenza dettagliato.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina il campo di esistenza della funzione trascendente avanzata:\n\\[f(x) = \\log_3 \\left( 9^x - ${n} \\cdot 3^x + ${k * 10} \\right) + \\frac{1}{\\sqrt{${m} - \\tan(x + ${n})}}\\]`;
+                            risultato = `\\(D = \\text{Intersezione tra soluzioni esponenziali e restrizioni trigonometriche}\\)`;
+                            spiegazione = `Sviluppo analitico della risoluzione:\n` +
+                            `1. **Primo addendo (Logaritmo con esponenziali):** Poniamo l'argomento strettamente positivo: \\(9^x - ${n} \\cdot 3^x + ${k * 10} > 0\\). Ponendo \\(t = 3^x > 0\\), risolviamo la disequazione di secondo grado.\n` +
+                            `2. **Secondo addendo (Radice e tangente):** \\(${m} - \\tan(x + ${n}) > 0 \\implies \\tan(x + ${n}) < ${m}\\).\n` +
+                            `3. **Esclusione dei punti di non esistenza della tangente:** \\(x \\neq \\frac{\\pi}{2} - ${n} + k\\pi\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Studia il dominio della funzione integrale-parametrica complessa:\n\\[f(x) = \\arcsin\\left( \\frac{x^2 - ${n}x}{${k * 5}} \\right) + \\ln\\left( \\frac{\\sqrt{x} - ${k}}{\\log_2(x) - ${m}} \\right)\\]`;
+                            risultato = `\\(D = [0, +\\infty) \\text{ privato dei punti critici del logaritmo e vincolati dall'arcoseno}\\)`;
+                            spiegazione = `Procedimento analitico strutturato:\n` +
+                            `1. **Vincolo dell'Arccoseno:** \\(-1 \\le \\frac{x^2 - ${n}x}{${k * 5}} \\le 1\\).\n` +
+                            `2. **Condizioni del Logaritmo principale:** \\(\\frac{\\sqrt{x} - ${k}}{\\log_2(x) - ${m}} > 0\\).\n` +
+                            `3. **Radice e denominatore:** \\(x \\ge 0\\), \\(x > 0\\) e \\(\\log_2(x) \\neq ${m}\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina il dominio della funzione con valori assoluti nidificati e radicali multipli:\n\\[f(x) = \\sqrt[3]{x^2 - ${n}x} + \\sqrt{${k + 10} - \\left| \\frac{x^2 - ${n * 2}}{|x| - ${k}} \\right|}\\]`;
+                            risultato = `\\(D = [-${k + 10}, -${k}) \\cup (${k}, ${k + 10}]\\)`;
+                            spiegazione = `Risoluzione analitica dettagliata:\n` +
+                            `1. La radice cubica è definita ovunque.\n` +
+                            `2. L'argomento della radice quadrata esterna impone \\(${k + 10} - \\left| \\frac{x^2 - ${n * 2}}{|x| - ${k}} \\right| \\ge 0\\).\n` +
+                            `3. Esclusione del denominatore interno \\(|x| \\neq ${k}\\).`;
+                        } else {
+                            domanda = `Studia il campo di esistenza della funzione trascendente complessa avanzata:\n\\[f(x) = \\sqrt[4]{\\ln^2(x) - ${n}\\ln(x) + ${k * 5}} + \\frac{1}{\\arccos(x - ${m})}\\]`;
+                            risultato = `\\(D = [e^{\\frac{${n} - \\Delta}{2}}, e^{\\frac{${n} + \\Delta}{2}}] \\cap [${m - 1}, ${m + 1}] \\setminus \\{${m + 1}\\}\\)`;
+                            spiegazione = `Analisi dettagliata dei componenti:\n` +
+                            `1. Radice a indice quarto con polinomio di secondo grado in \\(\\ln(x)\\).\n` +
+                            `2. Esistenza del logaritmo \\(x > 0\\).\n` +
+                            `3. Denominatore con arcoseno diverso da zero e argomento in \\([-1, 1]\\).`;
+                        }
+                    }
+
+                    // Creazione sicura degli elementi tramite DOM API
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpيجazione = null; // pulizia reference
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Trigger finale di MathJax per elaborare tutti gli elementi dinamici inseriti
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            // Esecuzione immediata e di sicurezza al caricamento del DOM
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

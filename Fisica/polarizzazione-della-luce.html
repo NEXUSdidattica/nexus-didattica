@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulla polarizzazione della luce, legge di Malus, angolo di Brewster, polarizzazione per riflessione e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Polarizzazione della Luce e Applicazioni con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .box-disegno {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(126, 34, 206, 0.05);
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polarizzazione-della-luce" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica Ondulatoria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Polarizzazione della Luce</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Natura trasversale delle onde elettromagnetiche, legge di Malus, angolo di Brewster e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Polarizzazione</h2>
+            <p>
+                La luce è un'onda elettromagnetica trasversale, il che significa che i vettori del campo elettrico $\vec{E}$ e del campo magnetico $\vec{B}$ oscillano in piani perpendicolari alla direzione di propagazione. Nella luce <strong>non polarizzata</strong> (come quella solare o di una lampadina), il campo elettrico oscilla casualmente in tutte le direzioni possibili lungo il piano perpendicolare. La <strong>polarizzazione</strong> è il processo mediante il quale si selezionano oscillazioni orientate in una sola direzione specifica.
+            </p>
+
+            <div class="box-disegno">
+                <h3 style="color: #7e22ce; margin-bottom: 1rem; font-size: 1.2rem;">Filtro Polarizzatore e Legge di Malus</h3>
+                <svg viewBox="0 0 600 150" width="100%" height="auto" style="max-width: 550px; background: #faf5ff; border-radius: 8px; border: 1px solid #e9d5ff; padding: 10px;">
+                    <line x1="100" y1="75" x2="250" y2="75" stroke="#7e22ce" stroke-width="2" stroke-dasharray="4"/>
+                    <rect x="250" y="30" width="20" height="90" fill="#a855f7" rx="3"/>
+                    <line x1="270" y1="75" x2="420" y2="75" stroke="#0284c7" stroke-width="3"/>
+                    <rect x="420" y="30" width="20" height="90" fill="#0284c7" rx="3" opacity="0.8"/>
+                    <text x="140" y="65" font-size="11" fill="#7e22ce">Luce Non Polarizzata</text>
+                    <text x="300" y="65" font-size="11" fill="#0284c7">Polarizzatore</text>
+                    <text x="450" y="65" font-size="11" fill="#0369a1">Analizzatore ($\theta$)</text>
+                </svg>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; margin-bottom: 0;">
+                    Quando un fascio di luce polarizzata attraversa un secondo filtro (analizzatore) inclinato di un angolo $\theta$, l'intensità segue la legge di Malus.
+                </p>
+            </div>
+
+            <div class="formula-box">
+                📐 <b>Formule Chiave della Polarizzazione:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Legge di Malus:</b> 
+                    $$I = I_0 \cdot \cos^2(\theta)$$
+                    dove $I_0$ è l'intensità iniziale della luce polarizzata e $\theta$ è l'angolo tra gli assi dei due polarizzatori.<br>
+                    • <b>Angolo di Brewster (Polarizzazione per riflessione):</b> 
+                    $$\tan(\theta_B) = \frac{n_2}{n_1}$$
+                    Alla luce riflessa con angolo di incidenza pari a $\theta_B$, il raggio riflesso e il raggio rifratto sono perpendicolari tra loro e la luce riflessa risulta totalmente polarizzata.
+                </p>
+            </div>
+
+            <h2>2. Applicazioni Tecnologiche</h2>
+            <p>
+                I filtri polarizzatori trovano larghissimo impiego nella vita quotidiana e nella tecnica: dagli occhiali da sole polarizzati (che eliminano i fastidiosi riverberi di luce riflessa su superfici come l'acqua o l'asfalto) alla fotografia scientifica, fino agli schermi LCD di smartphone e computer.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati alla legge di Malus, all'intensità trasmessa e all'angolo di Brewster:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let I0 = 150 + (i * 12) % 350; // W/m^2 o lumen
+                        let angoli = [30, 45, 60, 0, 15, 75];
+                        let theta_deg = angoli[i % angoli.length];
+                        let theta_rad = theta_deg * (Math.PI / 180);
+                        let I = I0 * Math.pow(Math.cos(theta_rad), 2);
+
+                        q = `Esercizio ${i}: Un fascio di luce polarizzata di intensità $I_0 = ${I0}\\text{ W/m}^2$ attraversa un analizzatore il cui asse forma un angolo $\\theta = ${theta_deg}^\\circ$ con la direzione di polarizzazione della luce incidente. Calcola l'intensità $I$ della luce trasmessa.`;
+                        r = `Intensità trasmessa $I \\approx ${I.toFixed(2)}\\text{ W/m}^2$.`;
+                        s = `Applichiamo la legge di Malus $I = I_0 \\cdot \\cos^2(\\theta)$. Sostituendo i valori: $I = ${I0} \\cdot \\cos^2(${theta_deg}^\\circ) = ${I0} \\cdot (${Math.cos(theta_rad).toFixed(4)})^2 \\approx ${I.toFixed(2)}\\text{ W/m}^2$.`;
+                    
+                    } else if (tipo === 1) {
+                        let angoli_m = [30, 45, 60];
+                        let theta_deg = angoli_m[i % angoli_m.length];
+                        let theta_rad = theta_deg * (Math.PI / 180);
+                        let I_trans = 50 + (i * 8) % 200;
+                        let I0 = I_trans / Math.pow(Math.cos(theta_rad), 2);
+
+                        q = `Esercizio ${i}: Dopo aver attraversato un filtro polarizzatore, la luce emerge con un'intensità $I = ${I_trans}\\text{ W/m}^2$. Sapendo che l'asse del filtro è inclinato di $\\theta = ${theta_deg}^\\circ$ rispetto al campo elettrico incidente, calcola l'intensità iniziale $I_0$.`;
+                        r = `Intensità iniziale $I_0 \\approx ${I0.toFixed(2)}\\text{ W/m}^2$.`;
+                        s = `Dalla legge di Malus $I = I_0 \\cdot \\cos^2(\\theta)$, ricaviamo $I_0 = \\frac{I}{\\cos^2(\\theta)} = \\frac{${I_trans}}{\\cos^2(${theta_deg}^\\circ)} \\approx ${I0.toFixed(2)}\\text{ W/m}^2$.`;
+                    
+                    } else {
+                        let indici = [1.33, 1.50, 1.62, 1.45, 1.55];
+                        let n = indici[i % indici.length];
+                        let theta_b_rad = Math.atan(n);
+                        let theta_b_deg = theta_b_rad * (180 / Math.PI);
+
+                        q = `Esercizio ${i}: Calcola l'angolo di Brewster $\\theta_B$ per un fascio di luce che passa dall'aria ($n_1 \\approx 1.00$) a un mezzo trasparente con indice di rifrazione $n_2 = ${n}$.`;
+                        r = `Angolo di Brewster $\\theta_B \\approx ${theta_b_deg.toFixed(2)}^\\circ$.`;
+                        s = `La legge di Brewster stabilisce che $\\tan(\\theta_B) = \\frac{n_2}{n_1} = \\frac{${n}}{1.00} = ${n}$. Calcolando l'arcotangente otteniamo $\\theta_B \\approx ${theta_b_deg.toFixed(2)}^\\circ$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

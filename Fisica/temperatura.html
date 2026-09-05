@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Temperatura e le Scale Termometriche con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Temperatura e le Scale Termometriche: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="temperatura" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Temperatura e le Scale Termometriche</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione microscopica e macroscopica della temperatura, conversione tra scale (Celsius, Kelvin, Fahrenheit) e 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Che cos'è la Temperatura?</h2>
+            <p>
+                La <strong>temperatura</strong> è una grandezza fisica intensiva che misura lo stato di agitazione termica delle molecole che compongono un corpo. A livello microscopico, essa è direttamente proporzionale all'energia cinetica media traslazionale delle particelle.
+            </p>
+            <div class="formula-box">
+                📐 <b>Principali relazioni di conversione tra scale termometriche:</b>
+                $$T(K) = T(°C) + 273.15 \quad \text{e} \quad T(°F) = \frac{9}{5} \cdot T(°C) + 32$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Lo zero assoluto ($0\text{ K}$ o $-273.15\text{ °C}$) rappresenta la temperatura teorica alla quale l'agitazione termica molecolare si arresta completamente.
+                </p>
+            </div>
+
+            <h2>2. Le Scale Termometriche</h2>
+            <ul>
+                <li><strong>Scala Celsius (°C):</strong> Fissa lo zero al punto di fusione del ghiaccio e 100 °C al punto di ebollizione dell'acqua alla pressione atmosferica standard.</li>
+                <li><strong>Scala Kelvin (K):</strong> La scala assoluta del Sistema Internazionale, in cui lo zero coincide con lo zero assoluto.</li>
+                <li><strong>Scala Fahrenheit (°F):</strong> Storicamente diffusa nei paesi anglosassoni, con intervalli basati su punti di riferimento differenti.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Temperatura</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati alle conversioni di scala, alle variazioni di temperatura e all'analisi concettuale, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulla Temperatura e Scale
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // 1. Celsius a Kelvin
+                    let c = 5 + (i * 2) % 95;
+                    let k = (c + 273.15).toFixed(2);
+                    q = `Esercizio ${i}: Converti la temperatura di $${c}\\text{ °C}$ nella corrispondente temperatura assoluta in Kelvin.`;
+                    r = `$${k}\\text{ K}$.`;
+                    s = `Utilizzando la formula di conversione $T(K) = T(°C) + 273.15$: $${c} + 273.15 = ${k}\\text{ K}$.`;
+                
+                } else if (tipo === 1) {
+                    // 2. Kelvin a Celsius
+                    let k_val = 280 + (i * 3) % 150;
+                    let c_val = (k_val - 273.15).toFixed(2);
+                    q = `Esercizio ${i}: Un campione si trova alla temperatura di $${k_val}\\text{ K}$. Esprimi tale valore in gradi Celsius (°C).`;
+                    r = `$${c_val}\\text{ °C}$.`;
+                    s = `Invertendo la relazione di scala ($T(°C) = T(K) - 273.15$): $${k_val} - 273.15 = ${c_val}\\text{ °C}$.`;
+                
+                } else if (tipo === 2) {
+                    // 3. Celsius a Fahrenheit
+                    let c_val2 = 10 + (i * 4) % 80;
+                    let f_val = ((c_val2 * 9/5) + 32).toFixed(1);
+                    q = `Esercizio ${i}: Calcola il valore in gradi Fahrenheit (°F) di una temperatura di $${c_val2}\\text{ °C}$.`;
+                    r = `$${f_val}\\text{ °F}$.`;
+                    s = `Applicando la formula $T(°F) = \\frac{9}{5} \\cdot T(°C) + 32$: $\\frac{9}{5} \\cdot ${c_val2} + 32 = ${f_val}\\text{ °F}$.`;
+                
+                } else {
+                    // 4. Variazione di temperatura DeltaT (Celsius vs Kelvin)
+                    let delta_c = 15 + (i % 30);
+                    q = `Esercizio ${i}: La temperatura di un corpo subisce un incremento di $\\Delta T = ${delta_c}\\text{ °C}$. Qual è la corrispondente variazione espressa in Kelvin ($\\Delta T_K$)?`;
+                    r = `$${delta_c}\\text{ K}$ (l'ampiezza dell'intervallo è identica nelle due scale).`;
+                    s = `Poiché le scale Celsius e Kelvin hanno la stessa ampiezza di suddivisione unitaria ($1\\text{ °C} = 1\\text{ K}$), una variazione di temperatura $\\Delta T$ ha lo stesso identico valore numerico in entrambe le scale.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

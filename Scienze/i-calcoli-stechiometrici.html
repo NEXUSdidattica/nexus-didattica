@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I calcoli stechiometrici: come determinare le quantità di reagenti e prodotti in una reazione chimica usando il concetto di mole - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I calcoli stechiometrici - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="i-calcoli-stechiometrici" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar-container">
+            <div class="hotbar">
+                <a href="../index.html" class="logo-link">
+                    <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+                </a>
+
+                <h1>NEXUS didattica</h1>
+
+                <nav class="navbar">
+                    <a href="../index.html">Home</a>
+                    <a href="../chi_siamo.html">Chi Siamo</a>
+                    <a href="../materie.html" class="active">Materie</a>
+                    <a href="../contatti.html">Contatti</a>
+                    <a href="../admin.html" id="admin-link"
+                        style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                        Pannello Admin 👑
+                    </a>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica / Stechiometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I calcoli stechiometrici</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come calcolare le quantità ponderali di reagenti e prodotti in una reazione chimica sfruttando i coefficienti stechiometrici e il concetto di mole.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è la stechiometria?</h2>
+            <p>
+                Il termine <strong>stechiometria</strong> deriva dal greco <em>stoicheion</em> (elemento) e <em>metron</em> (misura). Essa rappresenta il settore della chimica che studia i <strong>rapporti quantitativi</strong> tra le sostanze che partecipano a una reazione chimica. 
+            </p>
+            <p>
+                Conoscendo l'equazione chimica bilanciata, i calcoli stechiometrici permettono di rispondere a domande fondamentali: <em>"Quanto prodotto otterrò a partire da una certa quantità di reagente?"</em> oppure <em>"Quanto reagente mi serve per consumare completamente un'altra sostanza?"</em>.
+            </p>
+
+            <h2>2. Il significato dei coefficienti stechiometrici</h2>
+            <p>
+                In un'equazione chimica bilanciata, i coefficienti posti davanti a ciascuna formula non indicano soltanto il numero di molecole, ma esprimono soprattutto il <strong>rapporto molare</strong> di combinazione tra le specie chimiche.
+            </p>
+            <div class="formula-box">
+                <strong>Esempio:</strong> 
+                $$2\text{H}_2(g) + \text{O}_2(g) \longrightarrow 2\text{H}_2\text{O}(l)$$
+                Significa che <strong>2 moli</strong> di idrogeno reagiscono esattamente con <strong>1 mole</strong> di ossigeno per produrre <strong>2 moli</strong> di acqua.
+            </div>
+
+            <h2>3. Le tappe fondamentali per un calcolo stechiometrico</h2>
+            <p>
+                Per risolvere qualsiasi problema di stechiometria in modo ordinato, si segue solitamente un percorso standard suddiviso in tre passaggi chiave:
+            </p>
+            <ol>
+                <li><strong>Scrivere e bilanciare</strong> correttamente l'equazione chimica della reazione.</li>
+                <li><strong>Convertire</strong> i dati noti (solitamente espressi in grammi) in <strong>moli</strong> ($n$), utilizzando la massa molare ($M$) della sostanza:
+                    $$n = \frac{m}{M}$$
+                </li>
+                <li><strong>Applicare i rapporti stechiometrici</strong> della reazione (tramite proporzioni o fattori di conversione) per trovare le moli della sostanza incognita.</li>
+                <li><strong>Riconvertire</strong> le moli dell'incognita nell'unità di misura richiesta dal problema (es. grammi, volume o numero di particelle).</li>
+            </ol>
+
+            <h2>4. Esempio svolto passo dopo passo</h2>
+            
+            <h3>Problema tipo:</h3>
+            <p>
+                Calcola quanti grammi di acqua ($\text{H}_2\text{O}$) si ottengono bruciando completamente $4,0\text{ g}$ di idrogeno gassoso ($\text{H}_2$) in eccesso di ossigeno ($\text{O}_2$).
+            </p>
+
+            <p><strong>Passo 1: Scrittura e bilanciamento dell'equazione</strong></p>
+            <div class="formula-box">
+                $$2\text{H}_2 + \text{O}_2 \longrightarrow 2\text{H}_2\text{O}$$
+            </div>
+
+            <p><strong>Passo 2: Calcolo delle moli del reagente noto ($\text{H}_2$)</strong></p>
+            <p>La massa molare dell'idrogeno molecolare ($\text{H}_2$) è circa $2,016\text{ g/mol}$.</p>
+            <div class="formula-box">
+                $$n(\text{H}_2) = \frac{m}{M} = \frac{4,0\text{ g}}{2,016\text{ g/mol}} \approx 1,985\text{ mol}$$
+            </div>
+
+            <p><strong>Passo 3: Utilizzo del rapporto molare</strong></p>
+            <p>Dal bilanciamento vediamo che il rapporto tra $\text{H}_2$ e $\text{H}_2\text{O}$ è di $2 : 2$ (ovvero $1 : 1$). Quindi il numero di moli di acqua prodotte sarà uguale a quello dell'idrogeno reagito:</p>
+            <div class="formula-box">
+                $$n(\text{H}_2\text{O}) = n(\text{H}_2) = 1,985\text{ mol}$$
+            </div>
+
+            <p><strong>Passo 4: Conversione delle moli di acqua in grammi</strong></p>
+            <p>La massa molare dell'acqua ($\text{H}_2\text{O}$) è $M = (2 \times 1,008) + 16,00 = 18,016\text{ g/mol}$.</p>
+            <div class="formula-box">
+                $$m(\text{H}_2\text{O}) = n \times M = 1,985\text{ mol} \times 18,016\text{ g/mol} \approx 35,76\text{ g}$$
+            </div>
+            <p><em>Risultato:</em> Dalla combustione di $4,0\text{ g}$ di idrogeno si ottengono circa $35,76\text{ g}$ di acqua.</p>
+
+            <h2>5. Reagente limitante e reagente in eccesso</h2>
+            <p>
+                Molto spesso in laboratorio i reagenti non vengono mescolati esattamente nei rapporti stechiometrici previsti dalla teoria:
+            </p>
+            <ul>
+                <li>Il <strong>reagente limitante</strong> è quello che si consuma per primo durante la reazione; una volta esaurito, la reazione si arresta immediatamente.</li>
+                <li>Il <strong>reagente in eccesso</strong> è presente in quantità superiore al necessario e, al termine della reazione, ne rimarrà una parte non reagita.</li>
+            </ul>
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Come individuare il reagente limitante?</h3>
+                <p style="margin-bottom: 0;">
+                    Per trovare quale reagente si esaurisce per primo, si dividono le moli disponibili di ciascun reagente per il rispettivo coefficiente stechiometrico. Il valore numerico più piccolo indica univocamente il <strong>reagente limitante</strong>, che andrà utilizzato per tutti i successivi calcoli sui prodotti.
+                </p>
+            </div>
+
+            <!-- TABELLA RIASSUNTIVA DELLE GRANDEZZE -->
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Grandezza</th>
+                        <th>Simbolo</th>
+                        <th>Unità di Misura S.I.</th>
+                        <th>Formula di Conversione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Massa</strong></td>
+                        <td>$m$</td>
+                        <td>grammi ($\text{g}$)</td>
+                        <td>$m = n \times M$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Massa molare</strong></td>
+                        <td>$M$</td>
+                        <td>$\text{g/mol}$</td>
+                        <td>$M = \frac{m}{n}$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantità di sostanza</strong></td>
+                        <td>$n$</td>
+                        <td>moli ($\text{mol}$)</td>
+                        <td>$n = \frac{m}{M}$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Numero di particelle</strong></td>
+                        <td>$N$</td>
+                        <td>molecole / atomi</td>
+                        <td>$N = n \times N_A$ (Costante di Avogadro)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

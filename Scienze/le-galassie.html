@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Galassie: Morfologia, Classificazione di Hubble e Dinamica Cosmica - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Galassie - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-le-galassie" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Astronomia / Cosmologia Galattica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Galassie</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Struttura, classificazione morfologica di Hubble, la Via Lattea e la dinamica dei sistemi stellari su scala cosmica.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è una Galassia?</h2>
+            <p>
+                Una galassia è un gigantesco sistema isolato nello spazio che comprende miliardi di stelle, sistemi planetari, gas interstellare, polveri e una notevole quantità di <strong>materia oscura</strong>, il tutto tenuto insieme dalla forza di gravità reciproca. Le dimensioni delle galassie variano enormemente: dalle galassie nane, contenenti "solo" pochi milioni di stelle, alle galassie giganti che possono ospitare centinaia di mila miliardi di astri.
+            </p>
+
+            <h2>2. La Classificazione Morfologica di Edwin Hubble</h2>
+            <p>
+                Nel 1926 l'astronomo Edwin Hubble propose un sistema di classificazione delle galassie noto come il **diagramma a diapason (tuning fork)**, suddividendole in base al loro aspetto visivo in tre grandi categorie principali:
+            </p>
+            <ul>
+                <li><strong>Galassie Ellittiche (E):</strong> Hanno una forma sferoidale o ellissoidale, priva di strutture particolari come bracci a spirale. Contengono prevalentemente stelle vecchie (popolazione II) e pochissimo gas o polveri, motivo per cui i processi di formazione stellare sono quasi del tutto assenti. Vengono classificate da E0 (quasi sferiche) a E7 (molto allungate).</li>
+                <li><strong>Galassie a Spirale (S e SB):</strong> Caratterizzate da un nucleo centrale luminoso (bulge) da cui si dipartono bracci a spirale ricchi di giovani stelle blu, gas e nebulose. Si dividono in spirali normali ($\text{S}$) e spirali barrate ($\text{SB}$), che presentano una struttura a barra di stelle che attraversa il nucleo. Vengono ulteriormente suddivise in sottoclassi (Sa, Sb, Sc) a seconda della grandezza del bulge e dell'apertura dei bracci.</li>
+                <li><strong>Galassie Irregolari (Irr):</strong> Non possiedono una simmetria regolare o una forma definita. Sono generalmente ricche di gas, polveri e giovani stelle calde, e spesso la loro forma caotica è il risultato di interazioni gravitazionali o collisioni con altre galassie vicine (es. le Nubi di Magellano).</li>
+            </ul>
+
+            <h2>3. La Nostra Galassia: La Via Lattea</h2>
+            <p>
+                La **Via Lattea** è una galassia a spirale barrata del tipo $\text{SBbc}$, con un diametro stimato di circa $100.000 - 120.000$ anni luce. Il sistema solare si trova perifericamente in uno dei bracci minori, il <em>Braccio di Orione</em>, a circa $26.000$ anni luce dal centro galattico. Al centro della Via Lattea risiede un buco nero supermassiccio noto come **Sagittarius A*** ($\text{Sgr A}^*$), con una massa pari a circa 4 milioni di volte quella del Sole.
+            </p>
+
+            <div class="formula-box">
+                🌀 <strong>La Curva di Rotazione Galattica e la Materia Oscura:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Misurando la velocità orbitale delle stelle e del gas in funzione della distanza $r$ dal centro galattico, ci si aspetterebbe una diminuzione della velocità Kepleriana secondo la legge di gravitazione universale ($v \propto 1/\sqrt{r}$). Tuttavia, le osservazioni mostrano che le curve di rotazione rimangono "piatte" anche a grandi distanze dal centro:
+                    $$v(r) \approx \text{costante}$$
+                    Questa discrepanza prova l'esistenza di un enorme alone di <strong>materia oscura</strong> invisibile che circonda e permea la galassia, fornendo la massa e la gravità supplementare necessaria a spiegare la dinamica osservata.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Pratico: Popolazioni Stellari ed Evoluzione Galattica</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Problema:</strong> Un'equazione di analisi spettrale rivela che la Galassia X è di tipo ellittico puro (E0) ed è dominata da luce rossastra, mentre la Galassia Y è una galassia a spirale ricca di regioni H II ionizzate e colori azzurri brillanti. Quali differenze fondamentali emergono riguardo alla loro storia evolutiva e alla presenza di gas interstellare?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento analitico:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Galassia X (Ellittica):</strong> La dominanza di stelle rossastre indica una popolazione stellare vecchia (giganti rosse e nane di classe K e M). L'assenza di gas e polveri significa che la galassia ha esaurito o espulso il suo serbatoio di materia interstellare miliardi di anni fa, arrestando quasi totalmente la nascita di nuove stelle.</li>
+                    <li><strong>Galassia Y (Spirale):</strong> La presenza di stelle azzurre calde e regioni H II testimonia un'intensa e attiva formazione stellare in corso. Questo richiede la presenza costante di grandi quantità di gas freddo e polveri confinate nei bracci a spirale.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> La Galassia X è un sistema evoluto e "quiescente" dove la formazione stellare è cessata da tempo, mentre la Galassia Y è un sistema dinamico e "attivo" con abbondanti riserve di gas per la nascita di nuove generazioni di stelle.</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

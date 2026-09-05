@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Viscosità e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Viscosità: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="viscosita" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Fluidodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Viscosità</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Forze d'attrito interno nei fluidi reali, coefficiente di viscosità dinamica, legge di Stokes e banca dati di 100 esercizi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Definizione di Viscosità</h2>
+            <p>
+                Nei fluidi reali (a differenza del modello ideale) esistono forze di attrito interno tra i diversi strati di liquido o gas in movimento relative tra loro. Questa proprietà di opposizione allo scorrimento è chiamata <strong>viscosità</strong>. Il coefficiente di viscosità dinamica $\eta$ si misura nel Sistema Internazionale in pascal-secondo ($\text{Pa}\cdot\text{s}$).
+            </p>
+            <div class="formula-box">
+                📐 <b>Forza d'attrito viscoso (Legge di Stokes per una sfera):</b>
+                $$F_v = 6 \cdot \pi \cdot \eta \cdot r \cdot v$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $\eta$ è la viscosità dinamica, $r$ il raggio della sferetta e $v$ la sua velocità rispetto al fluido.
+                </p>
+            </div>
+
+            <h2>2. Dipendenza dalla Temperatura</h2>
+            <p>
+                Il comportamento viscoso varia profondamente in base allo stato della materia e alla temperatura:
+            </p>
+            <ul>
+                <li><strong>Nei liquidi:</strong> la viscosità diminuisce all'aumentare della temperatura (es. l'olio caldo scorre più facilmente di quello freddo).</li>
+                <li><strong>Nei gas:</strong> la viscosità aumenta all'aumentare della temperatura a causa di una maggiore frequenza di collisione tra le molecole.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Viscosità</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo delle forze d'attrito viscoso, alla legge di Stokes e alle proprietà dei fluidi reali, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi specifici sulla Viscosità
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 3;
+                if (tipo === 0) {
+                    // Calcolo forza di Stokes
+                    let eta = 0.001 * (1 + (i % 5)); // es. 0.001 a 0.005 Pa*s
+                    let r_sfera = 0.002; // 2 mm
+                    let v = 0.1 + ((i % 10) * 0.05);
+                    let f_visc = (6 * Math.PI * eta * r_sfera * v).toExponential(3);
+                    q = `Esercizio ${i}: Una sferetta di raggio $r = 0,002\\text{ m}$ si muove con velocità $v = ${v}\\text{ m/s}$ in un fluido di viscosità $\\eta = ${eta.toFixed(3)}\\text{ Pa}\\cdot\\text{s}$. Calcola l'intensità della forza d'attrito viscoso $F_v$ secondo la legge di Stokes.`;
+                    r = `$${f_visc}\\text{ N}$.`;
+                    s = `Applicando la legge di Stokes ($F_v = 6 \\pi \\eta r v$): $F_v = 6 \\cdot \\pi \\cdot ${eta.toFixed(3)} \\cdot 0,002 \\cdot ${v} \\approx ${f_visc}\\text{ N}$.`;
+                } else if (tipo === 1) {
+                    // Dipendenza qualitativa / teorica temperatura
+                    q = `Esercizio ${i}: Se si riscalda un olio lubrificante denso, quale effetto si osserva sul suo coefficiente di viscosità e sulla sua facilità di scorrimento?`;
+                    r = `La viscosità diminuisce e il liquido scorre con maggiore facilità.`;
+                    s = `Nei liquidi, l'aumento della temperatura indebolisce le forze intermolecolari di coesione, provocando una riduzione della viscosità e rendendo il fluido più fluido.`;
+                } else {
+                    // Confronto gas e liquidi
+                    q = `Esercizio ${i}: In un gas ideale, come si comporta la viscosità al crescere della temperatura rispetto a quanto avviene nei liquidi?`;
+                    r = `Nei gas la viscosità aumenta all'aumentare della temperatura, contrariamente ai liquidi in cui diminuisce.`;
+                    s = `Nei gas, un incremento termico aumenta l'agitazione termica e la frequenza degli urti molecolari, incrementando il trasporto di quantità di moto tra gli strati e quindi la viscosità.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

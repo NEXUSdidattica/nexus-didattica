@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Circonferenza e Cerchio - Sezione 8: Teorema di Talete e Applicazioni - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teorema di Talete - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="circonferenza-cerchio-sezione-8" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Circonferenza e Cerchio - Sezione 8</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Teorema di Talete</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Enunciato del Teorema di Talete sui fasci di rette parallele, proporzioni geometriche e applicazioni pratiche, con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Enunciato del Teorema di Talete</h2>
+            <p>
+                Il <strong>Teorema di Talete</strong> stabilisce una fondamentale proprietà geometrica legata ai segmenti che si vengono a creare quando un fascio di rette parallele interseca due o più trasversali.
+            </p>
+            <p>
+                <em>"Se un fascio di rette parallele è intersecato da due trasversali, allora esso determina su di esse segmenti direttamente proporzionali."</em>
+            </p>
+            <p>
+                In parole semplici, se consideriamo due linee rette che tagliano tre o più rette parallele, il rapporto tra le lunghezze dei segmenti formati sulla prima trasversale è uguale al rapporto tra le lunghezze dei corrispondenti segmenti formati sulla seconda trasversale.
+            </p>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA DEL TEOREMA DI TALETE -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="320" viewBox="0 0 550 320" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sfondo interno decorativo del box SVG -->
+                    <rect width="550" height="320" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+                    <!-- Aree evidenziate per mostrare la proporzionalità dei segmenti sulle trasversali -->
+                    <line x1="150" y1="60" x2="380" y2="120" stroke="#bfdbfe" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+                    <line x1="380" y1="120" x2="480" y2="240" stroke="#93c5fd" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+                    
+                    <line x1="120" y1="80" x2="310" y2="140" stroke="#fed7aa" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+                    <line x1="310" y1="140" x2="390" y2="230" stroke="#fdbin7" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+
+                    <!-- Fascio di rette parallele orizzontali (blu scuro) -->
+                    <g stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round">
+                        <!-- Retta r1 -->
+                        <line x1="60" y1="60" x2="450" y2="60" />
+                        <text x="465" y="65" fill="#1e3a8a" font-family="Arial, sans-serif" font-size="14" font-weight="bold">r₁</text>
+
+                        <!-- Retta r2 -->
+                        <line x1="40" y1="120" x2="470" y2="120" />
+                        <text x="485" y="125" fill="#1e3a8a" font-family="Arial, sans-serif" font-size="14" font-weight="bold">r₂</text>
+
+                        <!-- Retta r3 -->
+                        <line x1="20" y1="240" x2="490" y2="240" />
+                        <text x="505" y="245" fill="#1e3a8a" font-family="Arial, sans-serif" font-size="14" font-weight="bold">r₃</text>
+                    </g>
+
+                    <!-- Trasversale di sinistra (Verde / Smeraldo) -->
+                    <line x1="120" y1="30" x2="390" y2="270" stroke="#059669" stroke-width="3" />
+                    <text x="100" y="35" fill="#059669" font-family="Arial, sans-serif" font-size="14" font-weight="bold">t₁</text>
+
+                    <!-- Trasversale di destra (Viola / Porpora) -->
+                    <line x1="180" y1="30" x2="480" y2="270" stroke="#7c3aed" stroke-width="3" />
+                    <text x="495" y="35" fill="#7c3aed" font-family="Arial, sans-serif" font-size="14" font-weight="bold">t₂</text>
+
+                    <!-- Punti di intersezione sulla trasversale t1 -->
+                    <circle cx="150" cy="60" r="5" fill="#059669" />
+                    <text x="130" y="55" fill="#059669" font-family="Arial, sans-serif" font-weight="bold" font-size="13">A</text>
+
+                    <circle cx="235" cy="120" r="5" fill="#059669" />
+                    <text x="215" y="115" fill="#059669" font-family="Arial, sans-serif" font-weight="bold" font-size="13">B</text>
+
+                    <circle cx="310" cy="183" r="5" fill="#059669" />
+                    <text x="290" y="178" fill="#059669" font-family="Arial, sans-serif" font-weight="bold" font-size="13">C</text>
+
+                    <!-- Punti di intersezione sulla trasversale t2 -->
+                    <circle cx="220" cy="60" r="5" fill="#7c3aed" />
+                    <text x="225" y="50" fill="#7c3aed" font-family="Arial, sans-serif" font-weight="bold" font-size="13">A'</text>
+
+                    <circle cx="330" cy="120" r="5" fill="#7c3aed" />
+                    <text x="338" y="110" fill="#7c3aed" font-family="Arial, sans-serif" font-weight="bold" font-size="13">B'</text>
+
+                    <circle cx="430" cy="183" r="5" fill="#7c3aed" />
+                    <text x="438" y="173" fill="#7c3aed" font-family="Arial, sans-serif" font-weight="bold" font-size="13">C'</text>
+
+                    <!-- Decorazione angoli formati dalle rette parallele con la trasversale t1 -->
+                    <path d="M 165 60 Q 170 75 155 85" fill="none" stroke="#ea580c" stroke-width="2" />
+                    <text x="175" y="80" fill="#ea580c" font-family="Arial, sans-serif" font-size="11" font-weight="bold">&alpha;</text>
+
+                    <path d="M 250 120 Q 255 135 240 145" fill="none" stroke="#ea580c" stroke-width="2" />
+                    <text x="260" y="140" fill="#ea580c" font-family="Arial, sans-serif" font-size="11" font-weight="bold">&alpha;</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Fascio di rette parallele (<code style="color:#1e3a8a;">r₁, r₂, r₃</code>) intersecato da due trasversali (<code style="color:#059669;">t₁</code> e <code style="color:#7c3aed;">t₂</code>). Gli angoli corrispondenti (<code style="color:#ea580c;">&alpha;</code>) sono congruenti.
+                </div>
+            </div>
+
+            <h2>2. Relazioni e Proporzioni</h2>
+            <div class="formula-box">
+                📐 <strong>Formula della Proporzione di Talete:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Se le rette parallele intersecano le trasversali determinando i segmenti <code>AB</code> e <code>BC</code> sulla prima, e <code>A'B'</code> e <code>B'C'</code> sulla seconda, vale la proporzione:<br>
+                    <code>AB : BC = A'B' : B'C'</code><br>
+                    Da cui si ricava la formula inversa per trovare un segmento ignoto: <code>AB = (BC &times; A'B') / B'C'</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Applicando il Teorema di Talete, su una trasversale i segmenti misurano rispettivamente <code>AB = 4 cm</code> e <code>BC = 6 cm</code>. Sulla seconda trasversale il segmento corrispondente <code>A'B'</code> misura <code>8 cm</code>. Calcola la misura del segmento <code>B'C'</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo la proporzione di Talete: <code>AB : BC = A'B' : B'C'</code>, ovvero <code>4 : 6 = 8 : x</code>.</li>
+                    <li>Sfruttiamo la proprietà fondamentale delle proporzioni (il prodotto dei medi è uguale al prodotto degli estremi): <code>4 &times; x = 6 &times; 8</code>.</li>
+                    <li>Eseguiamo la moltiplicazione nota: <code>4 &times; x = 48</code>.</li>
+                    <li>Ricaviamo <code>x</code> dividendo per il coefficiente noto: <code>x = 48 / 4 = 12 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Il segmento B'C' misura 12 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Teorema di Talete</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di proporzionalità geometrica con segmenti determinati da rette parallele intersecate da trasversali.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let ab = (i % 6) + 2; // AB tra 2 e 7
+                    let bc = (i % 5) + 3; // BC tra 3 e 7
+                    let apbp = ab * 2;    // A'B' proporzionale
+                    let bpcp = bc * 2;    // B'C' calcolato
+
+                    domanda = `Applicando il Teorema di Talete, su una trasversale si hanno i segmenti <code>AB = ${ab} cm</code> e <code>BC = ${bc} cm</code>. Sulla seconda trasversale il corrispondente <code>A'B' = ${apbp} cm</code>. Calcola la misura di <code>B'C'</code>.`;
+                    risposta = `<strong>${bpcp} cm</strong>`;
+                    spiegazione = `
+                    1) Impostiamo la proporzione: <code>AB : BC = A'B' : B'C'</code> (&rarr; <code>${ab} : ${bc} = ${apbp} : x</code>).<br>
+                    2) Ricaviamo <code>x</code> con la proprietà delle proporzioni: <code>x = (${bc} &times; ${apbp}) / ${ab} = ${bc * apbp} / ${ab} = ${bpcp} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let ab = (i % 5) + 4; // AB tra 4 e 8
+                    let bc = (i % 4) + 2; // BC tra 2 e 5
+                    let bpcp = (i % 6) + 6; // B'C' tra 6 e 11
+                    let apbp = ((ab * bpcp) / bc).toFixed(1);
+
+                    domanda = `In base al Teorema di Talete, se <code>AB = ${ab} cm</code>, <code>BC = ${bc} cm</code> e <code>B'C' = ${bpcp} cm</code>, calcola la misura del segmento <code>A'B'</code>.`;
+                    risposta = `<strong>${apbp} cm</strong>`;
+                    spiegazione = `
+                    1) Impostiamo la proporzione: <code>AB : BC = A'B' : B'C'</code> (&rarr; <code>${ab} : ${bc} = x : ${bpcp}</code>).<br>
+                    2) Risolviamo per trovare <code>x</code>: <code>x = (${ab} &times; ${bpcp}) / ${bc} = ${ab * bpcp} / ${bc} = ${apbp} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let s1 = (i % 4) + 3;
+                    let s2 = (i % 5) + 4;
+                    let s3 = (i % 3) + 2;
+                    let s4 = ((s2 * s3) / s1).toFixed(2);
+
+                    domanda = `Un fascio di tre rette parallele interseca due trasversali. Sulla prima i segmenti consecutivi misurano <code>${s1} cm</code> e <code>${s2} cm</code>. Sulla seconda il primo segmento misura <code>${s3} cm</code>. Calcola la misura del secondo segmento sulla seconda trasversale.`;
+                    risposta = `<strong>${s4} cm</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la proporzione di Talete tra i segmenti corrispondenti: <code>${s1} : ${s2} = ${s3} : x</code>.<br>
+                    2) Calcoliamo il valore incognito: <code>x = (${s2} &times; ${s3}) / ${s1} = ${s2 * s3} / ${s1} = ${s4} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

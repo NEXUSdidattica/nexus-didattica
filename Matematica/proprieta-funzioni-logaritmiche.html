@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Proprietà delle Equazioni Logaritmiche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proprietà delle Equazioni Logaritmiche - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="proprieta-equazioni-logaritmiche" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Proprietà e Principi delle Equazioni Logaritmiche</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Approfondimento teorico sui principi di equivalenza, uguaglianza tra argomenti, gestione dei domini e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Principi di Equivalenza</h2>
+            <ul>
+                <li><strong>Primo principio di equivalenza:</strong> Aggiungendo o sottraendo una stessa espressione (definita nello stesso dominio) a entrambi i membri di un'equazione logaritmica, si ottiene un'equazione equivalente, purché non si modifichino le Condizioni di Esistenza (C.E.) originali degli argomenti.</li>
+                <li><strong>Secondo principio di equivalenza:</strong> Moltiplicando o dividendo entrambi i membri di un'equazione logaritmica per una stessa quantità diversa da zero, si ottiene un'equazione equivalente, a patto di prestare attenzione a non restringere o alterare il campo di esistenza imposto dai logaritmi di partenza.</li>
+            </ul>
+
+            <h2>2. Uguaglianza e Proprietà Invariantive</h2>
+            <ul>
+                <li><strong>Uguaglianza tra logaritmi con la stessa base:</strong> Se due logaritmi con la medesima base sono uguali (<code>log<sub>a</sub>(f(x)) = log<sub>a</sub>(g(x))</code>), i loro argomenti devono essere uguali (<code>f(x) = g(x)</code>), subordinatamente al rispetto rigoroso delle condizioni <code>f(x) > 0</code> e <code>g(x) > 0</code>.</li>
+                <li><strong>Proprietà invariantiva dell'argomento tramite potenze e radici:</strong> Elevando a una stessa potenza o estraendo la radice di entrambi i membri (o applicando le proprietà dei logaritmi come <code>log<sub>a</sub>(x<sup>k</sup>) = k &middot; log<sub>a</sub>(x)</code>), bisogna fare estrema attenzione a non introdurre soluzioni estranee o perdere domini di validità legati ai segni degli argomenti.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Nota Teorica Fondamentale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Ogni volta che si applicano proprietà che modificano l'esponente dell'argomento (es. portando fuori un esponente pari), si rischia di alterare il dominio originario introducendo soluzioni che violano la positività iniziale. È obbligatorio verificare la compatibilità con le C.E. sul testo di partenza.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Applica i principi di equivalenza per risolvere: <code>log<sub>2</sub>(x<sup>2</sup>) = 4</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo le C.E.: l'argomento deve essere strettamente positivo, ovvero <code>x<sup>2</sup> > 0 &rArr; x &ne; 0</code>.</li>
+                    <li>Sfruttiamo la proprietà dei logaritmi della potenza: <code>2 &middot; log<sub>2</sub>(|x|) = 4</code>.</li>
+                    <li>Dividiamo entrambi i membri per <code>2</code> (secondo principio di equivalenza): <code>log<sub>2</sub>(|x|) = 2</code>.</li>
+                    <li>Passiamo alla forma esponenziale: <code>|x| = 2<sup>2</sup> = 4</code>, da cui otteniamo le soluzioni <code>x = 4</code> ed <code>x = -4</code>. Entrambe rispettano la C.E. (<code>x &ne; 0</code>).</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzioni accettabili: x = 4 oppure x = -4</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Proprietà delle Equazioni Logaritmiche</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi focalizzati sull'applicazione rigorosa dei principi di equivalenza, studio dei domini e semplificazioni algebriche.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n = (i % 5) + 2;
+                    domanda = `Applica le proprietà dei logaritmi per risolvere: <code>log<sub>3</sub>(x) + log<sub>3</sub>(${n}) = log<sub>3</sub>(${n * 3})</code>.`;
+                    risposta = `<strong>x = 3</strong>`;
+                    spiegazione = `
+                    1) C.E.: <code>x > 0</code>.<br>
+                    2) Applichiamo il primo principio e le proprietà del prodotto: <code>log<sub>3</sub>(${n}x) = log<sub>3</sub>(${n * 3})</code>.<br>
+                    3) Uguagliando gli argomenti: <code>${n}x = ${n * 3} &rArr; x = 3</code>, che rispetta il dominio.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 3) + 2;
+                    domanda = `Risolvi sfruttando l'uguaglianza degli argomenti: <code>log<sub>${a}</sub>(x<sup>2</sup> - 1) = log<sub>2</sub>(3)</code> (ipotizzando base coerente o semplificazione analoga). Determina per <code>log<sub>${a}</sub>(x<sup>2</sup> - 1) = log<sub>${a}</sub>(8)</code>.`;
+                    risposta = `<strong>x = 3 oppure x = -3</strong>`;
+                    spiegazione = `
+                    1) C.E.: <code>x<sup>2</sup> - 1 > 0 &rArr; x < -1</code> o <code>x > 1</code>.<br>
+                    2) Uguagliando gli argomenti: <code>x<sup>2</sup> - 1 = 8 &rArr; x<sup>2</sup> = 9</code>.<br>
+                    3) Le soluzioni sono <code>x = 3</code> e <code>x = -3</code>, entrambe accettabili nel dominio.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let k = (i % 4) + 2;
+                    domanda = `Verifica l'equivalenza applicando la proprietà della potenza: <code>log<sub>2</sub>(x<sup>${k}</sup>) = ${k} &middot; log<sub>2</sub>(x)</code> sapendo che <code>log<sub>2</sub>(x) = 2</code>. Trova <code>x</code>.`;
+                    risposta = `<strong>x = 4</strong>`;
+                    spiegazione = `
+                    1) C.E.: <code>x > 0</code>.<br>
+                    2) Sostituendo direttamente dal testo, se <code>log<sub>2</sub>(x) = 2</code>, applicando la definizione otteniamo <code>x = 2<sup>2</sup> = 4</code>.<br>
+                    3) L'applicazione dei principi di equivalenza conferma l'unicità e la validità della soluzione.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

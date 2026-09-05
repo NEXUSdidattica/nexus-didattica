@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 4: Trinomio speciale di 2° grado - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Trinomio speciale di 2° grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="scomposizioni-trinomio-speciale" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Scomposizioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Trinomio speciale di 2° grado</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Metodo di Somma e Prodotto (senza equazione di 2° grado), casi con coefficiente iniziale a = 1 e a &gt; 1, gestione dei segni e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Trinomio Cinetico / Speciale (Somma e Prodotto)</h2>
+            <p>
+                Un trinomio nella forma generale <code>x² + Sx + P</code> si dice <strong>trinomio speciale di 2° grado</strong> (o trinomio particolare). Può essere scomposto direttamente nel prodotto di due binomi del tipo <code>(x + x₁)(x + x₂)</code> <strong>senza ricorrere alle equazioni di secondo grado o alla formula del delta</strong>, ma applicando il metodo aritmetico di Somma e Prodotto.
+            </p>
+            
+            <div class="formula-box">
+                🔹 <strong>Caso base (con coefficiente di x² pari a 1):</strong><br>
+                <code>x² + Sx + P = (x + x₁)(x + x₂)</code><br><br>
+                Dove occorre trovare due numeri interi <code>x₁</code> e <code>x₂</code> tali che:
+                <br>• <strong>Somma:</strong> <code>x₁ + x₂ = S</code> (coefficiente del termine di 1° grado)
+                <br>• <strong>Prodotto:</strong> <code>x₁ · x₂ = P</code> (termine noto)
+            </div>
+
+            <!-- ESEMPIO AGGIUNTO NEL PUNTO 1 -->
+            <p>
+                <strong>Esempio pratico nel punto 1:</strong><br>
+                Vogliamo scomporre il trinomio <code>x² + 7x + 12</code>.<br>
+                1. Troviamo due numeri la cui <strong>Somma S è +7</strong> e il cui <strong>Prodotto P è +12</strong>.<br>
+                2. I numeri che moltiplicati danno 12 sono (1, 12), (2, 6) e (3, 4).<br>
+                3. Scegliamo la coppia la cui somma fa 7: <code>+3</code> e <code>+4</code> (infatti <code>3 + 4 = 7</code> e <code>3 · 4 = 12</code>).<br>
+                4. Scriviamo direttamente la scomposizione: <code>x² + 7x + 12 = (x + 3)(x + 4)</code>.
+            </p>
+
+            <h2>2. Regola Pratica per i Segni</h2>
+            <p>
+                Per trovare velocemente le due cifre incognite <code>x₁</code> e <code>x₂</code>:
+            </p>
+            <ul>
+                <li>Se il <strong>Prodotto P è positivo (P &gt; 0)</strong>: i due numeri hanno lo <strong>stesso segno</strong> (entrambi positivi se S &gt; 0, entrambi negativi se S &lt; 0).</li>
+                <li>Se il <strong>Prodotto P è negativo (P &lt; 0)</strong>: i due numeri hanno <strong>segni discordi</strong> (il numero con valore assoluto maggiore ha lo stesso segno della Somma S).</li>
+            </ul>
+
+            <h2>3. Caso Avanzato (con coefficiente a &gt; 1: ax² + Sx + c)</h2>
+            <p>
+                Se il coefficiente di <code>x²</code> è diverso da 1 (es. <code>ax² + bx + c</code>), si cercano due numeri il cui <strong>Prodotto è a·c</strong> e la cui <strong>Somma è b</strong>. Si spezza il termine centrale e si applica il raccoglimento parziale.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Scomponi il trinomio speciale: <code>x² - 5x - 14</code> senza usare formule di 2° grado.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Identifichiamo Somma e Prodotto:</strong>
+                        <br>• Somma <code>S = -5</code>
+                        <br>• Prodotto <code>P = -14</code>
+                    </li>
+                    <li><strong>Cercando i fattori di -14:</strong> Poiché il prodotto è negativo, i due numeri hanno segno opposto. Le coppie moltiplicate che danno 14 sono (1, 14) e (2, 7).</li>
+                    <li><strong>Verifica della somma:</strong> La coppia con differenza 5 è (+2, -7), infatti:
+                        <br>• <code>(+2) + (-7) = -5</code> (Somma S ok)
+                        <br>• <code>(+2) · (-7) = -14</code> (Prodotto P ok)
+                    </li>
+                    <li><strong>Scomposizione immediata:</strong> Inseriamo i due numeri trovati direttamente nei binomi.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: (x + 2)(x - 7)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Trinomio Speciale di 2° Grado</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (segni positivi, P > 0), medio (segni alternati e negativi) e difficile (coefficiente a > 1 spezzando il termine centrale e trinomio omogeneo a due variabili).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n1 = (i % 5) + 1;
+                    let n2 = (i % 4) + 2;
+                    let S = n1 + n2;
+                    let P = n1 * n2;
+
+                    domanda = `Scomponi il trinomio speciale mediante somma e prodotto: <br>
+                    <code>x² + ${S}x + ${P}</code>.`;
+
+                    risposta = `<code>(x + ${n1})(x + ${n2})</code>`;
+                    spiegazione = `
+                    1) Identifichiamo la Somma <code>S = +${S}</code> e il Prodotto <code>P = +${P}</code>.<br>
+                    2) Poiché il prodotto è positivo, i due numeri sono entrambi positivi.<br>
+                    3) Troviamo i due numeri che moltiplicati danno ${P} e sommati danno ${S}: si tratta di <code>+${n1}</code> e <code>+${n2}</code>.<br>
+                    4) Scomposizione finale diretta: <code>(x + ${n1})(x + ${n2})</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let n1 = (i % 6) + 2;
+                    let n2 = -((i % 5) + 1);
+                    let S = n1 + n2;
+                    let P = n1 * n2;
+
+                    let sTerm = S > 0 ? `+ ${S}x` : S < 0 ? `- ${Math.abs(S)}x` : '';
+                    let pTerm = P < 0 ? `- ${Math.abs(P)}` : `+ ${P}`;
+
+                    domanda = `Scomponi il trinomio speciale con numeri di segno opposto: <br>
+                    <code>x² ${sTerm} ${pTerm}</code>.`;
+
+                    let sign1 = n1 > 0 ? `+ ${n1}` : `- ${Math.abs(n1)}`;
+                    let sign2 = n2 > 0 ? `+ ${n2}` : `- ${Math.abs(n2)}`;
+
+                    risposta = `<code>(x ${sign1})(x ${sign2})</code>`;
+                    spiegazione = `
+                    1) Cerchiamo due numeri con Somma <code>S = ${S}</code> e Prodotto <code>P = ${P}</code>.<br>
+                    2) Essendo il prodotto negativo, i due numeri hanno segni discordi.<br>
+                    3) Analizzando i fattori di ${Math.abs(P)}, individuiamo i valori <code>${n1}</code> e <code>${n2}</code>.<br>
+                    4) Verifichiamo: <code>(${n1}) + (${n2}) = ${S}</code> e <code>(${n1}) · (${n2}) = ${P}</code>.<br>
+                    5) Scomposizione finale: <code>(x ${sign1})(x ${sign2})</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Scomponi il trinomio con coefficiente a > 1 senza equazione di 2° grado: <br>
+                        <code>2x² + 5x + 3</code>.`;
+
+                        risposta = `<code>(2x + 3)(x + 1)</code>`;
+                        spiegazione = `
+                        1) Calcoliamo il Prodotto speciale <code>P = a · c = 2 · 3 = +6</code> e la Somma <code>S = +5</code>.<br>
+                        2) I due numeri che sommati danno 5 e moltiplicati danno 6 sono <code>+2</code> e <code>+3</code>.<br>
+                        3) Spezziamo il termine centrale <code>+5x</code> usando i due numeri trovati: <br>
+                        <code>2x² + 2x + 3x + 3</code>.<br>
+                        4) Eseguiamo il raccoglimento parziale: <br>
+                        • <code>2x(x + 1) + 3(x + 1)</code>.<br>
+                        5) Raccogliamo la parentesi comune: <code>(2x + 3)(x + 1)</code>.`;
+                    } else {
+                        let n1 = (i % 4) + 1;
+                        let n2 = (i % 3) + 2;
+                        let S = n1 + n2;
+                        let P = n1 * n2;
+
+                        domanda = `Scomponi il trinomio speciale omogeneo a due variabili: <br>
+                        <code>x² - ${S}xy + ${P}y²</code>.`;
+
+                        risposta = `<code>(x - ${n1}y)(x - ${n2}y)</code>`;
+                        spiegazione = `
+                        1) Il trinomio presenta due variabili (<code>x²</code>, <code>xy</code>, <code>y²</code>).<br>
+                        2) Cerchiamo due numeri con Somma <code>S = -${S}</code> e Prodotto <code>P = +${P}</code>.<br>
+                        3) I due numeri negativi sono <code>-${n1}</code> e <code>-${n2}</code>.<br>
+                        4) Associamo la seconda variabile <code>y</code> ai numeri trovati.<br>
+                        5) Risultato finale: <code>(x - ${n1}y)(x - ${n2}y)</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

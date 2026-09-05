@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Cellula Eucariotica - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Cellula Eucariotica - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid #0ad41f;
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* TASTO SALVA LEZIONE (VERDE FISSO) */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #0ad41f;
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid #0ad41f;
+            box-shadow: 0 0 15px rgba(10, 212, 31, 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: #22c55e;
+            border-color: #22c55e;
+            box-shadow: 0 0 18px rgba(34, 197, 94, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata (giallo evidenziato) */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO: VERDE VETRO TRASPARENTE */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(220, 252, 231, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #15803d;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(134, 239, 172, 0.6);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: rgba(187, 247, 208, 0.7);
+            color: #166534;
+            border-color: #0ad41f;
+            transform: translateY(-1px);
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid #0ad41f;
+            border-left: 8px solid #0ad41f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(10, 212, 31, 0.15);
+        }
+
+        .formula-box {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            border: 2px solid #0ad41f;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(10, 212, 31, 0.1);
+        }
+
+        .formula-box strong {
+            color: #15803d;
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI CON VERDE LEGGIBILE */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #15803d;
+            background-color: #f0fdf4;
+            padding: 0.6rem 1.0rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid #bbf7d0;
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: #dcfce7;
+            color: #166534;
+            border-color: #0ad41f;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .box-risposta-corretta {
+            background-color: #dcfce7;
+            border: 1px solid #0ad41f;
+            border-left: 4px solid #0ad41f;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: #14532d;
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-cellula-eucariotica" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #f0fdf4; color: #15803d; border: 1px solid #0ad41f; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Biologia / Citologia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Cellula Eucariotica: Organelli e Funzioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio approfondito della struttura compartimentata della cellula eucariotica, del nucleo, del sistema di endomembrane e dei differenziamenti tra cellula animale e vegetale.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione e Compartimentazione</h2>
+            <p>
+                Le <strong>cellule eucariotiche</strong> (presenti in protisti, funghi, piante e animali) sono caratterizzate da una struttura complessa e da una netta <strong>compartimentazione interna</strong> garantita dalla presenza di sistemi di membrane. Questa divisione in organelli permette lo svolgimento simultaneo di reazioni chimiche anche opposte all'interno della stessa cellula.
+            </p>
+            <p>
+                Rispetto ai procarioti, possiedono dimensioni maggiori (generalmente dai 10 ai 100 $\mu\text{m}$) e custodiscono il proprio materiale genetico lineare all'interno di un nucleo ben definito.
+            </p>
+
+            <h2>2. I Principali Organelli e le loro Funzioni</h2>
+            <p>
+                Ogni organello eucariotico svolge compiti metabolici e strutturali specifici:
+            </p>
+            <ul>
+                <li><strong>Il Nucleo:</strong> Centro di controllo della cellula, racchiuso da una doppia membrana (involucro nucleare) con pori nucleari. Contiene la cromatina (DNA associato a proteine istoniche) e il nucleolo, deputato alla sintesi degli RNA ribosomici.</li>
+                <li><strong>Mitocondri:</strong> Gli organelli della respirazione cellulare, dotati di una doppia membrana (la interna ripiegata in creste). Producono la principale valuta energetica cellulare, l'ATP, attraverso il ciclo di Krebs e la fosforilazione ossidativa.</li>
+                <li><strong>Reticolo Endoplasmatico (RE):</strong> Un labirinto membranoso diviso in RE rugoso (RER), ricoperto di ribosomi e dedicato alla sintesi e modificazione delle proteine, e RE liscio (REL), privo di ribosomi e coinvolto nella sintesi dei lipidi e detossificazione.</li>
+                <li><strong>Apparato di Golgi:</strong> Formato da cisterne appiattite, riceve le molecole dal RE, le modifica ulteriormente, le seleziona e le indirizza verso la loro destinazione finale tramite vescicole.</li>
+                <li><strong>Lisosomi e Perossisomi:</strong> Vescicole contenenti enzimi idrolitici (i lisosomi, per la digestione intracellulare) o ossidativi (i perossisomi, per neutralizzare sostanze tossiche come il perossido di idrogeno).</li>
+            </ul>
+
+            <div class="formula-box">
+                🌱 <strong>Differenze Chiave tra Cellula Animale e Vegetale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Pur condividendo la maggior parte degli organelli, le cellule vegetali presentano elementi unici ed essenziali:
+                </p>
+                <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem;">
+                    <li><strong>Parete cellulare:</strong> Struttura rigida esterna composta da cellulosa che dona supporto meccanico.</li>
+                    <li><strong>Cloroplasti:</strong> Organelli deputati alla fotosintesi clorofilliana contenenti tilacoidi e clorofilla.</li>
+                    <li><strong>Vacuolo centrale:</strong> Grande vescicola che regola il turgore cellulare e accumula acqua e sostanze di riserva.</li>
+                </ul>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem; color: #15803d;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Descrivi il percorso compiuto da una proteina destinata a essere secreta all'esterno della cellula, partendo dal luogo della sua sintesi.</p>
+                <hr style="border: 0; border-top: 1px solid #bbf7d0; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Sintesi: La proteina viene sintetizzata dai ribosomi legati alla membrana del Reticolo Endoplasmatico Rugoso (RER).</li>
+                    <li>Trasporto: La proteina neoformata viene impacchettata in vescicole di trasporto che gemmano dal RER e si dirigono verso l'Apparato di Golgi.</li>
+                    <li>Modificazione e Smistamento: Entra nel versante cis del Golgi, viene modificata (es. glicosilazione) e fuoriesce dal versante trans.</li>
+                    <li>Secrezione: Le vescicole secretorie derivate dal Golgi fondono la propria membrana con la membrana plasmatica, rilasciando il contenuto all'esterno per esocitosi.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: #15803d; font-weight: bold;">🎯 <strong>Soluzione:</strong> Ribosomi del RER $\rightarrow$ Vescicole di trasporto $\rightarrow$ Apparato di Golgi $\rightarrow$ Vescicole secretorie $\rightarrow$ Esocitosi all'esterno.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti e Verifiche sulla Cellula Eucariotica</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test progressivi suddivisi per livello di difficoltà (facile, medio, difficile) focalizzati sugli organelli, sul metabolismo cellulare e sulle differenze strutturali. 
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    domanda = `Esercizio ${i}: Quale organello cellulare è comunemente definito la "centrale energetica" della cellula eucariotica grazie alla produzione massiccia di ATP?`;
+                    risposta = `Organello: <strong>Il mitocondrio</strong>`;
+                    spiegazione = `
+                    1) I mitocondri convertono l'energia chimica dei nutrienti in ATP attraverso la respirazione cellulare.<br>
+                    2) Sono presenti in tutte le cellule eucariotiche sia animali che vegetali.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Esercizio ${i}: Qual è la principale differenza strutturale e funzionale tra il Reticolo Endoplasmatico Rugoso (RER) e il Reticolo Endoplasmatico Liscio (REL)?`;
+                    risposta = `Differenza: <strong>Il RER è ricoperto di ribosomi e sintetizza proteine, mentre il REL ne è privo ed è deputato alla sintesi dei lipidi e alla detossificazione.</strong>`;
+                    spiegazione = `
+                    1) La presenza di ribosomi sulla superficie esterna conferisce al RER l'aspetto "rugoso" e la funzione di assemblaggio proteico.<br>
+                    2) Il REL svolge ruoli chiave nel metabolismo lipidico e nel metabolismo dei farmaci e delle tossine.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Esercizio ${i}: Secondo la teoria endosimbiontica, da quale evento evolutivo originano i mitocondri e i cloroplasti presenti nelle cellule eucariotiche?`;
+                    risposta = `Origine: <strong>Dall'ingestione simbiotica di batteri aerobici e fotosintetici primitivi da parte di una cellula eucariote ancestrale</strong>`;
+                    spiegazione = `
+                    1) Questa teoria spiega perché mitocondri e cloroplasti possiedano un proprio DNA circolare, propri ribosomi e una doppia membrana.<br>
+                    2) I batteri inglobati non sono stati digeriti ma hanno instaurato un rapporto di mutuo vantaggio evolutivo con la cellula ospite.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${risposta}
+                            </div>
+                            <p style="color: #15803d; font-weight: bold; margin-bottom: 0.5rem;">Spiegazione dettagliata:</p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

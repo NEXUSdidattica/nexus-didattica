@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Condizioni di Esistenza (C.E.) dei Radicali: indice pari vs indice dispari, casi algebrici, frazionari e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Condizioni di Esistenza dei Radicali - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+    </style>
+</head>
+
+<body data-lesson-id="radicali-condizioni-esistenza" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Radicali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Condizioni di Esistenza dei Radicali (C.E.)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Come determinare il dominio di un radicale ad indice pari e dispari con 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Regole per la Determinazione delle C.E.</h2>
+            <p>Per stabilire quando un'espressione contenente radicali $\sqrt[n]{A(x)}$ ha significato nel campo dei numeri reali ($\mathbb{R}$), occorre analizzare l'<strong>indice $n$ della radice</strong> e la struttura del <strong>radicando $A(x)$</strong>.</p>
+
+            <div class="formula-box">
+                <ul>
+                    <li><strong>Caso 1: Indice $n$ PARI ($n = 2, 4, 6, \dots$)</strong><br>
+                        Il radicando deve essere posto <u>maggiore o uguale a zero</u>:<br>
+                        $$\text{C.E.: } A(x) \ge 0$$
+                    </li>
+                    <li style="margin-top: 1rem;"><strong>Caso 2: Indice $n$ DISPARI ($n = 3, 5, 7, \dots$)</strong><br>
+                        Il radicando non richiede condizioni di segno per la radice. Le C.E. coincidono con quelle dell'espressione algebrica $A(x)$ (es. eventuali denominatori diversi da zero):<br>
+                        $$\text{C.E.: Sempre esisente in } \mathbb{R} \quad (\text{salvo vincoli del radicando})$$
+                    </li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempi di Calcolo</h3>
+                <ol>
+                    <li><strong>Radicale ad indice pari:</strong> $\sqrt{2x - 6}$<br>
+                        Poni il radicando $\ge 0 \implies 2x - 6 \ge 0 \implies 2x \ge 6 \implies \text{C.E.: } x \ge 3$.
+                    </li>
+                    <li style="margin-top: 0.8rem;"><strong>Radicale ad indice dispari:</strong> $\sqrt[3]{5x + 10}$<br>
+                        Indice dispari ($n = 3$) $\implies \text{C.E.: } \forall x \in \mathbb{R}$.
+                    </li>
+                    <li style="margin-top: 0.8rem;"><strong>Radicale ad indice dispari con frazione:</strong> $\sqrt[3]{\frac{1}{x - 4}}$<br>
+                        La radice esiste sempre, ma occorre escludere lo zero al denominatore $\implies \text{C.E.: } x - 4 \ne 0 \implies x \ne 4$.
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle C.E. dei Radicali</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+                
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    // Indice pari, di primo grado semplice
+                    let a = (i % 4) + 1;
+                    let b = i * 2;
+                    domanda = `Determina le C.E. del seguente radicale: $\\sqrt{${a}x - ${b}}$`;
+                    risposta = `x &ge; ${b / a}`;
+                    spiegazione = `1) L'indice della radice è PARI ($n = 2$).<br>` +
+                                  `2) Impostiamo il radicando maggiore o uguale a zero: <code>${a}x - ${b} &ge; 0</code>.<br>` +
+                                  `3) Risolviamo la disequazione: <code>${a}x &ge; ${b} &rArr; x &ge; ${b / a}</code>.`;
+                } else if (i <= 70) {
+                    // Alternanza indici dispari ed indici pari con segno opposto
+                    if (i % 2 === 0) {
+                        let c = (i % 5) + 3;
+                        domanda = `Determina le C.E. del seguente radicale: $\\sqrt[3]{${c}x + 9}$`;
+                        risposta = `&forall; x &in; &mathbb;R`;
+                        spiegazione = `1) L'indice della radice è DISPARI ($n = 3$).<br>` +
+                                      `2) I radicali con indice dispari sono definiti per qualsiasi valore reale del radicando.<br>` +
+                                      `3) Di conseguenza, le C.E. sono: <strong>&forall; x &in; &mathbb;R</strong>.`;
+                    } else {
+                        let k = (i % 3) + 1;
+                        let val = i + 5;
+                        domanda = `Determina le C.E. del seguente radicale: $\\sqrt[4]{${val} - ${k}x}$`;
+                        risposta = `x &le; ${(val / k).toFixed(1).replace('.0', '')}`;
+                        spiegazione = `1) L'indice della radice è PARI ($n = 4$).<br>` +
+                                      `2) Poni il radicando non negativo: <code>${val} - ${k}x &ge; 0</code>.<br>` +
+                                      `3) Trasponi e cambia verso: <code>-${k}x &ge; -${val} &rArr; x &le; ${val}/${k}</code>.`;
+                    }
+                } else {
+                    // Radicandi frazionari / C.E. combinate
+                    let d = (i % 6) + 1;
+                    domanda = `Determina le C.E. del seguente radicale frazionario: $\\sqrt[3]{\\frac{x + 2}{x - ${d}}}$`;
+                    risposta = `x &ne; ${d}`;
+                    spiegazione = `1) L'indice della radice è DISPARI ($n = 3$), quindi la radice esiste per ogni valore reale.<br>` +
+                                  `2) Tuttavia, la frazione al radicando impone la condizione del denominatore diverso da zero.<br>` +
+                                  `3) Poniamo il denominatore <code>x - ${d} &ne; 0 &rArr; x &ne; ${d}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> ${risposta}</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Avvia il rendering di MathJax sugli elementi inseriti nel DOM
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

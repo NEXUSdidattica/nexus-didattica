@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida all'Equazione Canonica della Circonferenza: coordinate del centro, raggio, condizioni di realtà e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazione della Circonferenza - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazione-circonferenza" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Equazione Canonica della Circonferenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio della circonferenza nel piano cartesiano, formule per il centro e il raggio, e condizioni di realtà.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Definizione ed Equazione</h2>
+            <p>
+                La circonferenza è il luogo geometrico dei punti del piano equidistanti da un punto fisso detto <strong>centro</strong> \(C\). La distanza costante tra un punto qualsiasi della circonferenza e il centro è il <strong>raggio</strong> \(r\).
+            </p>
+            <p>
+                L'equazione canonica (o normale) di una circonferenza nel piano cartesiano si presenta nella forma algebrica:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Equazione Normale:</strong><br>
+                $$x^2 + y^2 + ax + by + c = 0$$
+            </div>
+
+            <h2>Formule Fondamentali</h2>
+            <p>Dati i coefficienti \(a\), \(b\) e \(c\) dell'equazione, è possibile ric immediatamente le coordinate del centro \(C(x_C; y_C)\) e la misura del raggio \(r\) tramite le formule:</p>
+            <ul>
+                <li><strong>Coordinate del Centro:</strong> 
+                    $$C\left(-\frac{a}{2}; -\frac{b}{2}\right)$$
+                </li>
+                <li><strong>Misura del Raggio:</strong> 
+                    $$r = \sqrt{\left(-\frac{a}{2}\right)^2 + \left(-\frac{b}{2}\right)^2 - c} = \sqrt{\frac{a^2}{4} + \frac{b^2}{4} - c}$$
+                </li>
+            </ul>
+
+            <h2>La Condizione di Realtà</h2>
+            <p>
+                Non ogni equazione del tipo \(x^2 + y^2 + ax + by + c = 0\) rappresenta una circonferenza reale. Affinché la circonferenza esista geometricamente, il radicando della formula del raggio deve essere maggiore o uguale a zero:
+            </p>
+            <div class="formula-box">
+                ⚠️ <strong>Condizione di Realtà:</strong><br>
+                $$\frac{a^2}{4} + \frac{b^2}{4} - c \ge 0 \quad \text{oppure} \quad x_C^2 + y_C^2 - c \ge 0$$
+            </div>
+            <ul>
+                <li>Se il radicando è <strong>&gt; 0</strong>: la circonferenza è reale e non degenere.</li>
+                <li>Se il radicando è <strong>= 0</strong>: la circonferenza si riduce a un unico punto (circonferenza degenere).</li>
+                <li>Se il radicando è <strong>&lt; 0</strong>: l'equazione non rappresenta alcuna circonferenza reale (insieme vuoto).</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Data l'equazione \(x^2 + y^2 - 4x + 6y - 3 = 0\), determina le coordinate del centro e la misura del raggio.</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Identifichiamo i coefficienti: \(a = -4\), \(b = 6\), \(c = -3\).</li>
+                    <li>Calcoliamo il centro \(C\):
+                        $$x_C = -\frac{-4}{2} = 2, \quad y_C = -\frac{6}{2} = -3 \implies C(2; -3)$$
+                    </li>
+                    <li>Verifichiamo la realtà e calcoliamo il raggio \(r\):
+                        $$r = \sqrt{2^2 + (-3)^2 - (-3)} = \sqrt{4 + 9 + 3} = \sqrt{16} = 4$$
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Centro \(C(2; -3)\) e raggio \(r = 4\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Circonferenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova calcolando centro, raggio e verificando la realtà di 100 circonferenze con coefficienti studiati per darti risultati puliti. Clicca sulle card per aprire la soluzione dettagliata!
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let a, b, c;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    a = -2 * (i % 3 + 1);
+                    b = -2 * ((i + 1) % 3 + 1);
+                    c = (i % 5) - 2;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    a = -2 * (i % 5);
+                    b = -2 * ((i + 2) % 4);
+                    c = (i % 7) - 4;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    a = -2 * (i % 4 + 2);
+                    b = 2 * (i % 3 + 1);
+                    c = - (i % 10);
+                }
+
+                // Formattazione equazione
+                let strA = a === 0 ? '' : (a > 0 ? `+ ${a}x` : `- ${Math.abs(a)}x`);
+                let strB = b === 0 ? '' : (b > 0 ? `+ ${b}y` : `- ${Math.abs(b)}y`);
+                let strC = c === 0 ? '' : (c > 0 ? `+ ${c}` : `- ${Math.abs(c)}`);
+                let eqStr = `x^2 + y^2 ${strA} ${strB} ${strC} = 0`;
+
+                let xC = -a / 2;
+                let yC = -b / 2;
+                let valRsq = (xC * xC) + (yC * yC) - c;
+                let rStr = Number.isInteger(Math.sqrt(valRsq)) ? Math.sqrt(valRsq) : `\\sqrt{${valRsq}}`;
+
+                let calcoloSpiegato = `
+                    1) Coefficienti: \\(a = ${a}\\), \\(b = ${b}\\), \\(c = ${c}\\).<br><br>
+                    2) Calcoliamo il centro \\(C\\):<br>
+                    \\(x_C = -(${a})/2 = ${xC}\\)<br>
+                    \\(y_C = -(${b})/2 = ${yC}\\)<br>
+                    Quindi \\(C(${xC}; ${yC})\\).<br><br>
+                    3) Calcoliamo il raggio \\(r\\):<br>
+                    \\(r = \\sqrt{(${xC})^2 + (${yC})^2 - (${c})} = \\sqrt{${xC*xC} + ${yC*yC} ${c >= 0 ? '- ' + c : '+ ' + Math.abs(c)}} = ${rStr}\\).
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Data l'equazione della circonferenza \\(${eqStr}\\), trova le coordinate del centro e la misura del raggio.</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

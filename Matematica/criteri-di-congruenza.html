@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 4: I Criteri di Congruenza dei Triangoli (Primo, Secondo e Terzo Criterio) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Criteri di Congruenza dei Triangoli - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-4" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 4</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">I Criteri di Congruenza dei Triangoli</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio teorico del primo, secondo e terzo criterio di congruenza e 100 esercizi guidati passo-passo sulle dimostrazioni e proprietà geometriche.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione alla Congruenza Geometrica</h2>
+            <p>
+                Due figure geometriche si dicono <strong>congruenti</strong> se possono essere sovrapposte mediante un movimento rigido, così da coincidere perfettamente in ogni loro punto. Nel caso dei triangoli, stabilire la congruenza significa verificare se due triangoli hanno la stessa forma e le stesse dimensioni (tutti i tre lati e i tre angoli corrispondenti uguali). 
+            </p>
+            <p>
+                Per evitare di misurare tutti i sei elementi (tre lati e tre angoli), la geometria euclidica stabilisce tre regole fondamentali note come <em>criteri di congruenza dei triangoli</em>.
+            </p>
+
+            <h2>2. I Tre Criteri di Congruenza</h2>
+            <ul>
+                <li><strong>Primo Criterio (L.A.L. - Lato Angolo Lato):</strong> Due triangoli sono congruenti se hanno ordinatamente congruenti <em>due lati e l'angolo compreso</em> tra essi tra loro uguali.</li>
+                <li><strong>Secondo Criterio (A.L.A. - Angolo Lato Angolo):</strong> Due triangoli sono congruenti se hanno ordinatamente congruenti <em>un lato e i due angoli adiacenti</em> a quel lato. (Esiste anche una variante estesa: il secondo criterio generalizzato, in cui sono uguali un lato, un angolo qualsiasi e l'angolo adiacente).</li>
+                <li><strong>Terzo Criterio (L.L.L. - Lato Lato Lato):</strong> Due triangoli sono congruenti se hanno tutti e <em>tre i lati</em> ordinatamente congruenti.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Riepilogo e Notazioni Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Simbolo di congruenza: <code>&cong;</code><br>
+                    • 1° Criterio: <code>AB &cong; A'B'</code>, <code>AC &cong; A'C'</code>, <code>&hat;A &cong; &hat;A'</code> &rArr; <code>ABC &cong; A'B'C'</code><br>
+                    • 3° Criterio: Se <code>AB &cong; A'B'</code>, <code>BC &cong; B'C'</code> e <code>AC &cong; A'C'</code>, i triangoli sono perfettamente uguali.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Due triangoli <code>ABC</code> e <code>DEF</code> presentano i lati <code>AB = 7 cm</code>, <code>AC = 9 cm</code>, l'angolo compreso <code>&hat;A = 50&deg;</code> e nel secondo triangolo <code>DE = 7 cm</code>, <code>DF = 9 cm</code>, l'angolo <code>&hat;D = 50&deg;</code>. Sono congruenti? Quale criterio si applica?</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Analizziamo gli elementi noti nei due triangoli: abbiamo due coppie di lati uguali (<code>AB &cong; DE</code> e <code>AC &cong; DF</code>).</li>
+                    <li>Verifichiamo l'angolo compreso: l'angolo <code>&hat;A</code> è compreso tra i lati <code>AB</code> e <code>AC</code>, mentre l'angolo <code>&hat;D</code> è compreso tra <code>DE</code> e <code>DF</code>. Entrambi misurano <code>50&deg;</code>.</li>
+                    <li>Poiché due lati e l'angolo compreso sono ordinatamente congruenti, possiamo applicare il <strong>Primo Criterio di Congruenza (L.A.L.)</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Sì, i triangoli sono congruenti per il Primo Criterio (L.A.L.).</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Criteri di Congruenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi teorici e applicativi sull'individuazione del primo, secondo e terzo criterio di congruenza in contesti geometrici.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let lato1 = (i % 10) + 5;
+                    let lato2 = (i % 12) + 8;
+                    let angolo = (i % 40) + 30;
+                    domanda = `Due triangoli hanno due lati rispettivamente di <code>${lato1} cm</code> e <code>${lato2} cm</code> e l'angolo compreso tra essi pari a <code>${angolo}&deg;</code>. Per quale criterio sono congruenti se anche nell'altro triangolo sussistono le stesse misure?`;
+                    risposta = `<strong>Primo Criterio di Congruenza (L.A.L.)</strong>`;
+                    spiegazione = `
+                    1) Gli elementi noti sono due lati e l'angolo compreso.<br>
+                    2) La regola geometrica che richiede due lati e l'angolo compreso uguali è il <strong>Primo Criterio (Lato-Angolo-Lato)</strong>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let l1 = (i % 8) + 6;
+                    let l2 = (i % 9) + 7;
+                    let l3 = (i % 10) + 9;
+                    domanda = `Un triangolo ha i lati che misurano <code>${l1} cm</code>, <code>${l2} cm</code> e <code>${l3} cm</code>. Un secondo triangolo ha anch'esso i tre lati della medesima lunghezza. Quale criterio garantisce la loro congruenza?`;
+                    risposta = `<strong>Terzo Criterio di Congruenza (L.L.L.)</strong>`;
+                    spiegazione = `
+                    1) Conosciamo la misura di tutti e tre i lati di entrambi i triangoli.<br>
+                    2) Quando due triangoli hanno i tre lati rispettivamente congruenti, sono congruenti per il <strong>Terzo Criterio (Lato-Lato-Lato)</strong>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let angA = (i % 30) + 40;
+                    let angB = (i % 25) + 50;
+                    let latoComune = (i % 10) + 4;
+                    domanda = `In due triangoli sono congruenti un lato di <code>${latoComune} cm</code> e i due angoli adiacenti ad esso, che misurano rispettivamente <code>${angA}&deg;</code> e <code>${angB}&deg;</code>. Di quale criterio si tratta e qual è la conclusione?`;
+                    risposta = `<strong>Secondo Criterio di Congruenza (A.L.A.) - I triangoli sono congruenti</strong>`;
+                    spiegazione = `
+                    1) Gli elementi forniti sono un lato e i due angoli adiacenti ad esso.<br>
+                    2) Questo corrisponde esattamente all'enunciato del <strong>Secondo Criterio di Congruenza (Angolo-Lato-Angolo)</strong>, che dimostra la perfetta congruenza dei due triangoli.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

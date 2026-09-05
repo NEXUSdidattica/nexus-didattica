@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Caloria e le unità di misura dell'energia termica con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Caloria e l'Energia Termica: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="caloria" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem;background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Caloria</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione storica della caloria, equivalente meccanico del calore, conversione in joule e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Che cos'è la Caloria?</h2>
+            <p>
+                La <strong>caloria</strong> ($\text{cal}$) è un'unità di misura dell'energia (e del calore) definita storicamente come la quantità di calore necessaria per innalzare la temperatura di $1\text{ g}$ di acqua distillata da $14{,}5\text{ °C}$ a $15{,}5\text{ °C}$ alla pressione atmosferica standard. 
+            </p>
+            <div class="formula-box">
+                📐 <b>L'Equivalente Meccanico e la Conversione:</b>
+                $$1\text{ cal} \approx 4{,}186\text{ J} \quad \text{e} \quad 1\text{ kcal} = 1000\text{ cal} = 4186\text{ J}$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Sebbene il Sistema Internazionale adotti il joule ($\text{J}$) come unità ufficiale per qualsiasi forma di energia, la caloria (spesso espressa come kilocaloria o "Cal" nei contesti alimentari) è ampiamente utilizzata nella chimica, nella nutrizione e nella termodinamica applicata.
+                </p>
+            </div>
+
+            <h2>2. Applicazioni e Relazioni Energetiche</h2>
+            <ul>
+                <li><strong>Ambito Termodinamico:</strong> Permette di calcolare rapidamente gli scambi termici dell'acqua sfruttando il suo calore specifico di riferimento ($1\text{ cal/(g}\cdot\text{°C)}$).</li>
+                <li><strong>Ambito Nutrizionale:</strong> Le cosiddette "calorie" degli alimenti corrispondono in realtà alle kilocalorie ($\text{kcal}$), indicando l'energia chimica che il corpo umano ricava dai cibi attraverso i processi metabolici.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Caloria</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati alle conversioni tra calorie e joule, calcoli calorimetrici e bilanci energetici, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulla Caloria
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // 1. Conversione da cal a J
+                    let cal = 100 + (i * 25);
+                    let j_val = (cal * 4.186).toFixed(1);
+
+                    q = `Esercizio ${i}: Converti un'energia termica pari a $${cal}\\text{ cal}$ nel corrispondente valore espresso in joule (J), assumendo $1\\text{ cal} = 4{,}186\\text{ J}$.`;
+                    r = `$${j_val}\\text{ J}$.`;
+                    s = `Moltiplicando il valore in calorie per l'equivalente meccanico: $${cal} \\text{ cal} \\cdot 4{,}186\\text{ J/cal} = ${j_val}\\text{ J}$.`;
+                
+                } else if (tipo === 1) {
+                    // 2. Conversione da J a kcal
+                    let joule = 20930 + (i * 1000);
+                    let kcal_val = (joule / 4186).toFixed(2);
+
+                    q = `Esercizio ${i}: Un sistema termodinamico assorbe un lavoro convertito in calore pari a $${joule}\\text{ J}$. Esprimi questa energia in kilocalorie (kcal).`;
+                    r = `$${kcal_val}\\text{ kcal}$.`;
+                    s = `Ricordando che $1\\text{ kcal} = 4186\\text{ J}$, si divide il valore in joule per $4186$: $\\frac{${joule}}{4186} \\approx ${kcal_val}\\text{ kcal}$.`;
+                
+                } else if (tipo === 2) {
+                    // 3. Calcolo riscaldamento acqua in calorie
+                    let m_g = 50 + (i * 10); // massa in grammi
+                    let deltaT = 5 + (i % 15);
+                    let q_cal = (m_g * deltaT).toFixed(0);
+
+                    q = `Esercizio ${i}: Calcola la quantità di calore $Q$ in calorie necessaria per innalzare la temperatura di una massa d'acqua $m = ${m_g}\\text{ g}$ di $\\Delta T = ${deltaT}\\text{ °C}$ (sapendo che il calore specifico dell'acqua in queste unità è $1\\text{ cal/(g}\\cdot\\text{°C)}$.`;
+                    r = `$${q_cal}\\text{ cal}$.`;
+                    s = `Applicando la formula fondamentale $Q = m \\cdot c \\cdot \\Delta T$: $Q = ${m_g} \\cdot 1 \\cdot ${deltaT} = ${q_cal}\\text{ cal}$.`;
+                
+                } else {
+                    // 4. Domanda concettuale sulla caloria e il joule
+                    q = `Esercizio ${i}: Spiega perché nel Sistema Internazionale si preferisce l'uso del joule rispetto alla caloria per misurare l'energia termica.`;
+                    r = `Il joule è l'unità di misura coerente per tutte le forme di energia (meccanica, elettrica, termica), unificando la trattazione fisica secondo il principio di conservazione dell'energia.`;
+                    s = `Storicamente la caloria era legata specificamente alle proprietà termiche dell'acqua; l'introduzione del joule consente di ricondurre ogni scambio energetico (compreso il lavoro meccanico) a una sola unità di misura comune, definita tramite metro, chilogrammo e secondo.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 3: Operazioni e Potenze con le Frazioni Algebriche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Operazioni e Potenze Frazioni Algebriche - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="frazioni-algebriche-operazioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Frazioni Algebriche</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 3: Operazioni e Potenze</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Esegui addizioni, sottrazioni, moltiplicazioni, divisioni e potenze con frazioni algebriche trovando il m.c.m. e applicando le C.E.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Le Regole delle Operazioni e delle Potenze</h2>
+            <p>
+                L'esecuzione delle operazioni segue le medesime regole delle frazioni numeriche, estese all'uso dei polinomi e delle proprietà delle potenze.
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Regole sintetiche per operare:</strong><br>
+                • <strong>Somma / Sottrazione:</strong> Scomporre i denominatori, trovare il m.c.m. ed eseguire la somma al numeratore.<br>
+                • <strong>Moltiplicazione:</strong> Semplificare in croce e moltiplicare numeratore per numeratore, denominatore per denominatore.<br>
+                • <strong>Divisione:</strong> Moltiplicare la prima frazione per l'inversa della seconda.<br>
+                • <strong>Potenza ad esponente positivo:</strong> Elevare separatamente numeratore e denominatore: <code>(A / B)ⁿ = Aⁿ / Bⁿ</code>.<br>
+                • <strong>Potenza ad esponente negativo:</strong> Capovolgere la frazione e cambiare il segno all'esponente: <code>(A / B)⁻ⁿ = (B / A)ⁿ</code>.
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato (Potenze e Divisione)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola: <code>[ (x - 1) / (2x) ]⁻² : [ (x - 1) / x ]²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione guidata:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>C.E.: <code>x ≠ 0</code> e <code>x ≠ 1</code>.</li>
+                    <li>Capovolgiamo la prima frazione per via dell'esponente negativo: <code>[ (2x) / (x - 1) ]²</code>.</li>
+                    <li>Applichiamo le potenze: <code>(4x²) / (x - 1)² : (x - 1)² / x²</code>.</li>
+                    <li>Trasformiamo in moltiplicazione capovolgendo il divisore: <code>[ (4x²) / (x - 1)² ] · [ x² / (x - 1)² ]</code>.</li>
+                    <li>Moltiplichiamo i termini: <code>(4x⁴) / (x - 1)⁴</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: 4x⁴ / (x - 1)⁴  con C.E.: x ≠ 0, x ≠ 1</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Operazioni e Potenze</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua preparazione con 100 esercizi svolti di somma, sottrazione, moltiplicazione, divisione e potenze di frazioni algebriche.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi sulle Operazioni e Potenze -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 4) + 1;
+                    let b = (i % 5) + 2;
+
+                    if (i % 3 === 0) {
+                        // Potenze semplici ad esponente positivo
+                        domanda = `Calcola la potenza della frazione algebrica: <br><code>F(x) = (${a}x / y²)²</code>.`;
+                        risposta = `Risultato: <code>${a*a}x² / y⁴</code> (con C.E.: <code>y ≠ 0</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>y ≠ 0</code>.<br>
+                        2) Eleviamo al quadrato sia il numeratore che il denominatore:<br>
+                           • Numeratore: <code>(${a}x)² = ${a*a}x²</code><br>
+                           • Denominatore: <code>(y²)² = y⁴</code>.<br>
+                        3) Risultato finale: <code>${a*a}x² / y⁴</code>.`;
+                    } else if (i % 3 === 1) {
+                        domanda = `Esegui la somma a denominatore comune uguale: <br><code>F(x) = ${a}/x + ${b}/x</code>.`;
+                        risposta = `Risultato: <code>${a + b} / x</code> (con C.E.: <code>x ≠ 0</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>x ≠ 0</code>.<br>
+                        2) I denominatori sono uguali, sommiamo i numeratori: <code>(${a} + ${b}) / x</code>.<br>
+                        3) Risultato finale: <code>${a + b} / x</code>.`;
+                    } else {
+                        domanda = `Esegui la moltiplicazione di frazioni: <br><code>F(x) = (${a}/x) · (x²/${a*2})</code>.`;
+                        risposta = `Risultato: <code>x / 2</code> (con C.E.: <code>x ≠ 0</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>x ≠ 0</code>.<br>
+                        2) Semplifichiamo in croce <code>x</code> con <code>x²</code> ed <code>${a}</code> con <code>${a*2}</code>.<br>
+                        3) Moltiplichiamo i fattori rimanenti: <code>x / 2</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let k = (i % 4) + 2;
+
+                    if (i % 3 === 0) {
+                        // Potenza ad esponente negativo
+                        domanda = `Calcola la potenza ad esponente negativo: <br><code>F(x) = [ (x - ${k}) / (3x) ]⁻²</code>.`;
+                        risposta = `Risultato: <code>(9x²) / (x - ${k})²</code> (con C.E.: <code>x ≠ 0, x ≠ ${k}</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>x ≠ 0</code> e <code>x ≠ ${k}</code>.<br>
+                        2) Capovolgiamo la frazione per rendere l'esponente positivo: <code>[ (3x) / (x - ${k}) ]²</code>.<br>
+                        3) Eleviamo al quadrato numeratore e denominatore: <code>(9x²) / (x - ${k})²</code>.`;
+                    } else if (i % 3 === 1) {
+                        domanda = `Esegui la divisione tra frazioni: <br><code>F(x) = (x² - ${k*k}) / x : (x + ${k}) / (2x)</code>.`;
+                        risposta = `Risultato: <code>2(x - ${k})</code> (con C.E.: <code>x ≠ 0, x ≠ ±${k}</code>)`;
+                        spiegazione = `
+                        1) C.E. sui denominatori iniziali e divisore: <code>x ≠ 0</code> e <code>x ≠ ±${k}</code>.<br>
+                        2) Trasformiamo la divisione in moltiplicazione capovolgendo il divisore: <code>[(x - ${k})(x + ${k}) / x] · [2x / (x + ${k})]</code>.<br>
+                        3) Semplifichiamo in croce <code>(x + ${k})</code> e <code>x</code>.<br>
+                        4) Otteniamo: <code>2(x - ${k})</code>.`;
+                    } else {
+                        domanda = `Esegui la sottrazione di frazioni: <br><code>F(x) = 1/(x - ${k}) - 1/(x + ${k})</code>.`;
+                        risposta = `Risultato: <code>${2*k} / (x² - ${k*k})</code> (con C.E.: <code>x ≠ ±${k}</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>x ≠ ±${k}</code>.<br>
+                        2) m.c.m. dei denominatori: <code>(x - ${k})(x + ${k})</code>.<br>
+                        3) Sviluppiamo: <code>[(x + ${k}) - (x - ${k})] / [(x - ${k})(x + ${k})] = (x + ${k} - x + ${k}) / (x² - ${k*k})</code>.<br>
+                        4) Risultato: <code>${2*k} / (x² - ${k*k})</code>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let n = (i % 3) + 1;
+                    if (i % 2 === 0) {
+                        // Prodotto e quoziente tra potenze con la stessa base
+                        domanda = `Applica le proprietà delle potenze: <br><code>F(x) = [ (x + ${n})/x ]⁵ · [ (x + ${n})/x ]⁻³</code>.`;
+                        risposta = `Risultato: <code>(x + ${n})² / x²</code> (con C.E.: <code>x ≠ 0, x ≠ -${n}</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>x ≠ 0</code> e <code>x ≠ -${n}</code>.<br>
+                        2) Essendo un prodotto di potenze con la stessa base, sommiamo gli esponenti: <code>5 + (-3) = 2</code>.<br>
+                        3) Otteniamo: <code>[ (x + ${n})/x ]² = (x + ${n})² / x²</code>.`;
+                    } else {
+                        domanda = `Calcola la seguente combinazione di operazioni e potenze: <br><code>F(x) = (1 + ${n}/x)² · (x / (x + ${n}))² - 1/x</code>.`;
+                        risposta = `Risultato: <code>(x - 1) / x</code> (con C.E.: <code>x ≠ 0, x ≠ -${n}</code>)`;
+                        spiegazione = `
+                        1) C.E.: <code>x ≠ 0</code> e <code>x ≠ -${n}</code>.<br>
+                        2) Applichiamo la proprietà del prodotto di potenze con stesso esponente: <code>[ (1 + ${n}/x) · (x / (x + ${n})) ]²</code>.<br>
+                        3) Calcoliamo dentro la quadra: <code>[ (x + ${n})/x · x/(x + ${n}) ]² = 1² = 1</code>.<br>
+                        4) Sottraiamo l'ultima frazione: <code>1 - 1/x = (x - 1) / x</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Passaggi</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Procedimento completo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

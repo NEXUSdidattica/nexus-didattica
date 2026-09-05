@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alla Riduzione ai Minimi Termini delle Frazioni: Metodo MCD, Semplificazione Progressiva e 100 Esercizi Svolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Riduzione ai Minimi Termini: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-riduzione-ai-minimi-termini" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Riduzione ai Minimi Termini</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Frazioni irriducibili, metodo delle divisioni successive, metodo del Massimo Comune Divisore (M.C.D.) e 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è una Frazione Irriducibile?</h2>
+            <p>
+                Una frazione si dice <strong>ridotta ai minimi termini</strong> (o <strong>irriducibile</strong>) quando il suo numeratore e il suo denominatore sono <strong>numeri primi tra loro</strong>, ossia quando l'unico divisore comune positivo che condividono è il numero <strong>1</strong>.
+            </p>
+            <p style="text-align: center; font-size: 1.4rem; font-weight: bold; color: #2563eb; margin: 1.5rem 0;">
+                M.C.D.(numeratore, denominatore) = 1
+            </p>
+            <p>
+                Se una frazione non è irriducibile, viene detta <em>riducibile</em> e può essere semplificata dividendo sia il numeratore che il denominatore per un loro divisore comune (applicando la proprietà invariantiva).
+            </p>
+
+            <h2>2. Metodi di Riduzione ai Minimi Termini</h2>
+            <p>Esistono due strategie principali per ridurre una frazione ai minimi termini:</p>
+
+            <h3>A. Metodo delle Divisioni Successive (Semplificazione Progressiva)</h3>
+            <p>
+                Si dividono gradualmente il numeratore e il denominatore per i fattori primi comuni visibili (utilizzando i criteri di divisibilità per 2, 3, 5, ecc.) fino a quando non è più possibile trovare divisori comuni.
+            </p>
+
+            <h3>B. Metodo del Massimo Comune Divisore (M.C.D.) - Metodo Diretto</h3>
+            <p>
+                Si calcola il <strong>Massimo Comune Divisore</strong> tra numeratore e denominatore e si dividono entrambi i termini direttamente per tale valore. Questo metodo permette di ottenere la frazione irriducibile in <strong>un unico passaggio</strong>.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Riduzione con M.C.D.)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Riduci ai minimi termini la frazione <strong><sup>60</sup>/<sub>84</sub></strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scomponiamo in fattori primi i due termini:
+                        <ul>
+                            <li><code>60 = 2² × 3 × 5</code></li>
+                            <li><code>84 = 2² × 3 × 7</code></li>
+                        </ul>
+                    </li>
+                    <li>Calcoliamo il M.C.D. prendendo i fattori comuni con l'esponente minore: <code>M.C.D.(60, 84) = 2² × 3 = 12</code>.</li>
+                    <li>Dividiamo numeratore e denominatore per 12:
+                        <ul>
+                            <li><code>60 : 12 = 5</code></li>
+                            <li><code>84 : 12 = 7</code></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code><sup>5</sup>/<sub>7</sub></code> (frazione irriducibile).</p>
+            </div>
+
+            <h2>3. Come Riconoscere una Frazione Già Irriducibile</h2>
+            <div style="background-color: #eff6ff; border-left: 4px solid #2563eb; padding: 1.2rem; border-radius: 6px; margin: 1.5rem 0;">
+                <p style="margin: 0; font-size: 1.05rem; color: #1e3a8a; font-weight: bold;">
+                    📌 Regole Pratiche di Riconoscimento Immediato:
+                </p>
+                <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem;">
+                    <li>Se il numeratore e il denominatore sono due <strong>numeri consecutivi</strong> (es. <sup>8</sup>/<sub>9</sub>, <sup>14</sup>/<sub>15</sub>), la frazione è sempre irriducibile.</li>
+                    <li>Se sia il numeratore che il denominatore sono <strong>numeri primi distinti</strong> (es. <sup>3</sup>/<sub>7</sub>, <sup>11</sup>/<sub>13</sub>), la frazione è irriducibile.</li>
+                    <li>Se il numeratore è uguale a <strong>1</strong> (es. <sup>1</sup>/<sub>6</sub>), la frazione è sempre irriducibile.</li>
+                </ul>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sulla Riduzione ai Minimi Termini</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 problemi svolti e commentati, suddivisi per livello di difficoltà. Clicca su ciascun esercizio per verificare la tua soluzione.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Helper funzione per calcolare il MCD
+            function calcolaMCD(a, b) {
+                while (b !== 0) {
+                    let temp = b;
+                    b = a % b;
+                    a = temp;
+                }
+                return a;
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Riconoscimento frazioni irriducibili e semplificazioni immediate con MCD piccoli
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let p1 = (i % 7) + 2;
+                        let p2 = p1 + (i % 4) + 1;
+                        let mcd = (i % 5) + 2;
+                        let num = p1 * mcd;
+                        let den = p2 * mcd;
+
+                        domanda = `Riduci ai minimi termini la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong>.`;
+                        risposta = `<sup>${p1}</sup>/<sub>${p2}</sub>`;
+                        spiegazione = `Il divisore comune (M.C.D.) tra ${num} e ${den} è ${mcd}. Dividendo numeratore e denominatore per ${mcd}: <code>${num} : ${mcd} = ${p1}</code> e <code>${den} : ${mcd} = ${p2}</code>.`;
+                    } else if (mod === 2) {
+                        let isIrriducibile = (i % 2 === 0);
+                        let num, den, mcdVal;
+
+                        if (isIrriducibile) {
+                            num = (i % 9) + 2;
+                            den = num + 1; // Due numeri consecutivi sono sempre primi tra loro
+                            mcdVal = 1;
+                            domanda = `La frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> è riducibile o irriducibile?`;
+                            risposta = `Irriducibile`;
+                            spiegazione = `Numeratore (${num}) e denominatore (${den}) sono numeri consecutivi, quindi sono primi tra loro (M.C.D. = 1). La frazione è già <strong>irriducibile</strong>.`;
+                        } else {
+                            let k = (i % 3) + 2;
+                            let p = (i % 5) + 2;
+                            num = p * k;
+                            den = (p + 2) * k;
+                            mcdVal = k;
+                            domanda = `La frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> è riducibile o irriducibile?`;
+                            risposta = `Riducibile (M.C.D. = ${k})`;
+                            spiegazione = `La frazione è <strong>riducibile</strong> in quanto sia ${num} che ${den} possono essere divisi per il fattore comune ${k}.`;
+                        }
+                    } else {
+                        let mult = (i % 6) + 2;
+                        let num = mult * 2;
+                        let den = mult * 3;
+
+                        domanda = `Trova il M.C.D. di <strong>${num}</strong> e <strong>${den}</strong> e riduci la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong>.`;
+                        risposta = `M.C.D. = ${mult}, Frazione = <sup>2</sup>/<sub>3</sub>`;
+                        spiegazione = `1) <code>M.C.D.(${num}, ${den}) = ${mult}</code>.<br>2) Dividendo per ${mult}: <code>${num} : ${mult} = 2</code> e <code>${den} : ${mult} = 3</code> &rArr; <strong><sup>2</sup>/<sub>3</sub></strong>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Semplificazioni con numeri a 2/3 cifre, semplificazioni a catena
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let p1 = (i % 8) + 3;
+                        let p2 = p1 + (i % 5) + 2;
+                        if (calcolaMCD(p1, p2) > 1) p2 += 1;
+                        let mcd = (i % 8) * 3 + 6;
+                        let num = p1 * mcd;
+                        let den = p2 * mcd;
+                        let realMCD = calcolaMCD(num, den);
+                        let finalNum = num / realMCD;
+                        let finalDen = den / realMCD;
+
+                        domanda = `Riduci ai minimi termini la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> calcolandone il M.C.D.`;
+                        risposta = `<sup>${finalNum}</sup>/<sub>${finalDen}</sub> (M.C.D. = ${realMCD})`;
+                        spiegazione = `
+                        1) Calcoliamo <code>M.C.D.(${num}, ${den}) = ${realMCD}</code>.<br>
+                        2) Semplifichiamo: <code>${num} : ${realMCD} = ${finalNum}</code> e <code>${den} : ${realMCD} = ${finalDen}</code>.<br>
+                        3) La frazione irriducibile è <strong><sup>${finalNum}</sup>/<sub>${finalDen}</sub></strong>.`;
+                    } else if (mod === 2) {
+                        let k1 = 2, k2 = 3;
+                        let baseN = (i % 5) + 2;
+                        let baseD = baseN + (i % 3) + 2;
+                        if (calcolaMCD(baseN, baseD) > 1) baseD += 1;
+                        let num = baseN * k1 * k2;
+                        let den = baseD * k1 * k2;
+
+                        domanda = `Riduci la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong> tramite passaggi successivi (prima dividendo per 2, poi per 3).`;
+                        let step1N = num / 2, step1D = den / 2;
+                        let step2N = step1N / 3, step2D = step1D / 3;
+
+                        risposta = `<sup>${step2N}</sup>/<sub>${step2D}</sub>`;
+                        spiegazione = `
+                        1) Dividiamo per 2: <code><sup>${num}</sup>/<sub>${den}</sub> &rArr; <sup>${step1N}</sup>/<sub>${step1D}</sub></code>.<br>
+                        2) Dividiamo per 3: <code><sup>${step1N}</sup>/<sub>${step1D}</sub> &rArr; <sup>${step2N}</sup>/<sub>${step2D}</sub></code>.<br>
+                        3) Poiché M.C.D.(${step2N}, ${step2D}) = 1, la frazione è ridotta ai minimi termini.`;
+                    } else {
+                        let n1 = (i - 30) * 10;
+                        let d1 = (i - 25) * 10;
+                        let realMCD = calcolaMCD(n1, d1);
+
+                        domanda = `Riduci ai minimi termini la frazione con zeri terminali <strong><sup>${n1}</sup>/<sub>${d1}</sub></strong>.`;
+                        risposta = `<sup>${n1 / realMCD}</sup>/<sub>${d1 / realMCD}</sub>`;
+                        spiegazione = `
+                        1) Semplifichiamo prima per 10 eliminando lo zero finale: <code><sup>${n1 / 10}</sup>/<sub>${d1 / 10}</sub></code>.<br>
+                        2) Dividiamo per il restante fattore comune fino ad ottenere la frazione irriducibile <strong><sup>${n1 / realMCD}</sup>/<sub>${d1 / realMCD}</sub></strong>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Espressioni con semplificazioni, incognite ed equivalenze irriducibili
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let targetN = (i % 5) + 2;
+                        let targetD = targetN + (i % 4) + 1;
+                        if (calcolaMCD(targetN, targetD) > 1) targetD += 1;
+                        let factor = (i % 7) + 5;
+                        let num = targetN * factor;
+                        let den = targetD * factor;
+
+                        domanda = `Quale numero k occorre dividere sia al numeratore che al denominatore di <strong><sup>${num}</sup>/<sub>${den}</sub></strong> per ottenere la frazione irriducibile <strong><sup>${targetN}</sup>/<sub>${targetD}</sub></strong>?`;
+                        risposta = `k = ${factor}`;
+                        spiegazione = `Il valore k corrisponde al M.C.D. tra ${num} e ${den}. Infatti <code>${num} : ${factor} = ${targetN}</code> e <code>${den} : ${factor} = ${targetD}</code>, per cui <strong>k = ${factor}</strong>.`;
+                    } else if (mod === 2) {
+                        let baseN = (i % 4) + 3;
+                        let baseD = baseN + (i % 3) + 2;
+                        if (calcolaMCD(baseN, baseD) > 1) baseD += 1;
+                        let mult = (i - 60);
+                        let num = baseN * mult;
+                        let den = baseD * mult;
+
+                        domanda = `Semplifica l'espressione frazionaria <strong><sup>(${num} - ${mult})</sup>/<sub>${den}</sub></strong> e riduci il risultato ai minimi termini.`;
+                        let topVal = num - mult;
+                        let mcdRes = calcolaMCD(topVal, den);
+
+                        risposta = `<sup>${topVal / mcdRes}</sup>/<sub>${den / mcdRes}</sub>`;
+                        spiegazione = `
+                        1) Calcoliamo il numeratore: <code>${num} - ${mult} = ${topVal}</code>.<br>
+                        2) Otteniamo la frazione <code><sup>${topVal}</sup>/<sub>${den}</sub></code>.<br>
+                        3) Troviamo M.C.D.(${topVal}, ${den}) = ${mcdRes} e dividiamo: <code><sup>${topVal / mcdRes}</sup>/<sub>${den / mcdRes}</sub></code>.`;
+                    } else {
+                        let p1 = (i % 6) + 2;
+                        let p2 = p1 + 3;
+                        if (calcolaMCD(p1, p2) > 1) p2 += 1;
+                        let mcdVal = (i % 5) * 4 + 12;
+                        let num = p1 * mcdVal;
+                        let den = p2 * mcdVal;
+
+                        domanda = `Data la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong>, determina la somma del numeratore e del denominatore della sua forma irriducibile.`;
+                        let sumIrriducibile = p1 + p2;
+
+                        risposta = `Somma = ${sumIrriducibile} (frazione irriducibile: <sup>${p1}</sup>/<sub>${p2}</sub>)`;
+                        spiegazione = `
+                        1) Calcoliamo M.C.D.(${num}, ${den}) = ${mcdVal}.<br>
+                        2) Riduciamo ai minimi termini: <code><sup>${num} : ${mcdVal}</sup>/<sub>${den} : ${mcdVal}</sub> = <sup>${p1}</sup>/<sub>${p2}</sub></code>.<br>
+                        3) Calcoliamo la somma dei termini irriducibili: <code>${p1} + ${p2} = ${sumIrriducibile}</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

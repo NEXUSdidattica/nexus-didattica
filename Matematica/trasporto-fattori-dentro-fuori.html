@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida al Trasporto Dentro e Fuori dal Segno di Radice: regole, condizioni di segno ed esponenti, con 100 esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Trasporto Dentro e Fuori dal Segno di Radice - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .warning-box {
+            background-color: #fff1f2;
+            border-left: 4px solid #f43f5e;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="radicali-trasporto-dentro-fuori" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Radicali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Trasporto Dentro e Fuori dal Segno
+                    di Radice</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Regole fondamentali, gestione dei segni e degli esponenti
+                    per semplificare le espressioni con i radicali.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Trasporto di un Fattore FUORI dal Segno di Radice</h2>
+            <p>Un fattore presente nel radicando può essere portato **fuori** dalla radice se il suo esponente è
+                **maggiore o uguale** all'indice della radice stessa.</p>
+
+            <p>Si esegue la **divisione intera** tra l'esponente $m$ del fattore e l'indice $n$ della radice ($m : n$):
+            </p>
+            <ul>
+                <li>Il **quoziente** $q$ indica l'esponente del fattore che viene portato **fuori**.</li>
+                <li>Il **resto** $r$ indica l'esponente del fattore che rimane **dentro** la radice.</li>
+            </ul>
+
+            <div class="formula-box">
+                $$\sqrt[n]{a^m} = a^q \cdot \sqrt[n]{a^r} \quad \text{con } m = n \cdot q + r$$
+            </div>
+
+            <h2>2. Trasporto di un Fattore DENTRO il Segno di Radice</h2>
+            <p>Per portare un fattore esterno **dentro** il segno di radice, basta **elevare quel fattore all'indice
+                della radice** e moltiplicarlo per il radicando già presente.</p>
+
+            <div class="formula-box">
+                $$a \cdot \sqrt[n]{b} = \sqrt[n]{a^n \cdot b} \quad \text{(se } n \text{ è pari, si assume } a \ge
+                0\text{)}$$
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Attenzione al Segno con Indice Pari:</strong><br>
+                Se l'indice della radice è <strong>pari</strong>, un fattore <strong>negativo</strong> non può essere inserito interamente sotto
+                la radice. Il segno meno ($-$) deve rimanere fuori!<br>
+                Esempio: $-2\sqrt{3} = -\sqrt{2^2 \cdot 3} = -\sqrt{12}$.
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempi Guidati</h3>
+                <ol>
+                    <li><strong>Trasporto Fuori:</strong> Semplifica $\sqrt{72}$<br>
+                        Scomposizione: $72 = 2^3 \cdot 3^2$.<br>
+                        - Per $2^3$: $3 : 2 = 1$ con resto $1 \implies 2^1$ fuori e $2^1$ dentro.<br>
+                        - Per $3^2$: $2 : 2 = 1$ con resto $0 \implies 3^1$ fuori e nessun $3$ dentro.<br>
+                        Risultato: $2 \cdot 3 \cdot \sqrt{2} = 6\sqrt{2}$.
+                    </li>
+                    <li style="margin-top: 1rem;"><strong>Trasporto Dentro:</strong> Inserisci il fattore sotto radice
+                        in $3\sqrt[3]{2}$<br>
+                        L'indice è $3$. Eleviamo $3$ alla terza ($3^3$):<br>
+                        $$3\sqrt[3]{2} = \sqrt[3]{3^3 \cdot 2} = \sqrt[3]{27 \cdot 2} = \sqrt[3]{54}$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Trasporto Dentro e Fuori</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i % 2 !== 0) {
+                    // Esercizi di TRASPORTO FUORI (Numerici e Algebrici)
+                    if (i <= 35) {
+                        let p = (i % 5) + 2; // fattore da portare fuori (2, 3, 4, 5, 6)
+                        let q = (i % 3) + 2; // fattore che rimane dentro (2, 3, 4)
+                        let num = (p * p) * q;
+
+                        domanda = `Trasporta tutti i fattori possibili FUORI dal segno di radice: $\\sqrt{${num}}$`;
+                        risposta = `${p}\\sqrt{${q}}`;
+
+                        spiegazione = `1) Scomponiamo $${num}$ in fattori primi: $${num} = ${p}^2 \\cdot ${q}$.<br>` +
+                            `2) Dividiamo l'esponente di $${p}^2$ per l'indice $2$: $2 : 2 = 1$ con resto $0$.<br>` +
+                            `3) Portiamo $${p}$ fuori dalla radice: $${p}\\sqrt{${q}}$.`;
+                    } else if (i <= 70) {
+                        let exp = (i % 4) + 3; // esponente es. 3, 4, 5, 6
+                        let idx = 3; // radice cubica
+                        let qA = Math.floor(exp / idx);
+                        let rA = exp % idx;
+
+                        domanda = `Trasporta fuori dalla radice cubica i fattori possibili (con $a \\ge 0$): $\\sqrt[3]{a^{${exp}}}$`;
+
+                        let dentro = rA > 0 ? (rA === 1 ? `a` : `a^{${rA}}`) : ``;
+                        let fuori = qA === 1 ? `a` : `a^{${qA}}`;
+
+                        risposta = dentro !== `` ? `${fuori}\\sqrt[3]{${dentro}}` : `${fuori}`;
+
+                        spiegazione = `1) Dividiamo l'esponente $${exp}$ per l'indice $3$: $${exp} : 3 = ${qA}$ con resto $${rA}$.<br>` +
+                            `2) Il quoziente $${qA}$ è l'esponente di $a$ fuori radice, mentre il resto $${rA}$ è l'esponente di $a$ dentro radice.<br>` +
+                            `3) Risultato: $${risposta}$.`;
+                    } else {
+                        // Trasporto fuori combinato numeri e lettere
+                        let numFuori = 2;
+                        let numDentro = 3;
+                        let val = (numFuori * numFuori) * numDentro; // es. 4 * 3 = 12
+
+                        domanda = `Trasporta tutti i fattori possibili fuori dal segno di radice (con $x \\ge 0$): $\\sqrt{${val}x^5}$`;
+                        risposta = `${numFuori}x^2\\sqrt{${numDentro}x}`;
+
+                        spiegazione = `1) Scomponiamo il numero $${val} = 2^2 \\cdot 3$ e la variabile $x^5 = x^4 \\cdot x$.<br>` +
+                            `2) Portiamo fuori $2^2 \\implies 2$ e $x^4 \\implies x^2$.<br>` +
+                            `3) Sotto radice rimangono $3$ e $x$.<br>` +
+                            `4) Risultato finale: $${risposta}$.`;
+                    }
+                } else {
+                    // Esercizi di TRASPORTO DENTRO (Numerici e Algebrici)
+                    if (i <= 35) {
+                        let p = (i % 4) + 2; // coefficiente esterno
+                        let q = (i % 3) + 2; // radicando interno
+                        let dentroVal = (p * p) * q;
+
+                        domanda = `Trasporta il coefficiente DENTRO il segno di radice: $${p}\\sqrt{${q}}$`;
+                        risposta = `\\sqrt{${dentroVal}}`;
+
+                        spiegazione = `1) Eleviamo il coefficiente esterno $${p}$ all'indice della radice ($2$): $${p}^2 = ${p * p}$.<br>` +
+                            `2) Moltiplichiamo il risultato per il radicando $${q}$: $${p * p} \\cdot ${q} = ${dentroVal}$.<br>` +
+                            `3) Otteniamo: $\\sqrt{${dentroVal}}$.`;
+                    } else if (i <= 70) {
+                        let p = (i % 3) + 2; // esterno
+                        let q = (i % 2) + 2; // interno
+                        let idx = 3; // radice cubica
+                        let dentroVal = Math.pow(p, idx) * q;
+
+                        domanda = `Trasporta il fattore DENTRO la radice cubica: $${p}\\sqrt[3]{${q}}$`;
+                        risposta = `\\sqrt[3]{${dentroVal}}`;
+
+                        spiegazione = `1) Eleviamo l'esterno $${p}$ all'indice $3$: $${p}^3 = ${Math.pow(p, 3)}$.<br>` +
+                            `2) Moltiplichiamo per il radicando $${q}$: $${Math.pow(p, 3)} \\cdot ${q} = ${dentroVal}$.<br>` +
+                            `3) Risultato: $\\sqrt[3]{${dentroVal}}$.`;
+                    } else {
+                        // Trasporto dentro algebrico
+                        domanda = `Trasporta il fattore esterno dentro il segno di radice (con $a > 0$): $a^2 \\sqrt{3a}$`;
+                        risposta = `\\sqrt{3a^5}`;
+
+                        spiegazione = `1) Eleviamo $a^2$ all'indice della radice ($2$): $(a^2)^2 = a^4$.<br>` +
+                            `2) Moltiplichiamo per il radicando $3a$: $a^4 \\cdot 3a = 3a^5$.<br>` +
+                            `3) Risultato finale: $\\sqrt{3a^5}$.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Avvia il rendering di MathJax per gli esercizi inseriti nel DOM
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

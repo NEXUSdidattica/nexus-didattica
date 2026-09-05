@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa ed esercizi pratici sulle Moltiplicazioni">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <title>La Moltiplicazione: Teoria e 100 Esercizi - NEXUS didattica</title>
+</head>
+
+<body data-lesson-id="aritmetica-moltiplicazioni" data-materia="Matematica">
+
+    <!-- Header di navigazione -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- Pulsante Torna Indietro -->
+        <div style="margin-bottom: 1rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- Hero lezione -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1>La Moltiplicazione e le sue Proprietà</h1>
+                <p class="lead-text">
+                    Impara a calcolare il prodotto tra numeri interi e decimali, scopri le proprietà commutativa, associativa, dissociativa e distributiva con 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- Contenuto Teorico -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è la Moltiplicazione?</h2>
+            <p>
+                La <strong>moltiplicazione</strong> è un'operazione che abbrevia la somma di numeri tutti uguali tra loro. Il simbolo utilizzato è il per (<strong>×</strong> oppure <strong>·</strong>).
+            </p>
+
+            <div class="box-evidenza">
+                💡 <strong>Terminologia:</strong> Nella scrittura <code>a × b = c</code>, i numeri <code>a</code> e <code>b</code> si chiamano <strong>fattori</strong> (nello specifico <em>moltiplicando</em> e <em>moltiplicatore</em>), mentre <code>c</code> è il <strong>prodotto</strong>.<br>
+                • <strong>1</strong> è l'elemento neutro (<code>a × 1 = a</code>).<br>
+                • <strong>0</strong> è l'elemento assorbente (<code>a × 0 = 0</code>).
+            </div>
+
+            <h2>2. Le Proprietà della Moltiplicazione</h2>
+            <ul>
+                <li><strong>Proprietà Commutativa:</strong> Cambiando l'ordine dei fattori il prodotto non cambia (es. <code>4 × 5 = 20</code> e <code>5 × 4 = 20</code>).</li>
+                <li><strong>Proprietà Associativa:</strong> Il prodotto di più numeri non cambia se a due o più fattori si sostituisce il loro prodotto (es. <code>(2 × 3) × 4 = 6 × 4 = 24</code>).</li>
+                <li><strong>Proprietà Dissociativa:</strong> Il prodotto non cambia se a un fattore se ne sostituiscono altri due il cui prodotto è pari al fattore sostituito (es. <code>12 × 5 = (3 × 4) × 5 = 60</code>).</li>
+                <li><strong>Proprietà Distributiva:</strong> Per moltiplicare una somma (o differenza) per un numero, si può moltiplicare ciascun termine della somma per quel numero e poi sommare (o sottrarre) i prodotti ottenuti (es. <code>(10 + 2) × 5 = (10 × 5) + (2 × 5) = 50 + 10 = 60</code>).</li>
+            </ul>
+        </article>
+
+        <!-- Sezione Esercizi Pratici (100 Esercizi Generati) -->
+        <section class="sezione-esercizi">
+            <h2>✏️ 100 Esercizi Pratici per Allenarsi</h2>
+            <p>Di seguito trovi 100 moltiplicazioni divise in tre livelli di difficoltà crescente, comprensive di tabelle, domande teoriche sulle proprietà e prodotti con numeri decimali.</p>
+
+            <div id="lista-esercizi">
+                <!-- Verranno inseriti automaticamente i 100 esercizi via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+    </footer>
+
+    <!-- Script Generatore dei 100 Esercizi con Proprietà -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 40) {
+                    // 40 FACILI (Verde): Tabelline base, elemento neutro/assorbente, prop. commutativa
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 4 === 0) {
+                        let a = Math.floor(Math.random() * 9) + 2;
+                        let b = Math.floor(Math.random() * 9) + 2;
+                        domanda = `Quale proprietà garantisce che <strong>${a} × ${b}</strong> produca lo stesso risultato di <strong>${b} × ${a}</strong>?`;
+                        risposta = `Proprietà Commutativa (Prodotto = ${a * b})`;
+                        spiegazione = `La <strong>Proprietà Commutativa</strong> afferma che cambiando l'ordine dei fattori il prodotto non cambia.`;
+                    } else if (i % 5 === 0) {
+                        let a = Math.floor(Math.random() * 90) + 10;
+                        domanda = `Quanto fa <strong>${a} × 0</strong> e come viene chiamato lo 0 nella moltiplicazione?`;
+                        risposta = `0 (Elemento assorbente)`;
+                        spiegazione = `Qualsiasi numero moltiplicato per zero dà sempre zero. Lo zero è l'<strong>elemento assorbente</strong>.`;
+                    } else {
+                        let n1 = Math.floor(Math.random() * 10) + 2;
+                        let n2 = Math.floor(Math.random() * 10) + 2;
+                        domanda = `Calcola il prodotto: <strong>${n1} × ${n2}</strong>`;
+                        risposta = n1 * n2;
+                        spiegazione = `Dalle tabelline base: ${n1} × ${n2} = ${risposta}.`;
+                    }
+
+                } else if (i <= 75) {
+                    // 35 MEDI (Giallo): 3 fattori, Proprietà Associativa e Distributiva
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 3 === 0) {
+                        let a = Math.floor(Math.random() * 5) + 2;
+                        let b = Math.floor(Math.random() * 5) + 2;
+                        let c = Math.floor(Math.random() * 10) + 2;
+                        domanda = `Applica la <strong>proprietà associativa</strong> svolgendo prima <code>(${a} × ${b})</code> per calcolare: <strong>(${a} × ${b}) × ${c}</strong>`;
+                        risposta = `${a * b} × ${c} = ${a * b * c}`;
+                        spiegazione = `Moltiplica prima i primi due fattori (${a} × ${b} = ${a * b}) e poi il risultato per il terzo: ${a * b} × ${c} = ${a * b * c}.`;
+                    } else if (i % 4 === 0) {
+                        let base1 = 10;
+                        let base2 = Math.floor(Math.random() * 8) + 1;
+                        let mult = Math.floor(Math.random() * 8) + 2;
+                        domanda = `Applica la <strong>proprietà distributiva</strong> per calcolare <strong>(${base1} + ${base2}) × ${mult}</strong>`;
+                        risposta = `(${base1} × ${mult}) + (${base2} × ${mult}) = ${base1 * mult} + ${base2 * mult} = ${(base1 + base2) * mult}`;
+                        spiegazione = `Moltiplica ciascun addendo per ${mult}: (${base1} × ${mult}) + (${base2} × ${mult}) = ${base1 * mult} + ${base2 * mult} = ${(base1 + base2) * mult}.`;
+                    } else {
+                        let n1 = Math.floor(Math.random() * 40) + 11;
+                        let n2 = Math.floor(Math.random() * 9) + 2;
+                        domanda = `Calcola la moltiplicazione: <strong>${n1} × ${n2}</strong>`;
+                        risposta = n1 * n2;
+                        spiegazione = `Esegui il calcolo in colonna o a mente: ${n1} × ${n2} = ${risposta}.`;
+                    }
+
+                } else {
+                    // 25 DIFFICILI (Rosso): Proprietà Dissociativa, Moltiplicazione a 2 cifre e Decimali
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 3 === 0) {
+                        let f1 = Math.floor(Math.random() * 10 + 1) * 2; // numero pari
+                        let f2 = 5;
+                        let f1_div2 = f1 / 2;
+                        domanda = `Usa la <strong>proprietà dissociativa</strong> scomponendo ${f1} in (2 × ${f1_div2}) per calcolare a mente: <strong>${f1} × ${f2}</strong>`;
+                        risposta = `(${f1_div2} × 2) × 5 = ${f1_div2} × 10 = ${f1 * f2}`;
+                        spiegazione = `Scomponendo ${f1} in ${f1_div2} × 2, possiamo fare (2 × 5 = 10) e poi ${f1_div2} × 10 = ${f1 * f2}.`;
+                    } else {
+                        let n1 = parseFloat((Math.random() * 20 + 2).toFixed(1));
+                        let n2 = parseFloat((Math.random() * 9 + 2).toFixed(1));
+                        domanda = `Calcola la moltiplicazione con numeri decimali: <strong>${n1} × ${n2}</strong>`;
+                        risposta = (n1 * n2).toFixed(2);
+                        spiegazione = `Moltiplica i numeri ignorando le virgole, poi posiziona la virgola contando le cifre decimali totali (1 + 1 = 2 posti decimali): ${n1} × ${n2} = ${risposta}.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script Moduli Esterni -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+
+</body>
+
+</html>

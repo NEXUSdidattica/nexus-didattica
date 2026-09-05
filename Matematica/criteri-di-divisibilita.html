@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Pratica e Completa ai Criteri di Divisibilità con 100 Esercizi Svolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Criteri di Divisibilità: Guida Pratica ed Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-criteri-divisibilita" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">I Criteri di Divisibilità</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Scopri le regole veloci per verificare se un numero è divisibile per 2, 3, 4, 5, 7, 9, 11, 25 e 100 senza eseguire la divisione.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è la Divisibilità?</h2>
+            <p>
+                Un numero naturale <strong>A</strong> è divisibile per un altro numero naturale <strong>B</strong> (diverso da zero) se il resto della divisione <code>A : B</code> è uguale a <strong>zero</strong>. 
+                I <em>criteri di divisibilità</em> sono scorciatoie aritmetiche che permettono di capirlo al volo senza fare la divisione in colonna.
+            </p>
+
+            <h2>2. I Criteri Principali (2, 3, 4, 5, 9, 10, 25)</h2>
+            <ul>
+                <li><strong>Divisibilità per 2:</strong> Un numero è divisibile per 2 se la sua ultima cifra è pari (<code>0, 2, 4, 6, 8</code>).</li>
+                <li><strong>Divisibilità per 3:</strong> Un numero è divisibile per 3 se la <strong>somma delle sue cifre</strong> è un multiplo di 3.</li>
+                <li><strong>Divisibilità per 4:</strong> Un numero è divisibile per 4 se le sue <strong>ultime due cifre</strong> formano un numero divisibile per 4 o sono <code>00</code>.</li>
+                <li><strong>Divisibilità per 5:</strong> Un numero è divisibile per 5 se la sua ultima cifra è <code>0</code> oppure <code>5</code>.</li>
+                <li><strong>Divisibilità per 9:</strong> Un numero è divisibile per 9 se la <strong>somma delle sue cifre</strong> è un multiplo di 9.</li>
+                <li><strong>Divisibilità per 10, 100, 1000:</strong> Un numero è divisibile per 10, 100, 1000 se termina rispettivamente con uno, due o tre zeri.</li>
+                <li><strong>Divisibilità per 25:</strong> Un numero è divisibile per 25 se le sue ultime due cifre sono <code>00</code>, <code>25</code>, <code>50</code> o <code>75</code>.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Divisibilità per 3 e 4)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Verifica se il numero <strong>3.732</strong> è divisibile per 3 e per 4.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Verifica per 3:</strong> Sommiamo le cifre: <code>3 + 7 + 3 + 2 = 15</code>. Poiché 15 è multiplo di 3 (<code>15 : 3 = 5</code>), <strong>3.732 è divisibile per 3</strong>.</li>
+                    <li><strong>Verifica per 4:</strong> Isoliamo le ultime due cifre: <code>32</code>. Poiché 32 è divisibile per 4 (<code>32 : 4 = 8</code>), <strong>3.732 è divisibile per 4</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Conclusione:</strong> Il numero 3.732 è divisibile sia per 3 sia per 4 (e quindi anche per 12!).</p>
+            </div>
+
+            <h2>3. Criteri Avanzati: Divisibilità per 7 e per 11</h2>
+            <p>Questi criteri richiedono qualche piccolo calcolo in più, ma sono molto pratici:</p>
+            <ul>
+                <li>
+                    <strong>Divisibilità per 7:</strong> Si separa l'ultima cifra, la si raddoppia e la si sottrae dal numero rimanente. Se il risultato è <code>0</code> oppure un multiplo di 7 (7, 14, 21, ...), allora il numero originale è divisibile per 7.
+                </li>
+                <li>
+                    <strong>Divisibilità per 11:</strong> Si calcola la differenza tra la <strong>somma delle cifre in posizione dispari</strong> e la <strong>somma delle cifre in posizione pari</strong>. Se il risultato (in valore assoluto) è <code>0</code> o un multiplo di 11, il numero è divisibile per 11.
+                </li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 3 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Criterio dell'11)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Verifica se il numero <strong>5.819</strong> è divisibile per 11.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Individuiamo le cifre in posizione dispari (1ª e 3ª cifra da sinistra): <code>5</code> e <code>1</code> &rarr; Somma = <code>5 + 1 = 6</code>.</li>
+                    <li>Individuiamo le cifre in posizione pari (2ª e 4ª cifra): <code>8</code> e <code>9</code> &rarr; Somma = <code>8 + 9 = 17</code>.</li>
+                    <li>Calcoliamo la differenza: <code>17 - 6 = 11</code>.</li>
+                    <li>Poiché 11 è un multiplo di 11, il numero <strong>5.819 è divisibile per 11</strong>.</li>
+                </ol>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sui Criteri di Divisibilità</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua abilità con 100 esercizi organizzati in ordine di difficoltà crescente. 
+                Apri la scheda dell'esercizio per visualizzare la soluzione e la spiegazione passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Testo Puro) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Criteri 2, 5, 10 e somme semplici per 3
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let num = 120 + (i * 4) + (i % 2 === 0 ? 0 : 1);
+                        let eDiv = num % 2 === 0;
+                        domanda = `Stabilisci se il numero <strong>${num}</strong> è divisibile per 2.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `L'ultima cifra è <code>${num % 10}</code>. Poiché è una cifra ${eDiv ? 'pari' : 'dispari'}, il numero ${eDiv ? 'è' : 'non è'} divisibile per 2.`;
+                    } else if (mod === 2) {
+                        let base = 200 + i * 5;
+                        let offset = (i % 3 === 0) ? 0 : ((i % 3 === 1) ? 5 : 3);
+                        let num = base + offset;
+                        let eDiv = (num % 5 === 0);
+                        domanda = `Determina se il numero <strong>${num}</strong> è divisibile per 5.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `Un numero è divisibile per 5 solo se termina per 0 o per 5. L'ultima cifra di ${num} è <code>${num % 10}</code>.`;
+                    } else if (mod === 3) {
+                        let num = 300 + (i * 7);
+                        let s = String(num).split('').reduce((acc, c) => acc + parseInt(c), 0);
+                        let eDiv = (s % 3 === 0);
+                        domanda = `Verifica se il numero <strong>${num}</strong> è divisibile per 3.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `La somma delle cifre di ${num} è <code>${String(num).split('').join(' + ')} = ${s}</code>. Poiché ${s} ${eDiv ? 'è' : 'non è'} un multiplo di 3, il numero ${eDiv ? 'è' : 'non è'} divisibile per 3.`;
+                    } else {
+                        let num = 500 + (i * 10) + (i % 2 === 0 ? 0 : 4);
+                        let eDiv = (num % 10 === 0);
+                        domanda = `Verifica se il numero <strong>${num}</strong> è divisibile per 10.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `Un numero è divisibile per 10 solo se l'ultima cifra è 0. L'ultima cifra di ${num} è <code>${num % 10}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Criteri 4, 9, 25 e criteri combinati (es. divisibile sia per 2 sia per 3)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let num = 1200 + (i * 8) + (i % 3);
+                        let u2 = num % 100;
+                        let eDiv = (u2 % 4 === 0);
+                        domanda = `Verifica se il numero <strong>${num}</strong> è divisibile per 4.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `Consideriamo le ultime due cifre di ${num}, ovvero <code>${u2 < 10 ? '0' + u2 : u2}</code>. Poiché ${u2} ${eDiv ? 'è' : 'non è'} divisibile per 4, il numero ${eDiv ? 'è' : 'non è'} divisibile per 4.`;
+                    } else if (mod === 2) {
+                        let num = 2100 + (i * 13);
+                        let s = String(num).split('').reduce((acc, c) => acc + parseInt(c), 0);
+                        let eDiv = (s % 9 === 0);
+                        domanda = `Stabilisci se il numero <strong>${num}</strong> è divisibile per 9.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `La somma delle cifre è <code>${String(num).split('').join(' + ')} = ${s}</code>. Poiché ${s} ${eDiv ? 'è' : 'non è'} multiplo di 9, il numero ${eDiv ? 'è' : 'non è'} divisibile per 9.`;
+                    } else if (mod === 3) {
+                        let ult = [0, 25, 50, 75, 12, 35][i % 6];
+                        let num = 3400 + ult;
+                        let eDiv = (ult === 0 || ult === 25 || ult === 50 || ult === 75);
+                        domanda = `Determina se il numero <strong>${num}</strong> è divisibile per 25.`;
+                        risposta = eDiv ? `Sì, è divisibile` : `No, non è divisibile`;
+                        spiegazione = `Le ultime due cifre sono <code>${ult < 10 ? '0' + ult : ult}</code>. Un numero è divisibile per 25 solo se termina per 00, 25, 50 o 75.`;
+                    } else {
+                        let num = 600 + (i * 6);
+                        let div2 = (num % 2 === 0);
+                        let s = String(num).split('').reduce((acc, c) => acc + parseInt(c), 0);
+                        let div3 = (s % 3 === 0);
+                        let eDiv = div2 && div3;
+                        domanda = `Verifica se il numero <strong>${num}</strong> è divisibile contemporaneamente per 2 e per 3 (ovvero per 6).`;
+                        risposta = eDiv ? `Sì, è divisibile per 6` : `No, non è divisibile per 6`;
+                        spiegazione = `
+                        • Pari (divisibile per 2): <code>${div2 ? 'Sì' : 'No'}</code><br>
+                        • Somma cifre (${s}, divisibile per 3): <code>${div3 ? 'Sì' : 'No'}</code><br>
+                        Essendo entrambe le condizioni verificate, il numero ${eDiv ? 'è' : 'non è'} divisibile per 6.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Criteri 7, 11 e cifre incognite da trovare
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let num = 1000 + (i * 11) + (i % 5);
+                        let str = String(num);
+                        let dispari = 0, pari = 0;
+                        for (let idx = 0; idx < str.length; idx++) {
+                            let digit = parseInt(str[idx]);
+                            if (idx % 2 === 0) dispari += digit;
+                            else pari += digit;
+                        }
+                        let diff = Math.abs(dispari - pari);
+                        let eDiv = (diff % 11 === 0);
+                        domanda = `Applica il criterio dell'11 al numero <strong>${num}</strong> e stabilisci se è divisibile per 11.`;
+                        risposta = eDiv ? `Sì, è divisibile per 11` : `No, non è divisibile per 11`;
+                        spiegazione = `
+                        • Somma cifre in posizioni dispari (1ª, 3ª...): <code>${dispari}</code><br>
+                        • Somma cifre in posizioni pari (2ª, 4ª...): <code>${pari}</code><br>
+                        • Differenza: <code>|${dispari} - ${pari}| = ${diff}</code>.<br>
+                        Poiché ${diff} ${eDiv ? 'è' : 'non è'} 0 o un multiplo di 11, il numero ${eDiv ? 'è' : 'non è'} divisibile per 11.`;
+                    } else if (mod === 2) {
+                        let nParte = 100 + (i * 3);
+                        let u = nParte % 10;
+                        let rest = Math.floor(nParte / 10);
+                        let calc = rest - (2 * u);
+                        let eDiv = (calc % 7 === 0);
+                        domanda = `Applica il criterio del 7 per verificare se il numero <strong>${nParte}</strong> è divisibile per 7.`;
+                        risposta = eDiv ? `Sì, è divisibile per 7` : `No, non è divisibile per 7`;
+                        spiegazione = `
+                        1) Separamo l'ultima cifra: <code>${u}</code>.<br>
+                        2) Raddoppiamo l'ultima cifra: <code>${u} × 2 = ${2 * u}</code>.<br>
+                        3) Sottraiamo dal resto del numero: <code>${rest} - ${2 * u} = ${calc}</code>.<br>
+                        Poiché ${calc} ${eDiv ? 'è' : 'non è'} 0 o un multiplo di 7, il numero ${eDiv ? 'è' : 'non è'} divisibile per 7.`;
+                    } else {
+                        let c3 = (i % 9);
+                        let targetSum = 12; // Esempio per trovare cifra mancante
+                        let numStr = `4.5${c3}2`;
+                        let sumConos = 4 + 5 + 2;
+                        let missing = (3 - ((sumConos + c3) % 3)) % 3;
+                        domanda = `Trova la cifra da sostituire al posto di X nel numero <strong>5.4X2</strong> affinché sia divisibile per 3.`;
+                        risposta = `X = 1, 4 oppure 7`;
+                        spiegazione = `La somma delle cifre conosciute è <code>5 + 4 + 2 = 11</code>. Per essere divisibile per 3, la somma <code>11 + X</code> deve essere un multiplo di 3 (12, 15, 18). Quindi X può essere <strong>1</strong> (11+1=12), <strong>4</strong> (11+4=15) o <strong>7</strong> (11+7=18).`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

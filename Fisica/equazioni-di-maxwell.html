@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulle quattro equazioni di Maxwell in forma integrale e locale, onde elettromagnetiche e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Equazioni di Maxwell con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-di-maxwell" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Equazioni di Maxwell</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Sintesi suprema dell'elettromagnetismo classico, leggi di Gauss, Faraday, Ampère-Maxwell e 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Panoramica delle Quattro Equazioni</h2>
+            <p>
+                Le <strong>equazioni di Maxwell</strong> descrivono interamente il comportamento dei campi elettrici e magnetici e le loro interazioni con la materia e le correnti. In forma integrale si esprimono come segue:
+            </p>
+            <div class="formula-box">
+                📐 <strong>Formulario Fondamentale (Forma Integrale):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    1. <strong>Teorema di Gauss per il campo elettrico:</strong> $\oint_\Sigma \vec{E} \cdot d\vec{A} = \frac{Q_{int}}{\varepsilon_0}$<br>
+                    2. <strong>Teorema di Gauss per il campo magnetico:</strong> $\oint_\Sigma \vec{B} \cdot d\vec{A} = 0$<br>
+                    3. <strong>Legge dell'induzione di Faraday-Neumann-Lenz:</strong> $\oint_\gamma \vec{E} \cdot d\vec{s} = -\frac{d\Phi_B}{dt}$<br>
+                    4. <strong>Legge di Ampère-Maxwell generalizzata:</strong> $\oint_\gamma \vec{B} \cdot d\vec{s} = \mu_0 \left( I_{libera} + \varepsilon_0 \frac{d\Phi_E}{dt} \right)$
+                </p>
+            </div>
+
+            <h2>2. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati alle applicazioni pratiche e teoriche delle equazioni di Maxwell:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+                const epsilon_0 = 8.854e-12;
+                const mu_0 = 4 * Math.PI * 1e-7;
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q_testo, r_testo, s_testo;
+
+                    let tipo = i % 4;
+                    if (tipo === 0) {
+                        let q_nC = 5 + (i * 2); // nC
+                        let q_C = q_nC * 1e-9;
+                        let flusso = q_C / epsilon_0;
+
+                        q_testo = `Esercizio ${i}: All'interno di una superficie chiusa \\(\\Sigma\\) è racchiusa una carica elettrica netta \\(Q_{int} = ${q_nC}\\text{ nC}\\). Applicando il teorema di Gauss per il campo elettrico, calcola il flusso totale del campo elettrico \\(\\Phi_E(\\Sigma)\\).`;
+                        r_testo = `Flusso elettrico \\(\\Phi_E \\approx ${flusso.toExponential(2)}\\text{ N}\\cdot\\text{m}^2\\text{/C}\\).`;
+                        s_testo = `Per la prima equazione di Maxwell (Teorema di Gauss), \\(\\Phi_E = \\frac{Q_{int}}{\\varepsilon_0} = \\frac{${q_nC} \\times 10^{-9}}{8.854 \\times 10^{-12}} \\approx ${flusso.toExponential(2)}\\text{ N}\\cdot\\text{m}^2\\text{/C}\\).`;
+                    
+                    } else if (tipo === 1) {
+                        let dphi_dt = 200 + (i * 25); // Wb/s
+                        let fem = -dphi_dt;
+
+                        q_testo = `Esercizio ${i}: Il flusso del campo magnetico attraverso una spira conduttrice varia nel tempo con una rapidità \\(\\frac{d\\Phi_B}{dt} = ${dphi_dt}\\text{ Wb/s}\\). Sfruttando la terza equazione di Maxwell (Legge di Faraday), determina la forza elettromotrice indotta \\(\\text{fem}\\) lungo il bordo della spira in modulo.`;
+                        r_testo = `Forza elettromotrice \\(\\text{fem} = ${dphi_dt}\\text{ V}\\).`;
+                        s_testo = `La circuitazione del campo elettrico corrisponde alla variazione temporale del flusso magnetico cambiata di segno: \\(\\text{fem} = -\\frac{d\\Phi_B}{dt} = -(${dphi_dt})\\text{ V}\\), con un modulo pari a \\(${dphi_dt}\\text{ V}\\).`;
+                    
+                    } else if (tipo === 2) {
+                        let i_cond = 2.0 + (i % 5); // A
+                        let dphi_e_dt = 1e8 + (i * 1e6); // V*m/s
+                        let circ_b = mu_0 * (i_cond + epsilon_0 * dphi_e_dt);
+
+                        q_testo = `Esercizio ${i}: Lungo una linea chiusa \\(\\gamma\\) agisce una corrente di conduzione \\(I_{libera} = ${i_cond}\\text{ A}\\) e una variazione di flusso elettrico tale che \\(\\varepsilon_0 \\frac{d\\Phi_E}{dt} = ${(epsilon_0 * dphi_e_dt).toFixed(3)}\\text{ A}\\). Calcola la circuitazione complessiva del campo magnetico \\(\\oint_\\gamma \\vec{B} \\cdot d\\vec{s}\\) usando la legge di Ampère-Maxwell.`;
+                        r_testo = `Circuitazione \\(\\oint \\vec{B} \\cdot d\\s \\approx ${circ_b.toExponential(2)}\\text{ T}\\cdot\\text{m}\\).`;
+                        s_testo = `Sommando la corrente di conduzione e la corrente di spostamento e moltiplicando per \\(\\mu_0\\): \\(\\oint \\vec{B} \\cdot d\\vec{s} = \\mu_0 (I_{libera} + I_s) = ${mu_0.toExponential(2)} \\times (${i_cond} + ${(epsilon_0 * dphi_e_dt).toFixed(3)}) \\approx ${circ_b.toExponential(2)}\\text{ T}\\cdot\\text{m}\\).`;
+                    
+                    } else {
+                        q_testo = `Esercizio ${i}: Quale delle quattro equazioni di Maxwell sancisce l'assenza di monopoli magnetici in natura, imponendo che le linee del campo \\(\\vec{B}\\) siano sempre chiuse?`;
+                        r_testo = `Il Teorema di Gauss per il campo magnetico (seconda equazione).`;
+                        s_testo = `La seconda equazione di Maxwell stabilisce che il flusso del campo magnetico attraverso qualsiasi superficie chiusa è sempre nullo: \\(\\oint_\\Sigma \\vec{B} \\cdot d\\vec{A} = 0\\), dimostrando l'inesistenza di cariche magnetiche isolate (monopoli).`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q_testo}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r_testo}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s_testo}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

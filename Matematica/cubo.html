@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Solida - Sezione 4: Il Cubo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Cubo - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Solida */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-solida-sezione-4" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Solida - Sezione 4</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Cubo (Esaedro Regolare)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Proprietà geometriche, formule di superficie, volume e diagonale del cubo, corredate da 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è un Cubo?</h2>
+            <p>
+                Il <strong>cubo</strong> (chiamato anche <em>esaedro regolare</em>) è un prisma retto particolare che ha per basi e per facce laterali <strong>6 quadrati congruenti</strong> (uguali tra loro). 
+            </p>
+            <p>
+                Tutti gli spigoli del cubo hanno la stessa lunghezza, indicata comunemente con la lettera <code style="color:#059669;">l</code>.
+            </p>
+
+            
+            <h2>2. Formule Fondamentali del Cubo</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Principali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Area di una faccia (A<sub>f</sub>):</strong> A<sub>f</sub> = l<sup>2</sup><br>
+                    &bull; <strong>Superficie Laterale (S<sub>L</sub>):</strong> S<sub>L</sub> = 4 &middot; l<sup>2</sup><br>
+                    &bull; <strong>Superficie Totale (S<sub>T</sub>):</strong> S<sub>T</sub> = 6 &middot; l<sup>2</sup><br>
+                    &bull; <strong>Volume (V):</strong> V = l<sup>3</sup><br>
+                    &bull; <strong>Diagonale del solido (d):</strong> d = l &middot; &radic;3<br>
+                    &bull; <strong>Formula inversa:</strong> l = &radic;(S<sub>T</sub> / 6) oppure l = V<sup>1/3</sup>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un cubo ha lo spigolo lungo <code>5 cm</code>. Calcola la superficie totale, il volume e la misura della diagonale del solido.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Superficie totale: S<sub>T</sub> = 6 &middot; l<sup>2</sup> = 6 &middot; (5)<sup>2</sup> = 6 &middot; 25 = 150 cm<sup>2</sup>.</li>
+                    <li>Volume: V = l<sup>3</sup> = 5<sup>3</sup> = 5 &middot; 5 &middot; 5 = 125 cm<sup>3</sup>.</li>
+                    <li>Diagonale: d = l &middot; &radic;3 = 5 &middot; 1.732 &approx; 8.66 cm.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Superficie totale = 150 cm², Volume = 125 cm³, Diagonale = 5&radic;3 cm (&approx; 8.66 cm).</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Cubo</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico su superfici, volumi e diagonali del cubo con soluzioni dettagliate passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let l = (i % 5) + 2; // Spigolo tra 2 e 6 cm
+                    let st = 6 * (l * l);
+                    let vol = l * l * l;
+
+                    domanda = `Un cubo ha lo spigolo lungo <code>${l} cm</code>. Calcola la superficie totale e il volume del solido.`;
+                    risposta = `<strong>S<sub>T</sub> = ${st} cm²</strong>, <strong>V = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Superficie totale: <code>S<sub>T</sub> = 6 &times; l<sup>2</sup> = 6 &times; ${l}<sup>2</sup> = 6 &times; ${l*l} = ${st} cm<sup>2</sup></code>.<br>
+                    2) Volume: <code>V = l<sup>3</sup> = ${l}<sup>3</sup> = ${vol} cm<sup>3</sup></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let l = (i % 6) + 5; // Spigolo tra 5 e 10 cm
+                    let st = 6 * (l * l);
+                    let vol = l * l * l;
+                    let diag = (l * Math.sqrt(3)).toFixed(2);
+
+                    domanda = `Un cubo ha lo spigolo di <code>${l} cm</code>. Calcola l'area della superficie totale, il volume e la diagonale.`;
+                    risposta = `<strong>S<sub>T</sub> = ${st} cm²</strong>, <strong>V = ${vol} cm³</strong>, <strong>d &approx; ${diag} cm</strong>`;
+                    spiegazione = `
+                    1) Superficie totale: <code>S<sub>T</sub> = 6 &times; ${l}<sup>2</sup> = ${st} cm<sup>2</sup></code>.<br>
+                    2) Volume: <code>V = ${l}<sup>3</sup> = ${vol} cm<sup>3</sup></code>.<br>
+                    3) Diagonale: <code>d = l &times; &radic;3 = ${l} &times; 1.732 &approx; ${diag} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let st = i * 6; 
+                    let l = Math.round(Math.sqrt(st / 6));
+                    let vol = l * l * l;
+                    let diag = (l * Math.sqrt(3)).toFixed(2);
+
+                    domanda = `La superficie totale di un cubo misura <code>${st} cm²</code>. Calcola la misura dello spigolo, il volume e la diagonale del solido.`;
+                    risposta = `<strong>l = ${l} cm</strong>, <strong>V = ${vol} cm³</strong>, <strong>d &approx; ${diag} cm</strong>`;
+                    spiegazione = `
+                    1) Spigolo: <code>l = &radic;(S<sub>T</sub> / 6) = &radic;(${st} / 6) = &radic;(${st/6}) = ${l} cm</code>.<br>
+                    2) Volume: <code>V = l<sup>3</sup> = ${l}<sup>3</sup> = ${vol} cm<sup>3</sup></code>.<br>
+                    3) Diagonale: <code>d = l &times; &radic;3 = ${l} &times; 1.732 &approx; ${diag} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

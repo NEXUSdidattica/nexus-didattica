@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sullo spettro visibile, frequenze, energia dei fotoni, relazione di Planck e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Lo Spettro Visibile e l'Energia dei Fotoni con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .box-disegno {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(126, 34, 206, 0.05);
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="spettro-visibile" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica e Onde</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Lo Spettro Visibile e l'Energia dei Fotoni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Banda di radiazione elettromagnetica percepibile dall'occhio umano, frequenze, lunghezze d'onda (da $400\text{ nm}$ a $700\text{ nm}$) e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è lo Spettro Visibile</h2>
+            <p>
+                Lo <strong>spettro visibile</strong> rappresenta quella piccola porzione dello spettro elettromagnetico che l'occhio umano è in grado di percepire. Comprende le radiazioni con lunghezze d'onda nel vuoto approssimativamente comprese tra i <strong>$400\text{ nm}$</strong> (luce violetta) e i <strong>$700\text{ nm}$</strong> (luce rossa). Ciascun colore corrisponde a una specifica frequenza e a un determinato livello energetico dei fotoni.
+            </p>
+
+            <div class="box-disegno">
+                <h3 style="color: #7e22ce; margin-bottom: 1rem; font-size: 1.2rem;">Rappresentazione dello Spettro della Luce Visibile</h3>
+                <svg viewBox="0 0 600 120" width="100%" height="auto" style="max-width: 550px; background: #faf5ff; border-radius: 8px; border: 1px solid #e9d5ff; padding: 10px;">
+                    <defs>
+                        <linearGradient id="gradSpettro" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#8b5cf6" />
+                            <stop offset="20%" stop-color="#3b82f6" />
+                            <stop offset="40%" stop-color="#10b981" />
+                            <stop offset="60%" stop-color="#eab308" />
+                            <stop offset="80%" stop-color="#f97316" />
+                            <stop offset="100%" stop-color="#ef4444" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="50" y="30" width="500" height="40" rx="6" fill="url(#gradSpettro)" stroke="#7e22ce" stroke-width="2"/>
+                    <text x="50" y="90" font-size="12" fill="#475569" font-weight="bold">400 nm (Violetto)</text>
+                    <text x="440" y="90" font-size="12" fill="#475569" font-weight="bold">700 nm (Rosso)</text>
+                </svg>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; margin-bottom: 0;">
+                    Procedendo dal violetto verso il rosso, la lunghezza d'onda aumenta mentre la frequenza e l'energia associata diminuiscono progressivamente.
+                </p>
+            </div>
+
+            <div class="formula-box">
+                📐 <b>Relazioni Fondamentali:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Velocità della luce:</b> $c = \lambda \cdot f \approx 3 \cdot 10^8\text{ m/s}$<br>
+                    • <b>Energia del fotone (Planck):</b> $E = h \cdot f = \frac{h \cdot c}{\lambda}$<br>
+                    dove $h \approx 6.626 \cdot 10^{-34}\text{ J}\cdot\text{s}$ è la costante di Planck.
+                </p>
+            </div>
+
+            <h2>2. Applicazioni Scientifiche</h2>
+            <p>
+                L'analisi dello spettro della luce è alla base della spettroscopia ottica, tecnica fondamentale in astrofisica per determinare la composizione chimica delle stelle e in chimica analitica per identificare le sostanze in soluzione tramite l'assorbimento della luce (legge di Beer-Lambert).
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo delle frequenze, delle lunghezze d'onda e dell'energia dei fotoni nello spettro visibile:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+                const c = 3e8; // m/s
+                const h = 6.626e-34; // J s
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let lambda_nm = 400 + (i * 3) % 300; // nm
+                        let lambda_m = lambda_nm * 1e-9;
+                        let f_Hz = c / lambda_m;
+
+                        q = `Esercizio ${i}: Un raggio di luce monocromatica appartenente allo spettro visibile ha una lunghezza d'onda $\\lambda = ${lambda_nm}\\text{ nm}$. Calcola la frequenza $f$ della radiazione.`;
+                        r = `Frequenza $f \\approx ${f_Hz.toExponential(2)}\\text{ Hz}$.`;
+                        s = `Utilizzando la relazione della velocità delle onde elettromagnetiche $c = \\lambda \\cdot f$, ricaviamo la frequenza: $f = \\frac{c}{\\lambda} = \\frac{3 \\cdot 10^8\\text{ m/s}}{${lambda_m.toExponential(2)}\\text{ m}} \\approx ${f_Hz.toExponential(3)}\\text{ Hz}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let lambda_nm = 420 + (i * 2) % 260; // nm
+                        let lambda_m = lambda_nm * 1e-9;
+                        let E_J = (h * c) / lambda_m;
+                        let E_eV = E_J / 1.6e-19;
+
+                        q = `Esercizio ${i}: Determina l'energia $E$ in elettronvolt ($\\text{eV}$) di un fotone di luce visibile con lunghezza d'onda $\\lambda = ${lambda_nm}\\text{ nm}$ (costante di Planck $h = 6.626 \\cdot 10^{-34}\\text{ J}\\cdot\\text{s}$).`;
+                        r = `Energia del fotone $E \\approx ${E_eV.toFixed(2)}\\text{ eV}$.`;
+                        s = `L'energia si calcola con la formula $E = \\frac{h \\cdot c}{\\lambda} = \\frac{(6.626 \\cdot 10^{-34}\\text{ J}\\cdot\\text{s}) \\cdot (3 \\cdot 10^8\\text{ m/s})}{${lambda_m.toExponential(2)}\\text{ m}} \\approx ${E_J.toExponential(3)}\\text{ J}$. Convertendo in elettronvolt dividendo per $1.6 \\cdot 10^{-19}$, otteniamo circa $${E_eV.toFixed(2)}\\text{ eV}$.`;
+                    
+                    } else {
+                        let f_THz = 430 + (i * 4) % 300; // THz
+                        let f_Hz = f_THz * 1e12;
+                        let lambda_m = c / f_Hz;
+                        let lambda_nm = lambda_m * 1e9;
+
+                        q = `Esercizio ${i}: Una radiazione luminosa ha una frequenza pari a $f = ${f_THz}\\text{ THz}$. Calcola la lunghezza d'onda $\\lambda$ espressa in nanometri e stabilisci se rientra nello spettro visibile ($400-700\\text{ nm}$).`;
+                        r = `Lunghezza d'onda $\\lambda \\approx ${lambda_nm.toFixed(1)}\\text{ nm}$ (${lambda_nm >= 400 && lambda_nm <= 700 ? "rientra nello spettro visibile" : "fuori dallo spettro visibile"}).`;
+                        s = `Dalla formula $c = \\lambda \\cdot f$, ricaviamo $\\lambda = \\frac{c}{f} = \\frac{3 \\cdot 10^8\\text{ m/s}}{${f_Hz.toExponential(2)}\\text{ Hz}} \\approx ${lambda_m.toExponential(3)}\\text{ m}$, che corrisponde a $${lambda_nm.toFixed(1)}\\text{ nm}$. Poiché il valore è compreso tra $400\\text{ nm}$ e $700\\text{ nm}$, il raggio appartiene allo spettro visibile.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

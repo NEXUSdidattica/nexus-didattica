@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 6: Proprietà del Triangolo Isoscele e Angoli alla Base - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Proprietà del Triangolo Isoscele - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-6" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 6</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Proprietà del Triangolo Isoscele</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio teorico degli angoli alla base, simmetrie, linee notevoli e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Teorema Fondamentale del Triangolo Isoscele</h2>
+            <p>
+                Un <strong>triangolo isoscele</strong> è un poligono dotato di due lati congruenti (chiamati <em>lati obliqui</em>) e di un terzo lato denominato <em>base</em>. La simmetria strutturale di questa figura geometrica genera proprietà fondamentali:
+            </p>
+            <ul>
+                <li><strong>Angoli alla base:</strong> In ogni triangolo isoscele, gli angoli adiacenti alla base sono perfettamente congruenti (uguali tra loro).</li>
+                <li><strong>Inverso del teorema:</strong> Se un triangolo ha due angoli interni congruenti, allora esso è necessariamente un triangolo isoscele (e i lati opposti a tali angoli sono uguali).</li>
+            </ul>
+
+            <h2>2. Proprietà della Bisettrice, Altezza e Mediana</h2>
+            <p>
+                Nel triangolo isoscele, la linea notevole condotta dal vertice opposto (vertice principale) verso la base possiede una straordinaria proprietà di coincidenza:
+            </p>
+            <ul>
+                <li>La bisettrice dell'angolo al vertice, l'altezza relativa alla base, la mediana relativa alla base e l'asse della base <strong>coincidento in un unico segmento</strong>.</li>
+                <li>Di conseguenza, l'altezza tracciata dal vertice divide il triangolo isoscele in due triangoli rettangolari perfettamente simmetrici e congruenti.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule e Relazioni Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Relazione angoli (base <code>&alpha;</code>, vertice <code>&beta;</code>): <code>2&alpha; + &beta; = 180&deg;</code><br>
+                    • Calcolo angolo alla base: <code>&alpha; = (180&deg; - &beta;) / 2</code><br>
+                    • Calcolo angolo al vertice: <code>&beta; = 180&deg; - 2&alpha;</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In un triangolo isoscele, l'angolo al vertice misura <code>40&deg;</code>. Calcola l'ampiezza di ciascuno dei due angoli adiacenti alla base.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>La somma totale degli angoli interni di un triangolo è sempre pari a <code>180&deg;</code>.</li>
+                    <li>Sottraiamo l'ampiezza dell'angolo al vertice per trovare la somma dei due angoli alla base: <code>180&deg; - 40&deg; = 140&deg;</code>.</li>
+                    <li>Poiché nel triangolo isoscele i due angoli alla base sono congruenti, dividiamo il risultato per 2: <code>140&deg; / 2 = 70&deg;</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Ciascun angolo alla base misura 70&deg;</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Proprietà del Triangolo Isoscele</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici sul calcolo degli angoli alla base, dell'angolo al vertice e delle proprietà di simmetria.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let vertice = (i * 2) % 60 + 30; // Valore tra 30 e 88 pari
+                    let baseAng = (180 - vertice) / 2;
+                    domanda = `In un triangolo isoscele, l'angolo al vertice misura <code>${vertice}&deg;</code>. Calcola l'ampiezza di ciascuno dei due angoli alla base.`;
+                    risposta = `<strong>${baseAng}&deg;</strong>`;
+                    spiegazione = `
+                    1) La somma degli angoli interni di un triangolo è <code>180&deg;</code>.<br>
+                    2) Sottraiamo l'angolo al vertice: <code>180&deg; - ${vertice}&deg; = ${180 - vertice}&deg;</code>.<br>
+                    3) Dividiamo per 2 in quanto gli angoli alla base sono uguali: <code>${180 - vertice}&deg; / 2 = ${baseAng}&deg;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let baseAng2 = (i % 30) + 35; // tra 35 e 64
+                    let verticeCalc = 180 - (2 * baseAng2);
+                    domanda = `In un triangolo isoscele, ciascuno dei due angoli adiacenti alla base misura <code>${baseAng2}&deg;</code>. Calcola l'ampiezza dell'angolo al vertice.`;
+                    risposta = `<strong>${verticeCalc}&deg;</strong>`;
+                    spiegazione = `
+                    1) Moltiplichiamo per 2 l'angolo alla base per trovare la loro somma: <code>2 &times; ${baseAng2}&deg; = ${2 * baseAng2}&deg;</code>.<br>
+                    2) Sottraiamo il valore da <code>180&deg;</code> per ricavare l'angolo al vertice: <code>180&deg; - ${2 * baseAng2}&deg; = ${verticeCalc}&deg;</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let perimIsos = ((i % 15) + 10) * 3;
+                    let latoObl = (i % 10) + 12;
+                    let baseCalc = perimIsos - (2 * latoObl);
+                    // Verifichiamo che la base rispetti la diseguaglianza triangolare
+                    if (baseCalc <= 0 || baseCalc >= 2 * latoObl) {
+                        baseCalc = 10;
+                        perimIsos = (2 * latoObl) + baseCalc;
+                    }
+                    domanda = `Un triangolo isoscele ha il perimetro di <code>${perimIsos} cm</code> e ciascuno dei due lati obliqui misura <code>${latoObl} cm</code>. Calcola la misura della base e verifica se il triangolo rispetta la diseguaglianza triangolare.`;
+                    risposta = `<strong>Base = ${baseCalc} cm (Triangolo geometricamente valido)</strong>`;
+                    spiegazione = `
+                    1) Moltiplichiamo il lato obliquo per 2: <code>2 &times; ${latoObl} cm = ${2 * latoObl} cm</code>.<br>
+                    2) Sottraiamo il risultato dal perimetro per trovare la base: <code>${perimIsos} cm - ${2 * latoObl} cm = ${baseCalc} cm</code>.<br>
+                    3) Verifica: la somma dei due lati obliqui (<code>${2 * latoObl}</code>) è maggiore della base (<code>${baseCalc}</code>), quindi il triangolo esiste.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

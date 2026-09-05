@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa e glossario di Synonyms and Antonyms in inglese: sinonimi, contrari, arricchimento del lessico, significati ed esempi pratici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Synonyms and Antonyms - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="synonyms-and-antonyms" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary Range</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Synonyms and Antonyms</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida essenziale ai sinonimi e contrari in inglese: arricchisci il tuo vocabolario, evita ripetizioni e migliora la precisione espressiva nei testi.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / GUIDA ESAUSTIVA -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizioni: Sinonimi e Contrari</h2>
+            <p>
+                Per ampliare la padronanza della lingua inglese ed evitare di ripetere sempre le stesse parole (come <i>good</i>, <i>bad</i> o <i>big</i>), è fondamentale conoscere le coppie di relazioni lessicali:
+            </p>
+            <ul>
+                <li><b>Synonyms (Sinonimi):</b> Parole che hanno un significato uguale o molto simile (es. <i>glad</i> e <i>happy</i>).</li>
+                <li><b>Antonyms (Contrari/Antonimi):</b> Parole che hanno significato opposto (es. <i>hot</i> e <i>cold</i>).</li>
+            </ul>
+
+            <h2>2. Common Adjective Pairs (Aggettivi Comuni)</h2>
+            <p>Esempi di aggettivi frequenti accompagnati dai rispettivi sinonimi avanzati e contrari diretti.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Parola Base</th><th>Sinonimo (Synonym)</th><th>Contrario (Antonym)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Big</b></td><td>Large, Huge, Enormous</td><td>Small, Tiny, Little</td></tr>
+                    <tr><td><b>Happy</b></td><td>Glad, Pleased, Joyful</td><td>Sad, Unhappy, Miserable</td></tr>
+                    <tr><td><b>Smart</b></td><td>Clever, Intelligent, Bright</td><td>Stupid, Foolish, Dumb</td></tr>
+                    <tr><td><b>Fast</b></td><td>Quick, Rapid, Swift</td><td>Slow, Sluggish</td></tr>
+                    <tr><td><b>Rich</b></td><td>Wealthy, Affluent</td><td>Poor, Destitute</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Common Verb Pairs (Verbi Comuni)</h2>
+            <p>Verbi d'uso quotidiano arricchiti con alternative sinonimiche e relative opposizioni semantiche.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Parola Base</th><th>Sinonimo (Synonym)</th><th>Contrario (Antonym)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Begin</b></td><td>Start, Commence</td><td>End, Finish, Stop</td></tr>
+                    <tr><td><b>Allow</b></td><td>Permit, Let</td><td>Forbid, Prohibit, Ban</td></tr>
+                    <tr><td><b>Create</b></td><td>Build, Make, Produce</td><td>Destroy, Demolish, Ruin</td></tr>
+                    <tr><td><b>Find</b></td><td>Discover, Locate</td><td>Lose, Misplace</td></tr>
+                    <tr><td><b>Accept</b></td><td>Receive, Take</td><td>Refuse, Reject, Deny</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Common Noun Pairs (Sostantivi Comuni)</h2>
+            <p>Sostantivi ricorrenti messi a confronto con varianti sinonimiche e concetti opposti.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Parola Base</th><th>Sinonimo (Synonym)</th><th>Contrario (Antonym)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Goal</b></td><td>Objective, Aim, Target</td><td>— (Nessun antonimo diretto)</td></tr>
+                    <tr><td><b>Danger</b></td><td>Risk, Peril</td><td>Safety, Security</td></tr>
+                    <tr><td><b>Success</b></td><td>Achievement, Triumph</td><td>Failure, Defeat</td></tr>
+                    <tr><td><b>Stranger</b></td><td>Unknown, Outsider</td><td>Friend, Acquaintance</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Attenzione alle Sfumature di Significato (Nuances)</h3>
+                <p style="margin-bottom: 0;">
+                    Due sinonimi non sono quasi mai intercambiabili in qualsiasi contesto. Ad esempio, sia <i>huge</i> che <i>large</i> sono sinonimi di <i>big</i>, ma <i>huge</i> si usa per esprimere un'enfasi emotiva o una grandezza straordinaria, mentre <i>large</i> è spesso preferito nei contesti formali o commerciali (es. taglie di abbigliamento). Valuta sempre il contesto prima di scegliere un sinonimo.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

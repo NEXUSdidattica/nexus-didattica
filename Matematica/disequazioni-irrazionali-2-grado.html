@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disequazioni Irrazionali: risoluzione con radici ad indice pari e dispari, impostazione dei sistemi equivalenti ed esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni Irrazionali - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+        .info-box { background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-irrazionali" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni Irrazionali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Disequazioni Irrazionali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Risoluzione di disequazioni con l'incognita sotto radice mediante sistemi equivalenti.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Definizione e Schemi Risolutivi</h2>
+            <p>Una disequazione si dice <strong>irrazionale</strong> quando l'incognita $x$ compare sotto il segno di radice.</p>
+
+            <h3>A. Radice con Indice Pari: $\sqrt{A(x)} < B(x)$</h3>
+            <p>Poiché il radicando deve essere non negativo e la radice è sempre positiva o nulla, occorre impostare un <strong>singolo sistema di tre disequazioni</strong>:</p>
+            <div class="formula-box">
+                $$\begin{cases} A(x) \ge 0 \quad (\text{Condizione di Esistenza}) \\ B(x) > 0 \quad (\text{Concordanza di segno}) \\ A(x) < [B(x)]^2 \quad (\text{Elevamento al quadrato}) \end{cases}$$
+            </div>
+
+            <h3>B. Radice con Indice Pari: $\sqrt{A(x)} > B(x)$</h3>
+            <p>In questo caso la radice può essere maggiore di un numero negativo (sempre vero purché esista) oppure di un numero positivo. Si scompone nell'<strong>unione di due sistemi</strong>:</p>
+            <div class="formula-box">
+                $$\begin{cases} B(x) < 0 \\ A(x) \ge 0 \end{cases} \quad \cup \quad \begin{cases} B(x) \ge 0 \\ A(x) > [B(x)]^2 \end{cases}$$
+            </div>
+
+            <h3>C. Radice con Indice Dispari: $\sqrt[3]{A(x)} > B(x)$</h3>
+            <p>Non ci sono problemi di C.E. né di segno per le radici ad indice dispari. È sufficiente <strong>elevare entrambi i membri alla potenza dell'indice</strong>:</p>
+            <div class="formula-box">
+                $$A(x) > [B(x)]^3$$
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato: $\sqrt{x^2 - 3x} < x - 1$</h3>
+                <p>Applichiamo lo schema per $\sqrt{A(x)} < B(x)$:</p>
+                <ol>
+                    <li><strong>Impostazione del sistema:</strong>
+                        $$\begin{cases} x^2 - 3x \ge 0 & (\text{C.E.}) \\ x - 1 > 0 & (\text{Positività di } B(x)) \\ x^2 - 3x < (x - 1)^2 & (\text{Elevamento a quadrato}) \end{cases}$$
+                    </li>
+                    <li><strong>Risoluzione delle singole disequazioni:</strong>
+                        <ul>
+                            <li>$x^2 - 3x \ge 0 \implies x \le 0 \cup x \ge 3$</li>
+                            <li>$x - 1 > 0 \implies x > 1$</li>
+                            <li>$x^2 - 3x < x^2 - 2x + 1 \implies -x < 1 \implies x > -1$</li>
+                        </ul>
+                    </li>
+                    <li><strong>Intersezione delle soluzioni del sistema:</strong>
+                        <br>Cercando l'intersezione comune a tutte e tre le condizioni: $x \ge 3$.
+                    </li>
+                    <li><strong>Soluzione finale:</strong> <strong>$x \ge 3$</strong></li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Errore comune:</strong> Non elevare mai a quadrato entrambi i membri di una disequazione senza aver prima studiato le Condizioni di Esistenza e il segno dei due membri!
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disequazioni Irrazionali</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let k = (i % 6) + 1;
+                let domanda, risposta, spiegazione;
+
+                if (i % 3 === 1) {
+                    // Caso sqrt(A) < k (costante positiva)
+                    domanda = `Risolvi la disequazione irrazionale: $\\sqrt{x + ${k}} < ${k+1}$`;
+                    let maxVal = (k+1)*(k+1) - k;
+                    risposta = `-${k} \\le x < ${maxVal}`;
+                    spiegazione = `1) <strong>C.E.:</strong> $x + ${k} \\ge 0 \\implies x \\ge -${k}$.<br>` +
+                                  `2) Eleviamo al quadrato: $x + ${k} < ${ (k+1)*(k+1) } \\implies x < ${maxVal}$.<br>` +
+                                  `3) Mettendo a sistema con le C.E. otteniamo l'intervallo.<br>` +
+                                  `4) Soluzione: <strong>$-${k} \\le x < ${maxVal}$</strong>.`;
+                } else if (i % 3 === 2) {
+                    // Caso sqrt(A) > k (costante positiva)
+                    domanda = `Risolvi la disequazione irrazionale: $\\sqrt{x^2 - ${k*k}} > ${k+1}$`;
+                    let valSquare = (k+1)*(k+1) + k*k;
+                    risposta = `x < -\\sqrt{${valSquare}} \\cup x > \\sqrt{${valSquare}}`;
+                    spiegazione = `1) <strong>C.E.:</strong> $x^2 - ${k*k} \\ge 0 \\implies x \\le -${k} \\cup x \\ge ${k}$.<br>` +
+                                  `2) Eleviamo a quadrato entrambi i membri: $x^2 - ${k*k} > ${ (k+1)*(k+1) } \\implies x^2 > ${valSquare}$.<br>` +
+                                  `3) Le soluzioni sono $x < -\\sqrt{${valSquare}} \\cup x > \\sqrt{${valSquare}}$ (già comprese nelle C.E.).<br>` +
+                                  `4) Soluzione: <strong>$x < -\\sqrt{${valSquare}} \\cup x > \\sqrt{${valSquare}}$</strong>.`;
+                } else {
+                    // Caso radice cubica
+                    domanda = `Risolvi la disequazione irrazionale con indice dispari: $\\sqrt[3]{x - ${k}} > 2$`;
+                    let resVal = 8 + k;
+                    risposta = `x > ${resVal}`;
+                    spiegazione = `1) Essendo l'indice della radice dispari ($3$), non vi sono Condizioni di Esistenza.<br>` +
+                                  `2) Eleviamo al cubo entrambi i membri: $x - ${k} > 2^3 \\implies x - ${k} > 8$.<br>` +
+                                  `3) Isoliamo la $x$: $x > 8 + ${k} = ${resVal}$.<br>` +
+                                  `4) Soluzione: <strong>$x > ${resVal}$</strong>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

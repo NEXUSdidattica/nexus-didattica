@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Algoritmi di Scheduling della CPU: FCFS, SJF e Round Robin - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Algoritmi di Scheduling della CPU - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .sched-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        @media(max-width: 768px) {
+            .sched-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .gantt-chart {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .gantt-block {
+            background: #1e293b;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.85rem;
+            min-width: 60px;
+            flex-shrink: 0;
+        }
+
+        .gantt-block span {
+            display: block;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .sched-output {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 40px;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="algoritmi-di-scheduling-della-cpu" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.based"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Algoritmi di
+                    Scheduling della CPU</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Strategie del kernel per l'assegnazione dei core: FCFS, SJF, Priority Scheduling e Round Robin con
+                    quanti di tempo.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Il Ruolo dello Scheduler della CPU</h2>
+            <p>
+                Quando più processi si trovano nello stato <strong>Ready</strong> in attesa di essere eseguiti, lo
+                <strong>Short-Term Scheduler</strong> (o CPU Scheduler) del sistema operativo deve decidere quale
+                processo servire per primo. L'obiettivo principale è massimizzare l'utilizzo della CPU, aumentare il
+                throughput e minimizzare il tempo di attesa e il tempo di risposta (<cite>Turnaround Time</cite>).
+            </p>
+
+            <h2>2. Principali Algoritmi di Scheduling</h2>
+            <ul>
+                <li><strong>FCFS (First-Come, First-Served):</strong> Il primo processo che richiede la CPU viene
+                    servito per primo. È semplice da implementare tramite una coda FIFO, ma soffre del <em>Convoy
+                        Effect</em> (processi brevi bloccati da processi lunghi).</li>
+                <li><strong>SJF (Shortest Job First):</strong> Assegna la CPU al processo con il minor tempo di
+                    esecuzione stimato (<cite>Burst Time</cite>). Garantisce il tempo di attesa medio minimo, ma
+                    richiede di conoscere in anticipo la durata del processo.</li>
+                <li><strong>Round Robin (RR):</strong> Ciascun processo riceve un piccolo intervallo di tempo uniforme
+                    di CPU chiamato <strong>quanto di tempo (Time Quantum)</strong>. Scaduto il quanto, il processo
+                    viene interrotto e spostato in coda, garantendo equità e reattività nei sistemi interattivi.</li>
+                <li><strong>Priority Scheduling:</strong> Ogni processo è associato a una priorità; la CPU viene
+                    assegnata al processo con priorità più alta (può essere con o senza preemption).</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Metriche di Valutazione:</strong> $\text{Turnaround Time} = \text{Tempo di Completamento} -
+                \text{Tempo di Arrivo}$. $\text{Waiting Time} = \text{Turnaround Time} - \text{Burst Time}$.
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore Interattivo dei Diagrammi di Gantt</h2>
+            <p>Seleziona l'algoritmo di scheduling e simula l'esecuzione di un set di processi predefiniti visualizzando
+                il diagramma di Gantt e i tempi medi.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">cpu-scheduler@nexus-core:~#</span>
+                    <span style="font-size: 0.8rem; color: #888;">Gantt Chart & Metrics Simulator</span>
+                </div>
+
+                <div class="sched-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Algoritmo di
+                            Scheduling:</label>
+                        <select id="algoritmoSelect" class="code-input">
+                            <option value="FCFS">FCFS (First-Come, First-Served)</option>
+                            <option value="SJF">SJF (Shortest Job First - Non-Preemptive)</option>
+                            <option value="RR">Round Robin (Quanto = 3 ms)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-os" onclick="simulaScheduling()" style="width: 100%;">Simula ⚡</button>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 6px;">Processi in coda di test: P1 (Burst:
+                    8ms), P2 (Burst: 4ms), P3 (Burst: 2ms)</p>
+
+                <div class="gantt-chart" id="ganttContainer">
+                    <div class="gantt-block">Avvia simulazione...</div>
+                </div>
+
+                <div class="sched-output" id="schedOutput">
+                    > Seleziona un algoritmo e clicca su "Simula" per calcolare il diagramma di Gantt.
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore Scheduling -->
+    <script>
+        window.simulaScheduling = function () {
+            const algo = document.getElementById('algoritmoSelect').value;
+            const gantt = document.getElementById('ganttContainer');
+            const output = document.getElementById('schedOutput');
+
+            gantt.innerHTML = "";
+
+            if (algo === "FCFS") {
+                // Ordine: P1 (8), P2 (4), P3 (2)
+                gantt.innerHTML = `
+                    <div class="gantt-block">P1<span>0 -> 8 ms</span></div>
+                    <div class="gantt-block">P2<span>8 -> 12 ms</span></div>
+                    <div class="gantt-block">P3<span>12 -> 14 ms</span></div>
+                `;
+                output.innerHTML = `> Algoritmo FCFS eseguito.<br>` +
+                    `&nbsp;&nbsp;Tempo di attesa medio: <strong>(0 + 8 + 12) / 3 = 6.67 ms</strong><br>` +
+                    `&nbsp;&nbsp;Tempo di completamento medio: <strong>(8 + 12 + 14) / 3 = 11.33 ms</strong>`;
+            } else if (algo === "SJF") {
+                // Ordinati per burst crescente: P3 (2), P2 (4), P1 (8)
+                gantt.innerHTML = `
+                    <div class="gantt-block">P3<span>0 -> 2 ms</span></div>
+                    <div class="gantt-block">P2<span>2 -> 6 ms</span></div>
+                    <div class="gantt-block">P1<span>6 -> 14 ms</span></div>
+                `;
+                output.innerHTML = `> Algoritmo SJF eseguito (ottimizzato per burst brevi).<br>` +
+                    `&nbsp;&nbsp;Tempo di attesa medio: <strong>(0 + 2 + 6) / 3 = 2.67 ms</strong><br>` +
+                    `&nbsp;&nbsp;Tempo di completamento medio: <strong>(2 + 6 + 14) / 3 = 7.33 ms</strong>`;
+            } else if (algo === "RR") {
+                // Quantum = 3 ms. P1(8)->3, P2(4)->3, P3(2)->2 (finito), P1->3, P2->1 (finito), P1->2 (finito)
+                gantt.innerHTML = `
+                    <div class="gantt-block">P1<span>0-3</span></div>
+                    <div class="gantt-block">P2<span>3-6</span></div>
+                    <div class="gantt-block">P3<span>6-8</span></div>
+                    <div class="gantt-block">P1<span>8-11</span></div>
+                    <div class="gantt-block">P2<span>11-12</span></div>
+                    <div class="gantt-block">P1<span>12-14</span></div>
+                `;
+                output.innerHTML = `> Algoritmo Round Robin eseguito (Quanto = 3 ms).<br>` +
+                    `&nbsp;&nbsp;Ottimo bilanciamento della reattività e condivisione equa del processore.<br>` +
+                    `&nbsp;&nbsp;Tempo di attesa medio calcolato: <strong>5.33 ms</strong>`;
+            }
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 9: Il Teorema di Pitagora e Applicazioni Geometriche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Teorema di Pitagora - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-9" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 9</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Teorema di Pitagora</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Enunciato, dimostrazione geometrica, formule inverse e 100 esercizi guidati passo-passo sui triangoli rettangoli.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Enunciato e Significato Geometrico</h2>
+            <p>
+                Il <strong>Teorema di Pitagora</strong> è uno dei capisaldi della geometria euclidea e si applica esclusivamente ai <strong>triangoli rettangoli</strong> (triangoli provvisti di un angolo retto di <code>90&deg;</code>). 
+            </p>
+            <p>
+                L'enunciato recita: <em>"In ogni triangolo rettangolo, l'area del quadrato costruito sull'ipotenusa è equivalente alla somma delle aree dei quadrati costruiti sui due cateti."</em>
+            </p>
+            <ul>
+                <li><strong>Ipotenusa (<code>c</code> o <code>i</code>):</strong> È il lato opposto all'angolo retto ed è sempre il lato più lungo del triangolo.</li>
+                <li><strong>Cateti (<code>a</code> e <code>b</code>):</strong> Sono i due lati minori che racchiudono l'angolo retto.</li>
+            </ul>
+
+            <h2>2. Formule Fondamentali e Inverse</h2>
+            <p>
+                Traducendo l'enunciato geometrico in relazioni algebriche tra le lunghezze dei lati, otteniamo le tre formule fondamentali per risolvere qualsiasi triangolo rettangolo:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule del Teorema di Pitagora:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Calcolo dell'ipotenusa: <code>i = &radic;(a&sup2; + b&sup2;)</code><br>
+                    • Calcolo del primo cateto: <code>a = &radic;(i&sup2; - b&sup2;)</code><br>
+                    • Calcolo del secondo cateto: <code>b = &radic;(i&sup2; - a&sup2;)</code>
+                </p>
+            </div>
+
+            <h2>3. Le Terne Pitagoriche</h2>
+            <p>
+                Si definisce <strong>terna pitagorica</strong> un insieme di tre numeri interi positivi <code>(a, b, i)</code> che soddisfano perfettamente l'equazione di Pitagora <code>a&sup2; + b&sup2; = i&sup2;</code>. La terna pitagorica più famosa e utilizzata in assoluto è <code>(3, 4, 5)</code>, poiché <code>3&sup2; + 4&sup2; = 9 + 16 = 25 = 5&sup2;</code>. Altri esempi frequenti sono <code>(5, 12, 13)</code> e <code>(8, 15, 17)</code>.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In un triangolo rettangolo, i due cateti misurano rispettivamente <code>6 cm</code> e <code>8 cm</code>. Calcola la lunghezza dell'ipotenusa.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Applichiamo la formula per il calcolo dell'ipotenusa: <code>i = &radic;(a&sup2; + b&sup2;)</code>.</li>
+                    <li>Eleviamo al quadrato le misure dei due cateti: <code>6&sup2; = 36</code> e <code>8&sup2; = 64</code>.</li>
+                    <li>Sommiamo i due valori ottenuti sotto radice: <code>36 + 64 = 100</code>.</li>
+                    <li>Estraiamo la radice quadrata della somma: <code>&radic;100 = 10 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: La misura dell'ipotenusa è 10 cm.</strong> (Nota: costituisce il doppio della terna base 3-4-5).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Teorema di Pitagora</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici sul calcolo di ipotenusa, cateti, perimetro e area dei triangoli rettangoli.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    // Generiamo cateti basati su multipli della terna 3-4-5
+                    let k = (i % 5) + 1;
+                    let c1 = 3 * k;
+                    let c2 = 4 * k;
+                    let ipot = 5 * k;
+                    domanda = `In un triangolo rettangolo, i cateti misurano <code>${c1} cm</code> e <code>${c2} cm</code>. Calcola la lunghezza dell'ipotenusa.`;
+                    risposta = `<strong>${ipot} cm</strong>`;
+                    spiegazione = `
+                    1) Applichiamo il Teorema di Pitagora: <code>i = &radic;(c1&sup2; + c2&sup2;)</code>.<br>
+                    2) Calcoliamo i quadrati: <code>${c1}&sup2; = ${c1*c1}</code> e <code>${c2}&sup2; = ${c2*c2}</code>.<br>
+                    3) Sommiamo e troviamo la radice: <code>&radic;(${c1*c1} + ${c2*c2}) = &radic;${c1*c1 + c2*c2} = ${ipot} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let k2 = (i % 4) + 1;
+                    let catUnico = 5 * k2;
+                    let ipotTerna = 13 * k2;
+                    let catIgnoto = 12 * k2;
+                    domanda = `Un triangolo rettangolo ha l'ipotenusa lunga <code>${ipotTerna} cm</code> e un cateto che misura <code>${catUnico} cm</code>. Calcola la misura del secondo cateto.`;
+                    risposta = `<strong>${catIgnoto} cm</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula inversa del cateto: <code>c = &radic;(i&sup2; - cateto&sup2;)</code>.<br>
+                    2) Eleviamo al quadrato: <code>${ipotTerna}&sup2; = ${ipotTerna*ipotTerna}</code> e <code>${catUnico}&sup2; = ${catUnico*catUnico}</code>.<br>
+                    3) Sottraiamo e calcoliamo la radice: <code>&radic;(${ipotTerna*ipotTerna} - ${catUnico*catUnico}) = &radic;${ipotTerna*ipotTerna - catUnico*catUnico} = ${catIgnoto} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let c1Diff = (i % 6) + 7;
+                    let c2Diff = (i % 5) + 8;
+                    let qSum = c1Diff * c1Diff + c2Diff * c2Diff;
+                    let ipotApprox = Math.sqrt(qSum).toFixed(2);
+                    domanda = `Un triangolo rettangolo ha i cateti che misurano <code>${c1Diff} cm</code> e <code>${c2Diff} cm</code>. Calcola l'ipotenusa arrotondando il risultato alla seconda cifra decimale.`;
+                    risposta = `<strong>&approx; ${ipotApprox} cm</strong>`;
+                    spiegazione = `
+                    1) Impostiamo il Teorema di Pitagora: <code>i = &radic;(${c1Diff}&sup2; + ${c2Diff}&sup2;)</code>.<br>
+                    2) Sviluppiamo i quadrati: <code>${c1Diff*c1Diff} + ${c2Diff*c2Diff} = ${qSum}</code>.<br>
+                    3) Estraiamo la radice quadrata: <code>&radic;${qSum} &approx; ${ipotApprox} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

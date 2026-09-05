@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida agli Intervalli sulla Retta Reale: intervalli limitati, illimitati, notazione algebrica, insiemistica, grafici SVG e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Intervalli sulla Retta Reale - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .grafico-svg-container {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-1-grado-intervalli" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Intervalli sulla Retta Reale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Rappresentazione algebrica, grafica e insiemistica degli intervalli limitati ed illimitati con 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Cos'è un Intervallo Reale?</h2>
+            <p>
+                Un <strong>intervallo</strong> è un sottoinsieme di numeri reali costituito da tutti i punti della retta compresi tra due estremi $a$ e $b$, oppure da tutti i punti che precedono o seguono un determinato valore.
+            </p>
+
+            <h3>1. Intervalli Limitati</h3>
+            <p>
+                Sono intervalli compresi tra due valori reali $a$ e $b$ (con $a < b$):
+            </p>
+            <ul>
+                <li><strong>Aperto $(a, b)$:</strong> $a < x < b$ (estremi esclusi).</li>
+                <li><strong>Chiuso $[a, b]$:</strong> $a \le x \le b$ (estremi inclusi).</li>
+                <li><strong>Chiuso a sinistra $[a, b)$:</strong> $a \le x < b$.</li>
+                <li><strong>Chiuso a destra $(a, b]$:</strong> $a < x \le b$.</li>
+            </ul>
+
+            <h3>2. Intervalli Illimitati</h3>
+            <p>
+                Si estendono all'infinito da uno o entrambi i lati:
+            </p>
+            <ul>
+                <li><strong>Illimitato superiormente:</strong> $[a, +\infty)$ ovvero $x \ge a$; oppure $(a, +\infty)$ ovvero $x > a$.</li>
+                <li><strong>Illimitato inferiormente:</strong> $(-\infty, b]$ ovvero $x \le b$; oppure $(-\infty, b)$ ovvero $x < b$.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Sintassi dei Simboli Grafici:</strong><br>
+                • <strong>Pallino Pieno (⚫):</strong> L'estremo è INCLUSO nel punto (simboli $\ge$ o $\le$, parentesi quadra $[$ o $]$).<br>
+                • <strong>Pallino Vuoto (⚪):</strong> L'estremo è ESCLUSO dal punto (simboli $>$ o $<$, parentesi tonda $($ o $)$).
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio di Rappresentazione Grafica</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Rappresentazione di $2 \le x < 6$:</strong></p>
+                
+                <div class="grafico-svg-container">
+                    <svg width="350" height="60" viewBox="0 0 350 60" style="font-family: sans-serif;">
+                        <!-- Retta Reale -->
+                        <line x1="20" y1="30" x2="330" y2="30" stroke="#94a3b8" stroke-width="2" />
+                        <polygon points="330,25 340,30 330,35" fill="#94a3b8" />
+                        <text x="335" y="18" font-size="12" fill="#64748b">x</text>
+                        
+                        <!-- Tratto Solido Intervallo -->
+                        <line x1="100" y1="30" x2="250" y2="30" stroke="#2563eb" stroke-width="4" />
+                        
+                        <!-- Estremo A = 2 (Chiuso -> Pieno) -->
+                        <circle cx="100" cy="30" r="6" fill="#2563eb" stroke="#2563eb" stroke-width="2" />
+                        <text x="96" y="52" font-size="14" font-weight="bold" fill="#0f172a">2</text>
+                        
+                        <!-- Estremo B = 6 (Aperto -> Vuoto) -->
+                        <circle cx="250" cy="30" r="6" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+                        <text x="246" y="52" font-size="14" font-weight="bold" fill="#0f172a">6</text>
+                    </svg>
+                </div>
+                
+                <p style="margin-bottom: 0; font-size: 1.05rem;">
+                    🎯 <strong>Notazione Insiemistica:</strong> $x \in [2, 6)$
+                </p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati con Grafici SVG degli Intervalli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati nel convertire le disuguaglianze nella notazione con intervalli $[a, b]$ e nel visualizzare il grafico cartesiano orientato.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi con SVG -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            function creaSVG(tipo, a, b) {
+                let svg = `<svg width="320" height="55" viewBox="0 0 320 55" style="font-family: sans-serif;">
+                    <line x1="20" y1="25" x2="300" y2="25" stroke="#94a3b8" stroke-width="2" />
+                    <polygon points="300,20 310,25 300,30" fill="#94a3b8" />`;
+
+                if (tipo === 'limitato_chiuso') {
+                    svg += `
+                        <line x1="90" y1="25" x2="230" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="90" cy="25" r="5" fill="#2563eb" stroke="#2563eb" stroke-width="2" />
+                        <circle cx="230" cy="25" r="5" fill="#2563eb" stroke="#2563eb" stroke-width="2" />
+                        <text x="85" y="45" font-size="13" font-weight="bold" fill="#0f172a">${a}</text>
+                        <text x="225" y="45" font-size="13" font-weight="bold" fill="#0f172a">${b}</text>`;
+                } else if (tipo === 'limitato_aperto') {
+                    svg += `
+                        <line x1="90" y1="25" x2="230" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="90" cy="25" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+                        <circle cx="230" cy="25" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+                        <text x="85" y="45" font-size="13" font-weight="bold" fill="#0f172a">${a}</text>
+                        <text x="225" y="45" font-size="13" font-weight="bold" fill="#0f172a">${b}</text>`;
+                } else if (tipo === 'illimitato_destra_chiuso') {
+                    svg += `
+                        <line x1="120" y1="25" x2="300" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="120" cy="25" r="5" fill="#2563eb" stroke="#2563eb" stroke-width="2" />
+                        <text x="115" y="45" font-size="13" font-weight="bold" fill="#0f172a">${a}</text>`;
+                } else if (tipo === 'illimitato_sinistra_aperto') {
+                    svg += `
+                        <line x1="20" y1="25" x2="200" y2="25" stroke="#2563eb" stroke-width="4" />
+                        <circle cx="200" cy="25" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+                        <text x="195" y="45" font-size="13" font-weight="bold" fill="#0f172a">${b}</text>`;
+                }
+
+                svg += `</svg>`;
+                return svg;
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione, tipoSvg, aVal, bVal;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    aVal = i;
+                    bVal = i + 5;
+                    tipoSvg = 'limitato_chiuso';
+                    domanda = `Rappresenta in notazione per intervalli la disuguaglianza: <strong>${aVal} &le; x &le; ${bVal}</strong>.`;
+                    risposta = `[${aVal}, ${bVal}]`;
+                    spiegazione = `
+                    1) Entrambi gli estremi sono inclusi (presenza di &le;).<br>
+                    2) Notazione per intervallo: <code>[${aVal}, ${bVal}]</code>.<br>
+                    3) Graficamente entrambi i punti sono contrassegnati da pallini pieni.`;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    aVal = (i % 10) - 4;
+                    tipoSvg = 'illimitato_destra_chiuso';
+                    domanda = `Scrivi sotto forma di intervallo la seguente disequazione: <strong>x &ge; ${aVal}</strong>.`;
+                    risposta = `[${aVal}, +∞)`;
+                    spiegazione = `
+                    1) L'intervallo parte da <code>${aVal}</code> (incluso) e prosegue indefinitamente verso destra.<br>
+                    2) Notazione con parentesi: <code>[${aVal}, +&infin;)</code>.<br>
+                    3) Graficamente il tratto si estende fino all'estremità destra della retta con un pallino pieno su ${aVal}.`;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    bVal = i - 30;
+                    tipoSvg = 'illimitato_sinistra_aperto';
+                    domanda = `Converti la notazione insiemistica nella forma ad intervallo: <strong>x &lt; ${bVal}</strong>.`;
+                    risposta = `(-∞, ${bVal})`;
+                    spiegazione = `
+                    1) L'intervallo comprende tutti i valori minori di <code>${bVal}</code> (escluso).<br>
+                    2) Notazione con parentesi: <code>(-&infin;, ${bVal})</code>.<br>
+                    3) Sul grafico si evidenzia la retta a sinistra di ${bVal} terminando con un pallino vuoto.`;
+                }
+
+                let grafico = creaSVG(tipoSvg, aVal, bVal);
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione, Grafico e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Grafico dell'intervallo sulla retta reale:</strong></p>
+                            <div class="grafico-svg-container">
+                                ${grafico}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

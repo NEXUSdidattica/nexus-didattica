@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa alla Topologia della Retta Reale con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Topologia della Retta Reale - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            startup: {
+                typeset: false
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        /* Stile esatto delle card con sfondo colorato e bordo spesso a sinistra come in foto */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="topologia-della-retta-reale" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi Matematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Topologia della Retta Reale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio degli insiemi di numeri reali, intorni, punti interni, di accumulazione, di frontiera, insiemi aperti, chiusi, limitati e compatti.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Concetti Fondamentali della Topologia in \(\mathbb{R}\)</h2>
+            <p>La topologia della retta reale fornisce il linguaggio rigoroso per descrivere le proprietà geometriche e spaziali dei sottoinsiemi di \(\mathbb{R}\). Permette di formalizzare concetti chiave come la vicinanza, i confini e la limitatezza, essenziali per lo sviluppo dei limiti e della continuità.</p>
+            
+            <div class="formula-box">
+                <p><strong>Definizioni Chiave:</strong></p>
+                <ul>
+                    <li><strong>Intorno di un punto \(x_0\):</strong> Un intervallo aperto \(]x_0 - r, x_0 + r[\) con \(r > 0\).</li>
+                    <li><strong>Punto Interno e Aperti:</strong> Un punto si dice interno a un insieme se esiste un suo intorno interamente contenuto nell'insieme. Un insieme i cui punti sono tutti interni si dice <em>aperto</em>.</li>
+                    <li><strong>Punto di Accumulazione:</strong> Un punto \(x_0\) si dice di accumulazione per un insieme se ogni suo intorno circondato privato di \(x_0\) contiene infiniti punti dell'insieme.</li>
+                    <li><strong>Insieme Chiuso e Compatto:</strong> Un insieme è chiuso se contiene tutti i suoi punti di accumulazione (o se il suo complementare è aperto). Per il teorema di Heine-Borel, in \(\mathbb{R}\) un insieme è compatto se e solo se è chiuso e limitato.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Topologia della Retta Reale</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili - Verdi), esercizi 36-75 (Medi - Gialli) ed esercizi 76-100 (Difficili - Rossi). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'facile' : (i <= 75 ? 'medio' : 'difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    const mod = i % 3;
+                    if (mod === 1) {
+                        domanda = "Determina l'estremo superiore e inferiore dell'insieme $E = \\left\\{ \\frac{1}{n} : n \\in \\mathbb{N}^+ \\right\\}$.";
+                        risposta = "\\sup E = 1, \\quad \\inf E = 0";
+                        spiegazione = "L'insieme assume i valori $1, 1/2, 1/3, \\dots$. Il valore massimo è $1$ (quindi $\\sup E = 1$), mentre i valori si avvicinano a $0$, dunque $\\inf E = 0$.";
+                    } else if (mod === 2) {
+                        domanda = "Stabilisci se l'intervallo $]" + i + ", " + (i + 5) + "[$ è un insieme aperto, chiuso o nessuno dei due.";
+                        risposta = "\\text{Aperto}";
+                        spiegazione = "Un intervallo aperto i cui estremi non sono inclusi coincide con la definizione di insieme aperto nella topologia usuale di $\\mathbb{R}$.";
+                    } else {
+                        domanda = "Trova l'interno dell'insieme $E = [" + i + ", " + (i + 3) + "[$.";
+                        risposta = "\\mathring{E} = ]" + i + ", " + (i + 3) + "[";
+                        spiegazione = "L'interno è l'insieme di tutti i punti interni; per l'intervallo semichiuso, gli estremi perdono l'internità lasciando l'intervallo aperto.";
+                    }
+                } else if (i <= 75) {
+                    const mod = i % 2;
+                    if (mod === 1) {
+                        domanda = "Determina l'insieme dei punti di accumulazione per l'insieme $E = \\left\\{ \\frac{" + i + "}{n} : n \\in \\mathbb{N}^+ \\right\\}$.";
+                        risposta = "\\{0\\}";
+                        spiegazione = "Facendo tendere $n \\to \\infty$, gli elementi della successione si accumulano unicamente attorno al valore $0$.";
+                    } else {
+                        domanda = "Trova la frontiera dell'intervallo chiuso $E = [" + (i - 10) + ", " + i + "]$.";
+                        risposta = "\\partial E = \\{" + (i - 10) + ", " + i + "\\}";
+                        spiegazione = "La frontiera di un intervallo chiuso in $\\mathbb{R}$ è formata esattamente dai suoi estremi.";
+                    }
+                } else {
+                    const mod = i % 3;
+                    if (mod === 1) {
+                        domanda = "Stabilisci la natura topologica dell'unione numerabile di intervalli $E = \\bigcup_{n=1}^{\\infty} \\left[ \\frac{1}{n}, " + (i % 5 + 2) + " - \\frac{1}{n} \\right]$.";
+                        risposta = "E = ]0, " + (i % 5 + 2) + "[, \\text{ aperto e limitato}";
+                        spiegazione = "L'unione di tali intervalli genera l'intervallo aperto corrispondente, che risulta aperto e limitato.";
+                    } else if (mod === 2) {
+                        domanda = "Dimostra se l'insieme dei numeri interi $\\mathbb{Z}$ è un insieme chiuso in $\\mathbb{R}$.";
+                        risposta = "\\mathbb{Z} \\text{ è chiuso e privo di punti di accumulazione}";
+                        spiegazione = "L'insieme $\\mathbb{Z}$ non ha punti di accumulazione in $\\mathbb{R}$ (il suo derivato è vuoto $\\mathbb{Z}' = \\emptyset$). Poiché contiene tutti i suoi punti di accumulazione, l'insieme è chiuso.";
+                    } else {
+                        domanda = "Sia $E \\subset \\mathbb{R}$ un sottoinsieme non vuoto e limitato superiormente. Dimostra che $s = \\sup E$ appartiene alla chiusura $\\bar{E}$.";
+                        risposta = "s \\in \\bar{E}";
+                        spiegazione = "Per la proprietà caratteristica dell'estremo superiore, ogni intorno di $s$ interseca $E$, dunque $s$ appartiene ad $E$ oppure è un punto di accumulazione.";
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffClass}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([container]).catch((err) => console.log(err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

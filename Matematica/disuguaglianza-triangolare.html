@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 5: La Diseguaglianza Triangolare e Relazioni tra Lati e Angoli - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Diseguaglianza Triangolare - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-5" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 5</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Disuguaglianza Triangolare</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio teorico delle relazioni tra le lunghezze dei lati di un triangolo, condizioni di esistenza geometrica e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Principio della Diseguaglianza Triangolare</h2>
+            <p>
+                In geometria, la <strong>diseguaglianza triangolare</strong> enuncia una proprietà fondamentale e intuitiva: <em>in qualsiasi triangolo, la lunghezza di ciascun lato è sempre strettamente minore della somma delle lunghezze degli altri due lati</em>.
+            </p>
+            <p>
+                Geometricamente, questo significa che il cammino più breve tra due vertici è il segmento rettilineo che li congiunge direttamente. Se prendessimo un percorso alternativo formato dagli altri due lati, la loro somma combinata dovrebbe necessariamente superare la distanza diretta, altrimenti non si chiuderebbe alcuna figura triangolare valida.
+            </p>
+
+            <h2>2. Condizioni di Esistenza e Relazione con la Differenza</h2>
+            <p>
+                Dalla regola generale derivano direttamente due conseguenze cruciali per verificare se tre segmenti possono formare un triangolo:
+            </p>
+            <ul>
+                <li><strong>Somma:</strong> Ogni lato deve essere minore della somma degli altri due (<code>a &lt; b + c</code>, &nbsp; <code>b &lt; a + c</code>, &nbsp; <code>c &lt; a + b</code>).</li>
+                <li><strong>Differenza:</strong> Di conseguenza, ciascun lato deve anche essere sempre maggiore della <em>differenza assoluta</em> tra gli altri due lati (<code>a &gt; |b - c|</code>).</li>
+                <li>Unendo le due condizioni, per un lato <code>c</code> si ottiene l'intervallo di esistenza: <code>|a - b| &lt; c &lt; a + b</code>.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule e Regole di Esistenza:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Condizione generale per i lati <code>a</code>, <code>b</code>, <code>c</code>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<code>a + b &gt; c</code><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<code>a + c &gt; b</code><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<code>b + c &gt; a</code><br>
+                    • Limiti per un lato ignoto: <code>Differenza &lt; Lato ignoto &lt; Somma</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un triangolo ha due lati che misurano rispettivamente <code>7 cm</code> e <code>12 cm</code>. Quali tra i seguenti valori può assumere il terzo lato affinché il triangolo esista geometricamente: <code>3 cm</code>, <code>5 cm</code> oppure <code>15 cm</code>?</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la somma dei due lati noti: <code>12 cm + 7 cm = 19 cm</code>.</li>
+                    <li>Calcoliamo la differenza tra i due lati noti: <code>12 cm - 7 cm = 5 cm</code>.</li>
+                    <li>Il terzo lato deve essere compreso strettamente tra la differenza e la somma: <code>5 cm &lt; Lato &lt; 19 cm</code>.</li>
+                    <li>Verifichiamo le opzioni: <code>3 cm</code> non è accettabile perché minore di 5; <code>5 cm</code> non è valido poiché dev'essere <em>strettamente maggiore</em> (non può essere uguale); <code>15 cm</code> è compreso tra 5 e 19.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: L'unico valore ammissibile è 15 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Diseguaglianza Triangolare</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e verifiche di esistenza geometrica basate sui limiti di somma e differenza dei lati.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let lA = (i % 8) + 4;
+                    let lB = (i % 10) + 6;
+                    let sommaL = lA + lB;
+                    let diffL = Math.abs(lA - lB);
+                    let testValido = diffL + 2; // Valore sicuramente valido all'interno dell'intervallo
+                    domanda = `Un triangolo ha due lati che misurano <code>${lA} cm</code> e <code>${lB} cm</code>. Verifica se il valore <code>${testValido} cm</code> può essere la misura del terzo lato.`;
+                    risposta = `<strong>Sì, è un valore accettabile</strong>`;
+                    spiegazione = `
+                    1) Calcoliamo la somma e la differenza dei due lati: Somma = <code>${sommaL} cm</code>, Differenza = <code>${diffL} cm</code>.<br>
+                    2) Il terzo lato deve essere compreso tra <code>${diffL} cm</code> e <code>${sommaL} cm</code>.<br>
+                    3) Poiché <code>${testValido}</code> si trova all'interno di questo intervallo, il triangolo può esistere.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let l1 = (i % 12) + 10;
+                    let l2 = (i % 10) + 8;
+                    let somma = l1 + l2;
+                    let diff = Math.abs(l1 - l2);
+                    domanda = `Due lati di un triangolo misurano rispettivamente <code>${l1} cm</code> e <code>${l2} cm</code>. Scrivi l'intervallo numerico entro cui deve compresi rigorosamente la misura del terzo lato <code>x</code>.`;
+                    risposta = `<strong>${diff} cm &lt; x &lt; ${somma} cm</strong>`;
+                    spiegazione = `
+                    1) Per la diseguaglianza triangolare, ogni lato è minore della somma degli altri due e maggiore della loro differenza.<br>
+                    2) Differenza: <code>|${l1} - ${l2}| = ${diff} cm</code>.<br>
+                    3) Somma: <code>${l1} + ${l2} = ${somma} cm</code>.<br>
+                    4) Intervallo: <code>${diff} &lt; x &lt; ${somma}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let latoFisso1 = (i % 15) + 12;
+                    let latoFisso2 = (i % 10) + 15;
+                    let minVal = Math.abs(latoFisso1 - latoFisso2) + 1;
+                    let maxVal = (latoFisso1 + latoFisso2) - 1;
+                    domanda = `Dati due lati di un triangolo lunghi <code>${latoFisso1} cm</code> e <code>${latoFisso2} cm</code>, determina qual è il <em>valore intero minimo</em> e il <em>valore intero massimo</em> che il terzo lato può assumere.`;
+                    risposta = `<strong>Minimo intero = ${minVal} cm &nbsp; e &nbsp; Massimo intero = ${maxVal} cm</strong>`;
+                    spiegazione = `
+                    1) Calcoliamo la differenza <code>${Math.abs(latoFisso1 - latoFisso2)} cm</code> e la somma <code>${latoFisso1 + latoFisso2} cm</code>.<br>
+                    2) Il terzo lato <code>x</code> deve rispettare: <code>${Math.abs(latoFisso1 - latoFisso2)} &lt; x &lt; ${latoFisso1 + latoFisso2}</code>.<br>
+                    3) Il primo numero intero strettamente maggiore della differenza è <code>${minVal} cm</code>, mentre l'intero immediatamente inferiore alla somma è <code>${maxVal} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

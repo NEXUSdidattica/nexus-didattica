@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Approfondimento sull'iperbole traslata: equazione cartesiana, centro di simmetria, asintoti traslati e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Iperbole Traslata - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stili specifici per la lezione -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .badge-argomento.iperbole {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="iperbole-traslata" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno iperbole">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">L'Iperbole Traslata</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studiamo l'equazione dell'iperbole quando il suo centro si sposta dall'origine degli assi a un punto generico del piano \(C(x_0, y_0)\).
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>Cos'è un'Iperbole Traslata?</h2>
+            <p>
+                Finora abbiamo analizzato l'iperbole con il centro posizionato nell'origine \(O(0, 0)\). Se applichiamo una traslazione del piano di vettori \(x_0\) e \(y_0\), il centro dell'iperbole si sposta nel punto \(C(x_0, y_0)\).
+            </p>
+            <p>
+                Questa trasformazione modifica l'equazione canonica introducendo i binomi sottratti alle coordinate \(x\) e \(y\).
+            </p>
+
+            <div class="box-evidenza">
+                <h3>📐 Equazione dell'Iperbole Traslata</h3>
+                <p>
+                    L'equazione di un'iperbole traslata con assi paralleli agli assi cartesiani è data da:
+                </p>
+                <div class="formula-box">
+                    $$\frac{(x - x_0)^2}{a^2} - \frac{(y - y_0)^2}{b^2} = 1$$
+                </div>
+                <p style="margin-bottom: 0;">
+                    Il centro di simmetria dell'iperbole non è più l'origine, ma il punto \(C(x_0, y_0)\). Anche i vertici, i fuochi e gli asintoti subiscono la stessa traslazione.
+                </p>
+            </div>
+
+            <h2>Proprietà Geometriche Principali</h2>
+            <p>
+                Conoscendo il centro \(C(x_0, y_0)\) e i parametri \(a\) e \(b\), possiamo ricavare facilmente tutti gli elementi chiave:
+            </p>
+            
+            <ul>
+                <li><strong>Centro di simmetria:</strong> \(C(x_0, y_0)\).</li>
+                <li><strong>Vertici reali:</strong> Si trovano aggiungendo e sottraendo \(a\) all'ascissa del centro \(\rightarrow V_{1,2}(x_0 \pm a, y_0)\).</li>
+                <li><strong>Semi-distanza focale (\(c\)):</strong> Calcolata sempre come \(c = \sqrt{a^2 + b^2}\), con fuochi coordinati in \(F_{1,2}(x_0 \pm c, y_0)\).</li>
+                <li><strong>Asintoti traslati:</strong> Le rette passanti per il nuovo centro \(C\) aventi equazione:
+                    <div class="formula-box" style="margin: 0.8rem 0;">
+                        $$y - y_0 = \pm \frac{b}{a}(x - x_0)$$
+                    </div>
+                </li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Data l'iperbole traslata \(\frac{(x - 2)^2}{9} - \frac{(y - 1)^2}{16} = 1\), determinare il centro di simmetria, i vertici reali e gli asintoti.</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Dal confronto con l'equazione generale ricaviamo il centro \(x_0 = 2\) e \(y_0 = 1\), quindi \(C(2, 1)\).</li>
+                    <li>Ricaviamo i semiassi: \(a^2 = 9 \implies a = 3\) e \(b^2 = 16 \implies b = 4\).</li>
+                    <li><strong>Vertici reali:</strong> \(V_{1}(2 - 3, 1) = (-1, 1)\) e \(V_{2}(2 + 3, 1) = (5, 1)\).</li>
+                    <li><strong>Asintoti:</strong> Utilizzando la formula \(y - 1 = \pm \frac{4}{3}(x - 2)\), sviluppando otteniamo le due rette:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$y = \frac{4}{3}x - \frac{5}{3} \quad \text{e} \quad y = -\frac{4}{3}x + \frac{11}{3}$$
+                        </div>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Centro \(C(2, 1)\), Vertici in \((-1, 1)\) e \((5, 1)\).</p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sull'Iperbole Traslata</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sul riconoscimento del centro, dei vertici e degli asintoti dell'iperbole traslata. Clicca sulle card per visualizzare la soluzione passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let x0 = (i % 3) + 1;
+                let y0 = (i % 2 === 0) ? 2 : -1;
+                let denA = (i % 3 + 2) * (i % 3 + 2);
+                let denB = 4;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                let valA = Math.sqrt(denA).toFixed(0);
+                let valB = Math.sqrt(denB).toFixed(0);
+                let v1x = x0 - Number(valA);
+                let v2x = x0 + Number(valA);
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Data l'iperbole traslata \\(\\frac{(x - ${x0})^2}{${denA}} - \\frac{(y ${y0 >= 0 ? '- ' + y0 : '+ ' + Math.abs(y0)})^2}{${denB}} = 1\\), individua il centro e i vertici reali.</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Soluzione:</strong> Centro \\(C(${x0}, ${y0})\\), Vertici reali in \\((${v1x}, ${y0})\\) e \\((${v2x}, ${y0})\\).</p>
+                            <p>📝 <strong>Procedimento:</strong><br>
+                            1) Si legge il centro \\(C(x_0, y_0)\\) direttamente dai binomi, ottenendo \\(C(${x0}, ${y0})\\).<br>
+                            2) Si estraggono i semiassi \\(a = \\sqrt{${denA}} = ${valA}\\) e \\(b = \\sqrt{${denB}} = ${valB}\\).<br>
+                            3) I vertici si calcolano aggiungendo e sottraendo \\(a\\) all'ascissa del centro: \\((${x0} \\pm ${valA}, ${y0})\\).</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

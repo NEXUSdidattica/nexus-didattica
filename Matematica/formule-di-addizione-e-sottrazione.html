@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Studio delle formule di addizione e sottrazione in goniometria: seno, coseno e tangente della somma e della differenza di angoli, con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Formule di Addizione e Sottrazione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stili specifici per la lezione -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .badge-argomento.goniometria {
+            background-color: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="formule-di-addizione-e-sottrazione" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Matematica</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;" onclick="history.back(); return false;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno goniometria">Matematica / Goniometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Formule di Addizione e Sottrazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Calcolo delle funzioni goniometriche per la somma e la differenza di due archi (\(\alpha \pm \beta\)): seno, coseno e tangente.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>Introduzione alle Formule</h2>
+            <p>
+                Le <strong>formule di addizione e sottrazione</strong> permettono di determinare il seno, il coseno e la tangente della somma o della differenza di due angoli (\(\alpha \pm \beta\)) conoscendo le funzioni goniometriche dei singoli angoli \(\alpha\) e \(\beta\).
+            </p>
+
+            <h2>1. Formule per il Coseno</h2>
+            <p>Il coseno della differenza e della somma di due angoli si calcola rispettivamente come:</p>
+            <div class="formula-box">
+                $$\cos(\alpha - \beta) = \cos\alpha \cos\beta + \sin\alpha \sin\beta$$
+                $$\cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta$$
+            </div>
+
+            <h2>2. Formule per il Seno</h2>
+            <p>Il seno della somma e della differenza di due angoli si calcola come:</p>
+            <div class="formula-box">
+                $$\sin(\alpha \pm \beta) = \sin\alpha \cos\beta \pm \cos\alpha \sin\beta$$
+            </div>
+
+            <h2>3. Formule per la Tangente</h2>
+            <p>La tangente della somma e della differenza di due angoli è data da:</p>
+            <div class="formula-box">
+                $$\tan(\alpha \pm \beta) = \frac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha \tan\beta}$$
+            </div>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Calcola il valore esatto di \(\sin 75^\circ\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Riscriviamo l'angolo di \(75^\circ\) come somma di angoli notevoli:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$75^\circ = 45^\circ + 30^\circ$$
+                        </div>
+                    </li>
+                    <li>Applichiamo la formula di addizione del seno:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$\sin(45^\circ + 30^\circ) = \sin 45^\circ \cos 30^\circ + \cos 45^\circ \sin 30^\circ$$
+                        </div>
+                    </li>
+                    <li>Sostituiamo i valori noti:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$= \left(\frac{\sqrt{2}}{2}\right)\left(\frac{\sqrt{3}}{2}\right) + \left(\frac{\sqrt{2}}{2}\right)\left(\frac{1}{2}\right) = \frac{\sqrt{6} + \sqrt{2}}{4}$$
+                        </div>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> \(\sin 75^\circ = \frac{\sqrt{6} + \sqrt{2}}{4}\).</p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Formule di Addizione e Sottrazione</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sull'applicazione delle formule di addizione e sottrazione. Clicca sulle card per visualizzare la soluzione passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const tipiEsercizi = [
+                { tipo: 'sin_somma', formula: '\\sin(\\alpha + \\beta)', desc: 'formula di addizione del seno' },
+                { tipo: 'cos_differenza', formula: '\\cos(\\alpha - \\beta)', desc: 'formula di sottrazione del coseno' },
+                { tipo: 'tan_somma', formula: '\\tan(\\alpha + \\beta)', desc: 'formula di addizione della tangente' }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let item = tipiEsercizi[(i - 1) % tipiEsercizi.length];
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                let domandaStr, solStr, procStr;
+
+                if (item.tipo === 'sin_somma') {
+                    domandaStr = `Calcola il valore esatto di: \\(\\sin(75^\\circ)\\)`;
+                    solStr = `\\(\\frac{\\sqrt{6} + \\sqrt{2}}{4}\\)`;
+                    procStr = `1) Si scompone l'angolo come \\(45^\\circ + 30^\\circ\\).<br>2) Si applica la formula \\(\\sin(45^\\circ + 30^\\circ) = \\sin 45^\\circ \\cos 30^\\circ + \\cos 45^\\circ \\sin 30^\\circ\\).<br>3) Sostituendo i valori noti si ottiene il risultato.`;
+                } else if (item.tipo === 'cos_differenza') {
+                    domandaStr = `Calcola il valore esatto di: \\(\\cos(15^\\circ)\\)`;
+                    solStr = `\\(\\frac{\\sqrt{6} + \\sqrt{2}}{4}\\)`;
+                    procStr = `1) Si scompone l'angolo come \\(45^\\circ - 30^\\circ\\).<br>2) Si applica la formula \\(\\cos(45^\\circ - 30^\\circ) = \\cos 45^\\circ \\cos 30^\\circ + \\sin 45^\\circ \\sin 30^\\circ\\).<br>3) Sostituendo i valori noti si ottiene il risultato.`;
+                } else {
+                    domandaStr = `Calcola il valore esatto di: \\(\\tan(75^\\circ)\\)`;
+                    solStr = `\\(2 + \\sqrt{3}\\)`;
+                    procStr = `1) Si scompone l'angolo come \\(45^\\circ + 30^\\circ\\).<br>2) Si applica la formula della tangente di somma.<br>3) Razionalizzando si ottiene \\(2 + \\sqrt{3}\\).`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">${domandaStr}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Soluzione:</strong> ${solStr}</p>
+                            <p>📝 <strong>Procedimento:</strong><br>${procStr}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

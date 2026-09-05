@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 4: Espressioni con le Frazioni Algebriche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Espressioni Frazioni Algebriche - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="frazioni-algebriche-espressioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Frazioni Algebriche</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Espressioni Complesse</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Risoluzione di espressioni articolate con parentesi nidificate, potenze negative e decimali periodici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>1. Strategia di Risoluzione delle Espressioni Articolate</h2>
+            <p>
+                Quando un'espressione contiene sia frazioni algebriche che numeri decimali (limitati o periodici) e potenze negative, il primo fondamentale passaggio consiste nel **convertire tutti i decimali in frazioni generatrici**.
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Conversioni Utili da Ricordare:</strong><br>
+                • <code>0,333... (0,3̄) = 1/3</code> &nbsp;|&nbsp; <code>0,666... (0,6̄) = 2/3</code><br>
+                • <code>0,166... (0,16̄) = (16-1)/90 = 15/90 = 1/6</code> &nbsp;|&nbsp; <code>1,333... (1,3̄) = (13-1)/9 = 12/9 = 4/3</code><br>
+                • <code>0,5 = 1/2</code> &nbsp;|&nbsp; <code>0,75 = 3/4</code><br><br>
+                🔹 <strong>Gerarchia Operativa:</strong><br>
+                1. Convertire i decimali periodici in frazioni generatrici e trasformare gli esponenti negativi (es. <code>(A/B)⁻ⁿ = (B/A)ⁿ</code>).<br>
+                2. Calcolare le <strong>Condizioni di Esistenza (C.E.)</strong> di tutti i denominatori visibili o generati dall'inversione delle divisioni.<br>
+                3. Eseguire prima le operazioni nelle parentesi tonde <code>( )</code>, poi quadre <code>[ ]</code> e infine graffe <code>{ }</code>.
+            </div>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato (Lungo con Periodici)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Risolvi: <code>{ [ (0,3̄ + 1/2)² : 0,16̄ - (1 - 0,6̄) · 9/4 ] : [ (5/3 - 0,75) · 1,3̄ + 7/9 ] }² · (3/10)⁻¹</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione guidata:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Convertiamo i numeri decimali in frazioni:<br>
+                        <code>0,3̄ = 1/3</code>, <code>0,16̄ = 1/6</code>, <code>0,6̄ = 2/3</code>, <code>0,75 = 3/4</code>, <code>1,3̄ = 4/3</code>, <code>(3/10)⁻¹ = 10/3</code>.
+                    </li>
+                    <li>Sostituiamo e risolviamo le tonde:<br>
+                        • <code>(1/3 + 1/2) = 5/6</code><br>
+                        • <code>(1 - 2/3) = 1/3</code><br>
+                        • <code>(5/3 - 3/4) = 11/12</code>
+                    </li>
+                    <li>Risolviamo le quadre:<br>
+                        • Prima quadra: <code>[ (5/6)² : 1/6 - 1/3 · 9/4 ] = [ 25/36 · 6 - 3/4 ] = [ 25/6 - 3/4 ] = 41/12</code>.<br>
+                        • Seconda quadra: <code>[ 11/12 · 4/3 + 7/9 ] = [ 11/9 + 7/9 ] = 18/9 = 2</code>.
+                    </li>
+                    <li>Calcolo nelle graffe ed elevamento a potenza:<br>
+                        <code>{ 41/12 : 2 }² = (41/24)² = 1681/576</code>.
+                    </li>
+                    <li>Moltiplicazione finale:<br>
+                        <code>1681/576 · 10/3 = 8405/864</code>.
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 8405 / 864</strong></p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Espressioni Completi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue competenze con 100 espressioni graduate per difficoltà: facile, medio e difficile (espressioni lunghissime con parentesi graffe, potenze negative e decimali periodici).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // LIVELLO FACILE: Espressioni base con tonde
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 5) + 1;
+                    domanda = `Risolvi l'espressione: <br><code>E(x) = (1 - ${a}/x) · (x / (x - ${a}))</code>.`;
+                    risposta = `Risultato: <code>1</code> (con C.E.: <code>x ≠ 0, x ≠ ${a}</code>)`;
+                    spiegazione = `
+                    1) C.E.: <code>x ≠ 0</code> e <code>x ≠ ${a}</code>.<br>
+                    2) Calcoliamo la prima tonda: <code>(x - ${a}) / x</code>.<br>
+                    3) Moltiplichiamo: <code>[(x - ${a}) / x] · [x / (x - ${a})]</code>.<br>
+                    4) Semplifichiamo tutto in croce, ottenendo <code>1</code>.`;
+
+                } else if (i <= 70) {
+                    // LIVELLO MEDIO: Espressioni con quadre e potenze
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let k = (i % 4) + 2;
+                    domanda = `Risolvi l'espressione con parentesi quadre: <br><code>E(x) = [ (x² - ${k*k}) / x ] : [ (x + ${k}) / x² ]</code>.`;
+                    risposta = `Risultato: <code>x(x - ${k})</code> (con C.E.: <code>x ≠ 0, x ≠ -${k}</code>)`;
+                    spiegazione = `
+                    1) C.E.: <code>x ≠ 0</code> e <code>x ≠ -${k}</code>.<br>
+                    2) Scomponiamo la differenza di quadrati: <code>[(x - ${k})(x + ${k})] / x</code>.<br>
+                    3) Capovolgiamo il secondo fattore per la divisione: <code>· [x² / (x + ${k})]</code>.<br>
+                    4) Semplifichiamo <code>(x + ${k})</code> e <code>x</code> con <code>x²</code>, ottenendo <code>x(x - ${k})</code>.`;
+
+                } else {
+                    // LIVELLO DIFFICILE: Espressioni lunghissime con graffe, potenze negative e decimali periodici
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let n = (i % 4) + 1;
+                    let periodicoStr = (i % 2 === 0) ? "0,3̄" : "0,6̄";
+                    let fracPeriodico = (i % 2 === 0) ? "1/3" : "2/3";
+                    let valDen = (i % 2 === 0) ? 3 : 3;
+
+                    domanda = `Risolvi la seguente espressione complessa e articolata con decimali periodici e potenze negative: <br>
+                    <code>E(x) = { [ ( ${periodicoStr} + ${n}/x )⁻¹ : ( (x + ${n*valDen}) / (3x) ) ] + [ (x² - ${n*n}) / (x - ${n}) - x ] }² · (x + ${n})⁻²</code>.`;
+
+                    risposta = `Risultato: <code>${(n + 1)*(n + 1)} / (x + ${n})²</code> (con C.E.: <code>x ≠ 0, x ≠ ±${n}, x ≠ -${n*valDen}</code>)`;
+                    spiegazione = `
+                    1) <strong>Conversione decimali periodici:</strong> <code>${periodicoStr} = ${fracPeriodico}</code>.<br>
+                    2) <strong>Risoluzione 1ª parentesi tonda:</strong> <code>(${fracPeriodico} + ${n}/x) = (x + ${n*valDen}) / (3x)</code>.<br>
+                    3) <strong>Applicazione esponente negativo -1:</strong> Capovolgiamo la frazione ottenendo <code>[ (3x) / (x + ${n*valDen}) ]</code>.<br>
+                    4) <strong>Divisione nella 1ª quadra:</strong> <code>[ (3x) / (x + ${n*valDen}) ] : [ (x + ${n*valDen}) / (3x) ] = 1</code>.<br>
+                    5) <strong>Semplificazione 2ª quadra:</strong> <code>[ (x - ${n})(x + ${n}) / (x - ${n}) - x ] = (x + ${n}) - x = ${n}</code>.<br>
+                    6) <strong>Calcolo nelle graffe:</strong> <code>{ 1 + ${n} }² = (${n+1})² = ${ (n+1)*(n+1) }</code>.<br>
+                    7) <strong>Moltiplicazione per potenza negativa finale:</strong> <code>${ (n+1)*(n+1) } · [ 1 / (x + ${n})² ] = ${ (n+1)*(n+1) } / (x + ${n})²</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Passaggi</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Procedimento completo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

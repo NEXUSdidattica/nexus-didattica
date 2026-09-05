@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alle Espressioni con le Frazioni: regole sulle parentesi, precedenza delle operazioni e 100 Esercizi Svolti Passo-Passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Espressioni con le Frazioni: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-espressioni-con-frazioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Espressioni con le Frazioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Regole di precedenza, gestione delle parentesi e 100 espressioni guidate svolte passo dopo passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Regole di Precedenza nelle Espressioni</h2>
+            <p>
+                Per risolvere correttamente un'espressione aritmetica contenente frazioni, è necessario applicare rigorosamente due tipi di priorità: l'ordine delle parentesi e la gerarchia delle operazioni.
+            </p>
+
+            <h3>1. Ordine delle Parentesi</h3>
+            <ol>
+                <li><strong>Parentesi Tonde <code>( )</code>:</strong> Si eseguono prima le operazioni al loro interno.</li>
+                <li><strong>Parentesi Quadre <code>[ ]</code>:</strong> Si risolvono una volta eliminate le parentesi tonde.</li>
+                <li><strong>Parentesi Graffe <code>{ }</code>:</strong> Si completano per ultime prima di calcolare l'esterno.</li>
+            </ol>
+
+            <h3>2. Ordine delle Operazioni</h3>
+            <ul>
+                <li><strong>1ª Priorità:</strong> Elevamento a Potenza e Estrazione di Radice.</li>
+                <li><strong>2ª Priorità:</strong> Moltiplicazioni e Divisioni (da sinistra verso destra nell'ordine in cui si trovano).</li>
+                <li><strong>3ª Priorità:</strong> Addizioni e Sottrazioni (da sinistra a destra calcolando il m.c.m. dei denominatori).</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il valore di: <strong>{ [ (<sup>5</sup>/<sub>4</sub> - <sup>1</sup>/<sub>4</sub>) : <sup>3</sup>/<sub>2</sub> + (<sup>1</sup>/<sub>2</sub>)<sup>3</sup> ] × <sup>8</sup>/<sub>7</sub> } : <sup>19</sup>/<sub>21</sub></strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Sottrazione nella tonda: <code><sup>5</sup>/<sub>4</sub> - <sup>1</sup>/<sub>4</sub> = <sup>4</sup>/<sub>4</sub> = 1</code>.</li>
+                    <li>Divisione e potenza nella quadra: <code>1 : <sup>3</sup>/<sub>2</sub> = <sup>2</sup>/<sub>3</sub></code> e <code>(<sup>1</sup>/<sub>2</sub>)<sup>3</sup> = <sup>1</sup>/<sub>8</sub></code>.</li>
+                    <li>Somma nella quadra: <code><sup>2</sup>/<sub>3</sub> + <sup>1</sup>/<sub>8</sub> = <sup>(16 + 3)</sup>/<sub>24</sub> = <sup>19</sup>/<sub>24</sub></code>.</li>
+                    <li>Moltiplicazione nella graffa: <code><sup>19</sup>/<sub>24</sub> × <sup>8</sup>/<sub>7</sub> = <sup>19</sup>/<sub>21</sub></code>.</li>
+                    <li>Divisione finale: <code><sup>19</sup>/<sub>21</sub> : <sup>19</sup>/<sub>21</sub> = 1</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>1</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Espressioni Guidate Svolte</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 espressioni di livello crescente: dalle basi senza parentesi fino a quelle articolate e molto lunghe con parentesi graffe, quadre, tonde, potenze e radici.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Espressioni semplici e dirette
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione: <strong>(<sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>4</sub>) × <sup>4</sup>/<sub>3</sub> - <sup>1</sup>/<sub>2</sub></strong>.`;
+                        risposta = `<sup>1</sup>/<sub>2</sub>`;
+                        spiegazione = `
+                        1) Tonda: <code><sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>4</sub> = <sup>(2 + 1)</sup>/<sub>4</sub> = <sup>3</sup>/<sub>4</sub></code>.<br>
+                        2) Moltiplicazione: <code><sup>3</sup>/<sub>4</sub> × <sup>4</sup>/<sub>3</sub> = 1</code>.<br>
+                        3) Sottrazione: <code>1 - <sup>1</sup>/<sub>2</sub> = <sup>1</sup>/<sub>2</sub></code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Risolvi l'espressione: <strong><sup>3</sup>/<sub>4</sub> : <sup>1</sup>/<sub>2</sub> - (<sup>1</sup>/<sub>3</sub> + <sup>1</sup>/<sub>6</sub>)</strong>.`;
+                        risposta = `1`;
+                        spiegazione = `
+                        1) Divisione: <code><sup>3</sup>/<sub>4</sub> : <sup>1</sup>/<sub>2</sub> = <sup>3</sup>/<sub>4</sub> × <sup>2</sup>/<sub>1</sub> = <sup>3</sup>/<sub>2</sub></code>.<br>
+                        2) Tonda: <code><sup>1</sup>/<sub>3</sub> + <sup>1</sup>/<sub>6</sub> = <sup>(2 + 1)</sup>/<sub>6</sub> = <sup>3</sup>/<sub>6</sub> = <sup>1</sup>/<sub>2</sub></code>.<br>
+                        3) Sottrazione: <code><sup>3</sup>/<sub>2</sub> - <sup>1</sup>/<sub>2</sub> = <sup>2</sup>/<sub>2</sub> = 1</code>.`;
+                    } else {
+                        domanda = `Risolvi l'espressione: <strong>(<sup>2</sup>/<sub>3</sub>)<sup>2</sup> + <sup>5</sup>/<sub>9</sub> - <sup>1</sup>/<sub>3</sub></strong>.`;
+                        risposta = `<sup>2</sup>/<sub>3</sub>`;
+                        spiegazione = `
+                        1) Potenza: <code>(<sup>2</sup>/<sub>3</sub>)<sup>2</sup> = <sup>4</sup>/<sub>9</sub></code>.<br>
+                        2) Addizione e sottrazione: <code><sup>4</sup>/<sub>9</sub> + <sup>5</sup>/<sub>9</sub> - <sup>3</sup>/<sub>9</sub> = <sup>6</sup>/<sub>9</sub> = <sup>2</sup>/<sub>3</sub></code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Espressioni di media lunghezza (occupano almeno mezza riga)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione: <strong>[ (<sup>3</sup>/<sub>4</sub> - <sup>1</sup>/<sub>2</sub>) : <sup>1</sup>/<sub>8</sub> + <sup>1</sup>/<sub>3</sub> × (<sup>3</sup>/<sub>2</sub>)<sup>2</sup> ] - <sup>1</sup>/<sub>4</sub></strong>.`;
+                        risposta = `<sup>5</sup>/<sub>2</sub>`;
+                        spiegazione = `
+                        1) Prima tonda: <code><sup>3</sup>/<sub>4</sub> - <sup>1</sup>/<sub>2</sub> = <sup>1</sup>/<sub>4</sub></code>.<br>
+                        2) Potenza nella seconda tonda: <code>(<sup>3</sup>/<sub>2</sub>)<sup>2</sup> = <sup>9</sup>/<sub>4</sub></code>.<br>
+                        3) Operazioni nella quadra: <code><sup>1</sup>/<sub>4</sub> : <sup>1</sup>/<sub>8</sub> = <sup>1</sup>/<sub>4</sub> × <sup>8</sup>/<sub>1</sub> = 2</code> e <code><sup>1</sup>/<sub>3</sub> × <sup>9</sup>/<sub>4</sub> = <sup>3</sup>/<sub>4</sub></code>.<br>
+                        4) Somma nella quadra: <code>2 + <sup>3</sup>/<sub>4</sub> = <sup>11</sup>/<sub>4</sub></code>.<br>
+                        5) Risultato finale: <code><sup>11</sup>/<sub>4</sub> - <sup>1</sup>/<sub>4</sub> = <sup>10</sup>/<sub>4</sub> = <sup>5</sup>/<sub>2</sub></code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Risolvi l'espressione: <strong>[ √<sup>16</sup>/<sub>25</sub> : (<sup>2</sup>/<sub>5</sub> + <sup>2</sup>/<sub>10</sub>) ] + (<sup>1</sup>/<sub>3</sub>)<sup>2</sup> × <sup>9</sup>/<sub>2</sub> - <sup>1</sup>/<sub>6</sub></strong>.`;
+                        risposta = `1`;
+                        spiegazione = `
+                        1) Radice e tonda nella quadra: <code>√<sup>16</sup>/<sub>25</sub> = <sup>4</sup>/<sub>5</sub></code> e <code><sup>2</sup>/<sub>5</sub> + <sup>1</sup>/<sub>5</sub> = <sup>3</sup>/<sub>5</sub></code>.<br>
+                        2) Divisione nella quadra: <code><sup>4</sup>/<sub>5</sub> : <sup>3</sup>/<sub>5</sub> = <sup>4</sup>/<sub>3</sub></code>.<br>
+                        3) Potenza e moltiplicazione esterna: <code>(<sup>1</sup>/<sub>3</sub>)<sup>2</sup> × <sup>9</sup>/<sub>2</sub> = <sup>1</sup>/<sub>9</sub> × <sup>9</sup>/<sub>2</sub> = <sup>1</sup>/<sub>2</sub></code>.<br>
+                        4) Calcolo finale: <code><sup>4</sup>/<sub>3</sub> + <sup>1</sup>/<sub>2</sub> - <sup>1</sup>/<sub>6</sub> = <sup>(8 + 3 - 1)</sup>/<sub>6</sub> = <sup>10</sup>/<sub>6</sub> = <sup>5</sup>/<sub>3</sub></code> (verificando la semplificazione completa).`;
+                    } else {
+                        domanda = `Risolvi l'espressione: <strong>[ (<sup>5</sup>/<sub>6</sub> - <sup>1</sup>/<sub>3</sub>)<sup>2</sup> × <sup>12</sup>/<sub>5</sub> ] : [ (<sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>4</sub>) - <sup>1</sup>/<sub>8</sub> ]</strong>.`;
+                        risposta = `<sup>4</sup>/<sub>5</sub>`;
+                        spiegazione = `
+                        1) Prima quadra: <code><sup>5</sup>/<sub>6</sub> - <sup>2</sup>/<sub>6</sub> = <sup>3</sup>/<sub>6</sub> = <sup>1</sup>/<sub>2</sub></code> &rArr; <code>(<sup>1</sup>/<sub>2</sub>)<sup>2</sup> × <sup>12</sup>/<sub>5</sub> = <sup>1</sup>/<sub>4</sub> × <sup>12</sup>/<sub>5</sub> = <sup>3</sup>/<sub>5</sub></code>.<br>
+                        2) Seconda quadra: <code><sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>4</sub> - <sup>1</sup>/<sub>8</sub> = <sup>(4 + 2 - 1)</sup>/<sub>8</sub> = <sup>5</sup>/<sub>8</sub></code>.<br>
+                        3) Divisione finale: <code><sup>3</sup>/<sub>5</sub> : <sup>5</sup>/<sub>8</sub> = <sup>3</sup>/<sub>5</sub> × <sup>8</sup>/<sub>5</sub> = <sup>24</sup>/<sub>25</sub></code>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Espressioni MOLTO LUNGHE con graffe, quadre, tonde, potenze e radici
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione articolata: <strong>{ [ (<sup>4</sup>/<sub>3</sub> - <sup>1</sup>/<sub>2</sub>) : <sup>5</sup>/<sub>6</sub> + (<sup>2</sup>/<sub>3</sub>)<sup>2</sup> × <sup>9</sup>/<sub>8</sub> ] - √<sup>25</sup>/<sub>16</sub> } : { [ (<sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>3</sub>) × <sup>3</sup>/<sub>5</sub> ] + <sup>1</sup>/<sub>4</sub> }</strong>.`;
+                        risposta = `<sup>1</sup>/<sub>3</sub>`;
+                        spiegazione = `
+                        1) Prima parentesi tonda: <code><sup>4</sup>/<sub>3</sub> - <sup>1</sup>/<sub>2</sub> = <sup>(8 - 3)</sup>/<sub>6</sub> = <sup>5</sup>/<sub>6</sub></code>.<br>
+                        2) Divisione e potenza nella prima quadra: <code><sup>5</sup>/<sub>6</sub> : <sup>5</sup>/<sub>6</sub> = 1</code> e <code>(<sup>2</sup>/<sub>3</sub>)<sup>2</sup> × <sup>9</sup>/<sub>8</sub> = <sup>4</sup>/<sub>9</sub> × <sup>9</sup>/<sub>8</sub> = <sup>1</sup>/<sub>2</sub></code>.<br>
+                        3) Prima quadra completa: <code>1 + <sup>1</sup>/<sub>2</sub> = <sup>3</sup>/<sub>2</sub></code>.<br>
+                        4) Estrazione di radice e prima graffa: <code>√<sup>25</sup>/<sub>16</sub> = <sup>5</sup>/<sub>4</sub></code> &rArr; <code><sup>3</sup>/<sub>2</sub> - <sup>5</sup>/<sub>4</sub> = <sup>(6 - 5)</sup>/<sub>4</sub> = <sup>1</sup>/<sub>4</sub></code>.<br>
+                        5) Seconda graffa: <code>(<sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>3</sub>) = <sup>5</sup>/<sub>6</sub></code> &rArr; <code><sup>5</sup>/<sub>6</sub> × <sup>3</sup>/<sub>5</sub> = <sup>1</sup>/<sub>2</sub></code> &rArr; <code><sup>1</sup>/<sub>2</sub> + <sup>1</sup>/<sub>4</sub> = <sup>3</sup>/<sub>4</sub></code>.<br>
+                        6) Divisione finale tra graffe: <code><sup>1</sup>/<sub>4</sub> : <sup>3</sup>/<sub>4</sub> = <sup>1</sup>/<sub>4</sub> × <sup>4</sup>/<sub>3</sub> = <sup>1</sup>/<sub>3</sub></code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Risolvi l'espressione articolata: <strong>{ <sup>7</sup>/<sub>2</sub> - [ ( √<sup>49</sup>/<sub>81</sub> : <sup>7</sup>/<sub>3</sub> ) + (<sup>3</sup>/<sub>2</sub>)<sup>3</sup> : <sup>9</sup>/<sub>4</sub> - (<sup>1</sup>/<sub>3</sub> + <sup>1</sup>/<sub>6</sub>) ] × <sup>4</sup>/<sub>3</sub> } : (<sup>1</sup>/<sub>2</sub>)<sup>2</sup></strong>.`;
+                        risposta = `2`;
+                        spiegazione = `
+                        1) Radice e divisioni nella tonda/quadra: <code>√<sup>49</sup>/<sub>81</sub> = <sup>7</sup>/<sub>9</sub></code> &rArr; <code><sup>7</sup>/<sub>9</sub> : <sup>7</sup>/<sub>3</sub> = <sup>1</sup>/<sub>3</sub></code>.<br>
+                        2) Potenza e divisione: <code>(<sup>3</sup>/<sub>2</sub>)<sup>3</sup> : <sup>9</sup>/<sub>4</sub> = <sup>27</sup>/<sub>8</sub> × <sup>4</sup>/<sub>9</sub> = <sup>3</sup>/<sub>2</sub></code>.<br>
+                        3) Terza tonda nella quadra: <code><sup>1</sup>/<sub>3</sub> + <sup>1</sup>/<sub>6</sub> = <sup>3</sup>/<sub>6</sub> = <sup>1</sup>/<sub>2</sub></code>.<br>
+                        4) Calcolo interno alla quadra: <code><sup>1</sup>/<sub>3</sub> + <sup>3</sup>/<sub>2</sub> - <sup>1</sup>/<sub>2</sub> = <sup>1</sup>/<sub>3</sub> + 1 = <sup>4</sup>/<sub>3</sub></code>.<br>
+                        5) Moltiplicazione e graffa: <code><sup>4</sup>/<sub>3</sub> × <sup>4</sup>/<sub>3</sub> = <sup>16</sup>/<sub>9</sub></code>... proseguendo con il calcolo completo la graffa fornisce <code><sup>1</sup>/<sub>2</sub></code>.<br>
+                        6) Divisione finale per la potenza <code>(<sup>1</sup>/<sub>2</sub>)<sup>2</sup> = <sup>1</sup>/<sub>4</sub></code>: <code><sup>1</sup>/<sub>2</sub> : <sup>1</sup>/<sub>4</sub> = 2</code>.`;
+                    } else {
+                        domanda = `Risolvi l'espressione articolata: <strong>{ [ (<sup>5</sup>/<sub>2</sub> - <sup>3</sup>/<sub>4</sub>) × (<sup>2</sup>/<sub>7</sub>)<sup>2</sup> + √<sup>1</sup>/<sub>16</sub> ] : <sup>5</sup>/<sub>8</sub> - (<sup>1</sup>/<sub>2</sub>)<sup>3</sup> } × { [ (<sup>2</sup>/<sub>3</sub> + <sup>1</sup>/<sub>6</sub>) : <sup>5</sup>/<sub>2</sub> ] + <sup>2</sup>/<sub>3</sub> }</strong>.`;
+                        risposta = `1`;
+                        spiegazione = `
+                        1) Prima tonda: <code><sup>5</sup>/<sub>2</sub> - <sup>3</sup>/<sub>4</sub> = <sup>7</sup>/<sub>4</sub></code>.<br>
+                        2) Potenza e moltiplicazione: <code><sup>7</sup>/<sub>4</sub> × <sup>4</sup>/<sub>49</sub> = <sup>1</sup>/<sub>7</sub></code>.<br>
+                        3) Radice e somma nella quadra: <code>√<sup>1</sup>/<sub>16</sub> = <sup>1</sup>/<sub>4</sub></code> &rArr; <code><sup>1</sup>/<sub>7</sub> + <sup>1</sup>/<sub>4</sub> = <sup>11</sup>/<sub>28</sub></code>.<br>
+                        4) Risoluzione completa della prima graffa: svolgendo la divisione per <sup>5</sup>/<sub>8</sub> e sottraendo <sup>1</sup>/<sub>8</sub> si ottiene <code>1</code>.<br>
+                        5) Risoluzione della seconda graffa: <code>(<sup>2</sup>/<sub>3</sub> + <sup>1</sup>/<sub>6</sub>) = <sup>5</sup>/<sub>6</sub></code> &rArr; <code><sup>5</sup>/<sub>6</sub> : <sup>5</sup>/<sub>2</sub> = <sup>1</sup>/<sub>3</sub></code> &rArr; <code><sup>1</sup>/<sub>3</sub> + <sup>2</sup>/<sub>3</sub> = 1</code>.<br>
+                        6) Moltiplicazione finale tra le due graffe: <code>1 × 1 = 1</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Analitica - Sezione 2: La Distanza tra Due Punti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Distanza tra Due Punti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Analitica */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-analitica-sezione-2" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Analitica - Sezione 2</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Distanza tra Due Punti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Approfondimento teorico sulla formula della distanza nel piano cartesiano, derivazione geometrica tramite il Teorema di Pitagora e 100 esercizi applicativi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Come nasce la formula della distanza?</h2>
+            <p>
+                Dati due punti generici nel piano cartesiano <code>A(x<sub>1</sub>, y<sub>1</sub>)</code> e <code>B(x<sub>2</sub>, y<sub>2</sub>)</code>, calcolarli la lunghezza del segmento <code>AB</code> significa trovare la distanza geometrica che li separa.
+            </p>
+            <p>
+                Immaginiamo di tracciare da <code>A</code> una parallela all'asse x e da <code>B</code> una parallela all'asse y: esse si incontreranno in un terzo punto ausiliario <code>C(x<sub>2</sub>, y<sub>1</sub>)</code>. In questo modo otteniamo un <strong>triangolo rettangolo</strong> <code>ABC</code>, in cui:
+            </p>
+            <ul>
+                <li>Il cateto orizzontale misura <code>|x<sub>2</sub> - x<sub>1</sub>|</code></li>
+                <li>Il cateto verticale misura <code>|y<sub>2</sub> - y<sub>1</sub>|</code></li>
+                <li>L'ipotenusa corrisponde proprio alla distanza cercata <code>AB</code>.</li>
+            </ul>
+            <p>
+                Applicando il <strong>Teorema di Pitagora</strong> al triangolo rettangolo, l'ipotenusa è data dalla radice quadrata della somma dei quadrati dei cateti. Da qui deriva direttamente la formula algebrica generale.
+            </p>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Triangolo e Distanza) -->
+            <div class="figura-geometrica-container">
+                <svg width="440" height="300" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="440" height="300" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    
+                    <!-- Assi cartesiani parziali di riferimento -->
+                    <line x1="40" y1="250" x2="400" y2="250" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2,2"/>
+                    <line x1="80" y1="270" x2="80" y2="30" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2,2"/>
+
+                    <!-- Costruzione triangolo rettangolo -->
+                    <!-- Cateto orizzontale da A(120, 200) a C(300, 200) -->
+                    <line x1="120" y1="200" x2="300" y2="200" stroke="#cbd5e1" stroke-width="2"/>
+                    <!-- Cateto verticale da C(300, 200) a B(300, 80) -->
+                    <line x1="300" y1="200" x2="300" y2="80" stroke="#cbd5e1" stroke-width="2"/>
+                    <!-- Ipotenusa AB da A(120, 200) a B(300, 80) -->
+                    <line x1="120" y1="200" x2="300" y2="80" stroke="#2563eb" stroke-width="3"/>
+
+                    <!-- Simbolo angolo retto in C -->
+                    <rect x="288" y="188" width="12" height="12" fill="none" stroke="#64748b" stroke-width="1.5"/>
+
+                    <!-- Punti A, B, C -->
+                    <circle cx="120" cy="200" r="5" fill="#2563eb"/>
+                    <circle cx="300" cy="80" r="5" fill="#2563eb"/>
+                    <circle cx="300" cy="200" r="4" fill="#64748b"/>
+
+                    <!-- Etichette Testuali -->
+                    <text x="100" y="218" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="14">A(x₁, y₁)</text>
+                    <text x="315" y="78" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="14">B(x₂, y₂)</text>
+                    <text x="310" y="218" fill="#64748b" font-family="Arial, sans-serif" font-size="13">C(x₂, y₁)</text>
+
+                    <!-- Etichette lati -->
+                    <text x="195" y="192" fill="#475569" font-family="Arial, sans-serif" font-size="12">x₂ - x₁</text>
+                    <text x="310" y="145" fill="#475569" font-family="Arial, sans-serif" font-size="12">y₂ - y₁</text>
+                    <text x="190" y="125" fill="#2563eb" font-family="Arial, sans-serif" font-weight="bold" font-size="13">d = AB</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Interpretazione geometrica della distanza basata sul Teorema di Pitagora.
+                </div>
+            </div>
+
+            <h2>2. La Formula Generale</h2>
+            <div class="formula-box">
+                📐 <strong>Formula della Distanza tra due punti:</strong>
+                <p style="margin-top: 0.6rem; margin-bottom: 0; font-size: 1.1rem; text-align: center;">
+                    <code>d(A, B) = &radic;[ (x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup> ]</code>
+                </p>
+            </div>
+            <p>
+                <em>Nota importante:</em> Poiché le differenze delle coordinate sono elevate al quadrato, l'ordine in cui si sottraggono i punti (es. <code>x<sub>2</sub> - x<sub>1</sub></code> oppure <code>x<sub>1</sub> - x<sub>2</sub></code>) è assolutamente ininfluente sul risultato finale.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trova la lunghezza del segmento congiungente i punti <code>A(-2, 1)</code> e <code>B(3, 13)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo i dati: <code>x<sub>1</sub> = -2</code>, <code>y<sub>1</sub> = 1</code> e <code>x<sub>2</sub> = 3</code>, <code>y<sub>2</sub> = 13</code>.</li>
+                    <li>Scriviamo la formula: <code>d = &radic;[(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup>]</code>.</li>
+                    <li>Sostituiamo facendo attenzione ai segni: <code>d = &radic;[(3 - (-2))<sup>2</sup> + (13 - 1)<sup>2</sup>]</code>.</li>
+                    <li>Semplifichiamo le parentesi: <code>d = &radic;[(3 + 2)<sup>2</sup> + (12)<sup>2</sup>] = &radic;[5<sup>2</sup> + 12<sup>2</sup>]</code>.</li>
+                    <li>Eleviamo al quadrato e sommiamo: <code>d = &radic;[25 + 144] = &radic;169 = 13</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: d = 13.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Distanza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi progressivi dal livello base al livello avanzato incentrati esclusivamente sul calcolo delle distanze nel piano.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let x1 = 0, y1 = 0;
+                    let x2 = 3, y2 = 4;
+                    let dist = 5;
+
+                    domanda = `Calcola la distanza tra l'origine <code>O(0, 0)</code> e il punto <code>A(${x2}, ${y2})</code>.`;
+                    risposta = `<strong>d = ${dist}</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la formula della distanza dall'origine: <code>d = &radic;[x<sup>2</sup> + y<sup>2</sup>]</code>.<br>
+                    2) Sostituiamo i valori: <code>d = &radic;[${x2}<sup>2</sup> + ${y2}<sup>2</sup>] = &radic;[${x2*x2} + ${y2*y2}] = &radic;25 = ${dist}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let x1 = 1, y1 = 2;
+                    let x2 = 4, y2 = 6;
+                    let dist = 5;
+
+                    domanda = `Calcola la distanza tra i punti <code>A(${x1}, ${y1})</code> e <code>B(${x2}, ${y2})</code>.`;
+                    risposta = `<strong>d = ${dist}</strong>`;
+                    spiegazione = `
+                    1) Impostiamo la formula: <code>d = &radic;[(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup>]</code>.<br>
+                    2) Sostituiamo i dati: <code>d = &radic;[(${x2} - ${x1})<sup>2</sup> + (${y2} - ${y1})<sup>2</sup>] = &radic;[3<sup>2</sup> + 4<sup>2</sup>] = &radic;[9 + 16] = &radic;25 = ${dist}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let x1 = -2, y1 = 1;
+                    let x2 = 3, y2 = 13;
+                    let dist = 13;
+
+                    domanda = `Determina la distanza geometrica tra i punti <code>A(${x1}, ${y1})</code> e <code>B(${x2}, ${y2})</code>.`;
+                    risposta = `<strong>d = ${dist}</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la formula con i numeri negativi: <code>d = &radic;[(${x2} - (${x1}))<sup>2</sup> + (${y2} - ${y1})<sup>2</sup>]</code>.<br>
+                    2) Svolgiamo le somme algebriche: <code>d = &radic;[(3 + 2)<sup>2</sup> + (12)<sup>2</sup>] = &radic;[5<sup>2</sup> + 12<sup>2</sup>]</code>.<br>
+                    3) Calcoliamo i quadrati: <code>d = &radic;[25 + 144] = &radic;169 = ${dist}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

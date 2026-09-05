@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul funzionamento del filtro polarizzatore, dichroismo, legge di Malus e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Filtro Polarizzatore e Applicazioni con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .box-disegno {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(126, 34, 206, 0.05);
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="filtro-polarizzatore" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica Ondulatoria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Filtro Polarizzatore</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Principio del dicroismo, asse di trasmissione, attenuazione dell'intensità luminosa e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Come Funziona un Filtro Polarizzatore</h2>
+            <p>
+                Un <strong>filtro polarizzatore</strong> (spesso realizzato con materiali plastici speciali o cristalli come la tormalina) sfrutta il fenomeno del <em>dicroismo</em>, ovvero la proprietà di assorbire selettivamente le componenti del campo elettrico oscillanti lungo una certa direzione, lasciando passare quasi indisturbate solo le oscillazioni parallele a un asse privilegiato detto <strong>asse di trasmissione</strong>.
+            </p>
+
+            <div class="box-disegno">
+                <h3 style="color: #7e22ce; margin-bottom: 1rem; font-size: 1.2rem;">Azione del Filtro sulla Luce Naturale</h3>
+                <svg viewBox="0 0 600 150" width="100%" height="auto" style="max-width: 550px; background: #faf5ff; border-radius: 8px; border: 1px solid #e9d5ff; padding: 10px;">
+                    <line x1="80" y1="75" x2="220" y2="75" stroke="#7e22ce" stroke-width="2" stroke-dasharray="3"/>
+                    <rect x="220" y="25" width="25" height="100" fill="#9333ea" rx="4"/>
+                    <line x1="245" y1="75" x2="420" y2="75" stroke="#0284c7" stroke-width="3"/>
+                    <text x="110" y="60" font-size="11" fill="#7e22ce">Luce Non Polarizzata ($I_0$)</text>
+                    <text x="235" y="140" font-size="11" fill="#7e22ce" font-weight="bold">Filtro</text>
+                    <text x="290" y="60" font-size="11" fill="#0284c7">Luce Polarizzata ($I = \frac{1}{2}I_0$)</text>
+                </svg>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; margin-bottom: 0;">
+                    Quando un fascio di luce non polarizzata attraversa il primo filtro ideale, l'intensità iniziale si dimezza esattamente.
+                </p>
+            </div>
+
+            <div class="formula-box">
+                📐 <b>Formule di Riferimento:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Passaggio da luce naturale a polarizzata:</b> 
+                    $$I = \frac{1}{2} I_0$$
+                    • <b>Passaggio attraverso un secondo filtro (Legge di Malus):</b> 
+                    $$I = I_{incidente} \cdot \cos^2(\theta)$$
+                </p>
+            </div>
+
+            <h2>2. Applicazioni Pratiche</h2>
+            <p>
+                I filtri polarizzatori sono ampiamente impiegati in fotografia per rimuovere i riflessi indesiderati da superfici non metalliche (acqua e vetri) e per saturare i cieli azzurri. In ambito industriale e di laboratorio servono per analizzare le tensioni meccaniche nei materiali trasparenti mediante fotoelasticità.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo dell'intensità e dell'attenuazione attraverso i filtri polarizzatori:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let I0 = 200 + (i * 15) % 400; // W/m^2
+                        let I_mezzo = I0 / 2;
+                        let angoli = [0, 30, 45, 60];
+                        let theta_deg = angoli[i % angoli.length];
+                        let theta_rad = theta_deg * (Math.PI / 180);
+                        let I_finale = I_mezzo * Math.pow(Math.cos(theta_rad), 2);
+
+                        q = `Esercizio ${i}: Un fascio di luce non polarizzata di intensità $I_0 = ${I0}\\text{ W/m}^2$ attraversa un primo filtro polarizzatore e successivamente un secondo filtro (analizzatore) con asse inclinato di $\\theta = ${theta_deg}^\\circ$ rispetto al primo. Calcola l'intensità finale $I$ della luce trasmessa.`;
+                        r = `Intensità finale $I \\approx ${I_finale.toFixed(2)}\\text{ W/m}^2$.`;
+                        s = `Il primo filtro dimezza l'intensità: $I_1 = \\frac{I_0}{2} = \\frac{${I0}}{2} = ${I_mezzo}\\text{ W/m}^2$. Applicando la legge di Malus per il secondo filtro: $I = I_1 \\cdot \\cos^2(\\theta) = ${I_mezzo} \\cdot \\cos^2(${theta_deg}^\\circ) \\approx ${I_finale.toFixed(2)}\\text{ W/m}^2$.`;
+                    
+                    } else if (tipo === 1) {
+                        let I0 = 300 + (i * 20) % 500;
+                        let I_trasmessa = I0 / 4;
+                        let cos_sq = I_trasmessa / (I0 / 2);
+                        let theta_rad = Math.acos(Math.sqrt(cos_sq));
+                        let theta_deg = theta_rad * (180 / Math.PI);
+
+                        q = `Esercizio ${i}: Luce non polarizzata d'intensità $I_0 = ${I0}\\text{ W/m}^2$ passa attraverso due polarizzatori. L'intensità finale misurata è $I = ${I_trasmessa.toFixed(1)}\\text{ W/m}^2$. Determina l'angolo $\\theta$ tra gli assi dei due polarizzatori.`;
+                        r = `Angolo $\\theta \\approx ${theta_deg.toFixed(1)}^\\circ$.`;
+                        s = `Dopo il primo filtro l'intensità è $I_1 = \\frac{I_0}{2} = ${I0 / 2}\\text{ W/m}^2$. Dalla legge di Malus $I = I_1 \\cdot \\cos^2(\\theta)$, ricaviamo $\\cos^2(\\theta) = \\frac{I}{I_1} = \\frac{${I_trasmessa.toFixed(1)}}{${I0 / 2}} = ${cos_sq.toFixed(4)}$. Da cui l'angolo $\\theta \\approx ${theta_deg.toFixed(1)}^\\circ$.`;
+                    
+                    } else {
+                        let I0 = 100 + (i * 10) % 300;
+                        let I_out = I0 / 2;
+
+                        q = `Esercizio ${i}: Un fascio di luce naturale (non polarizzata) di intensità $I_0 = ${I0}\\text{ W/m}^2$ incide su un singolo filtro polarizzatore ideale. Qual è l'intensità della luce emergente?`;
+                        r = `Intensità emergente $I = ${I_out.toFixed(1)}\\text{ W/m}^2$.`;
+                        s = `Quando la luce non polarizzata attraversa un filtro polarizzatore ideale, metà della sua intensità viene assorbita e metà viene trasmessa. Pertanto $I = \\frac{I_0}{2} = \\frac{${I0}}{2} = ${I_out.toFixed(1)}\\text{ W/m}^2$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

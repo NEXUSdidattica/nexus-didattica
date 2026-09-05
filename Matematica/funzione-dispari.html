@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida approfondita allo studio delle Funzioni Dispari e delle simmetrie rispetto all'origine con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Funzioni Dispari - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-dispari" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Proprietà e Studio delle Funzioni Dispari</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Analisi approfondita della simmetria centrale rispetto all'origine degli assi cartesiani con 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Caratteristiche delle Funzioni Dispari</h2>
+            <p>Una funzione reale di variabile reale \(y = f(x)\) si definisce <strong>dispari</strong> se il suo dominio \(D\) è simmetrico rispetto all'origine e se, per ogni \(x \in D\), soddifa la relazione fondamentale:</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[f(-x) = -f(x)\]
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Proprietà Geometriche e Operative</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Simmetria Centrale:</strong> Il grafico di una funzione dispari è simmetrico rispetto all'<em>origine degli assi</em> \((0,0)\). Se un punto \((x, y)\) appartiene al grafico, allora anche il punto \((-x, -y)\) vi appartiene.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Il caso di \(x = 0\):</strong> Se \(0\) appartiene al dominio della funzione dispari, si deve necessariamente avere \(f(0) = -f(0) \implies 2f(0) = 0 \implies f(0) = 0\). Il grafico passa quindi obbligatoriamente per l'origine.</li>
+                    <li><strong>Somma e Prodotto:</strong> La somma di due funzioni dispari è una funzione dispari. Il prodotto di due funzioni dispari restituisce una funzione pari.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Funzioni Dispari</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta strutturata di 100 esercizi interamente svolti, dai polinomi con soli esponenti dispari alle funzioni fratte, logaritmiche e trigonometriche avanzate.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sulle funzioni dispari -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Polinomi con sole potenze dispari o funzioni trigonometriche elementari dispari
+                        difficolta = "facile";
+                        const tipo = n % 4;
+                        const c = (n % 6) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Verifica se la funzione \\(f(x) = x^3 - ${c}x\\) è dispari.`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\) (simmetrico). Sostituiamo \\(x\\) con \\(-x\\):\n\\(f(-x) = (-x)^3 - ${c}(-x) = -x^3 + ${c}x = -(x^3 - ${c}x) = -f(x)\\).\nEssendo \\(f(-x) = -f(x)\\), la funzione è dispari.`;
+                        } else if (tipo === 1) {
+                            domanda = `Verifica la simmetria della funzione \\(f(x) = x^5 + ${c}x^3\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\). Calcoliamo \\(f(-x)\\):\n\\(f(-x) = (-x)^5 + ${c}(-x)^3 = -x^5 - ${c}x^3 = -(x^5 + ${c}x^3) = -f(x)\\).\nLa funzione rispetta la condizione di disparità.`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina se la funzione trigonometrica \\(f(x) = \\sin(x) + x\\) è dispari.`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\). Sostituiamo \\(-x\\):\n\\(f(-x) = \\sin(-x) + (-x) = -\\sin(x) - x = -(\\sin(x) + x) = -f(x)\\) (poiché il seno è una funzione dispari). La funzione è dispari.`;
+                        } else {
+                            domanda = `Studia la parità/disparità della funzione \\(f(x) = \\tan(x) + x^3\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio esclude i punti \\(x = \\frac{\\pi}{2} + k\\pi\\), risultando comunque simmetrico rispetto all'origine. Calcoliamo \\(f(-x)\\):\n\\(f(-x) = \\tan(-x) + (-x)^3 = -\\tan(x) - x^3 = -(\\tan(x) + x^3) = -f(x)\\).\nLa funzione è dispari.`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni fratte con numeratore dispari e denominatore pari, o combinazioni miste
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const a = (n % 5) + 3;
+
+                        if (tipo === 0) {
+                            domanda = `Verifica se la funzione fratta \\(f(x) = \\frac{x^3 - ${a}x}{x^2 + 1}\\) è dispari.`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `1. Il dominio è \\(\\mathbb{R}\\) (simmetrico).\n2. Sostituiamo \\(-x\\):\n\\[f(-x) = \\frac{(-x)^3 - ${a}(-x)}{(-x)^2 + 1} = \\frac{-x^3 + ${a}x}{x^2 + 1} = -\\frac{x^3 - ${a}x}{x^2 + 1} = -f(x)\\]\nLa funzione è dispari.`;
+                        } else if (tipo === 1) {
+                            domanda = `Studia la simmetria della funzione \\(f(x) = \\frac{x^5}{x^4 + ${a}}\\_[corretto: x^4 + ${a}]\\). Riscritto come \\(f(x) = \\frac{x^5}{x^4 + ${a}}\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Valutiamo \\(f(-x)\\):\n\\[f(-x) = \\frac{(-x)^5}{(-x)^4 + ${a}} = \\frac{-x^5}{x^4 + ${a}} = -\\frac{x^5}{x^4 + ${a}} = -f(x)\\]\nLa funzione è dispari.`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina la simmetria della funzione \\(f(x) = x \\cdot |x|\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Sostituiamo \\(-x\\):\n\\[f(-x) = (-x) \\cdot |-x| = -x \\cdot |x| = -(x \\cdot |x|) = -f(x)\\]\nEssendo il prodotto di una funzione dispari (\\(x\\)) per una pari (\\(|x|\\)), il risultato è una funzione dispari.`;
+                        } else if (tipo === 3) {
+                            domanda = `Verifica la natura della funzione \\(f(x) = x^3 - x^2\\).`;
+                            risultato = `NÉ PARI NÉ DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Testiamo \\(-x\\):\n\\[f(-x) = (-x)^3 - (-x)^2 = -x^3 - x^2\\]\nNotiamo che \\(-x^3 - x^2 \\neq f(x)\\) e \\(-x^3 - x^2 \\neq -f(x)\\) (poiché \\(-f(x) = -x^3 + x^2\\)). La funzione non è dispari (né pari).`;
+                        } else {
+                            domanda = `Studia la funzione \\(f(x) = \\frac{x}{x^2 - ${a}}\\_[corretto] \\to f(x) = \\frac{x}{x^2 - ${a}}\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Dominio: \\(x \\neq \\pm\\sqrt{${a}}\\) (simmetrico rispetto all'origine).\nCalcoliamo \\(f(-x)\\):\n\\[f(-x) = \\frac{-x}{(-x)^2 - ${a}} = \\frac{-x}{x^2 - ${a}} = -\\frac{x}{x^2 - ${a}} = -f(x)\\]\nLa funzione è dispari.`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni logaritmiche, esponenziali complesse e combinazioni avanzate
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Verifica se la seguente funzione logaritmica è dispari:\n\\[f(x) = \\ln\\left( \\frac{2 + x}{2 - x} \\right)\\]`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `1. **Dominio:** \\(\\frac{2+x}{2-x} > 0 \\implies -2 < x < 2\\) (intervallo simmetrico).\n` +
+                            `2. **Verifica:**\n` +
+                            `\\[f(-x) = \\ln\\left( \\frac{2 + (-x)}{2 - (-x)} \\right) = \\ln\\left( \\frac{2 - x}{2 + x} \\right) = \\ln\\left( \\left(\\frac{2 + x}{2 - x}\\right)^{-1} \\right) = -\\ln\\left( \\frac{2 + x}{2 - x} \\right) = -f(x)\\]\n` +
+                            `La funzione è dispari.`;
+                        } else if (tipo === 1) {
+                            domanda = `Studia la simmetria della funzione esponenziale mista:\n\\[f(x) = e^x - e^{-x}\\]`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Calcoliamo \\(f(-x)\\):\n` +
+                            `\\[f(-x) = e^{-x} - e^{-(-x)} = e^{-x} - e^x = -(e^x - e^{-x}) = -f(x)\\]\n` +
+                            `Questa è la definizione algebrica della funzione seno iperbolico (\\(\\sinh(x)\\)), che è una funzione dispari.`;
+                        } else if (tipo === 2) {
+                            domanda = `Verifica se la funzione è dispari:\n\\[f(x) = x^3 \\cdot \\cos(x)\\]`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Sostituiamo \\(-x\\):\n` +
+                            `\\[f(-x) = (-x)^3 \\cdot \\cos(-x) = -x^3 \\cdot \\cos(x) = -(x^3 \\cos(x)) = -f(x)\\]\n` +
+                            `Il prodotto tra una funzione dispari (\\(x^3\\)) e una pari (\\(\\cos(x)\\)) genera una funzione dispari.`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina la parità o disparità della funzione:\n\\[f(x) = \\ln(x + \\sqrt{x^2 + 1})\\]`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `1. Il dominio è \\(\\mathbb{R}\\) (poiché \\(\\sqrt{x^2+1} > |x|\\) sempre).\n` +
+                            `2. Calcoliamo \\(f(-x)\\):\n` +
+                            `\\[f(-x) = \\ln(-x + \\sqrt{(-x)^2 + 1}) = \\ln(\\sqrt{x^2 + 1} - x)\\]\n` +
+                            `Razionalizziamo l'argomento moltiplicando e dividendo per \\(\\sqrt{x^2+1} + x\\):\n` +
+                            `\\[\\sqrt{x^2+1} - x = \\frac{(\\sqrt{x^2+1}-x)(\\sqrt{x^2+1}+x)}{\\sqrt{x^2+1}+x} = \\frac{(x^2+1) - x^2}{\\sqrt{x^2+1}+x} = \\frac{1}{\\sqrt{x^2+1}+x} = (\\sqrt{x^2+1}+x)^{-1}\\]\n` +
+                            `Applicando le proprietà dei logaritmi:\n` +
+                            `\\[f(-x) = \\ln((\\sqrt{x^2+1}+x)^{-1}) = -\\ln(\\sqrt{x^2+1}+x) = -f(x)\\]\n` +
+                            `La funzione è pertanto dispari (è la funzione inversa del seno iperbolico, \\(\\text{setsinh}(x)\\)).`;
+                        } else {
+                            domanda = `Studia la simmetria della funzione:\n\\[f(x) = \\frac{x^3}{\\sqrt{${k} + x^2}}\\]`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `1. Il dominio è \\(\\mathbb{R}\\) (il radicando è sempre \\(\\ge ${k} > 0\\)).\n` +
+                            `2. Sostituiamo \\(-x\\):\n` +
+                            `\\[f(-x) = \\frac{(-x)^3}{\\sqrt{${k} + (-x)^2}} = \\frac{-x^3}{\\sqrt{${k} + x^2}} = -\\frac{x^3}{\\sqrt{${k} + x^2}} = -f(x)\\]\n` +
+                            `La funzione risulta dispari.`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

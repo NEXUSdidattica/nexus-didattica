@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Funzioni Logaritmiche e loro Proprietà - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Funzioni Logaritmiche e loro Proprietà - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="funzioni-logaritmiche" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Funzioni Logaritmiche e loro Proprietà</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi del grafico, studio della monotonia, simmetrie con le funzioni esponenziali e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Caratteristiche e Grafico della Funzione Logaritmica</h2>
+            <p>
+                La funzione logaritmica elementare si presenta nella forma <code>f(x) = log<sub>a</sub>(x)</code>, dove la base <code>a</code> deve soddisfare le condizioni <code>a > 0</code> e <code>a &ne; 1</code>. Il dominio (o campo di esistenza) della funzione è l'insieme dei numeri reali positivi: <code>D = (0, +\infty)</code>, mentre il codominio è l'intero asse reale <code>R</code>.
+            </p>
+            <ul>
+                <li><strong>Passaggio per il punto (1,0):</strong> Qualsiasi sia la base <code>a</code>, <code>log<sub>a</sub>(1) = 0</code>, quindi il grafico interseca sempre l'asse <em>x</em> nel punto di coordinate <code>(1, 0)</code>.</li>
+                <li><strong>Asintoto verticale:</strong> La retta di equazione <code>x = 0</code> (l'asse delle ordinate) rappresenta un asintoto verticale per la funzione.</li>
+            </ul>
+
+            <h2>2. Monotonia e Andamento</h2>
+            <p>
+                Il comportamento della funzione all'aumentare di <code>x</code> dipende strettamente dal valore della base <code>a</code>:
+            </p>
+            <ul>
+                <li>Se <strong><code>a > 1</code></strong>, la funzione è <em>strettamente crescente</em>: dati <code>0 < x₁ < x₂</code>, si ha <code>log<sub>a</sub>(x₁) < log<sub>a</sub>(x₂)</code>.</li>
+                <li>Se <strong><code>0 < a < 1</code></strong>, la funzione è <em>strettamente decrescente</em>: dati <code>0 < x₁ < x₂</code>, si ha <code>log<sub>a</sub>(x₁) > log<sub>a</sub>(x₂)</code>.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Relazione di Inversione con l'Esponenziale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    La funzione logaritmica <code>f(x) = log<sub>a</sub>(x)</code> è l'inversa della funzione esponenziale <code>g(x) = a<sup>x</sup></code>. I loro grafici sono simmetrici rispetto alla bisettrice del primo e terzo quadrante (la retta <code>y = x</code>).
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Studia il dominio e calcola i valori notevoli della funzione <code>f(x) = log<sub>2</sub>(x - 3) + 1</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Imponiamo la condizione di esistenza sull'argomento del logaritmo: <code>x - 3 > 0 &rArr; x > 3</code>. Il dominio è quindi l'intervallo <code>(3, +\infty)</code>.</li>
+                    <li>Per trovare l'intersezione con l'asse <em>x</em>, poniamo <code>f(x) = 0</code>:<br>
+                        <code>log<sub>2</sub>(x - 3) + 1 = 0 &rArr; log<sub>2</sub>(x - 3) = -1</code>.
+                    </li>
+                    <li>Passiamo alla forma esponenziale equivalente: <code>x - 3 = 2<sup>-1</sup> = 1/2</code>.</li>
+                    <li>Ricaviamo la <code>x</code>: <code>x = 3 + 1/2 = 7/2</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Dominio: x > 3 | Intersezione asse x: (7/2, 0)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Funzioni Logaritmiche</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di studio del dominio, calcolo di immagini, simmetrie e proprietà delle funzioni logaritmiche.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let k = (i % 5) + 1;
+                    domanda = `Determina il dominio della funzione logaritmica: <code>f(x) = log<sub>2</sub>(x + ${k})</code>.`;
+                    risposta = `<strong>x > -${k}</strong>`;
+                    spiegazione = `
+                    1) L'argomento del logaritmo deve essere strettamente positivo.<br>
+                    2) Poniamo <code>x + ${k} > 0</code>.<br>
+                    3) Isolate le variabili, otteniamo la condizione di esistenza <code>x > -${k}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 4) + 2;
+                    let exp = (i % 3) + 1;
+                    let val = Math.pow(a, exp);
+
+                    domanda = `Calcola il valore della funzione <code>f(x) = log<sub>${a}</sub>(x)</code> nel punto <code>x = ${val}</code>.`;
+                    risposta = `<strong>${exp}</strong>`;
+                    spiegazione = `
+                    1) Sostituiamo il valore di <code>x</code> all'interno della funzione: <code>f(${val}) = log<sub>${a}</sub>(${val})</code>.<br>
+                    2) Riscriviamo <code>${val}</code> come potenza della base: <code>${val} = ${a}<sup>${exp}</sup></code>.<br>
+                    3) Applicando la proprietà della potenza del logaritmo, il risultato è <code>${exp}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let n = (i % 3) + 2;
+                    domanda = `Trova l'intersezione con l'asse delle ascisse (x) della funzione <code>f(x) = log<sub>3</sub>(x - ${n})</code>.`;
+                    risposta = `<strong>(${n + 1}, 0)</strong>`;
+                    spiegazione = `
+                    1) Poniamo la funzione uguale a zero: <code>log<sub>3</sub>(x - ${n}) = 0</code>.<br>
+                    2) Trasformiamo l'equazione logaritmica in forma esponenziale: <code>x - ${n} = 3<sup>0</sup> = 1</code>.<br>
+                    3) Ricaviamo <code>x = ${n} + 1 = ${n + 1}</code>, da cui le coordinate del punto <code>(${n + 1}, 0)</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

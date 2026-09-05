@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Sistemi di Numerazione e Conversioni - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi di Numerazione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Tema Arancione Informatica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+        }
+
+        /* Linee a sinistra più spesse per gli esercizi */
+        .card-esercizio.livello-facile {
+            border-left: 6px solid #10b981;
+        }
+
+        .card-esercizio.livello-medio {
+            border-left: 6px solid #f59e0b;
+        }
+
+        .card-esercizio.livello-difficile {
+            border-left: 6px solid #ef4444;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .badge-difficolta.facile { background-color: #10b981; }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #ea580c;
+            padding: 0.5rem 0;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #fff7ed;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .box-risposta-corretta {
+            background-color: #ffedd5;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            color: #9a3412;
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stili specifici per il convertitore interattivo */
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input.code-input:focus {
+            border-color: #ea580c;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="sistemi-di-numerazione" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Architettura</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Sistemi di Numerazione e Conversioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dei sistemi decimale, binario, ottale ed esadecimale, convertitore interattivo e 100 esercizi obbligatori.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. I Sistemi di Numerazione Posizionali</h2>
+            <p>
+                Un sistema di numerazione posizionale permette di esprimere i numeri utilizzando un insieme finito di simboli (cifre) il cui valore dipende non solo dalla cifra stessa, ma anche dalla posizione che essa occupa all'interno del numero. La base <code>b</code> indica il numero di simboli disponibili.
+            </p>
+
+            <h2>2. Principali Sistemi in Informatica</h2>
+            <p>
+                Nell'architettura dei calcolatori e nella programmazione si utilizzano principalmente quattro sistemi di numerazione:
+            </p>
+            <ul>
+                <li><strong>Decimale (Base 10):</strong> Usa le cifre da <code>0</code> a <code>9</code>. È il sistema di uso comune nella vita quotidiana.</li>
+                <li><strong>Binario (Base 2):</strong> Usa esclusivamente le cifre <code>0</code> e <code>1</code>. È il linguaggio nativo dell'hardware elettronico.</li>
+                <li><strong>Ottale (Base 8):</strong> Usa le cifre da <code>0</code> a <code>7</code>, storicamente usato per raggruppare bit.</li>
+                <li><strong>Esadecimale (Base 16):</strong> Usa le cifre da <code>0</code> a <code>9</code> e le lettere da <code>A</code> a <code>F</code> (dove A=10, B=11, C=12, D=13, E=14, F=15). Fondamentale per la rappresentazione compatta di indirizzi di memoria e codici colore RGB.</li>
+            </ul>
+
+            <div class="formula-box" style="border-color: #fed7aa; background-color: #fff7ed;">
+                🔄 <strong>Regole di Conversione di Base:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • <strong>Da Binario a Decimale:</strong> Si moltiplica ogni cifra binaria per la rispettiva potenza di 2 crescente da destra verso sinistra (es. <code>101<sub>2</sub> = 1·2<sup>2</sup> + 0·2<sup>1</sup> + 1·2<sup>0</sup> = 5<sub>10</sub></code>).<br>
+                    • <strong>Da Decimale a Binario:</strong> Si divide il numero per 2 ripetutamente annotando i resti, procedendo dal basso verso l'alto.<br>
+                    • <strong>Da Esadecimale a Binario:</strong> Ogni cifra esadecimale viene convertita direttamente nel suo blocco di 4 bit corrispondente.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #9a3412; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Converti il numero binario <code>1101<sub>2</sub></code> in formato decimale (Base 10).</p>
+                <hr style="border: 0; border-top: 1px solid #fed7aa; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo le potenze di 2 da destra verso sinistra: <code>2<sup>3</sup>, 2<sup>2</sup>, 2<sup>1</sup>, 2<sup>0</sup></code>.</li>
+                    <li>Moltiplichiamo ogni bit del numero <code>1101</code> per la rispettiva potenza: <code>(1·8) + (1·4) + (0·2) + (1·1)</code>.</li>
+                    <li>Sommiamo i valori ottenuti: <code>8 + 4 + 0 + 1 = 13</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione: 13<sub>10</sub></strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2 style="color: #c2410c;">✏️ 100 Esercizi Obbligatori sui Sistemi di Numerazione</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi progressivi suddivisi per livello di difficoltà (facile, medio, difficile) per allenare le conversioni tra basi numeriche.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Script Generatore dei 100 Esercizi Obbligatori -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let valDec = (i % 15) + 1;
+                    domanda = `Converti il numero decimale <code>${valDec}<sub>10</sub></code> nel rispettivo codice binario.`;
+                    let risBin = valDec.toString(2);
+                    risposta = `<strong>${risBin}<sub>2</sub></strong>`;
+                    spiegazione = `
+                    1) Dividiamo successivamante il numero ${valDec} per 2 ricavando i resti.<br>
+                    2) Leggendo i resti dal basso verso l'alto otteniamo <code>${risBin}<sub>2</sub></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let numBin = (i % 10 + 4).toString(2);
+                    domanda = `Converti il numero binario <code>${numBin}<sub>2</sub></code> in formato decimale (Base 10).`;
+                    let risDec = parseInt(numBin, 2);
+                    risposta = `<strong>${risDec}<sub>10</sub></strong>`;
+                    spiegazione = `
+                    1) Moltiplichiamo ogni cifra di <code>${numBin}</code> per le potenze crescenti di 2 da destra verso sinistra.<br>
+                    2) Eseguendo la somma otteniamo il valore decimale <code>${risDec}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let valHexDec = (i % 100) + 16;
+                    domanda = `Converti il numero decimale <code>${valHexDec}<sub>10</sub></code> nel sistema esadecimale (Base 16).`;
+                    let risHex = valHexDec.toString(16).toUpperCase();
+                    risposta = `<strong>${risHex}<sub>16</sub></strong>`;
+                    spiegazione = `
+                    1) Dividiamo il numero decimale ${valHexDec} per 16.<br>
+                    2) Convertiamo gli eventuali resti superiori a 9 nelle lettere corrispondenti (A-F), ottenendo <code>${risHex}<sub>16</sub></code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

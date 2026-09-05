@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione dettagliata sull'indice di rifrazione assoluto e relativo, velocità della luce nei mezzi e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Indice di Rifrazione con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="indice-di-rifrazione" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Indice di Rifrazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione rigorosa dell'indice di rifrazione assoluto, legame con la velocità della luce nei mezzi materiali e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è l'Indice di Rifrazione?</h2>
+            <p>
+                L'<strong>indice di rifrazione assoluto</strong> ($n$) di un mezzo trasparente è una grandezza fisica adimensionale che misura quanto rallenta la luce quando si propaga attraverso quel mezzo rispetto alla sua velocità nel vuoto.
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formule Chiave sull'Indice di Rifrazione:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Definizione fondamentale:</b>
+                    $$n = \frac{c}{v}$$
+                    dove $c \approx 3 \cdot 10^8\text{ m/s}$ è la velocità della luce nel vuoto e $v$ è la velocità della luce nel mezzo considerato.<br>
+                    • Poiché la luce nel vuoto viaggia alla massima velocità possibile ($v < c$), l'indice di rifrazione è sempre maggiore di 1 ($n > 1$) per qualsiasi mezzo materiale (per il vuoto si pone $n = 1$).
+                </p>
+            </div>
+
+            <h2>2. Valori Tipici nei Mezzi Comuni</h2>
+            <p>
+                L'aria ha un indice di rifrazione molto vicino a quello del vuoto ($n \approx 1.0003$, spesso approssimato a $1.0$). L'acqua pura ha un indice di circa $1.33$, il vetro comune varia tra $1.50$ e $1.60$, mentre il diamante possiede un indice elevatissimo ($n \approx 2.42$), responsabile della sua forte dispersione e lucentezza.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo dell'indice di rifrazione e della velocità della luce:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        // Script autonomo e protetto per la generazione immediata dei 100 esercizi unici
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container || container.children.length > 0) return;
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        // Calcolo indice n da velocità v
+                        let v_mezzo = 150000 + (i % 120000); // km/s
+                        let c = 300000;
+                        let n_val = (c / v_mezzo).toFixed(2);
+
+                        q = `Esercizio ${i}: La velocità della luce all'interno di un particolare liquido trasparente è $v = ${v_mezzo}\\text{ km/s}$. Calcola l'indice di rifrazione assoluto $n$ del liquido.`;
+                        r = `Indice di rifrazione $n = ${n_val}$.`;
+                        s = `L'indice di rifrazione si calcola come rapporto tra la velocità della luce nel vuoto ($c = 300000\\text{ km/s}$) e la velocità nel mezzo: $n = \\frac{c}{v} = \\frac{300000}{${v_mezzo}} = ${n_val}$.`;
+                    
+                    } else if (tipo === 1) {
+                        // Calcolo velocità v da indice n
+                        let n_val = (1.1 + (i % 20) * 0.08).toFixed(2);
+                        let c = 300000; // km/s
+                        let v_calc = c / parseFloat(n_val);
+
+                        q = `Esercizio ${i}: Un solido trasparente possiede un indice di rifrazione $n = ${n_val}$. Determina la velocità di propagazione $v$ della luce all'interno di questo materiale.`;
+                        r = `Velocità $v \\approx ${v_calc.toFixed(0)}\\text{ km/s}$.`;
+                        s = `Dalla formula $n = \\frac{c}{v}$, ricaviamo la velocità nel mezzo invertendo la relazione: $v = \\frac{c}{n} = \\frac{300000}{${n_val}} \\approx ${v_calc.toFixed(0)}\\text{ km/s}$.`;
+                    
+                    } else {
+                        // Confronto tra due mezzi
+                        let n_A = (1.3 + (i % 5) * 0.1).toFixed(2);
+                        let n_B = (1.5 + (i % 7) * 0.1).toFixed(2);
+                        let piuDenso = parseFloat(n_A) > parseFloat(n_B) ? "mezzo A" : "mezzo B";
+
+                        q = `Esercizio ${i}: Il mezzo ottico A ha un indice di rifrazione $n_A = ${n_A}$, mentre il mezzo ottico B ha un indice $n_B = ${n_B}$. In quale dei due mezzi la luce viaggia più lentamente?`;
+                        r = `La luce viaggia più lentamente nel ${parseFloat(n_A) > parseFloat(n_B) ? "mezzo A" : "mezzo B"} (avendo indice di rifrazione maggiore).`;
+                        s = `La velocità della luce è inversamente proporzionale all'indice di rifrazione ($v = \\frac{c}{n}$). Il materiale con l'indice di rifrazione più alto ($${Math.max(n_A, n_B)}$) è otticamente più denso e rallenta maggiormente la luce.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

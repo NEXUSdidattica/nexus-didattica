@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alla Scomposizione in Fattori Primi, Teorema Fondamentale dell'Aritmetica e 100 Esercizi Svolti Passo-Passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Scomposizione in Fattori Primi: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-scomposizione-fattori-primi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Scomposizione in Fattori Primi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Scopri il Teorema Fondamentale dell'Aritmetica, la fattorizzazione in colonna, le tecniche veloci con lo zero e il calcolo del numero di divisori.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Teorema Fondamentale dell'Aritmetica</h2>
+            <p>
+                Scomporre un numero in fattori primi (o <em>fattorizzare</em>) significa scriverlo sotto forma di prodotto di soli numeri primi (<code>2, 3, 5, 7, 11, 13, ...</code>).
+            </p>
+            <p style="background-color: #eff6ff; padding: 1rem; border-left: 4px solid #3b82f6; font-style: italic; color: #1e3a8a;">
+                "Ogni numero naturale composto maggiore di 1 può essere espresso in modo UNICO come prodotto di fattori primi, a meno dell'ordine con cui i fattori vengono scritti."
+            </p>
+            <p>
+                Questo significa che i numeri primi sono i "mattoni fondamentali" di tutti i numeri interi!
+            </p>
+
+            <h2>2. Il Metodo delle Divisioni Successive (Scomposizione in Colonna)</h2>
+            <p>Per scomporre un numero composto si segue una procedura sistematica:</p>
+            <ol>
+                <li>Si traccia una linea verticale a destra del numero da scomporre.</li>
+                <li>Si applicano i criteri di divisibilità per trovare il più piccolo numero primo che sia suo divisore e lo si scrive a destra della linea.</li>
+                <li>Si calcola il quoziente della divisione e lo si scrive sotto il numero originale (a sinistra).</li>
+                <li>Si ripete il procedimento con il quoziente ottenuto finché a sinistra non si ottiene <code>1</code>.</li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Fattorizzazione Standard)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Scomponi in fattori primi il numero <strong>360</strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>360 è pari &rarr; dividiamo per <strong>2</strong>: <code>360 : 2 = 180</code></li>
+                    <li>180 è pari &rarr; dividiamo per <strong>2</strong>: <code>180 : 2 = 90</code></li>
+                    <li>90 è pari &rarr; dividiamo per <strong>2</strong>: <code>90 : 2 = 45</code></li>
+                    <li>45 è dispari, la somma delle cifre (4+5=9) è multiplo di 3 &rarr; dividiamo per <strong>3</strong>: <code>45 : 3 = 15</code></li>
+                    <li>15 è divisibile per 3 &rarr; dividiamo per <strong>3</strong>: <code>15 : 3 = 5</code></li>
+                    <li>5 è un numero primo &rarr; dividiamo per <strong>5</strong>: <code>5 : 5 = 1</code></li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato in forma di potenze:</strong> <code>360 = 2³ × 3² × 5</code></p>
+            </div>
+
+            <h2>3. Scorciatoia Aritmetica: La Regola degli Zeri</h2>
+            <p>
+                Quando un numero termina con uno o più zeri, è possibile velocizzare la scomposizione ricordando che:
+            </p>
+            <ul>
+                <li>Ogni zero finale equivale a una moltiplicazione per <code>10 = 2 × 5</code>.</li>
+                <li>Un numero che termina per <code>0</code> si può dividere direttamente per <code>(2 × 5)</code>.</li>
+                <li>Un numero che termina per <code>00</code> si può dividere direttamente per <code>100 = (2² × 5²)</code>.</li>
+                <li>Un numero che termina per <code>000</code> si può dividere per <code>1000 = (2³ × 5³)</code>.</li>
+            </ul>
+
+            <h2>4. Calcolo del Numero Totale dei Divisori</h2>
+            <p>
+                Una volta ottenuta la scomposizione in fattori primi di un numero:
+            </p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.1rem; color: #2563eb;">
+                N = p<sub>1</sub><sup>a</sup> × p<sub>2</sub><sup>b</sup> × p<sub>3</sub><sup>c</sup> ...
+            </p>
+            <p>
+                È possibile calcolare quanti divisori possiede quel numero senza doverli elencare manualmente. La formula è:
+            </p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.15rem; color: #0f172a; background-color: #f1f5f9; padding: 0.8rem; border-radius: 6px;">
+                Numero di Divisori = (a + 1) × (b + 1) × (c + 1) ...
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 4 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Numero dei Divisori)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Quanti divisori ha il numero <strong>180</strong>?</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scomponiamo 180 in fattori primi: <code>180 = 2² × 3² × 5¹</code>.</li>
+                    <li>Prendiamo gli esponenti dei fattori primi: <code>2</code> (per il fattore 2), <code>2</code> (per il 3), <code>1</code> (per il 5).</li>
+                    <li>Aggiungiamo 1 a ciascun esponente: <code>(2 + 1) = 3</code>, <code>(2 + 1) = 3</code>, <code>(1 + 1) = 2</code>.</li>
+                    <li>Moltiplichiamo i tre risultati: <code>3 × 3 × 2 = 18</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> Il numero 180 possiede esattamente <strong>18 divisori</strong>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sulla Scomposizione in Fattori Primi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 schede ordinate per difficoltà crescente. 
+                Espandi ciascuna scheda per vedere la fattorizzazione completa, la forma contratta in potenze e le relative spiegazioni.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Testo Puro) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Funzione ausiliaria per scomporre un numero e restituire fattori ed esponenti
+            function factorize(n) {
+                let temp = n;
+                let factors = {};
+                for (let d = 2; d * d <= temp; d++) {
+                    while (temp % d === 0) {
+                        factors[d] = (factors[d] || 0) + 1;
+                        temp /= d;
+                    }
+                }
+                if (temp > 1) {
+                    factors[temp] = (factors[temp] || 0) + 1;
+                }
+                return factors;
+            }
+
+            // Formatta l'oggetto dei fattori in stringa potenze (es. 2² × 3 × 5)
+            function formatFactors(factors) {
+                return Object.keys(factors)
+                    .map(k => factors[k] > 1 ? `${k}<sup>${factors[k]}</sup>` : `${k}`)
+                    .join(' × ');
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Numeri composti piccoli (< 100), scomposizione diretta
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let num = 12 + (i * 2);
+                        if (num === 13 || num === 17 || num === 19 || num === 23 || num === 29 || num === 31) num += 1;
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Esegui la scomposizione in fattori primi del numero <strong>${num}</strong>.`;
+                        risposta = `${num} = ${strF}`;
+                        spiegazione = `Dividendo ${num} per i suoi divisori primi in ordine crescente si ottiene: <code>${strF}</code>.`;
+                    } else if (mod === 2) {
+                        let num = 20 + (i * 3);
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Scomponi il numero <strong>${num}</strong> e scrivi il risultato sotto forma di potenze di fattori primi.`;
+                        risposta = `${num} = ${strF}`;
+                        spiegazione = `Dividiamo ${num} passo dopo passo per i numeri primi. La fattorizzazione risultante è <code>${strF}</code>.`;
+                    } else if (mod === 3) {
+                        let num = 8 + (i * 2);
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Qual è la corretta fattorizzazione in primi di <strong>${num}</strong>?`;
+                        risposta = `${strF}`;
+                        spiegazione = `Applicando le divisioni successive, il numero ${num} si scrive come prodotto di primi: <code>${strF}</code>.`;
+                    } else {
+                        let base = (i % 5) + 2;
+                        let exp = (i % 3) + 2;
+                        let num = Math.pow(base, exp);
+                        domanda = `Scrivi la scomposizione in fattori primi di <strong>${num}</strong> (una potenza perfetta di un numero primo).`;
+                        risposta = `${base}<sup>${exp}</sup>`;
+                        spiegazione = `Poiché ${num} è ottenuto elevando il numero primo ${base} a esponente ${exp}, la sua scomposizione è semplicemente <code>${base}<sup>${exp}</sup></code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Numeri > 100, regola degli zeri (2x5), calcolo del numero dei divisori
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let baseN = 12 + (i - 35);
+                        let num = baseN * 10;
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Scomponi in fattori primi il numero <strong>${num}</strong> utilizzando la regola dello zero finale (divisibilità per 2 × 5).`;
+                        risposta = `${num} = ${strF}`;
+                        spiegazione = `Possiamo eliminare lo zero finale dividendo subito per <code>(2 × 5)</code>. Scomponendo la parte restante ${baseN} e ricompattando le potenze otteniamo <code>${strF}</code>.`;
+                    } else if (mod === 2) {
+                        let num = 72 + (i * 4);
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        let nDivs = Object.values(f).reduce((acc, exp) => acc * (exp + 1), 1);
+                        let expCalc = Object.values(f).map(exp => `(${exp} + 1)`).join(' × ');
+
+                        domanda = `Scomponi <strong>${num}</strong> e calcola quanti divisori possiede in totale.`;
+                        risposta = `${num} = ${strF} (${nDivs} divisori)`;
+                        spiegazione = `
+                        1) Scomposizione: <code>${strF}</code>.<br>
+                        2) Aggiungiamo 1 a ciascun esponente e li moltiplichiamo: <code>${expCalc} = ${nDivs}</code> divisori totali.`;
+                    } else if (mod === 3) {
+                        let baseN = (i % 8) + 3;
+                        let num = baseN * 100;
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Scomponi il numero <strong>${num}</strong> che termina per due zeri.`;
+                        risposta = `${num} = ${strF}`;
+                        spiegazione = `Essendoci due zeri finali, dividiamo per <code>100 = 2² × 5²</code>. Scomponiamo la parte rimanente ${baseN} e uniamo i fattori uguali ottenendo <code>${strF}</code>.`;
+                    } else {
+                        let num = 144 + (i * 3);
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Determina la scomposizione in primi del numero <strong>${num}</strong>.`;
+                        risposta = `${num} = ${strF}`;
+                        spiegazione = `Eseguendo le divisioni successive otteniamo la fattorizzazione unica <code>${strF}</code>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Numeri grandi, quadrati perfetti, cubi, calcolo avanzato sui divisori
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let nBase = 15 + (i - 70);
+                        let num = nBase * nBase; // Quadrato perfetto
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        let nDivs = Object.values(f).reduce((acc, exp) => acc * (exp + 1), 1);
+                        domanda = `Scomponi il quadrato perfetto <strong>${num}</strong> (pari a ${nBase}²) e trova il numero totale di divisori. Spiega perché il numero di divisori è un numero DISPARI.`;
+                        risposta = `${num} = ${strF} (${nDivs} divisori, numero dispari)`;
+                        spiegazione = `
+                        1) Scomposizione: <code>${strF}</code>.<br>
+                        2) Tutti gli esponenti di un quadrato perfetto sono PARI.<br>
+                        3) Sommando 1 a un esponente pari si ottiene un valore DISPARI. Il prodotto di numeri dispari è DISPARI (in questo caso ${nDivs}).`;
+                    } else if (mod === 2) {
+                        let num = 1000 + (i * 25);
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        domanda = `Esegui la scomposizione in fattori primi del numero di tre/quattro cifre <strong>${num}</strong>.`;
+                        risposta = `${num} = ${strF}`;
+                        spiegazione = `Dividendo il numero per i fattori primi in ordine di grandezza si arriva al risultato finale: <code>${strF}</code>.`;
+                    } else {
+                        let p1 = 2, p2 = 3;
+                        let exp1 = (i % 3) + 2;
+                        let exp2 = (i % 2) + 1;
+                        let num = Math.pow(p1, exp1) * Math.pow(p2, exp2);
+                        let f = factorize(num);
+                        let strF = formatFactors(f);
+                        let nDivs = (exp1 + 1) * (exp2 + 1);
+                        domanda = `Sapendo che N = 2<sup>${exp1}</sup> × 3<sup>${exp2}</sup>, qual è il valore intero di N e quanti divisori possiede?`;
+                        risposta = `N = ${num} (${nDivs} divisori)`;
+                        spiegazione = `
+                        1) Valore numerico: <code>2<sup>${exp1}</sup> × 3<sup>${exp2}</sup> = ${num}</code>.<br>
+                        2) Numero di divisori: <code>(${exp1} + 1) × (${exp2} + 1) = ${nDivs}</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

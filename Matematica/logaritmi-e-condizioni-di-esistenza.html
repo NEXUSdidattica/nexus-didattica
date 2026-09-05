@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Logaritmi e Condizioni di Esistenza - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Logaritmi e Condizioni di Esistenza - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="logaritmi-condizioni-esistenza" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Logaritmi e Condizioni di Esistenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione formale di logaritmo, proprietà fondamentali delle potenze invertite, imposizione rigorosa del campo di esistenza e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Condizioni di Esistenza (C.E.)</h2>
+            <p>
+                Il logaritmo in base <code>a</code> di un numero <code>b</code> è l'esponente <code>c</code> a cui bisogna elevare la base <code>a</code> per ottenere l'argomento <code>b</code>. Si scrive <code>log<sub>a</sub>(b) = c &iff; a<sup>c</sup> = b</code>.
+            </p>
+            <p>
+                Affinché un'espressione logaritmica abbia significato nel campo reale, bisogna imporre rigorose <strong>Condizioni di Esistenza (C.E.)</strong>:
+            </p>
+            <ul>
+                <li><strong>Argomento strettamente positivo:</strong> L'argomento <code>b</code> deve essere sempre maggiore di zero: <code>b > 0</code>.</li>
+                <li><strong>Base positiva:</strong> La base <code>a</code> deve essere strettamente maggiore di zero: <code>a > 0</code>.</li>
+                <li><strong>Base diversa da uno:</strong> La base <code>a</code> deve essere diversa da <code>1</code>: <code>a &ne; 1</code>.</li>
+            </ul>
+
+            <h2>2. Le Proprietà Operative dei Logaritmi</h2>
+            <p>
+                Le proprietà algebriche fondamentali derivano direttamente dalle regole delle potenze:
+            </p>
+            <ul>
+                <li><strong>Logaritmo di un prodotto:</strong> <code>log<sub>a</sub>(x &middot; y) = log<sub>a</sub>(x) + log<sub>a</sub>(y)</code></li>
+                <li><strong>Logaritmo di un quoziente:</strong> <code>log<sub>a</sub>(x / y) = log<sub>a</sub>(x) - log<sub>a</sub>(y)</code></li>
+                <li><strong>Logaritmo di una potenza:</strong> <code>log<sub>a</sub>(x<sup>k</sup>) = k &middot; log<sub>a</sub>(x)</code></li>
+                <li><strong>Formula del cambiamento di base:</strong> <code>log<sub>a</sub>(b) = log<sub>c</sub>(b) / log<sub>c</sub>(a)</code></li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico di C.E.:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Determinare il campo di esistenza di <code>f(x) = log<sub>2</sub>(x - 3) + log<sub>x</sub>(5 - x)</code>:<br>
+                    • Per il primo logaritmo: <code>x - 3 > 0 &rArr; x > 3</code>.<br>
+                    • Per il secondo logaritmo: argomento <code>5 - x > 0 &rArr; x < 5</code>, base <code>x > 0</code> e <code>x &ne; 1</code>.<br>
+                    • Mettendo a sistema tutte le condizioni: <code>3 < x < 5</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trova le condizioni di esistenza e semplifica l'espressione: <code>log<sub>2</sub>(x<sup>2</sup> - 4) - log<sub>2</sub>(x - 2)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo le C.E. ponendo ogni argomento strettamente maggiore di zero:<br>
+                        • <code>x<sup>2</sup> - 4 > 0 &rArr; x < -2</code> oppure <code>x > 2</code>.<br>
+                        • <code>x - 2 > 0 &rArr; x > 2</code>.<br>
+                        L'intersezione delle condizioni ci dà il dominio complessivo: <strong><code>x > 2</code></strong>.
+                    </li>
+                    <li>Scomponiamo l'argomento del primo logaritmo come differenza di quadrati: <code>x<sup>2</sup> - 4 = (x - 2)(x + 2)</code>.</li>
+                    <li>Applichiamo la proprietà del logaritmo del prodotto: <code>log<sub>2</sub>(x - 2) + log<sub>2</sub>(x + 2) - log<sub>2</sub>(x - 2)</code>.</li>
+                    <li>Semplifichiamo i termini opposti e otteniamo il risultato finale: <code>log<sub>2</sub>(x + 2)</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: log<sub>2</sub>(x + 2) con C.E. x > 2</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Logaritmi e Condizioni di Esistenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di determinazione del campo di esistenza, applicazione delle proprietà algebriche e semplificazione di espressioni logaritmiche.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n = (i % 8) + 1;
+                    domanda = `Determina le Condizioni di Esistenza (C.E.) della funzione: <code>f(x) = log<sub>3</sub>(x - ${n})</code>.`;
+                    risposta = `<strong>x > ${n}</strong>`;
+                    spiegazione = `
+                    1) Per l'esistenza del logaritmo, l'argomento deve essere strettamente maggiore di zero.<br>
+                    2) Poniamo <code>x - ${n} > 0</code>.<br>
+                    3) Risolvendo la disequazione lineare si ottiene <code>x > ${n}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 5) + 2;
+                    domanda = `Calcola il valore numerico applicando le proprietà: <code>log<sub>${a}</sub>(${a}<sup>4</sup>)</code>.`;
+                    risposta = `<strong>4</strong>`;
+                    spiegazione = `
+                    1) Applichiamo la proprietà del logaritmo di una potenza: portando l'esponente fuori si ha <code>4 &middot; log<sub>${a}</sub>(${a})</code>.<br>
+                    2) Poiché il logaritmo della base di se stessa è uguale a 1 (<code>log<sub>${a}</sub>(${a}) = 1</code>), il calcolo diventa <code>4 &middot; 1</code>.<br>
+                    3) Il risultato finale è <code>4</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let k = (i % 6) + 2;
+                    domanda = `Determina il campo di esistenza di <code>f(x) = log<sub>2</sub>(x<sup>2</sup> - ${k * k})</code>.`;
+                    risposta = `<strong>x < -${k} oppure x > ${k}</strong>`;
+                    spiegazione = `
+                    1) Imponiamo che l'argomento sia maggiore di zero: <code>x<sup>2</sup> - ${k * k} > 0</code>.<br>
+                    2) Scomponiamo in fattori come differenza di quadrati: <code>(x - ${k})(x + ${k}) > 0</code>.<br>
+                    3) Studiando il segno della disequazione di secondo grado associata, si ottiene che la disequazione è verificata per <code>x < -${k}</code> oppure <code>x > ${k}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

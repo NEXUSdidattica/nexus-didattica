@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Code o Queue (FIFO): principi di funzionamento, operazioni fondamentali Enqueue e Dequeue, implementazione e applicazioni - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Code (Queue) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .mem-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        @media(max-width: 768px) {
+            .mem-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        input.code-input, select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .mem-output {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+
+        button.btn-os-secondary {
+            background-color: #334155;
+        }
+
+        button.btn-os-secondary:hover {
+            background-color: #475569;
+        }
+
+        /* Schema grafico della coda */
+        .queue-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            margin: 2rem 0;
+            padding: 20px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            overflow-x: auto;
+            min-height: 100px;
+        }
+
+        .queue-element {
+            min-width: 90px;
+            background: #fff;
+            border: 2px solid #ea580c;
+            color: #1e293b;
+            padding: 12px 8px;
+            text-align: center;
+            font-family: monospace;
+            font-weight: bold;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+
+        .queue-empty {
+            color: #94a3b8;
+            font-style: italic;
+            font-family: monospace;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="queue" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Code (Queue)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Strutture dati lineari basate sulla logica FIFO (First In, First Out): il primo elemento inserito è il primo a essere rimosso.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è una Coda (Queue)?</h2>
+            <p>
+                Una <strong>coda</strong> (o <em>queue</em>) è una struttura dati astratta che segue il principio <strong>FIFO</strong> (<em>First In, First Out</em>). Funziona esattamente come una normale fila alla cassa di un supermercato: il primo cliente che arriva è il primo a essere servito, e i nuovi arrivati si mettono in fondo alla fila.
+            </p>
+
+            <h2>2. Le Operazioni Fondamentali</h2>
+            <p>
+                A differenza delle pile, la coda possiede due estremità distinte: la <strong>Testa (Front)</strong> da cui si rimuovono gli elementi e la <strong>Coda (Rear / Tail)</strong> in cui vengono inseriti. Le operazioni principali sono:
+            </p>
+            <ul>
+                <li><strong>Enqueue (Accodamento):</strong> Inserisce un nuovo elemento in fondo alla coda (sul lato Rear).</li>
+                <li><strong>Dequeue (Rimozione / Servizio):</strong> Rimuove e restituisce l'elemento situato in testa alla coda (sul lato Front).</li>
+                <li><strong>Front / Peek:</strong> Restituisce il valore dell'elemento in testa senza rimuoverlo.</li>
+                <li><strong>IsEmpty:</strong> Verifica se la struttura è vuota.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Applicazioni Comuni:</strong>
+                <ul>
+                    <li><em>Gestione delle code di stampa:</em> I documenti inviati a una stampante vengono elaborati rigorosamente nell'ordine di arrivo.</li>
+                    <li><em>Scheduling dei processi nei sistemi operativi:</em> La gestione dei task pronti per l'esecuzione sulla CPU (es. code FIFO o multi-livello).</li>
+                    <li><em>Buffering di dati nelle comunicazioni di rete:</em> Gestione dei pacchetti in transito nei router e nei socket di rete.</li>
+                </ul>
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore Interattivo: Coda FIFO</h2>
+            <p>Sperimenta il comportamento di una coda eseguendo operazioni di Enqueue (inserimento in fondo) e Dequeue (estrazione dalla testa).</p>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">queue@nexus-core:~#</span>
+                    <span style="font-size: 0.8rem; color: #888;">FIFO Data Structure Simulator</span>
+                </div>
+
+                <div class="mem-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Valore:</label>
+                        <input type="number" id="queueInput" class="code-input" value="42">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione Enqueue:</label>
+                        <button class="btn-os" onclick="simulaEnqueue()">ENQUEUE 📥</button>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione Dequeue:</label>
+                        <button class="btn-os btn-os-secondary" onclick="simulaDequeue()">DEQUEUE 📤</button>
+                    </div>
+                </div>
+
+                <div class="queue-diagram" id="queueDiagram">
+                    <div class="queue-empty">Coda vuota (Front = Rear = NULL)</div>
+                </div>
+
+                <div class="mem-output" id="memOutputQueue" style="margin-top: 15px;">
+                    > Coda inizializzata correttamente. Pronta per operazioni Enqueue e Dequeue.
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore Queue -->
+    <script>
+        let miaCoda = [];
+
+        function aggiornaGraficaQueue() {
+            const container = document.getElementById('queueDiagram');
+            if (miaCoda.length === 0) {
+                container.innerHTML = '<div class="queue-empty">Coda vuota (Front = Rear = NULL)</div>';
+                return;
+            }
+
+            container.innerHTML = miaCoda.map((val, index) => {
+                let etichetta = '';
+                if (index === 0 && miaCoda.length === 1) {
+                    etichetta = ' [FRONT/REAR]';
+                } else if (index === 0) {
+                    etichetta = ' [FRONT]';
+                } else if (index === miaCoda.length - 1) {
+                    etichetta = ' [REAR]';
+                }
+                return `<div class="queue-element">${val}<br><span style="font-size:0.75rem; color:#ea580c;">${etichetta}</span></div>`;
+            }).join('');
+        }
+
+        window.simulaEnqueue = function() {
+            const val = document.getElementById('queueInput').value;
+            const output = document.getElementById('memOutputQueue');
+
+            if (val === "") {
+                output.style.color = "#f87171";
+                output.innerHTML = "> Errore: Inserisci un valore valido per l'Enqueue.";
+                return;
+            }
+
+            miaCoda.push(parseInt(val));
+            aggiornaGraficaQueue();
+
+            output.style.color = "#4ade80";
+            output.innerHTML = `> Operazione ENQUEUE eseguita con successo.<br>&nbsp;&nbsp;↳ Accodato valore <strong>${val}</strong> in fondo alla struttura.`;
+        }
+
+        window.simulaDequeue = function() {
+            const output = document.getElementById('memOutputQueue');
+
+            if (miaCoda.length === 0) {
+                output.style.color = "#f87171";
+                output.innerHTML = "> Errore: Queue Underflow! Impossibile eseguire Dequeue su una coda vuota.";
+                return;
+            }
+
+            const rimosso = miaCoda.shift();
+            aggiornaGraficaQueue();
+
+            output.style.color = "#4ade80";
+            output.innerHTML = `> Operazione DEQUEUE eseguita con successo.<br>&nbsp;&nbsp;↳ Rimosso valore <strong>${rimosso}</strong> dalla testa della coda.`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

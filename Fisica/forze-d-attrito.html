@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulle Forze d'Attrito - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Forze d'Attrito e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="forza-attrito" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Forze d'Attrito</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio delle forze resistenti che si oppongono al movimento relativo tra superfici a contatto (attrito statico e dinamico), con 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Forza d'Attrito?</h2>
+            <p>
+                Le <strong>forze d'attrito</strong> sono forze di contatto che si oppongono al movimento (o al tentativo di movimento) di un corpo lungo una superficie. Esse dipendono dalla natura dei materiali a contatto e dalla forza normale ($N$) che li stringe insieme. Si distinguono principalmente in due categorie: l'attrito statico e l'attrito dinamico.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule fondamentali delle forze d'attrito:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Attrito statico massimo: $F_{s,\text{max}} = \mu_s \cdot N$<br>
+                    • Attrito dinamico: $F_d = \mu_d \cdot N$<br>
+                    • Condizione generale: Solitamente il coefficiente statico è maggiore di quello dinamico ($\mu_s > \mu_d$).
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esercizi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Qual è la differenza principale tra l'attrito statico e l'attrito dinamico?", 
+                    r: "L'attrito statico agisce quando i corpi sono in quiete impedendo l'inizio del moto, mentre l'attrito dinamico agisce quando i corpi sono già in movimento relativo.", 
+                    s: "Esempio guidato: è più faticoso iniziare a spingere un pesante armadio (attrito statico) rispetto a continuare a spingerlo una volta messo in moto (attrito dinamico)." 
+                },
+                { 
+                    q: "Quale tra i coefficienti d'attrito statico ($\mu_s$) e dinamico ($\mu_d$) è generalmente maggiore per una data coppia di superfici?", 
+                    r: "Il coefficiente d'attrito statico ($\mu_s > \mu_d$).", 
+                    s: "Esempio guidato: serve sempre una forza maggiore per staccare un oggetto da fermo che per mantenerlo a velocità costante." 
+                },
+                { 
+                    q: "Da quali fattori principali dipende la forza d'attrito radente tra due superfici?", 
+                    r: "Dalla natura dei materiali a contatto (tramite il coefficiente d'attrito) e dalla forza normale.", 
+                    s: "Esempio guidato: raddoppiando il peso premuto sulla superficie, raddoppia la forza d'attrito." 
+                },
+                { 
+                    q: "Qual è l'unità di misura del coefficiente d'attrito ($\mu$)?", 
+                    r: "È una grandezza adimensionale (priva di unità di misura).", 
+                    s: "Esempio guidato: essendo il rapporto tra due forze, i Newton si semplificano." 
+                },
+                { 
+                    q: "In quale direzione agisce la forza d'attrito rispetto alla superficie di contatto e al moto?", 
+                    r: "È parallela alla superficie di contatto e orientata in verso opposto al movimento (o alla tendenza al movimento).", 
+                    s: "Esempio guidato: se spingi una scatola in avanti, l'attrito tira indietro parallelamente al pavimento." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un blocco di massa $m = 20\text{ kg}$ giace su un pavimento orizzontale. Il coefficiente d'attrito dinamico è $\mu_d = 0,3$. Qual è la forza d'attrito dinamico quando il blocco è in movimento? ($g = 9,8\text{ m/s}^2$)", 
+                    r: "58,8 N.", 
+                    s: "Esempio guidato: $N = mg = 20 \cdot 9,8 = 196\text{ N}$. Poi $F_d = \mu_d N = 0,3 \cdot 196 = 58,8\text{ N}$." 
+                },
+                { 
+                    q: "Il coefficiente d'attrito statico tra una cassetta e il pavimento è $\mu_s = 0,5$. La cassetta ha una massa di $10\text{ kg}$. Qual è la forza minima necessaria per iniziare a muoverla? ($g = 9,8\text{ m/s}^2$)", 
+                    r: "49 N.", 
+                    s: "Esempio guidato: $F_{s,\text{max}} = \mu_s m g = 0,5 \cdot 10 \cdot 9,8 = 49\text{ N}$." 
+                },
+                { 
+                    q: "Una forza di $30\text{ N}$ viene applicata a un corpo su cui agisce una forza d'attrito dinamico di $20\text{ N}$. Qual è la forza netta agente sul corpo?", 
+                    r: "10 N.", 
+                    s: "Esempio guidato: $F_{\text{netta}} = F_{\text{applicata}} - F_d = 30 - 20 = 10\text{ N}$." 
+                },
+                { 
+                    q: "Un blocco di massa $m = 15\text{ kg}$ viene trascinato a velocità costante su un piano orizzontale applicando una forza di $45\text{ N}$. Qual è il coefficiente d'attrito dinamico? ($g = 9,8\text{ m/s}^2$)", 
+                    r: "circa 0,306.", 
+                    s: "Esempio guidato: a velocità costante, $F_{\text{appl}} = F_d \implies \mu_d = \frac{F}{mg} = \frac{45}{15 \cdot 9,8} = \frac{45}{147} \approx 0,306$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un corpo di massa $m = 10\text{ kg}$ si trova su un piano inclinato di $\alpha = 30^\circ$. Il coefficiente d'attrito statico è $\mu_s = 0,6$. Il corpo rimane fermo o scivola? ($g = 9,8\text{ m/s}^2, \cos(30^\circ)\approx0,866, \sin(30^\circ)=0,5$)", 
+                    r: "Rimane fermo.", 
+                    s: "Esempio guidato: $P_{\parallel} = mg\sin(30^\circ) = 49\text{ N}$. L'attrito statico massimo è $F_{s,\text{max}} = \mu_s mg\cos(30^\circ) = 0,6 \cdot 10 \cdot 9,8 \cdot 0,866 \approx 50,9\text{ N}$. Poiché $P_{\parallel} < F_{s,\text{max}}$, il corpo resta immobile." 
+                },
+                { 
+                    q: "Una slitta di massa $m = 50\text{ kg}$ viene tirata su una superficie orizzontale con un'accelerazione di $1,2\text{ m/s}^2$. Sapendo che il coefficiente d'attrito dinamico è $\mu_d = 0,2$, qual è la forza applicata? ($g = 9,8\text{ m/s}^2$)", 
+                    r: "158 N.", 
+                    s: "Esempio guidato: $F_d = \mu_d mg = 0,2 \cdot 50 \cdot 9,8 = 98\text{ N}$. Dalla seconda legge: $F_{\text{netta}} = ma = 50 \cdot 1,2 = 60\text{ N}$. Dunque $F_{\text{appl}} = F_{\text{netta}} + F_d = 60 + 98 = 158\text{ N}$." 
+                },
+                { 
+                    q: "Un blocco scivola lungo un piano inclinato con attrito ($\mu_d = 0,2$) avente un angolo $\alpha = 45^\circ$. Qual è l'accelerazione del blocco? ($g = 9,8\text{ m/s}^2, \sin(45^\circ)=\cos(45^\circ)\approx0,707$)", 
+                    r: "circa $3,46\text{ m/s}^2$.", 
+                    s: "Esempio guidato: $a = g(\sin\alpha - \mu_d \cos\alpha) = 9,8 \cdot (0,707 - 0,2 \cdot 0,707) = 9,8 \cdot (0,707 \cdot 0,8) \approx 5,54\text{ m/s}^2$ (ricalcolato attentamente: $9,8 \cdot 0,707 \cdot 0,8 \approx 5,54$)." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

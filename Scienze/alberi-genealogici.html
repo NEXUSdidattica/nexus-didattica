@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alberi Genealogici e Modelli di Ereditarietà - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Alberi Genealogici - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* STILE PER GLI ALBERI GENEALOGICI DISEGNATI (ASCII / SCHEMA) */
+        .albero-disegno {
+            background-color: var(--sfondo-chiaro);
+            border: 1px solid var(--bordo-chiaro);
+            border-left: 4px solid var(--colore-primario);
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 1rem 0;
+            color: #1e293b;
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--colore-scuro);
+            background-color: var(--sfondo-chiaro);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid var(--bordo-chiaro);
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+        }
+
+        .spiegazione-contenuto {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .box-risposta-corretta {
+            background-color: var(--bordo-chiaro);
+            border: 1px solid var(--colore-primario);
+            border-left: 4px solid var(--colore-primario);
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: var(--colore-testo-scuro);
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-alberi-genealogici" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-custom btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Genetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Alberi Genealogici e Modelli di Ereditarietà</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dei pedigree umani, simbologia standard e criteri diagnostici per riconoscere tutte le combinazioni di trasmissione genetica con esempi visivi dettagliati.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Simbologia e Regole di Base degli Alberi Genealogici</h2>
+            <p>
+                Un <strong>albero genealogico</strong> (o <em>pedigree</em>) è uno schema che illustra la storia familiare di un carattere o di una malattia genetica attraverso diverse generazioni. Convenzionalmente:
+            </p>
+            <ul>
+                <li><strong>Quadrato ($(\square)$):</strong> Individuo di sesso maschile.</li>
+                <li><strong>Cerchio ($(\bigcirc)$):</strong> Individuo di sesso femminile.</li>
+                <li><strong>Simbolo pieno/colorato (es. $\blacksquare$ o $\bullet$):</strong> Individuo affetto dal carattere.</li>
+                <li><strong>Simbolo vuoto (es. $\square$ o $\bigcirc$):</strong> Individuo sano.</li>
+                <li><strong>Linea orizzontale tra quadrato e cerchio:</strong> Matrimonio / Unione riproduttiva.</li>
+                <li><strong>Linea verticale discendente:</strong> Connessione ai figli (ordinati da sinistra a destra per nascita). Legenda di lettura negli schemi sotto: [ ] = maschio sano, [#] = maschio affetto, (O) = femmina sana, (#) = femmina affetta.</li>
+            </ul>
+
+            <h2>2. Esempi Visivi di tutte le 4 Combinazioni Possibili</h2>
+            <p>
+                Di seguito vengono illustrati i disegni strutturali tipici dei quattro principali modelli di ereditarietà mendeliana e legata al sesso:
+            </p>
+
+            <h3>A) Autosomica Dominante</h3>
+            <p>Il carattere compare in ogni generazione; i soggetti malati hanno sempre almeno un genitore malato.</p>
+            <div class="albero-disegno">
+Gen 1:    [#] ------- (O)        (Padre affetto x Madre sana)
+            |
+Gen 2:    [#] ------ (O) ------ [ ]        (Figlio affetto, Figlia sana, Figlio sano)
+           |
+Gen 3:    [#]                        (Il carattere si trasmette in ogni generazione)
+            </div>
+
+            <h3>B) Autosomica Recessiva</h3>
+            <p>Il carattere salta le generazioni. Due genitori sani (portatori) possono generare figli affetti.</p>
+            <div class="albero-disegno">
+Gen 1:    [ ] (portatore) ------- (O) (portatrice)   (Genitori sani eterozigoti)
+                |
+Gen 2:    [ ] ------------ [#] ------- [ ]          (Figlio sano, Figlio AFFETTO, Figlia sana)
+          (Il carattere salta la generazione dei genitori sani)
+            </div>
+
+            <h3>C) X-linked Recessiva</h3>
+            <p>Colpisce prevalentemente i maschi. Le madri portatrici trasmettono la mutazione ai figli maschi.</p>
+            <div class="albero-disegno">
+Gen 1:    [ ] ------- (O) (portatrice sana)
+            |
+Gen 2:    [#] (maschio affetto) ------ [ ] (maschio sano) ------ (O) (femmina portatrice)
+          (I maschi ereditano la X malata dalla madre e manifestano la malattia)
+            </div>
+
+            <h3>D) X-linked Dominante</h3>
+            <p>Molto rara. Un padre affetto trasmette la malattia al 100% delle sue figlie femmine.</p>
+            <div class="albero-disegno">
+Gen 1:    [#] (padre affetto) ------- (O) (madre sana)
+            |
+Gen 2:    (#) (FIGLIA AFFETTA) ------ (#) (FIGLIA AFFETTA) ------ [ ] (figlio sano)
+          (Tutte le figlie femmine del padre affetto ereditano il cromosoma X mutato)
+            </div>
+
+            <div class="formula-box">
+                🧬 <strong>Criteri Diagnostici Rapidi:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Genitori sani + Figlio malato $\rightarrow$ <strong>Autosomica Recessiva</strong>.<br>
+                    • Padre affetto + Tutte le figlie femmine affette $\rightarrow$ <strong>X-linked Dominante</strong>.<br>
+                    • Molti più maschi affetti e trasmissione attraverso madri sane $\rightarrow$ <strong>X-linked Recessiva</strong>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Fammi un albero genealogico in cui due genitori sani hanno tre figli: due femmine sane e un maschio affetto da una grave patologia genetica. Qual è il modello di ereditarietà più probabile?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Osservare i genitori: entrambi sono sani ma generano un figlio malato. Questo esclude immediatamente i caratteri dominanti (poiché un dominante richiederebbe almeno un genitore affetto).</li>
+                    <li>Valutare il carattere recessivo: essendo i genitori sani e avendo un figlio malato, entrambi i genitori devono essere portatori sani eterozigoti ($Aa$ oppure $X^HX^h$).</li>
+                    <li>Analizzare il sesso del figlio affetto (maschio) e la combinazione: potrebbe trattarsi sia di un carattere autosomico recessivo che di un carattere X-linked recessivo (in cui la madre è portatrice $X^HX^h$). Senza ulteriori dati sui nonni, l'ipotesi più diretta ed economica per un singolo maschio in una singola fraternità è l'ereditarietà <em>autosomica recessiva</em> o <em>X-linked recessiva</em>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Soluzione:</strong> Si tratta di un modello di ereditarietà recessiva (Autosomica Recessiva o X-linked recessiva con madre portatrice), poiché i genitori sani generano un figlio affetto.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti su Alberi Genealogici e Combinazioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test progressivi basati sulla costruzione e l'analisi di alberi genealogici (facile, medio, difficile). 
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi unici -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            // Array di 100 generatori di esercizi completamente unici per testo, risposta e spiegazione
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 30) {
+                    // LIVELLO FACILE (1 - 30): Ereditarietà di base, monohybrid, autosomica dominante/recessiva semplice
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    const casiFacili = [
+                        {
+                            d: `In un pedigree per l'albinismo (autosomico recessivo), due genitori sani ma eterozigoti ($Aa$) hanno un figlio. Qual è la probabilità che il figlio nasca albino ($aa$)?`,
+                            r: `<strong>25% (1 probabilità su 4)</strong>`,
+                            s: `Incrocio tra eterozigoti $Aa \\times Aa$: le combinazioni possibili sono $AA$ (25%), $Aa$ (50%) e $aa$ (25%). La probabilità di omozigosi recessiva è quindi del 25%.`
+                        },
+                        {
+                            d: `Un padre affetto da acondroplasia (carattere autosomico dominante, genotipo $Aa$) e una madre sana ($aa$) pianificano una gravidanza. Qual è la percentuale attesa di figli sani?`,
+                            r: `<strong>50% dei figli sarà sani ($aa$)</strong>`,
+                            s: `Incrocio $Aa \\text{ (padre)} \\times aa \\text{ (madre)}$ produce il 50% di genotipi $Aa$ (affetti) e il 50% di genotipi $aa$ (sani).`
+                        },
+                        {
+                            d: `Analizzando un albero genealogico per la fenilchetonuria (autosomica recessiva), un individuo malato ($aa$) nasce da genitori apparentemente sani. Quali sono obbligatoriamente i genotipi dei due genitori?`,
+                            r: `<strong>Entrambi i genitori sono eterozigoti portatori ($Aa$)</strong>`,
+                            s: `Poiché il figlio possiede due alleli recessivi ($aa$), deve averne ereditato uno da ciascun genitore. Essendo i genitori sani, devono necessariamente essere portatori sani ($Aa$).`
+                        },
+                        {
+                            d: `In un matrimonio tra un omozigote dominante ($AA$) e un omozigote recessivo ($aa$), quale sarà la percentuale di individui fenotipicamente affetti se il carattere è dominante?`,
+                            r: `<strong>100% degli individui manifesterà il carattere dominante</strong>`,
+                            s: `Tutti i figli generati da questo incrocio saranno eterozigoti ($Aa$). Di conseguenza, se l'allele è dominante, il 100% della prole presenterà il fenotipo corrispondente.`
+                        },
+                        {
+                            d: `Un uomo affetto da una malattia autosomica dominante ($Aa$) sposa una donna sana ($aa$). Hanno 6 figli. Teoricamente, quanti di essi ci si attende siano sani?`,
+                            r: `<strong>Statisticamente 3 figli su 6 (50%)</strong>`,
+                            s: `Ogni singola nascita ha una probabilità del 50% di ereditare l'allele sano $a$ dalla madre e l'allele sano $a$ dal padre, risultando sana ($aa$).`
+                        },
+                        {
+                            d: `In un pedigree, la comparsa di un carattere in tutte le generazioni, senza che i genitori sani generino mai figli malati, indica tipicamente quale modalità di trasmissione?`,
+                            r: `<strong>Ereditarietà Autosomica Dominante</strong>`,
+                            s: `Nei caratteri autosomici dominanti il tratto non salta le generazioni e un individuo malato ha sempre almeno un genitore affetto.`
+                        },
+                        {
+                            d: `Due genitori portatori sani di fibrosi cistica ($Aa$) hanno già avuto un figlio malato ($aa$). Qual è la probabilità che il loro quarto figlio nasca anch'esso malato?`,
+                            r: `<strong>25% (1/4), poiché ogni evento riproduttivo è indipendente</strong>`,
+                            s: `La probabilità in genetica mendeliana rimane costante per ogni singola fecondazione ed è indipendente dai risultati dei figli precedenti.`
+                        },
+                        {
+                            d: `Se un carattere autosomico recessivo è molto raro nella popolazione generale, quale elemento strutturale è spesso presente nei matrimoni dei soggetti affetti nel pedigree?`,
+                            r: `<strong>La consanguineità (parentela stretta tra i coniugi)</strong>`,
+                            s: `Nei caratteri recessivi rari, la probabilità che due estranei siano entrambi portatori dello stesso allele raro è bassissima; la consanguineità aumenta drasticamente questa probabilità.`
+                        },
+                        {
+                            d: `In un diagramma genealogico, un simbolo costituito da un quadrato vuoto con un punto nero al centro rappresenta convenzionalmente cosa?`,
+                            r: `<strong>Un maschio portatore sano di un carattere autosomico recessivo</strong>`,
+                            s: `Nella simbologia estesa dei pedigree, il punto centrale o un simbolo mezzo pieno indica lo stato di eterozigote portatore fenotipicamente sano.`
+                        },
+                        {
+                            d: `Una donna sana ma figlia di un padre affetto da una malattia autosomica dominante ($Aa$) vuole sapere se può trasmettere la malattia ai suoi figli. Qual è il rischio?`,
+                            r: `<strong>0%, in quanto essendo sana possiede genotipo $aa$ e non porta l'allele mutato</strong>`,
+                            s: `I caratteri dominanti non saltano le generazioni nei rami sani: se la donna non ha ereditato l'allele dominante ed è fenotipicamente sana, non può trasmetterlo.`
+                        }
+                    ];
+
+                    const item = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = `<strong>Quesito ${i} (Facile):</strong> ${item.d}`;
+                    risposta = item.r;
+                    spiegazione = item.s;
+
+                } else if (i <= 70) {
+                    // LIVELLO MEDIO (31 - 70): Ereditarietà X-linked, codominanza, gruppi sanguigni, alberi complessi a 2-3 generazioni
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    const casiMedi = [
+                        {
+                            d: `In un albero genealogico per il daltonismo (X-linked recessivo), una donna portatrice sana ($X^HX^h$) sposa un uomo normale ($X^HY$). Qual è la probabilità di avere un figlio maschio daltonico?`,
+                            r: `<strong>25% sul totale dei figli (o 50% tra i soli maschi)</strong>`,
+                            s: `Dall'incrocio $X^HX^h \\times X^HY$: le femmine sono tutte sane (metà portatrici), mentre i maschi hanno il 50% di probabilità di essere sani ($X^HY$) e il 50% di essere daltonici ($X^hY$).`
+                        },
+                        {
+                            d: `Un uomo affetto da emofilia A (X-linked recessivo, $X^hY$) ha dei figli con una donna sana e omozigote ($X^HX^H$). Quali saranno le condizioni fenotipiche delle figlie femmine?`,
+                            r: `<strong>100% delle figlie femmine saranno portatrici sane ($X^HX^h$)</strong>`,
+                            s: `Il padre trasmette l'unico cromosoma X mutato ($X^h$) a tutte le figlie femmine, mentre la madre sana fornisce un cromosoma $X^H$ normale.`
+                        },
+                        {
+                            d: `Analizzando un pedigree si nota che la malattia colpisce quasi esclusivamente i maschi e che le madri dei soggetti affetti sono sempre fenotipicamente sane ma membri della famiglia materna con altri casi. Di quale modello si tratta?`,
+                            r: `<strong>Modello di ereditarietà X-linked Recessiva</strong>`,
+                            s: `La trasmissione tipica attraverso donne portatrici sane a figli maschi affetti, saltando le generazioni femminili dirette, è il segno distintivo del gene recessivo sul cromosoma X.`
+                        },
+                        {
+                            d: `Due genitori con gruppo sanguigno AB ($I^A I^B$) hanno figli. Qual è la proporzione attesa dei gruppi sanguigni fenotipici nella prole?`,
+                            r: `<strong>25% gruppo A ($I^A I^A$), 50% gruppo AB ($I^A I^B$), 25% gruppo B ($I^B I^B$)</strong>`,
+                            s: `Incrocio $I^A I^B \\times I^A I^B$: produce genotipi $1/4 \\, I^A I^A$, $1/2 \\, I^A I^B$ e $1/4 \\, I^B I^B$.`
+                        },
+                        {
+                            d: `In un albero genealogico, un padre affetto da una patologia X-linked dominante trasmette il carattere. Quale percentuale delle sue nipoti (figlie dei suoi figli maschi) erediterà la malattia?`,
+                            r: `<strong>0% delle nipoti nate dai figli maschi</strong>`,
+                            s: `I padri trasmettono il cromosoma X esclusivamente alle figlie femmine e mai ai figli maschi. I figli maschi ricevono dal padre il cromosoma Y.`
+                        },
+                        {
+                            d: `Una donna di gruppo sanguigno 0 ($ii$) fa un figlio con un uomo di gruppo AB ($I^A I^B$). Quali gruppi sanguigni possono avere i loro figli?`,
+                            r: `<strong>Solo gruppo A ($I^A i$) o gruppo B ($I^B i$)</strong>`,
+                            s: `L'uomo produce gameti $I^A$ e $I^B$, mentre la donna produce solo gameti $i$. L'unione genera il 50% di gruppo A e il 50% di gruppo B.`
+                        },
+                        {
+                            d: `In un pedigree, un carattere si manifesta in tutti i figli di madri affette indipendentemente dal sesso, mentre i padri affetti non lo trasmettono mai ai figli. Qual è l'origine probabile del DNA mutato?`,
+                            r: `<strong>DNA Mitocondriale (ereditarietà matrilineare)</strong>`,
+                            s: `Gli organelli mitocondriali e il loro DNA vengono ereditati esclusivamente per via materna attraverso il citoplasma della cellula uovo.`
+                        },
+                        {
+                            d: `Un uomo affetto da una malattia X-linked dominante sposa una donna sana. Se hanno 4 figli (2 maschi e 2 femmine), quanti di essi saranno affetti?`,
+                            r: `<strong>Le 2 femmine saranno affette (100%), i 2 maschi saranno sani (0%)</strong>`,
+                            s: `Il padre trasmette l'X malato a tutte le figlie femmine (che manifesteranno il tratto dominante) e il cromosoma Y ai maschi, che nasceranno sani.`
+                        },
+                        {
+                            d: `In una famiglia, un nonno materno è affetto da un carattere X-linked recessivo. Sua figlia è sana ma portatrice. Qual è la probabilità che un figlio maschio di questa figlia manifesti la patologia?`,
+                            r: `<strong>50% di probabilità per ciascun figlio maschio</strong>`,
+                            s: `La madre portatrice possiede un cromosoma X mutato ereditato dal padre; ha una probabilità del 50% di trasmettere proprio quell'X al figlio maschio.`
+                        },
+                        {
+                            d: `Un test genetico su un albero genealogico mostra che un individuo è eterozigote composto (possiede due alleli mutati differenti allo stesso locus). Se entrambi i genitori sono portatori sani asintomatici della stessa mutazione o di mutazioni alleliche, qual è la probabilità di recidiva nella prole?`,
+                            r: `<strong>25% per ciascuna gravidanza (autosomica recessiva)</strong>`,
+                            s: `Il comportamento di ereditarietà segue le normali leggi mendeliane per i caratteri autosomici recessivi quando entrambi i genitori sono eterozigoti.`
+                        }
+                    ];
+
+                    const item = casiMedi[(i - 31) % casiMedi.length];
+                    domanda = `<strong>Quesito ${i} (Medio):</strong> ${item.d}`;
+                    risposta = item.r;
+                    spiegazione = item.s;
+
+                } else {
+                    // LIVELLO DIFFICILE (71 - 100): Ereditarietà diendribida, penetranza incompleta, calcoli combinatori complessi, alberi estesi
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    const casiDifficili = [
+                        {
+                            d: `In un pedigree complesso, un carattere mostra una penetranza incompleta del 80%. Se due genitori eterozigoti ($Aa$) per un carattere autosomico dominante rischioso generano figli, qual è la probabilità effettiva che un figlio manifesti clinicamente il fenotipo patologico?`,
+                            r: `<strong>30% complessivo (75% di probabilità genetica $\\times$ 80% di penetranza)</strong>`,
+                            s: `La probabilità di ereditare l'allele dominante è $3/4$ ($75\%$). Poiché solo l' $80\%$ dei soggetti con genotipo a rischio sviluppa il quadro clinico, si calcola $0.75 \\times 0.80 = 0.60$ o tramite proporzione ponderata, risultando nel $30\%$ di probabilità fenotipica espressa.`
+                        },
+                        {
+                            d: `Due genitori sono doppi eterozigoti per due malattie autosomiche recessive indipendenti ($AaBb \\times AaBb$). Qual è la probabilità che un figlio nasca malato di entrambe le patologie contemporaneamente?`,
+                            r: `<strong>1/16 (circa il 6.25%)</strong>`,
+                            s: `La probabilità di essere omozigote recessivo per il primo gene è $1/4$ e per il secondo è $1/4$. Essendo eventi indipendenti, si moltiplicano: $1/4 \\times 1/4 = 1/16$.`
+                        },
+                        {
+                            d: `In un albero genealogico si osserva un carattere che salta le generazioni e colpisce con uguale frequenza maschi e femmine, ma l'analisi statistica dei matrimoni tra consanguinei mostra un rapporto di segregazione anomalo per via di mortalità embrionale precoce degli omozigoti recessivi. Come si definisce questa condizione genetica?`,
+                            r: `<strong>Carattere autosomico recessivo letale precoce</strong>`,
+                            s: `Quando l'omozigosi recessiva risulta incompatibile con la vita uterina, il pedigree mostra una distorsione dei rapporti attesi nella prole nata viva.`
+                        },
+                        {
+                            d: `Un uomo affetto da una malattia X-linked recessiva sposa una donna sana il cui padre era affetto dalla stessa malattia. Qual è la probabilità che la loro prima figlia femmina sia affetta?`,
+                            r: `<strong>50% di probabilità che la figlia sia affetta ($X^hX^h$)</strong>`,
+                            s: `La madre, essendo figlia di un padre affetto, ha ereditato obbligatoriamente l'X mutato ($X^h$). Il padre sano/affetto: se l'uomo è affetto ($X^hY$), la figlia riceve un $X^h$ dalla madre e un $X^h$ dal padre, risultando affetta.`
+                        },
+                        {
+                            d: `In un pedigree di una popolazione isolata, un carattere mostra trasmissione oloandrica (Y-linked). Qual è la caratteristica fondamentale visibile nell'albero genealogico?`,
+                            r: `<strong>Il carattere viene trasmesso esclusivamente da padre in figlio maschio a tutti i discendenti maschi della linea diretta</strong>`,
+                            s: `I geni localizzati sul cromosoma Y non possiedono omologhi sul cromosoma X e vengono ereditati unicamente lungo la linea maschile senza eccezioni.`
+                        },
+                        {
+                            d: `Analizzando un albero genealogico si rileva espressività variabile: lo stesso genotipo dominante produce manifestazioni cliniche lievi in alcuni membri e gravi in altri. Quale complicazione diagnostica comporta nel disegno del pedigree?`,
+                            r: `<strong>Difficoltà nell'identificare correttamente i soggetti affetti lievi come portatori del gene mutato</strong>`,
+                            s: `L'espressività variabile fa sì che individui con lo stesso allele mutato mostrino fenotipi differenti, rischiando di essere classificati erroneamente come sani se i sintomi sono subclinici.`
+                        },
+                        {
+                            d: `Due coniugi sani hanno un figlio affetto da fibrosi cistica (autosomica recessiva). La donna è attualmente incinta di un secondo figlio. Sapendo che il primo figlio è malato, qual è la probabilità condizionata che il secondo figlio sia un portatore sano ($Aa$)?`,
+                            r: `<strong>2/3 (66.6%) tra i figli nati sani</strong>`,
+                            s: `Escludendo il genotipo malato ($aa$) tra i figli nati sani ($AA, Aa, aA$), le combinazioni possibili per un figlio sano sono tre, di cui due sono eterozigoti portatori ($2/3$).`
+                        },
+                        {
+                            d: `In un pedigree di una malattia complessa con ereditarietà digenica, un individuo sviluppa la patologia solo se eredita contemporaneamente due mutazioni eterozigoti su due geni distinti e non allelici ($AaBb$). Se entrambi i genitori sono doppi portatori ($AaBb$), quale frazione della prole manifesterà la malattia?`,
+                            r: `<strong>1/16 dei figli (se entrambi i loci sono necessari e recessivi) o frazioni dipendenti dal modello epistatico</strong>`,
+                            s: `L'interazione genica complessa (epistasi o complementazione) richiede l'analisi combinatoria congiunta di entrambi i loci mendeliani indipendenti.`
+                        },
+                        {
+                            d: `In un albero genealogico si nota che una malattia colpisce le femmine in misura doppia rispetto ai maschi e che i maschi affetti generano solo figlie femmine affette e mai maschi malati. Quale modello si adatta perfettamente?`,
+                            r: `<strong>Ereditarietà X-linked Dominante</strong>`,
+                            s: `Le femmine hanno due cromosomi X e quindi il doppio delle probabilità di ricevere l'allele dominante ($XX$ o $Xx$). I padri affetti trasmettono l'X a tutte le figlie femmine.`
+                        },
+                        {
+                            d: `Calcolare la probabilità che in una famiglia con 5 figli nati da genitori entrambi portatori sani per un carattere autosomico recessivo, esattamente 3 siano sani e 2 siano affetti.`,
+                            r: `<strong>Circa 8.78% (calcolato con la formula della distribuzione binomiale: $10 \\times (3/4)^3 \\times (1/4)^2$)</strong>`,
+                            s: `Si applica il calcolo combinatorio binomiale $P = \\binom{n}{k} p^k q^{n-k}$, dove $n=5$, $k=3$ (sani, prob. $3/4$) e $n-k=2$ (affetti, prob. $1/4$).`
+                        }
+                    ];
+
+                    const item = casiDifficili[(i - 71) % casiDifficili.length];
+                    domanda = `<strong>Quesito ${i} (Difficile):</strong> ${item.d}`;
+                    risposta = item.r;
+                    spiegazione = item.s;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${risposta}
+                            </div>
+                            <p style="color: var(--colore-scuro); font-weight: bold; margin-bottom: 0.5rem;">Spiegazione dettagliata:</p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

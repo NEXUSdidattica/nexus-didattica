@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 1: Raccoglimento totale - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Raccoglimento totale - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="scomposizioni-raccoglimento-totale" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Scomposizioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Raccoglimento totale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Ricerca del Massimo Comune Divisore (M.C.D.), fattorizzazione dei coefficienti e delle lettere, gestione dei segni e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Raccoglimento Totale a Fattor Comune</h2>
+            <p>
+                Il raccoglimento totale è la tecnica di scomposizione primaria in algebra ed è l'inverso della proprietà distributiva della moltiplicazione rispetto all'addizione. Consiste nell'individuare il <strong>Massimo Comune Divisore (M.C.D.)</strong> tra tutti i termini del polinomio e nel "metterlo in evidenza" davanti a una parentesi.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Regola fondamentale:</strong> <code>A·B + A·C - A·D = A · (B + C - D)</code>
+            </div>
+
+            <h2>2. Come Identificare il Fattore Comune (M.C.D.)</h2>
+            <p>
+                Per determinare correttamente il monomio da raccogliere, occorre analizzare separatamente la parte numerica e la parte letterale:
+            </p>
+            <ul>
+                <li><strong>Coefficiente numerico:</strong> Si calcola il M.C.D. dei valori assoluti dei coefficienti dei singoli termini.</li>
+                <li><strong>Parte letterale:</strong> Si prendono solo le <strong>lettere comuni a tutti i termini</strong>, ciascuna considerata una sola volta e con l'<strong>esponente più piccolo</strong> con cui compare.</li>
+                <li><strong>Divisione termine per termine:</strong> Il polinomio dentro la parentesi si ottiene dividendo ciascun termine del polinomio di partenza per il monomio raccolto.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Scomponi a fattor comune totale il polinomio: <code>12x³y² - 18x²y³ + 6x²y²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>M.C.D. dei coefficienti:</strong> M.C.D.(12, 18, 6) = <code>6</code>.</li>
+                    <li><strong>M.C.D. della parte letterale:</strong> Le lettere presenti in tutti e tre i termini sono <code>x</code> e <code>y</code>. Gli esponenti minimi sono 2 per <code>x</code> e 2 per <code>y</code>, quindi raccogliamo <code>x²y²</code>.</li>
+                    <li><strong>Monomio comune da raccogliere:</strong> <code>6x²y²</code>.</li>
+                    <li><strong>Divisione dei singoli termini:</strong>
+                        <br>• <code>12x³y² / (6x²y²) = 2x</code>
+                        <br>• <code>-18x²y³ / (6x²y²) = -3y</code>
+                        <br>• <code>6x²y² / (6x²y²) = 1</code>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 6x²y² (2x - 3y + 1)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Raccoglimento Totale</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (monomi semplici e due soli termini), medio (trinomi con potenze variabili e frazioni) e difficile (raccoglimenti di polinomi interi, segni negativi in evidenza ed espressioni multilivello).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            function mcd(a, b) {
+                return b === 0 ? Math.abs(a) : mcd(b, a % b);
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let k = (i % 4) + 2; 
+                    let c1 = k * ((i % 3) + 1);
+                    let c2 = k * ((i % 2) + 2);
+
+                    domanda = `Scomponi a fattor comune totale: <br>
+                    <code>${c1}x² + ${c2}x</code>.`;
+
+                    let g = mcd(c1, c2);
+                    let q1 = c1 / g;
+                    let q2 = c2 / g;
+
+                    risposta = `<code>${g}x (${q1}x + ${q2})</code>`;
+                    spiegazione = `
+                    1) Calcoliamo il M.C.D. tra i coefficienti numerici: M.C.D.(${c1}, ${c2}) = <code>${g}</code>.<br>
+                    2) Troviamo le lettere comuni con l'esponente minore: <code>x</code>.<br>
+                    3) Il monomio da raccogliere è <code>${g}x</code>.<br>
+                    4) Dividiamo i termini: <code>${c1}x² / (${g}x) = ${q1}x</code> e <code>${c2}x / (${g}x) = ${q2}</code>.<br>
+                    5) Risultato scomposto: <code>${g}x (${q1}x + ${q2})</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let baseMCD = (i % 3) + 2;
+                    let c1 = baseMCD * 3;
+                    let c2 = baseMCD * 2;
+                    let c3 = baseMCD * 4;
+
+                    domanda = `Scomponi raccogliendo il massimo fattore comune: <br>
+                    <code>${c1}a³b² - ${c2}a²b³ + ${c3}a²b²</code>.`;
+
+                    let g = baseMCD;
+                    let q1 = c1 / g;
+                    let q2 = c2 / g;
+                    let q3 = c3 / g;
+
+                    risposta = `<code>${g}a²b² (${q1}a - ${q2}b + ${q3})</code>`;
+                    spiegazione = `
+                    1) M.C.D. dei coefficienti (${c1}, ${c2}, ${c3}) = <code>${g}</code>.<br>
+                    2) Analizziamo le lettere comuni a tutti i tre termini:
+                    <br>• per <code>a</code> l'esponente minimo è 2 (<code>a²</code>);
+                    <br>• per <code>b</code> l'esponente minimo è 2 (<code>b²</code>).<br>
+                    3) Raccogliamo <code>${g}a²b²</code> in evidenza.<br>
+                    4) Dividiamo ciascun termine per il fattore comune per ottenere la parentesi: <code>(${q1}a - ${q2}b + ${q3})</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Scomponi il seguente polinomio raccogliendo un fattore polinomilale comune: <br>
+                        <code>3x(2a - b) - 5y(2a - b) + (2a - b)</code>.`;
+
+                        risposta = `<code>(2a - b)(3x - 5y + 1)</code>`;
+                        spiegazione = `
+                        1) Osserviamo l'espressione: il blocco <code>(2a - b)</code> compare identico in tutti e tre i termini.<br>
+                        2) Consideriamo <code>(2a - b)</code> come un unico fattore comune da raccogliere totalmente.<br>
+                        3) Dividiamo ciascun addendo per <code>(2a - b)</code>:
+                        <br>• <code>3x(2a - b) / (2a - b) = 3x</code>
+                        <br>• <code>-5y(2a - b) / (2a - b) = -5y</code>
+                        <br>• <code>(2a - b) / (2a - b) = +1</code>.<br>
+                        4) Risultato finale: <code>(2a - b)(3x - 5y + 1)</code>.`;
+                    } else {
+                        domanda = `Scomponi raccogliendo un monomio negativo a fattor comune per cambiare segno: <br>
+                        <code>- 4x⁴y + 8x³y² - 12x²y³</code>.`;
+
+                        risposta = `<code>- 4x²y (x² - 2xy + 3y²)</code>`;
+                        spiegazione = `
+                        1) Raccogliamo il segno negativo insieme al M.C.D. per rendere positivo il primo termine interno.<br>
+                        2) M.C.D. numerico: <code>4</code>. M.C.D. letterale: <code>x²y</code>.<br>
+                        3) Il monomio da raccogliere è <code>-4x²y</code>.<br>
+                        4) Dividiamo tutti i termini invertendo i loro segni:
+                        <br>• <code>-4x⁴y / (-4x²y) = x²</code>
+                        <br>• <code>+8x³y² / (-4x²y) = -2xy</code>
+                        <br>• <code>-12x²y³ / (-4x²y) = +3y²</code>.<br>
+                        5) Risultato finale: <code>-4x²y (x² - 2xy + 3y²)</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

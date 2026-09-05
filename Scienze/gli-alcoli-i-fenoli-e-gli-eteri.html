@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alcoli, fenoli ed eteri in chimica organica: nomenclatura IUPAC, proprietà fisiche, acidità, legami a idrogeno e reazioni principali - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Alcoli, fenoli ed eteri - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* STILE BOX DISEGNI / SCHEMA TESTUALE */
+        .schema-disegno {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: monospace;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+            font-size: 0.92rem;
+            border: 1px solid var(--colore-primario);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .schema-disegno .evidenziato {
+            color: var(--colore-primario);
+            font-weight: bold;
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="gli-alcoli-i-fenoli-e-gli-eteri" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar-container">
+            <div class="hotbar">
+                <a href="../index.html" class="logo-link">
+                    <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+                </a>
+
+                <h1>NEXUS didattica</h1>
+
+                <nav class="navbar">
+                    <a href="../index.html">Home</a>
+                    <a href="../chi_siamo.html">Chi Siamo</a>
+                    <a href="../materie.html" class="active">Materie</a>
+                    <a href="../contatti.html">Contatti</a>
+                    <a href="../admin.html" id="admin-link"
+                        style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                        Pannello Admin 👑
+                    </a>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica Organica / Alcoli, Fenoli ed Eteri</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin: 0.5rem 0 0.5rem 0;">Alcoli, Fenoli ed Eteri</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio approfondito delle classi di composti organici contenenti legami con l'ossigeno: strutture, disegni, nomenclatura IUPAC, legami a idrogeno e proprietà chimico-fisiche.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione ai derivati idrocarburici dell'ossigeno</h2>
+            <p>
+                L'ossigeno è un elemento bivalente molto elettronegativo. Quando si lega a scheletri carbonici, dà origine a diverse famiglie di composti. Tra queste, gli <strong>alcoli</strong>, i <strong>fenoli</strong> e gli <strong>eteri</strong> condividono forti correlazioni strutturali ma presentano differenze marcate di reattività e acidità.
+            </p>
+
+            <h2>2. Gli Alcoli</h2>
+            <p>
+                Gli alcoli sono composti organici caratterizzati dalla presenza del gruppo funzionale <strong>ossidrile</strong> ($\text{-OH}$) legato a un atomo di carbonio con ibridazione $sp^3$ (cioè un carbonio alifatico saturo). La formula generale è <strong>$\text{R-OH}$</strong>.
+            </p>
+
+            <h3>Classificazione degli alcoli</h3>
+            <p>In base al tipo di atomo di carbonio a cui è legato il gruppo ossidrile, gli alcoli si distinguono in:</p>
+            <ul>
+                <li><strong>Primari ($1^\circ$):</strong> il carbonio del gruppo funzionale è legato ad un solo altro atomo di carbonio.</li>
+                <li><strong>Secondari ($2^\circ$):</strong> il carbonio è legato a due atomi di carbonio.</li>
+                <li><strong>Terziari ($3^\circ$):</strong> il carbonio è legato a tre atomi di carbonio.</li>
+            </ul>
+
+            <div class="schema-disegno">
+                <span class="evidenziato">DISEGNI STRUTTURALI DELLE CLASSI DI ALCOLI:</span><br><br>
+                <span style="color: #94a3b8;">-- Alcole Primario --</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;R — C — <span class="evidenziato">O — H</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H<br><br>
+                <span style="color: #94a3b8;">-- Alcole Secondario --</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;R — C — <span class="evidenziato">O — H</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R'<br><br>
+                <span style="color: #94a3b8;">-- Alcole Terziario --</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R''<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;R — C — <span class="evidenziato">O — H</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R'
+            </div>
+
+            <h3>Nomenclatura IUPAC degli alcoli</h3>
+            <p>
+                Per assegnare il nome IUPAC a un alcol:
+            </p>
+            <ol>
+                <li>Si individua la catena carbonica continua più lunga che contiene il carbonio legato al gruppo $\text{-OH}$.</li>
+                <li>Si sostituisce la terminazione <em>-o</em> dell'alcano corrispondente con il suffisso <strong>-olo</strong>.</li>
+                <li>La catena viene numerata a partire dall'estremità più vicina al gruppo ossidrile, la cui posizione viene indicata con un numero prima del suffisso (es. <em>butan-2-olo</em>).</li>
+            </ol>
+
+            <h3>Proprietà fisiche: Legami a idrogeno</h3>
+            <p>
+                A causa della forte polarità del legame $\text{O-H}$, le molecole di alcol possono formare estesi <strong>legami a idrogeno intermolecolari</strong>. Questo giustifica i loro punti di ebollizione notevolmente superiori rispetto ai corrispondenti idrocarburi e eteri di pari massa molecolare. Gli alcoli a basso peso molecolare (come metanolo ed etanolo) sono completamente miscibili in acqua.
+            </p>
+
+            <h2>3. I Fenoli</h2>
+            <p>
+                I fenoli sono composti in cui il gruppo ossidrile ($\text{-OH}$) è legato direttamente a un atomo di carbonio di un anello benzenico aromatico (gruppo arilico, $\text{Ar-OH}$). Il capostipite della famiglia è il fenolo (idrossibenzene).
+            </p>
+            
+            <div class="schema-disegno">
+                <span class="evidenziato">DISEGNO STRUTTURALE DEL FENOLO:</span><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OH<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;\<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/ &nbsp;&nbsp;&nbsp;<i>(Anello benzenico legato a -OH)</i>
+            </div>
+
+            <p>
+                A differenza degli alcoli alifatici, i fenoli mostrano una spiccata <strong>acidità</strong> debole. Lo ione fenossido ($\text{Ar-O}^-$) che si forma per perdita di un protone è infatti stabilizzato per risonanza grazie alla delocalizzazione della carica negativa all'interno dell'anello aromatico.
+            </p>
+
+            <h2>4. Gli Eteri</h2>
+            <p>
+                Gli eteri sono composti caratterizzati da un atomo di ossigeno legato a due gruppi alchilici o arilici. La formula generale è <strong>$\text{R-O-R'}$</strong>.
+            </p>
+
+            <div class="schema-disegno">
+                <span class="evidenziato">DISEGNO STRUTTURALE GENERALE DI UN ETERE:</span><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;R — <span class="evidenziato">O</span> — R'<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;(Ossigeno etereo interalleato tra due radicali carboniosi)
+            </div>
+
+            <h3>Nomenclatura e Proprietà degli eteri</h3>
+            <p>
+                Secondo la nomenclatura IUPAC, gli eteri vengono nominati come <em>albossialcani</em> (considerando il gruppo più piccolo come un sostituente albossido legato a una catena principale). Ad esempio, $\text{CH}_3\text{-O-CH}_2\text{CH}_3$ è il <em>metossietano</em>.
+            </p>
+            <p>
+                Poiché non possiedono atomi di idrogeno legati direttamente all'ossigeno, <strong>gli eteri non possono formare legami a idrogeno tra loro</strong>. Di conseguenza, i loro punti di ebollizione sono molto più bassi rispetto a quelli degli alcoli isomeri e risultano simili a quelli degli idrocarburi di massa analoga. Tuttavia, l'ossigeno etereo possiede doppietti elettronici liberi che gli consentono di accettare legami a idrogeno dall'acqua, rendendo gli eteri solubili in essa.
+            </p>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">🔬 Sintesi e Reattività Chiave</h3>
+                <p style="margin-bottom: 0;">
+                    Gli alcoli possono essere ottenuti per idratazione degli alcheni o per riduzione di aldeidi e chetoni. Tramite reazioni di <em>ossidazione</em>, gli alcoli primari si trasformano dapprima in aldeidi e poi in acidi carbossilici, gli alcoli secondari generano chetoni, mentre gli alcoli terziari resistono all'ossidazione blanda a causa dell'assenza di atomi di idrogeno sul carbonio carbinolico.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

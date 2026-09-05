@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I Sistemi di Raffreddamento della CPU e Dissipazione Termica - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Sistema di Raffreddamento - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="sistema-di-raffreddamento" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Sistema di
+                    Raffreddamento</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dei principi di termodinamica applicata, paste termiche, dissipatori ad aria e sistemi di
+                    raffreddamento a liquido.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Perché è necessario il raffreddamento nella CPU?</h2>
+            <p>
+                Quando un processore esegue istruzioni, l'energia elettrica assorbita viene convertita quasi interamente
+                in calore a causa dell'effetto Joule. Se questo calore non viene rimosso tempestivamente, la temperatura
+                del silicio sale rapidamente, portando al fenomeno del <em>thermal throttling</em> (riduzione forzata
+                della frequenza per evitare danni) o allo spegnimento di sicurezza del sistema.
+            </p>
+
+            <h2>2. Componenti e Tecnologie di Dissipazione</h2>
+            <p>
+                Il processo di trasferimento termico si basa su una catena di componenti coordinati:
+            </p>
+            <ul>
+                <li><strong>Pasta Termica (Thermal Paste):</strong> Composto ad alta conducibilità termica applicato tra
+                    l'IHS (Integrated Heat Spreader) della CPU e la base del dissipatore per colpire le microscopiche
+                    intercapedini d'aria.</li>
+                <li><strong>Dissipatore ad Aria (Air Cooler):</strong> Blocco lamellare in alluminio o rame attraversato
+                    da heatpipes (tubi di calore) in cui un fluido bolle a bassa temperatura per trasferire rapidamente
+                    il calore, coadiuvato da una o più ventole.</li>
+                <li><strong>Raffreddamento a Liquido (AIO / Custom):</strong> Sistemi che utilizzano un waterblock a
+                    contatto con la CPU per pompare un liquido refrigerante verso un radiatore esterno dotato di
+                    ventole.</li>
+                <li><strong>Sensori di Temperatura e PWM:</strong> Circuiti di monitoraggio che regolano dinamicamente
+                    la velocità delle ventole in base al carico di lavoro.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Gestione Termica:</strong> L'efficienza di un sistema di raffreddamento si misura in resistenza
+                termica (°C/W): minore è il valore, migliore è la capacità del dissipatore di mantenere basse le
+                temperature sotto sforzo.
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore di Efficienza Termica</h2>
+            <p>Seleziona una tipologia di raffreddamento e un carico di lavoro della CPU per stimare le prestazioni
+                termiche e il comportamento del sistema.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">thermal-sim@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">Cooling Performance Analyzer</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Sistema:</label>
+                        <select id="coolingSelect" class="code-input" style="background-color: #111; color: #f97316;">
+                            <option value="STOCK">Dissipatore Stock (Base)</option>
+                            <option value="AIR_TOWER">Torre ad Aria (Medium)</option>
+                            <option value="LIQUID_240">AIO Liquido 240mm</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Carico
+                            CPU:</label>
+                        <select id="loadSelect" class="code-input" style="background-color: #111; color: #f97316;">
+                            <option value="IDLE">Idle (Inattivo - 15W)</option>
+                            <option value="GAMING">Gaming / Medio (100W)</option>
+                            <option value="STRESS">Rendering / Stress (200W+)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-esegui" onclick="simulaTermica()" style="width: 100%;">Simula ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Seleziona le opzioni e avvia la simulazione
+                    termica...</div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore -->
+    <script>
+        function simulaTermica() {
+            let cooling = document.getElementById('coolingSelect').value;
+            let load = document.getElementById('loadSelect').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            let tempStimata = 35;
+            let statoDesc = "Ottimale";
+
+            if (cooling === "STOCK") {
+                if (load === "IDLE") tempStimata = 42;
+                else if (load === "GAMING") tempStimata = 78;
+                else { tempStimata = 98; statoDesc = "ATTENZIONE: Thermal Throttling imminente!"; }
+            } else if (cooling === "AIR_TOWER") {
+                if (load === "IDLE") tempStimata = 33;
+                else if (load === "GAMING") tempStimata = 64;
+                else { tempStimata = 82; statoDesc = "Carico elevato gestito correttamente."; }
+            } else if (cooling === "LIQUID_240") {
+                if (load === "IDLE") tempStimata = 30;
+                else if (load === "GAMING") tempStimata = 56;
+                else { tempStimata = 72; statoDesc = "Eccellente dissipazione e basse temperature."; }
+            }
+
+            outputDiv.style.color = tempStimata > 90 ? '#ef4444' : '#38bdf8';
+            outputDiv.innerHTML = `> Risultato Simulazione Termica:<br>` +
+                `&nbsp;&nbsp;Temperatura stimata CPU: <strong>${tempStimata} °C</strong><br>` +
+                `&nbsp;&nbsp;Stato del sistema: <em>${statoDesc}</em>`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

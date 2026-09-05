@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida all'Equazione Canonica dell'Ellisse: assi cartesiani, fuochi sull'asse x e y, eccentricità, grafici SVG e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazione Canonica dell'Ellisse - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-argomento.ellisse {
+            background-color: #fdf2f8;
+            color: #db2777;
+            border: 1px solid #fbcfe8;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazione-canonica-dell-ellisse" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno ellisse">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Equazione Canonica dell'Ellisse</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Dalla definizione geometrica all'equazione cartesiana: studio dei semiassi, dei fuochi e dell'eccentricità.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Derivazione dell'Equazione Canonica</h2>
+            <p>
+                Impostando la relazione geometrica vista nella lezione precedente (\(|PF_1| + |PF_2| = 2a\)) su un sistema di assi cartesiani in cui i fuochi si trovano sull'asse \(x\) nei punti \(F_1(-c, 0)\) e \(F_2(c, 0)\), e applicando i passaggi algebrici di sradicamento, si giunge all'equazione cartesiana fondamentale:
+            </p>
+            <div class="formula-box">
+                $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$
+            </div>
+            <p>
+                Questa è l'<strong>equazione canonica (o ridotta) dell'ellisse</strong> con centro nell'origine degli assi \(O(0,0)\), dove:
+            </p>
+            <ul>
+                <li>\(a\) è la misura del <strong>semiasse maggiore</strong> (lungo l'asse \(x\)).</li>
+                <li>\(b\) è la misura del <strong>semiasse minore</strong> (lungo l'asse \(y\)).</li>
+                <li>I vertici dell'ellisse sugli assi sono: \(A_1(-a, 0)\), \(A_2(a, 0)\), \(B_1(0, -b)\) e \(B_2(0, b)\).</li>
+            </ul>
+
+            <h2>2. I Due Casi dell'Ellisse</h2>
+            <p>
+                A seconda di quale denominatore sia maggiore tra \(a^2\) e \(b^2\), l'ellisse assume un orientamento orizzontale o verticale:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                
+                <!-- Caso Fuochi sull'asse X -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.1rem;">Fuochi sull'asse \(x\) (\(a > b\))</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">L'ellisse è allungata in senso orizzontale.</p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem; margin-bottom: 0;">
+                        <li>Equazione: \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)</li>
+                        <li>Coordinate fuochi: \(F(\pm c, 0)\)</li>
+                        <li>Relazione: \(c = \sqrt{a^2 - b^2}\)</li>
+                    </ul>
+                </div>
+
+                <!-- Caso Fuochi sull'asse Y -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.1rem;">Fuochi sull'asse \(y\) (\(a < b\))</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">L'ellisse è allungata in senso verticale.</p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem; margin-bottom: 0;">
+                        <li>Equazione: \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) (con \(b > a\))</li>
+                        <li>Coordinate fuochi: \(F(0, \pm c)\)</li>
+                        <li>Relazione: \(c = \sqrt{b^2 - a^2}\)</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <h2>3. L'Eccentricità</h2>
+            <p>
+                L'<strong>eccentricità</strong> (\(e\)) misura lo "schiacciamento" dell'ellisse ed è definita dal rapporto tra la semi-distanza focale \(c\) e il semiasse maggiore:
+            </p>
+            <div class="formula-box">
+                $$e = \frac{c}{a} \quad (\text{con } 0 \le e < 1)$$
+            </div>
+            <p>
+                Se \(e = 0\), i fuochi coincidono con il centro e l'ellisse diventa una circonferenza. Più \(e\) si avvicina a 1, più l'ellisse diventa allungata e sottile.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Data l'ellisse di equazione \(9x^2 + 25y^2 = 225\), determina i semiassi, le coordinate dei fuochi e l'eccentricità.</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Portiamo l'equazione in forma canonica dividendo entrambi i membri per \(225\):
+                        $$\frac{9x^2}{225} + \frac{25y^2}{225} = \frac{225}{225} \implies \frac{x^2}{25} + \frac{y^2}{9} = 1$$
+                    </li>
+                    <li>Ricaviamo i semiassi:
+                        $$a^2 = 25 \implies a = 5 \quad \text{(semiasse maggiore)}$$
+                        $$b^2 = 9 \implies b = 3 \quad \text{(semiasse minore)}$$
+                    </li>
+                    <li>Calcoliamo la semi-distanza focale \(c\):
+                        $$c = \sqrt{a^2 - b^2} = \sqrt{25 - 9} = \sqrt{16} = 4$$
+                    </li>
+                    <li>Poiché \(a > 25\), i fuochi si trovano sull'asse \(x\): \(F_1(-4, 0)\) e \(F_2(4, 0)\).</li>
+                    <li>Calcoliamo l'eccentricità:
+                        $$e = \frac{c}{a} = \frac{4}{5} = 0.8$$
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Semiassi \(a=5, b=3\), Fuochi \((\pm 4, 0)\), Eccentricità \(e = 0.8\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sull'Equazione dell'Ellisse</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sul calcolo dei parametri, dei fuochi e dell'eccentricità dell'ellisse. Clicca sulle card per visualizzare il procedimento e le soluzioni complete.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let a2 = 16;
+                let b2 = 9;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    a2 = 25;
+                    b2 = 16;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    a2 = 36;
+                    b2 = 9;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    a2 = 49;
+                    b2 = 25;
+                }
+
+                // Variazione per rendere gli esercizi unici
+                let offset = (i % 3);
+                if (offset === 1) { a2 += 4; }
+                else if (offset === 2) { b2 += 2; }
+
+                let a = Math.sqrt(a2).toFixed(1);
+                let b = Math.sqrt(b2).toFixed(1);
+                let c = Math.sqrt(Math.abs(a2 - b2)).toFixed(2);
+                let e = (c / Math.max(Math.sqrt(a2), Math.sqrt(b2))).toFixed(2);
+
+                let eqEllisse = `\\frac{x^2}{${a2}} + \\frac{y^2}{${b2}} = 1`;
+
+                let calcoloSpiegato = `
+                    1) Dalla forma canonica identifichiamo \\(a^2 = ${a2}\\) e \\(b^2 = ${b2}\\).<br>
+                    2) I semiassi sono \\(a = \\sqrt{${a2}}\\) e \\(b = \\sqrt{${b2}}\\).<br>
+                    3) Calcoliamo la semi-distanza focale: \\(c = \\sqrt{${Math.max(a2, b2)} - ${Math.min(a2, b2)}} = ${c}\\).<br>
+                    4) Fuochi e eccentricità: \\(F(\\pm ${c}, 0)\\), \\(e = ${e}\\).
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Data l'ellisse di equazione \\(${eqEllisse}\\), calcola i semiassi, le coordinate dei fuochi e l'eccentricità.</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Semiassi:</strong> \\(a = \\sqrt{${a2}}\\), \\(b = \\sqrt{${b2}}\\</p>
+                            <p>🎯 <strong>Fuochi:</strong> \\((\\pm ${c}, 0)\\)</p>
+                            <p>🎯 <strong>Eccentricità:</strong> \\(e = ${e}\\)</p>
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

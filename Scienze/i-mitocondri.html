@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I Mitocondri e la Respirazione Cellulare - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Mitocondri - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--colore-scuro);
+            background-color: var(--sfondo-chiaro);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid var(--bordo-chiaro);
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+        }
+
+        .spiegazione-contenuto {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .box-risposta-corretta {
+            background-color: var(--bordo-chiaro);
+            border: 1px solid var(--colore-primario);
+            border-left: 4px solid var(--colore-primario);
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: var(--colore-testo-scuro);
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-mitocondri" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Biologia cellulare</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Mitocondri e la Respirazione Cellulare</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio dettagliato della struttura mitocondriale, delle membrane, della matrice e dei meccanismi di produzione energetica (ATP).
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione ai Mitocondri</h2>
+            <p>
+                I mitocondri sono organelli citoplasmatici presenti in quasi tutte le cellule eucariote (animali e vegetali). Noti comunemente come le <strong>"centrali energetiche"</strong> della cellula, svolgono il ruolo cruciale di convertire l'energia chimica derivata dai nutrienti in adenosina trifosfato (ATP), la forma di energia immediatamente utilizzabile dai processi metabolici.
+            </p>
+
+            <h2>2. Ultrastruttura del Mitocondrio</h2>
+            <p>
+                Il mitocondrio è delimitato da un sistema a <em>due membrane</em> distinte che definiscono compartimenti funzionali separati:
+            </p>
+            <ul>
+                <li><strong>Membrana esterna:</strong> Liscia e permeabile a piccole molecole e ioni grazie alla presenza di proteine canali chiamate porine.</li>
+                <li><strong>Spazio intermembrana:</strong> La regione compresa tra la membrana esterna e quella interna, caratterizzata da una composizione chimica simile a quella del citosol per quanto riguarda le piccole molecole.</li>
+                <li><strong>Membrana interna:</strong> Altamente selettiva e ripiegata in strutture chiamate <em>creste mitocondriali</em>, che aumentano notevolmente la superficie utile per le reazioni della catena di trasporto degli elettroni.</li>
+                <li><strong>Matrice mitocondriale:</strong> Il compartimento interno racchiuso dalla membrana interna, contenente enzimi metabolici, il DNA mitocondriale circolare (mtDNA), ribosomi propri e granuli.</li>
+            </ul>
+
+            <div class="formula-box">
+                ⚡ <strong>Reazione Globale della Respirazione Cellulare Aerobica:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$\text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2 \longrightarrow 6\text{CO}_2 + 6\text{H}_2\text{O} + \text{Energia (ATP)}$$
+                    Oxidazione del glucosio accoppiata alla sintesi di ATP all'interno dei mitocondri.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Per quale motivo la membrana interna del mitocondrio è ripiegata in creste anziché essere liscia?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Localizzazione dei complessi enzimatici: Sulla membrana interna risiedono i complessi della catena di trasporto degli elettroni e l'enzima ATP sintasi.</li>
+                    <li>Ottimizzazione dello spazio: Le pieghe (creste) massimizzano la superficie disponibile all'interno di un volume cellulare limitato.</li>
+                    <li>Efficienza energetica: Una superficie maggiore consente una maggiore concentrazione di proteine di membrana e, di conseguenza, un incremento nella produzione di ATP.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Soluzione:</strong> Le creste aumentano la superficie di membrana disponibile per ospitare i complessi della catena respiratoria e massimizzare la sintesi di ATP.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti e Verifiche sui Mitocondri</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test progressivi suddivisi per livello di difficoltà (facile, medio, difficile) focalizzati sulla biologia mitocondriale e bioenergetica.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi unici -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            // Array con 100 dati unici strutturati (Domanda, Risposta, Spiegazione)
+            const databaseEsercizi = [
+                // --- LIVELLO FACILE (1 - 35) ---
+                {
+                    d: "Qual è la principale funzione dei mitocondri all'interno della cellula eucariote?",
+                    r: "Produzione di ATP tramite la respirazione cellulare.",
+                    s: "I mitocondri scompongono i nutrienti in presenza di ossigeno convertendo l'energia in legami ad alta energia sotto forma di ATP."
+                },
+                {
+                    d: "Per quale motivo i mitocondri vengono comunemente definiti 'centrali energetiche'?",
+                    r: "Perché generano la maggior parte dell'energia chimica cellulare.",
+                    s: "Svolgono la fosforilazione ossidativa, producendo grandi quantità di ATP necessarie al metabolismo."
+                },
+                {
+                    d: "In quali tipi di cellule sono presenti i mitocondri?",
+                    r: "In quasi tutte le cellule eucariote (animali e vegetali).",
+                    s: "Le cellule eucariote possiedono compartimenti interni membranosi, inclusi i mitocondri."
+                },
+                {
+                    d: "Quante membrane delimitano la struttura di base di un mitocondrio?",
+                    r: "Due membrane distinte (esterna ed interna).",
+                    s: "La compartimentazione mitocondriale si basa su una membrana esterna liscia e una membrana interna ripiegata."
+                },
+                {
+                    d: "Come appare al microscopio elettronico la membrana mitocondriale esterna?",
+                    r: "Liscia e continua.",
+                    s: "A differenza di quella interna, la membrana esterna racchiude l'organello senza formare pieghe profonde."
+                },
+                {
+                    d: "Quali speciali proteine canale attraversano la membrana esterna mitocondriale?",
+                    r: "Le porine.",
+                    s: "Le porine formano grandi canali acquosi che rendono la membrana esterna permeabile a molecole di piccole dimensioni."
+                },
+                {
+                    d: "Come si chiama lo spazio compreso tra la membrana esterna e la membrana interna?",
+                    r: "Spazio intermembrana.",
+                    s: "Questo spazio ha un ruolo chiave nel mantenere il gradiente protonico durante la sintesi di ATP."
+                },
+                {
+                    d: "Quale caratteristica principale possiede la membrana mitocondriale interna?",
+                    r: "È altamente selettiva e ripiegata in creste.",
+                    s: "I ripiegamenti aumentano drasticamente la superficie utile per i complessi enzimatici della catena respiratoria."
+                },
+                {
+                    d: "Come vengono chiamate le tipiche introflessioni della membrana mitocondriale interna?",
+                    r: "Creste mitocondriali.",
+                    s: "Le creste offrono un'ampia superficie di ancoraggio per le proteine deputate al trasporto di elettroni."
+                },
+                {
+                    d: "Come si chiama il compartimento acquoso interno racchiuso dalla membrana interna?",
+                    r: "Matrice mitocondriale.",
+                    s: "La matrice contiene gli enzimi del ciclo metabolico, ribosomi e acidi nucleici."
+                },
+                {
+                    d: "Quale molecola energetica viene sintetizzata principalmente dai mitocondri?",
+                    r: "Adenosina trifosfato (ATP).",
+                    s: "L'ATP è il principale vettore energetico immediatamente utilizzabile dalla cellula."
+                },
+                {
+                    d: "Qual è il gas consumato dai mitocondri nel processo di respirazione cellulare aerobica?",
+                    r: "L'ossigeno ($O_2$).",
+                    s: "L'ossigeno agisce come accettore finale di elettroni nella catena respiratoria."
+                },
+                {
+                    d: "Qual è il principale gas di scarto prodotto dai mitocondri?",
+                    r: "L'anidride carbonica ($CO_2$).",
+                    s: "Il carbonio dei nutrienti ossidati viene rilasciato sotto forma di $CO_2$."
+                },
+                {
+                    d: "Quale organulo, oltre ai mitocondri, possiede un proprio DNA nelle cellule vegetali?",
+                    r: "I cloroplasti.",
+                    s: "Sia mitocondri che cloroplasti derivano da eventi endosimbiontici ancestrali e conservano un genoma proprio."
+                },
+                {
+                    d: "I mitocondri ereditano il proprio DNA principalmente da quale genitore negli animali?",
+                    r: "Dalla madre (eredità matrilineare).",
+                    s: "I mitocondri dello spermatozoo si trovano nella coda che generalmente non penetra nell'ovocita durante la fecondazione."
+                },
+                {
+                    d: "Come viene definito il DNA contenuto all'interno dei mitocondri?",
+                    r: "DNA mitocondriale (mtDNA).",
+                    s: "Il mtDNA è una molecola circolare a doppio filamento simile a quella dei batteri."
+                },
+                {
+                    d: "I ribosomi presenti all'interno della matrice mitocondriale a quali ribosomi assomigliano di più?",
+                    r: "Ai ribosomi batterici (procariotici).",
+                    s: "I ribosomi mitocondriali sono di tipo 70S, analoghi a quelli dei procarioti."
+                },
+                {
+                    d: "Quale tessuto del corpo umano presenta una densità altissima di mitocondri per via del suo elevato fabbisogno energetico?",
+                    r: "Il tessuto muscolare (specialmente cardiaco e schelettrico).",
+                    s: "Le cellule muscolari richiedono enormi quantità di ATP per la contrazione continua."
+                },
+                {
+                    d: "Le cellule del fegato (epatociti) contengono molti mitocondri? Perché?",
+                    r: "Sì, per sostenere intense attività metaboliche e di detossificazione.",
+                    s: "Il fegato svolge centinaia di funzioni biochimiche energeticamente costose."
+                },
+                {
+                    d: "Qual è la forma geometrica tipica del DNA mitocondriale?",
+                    r: "Circolare.",
+                    s: "A differenza del DNA nucleare lineare degli eucarioti, il mtDNA è una molecola chiusa ad anello."
+                },
+                {
+                    d: "Quale vitamina del gruppo B è un coenzima essenziale nel metabolismo energetico mitocondriale?",
+                    r: "La vitamina B1 (tiamina) o l'acido nicotinico (B3/NADH).",
+                    s: "I coenzimi derivati dalle vitamine sono fondamentali per il ciclo di Krebs."
+                },
+                {
+                    d: "Che cos'è la fosforilazione ossidativa?",
+                    r: "Il processo di sintesi di ATP guidato dal flusso di elettroni attraverso la catena respiratoria.",
+                    s: "Avviene sulle creste mitocondriali sfruttando un gradiente elettrochimico di protoni."
+                },
+                {
+                    d: "Quale enzima transmembrana è responsabile della sintesi finale di ATP nella membrana interna?",
+                    r: "L'enzima ATP sintasi.",
+                    s: "Sfrutta il flusso di protoni secondo gradiente per fosforilare l'ADP in ATP."
+                },
+                {
+                    d: "Quali cellule nel corpo umano sono quasi prive di mitocondri?",
+                    r: "I globuli rossi maturi (eritrociti).",
+                    s: "I globuli rossi perdono i mitocondri e il nucleo per massimizzare lo spazio per il trasporto dell'ossigeno."
+                },
+                {
+                    d: "Quale processo metabolico precede l'ingresso del piruvato nel mitocondrio?",
+                    r: "La glicolisi.",
+                    s: "La glicolisi avviene nel citoplasma e scinde il glucosio in piruvato."
+                },
+                {
+                    d: "In quale parte della cellula avviene la glicolisi rispetto al mitocondrio?",
+                    r: "Nel citosol (citoplasma).",
+                    s: "Il piruvato prodotto deve poi essere trasportato attivamente all'interno della matrice mitocondriale."
+                },
+                {
+                    d: "Prima di entrare nel ciclo di Krebs, il piruvato viene convertito in quale molecola?",
+                    r: "Acetil-CoA.",
+                    s: "La reazione di decarbossilazione ossidativa trasforma il piruvato in Acetil-CoA."
+                },
+                {
+                    d: "Quale nome alternativo viene dato al ciclo di Krebs?",
+                    r: "Ciclo degli acidi tricarbossilici (o ciclo dell'acido citrico).",
+                    s: "Prende il nome dal biochimico Hans Krebs che ne delineò le tappe metaboliche."
+                },
+                {
+                    d: "Quali molecole trasportatrici di elettroni vengono ridotte durante il ciclo di Krebs?",
+                    r: "NADH e $FADH_2$.",
+                    s: "Questi coenzimi trasportano elettroni ad alta energia verso la catena respiratoria."
+                },
+                {
+                    d: "Cosa succede all'energia rilasciata dagli elettroni lungo la catena di trasporto?",
+                    r: "Viene usata per pompare protoni nello spazio intermembrana.",
+                    s: "Questo pompaggio crea un gradiente protonico elettrochimico."
+                },
+                {
+                    d: "Come si chiama il movimento dei protoni attraverso l'ATP sintasi?",
+                    r: "Chemiosmosi.",
+                    s: "I protoni rientrano nella matrice attraverso il canale dell'ATP sintasi generando energia rotazionale."
+                },
+                {
+                    d: "Qual è il ruolo dell'acqua nella respirazione cellulare mitocondriale?",
+                    r: "Viene prodotta come sottoprodotto finale quando l'ossigeno accetta elettroni e protoni.",
+                    s: "La riduzione dell'ossigeno molecolare porta alla formazione di molecole di $H_2O$."
+                },
+                {
+                    d: "Perché i mitocondri sono definiti organelli semiautonomi?",
+                    r: "Perché possiedono proprio DNA e macchinario di sintesi proteica ma dipendono anche dal nucleo.",
+                    s: "Molte proteine mitocondriali sono codificate dal DNA nucleare e importate dal citoplasma."
+                },
+                {
+                    d: "In quale fase dello sviluppo cellulare i mitocondri si dividono?",
+                    r: "Durante la divisione cellulare per scissione binaria autonoma.",
+                    s: "I mitocondri si replicano in modo simile ai batteri prima della mitosi."
+                },
+                {
+                    d: "Quale scienziato ha formulato la teoria endosimbiontica moderna per i mitocondri?",
+                    r: "Lynn Margulis.",
+                    s: "Nel 1967 propose che organelli come mitocondri e cloroplasti derivassero da batteri simbionti."
+                },
+
+                // --- LIVELLO MEDIO (36 - 70) ---
+                {
+                    d: "Qual è il nome specifico dello spazio interno delimitato dalla membrana mitocondriale interna?",
+                    r: "Matrice mitocondriale.",
+                    s: "La matrice è il centro nevralgico degli enzimi ossidativi e del ciclo di Krebs."
+                },
+                {
+                    d: "Quali complessi proteici costituiscono la catena di trasporto degli elettroni?",
+                    r: "I complessi da I a IV presenti sulla membrana mitocondriale interna.",
+                    s: "Ospitano trasportatori come i ubiquinoni e i citocromi."
+                },
+                {
+                    d: "Qual è la funzione del Complesso V nella membrana interna del mitocondrio?",
+                    r: "Sintetizzare ATP sfruttando il flusso protonico (ATP sintasi).",
+                    s: "È l'unità motrice molecolare che unisce ADP e fosfato inorganico."
+                },
+                {
+                    d: "Quale molecola funge da trasportatore mobile di elettroni tra il Complesso I/II e il Complesso III?",
+                    r: "L'ubichinone (coenzima Q).",
+                    s: "È una molecola liposolubile che naviga all'interno del doppio strato fosfolipidico."
+                },
+                {
+                    d: "Quale proteina periferica della membrana interna trasporta elettroni dal Complesso III al Complesso IV?",
+                    r: "Il citocromo c.",
+                    s: "Si trova sul versante dello spazio intermembrana."
+                },
+                {
+                    d: "Cosa si intende per 'forza proton-motrice' nei mitocondri?",
+                    r: "La combinazione del gradiente di concentrazione protonico e del potenziale elettrico di membrana.",
+                    s: "È la forza termodinamica che spinge i protoni a rientrare nella matrice."
+                },
+                {
+                    d: "Quali coenzimi ridotti cedono elettroni alla catena respiratoria mitocondriale?",
+                    r: "Il NADH e il $FADH_2$.",
+                    s: "Il NADH cede elettroni al Complesso I, mentre il $FADH_2$ al Complesso II."
+                },
+                {
+                    d: "Quante molecole di ATP vengono teoricamente prodotte dall'ossidazione completa di una molecola di glucosio?",
+                    r: "Circa 30-32 molecole di ATP.",
+                    s: "Il rendimento energetico effettivo può variare leggermente a seconda dei sistemi di shuttle cellulari."
+                },
+                {
+                    d: "Cosa accade ai mitocondri in caso di danno cellulare o apoptosi?",
+                    r: "Rilasciano il citocromo c nel citoplasma attivando la morte cellulare programmata.",
+                    s: "La permeabilizzazione della membrana mitocondriale esterna è un segnale chiave dell'apoptosi."
+                },
+                {
+                    d: "In che modo il DNA mitocondriale differisce da quello nucleare quanto a codice genetico?",
+                    r: "Presenta alcune piccole variazioni nei codoni di stop e di inizio rispetto al codice universale.",
+                    s: "Ad esempio, alcuni codoni che nel nucleo sono di stop nel mtDNA codificano per amminoacidi."
+                },
+                {
+                    d: "Perché il tasso di mutazione del DNA mitocondriale è generalmente superiore a quello nucleare?",
+                    r: "A causa della vicinanza alla catena respiratoria e della minore efficienza dei sistemi di riparazione.",
+                    s: "I radicali liberi dell'ossigeno prodotti dai mitocondri possono danneggiare il mtDNA."
+                },
+                {
+                    d: "Quale patologia ereditaria mitocondriale causa perdita progressiva della visione centrale?",
+                    r: "L'atrofia ottica di Leber (LHON).",
+                    s: "È legata a mutazioni puntiformi nel mtDNA che colpiscono i complessi respiratori."
+                },
+                {
+                    d: "Che cosa sono le specie reattive dell'ossigeno (ROS) prodotte dai mitocondri?",
+                    r: "Sottoprodotti tossici derivati dalla riduzione incompleta dell'ossigeno.",
+                    s: "Includono radicali liberi come l'anione superossido e il perossido di idrogeno."
+                },
+                {
+                    d: "Con quale meccanismo i mitocondri si fondono e si dividono continuamente?",
+                    r: "Attraverso i processi dinamici di fusione e fissione mitocondriale.",
+                    s: "Questi processi regolano la qualità e la distribuzione degli organelli nella cellula."
+                },
+                {
+                    d: "Quali proteine GTPasi regolano la fissione dei mitocondri?",
+                    r: "Proteine come la Drp1 (Dynamin-related protein 1).",
+                    s: "La Drp1 si assembla ad anello attorno al mitocondrio strangolandolo per dividerlo."
+                },
+                {
+                    d: "Quali proteine mediano la fusione della membrana esterna mitocondriale?",
+                    r: "Le mitofusine (Mfn1 e Mfn2).",
+                    s: "Consentono l'unione fisica tra mitocondri adiacenti per rimescolare il contenuto."
+                },
+                {
+                    d: "Qual è il ruolo dell'enzima citrato sintasi nella matrice mitocondriale?",
+                    r: "Catalizza la prima reazione del ciclo di Krebs unendo Acetil-CoA e ossalacetato.",
+                    s: "Produce il citrato, da cui prende il nome l'intero ciclo metabolico."
+                },
+                {
+                    d: "In quale reazione del ciclo di Krebs viene prodotto direttamente GTP (o ATP) per fosforilazione a livello del substrato?",
+                    r: "La conversione da succinil-CoA a succinato catalizzata dalla succinil-CoA sintetasi.",
+                    s: "È l'unico passaggio del ciclo che genera direttamente un nucleoside trifosfato."
+                },
+                {
+                    d: "Quale coenzima è legato covalentemente al complesso della succinato deidrogenasi (Complesso II)?",
+                    r: "Il flavina adenin dinucleotide ($FAD$ / $FADH_2$).",
+                    s: "Il Complesso II funge contemporaneamente da enzima del ciclo di Krebs e da trasportatore di elettroni."
+                },
+                {
+                    d: "Come entra il piruvato dal citoplasma alla matrice mitocondriale?",
+                    r: "Mediante un sistema di trasporto specifico (piruvato translocasi) accoppiato a un simporto di protoni.",
+                    s: "Il passaggio attraversa entrambe le membrane sfruttando canali e trasportatori dedicati."
+                },
+                {
+                    d: "Che cos'è la beta-ossidazione degli acidi grassi e dove avviene nei mitocondri?",
+                    r: "Il processo di demolizione degli acidi grassi per produrre Acetil-CoA, che avviene nella matrice mitocondriale.",
+                    s: "Gli acidi grassi a lunga catena vengono prima trasportati nella matrice tramite il sistema della carnitina."
+                },
+                {
+                    d: "Qual è la funzione molecolare della carnitina nel metabolismo mitocondriale?",
+                    r: "Trasportare gli acil-gruppi degli acidi grassi attraverso la membrana mitocondriale interna.",
+                    s: "Senza la carnitina gli acidi grassi a catena lunga non potrebbero accedere alla matrice per la beta-ossidazione."
+                },
+                {
+                    d: "Cosa succede all'efficienza della fosforilazione ossidativa in presenza di disaccoppianti come il DNP (2,4-dinitrofenolo)?",
+                    r: "La membrana interna diventa permeabile ai protoni disaccoppiando il flusso dalla sintesi di ATP.",
+                    s: "L'energia del gradiente viene dissipata sotto forma di calore anziché produrre ATP."
+                },
+                {
+                    d: "Quale proteina disaccopiante naturale (UCP1) è presente nei mitocondri del tessuto adiposo bruno?",
+                    r: "La termogenina.",
+                    s: "Permette la produzione di calore corporeo nei mammiferi ibernanti e nei neonati (termogenesi senza brivido)."
+                },
+                {
+                    d: "In che modo i mitocondri partecipano all'omeostasi degli ioni calcio ($Ca^{2+}$)?",
+                    r: "Captando e rilasciando ioni calcio per regolare i segnali intracellulari e il metabolismo.",
+                    s: "Il calcio stimola vari enzimi chiave del ciclo di Krebs all'interno della matrice."
+                },
+                {
+                    d: "Quale anomalia strutturale dei mitocondri si osserva spesso nelle cellule tumorali (effetto Warburg)?",
+                    r: "Una preferenza per la glicolisi anaerobica anche in presenza di ossigeno (disfunzione ossidativa parziale).",
+                    s: "Molti tumori modificano il metabolismo mitocondriale per sostenere la rapida proliferazione."
+                },
+                {
+                    d: "Come avviene la degradazione dei mitocondri danneggiati all'interno della cellula?",
+                    r: "Mediante un processo di autofagia specifica chiamato mitofagia.",
+                    s: "I mitocondri vecchi o malfunzionanti vengono racchiusi in autofagosomi e degradati dai lisosomi."
+                },
+                {
+                    d: "Quali geni regolatori chiave controllano la biogenesi di nuovi mitocondri nella cellula?",
+                    r: "Il coattivatore trascrizionale PGC-1$\\alpha$.",
+                    s: "Stimola la replicazione del mtDNA e la sintesi di proteine mitocondriali in risposta all'esercizio fisico."
+                },
+                {
+                    d: "Qual è l'effetto dell'allenamento di resistenza aerobica sul tessuto muscolare scheletrico rispetto ai mitocondri?",
+                    r: "Aumenta significativamente il numero, le dimensioni e la capacità ossidativa dei mitocondri.",
+                    s: "Questo adattamento migliora la resistenza alla fatica e l'efficienza energetica."
+                },
+                {
+                    d: "Che cos'è la sindrome MELAS?",
+                    r: "Una malattia mitocondriale caratterizzata da miopatia, encefalopatia, acidosi lattica e episodi simili all'ictus.",
+                    s: "Deriva da mutazioni puntiformi nel DNA mitocondriale che alterano la sintesi proteica."
+                },
+                {
+                    d: "Perché i tessuti ad alto consumo energetico (come cervello e muscoli) sono i più colpiti dalle malattie mitocondriali?",
+                    r: "Perché dipendono totalmente dalla continua produzione di ATP mitocondriale.",
+                    s: "Piccoli cali nell'efficienza energetica causano gravi danni funzionali in questi organi."
+                },
+                {
+                    d: "Quale molecola serve da accettore finale di elettroni nella catena respiratoria dei mitocondri umani?",
+                    r: "L'ossigeno molecolare ($O_2$).",
+                    s: "Acquistando elettroni e protoni, l'ossigeno si riduce formando acqua."
+                },
+                {
+                    d: "Qual è il nome dell'enzima che catalizza la prima tappa della glicolisi nel citoplasma?",
+                    r: "L'esochinasi.",
+                    s: "Fosforila il glucosio intrappolandolo all'interno della cellula prima del catabolismo."
+                },
+                {
+                    d: "In quale organulo, oltre ai mitocondri, avviene la sintesi di alcuni lipidi di membrana cellulare?",
+                    r: "Nel reticolo endoplasmatico liscio.",
+                    s: "Esiste uno stretto contatto fisico e funzionale tra reticolo endoplasmatico e mitocondri (siti MAM)."
+                },
+                {
+                    d: "Quale coenzima trasporta gruppi acilici nel ciclo di Krebs unendosi all'ossalacetato?",
+                    r: "Il coenzima A (CoA).",
+                    s: "L'Acetil-CoA trasferisce il gruppo acetile per formare acido citrico."
+                },
+
+                // --- LIVELLO DIFFICILE (71 - 100) ---
+                {
+                    d: "Quale teoria spiega in dettaglio l'origine evolutiva dei mitocondri da antenati batterici?",
+                    r: "La teoria endosimbiontica.",
+                    s: "I mitocondri derivano da alfa-proteobatteri aerobi fagocitati da una cellula ospite primordiale."
+                },
+                {
+                    d: "Qual è il valore tipico del potenziale elettrico di membrana ($\Delta\\psi$) attraverso la membrana mitocondriale interna sana?",
+                    r: "Circa $-150\\text{ mV}$ a $-180\\text{ mV}$ (negativo all'interno).",
+                    s: "Questo forte potenziale negativo è fondamentale per attrarre gli ioni calcio e guidare l'importazione proteica."
+                },
+                {
+                    d: "Come vengono importate dal citoplasma alla matrice le proteine codificate dal DNA nucleare?",
+                    r: "Attraverso complessi proteici di translocazione chiamati TOM (membrana esterna) e TIM (membrana interna).",
+                    s: "Le proteine possiedono una sequenza leader N-terminale che viene riconosciuta e tagliata dopo l'ingresso."
+                },
+                {
+                    d: "Qual è il meccanismo biochimico esatto con cui il Complesso I (NADH deidrogenasi) pompa protoni?",
+                    r: "Sfrutta i cambiamenti conformazionali indotti dal trasferimento di elettroni dal NADH all'ubichinone.",
+                    s: "Vengono traslocati 4 protoni nello spazio intermembrana per ogni coppia di elettroni."
+                },
+                {
+                    d: "Quale complesso della catena respiratoria NON pompa protoni direttamente nello spazio intermembrana?",
+                    r: "Il Complesso II (succinato deidrogenasi).",
+                    s: "Trasferisce elettroni dal $FADH_2$ all'ubichinone senza contribuire direttamente al gradiente protonico."
+                },
+                {
+                    d: "Quale molecola inibisce direttamente il Complesso IV (citocromo c ossidasi) bloccando la respirazione?",
+                    r: "Lo ione cianuro ($CN^-$) o il monossido di carbonio ($CO$).",
+                    s: "Legandosi al sito attivo del ferro impediscono la riduzione dell'ossigeno, provocando soffocamento cellulare."
+                },
+                {
+                    d: "Quale antibiotico agisce come potente inibitore specifico dell'ATP sintasi mitocondriale legandosi alla subunità $F_0$?",
+                    r: "L'oligomicina.",
+                    s: "Bloccando il canale protonico, l'oligomicina interrompe sia la sintesi di ATP che il trasporto elettronico."
+                },
+                {
+                    d: "In quale reazione del ciclo di Krebs si verifica una fosforilazione a livello del substrato con produzione di GTP?",
+                    r: "La conversione del succinil-CoA in succinato catalizzata dalla succinil-CoA sintetasi.",
+                    s: "L'energia di legame del tioestere nel succinil-CoA viene sfruttata per sintetizzare trifosfati di guanosina."
+                },
+                {
+                    d: "Quale enzima del ciclo di Krebs è l'unico ancorato covalentemente alla membrana mitocondriale interna?",
+                    r: "La succinato deidrogenasi (Complesso II).",
+                    s: "Fa parte sia del ciclo metabolico della matrice che della catena di trasporto degli elettroni."
+                },
+                {
+                    d: "Che cos'è il 'loop Q' (ciclo Q) operante nel Complesso III della catena respiratoria?",
+                    r: "Un meccanismo ciclico di ossidoriduzione dell'ubichinone che raddoppia l'efficienza del pompaggio protonico.",
+                    s: "Previene la perdita di elettroni singoli e ottimizza il trasferimento al citocromo c."
+                },
+                {
+                    d: "Quale alterazione biochimica caratterizza la sindrome di Leigh, una grave encefalopatia mitocondriale infantile?",
+                    r: "Deficienze nei complessi della catena respiratoria o nel complesso della piruvato deidrogenasi.",
+                    s: "Provoca lesioni bilaterali necrotizzanti in regioni specifiche del cervello e del tronco encefalico."
+                },
+                {
+                    d: "Qual è il ruolo del supercomplesso respiratorio (chiamato anche 'respirasoma') nella membrana interna?",
+                    r: "Organizzare fisicamente i complessi I, III e IV in unità sopramolecolari per velocizzare il trasferimento di elettroni.",
+                    s: "Riduce la diffusione casuale dei trasportatori mobili e minimizza la produzione di specie reattive dell'ossigeno."
+                },
+                {
+                    d: "Perché le mutazioni nel DNA mitocondriale mostrano spesso il fenomeno dell'eteroplasmia?",
+                    r: "Perché una cellula contiene centinaia di copie di mtDNA, che possono coesistere in forme mutate e normali.",
+                    s: "La gravità clinica della malattia dipende dalla percentuale di genomi mitocondriali mutati presenti."
+                },
+                {
+                    d: "Che cos'è il 'collo di bottiglia genetico' (genetic bottleneck) nella trasmissione del DNA mitocondriale?",
+                    r: "La drastica riduzione del numero di molecole di mtDNA durante l'oogenesi.",
+                    s: "Spiega perché fratelli nati dalla stessa madre possono ereditare percentuali molto diverse di mtDNA mutato."
+                },
+                {
+                    d: "Quale ruolo svolge la cardiolipina nella membrana mitocondriale interna?",
+                    r: "È un fosfolipide unico a quattro catene aciliche che stabilizza i complessi proteici respiratori.",
+                    s: "La carenza di cardiolipina altera gravemente la funzione mitocondriale, come accade nella sindrome di Barth."
+                },
+                {
+                    d: "Come agisce la proteina mitocondriale UCP2 rispetto all'omeostasi dei radicali liberi?",
+                    r: "Modula la produzione di ROS riducendo lievemente il potenziale di membrana tramite un blando disaccoppiamento.",
+                    s: "Protegge i tessuti dallo stress ossidativo eccessivo in condizioni di digiuno o infiammazione."
+                },
+                {
+                    d: "Quale via metabolica alternativa alla glicolisi e al ciclo di Krebs avviene parzialmente nei mitocondri per la biosintesi dell'eme?",
+                    r: "La sintesi delle porfirine, che inizia e termina nei mitocondri.",
+                    s: "La prima reazione (condensazione di glicina e succinil-CoA) è catalizzata dall'enzima ALA sintasi mitocondriale."
+                },
+                {
+                    d: "Quale complesso enzimatico collega il catabolismo dei carboidrati alla respirazione mitocondriale decarbossilando il piruvato?",
+                    r: "Il complesso della piruvato deidrogenasi (PDC).",
+                    s: "Richiede cinque coenzimi diversi (TPP, lipoato, CoA, FAD, NAD) per completare la reazione."
+                },
+                {
+                    d: "Qual è l'effetto di una mutazione nel gene della proteina OPA1 sulla morfologia mitocondriale?",
+                    r: "Frammentazione dei mitocondri e alterazione delle creste della membrana interna.",
+                    s: "Mutazioni in OPA1 causano l'atrofia ottica autosomica dominante (DOA)."
+                },
+                {
+                    d: "Quale composto viene usato sperimentalmente come sonda fluorescente per misurare il potenziale di membrana mitocondriale?",
+                    r: "Coloranti cationici lipofili come il TMRM o il JC-1.",
+                    s: "Si accumulano all'interno dei mitocondri sani in base al valore del loro potenziale elettrico."
+                },
+                {
+                    d: "In che modo l'enzima isocitrato deidrogenasi regola il flusso metabolico del ciclo di Krebs?",
+                    r: "È un punto di controllo allosterico attivato da ADP e $Ca^{2+}$ e inibito da ATP e NADH.",
+                    s: "Garantisce che la velocità del ciclo aumenti quando la cellula consuma molta energia."
+                },
+                {
+                    d: "Qual è la funzione dell'enzima alfa-chetoglutarato deidrogenasi nel metabolismo mitocondriale?",
+                    r: "Catalizza la decarbossilazione ossidativa dell'alfa-chetoglutarato a succinil-CoA.",
+                    s: "È un punto di controllo irreversibile del ciclo di Krebs strettamente regolato da feedback energetico."
+                },
+                {
+                    d: "Cosa comporta l'apertura del poro di transizione della permeabilità mitocondriale (mPTP) nella membrana interna?",
+                    r: "Un collasso totale del potenziale di membrana, rigonfiamento della matrice e morte cellulare.",
+                    s: "L'apertura prolungata dell'mPTP è associata a ischemia miocardica e patologie neurodegenerative."
+                },
+                {
+                    d: "Quale enzima mitocondriale converte l'ossalacetato in fosfoenolpiruvato nella gluconeogenesi epatica?",
+                    r: "La fosfoenolpiruvato carbochinasi mitocondriale (PEPCK-M).",
+                    s: "In alcune specie animali, parte della gluconeogenesi richiede questo passaggio iniziale all'interno della matrice."
+                },
+                {
+                    d: "Quale ruolo svolgono le proteine MICOS (Mitochondrial Contact Site and Cristae Organizing System)?",
+                    r: "Mantengono l'architettura delle creste mitocondriali e i punti di contatto con la membrana esterna.",
+                    s: "La loro alterazione distrugge la forma tipica delle creste compromettendo la fosforilazione ossidativa."
+                },
+                {
+                    d: "Come si chiama il processo di trasferimento di elettroni dal citosol ai mitocondri tramite lo shuttle del malato-aspartato?",
+                    r: "Shuttle malato-aspartato.",
+                    s: "Permette di trasferire gli equivalenti riducenti del NADH citosolico all'interno della matrice senza che la membrana sia permeabile al NADH stesso."
+                },
+                {
+                    d: "Qual è la differenza di rendimento energetico tra lo shuttle del malato-aspartato e lo shuttle del glicerol-3-fosfato?",
+                    r: "Il malato-aspartato produce circa 32 ATP, mentre il glicerol-3-fosfato ne produce circa 30.",
+                    s: "Quest'ultimo cede gli elettroni direttamente al $FAD$ saltando il Complesso I, riducendo l'efficienza."
+                },
+                {
+                    d: "Quale complesso proteico regola l'importazione delle proteine idrofobe attraverso la membrana mitocondriale interna?",
+                    r: "Il complesso TIM22.",
+                    s: "Specializzato nell'inserimento di proteine transmembrana multiple, come i trasportatori dei nucleotidi adeninici."
+                },
+                {
+                    d: "Quale mutazione mitocondriale è associata alla sindrome MERRF (mioclono-epilessia con fibre rosse ragged)?",
+                    r: "Una mutazione nel gene del tRNA per la lisina ($tRNA^{Lys}$) nel mtDNA.",
+                    s: "Interferisce con la sintesi proteica mitocondriale provocando accumulo di mitocondri anomali nelle fibre muscolari."
+                },
+                {
+                    d: "In che modo i mitocondri contribuiscono alla risposta immunitaria innata dell'organismo?",
+                    r: "Attraverso la proteina MAVS localizzata sulla membrana esterna che segnala la presenza di virus intracellulari.",
+                    s: "I mitocondri fungono da piattaforme di segnalazione per attivare gli interferoni contro le infezioni virali."
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                // Recupera l'esercizio corrispondente dall'array (sottraendo 1 per l'indice 0-based)
+                let item = databaseEsercizi[i - 1];
+                let diffClass, diffLabel;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">Esercizio ${i}: ${item.d}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${item.r}
+                            </div>
+                            <p style="color: var(--colore-scuro); font-weight: bold; margin-bottom: 0.5rem;">Spiegazione dettagliata:</p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

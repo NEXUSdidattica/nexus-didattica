@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa alle Disequazioni con Valore Assoluto di 1° e 2° grado: schemi grafici colorati, intervalli e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni con Valore Assoluto (1° e 2° Grado) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-valore-assoluto-1-2-grado" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Disequazioni con Valore Assoluto (1° e 2° Grado)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Regole di sdoppiamento, schemi grafici colorati e 100 esercizi guidati commentati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Disequazioni di 1° Grado con Valore Assoluto</h2>
+            <p>Le disequazioni con modulo si dividono in due casistiche fondamentali a seconda del verso rispetto a una costante positiva \(k > 0\):</p>
+            
+            <h3>Caso A: Minoranza (\(\lvert A(x) \rvert < k\)) ➔ Intervallo Interno</h3>
+            <p>La distanza dallo zero è minore di $k$, quindi l'argomento è compreso tra \(-k\) e \(k\).</p>
+            <div class="formula-box">
+                $$\lvert A(x) \rvert < k \iff -k < A(x) < k \quad (\text{Sistema: } \begin{cases} A(x) > -k \\ A(x) < k \end{cases})$$
+            </div>
+            
+            <!-- Grafico dei Segni Colorato - Intervallo Interno -->
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <p style="font-weight: bold; margin-bottom: 1rem; color: #0f172a;">Schema Grafico: Intervallo Interno (\(-k < x < k\))</p>
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 1rem 2rem; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0; font-family: monospace;">
+                    <span style="color: #64748b; font-weight: bold;">-\(\infty\)</span>
+                    <span style="background: #ef4444; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold;">-k</span>
+                    <span style="flex-grow: 1; height: 2px; background: #94a3b8; margin: 0 10px; position: relative;">
+                        <div style="position: absolute; top: -4px; left: 0; right: 0; height: 10px; background: #22c55e; opacity: 0.8; border-radius: 4px;"></div>
+                    </span>
+                    <span style="background: #ef4444; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold;">k</span>
+                    <span style="color: #64748b; font-weight: bold;">+\(\infty\)</span>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 0.8rem; font-size: 0.9rem;">
+                    <span style="color: #dc2626; font-weight: 600;">Esterno: Escluso</span>
+                    <span style="color: #16a34a; font-weight: bold; background: #dcfce7; padding: 0.2rem 0.6rem; border-radius: 4px;">Interno Accettato ✅</span>
+                    <span style="color: #dc2626; font-weight: 600;">Esterno: Escluso</span>
+                </div>
+            </div>
+
+            <h3>Caso B: Maggioranza (\(\lvert A(x) \rvert > k\)) ➔ Intervalli Esterni</h3>
+            <p>La distanza dallo zero è maggiore di $k$, quindi l'argomento è minore di \(-k\) oppure maggiore di \(k\).</p>
+            <div class="formula-box">
+                $$\lvert A(x) \rvert > k \iff A(x) < -k \lor A(x) > k$$
+            </div>
+
+            <!-- Grafico dei Segni Colorato - Intervalli Esterni -->
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <p style="font-weight: bold; margin-bottom: 1rem; color: #0f172a;">Schema Grafico: Intervalli Esterni (\(x < -k \lor x > k\))</p>
+                <div style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 1rem 2rem; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0; font-family: monospace;">
+                    <span style="color: #64748b; font-weight: bold;">-\(\infty\)</span>
+                    <span style="background: #22c55e; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold;">-k</span>
+                    <span style="flex-grow: 1; height: 2px; background: #94a3b8; margin: 0 10px; position: relative;">
+                        <div style="position: absolute; top: -4px; left: 0; right: 0; height: 10px; background: #ef4444; opacity: 0.3; border-radius: 4px;"></div>
+                    </span>
+                    <span style="background: #22c55e; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold;">k</span>
+                    <span style="color: #64748b; font-weight: bold;">+\(\infty\)</span>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 0.8rem; font-size: 0.9rem;">
+                    <span style="color: #16a34a; font-weight: bold; background: #dcfce7; padding: 0.2rem 0.6rem; border-radius: 4px;">Esterno Accettato ✅</span>
+                    <span style="color: #dc2626; font-weight: 600;">Interno: Escluso ❌</span>
+                    <span style="color: #16a34a; font-weight: bold; background: #dcfce7; padding: 0.2rem 0.6rem; border-radius: 4px;">Esterno Accettato ✅</span>
+                </div>
+            </div>
+
+            <h2>2. Disequazioni di 2° Grado con Valore Assoluto</h2>
+            <p>Quando il modulo racchiude un'espressione di secondo grado \(\lvert ax^2 + bx + c \rvert \le k\) o maggiore, si impostano i sistemi equivalenti unendo lo studio del segno della parabola interna.</p>
+            <div class="formula-box">
+                Proprietà generale: \(\lvert P(x) \rvert \le g(x) \iff \begin{cases} g(x) \ge 0 \\ -g(x) \le P(x) \le g(x) \end{cases}\)
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (1° e 2° Grado)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE (1° Grado)';
+                    let k = (i % 5) + 1;
+                    domanda = "Risolvi la disequazione: \\(|x - " + k + "| < " + (k + 1) + "\\)";
+                    let minVal = -1;
+                    let maxVal = 2 * k + 1;
+                    risposta = minVal + " < x < " + maxVal;
+                    spiegazione = "1) Essendo un segno di minore (<), impostiamo l'intervallo interno.<br>2) \\(-" + (k+1) + " < x - " + k + " < " + (k+1) + "\\).<br>3) Sommando \\(" + k + "\\) a tutti i membri otteniamo: <strong>" + risposta + "</strong>.";
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO (1° Grado Esterna)';
+                    let c = (i % 4) + 2;
+                    domanda = "Risolvi la disequazione: \\(|x + " + c + "| \\ge " + (c + 2) + "\\)";
+                    risposta = "x \\le -" + (2*c + 2) + " \\lor x \\ge 2";
+                    spiegazione = "1) Trattandosi di un maggiore o uguale (\\(\\ge\\)), spezziamo in due rami esterni.<br>2) Ramo sinistro: \\(x + " + c + " \\le -" + (c+2) + "\\).<br>3) Ramo destro: \\(x + " + c + " \\ge " + (c+2) + "\\).";
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (2° Grado)';
+                    let p = (i % 3) + 2;
+                    domanda = "[2° Grado] Risolvi la disequazione quadratica: \\(|x^2 - " + (p * p) + "| \\ge 0\\)";
+                    risposta = "\\forall x \\in \\mathbb{R}";
+                    spiegazione = "1) Un valore assoluto è sempre maggiore o uguale a zero per qualsiasi numero reale.<br>2) La disequazione è dunque sempre verificata in tutto \\(\\mathbb{R}\\).";
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzione:</strong> \\(${risposta}\\)</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

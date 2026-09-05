@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa alle Equazioni con Valore Assoluto di 1° e 2° grado: metodi di risoluzione, discussione dei moduli e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni con Valore Assoluto (1° e 2° Grado) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-valore-assoluto-1-2-grado" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Equazioni con Valore Assoluto (1° e 2° Grado)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida completa sui moduli algebrici, sdoppiamento dei casi e 100 esercizi guidati commentati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Equazioni di 1° Grado con Valore Assoluto</h2>
+            <p>Un'equazione di primo grado con modulo si presenta nella forma \(\lvert A(x) \rvert = B(x)\). Si risolve imponendo la condizione di realtà sul secondo membro e sdoppiando l'equazione:</p>
+            <div class="formula-box">
+                $$\lvert A(x) \rvert = B(x) \iff \begin{cases} B(x) \ge 0 \\ A(x) = B(x) \lor A(x) = -B(x) \end{cases}$$
+            </div>
+
+            <h2>2. Equazioni di 2° Grado con Valore Assoluto</h2>
+            <p>Nei casi di secondo grado, il modulo può trovarsi attorno a un'espressione di secondo grado \(\lvert ax^2 + bx + c \rvert = D(x)\), oppure la $x$ al quadrato può trovarsi fuori dal modulo. Si procede sempre analizzando i segni degli argomenti o applicando le proprietà di sdoppiamento simmetrico.</p>
+            <div class="formula-box">
+                Proprietà notevole: \(\lvert A(x) \rvert = k \quad (\text{con } k > 0) \iff A(x) = k \lor A(x) = -k\)
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (1° e 2° Grado)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE (1° Grado)';
+                    let k = (i % 6) + 1;
+                    domanda = "Risolvi l'equazione di 1° grado: \\(|x - " + k + "| = " + (k + 2) + "\\)";
+                    let r1 = -2;
+                    let r2 = 2 * k + 2;
+                    risposta = "x = " + r1 + " \\lor x = " + r2;
+                    spiegazione = "1) Sdoppiamo nei due casi lineari.<br>2) Caso 1: \\(x - " + k + " = " + (k + 2) + "\\implies x = " + r2 + "\\).<br>3) Caso 2: \\(x - " + k + " = -" + (k + 2) + "\\implies x = " + r1 + "\\).<br>4) Entrambe le soluzioni sono accettabili.";
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO (Lineari e Parametriche)';
+                    let c = (i % 4) + 2;
+                    domanda = "Risolvi l'equazione con termine lineare: \\(|2x - " + c + "| = x + 2\\)";
+                    risposta = "x = " + (c + 2) + " \\lor x = \\frac{" + (c - 2) + "}{3}";
+                    spiegazione = "1) Imposta la condizione \\(x + 2 \\ge 0\\).<br>2) Sdoppia l'equazione nei due rami e verifica l'accettabilità delle soluzioni.";
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (2° Grado)';
+                    let p = (i % 3) + 2;
+                    domanda = "[2° Grado] Risolvi l'equazione con modulo quadratico: \\(|x^2 - " + (p * p) + "| = 0\\)";
+                    risposta = "x = -" + p + " \\lor x = " + p;
+                    spiegazione = "1) Un valore assoluto è uguale a zero solo se il suo argomento è zero: \\(x^2 - " + (p * p) + " = 0\\).<br>2) Ricaviamo le radici: <strong>x = -" + p + " \\lor x = " + p + "</strong>.";
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}" style="padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box" style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta" style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Risultato:</strong> \\(${risposta}\\)</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

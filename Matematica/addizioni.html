@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa ed esercizi pratici sulle Addizioni">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+    <title>Le Addizioni: Teoria e 100 Esercizi - NEXUS didattica</title>
+</head>
+
+<body data-lesson-id="aritmetica-addizioni" data-materia="Matematica">
+
+    <!-- Header di navigazione -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- Pulsante Torna Indietro -->
+        <div style="margin-bottom: 1rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- Hero lezione -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1>Le Addizioni e le loro Proprietà</h1>
+                <p class="lead-text">
+                    Impara a sommare i numeri interi e decimali, scopri le proprietà dell'addizione e mettiti alla prova con 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- Contenuto Teorico -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è l'Addizione?</h2>
+            <p>
+                L'<strong>addizione</strong> è l'operazione matematica che unisce due o più quantità (dette <em>addendi</em>) per ottenerne una sola (detta <em>somma</em> o <em>totale</em>). Il simbolo utilizzato è il più (<strong>+</strong>).
+            </p>
+
+            <div class="box-evidenza">
+                💡 <strong>Terminologia:</strong> Nella scrittura <code>a + b = c</code>, i numeri <code>a</code> e <code>b</code> sono gli <strong>addendi</strong>, mentre <code>c</code> è la <strong>somma</strong>. L'elemento neutro è lo <strong>0</strong> (qualsiasi numero sommato a zero rimane invariato).
+            </div>
+
+            <h2>2. Le Proprietà dell'Addizione</h2>
+            <p>Per velocizzare i calcoli a mente e in colonna si usano tre proprietà fondamentali:</p>
+            <ul>
+                <li><strong>Proprietà Commutativa:</strong> Cambiando l'ordine degli addendi la somma non cambia (es. <code>5 + 3 = 8</code> e <code>3 + 5 = 8</code>).</li>
+                <li><strong>Proprietà Associativa:</strong> La somma di tre o più numeri non cambia se si sostituiscono due o più addendi con la loro somma (es. <code>(2 + 3) + 4 = 5 + 4 = 9</code>).</li>
+                <li><strong>Proprietà Dissociativa:</strong> La somma non cambia se a un addendo se ne sostituiscono altri la cui somma sia pari all'addendo sostituito (es. <code>15 + 8 = 15 + 5 + 3 = 23</code>).</li>
+            </ul>
+        </article>
+
+        <!-- Sezione Esercizi Pratici (100 Esercizi Generati) -->
+        <section class="sezione-esercizi">
+            <h2>✏️ 100 Esercizi Pratici per Allenarsi</h2>
+            <p>Di seguito trovi 100 addizioni divise in tre livelli di difficoltà crescente, comprensive di calcoli e domande sulle proprietà. Clicca su "Mostra Soluzione" per verificare i tuoi calcoli.</p>
+
+            <div id="lista-esercizi">
+                <!-- Verranno inseriti automaticamente i 100 esercizi via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+    </footer>
+
+    <!-- Script Generatore dei 100 Esercizi con Proprietà -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 40) {
+                    // 40 FACILI (Verde): Addizioni base + identificazione proprietà commutativa
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 3 === 0) {
+                        let a = Math.floor(Math.random() * 20) + 2;
+                        let b = Math.floor(Math.random() * 20) + 2;
+                        domanda = `Quale proprietà dell'addizione garantisce che <strong>${a} + ${b}</strong> sia uguale a <strong>${b} + ${a}</strong>?`;
+                        risposta = `Proprietà Commutativa (Somma = ${a + b})`;
+                        spiegazione = `La <strong>Proprietà Commutativa</strong> afferma che cambiando l'ordine degli addendi il risultato non cambia.`;
+                    } else {
+                        let n1 = Math.floor(Math.random() * 45) + 5;
+                        let n2 = Math.floor(Math.random() * 45) + 5;
+                        domanda = `Calcola la somma: <strong>${n1} + ${n2}</strong>`;
+                        risposta = n1 + n2;
+                        spiegazione = `Somma i due numeri: ${n1} + ${n2} = ${risposta}.`;
+                    }
+
+                } else if (i <= 75) {
+                    // 35 MEDI (Giallo): 3 addendi, proprietà associativa e dissociativa
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let a = Math.floor(Math.random() * 15) + 5;
+                        let b = Math.floor(Math.random() * 15) + 5;
+                        let c = Math.floor(Math.random() * 20) + 10;
+                        let sommaAB = a + b;
+                        domanda = `Applica la <strong>proprietà associativa</strong> per semplificare l'operazione: <strong>(${a} + ${b}) + ${c}</strong>`;
+                        risposta = `${sommaAB} + ${c} = ${sommaAB + c}`;
+                        spiegazione = `Sostituisci la prima somma algebrica (${a} + ${b} = ${sommaAB}) ed esegui la somma finale con l'ultimo addendo: ${sommaAB} + ${c} = ${sommaAB + c}.`;
+                    } else {
+                        let n1 = Math.floor(Math.random() * 200) + 50;
+                        let n2 = Math.floor(Math.random() * 200) + 50;
+                        let n3 = Math.floor(Math.random() * 50) + 10;
+                        domanda = `Calcola la somma a tre addendi: <strong>${n1} + ${n2} + ${n3}</strong>`;
+                        risposta = n1 + n2 + n3;
+                        spiegazione = `Somma prima i primi due termini (${n1} + ${n2} = ${n1 + n2}) e poi aggiungi il terzo: ${n1 + n2} + ${n3} = ${risposta}.`;
+                    }
+
+                } else {
+                    // 25 DIFFICILI (Rosso): Decimali, incognite ed esercizio di scomposizione dissociativa
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 3 === 0) {
+                        let base = Math.floor(Math.random() * 30) + 20;
+                        let p1 = Math.floor(Math.random() * 9) + 1;
+                        let p2 = base - p1;
+                        let ext = Math.floor(Math.random() * 50) + 10;
+                        domanda = `Usa la <strong>proprietà dissociativa</strong> scomponendo il numero ${base} per calcolare agevolmente: <strong>${base} + ${ext}</strong>`;
+                        risposta = `(${p1} + ${p2}) + ${ext} = ${base + ext}`;
+                        spiegazione = `Possiamo dissociare ${base} in ${p1} + ${p2}. Successivamente sommiamo ${p1} + ${p2} + ${ext} ottenendo ${base + ext}.`;
+                    } else {
+                        let n1 = parseFloat((Math.random() * 80 + 10).toFixed(2));
+                        let n2 = parseFloat((Math.random() * 80 + 10).toFixed(2));
+                        domanda = `Calcola l'addizione con numeri decimali: <strong>${n1} + ${n2}</strong>`;
+                        risposta = (n1 + n2).toFixed(2);
+                        spiegazione = `Allinea le virgole in colonna e somma le parti decimali e intere: ${n1} + ${n2} = ${risposta}.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script Moduli Esterni -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+
+</body>
+
+</html>

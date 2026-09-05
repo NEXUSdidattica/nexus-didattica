@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Solidi di Rotazione - Sezione 4: La Sfera - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Sfera - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Solidi di Rotazione */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="solidi-rotazione-sezione-4" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Solidi di Rotazione - Sezione 4</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Sfera</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione geometrica, genesi per rotazione completa di un semicerchio, formule di superficie e volume, accompagnate da 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è una Sfera e come si genera?</h2>
+            <p>
+                La <strong>sfera</strong> è il solido geometrico generato dalla rotazione completa di un <code>semicerchio</code> attorno al proprio diametro. Tutti i punti della superficie sferica si trovano a equa distanza (chiamata raggio, <em>r</em>) da un punto fisso interno detto centro.
+            </p>
+            <p>
+                Gli elementi principali della sfera sono:
+            </p>
+            <ul>
+                <li><strong>Centro (O):</strong> il punto equidistante da qualsiasi punto della superficie sferica.</li>
+                <li><strong>Raggio (r):</strong> il segmento che unisce il centro con un punto qualsiasi della superficie.</li>
+                <li><strong>Diametro (d):</strong> il segmento passante per il centro che congiunge due punti opposti della superficie sferica (<code>d = 2 &middot; r</code>).</li>
+                <li><strong>Superficie sferica (S):</strong> l'insieme dei punti dello spazio che distano dal centro esattamente quanto il raggio.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Sfera) -->
+            <div class="figura-geometrica-container">
+                <svg width="460" height="320" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="460" height="320" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    <!-- Sfera Corpo (Cerchio con sfumatura radiale simulata) -->
+                    <circle cx="230" cy="160" r="100" fill="url(#gradSfera)" stroke="#1e3a8a" stroke-width="2.5"/>
+                    <defs>
+                        <radialGradient id="gradSfera" cx="35%" cy="35%" r="65%">
+                            <stop offset="0%" stop-color="#eff6ff"/>
+                            <stop offset="50%" stop-color="#93c5fd"/>
+                            <stop offset="100%" stop-color="#1e40af"/>
+                        </radialGradient>
+                    </defs>
+                    <!-- Equatore ellittico -->
+                    <ellipse cx="230" cy="160" rx="100" ry="35" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <!-- Meridiano ellittico -->
+                    <ellipse cx="230" cy="160" rx="35" ry="100" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    
+                    <!-- Raggio -->
+                    <line x1="230" y1="160" x2="330" y2="160" stroke="#ea580c" stroke-width="3"/>
+                    <circle cx="230" cy="160" r="4.5" fill="#ea580c"/>
+                    
+                    <text x="270" y="150" fill="#ea580c" font-family="Arial, sans-serif" font-weight="bold" font-size="14">Raggio (r)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Sfera con centro nel punto d'origine e raggio <code style="color:#ea580c;">r</code>.
+                </div>
+            </div>
+
+            <h2>2. Formule Fondamentali della Sfera</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Principali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Superficie della sfera (S):</strong> S = 4 &middot; &pi; &middot; r<sup>2</sup><br>
+                    &bull; <strong>Volume della sfera (V):</strong> V = (4 / 3) &middot; &pi; &middot; r<sup>3</sup><br>
+                    &bull; <strong>Formula inversa per il raggio dalla superficie:</strong> r = &radic;(S / (4 &middot; &pi;))<br>
+                    &bull; <strong>Formula inversa per il raggio dal volume:</strong> r = ∛((3 &middot; V) / (4 &middot; &pi;))
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Una sfera ha il raggio di <code>3 cm</code>. Calcola la superficie totale e il volume della sfera (esprimi i risultati in funzione di &pi;).</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Superficie della sfera: <code>S = 4 &middot; &pi; &middot; r<sup>2</sup> = 4 &middot; &pi; &middot; 3<sup>2</sup> = 4 &middot; &pi; &middot; 9 = 36&pi; cm<sup>2</sup></code>.</li>
+                    <li>Volume della sfera: <code>V = (4 / 3) &middot; &pi; &middot; r<sup>3</sup> = (4 / 3) &middot; &pi; &middot; 3<sup>3</sup> = (4 / 3) &middot; &pi; &middot; 27</code>.</li>
+                    <li>Semplifichiamo <code>27 / 3 = 9</code>, quindi <code>V = 4 &middot; 9 &middot; &pi; = 36&pi; cm<sup>3</sup></code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Superficie = 36&pi; cm², Volume = 36&pi; cm³.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Sfera</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico su superfici e volumi di sfere con soluzioni dettagliate passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let r = (i % 5) + 2; // Raggio tra 2 e 6
+                    let surf = 4 * r * r;
+
+                    domanda = `Una sfera ha il raggio di <code>${r} cm</code>. Calcola la superficie totale della sfera (esprimi il risultato in funzione di &pi;).`;
+                    risposta = `<strong>S = ${surf}&pi; cm²</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula della superficie sferica: <code>S = 4 &times; &pi; &times; r<sup>2</sup></code>.<br>
+                    2) Sostituiamo il raggio: <code>S = 4 &times; &pi; &times; ${r}<sup>2</sup> = 4 &times; &pi; &times; ${r*r} = ${surf}&pi; cm<sup>2</sup></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let r = (i % 4) + 2; // Raggio tra 2 e 5
+                    let vol = (4 / 3) * (r * r * r);
+                    // Semplifichiamo per evitare decimali brutti se non multipli di 3
+                    let rCub = r * r * r;
+                    let volText = (rCub % 3 === 0) ? `${(4 * rCub) / 3}&pi;` : `( ${4 * rCub} / 3 )&pi;`;
+
+                    domanda = `Una sfera ha il raggio di <code>${r} cm</code>. Calcola il volume del solido (esprimi il risultato in funzione di &pi;).`;
+                    risposta = `<strong>V = ${volText} cm³</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula del volume della sfera: <code>V = (4 / 3) &times; &pi; &times; r<sup>3</sup></code>.<br>
+                    2) Sostituiamo il raggio: <code>V = (4 / 3) &times; &pi; &times; ${r}<sup>3</sup> = (4 / 3) &times; &pi; &times; ${rCub} = ${volText} cm<sup>3</sup></code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let r = 3;
+                    let surfVal = 36;
+
+                    domanda = `Una superficie sferica ha un'area di <code>${surfVal}&pi; cm²</code>. Calcola la misura del raggio della sfera.`;
+                    risposta = `<strong>r = ${r} cm</strong>`;
+                    spiegazione = `
+                    1) Usiamo la formula inversa del raggio: <code>r = &radic;(S / (4 &times; &pi;))</code>.<br>
+                    2) Sostituiamo i dati: <code>r = &radic;(${surfVal}&pi; / (4&pi;)) = &radic;(9) = ${r} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

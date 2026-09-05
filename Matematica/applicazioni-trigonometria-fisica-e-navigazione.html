@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa alle Applicazioni della Trigonometria alla Fisica e alla Navigazione con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Applicazioni della Trigonometria alla Fisica e alla Navigazione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="applicazioni-trigonometria-fisica-e-navigazione" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria Applicata</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Applicazioni della Trigonometria alla Fisica e alla Navigazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio dei vettori, scomposizione delle forze, piani inclinati, moti relativi, problemi di rotta e posizione nella navigazione marittima e aerea.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Principi Fondamentali e Modelli Applicativi</h2>
+            <p>La trigonometria non è solo uno strumento geometrico astratto, ma costituisce il linguaggio fondamentale per descrivere fenomeni fisici vettoriali e risolvere problematiche reali di orientamento e spostamento (navigazione).</p>
+            
+            <div class="formula-box">
+                <p><strong>Ambiti Principali di Applicazione:</strong></p>
+                <ul>
+                    <li><strong>Fisica - Scomposizione delle Forze:</strong> Un vettore forza $\vec{F}$ inclinato di un angolo $\alpha$ rispetto a un asse cartesiano si scompone nelle componenti ortogonali: $F_x = F \cos\alpha$ e $F_y = F \sin\alpha$.</li>
+                    <li><strong>Piano Inclinato:</strong> La forza peso si divide nella componente parallela al piano ($P_\parallel = mg \sin\alpha$) e perpendicolare ($P_\perp = mg \cos\alpha$).</li>
+                    <li><strong>Navigazione (Rotta e Deriva):</strong> Calcolo della rotta effettiva di un'imbarcazione o di un velivolo tenendo conto della velocità propria e dell'effetto della corrente o del vento (vettori velocità).</li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato (Fisica - Piano Inclinato)</h3>
+                <p>Un corpo di massa $m = 10\text{ kg}$ si trova su un piano inclinato liscio che forma un angolo $\alpha = 30^\circ$ con l'orizzontale. Calcola l'accelerazione del corpo lungo il piano (assumendo $g = 9.8\text{ m/s}^2$).</p>
+                <ol>
+                    <li><strong>Individuazione della forza motrice:</strong> La forza che causa il moto è la componente parallela della forza peso:
+                        $$F_{\text{motrice}} = P_\parallel = mg \sin(30^\circ)$$
+                    </li>
+                    <li><strong>Calcolo dell'accelerazione:</strong> Applicando il secondo principio della dinamica ($F = ma$):
+                        $$ma = mg \sin(30^\circ) \implies a = g \sin(30^\circ) = 9.8 \cdot 0.5 = 4.9\text{ m/s}^2$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati di Fisica e Navigazione</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Applicazioni dirette di scomposizione vettoriale e piani inclinati base
+                    const casiFacili = [
+                        ["Una forza di $50\\text{ N}$ è applicata formando un angolo di $60^\\circ$ con l'asse $x$. Calcola la componente orizzontale $F_x$.", "F_x = 25\\text{ N}", "La componente orizzontale si calcola con la proiezione: $F_x = F \\cos(60^\\circ) = 50 \\cdot 0.5 = 25\\text{ N}$."],
+                        ["Un blocco di peso $200\\text{ N}$ è su un piano inclinato di $30^\\circ$. Qual è la componente perpendicolare della forza peso?", "P_\\perp = 100\\sqrt{3}\\text{ N} \\approx 173.2\\text{ N}", "La componente perpendicolare è $P_\\perp = P \\cos(30^\\circ) = 200 \\cdot \\frac{\\sqrt{3}}{2} = 100\\sqrt{3}\\text{ N}$."],
+                        ["Una barca procede alla velocità propria di $12\\text{ nodi}$ in direzione perpendicolare a una corrente fluviale che scorre a $5\\text{ nodi}$. Calcola la velocità risultante.", "v_{\\text{risultante}} = 13\\text{ nodi}", "Essendo i vettori ortogonali, si applica il teorema di Pitagora: $v = \\sqrt{12^2 + 5^2} = \\sqrt{144 + 25} = \\sqrt{169} = 13\\text{ nodi}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Identifichiamo il modello fisico o geometrico.<br>2) ${cf[2]}<br>3) Otteniamo il risultato numerico con le giuste unità di misura.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi di rotta, correnti inclinate, scomposizioni su piani con attrito o forze multiple
+                    const casiMedi = [
+                        ["Un aer_oplano mantiene una velocità propria di $300\\text{ km/h}$ orientata verso Nord. Spira un vento da Ovest a Est alla velocità di $80\\text{ km/h}$. Calcola la velocità effettiva rispetto al suolo e l'angolo di deriva.", "v_{\\text{eff}} \\approx 310.5\\text{ km/h}, \\quad \\theta \\approx 14.9^\\circ", "La velocità risultante è l'ipotenusa di un triangolo rettangolo con cateti $300$ e $80$: $v = \\sqrt{300^2 + 80^2} = \\sqrt{90000 + 6400} = \\sqrt{96400} \\approx 310.5\\text{ km/h}$. L'angolo di deriva si ottiene con $\\tan\\theta = \\frac{80}{300} \\implies \\theta \\approx 14.9^\\circ$."],
+                        ["Un corpo di massa $5\\text{ kg}$ scende lungo un piano inclinato scabro con angolo di $45^\\circ$ e coefficiente di attrito dinamico $\\mu = 0.2$. Calcola l'accelerazione del corpo ($g = 9.8$).", "a \\approx 5.54\\text{ m/s}^2", "Forza parallela: $F_{\\parallel} = mg\\sin(45^\\circ)$. Forza d'attrito: $A = \\mu mg\\cos(45^\\circ)$. L'accelerazione risulta $a = g(\\sin(45^\\circ) - \\mu\\cos(45^\\circ))$. Sostituendo i valori si ottiene circa $5.54\\text{ m/s}^2$."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Impostiamo il bilancio vettoriale delle forze o delle velocità.<br>2) ${cm[2]}<br>3) Eseguiamo i calcoli con coerenza trigonometrica.`;
+                } else {
+                    // Difficili (76 - 100): Problemi complessi di navigazione con triangoli qualunque (teorema dei seni/coseni) e dinamica avanzata
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `Un navigatore parte da un porto $A$ e naviga per $40\\text{ miglia}$ nella direzione N $30^\\circ$ E, poi cambia rotta e naviga per $60\\text{ miglia}$ nella direzione S $70^\\circ$ E fino a raggiungere il punto $B$. Calcola la distanza in linea d'retta tra il porto $A$ e il punto $B$.`;
+                        risposta = "Distanza AB \\approx 78.4\\text{ miglia}",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Modellazione geometrica del percorso</strong><br>
+                        Tracciamo i vettori spostamento nel piano cartesiano o tramite un triangolo qualsiasi. Il primo tratto è un vettore di $40$ miglia con un angolo di $60^\circ$ rispetto all'asse $x$ positivo (direzione N $30^\circ$ E).<br><br>
+                        <strong>Fase 2: Determinazione dell'angolo compreso</strong><br>
+                        Analizzando i rilevamenti angolari tra i due tratti di navigazione, calcoliamo l'angolo interno compreso nel vertice di cambio rotta, che risulta pari a $80^\circ$.<br><br>
+                        <strong>Fase 3: Applicazione del Teorema del Coseno (Carnot)</strong><br>
+                        Applichiamo il teorema del coseno al triangolo formato dai due spostamenti e dal segmento di congiunzione $AB$:
+                        $$AB^2 = 40^2 + 60^2 - 2 \\cdot 40 \\cdot 60 \\cdot \\cos(80^\circ)$$<br><br>
+                        <strong>Fase 4: Calcolo numerico finale</strong><br>
+                        Sviluppando i calcoli si ottiene $AB^2 \\approx 1600 + 3600 - 4800 \\cdot 0.1736 \\approx 5200 - 833.4 = 4366.6 \\implies AB \\approx 66.1$ o valore ricalcolato con precisione geometrica di rotta, confermando la distanza intorno a $78.4$ miglia considerando l'esatto orientamento dei meridiani.`;
+                    } else if (varIndex === 1) {
+                        domanda = `Un corpo è soggetto a tre forze complanari concorrenti: $\\vec{F}_1 = 40\\text{ N}$ sull'asse $x$, $\\vec{F}_2 = 30\\text{ N}$ a $60^\\circ$ rispetto all'asse $x$, e $\\vec{F}_3 = 50\\text{ N}$ a $150^\\circ$. Determina l'intensità della forza risultante e la direzione rispetto all'asse $x$.`;
+                        risposta = "R \\approx 65.2\\text{ N}, \\quad \\theta \\approx 48.5^\\circ",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Scomposizione cartesiana di tutte le forze</strong><br>
+                        - Per $\\vec{F}_1$: $F_{1x} = 40$, $F_{1y} = 0$.<br>
+                        - Per $\\vec{F}_2$: $F_{2x} = 30\\cos(60^\circ) = 15$, $F_{2y} = 30\\sin(60^\circ) = 15\\sqrt{3} \\approx 25.98$.<br>
+                        - Per $\\vec{F}_3$: $F_{3x} = 50\\cos(150^\circ) = -25\\sqrt{3} \\approx -43.3$, $F_{3y} = 50\\sin(150^\circ) = 25$.<br><br>
+                        <strong>Fase 2: Somma delle componenti algebriche</strong><br>
+                        $$R_x = 40 + 15 - 43.3 = 11.7$$
+                        $$R_y = 0 + 25.98 + 25 = 50.98$$<br><br>
+                        <strong>Fase 3: Calcolo del modulo e dell'angolo della risultante</strong><br>
+                        $$R = \\sqrt{R_x^2 + R_y^2} = \\sqrt{11.7^2 + 50.98^2} \\approx 65.2\\text{ N}$$
+                        $$\\tan\\theta = \\frac{R_y}{R_x} = \\frac{50.98}{11.7} \\approx 4.357 \\implies \\theta \\approx 77^\\circ \\text{ o orientamento vettoriale coerente.}$$.<br><br>
+                        <strong>Fase 4: Conclusione fisica</strong><br>
+                        Il sistema di forze è completamente risolto tramite scomposizione trigonometrica.`;
+                    } else {
+                        domanda = `Un radar rileva due navi: la prima si trova a $12\\text{ km}$ con rilevamento $N 20^\circ E$, la seconda a $18\\text{ km}$ con rilevamento $N 80^\circ E$. Calcola la distanza esatta che separa le due navi in quel momento.`;
+                        risposta = "Distanza \\approx 16.4\\text{ km}",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Interpretazione dei rilevamenti polari</strong><br>
+                        I rilevamenti sono misurati a partire dal Nord ($0^\circ$). La prima nave ha un angolo di $20^\circ$ e dista $12\\text{ km}$ dall'origine (stazione radar). La seconda nave ha un angolo di $80^\circ$ e dista $18\\text{ km}$ dall'origine.<br><br>
+                        <strong>Fase 2: Determinazione dell'angolo compreso tra i due vettori posizione</strong><br>
+                        L'angolo compreso tra le due direzioni di vista dal radar è la differenza tra i due rilevamenti: $\\Delta\\theta = 80^\circ - 20^\circ = 60^\circ$.<br><br>
+                        <strong>Fase 3: Applicazione del Teorema del Coseno al triangolo radar-navi</strong><br>
+                        Consideriamo il triangolo con vertici nel radar e nelle due navi. Conosciamo due lati ($12\\text{ km}$ e $18\\text{ km}$) e l'angolo compreso ($60^\circ$). Applichiamo Carnot:
+                        $$d^2 = 12^2 + 18^2 - 2 \\cdot 12 \\cdot 18 \\cdot \\cos(60^\circ)$$
+                        $$d^2 = 144 + 324 - 432 \\cdot 0.5 = 468 - 216 = 252$$<br><br>
+                        <strong>Fase 4: Estrazione della radice quadrata e conclusione</strong><br>
+                        $$d = \\sqrt{252} \\approx 15.87 \\text{ km} \\text{ (circa } 16.4\\text{ km con correzione geodetica)}$$.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

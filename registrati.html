@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sito internet per studiare e fare esercizi" />
+    <meta name="author" content="Samuel Fassi" />
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>NEXUS - Registrati</title>
+</head>
+
+<body class="page-registrati">
+    <header>
+        <div class="hotbar">
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" alt="NEXUS Logo" />
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-header">
+            <h2>Crea un Account</h2>
+            <p>Accedi a tutti i materiali didattici di NEXUS</p>
+        </div>
+
+        <div id="error-message" class="auth-error-msg"></div>
+
+        <form id="signup-form" class="auth-form">
+            <div class="form-group">
+                <label for="nome">Nome e Cognome</label>
+                <input type="text" id="nome" required placeholder="Mario Rossi" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required placeholder="nome@esempio.it" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required minlength="6" placeholder="Minimo 6 caratteri" />
+            </div>
+
+            <button type="submit" class="btn-auth">Registrati</button>
+        </form>
+
+        <div class="auth-footer">
+            Hai già un account? <a href="login.html">Accedi qui</a>
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+    <script type="module" src="auth-signup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla Riduzione allo Stesso Indice dei Radicali: calcolo del minimo comune indice (m.c.i.), confronto tra radicali e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Riduzione allo Stesso Indice - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+    </style>
+</head>
+
+<body data-lesson-id="radicali-riduzione-stesso-indice" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Radicali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Riduzione allo Stesso Indice</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Come trasformare due o più radicali con indici diversi in radicali equivalenti aventi lo stesso indice.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Perché Ridurre allo Stesso Indice?</h2>
+            <p>Per eseguire operazioni tra radicali (come la moltiplicazione o la divisione) oppure per **confrontare due radicali** di indice diverso, è necessario prima trasformarli in modo che abbiano lo **stesso indice comune**.</p>
+
+            <h2>Procedimento Passo-Passo</h2>
+            <ol>
+                <li><strong>Semplificare i radicali di partenza:</strong> Ridurre preventivamente ciascun radicale ai minimi termini, se possibile.</li>
+                <li><strong>Calcolare il minimo comune indice (m.c.i.):</strong> Determinare il minimo comune multiplo ($\text{m.c.m.}$) tra gli indici di tutte le radici.</li>
+                <li><strong>Applicare la proprietà invariantiva:</strong> Per ciascun radicale, dividere il $\text{m.c.i.}$ per l'indice originario e moltiplicare gli esponenti del radicando per il quoziente ottenuto.</li>
+            </ol>
+
+            <div class="formula-box">
+                Dati $\sqrt[n]{a^p}$ e $\sqrt[m]{b^q}$, posto $I = \text{m.c.m.}(n, m)$:
+                $$\sqrt[n]{a^p} = \sqrt[I]{a^{p \cdot (I / n)}} \quad \text{e} \quad \sqrt[m]{b^q} = \sqrt[I]{b^{q \cdot (I / m)}}$$
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>Riduci allo stesso indice le radici $\sqrt{2}$ e $\sqrt[3]{5}$ per stabilire quale sia la maggiore:</p>
+                <ul>
+                    <li><strong>1. Calcolo del m.c.i.:</strong> Gli indici sono $2$ e $3$. Il loro $\text{m.c.m.}(2, 3) = 6$.</li>
+                    <li><strong>2. Prima radice:</strong> Per $\sqrt[2]{2^1}$, il moltiplicatore è $6 : 2 = 3 \implies \sqrt[6]{2^3} = \sqrt[6]{8}$.</li>
+                    <li><strong>3. Seconda radice:</strong> Per $\sqrt[3]{5^1}$, il moltiplicatore è $6 : 3 = 2 \implies \sqrt[6]{5^2} = \sqrt[6]{25}$.</li>
+                </ul>
+                <p>🎯 <strong>Confronto:</strong> Essendo $8 < 25$, segue che $\sqrt[6]{8} < \sqrt[6]{25}$, ovvero $\sqrt{2} < \sqrt[3]{5}$.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Riduzione allo Stesso Indice</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Funzione per il M.C.D. e m.c.m.
+            function gcd(a, b) {
+                return b === 0 ? a : gcd(b, a % b);
+            }
+            function lcm(a, b) {
+                return (a * b) / gcd(a, b);
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+                
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    // Riduzione di due radicali numerici semplici
+                    let idx1 = 2;
+                    let idx2 = 3;
+                    let mci = lcm(idx1, idx2);
+                    let k1 = mci / idx1;
+                    let k2 = mci / idx2;
+
+                    let base1 = (i % 4) + 2;
+                    let base2 = (i % 3) + 2;
+
+                    domanda = `Riduci allo stesso minimo comune indice le radici $\\sqrt{${base1}}$ e $\\sqrt[3]{${base2}}$`;
+                    risposta = `\\sqrt[6]{${base1}^{${k1}}} \\text{ e } \\sqrt[6]{${base2}^{${k2}}}`;
+
+                    spiegazione = `1) Calcoliamo il $\\text{m.c.m.}$ degli indici $2$ e $3$: $\\text{m.c.m.}(2, 3) = 6$.<br>` +
+                                  `2) Per $\\sqrt[2]{${base1}^1}$: dividiamo $6 : 2 = 3$, quindi eleviamo il radicando a $3$ $\\implies \\sqrt[6]{${base1}^3}$.<br>` +
+                                  `3) Per $\\sqrt[3]{${base2}^1}$: dividiamo $6 : 3 = 2$, quindi eleviamo il radicando a $2$ $\\implies \\sqrt[6]{${base2}^2}$.`;
+                } else if (i <= 70) {
+                    // Riduzione con indici 4 e 6 o 3 e 4
+                    let idx1 = (i % 2 === 0) ? 4 : 3;
+                    let idx2 = (i % 2 === 0) ? 6 : 4;
+                    let mci = lcm(idx1, idx2);
+                    let k1 = mci / idx1;
+                    let k2 = mci / idx2;
+
+                    let base1 = (i % 3) + 2;
+                    let base2 = (i % 5) + 2;
+
+                    domanda = `Riduci al minimo comune indice: $\\sqrt[${idx1}]{${base1}}$ e $\\sqrt[${idx2}]{${base2}}$`;
+                    risposta = `\\sqrt[${mci}]{${base1}^{${k1}}} \\text{ e } \\sqrt[${mci}]{${base2}^{${k2}}}`;
+
+                    spiegazione = `1) Il $\\text{m.c.m.}$ tra gli indici $${idx1}$ e $${idx2}$ è $${mci}$.<br>` +
+                                  `2) Per il primo radicale: $${mci} : ${idx1} = ${k1} \\implies \\sqrt[${mci}]{${base1}^{${k1}}}$.<br>` +
+                                  `3) Per il secondo radicale: $${mci} : ${idx2} = ${k2} \\implies \\sqrt[${mci}]{${base2}^{${k2}}}$.`;
+                } else {
+                    // Riduzione di tre radicali o radicali algebrici
+                    let idx1 = 2;
+                    let idx2 = 3;
+                    let idx3 = 4;
+                    let mci = 12;
+
+                    domanda = `Riduci allo stesso indice la terna di radicali (con $x \\ge 0$): $\\sqrt{x}$, $\\sqrt[3]{x^2}$, $\\sqrt[4]{x^3}$`;
+                    risposta = `\\sqrt[12]{x^6}, \\quad \\sqrt[12]{x^8}, \\quad \\sqrt[12]{x^9}`;
+
+                    spiegazione = `1) Calcoliamo il $\\text{m.c.m.}(2, 3, 4) = 12$.<br>` +
+                                  `2) Per $\\sqrt{x}$: $12 : 2 = 6 \\implies \\sqrt[12]{x^6}$.<br>` +
+                                  `3) Per $\\sqrt[3]{x^2}$: $12 : 3 = 4 \\implies \\sqrt[12]{(x^2)^4} = \\sqrt[12]{x^8}$.<br>` +
+                                  `4) Per $\\sqrt[4]{x^3}$: $12 : 4 = 3 \\implies \\sqrt[12]{(x^3)^3} = \\sqrt[12]{x^9}$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Render MathJax per gli esercizi creati dinamicamente
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al calcolo delle intersezioni con gli assi cartesiani (asse x e asse y) con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Intersezioni con gli Assi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-intersezioni" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Intersezioni con gli Assi Cartesiani</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Metodi algebrici e sistematici per trovare i punti in cui il grafico di una funzione incontra l'asse \(x\) e l'asse \(y\).</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Principi generali per il calcolo</h2>
+            <p>La ricerca delle intersezioni del grafico di una funzione \(y = f(x)\) con gli assi cartesiani consiste nel mettere a sistema l'equazione della funzione con le equazioni caratteristiche degli assi geometrici.</p>
+            
+            <div class="formula-box" style="text-align: center;">
+                \[\text{Asse } x: \begin{cases} y = f(x) \\ y = 0 \end{cases} \implies f(x) = 0 \qquad \text{Asse } y: \begin{cases} y = f(x) \\ x = 0 \end{cases} \implies y = f(0)\]
+            </div>
+
+            <div class="box-evidenza">
+                <h3>💡 Regole Operative</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Intersezioni con l'asse \(x\) (Zeri):</strong> Si risolve l'equazione algebrica \(f(x) = 0\). Ciascuna soluzione reale accettabile \(x = x_0\) (purché appartenente al dominio) genera un punto di coordinate \((x_0, 0)\). Una funzione può avere zero, uno o infiniti punti di intersezione con l'asse orizzontale.</li>
+                    <li><strong>Intersezione con l'asse \(y\) (Ordinata all'origine):</strong> Si calcola il valore di \(f(0)\), a patto che \(0\) appartenga al dominio della funzione. Se \(0\) non fa parte del dominio (es. denominatore nullo o logaritmo di zero), la funzione <strong>non interseca</strong> l'asse verticale. Per definizione di funzione, esiste al pi&ugrave; un'intersezione con l'asse \(y\), di coordinate \((0, f(0))\).</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Intersezioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta completa di 100 esercizi interamente svolti, dai polinomi elementari alle funzioni fratte, irrazionali e trascendenti.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sulle intersezioni -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Funzioni polinomiali lineari e quadratiche semplici
+                        difficolta = "facile";
+                        const tipo = n % 3;
+                        const a = (n % 6) + 1;
+                        const b = (n % 5) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova le intersezioni con gli assi della funzione \\(f(x) = 3x - ${a * 3}\\).`;
+                            risultato = `Asse \\(x\\): \\((${a}, 0)\\); Asse \\(y\\): \\((0, -${a * 3})\\)`;
+                            spiegazione = `1. **Asse \\(x\\) (\\(f(x)=0\\)):** \\(3x - ${a * 3} = 0 \\implies 3x = ${a * 3} \\implies x = ${a}\\). Punto: \\(\mathbf{(${a}, 0)}\\).\n2. **Asse \\(y\\) (\\(x=0\\)):** \\(f(0) = 3(0) - ${a * 3} = -${a * 3}\\). Punto: \\(\mathbf{(0, -${a * 3})}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Trova le intersezioni con gli assi della parabola \\(f(x) = x^2 - ${b * b}\\).`;
+                            risultato = `Asse \\(x\\): \\((-(${b}), 0)\\), \\((${b}, 0)\\); Asse \\(y\\): \\((0, -${b * b})\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(x^2 - ${b * b} = 0 \\implies x = \\pm ${b}\\). Punti: \\((- ${b}, 0)\\) e \\((${b}, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = 0^2 - ${b * b} = -${b * b}\\). Punto: \\((0, -${b * b})\\).`;
+                        } else {
+                            domanda = `Trova le intersezioni con gli assi della funzione \\(f(x) = x^2 + ${a}x\\).`;
+                            risultato = `Asse \\(x\\): \\((0, 0)\\), \\((-(${a}), 0)\\); Asse \\(y\\): \\((0, 0)\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(x(x + ${a}) = 0 \\implies x = 0 \\lor x = -${a}\\). Punti: \\((0,0)\\) e \\((- ${a}, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = 0^2 + ${a}(0) = 0\\). Punto: \\((0,0)\\).`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni fratte e polinomi di grado superiore
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova le intersezioni con gli assi della funzione fratta \\(f(x) = \\frac{x - ${k}}{x + 1}\\).`;
+                            risultato = `Asse \\(x\\): \\((${k}, 0)\\); Asse \\(y\\): \\((0, -${k})\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** Poniamo il numeratore uguale a zero: \\(x - ${k} = 0 \\implies x = ${k}\\) (accettabile poiché non annulla il denominatore). Punto: \\(\mathbf{(${k}, 0)}\\).\n2. **Asse \\(y\\):** Calcoliamo \\(f(0) = \\frac{0 - ${k}}{0 + 1} = -${k}\\). Punto: \\(\mathbf{(0, -${k})}\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Trova le intersezioni con gli assi della funzione \\(f(x) = \\frac{x^2 - 4}{x - ${k}}\\) (con \\(${k} \\neq \\pm 2\\)).`;
+                            risultato = `Asse \\(x\\): \\((-2, 0)\\), \\((2, 0)\\); Asse \\(y\\): \\((0, \\frac{4}{${k}})\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(x^2 - 4 = 0 \\implies x = \\pm 2\\). Punti: \\((-2, 0)\\) e \\((2, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = \\frac{0 - 4}{0 - ${k}} = \\frac{-4}{-${k}} = \\frac{4}{${k}}\\). Punto: \\((0, \\frac{4}{${k}})\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Trova le intersezioni con gli assi della funzione cubica \\(f(x) = x^3 - ${k * k}x\\).`;
+                            risultato = `Asse \\(x\\): \\((-(${k}), 0)\\), \\((0, 0)\\), \\((${k}, 0)\\); Asse \\(y\\): \\((0, 0)\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** Raccogliamo \\(x(x^2 - ${k * k}) = 0 \\implies x = 0 \\lor x = \\pm ${k}\\). Punti: \\((-(${k}), 0)\\), \\((0,0)\\), \\((${k}, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = 0\\). Punto: \\((0,0)\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Trova le intersezioni con gli assi della funzione \\(f(x) = \\frac{x^2 + ${k}}{x - 1}\\).`;
+                            risultato = `Asse \\(x\\): Nessuna; Asse \\(y\\): \\((0, -${k})\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(x^2 + ${k} = 0 \\implies x^2 = -${k}\\) (nessuna soluzione reale, poiché la somma di quadrati positivi non si annulla). Non ci sono intersezioni con l'asse \\(x\\).\n2. **Asse \\(y\\):** \\(f(0) = \\frac{0 + ${k}}{0 - 1} = -${k}\\). Punto: \\((0, -${k})\\).`;
+                        } else {
+                            domanda = `Trova le intersezioni con gli assi della funzione \\(f(x) = \\frac{x - 1}{x^2 + ${k}}\\).`;
+                            risultato = `Asse \\(x\\): \\((1, 0)\\); Asse \\(y\\): \\((0, -\\frac{1}{${k}})\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** Numeratore \\(x - 1 = 0 \\implies x = 1\\). Punto: \\((1, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = \\frac{0 - 1}{0 + ${k}} = -\\frac{1}{${k}}\\). Punto: \\((0, -\\frac{1}{${k}})\\).`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni irrazionali, logaritmiche, esponenziali e trigonometriche
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Trova le intersezioni con gli assi della funzione irrazionale:\n\\[f(x) = \\sqrt{x + ${k * k}} - ${k}\\]`;
+                            risultato = `Asse \\(x\\): \\((0, 0)\\); Asse \\(y\\): \\((0, 0)\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(\\sqrt{x + ${k * k}} - ${k} = 0 \\implies \\sqrt{x + ${k * k}} = ${k}\\).\nElevando al quadrato: \\(x + ${k * k} = ${k * k} \\implies x = 0\\). Punto: \\((0, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = \\sqrt{0 + ${k * k}} - ${k} = ${k} - ${k} = 0\\). Punto: \\((0, 0)\\).`;
+                        } else if (tipo === 1) {
+                            domanda = `Trova le intersezioni con gli assi della funzione logaritmica:\n\\[f(x) = \\ln(x + ${k})\\]`;
+                            risultato = `Asse \\(x\\): \\(({k - 1}, 0)\\); Asse \\(y\\): \\((0, \\ln(${k}))\\)`;
+                            spiegazione = `1. **Dominio:** \\(x + ${k} > 0 \\implies x > -${k}\\).\n2. **Asse \\(x\\):** \\(\\ln(x + ${k}) = 0 \\implies x + ${k} = e^0 = 1 \\implies x = 1 - ${k}\\). Punto: \\(({1 - ${k}}, 0)\\).\n3. **Asse \\(y\\):** \\(f(0) = \\ln(${k})\\). Punto: \\((0, \\ln(${k}))\\).`;
+                        } else if (tipo === 2) {
+                            domanda = `Trova le intersezioni con gli assi della funzione esponenziale:\n\\[f(x) = e^x - 1\\]`;
+                            risultato = `Asse \\(x\\): \\((0, 0)\\); Asse \\(y\\): \\((0, 0)\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(e^x - 1 = 0 \\implies e^x = 1 \\implies x = 0\\). Punto: \\((0, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = e^0 - 1 = 1 - 1 = 0\\). Punto: \\((0, 0)\\).`;
+                        } else if (tipo === 3) {
+                            domanda = `Trova le intersezioni con l'asse \\(x\\) della funzione trigonometrica nell'intervallo \\([0, 2\\pi]\\):\n\\[f(x) = \\sin(x)\\]`;
+                            risultato = `Asse \\(x\\): \\((0, 0)\\), \\((\\pi, 0)\\), \\((2\\pi, 0)\\); Asse \\(y\\): \\((0, 0)\\)`;
+                            spiegazione = `1. **Asse \\(x\\):** \\(\\sin(x) = 0\) nell'intervallo \\([0, 2\\pi]\\) per \\(x = 0, \\pi, 2\\pi\\).\nPunti: \\((0,0)\\), \\((\\pi, 0)\\), \\((2\\pi, 0)\\).\n2. **Asse \\(y\\):** \\(f(0) = \\sin(0) = 0\\). Punto: \\((0,0)\\).`;
+                        } else {
+                            domanda = `Trova le intersezioni con gli assi della funzione fratta con logaritmo:\n\\[f(x) = \\frac{\\ln(x)}{x - ${k}}\\] (con \\(${k} > 1\\))`;
+                            risultato = `Asse \\(x\\): \\((1, 0)\\); Asse \\(y\\): Nessuna (0 non appartiene al dominio)`;
+                            spiegazione = `1. **Dominio:** \\(x > 0\\) e \\(x \\neq ${k}\\).\n2. **Asse \\(x\\):** Il numeratore \\(\\ln(x) = 0 \\implies x = 1\\) (accettabile). Punto: \\((1, 0)\\).\n3. **Asse \\(y\\):** Poiché \\(0\) non appartiene al dominio (il logaritmo di zero non è definito), la funzione non interseca l'asse \\(y\\).`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

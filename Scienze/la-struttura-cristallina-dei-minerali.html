@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Struttura Cristallina dei Minerali: Reticoli, Celle Elementari e Sistemi Cristallini - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Struttura Cristallina dei Minerali - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-la-struttura-cristallina-dei-minerali" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Scienze della Terra / Cristallografia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Struttura Cristallina dei Minerali</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi geometrica dei reticoli spaziali, delle celle elementari, degli elementi di simmetria e dei sette sistemi cristallini.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENuto TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Reticolo Spaziale e la Celletta Elementare</h2>
+            <p>
+                La caratteristica fondamentale che distingue un minerale da qualsiasi altra materia solida è la disposizione geometrica interna dei suoi atomi, ioni o molecole. Questa organizzazione non è casuale, ma si sviluppa nello spazio tridimensionale formando un <strong>reticolo cristallino</strong> (o reticolo spaziale).
+            </p>
+            <p>
+                L'unità fondamentale che compone questa struttura è la <strong>cella elementare</strong> (o cella unitaria): un parallelepipedo geometrico minimo che, ripetuto indefinitamente nelle tre direzioni dello spazio per traslazione, ricostruisce l'intero cristallo. Le dimensioni geometriche della cella elementare sono definite da tre spigoli fondamentali ($a$, $b$, $c$) e da tre angoli interassiali ($\alpha$, $\beta$, $\gamma$).
+            </p>
+
+            <h2>2. Gli Elementi di Simmetria</h2>
+            <p>
+                La forma esterna e le proprietà fisiche di un cristallo sono lo specchio diretto della sua simmetria interna. In cristallografia si riconoscono tre principali elementi di simmetria geometrica:
+            </p>
+            <ul>
+                <li><strong>Centro di Simmetria ($i$):</strong> Un punto interno al cristallo tale per cui, tracciando una linea retta da una faccia o spigolo attraverso il centro, si incontra un punto identico alla stessa distanza sul lato opposto.</li>
+                <li><strong>Asse di Simmetria ($L$):</strong> Una linea immaginaria attorno alla quale il cristallo, ruotando di un certo angolo, ripete due o più volte lo stesso aspetto identico (esistono assi di simmetria binaria, ternaria, quaternaria e senaria).</li>
+                <li><strong>Piano di Simmetria ($\pi$):</strong> Un piano immaginario che divide il cristallo in due parti speculari, perfettamente simmetriche l'una rispetto all'altra.</li>
+            </ul>
+
+            <h2>3. I Sette Sistemi Cristallini</h2>
+            <p>
+                Combinando le diverse relazioni geometriche tra gli spigoli ($a, b, c$) e gli angoli ($\alpha, \beta, \gamma$) delle celle elementari, tutti i minerali noti in natura vengono classificati in <strong>sette sistemi cristallini</strong> fondamentali:
+            </p>
+            <ul>
+                <li><strong>Sistema Cubico (o Isometrico):</strong> Tre assi uguali tra loro e perpendicolari ($a = b = c$, $\alpha = \beta = \gamma = 90^\circ$). Esempi: salgemma, pirite, galena.</li>
+                <li><strong>Sistema Tetragonale:</strong> Tre assi perpendicolari, di cui i due orizzontali uguali e il verticale diverso ($a = b \neq c$, $\alpha = \beta = \gamma = 90^\circ$). Esempio: zircone.</li>
+                <li><strong>Sistema Esagonale:</strong> Tre assi orizzontali uguali intersecati a $120^\circ$ e un quarto asse verticale perpendicolare ($a_1 = a_2 = a_3 \neq c$). Esempi: apatite, berillo.</li>
+                <li><strong>Sistema Rombico (o Ortorombico):</strong> Tre assi disuguali ma reciprocamenre perpendicolari ($a \neq b \neq c$, $\alpha = \beta = \gamma = 90^\circ$). Esempio: zolfo nativo, olivina.</li>
+                <li><strong>Sistema Monoclino:</strong> Tre assi disuguali, di cui due inclinati e uno perpendicolare al piano formato dagli altri due ($\alpha = \gamma = 90^\circ \neq \beta$). Esempi: ortoclasio, gesso.</li>
+                <li><strong>Sistema Triclino:</strong> Tre assi di lunghezza diversa e tutti obliqui tra loro, senza angoli retti ($a \neq b \neq c$, $\alpha \neq \beta \neq \gamma \neq 90^\circ$). Esempio: microclinio, plagioclasi.</li>
+                <li><strong>Sistema Trigonale (o Romboedrico):</strong> Spesso raggruppato con l'esagonale, possiede assi simili al rombico-esagonale ma simmetria ternaria. Esempi: quarzo, calcite.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>La Legge della Costanza degli Angoli Interfasiali (Steno):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Formulata da Niccolò Stenone nel XVII secolo, stabilisce che in tutte le medesime specie minerali, a prescindere dalle dimensioni o dalla forma esterna irregolare dei singoli campioni, 
+                    $$\text{l'angolo formato dalle facce corrispondenti è costante: } \theta = \text{costante}$$
+                    Questa legge dimostra che la geometria macroscopica del cristallo è governata rigorosamente dalla regolarità microscopica del reticolo atomico sottostante.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Pratico: Analisi Geometrica di una Cella Elementare</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Problema:</strong> Un cristallo analizzato ai raggi X mostra una cella elementare in cui i tre spigoli sono tra loro uguali ($a = b = c$) e gli angoli formati dagli assi sono tutti retti ($\alpha = \beta = \gamma = 90^\circ$). A quale sistema cristallino appartiene e quali proprietà di simmetria ci si può attendere?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento analitico:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Verifica dei parametri reticolari:</strong> La condizione $a = b = c$ associata ad angoli tutti ortogonali ($90^\circ$) definisce univocamente il <strong>sistema cubico</strong>.</li>
+                    <li><strong>Simmetria associata:</strong> Il sistema cubico è il più simmetrico in assoluto tra i sette sistemi, possedendo molteplici assi di simmetria quaternaria, ternaria e binaria, oltre a piani di simmetria e centro di inversione.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> Il minerale cristallizza nel sistema cubico, manifestando una massima simmetria geometrica interna ed esterna (es. forme tipiche a cubo oottaedro).</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

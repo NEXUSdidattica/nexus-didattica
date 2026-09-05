@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa e glossario dei Common Phrasal Verbs in inglese: verbi frasali essenziali, significati, suddivisione per categorie e esempi pratici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Common Phrasal Verbs - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="common-phrasal-verbs" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Grammar & Vocabulary</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Common Phrasal Verbs</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida pratica ed esaustiva ai verbi frasali più comuni della lingua inglese, suddivisi per categorie d'uso con significati ed esempi contestualizzati.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / GUIDA ESAUSTIVA -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cosa sono i Phrasal Verbs?</h2>
+            <p>
+                Un <b>phrasal verb</b> (verbo frasale) è una combinazione formata da un verbo principale unito a una o due particelle (preposizioni o avverbi, es. <i>up, down, out, in, on, off</i>). L'aspetto fondamentale da ricordare è che l'aggiunta della particella modifica radicalmente o sfuma il significato del verbo originario, rendendolo spesso intraducibile alla lettera.
+            </p>
+
+            <h2>2. Daily Routine and Movement Verbs (Routine e Movimento)</h2>
+            <p>I verbi frasali più ricorrenti per descrivere le azioni quotidiane, gli spostamenti e la gestione della giornata.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Phrasal Verb</th><th>Significato in Italiano</th><th>Esempio pratico</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Get up</b></td><td>Svegliarsi / Alzarsi dal letto</td><td><i>I usually get up at 7:00 AM every day.</i></td></tr>
+                    <tr><td><b>Wake up</b></td><td>Svegliarsi (aprire gli occhi)</td><td><i>The loud noise woke me up.</i></td></tr>
+                    <tr><td><b>Turn off / Turn on</b></td><td>Spegnere / Accendere (dispositivi o luci)</td><td><i>Please turn off the lights when you leave.</i></td></tr>
+                    <tr><td><b>Set off</b></td><td>Partire (per un viaggio)</td><td><i>We set off early in the morning to avoid traffic.</i></td></tr>
+                    <tr><td><b>Hurry up</b></td><td>Sbrigarsi</td><td><i>Hurry up or we will miss the bus!</i></td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Social Interactions and Relationships (Relazioni e Socialità)</h2>
+            <p>Espressioni indispensabili per descrivere i rapporti interpersonali, l'incontro con altre persone e la comunicazione.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Phrasal Verb</th><th>Significato in Italiano</th><th>Esempio pratico</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Get along (with)</b></td><td>Andare d'accordo (con qualcuno)</td><td><i>I get along very well with my classmates.</i></td></tr>
+                    <tr><td><b>Look after</b></td><td>Prendersi cura di / Badare a</td><td><i>Can you look after my dog this weekend?</i></td></tr>
+                    <tr><td><b>Hang out</b></td><td>Uscire insieme / Bighellonare con amici</td><td><i>We usually hang out at the park after school.</i></td></tr>
+                    <tr><td><b>Show up</b></td><td>Presentarsi / comparire a sorpresa</td><td><i>He didn't show up at the meeting.</i></td></tr>
+                    <tr><td><b>Break up</b></td><td>Lasciarsi (in una relazione) / Interrompere</td><td><i>They broke up after three years together.</i></td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Study, Work and Problem Solving (Studio e Lavoro)</h2>
+            <p>Verbi frasali legati alla concentrazione, alla produttività, alla ricerca di informazioni e alla risoluzione di problemi.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Phrasal Verb</th><th>Significato in Italiano</th><th>Esempio pratico</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Find out</b></td><td>Scoprire / Venire a sapere</td><td><i>I need to find out when the exam starts.</i></td></tr>
+                    <tr><td><b>Look up</b></td><td>Cercare un'informazione (es. su un dizionario o web)</td><td><i>If you don't know the word, look it up in a dictionary.</i></td></tr>
+                    <tr><td><b>Give up</b></td><td>Arrendersi / Mollare</td><td><i>Never give up, even when things get difficult.</i></td></tr>
+                    <tr><td><b>Carry on</b></td><td>Continuare / Proseguire</td><td><i>Carrying on with your studies is essential for your future.</i></td></tr>
+                    <tr><td><b>Figure out</b></td><td>Comprendere / Risolvere un problema</td><td><i>It took me hours to figure out this math equation.</i></td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Regola Grammaticale: Separabili vs Inseparabili</h3>
+                <p style="margin-bottom: 0;">
+                    I phrasal verbs si dividono principalmente in due categorie grammaticali:
+                    <br>1. <b>Separabili</b>: il complemento oggetto può essere inserito in mezzo tra il verbo e la particella (es. <i>turn <b>the light</b> off</i> o <i>turn off <b>the light</b></i>). Se si usa un pronome (es. <i>it</i>), questo <u>deve</u> obbligatoriamente stare in mezzo (es. <i>turn it off</i>, mai <i>turn off it</i>).
+                    <br>2. <b>Inseparabili</b>: il verbo e la particella non possono mai essere separati, e il complemento oggetto va sempre dopo la particella (es. <i>look after <b>the children</b></i>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

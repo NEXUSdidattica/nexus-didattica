@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I Cloroplasti e la Fotosintesi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Cloroplasti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* ESERCIZI */
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio.livello-facile {
+            border: 1px solid #d1fae5;
+            border-left: 6px solid #10b981;
+        }
+        .badge-difficolta.facile { background-color: #10b981; }
+
+        .card-esercizio.livello-medio {
+            border: 1px solid #fef3c7;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+
+        .card-esercizio.livello-difficile {
+            border: 1px solid #fee2e2;
+            border-left: 6px solid #ef4444;
+        }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* SOLUZIONI DEGLI ESERCIZI */
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--colore-scuro);
+            background-color: var(--sfondo-chiaro);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid var(--bordo-chiaro);
+            transition: all 0.2s;
+        }
+
+        .spiegazione-box summary:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+        }
+
+        .spiegazione-contenuto {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .box-risposta-corretta {
+            background-color: var(--bordo-chiaro);
+            border: 1px solid var(--colore-primario);
+            border-left: 4px solid var(--colore-primario);
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: var(--colore-testo-scuro);
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lezione-cloroplasti" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Biologia cellulare</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Cloroplasti e la Fotosintesi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dettagliata della struttura dei cloroplasti, dei meccanismi biochimici della fotosintesi clorofilliana e della loro origine endosimbiontica.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Struttura e Organizzazione dei Cloroplasti</h2>
+            <p>
+                I cloroplasti sono organuli presenti nelle cellule delle piante e delle alghe eucariotiche, delimitati da un sistema a <strong>doppia membrana</strong> (esterna ed interna) che racchiude uno spazio intermembrana. All'interno si trovano lo stroma, i tilacoidi e i grani, deputati alla conversione dell'energia luminosa in energia chimica.
+            </p>
+
+            <h2>2. Le Fasi della Fotosintesi Clorofilliana</h2>
+            <p>
+                La fotosintesi si divide in due fasi principali: la <em>fase dipendente dalla luce</em> (che avviene a livello delle membrane dei tilacoidi producendo ATP e NADPH) e il <em>Ciclo di Calvin</em> o fase indipendente dalla luce (che avviene nello stroma utilizzando anidride carbonica per sintetizzare zuccheri).
+            </p>
+
+            <div class="formula-box">
+                ⚡ <strong>Equazione Globale della Fotosintesi:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$6\text{CO}_2 + 6\text{H}_2\text{O} \xrightarrow{\text{luce}} \text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2$$
+                    Conversione di anidride carbonica e acqua in glucosio e ossigeno gassoso sfruttando l'energia solare.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Per quale motivo i tilacoidi formano un sistema di membrane impilate in strutture chiamate grani all'interno del cloroplasto?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Superficie di contatto: L'impilamento dei tilacoidi in grani aumenta enormemente la superficie disponibile per l'inserimento dei pigmenti fotosintetici e dei fotosistemi.</li>
+                    <li>Efficienza luminosa: Una maggiore superficie membranosa massimizza la capacità di catturare i fotoni della luce solare.</li>
+                    <li>Compartimentalizzazione: Consente di separare nettamente le reazioni della fase luminosa (sui tilacoidi) da quelle del Ciclo di Calvin (nello stroma).</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Soluzione:</strong> L'organizzazione in grani massimizza l'area superficiale delle membrane tilacoidali, ottimizzando l'efficienza della cattura della luce e delle reazioni fotochimiche.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Quesiti e Verifiche sui Cloroplasti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Domande di verifica e test progressivi suddivisi per livello di difficoltà (facile, medio, difficile) focalizzati su cloroplasti, fotosintesi e bioenergetica vegetale.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi unici -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+
+            // Array con 100 dati unici strutturati (Domanda, Risposta, Spiegazione)
+            const databaseEsercizi = [
+                // --- LIVELLO FACILE (1 - 35) ---
+                {
+                    d: "Qual è la principale funzione dei cloroplasti all'interno della cellula vegetale?",
+                    r: "Svolgere la fotosintesi clorofilliana convertendo l'energia solare in energia chimica.",
+                    s: "I cloroplasti catturano la luce solare per produrre molecole organiche a partire da anidride carbonica e acqua."
+                },
+                {
+                    d: "In quali organismi eucarioti sono presenti i cloroplasti?",
+                    r: "Nelle piante verdi e nelle alghe.",
+                    s: "Fanno parte del gruppo dei plastidi e sono tipici degli organismi autotrofi fotosintetici."
+                },
+                {
+                    d: "Quante membrane compongono l'involucro di un cloroplasto?",
+                    r: "Due membrane: una membrana esterna e una membrana interna.",
+                    s: "Sono separate da un piccolo spazio intermembrana."
+                },
+                {
+                    d: "Come si chiama la matrice fluida interna racchiusa dalla membrana interna del cloroplasto?",
+                    r: "Stroma.",
+                    s: "Lo stroma contiene enzimi, DNA cloroplastico e ribosomi necessari per la sintesi proteica e il Ciclo di Calvin."
+                },
+                {
+                    d: "Cosa sono i tilacoidi all'interno del cloroplasto?",
+                    r: "Sacculi membranosi appiattiti immersi nello stroma.",
+                    s: "Rappresentano la sede in cui si svolgono le reazioni dipendenti dalla luce della fotosintesi."
+                },
+                {
+                    d: "Come si definiscono le pile formate dall'impilamento dei tilacoidi?",
+                    r: "Grani (o granum al singolare).",
+                    s: "I grani aumentano enormemente la superficie totale disponibile per i pigmenti fotosintetici."
+                },
+                {
+                    d: "Qual è il principale pigmento fotosintetico responsabile del colore verde delle piante?",
+                    r: "La clorofilla (in particolare la clorofilla a e b).",
+                    s: "Assorbe la luce nelle regioni del blu e del rosso dello spettro visibile."
+                },
+                {
+                    d: "Quale gas viene liberato come sottoprodotto durante il processo fotosintetico?",
+                    r: "L'ossigeno molecolare ($\text{O}_2$).",
+                    s: "Deriva direttamente dalla fotolisi (scissione) delle molecole d'acqua."
+                },
+                {
+                    d: "Quale teoria spiega l'origine evolutiva dei cloroplasti derivati da batteri fotosintetici?",
+                    r: "La teoria endosimbiontica.",
+                    s: "Ipotizza che un eucariote ancestrale abbia inglobato un cianobatterio senza digerirlo."
+                },
+                {
+                    d: "I cloroplasti possiedono un proprio materiale genetico indipendente dal nucleo?",
+                    r: "Sì, possiedono un DNA circolare proprio.",
+                    s: "Questo DNA è un'ulteriore conferma della loro origine batterica."
+                },
+                {
+                    d: "Quali organuli cellulari, oltre ai cloroplasti, possiedono un proprio DNA nelle cellule vegetali?",
+                    r: "I mitocondri.",
+                    s: "Entrambi gli organuli possiedono DNA e macchinario per la sintesi proteica autonomi."
+                },
+                {
+                    d: "In quale parte specifica del cloroplasto si svolge il Ciclo di Calvin (fase indipendente dalla luce)?",
+                    r: "Nello stroma.",
+                    s: "Gli enzimi solubili necessari per fissare la $\text{CO}_2$ si trovano immersi nel fluido dello stroma."
+                },
+                {
+                    d: "In quale parte specifica del cloroplasto si svolgono le reazioni luminose della fotosintesi?",
+                    r: "Sulle membrane dei tilacoidi.",
+                    s: "Contengono i fotosistemi e la catena di trasporto degli elettroni."
+                },
+                {
+                    d: "Come si chiama lo spazio interno delimitato dalla membrana del tilacoide?",
+                    r: "Lume del tilacoide (o spazio tilacoidale).",
+                    s: "È fondamentale per l'accumulo di protoni durante la generazione di ATP."
+                },
+                {
+                    d: "Quali pigmenti accessori, oltre alla clorofilla, aiutano ad assorbire la luce nei cloroplasti?",
+                    r: "I carotenoidi (come i caroteni e le xantofille).",
+                    s: "Proteggono anche la clorofilla dai danni causati da un'eccessiva luminosità."
+                },
+                {
+                    d: "Qual è il colore riflesso dalla clorofilla che conferisce alle foglie il loro tipico aspetto?",
+                    r: "Il colore verde.",
+                    s: "La clorofilla riflette la luce verde mentre assorbe le lunghezze d'onda del blu e del rosso."
+                },
+                {
+                    d: "Qual è la molecola di partenza consumata nella fase luminosa per fornire elettroni?",
+                    r: "L'acqua ($\text{H}_2\text{O}$).",
+                    s: "Viene scissa per rimpiazzare gli elettroni persi dalla clorofilla."
+                },
+                {
+                    d: "Quali sono i prodotti energetici finali della fase luminosa trasferiti allo stroma?",
+                    r: "L'ATP e il NADPH.",
+                    s: "Vengono utilizzati come carburante per guidare la sintesi degli zuccheri nel Ciclo di Calvin."
+                },
+                {
+                    d: "Che cos'è un plastidio?",
+                    r: "Una famiglia di organuli cellulari vegetali che include cloroplasti, cromoplasti e leucoplasti.",
+                    s: "Derivano tutti da precursori comuni chiamati proplastidi."
+                },
+                {
+                    d: "Qual è la funzione dei cromoplasti, plastidi correlati ai cloroplasti?",
+                    r: "Accumulare pigmenti colorati (es. carotenoidi) per dare colore a fiori e frutti.",
+                    s: "Attraggono gli animali per favorire l'impollinazione e la dispersione dei semi."
+                },
+                {
+                    d: "Qual è la funzione dei leucoplasti (es. amiloplasti)?",
+                    r: "Riserva di sostanze nutritive come l'amido, i lipidi o le proteine.",
+                    s: "Sono plastidi incolori presenti soprattutto nelle radici e nei tessuti di accumulo."
+                },
+                {
+                    d: "Come si riproducono i cloroplasti all'interno della cellula vegetale?",
+                    r: "Per scissione binaria.",
+                    s: "Si dividono in modo simile ai batteri indipendentemente dalla mitosi cellulare."
+                },
+                {
+                    d: "Il cloroplasto fa parte del sistema di endomembrane della cellula eucariote?",
+                    r: "No, non fa parte del sistema endomembrane.",
+                    s: "Mantiene una propria autonomia strutturale e genetica derivata dall'endosimbiosi."
+                },
+                {
+                    d: "Quale molecola organica semplice viene sintetizzata primariamente dalla fotosintesi?",
+                    r: "Il glucosio (o zuccheri a tre atomi di carbonio come la gliceraldeide-3-fosfato).",
+                    s: "Costituisce la base energetica per il metabolismo della pianta."
+                },
+                {
+                    d: "Perché le piante sono definite organismi autotrofi?",
+                    r: "Perché sono in grado di produrre autonomamente sostanze organiche da composti inorganici.",
+                    s: "Sfruttano l'energia solare tramite i cloroplasti."
+                },
+                {
+                    d: "Quale gas viene assorbito dall'atmosfera ed entra nel cloroplasto durante la fotosintesi?",
+                    r: "L'anidride carbonica ($\text{CO}_2$).",
+                    s: "Penetra nelle foglie attraverso gli stomi."
+                },
+                {
+                    d: "Quale enzima chiave nello stroma del cloroplasto fissa l'anidride carbonica nel Ciclo di Calvin?",
+                    r: "La RuBisCO (ribulosio-1,5-bisfosfato carbossilasi-ossigenasi).",
+                    s: "È considerato l'enzima più abbondante sulla Terra."
+                },
+                {
+                    d: "I cloroplasti si muovono all'interno del citoplasma delle cellule vegetali?",
+                    r: "Sì, possono muoversi grazie al citoscheletro (ciclosi o fototassi).",
+                    s: "Si spostano per ottimizzare l'assorbimento della luce o proteggersi da insolazioni eccessive."
+                },
+                {
+                    d: "Quale struttura anatomica della foglia ospita il maggior numero di cloroplasti?",
+                    r: "Il mesofillo fogliare (specialmente il tessuto palisadico).",
+                    s: "È lo strato della foglia ottimizzato per l'intercettazione della luce solare."
+                },
+                {
+                    d: "Come si chiamano i canali membranosi che collegano i tilacoidi di grani diversi?",
+                    r: "Tilacoidi dello stroma (o lamelle stromali).",
+                    s: "Mantengono unito il sistema membranoso interno del cloroplasto."
+                },
+                {
+                    d: "I cloroplasti sono presenti in tutte le cellule di una pianta?",
+                    r: "No, sono presenti solo nelle parti verdi (foglie, giovani steli) esposte alla luce.",
+                    s: "Cellule di radici o tessuti interni non fotosintetici ne sono privi."
+                },
+                {
+                    d: "Quale coenzima agisce come accettore finale di elettroni nella fase luminosa formando NADPH?",
+                    r: "Il $\text{NADP}^+$ (nicotinammide adenina dinucleotide fosfato).",
+                    s: "Acquisisce protoni ed elettroni riducendosi a NADPH."
+                },
+                {
+                    d: "I ribosomi presenti all'interno dello stroma del cloroplasto sono simili a quelli eucariotici o procariotici?",
+                    r: "Sono di tipo procariotico (70S).",
+                    s: "Ulteriore prova della loro origine batterica."
+                },
+                {
+                    d: "Quale radiazione dello spettro elettromagnetico viene sfruttata dai cloroplasti per la fotosintesi?",
+                    r: "La luce visibile (spettro di radiazione tra 400 e 700 nm, detto PAR).",
+                    s: "Radiazione fotosinteticamente attiva."
+                },
+                {
+                    d: "Cosa succede ai cloroplasti se una foglia viene tenuta a lungo al buio?",
+                    r: "Possono trasformarsi temporaneamente in ezioplasti o perdere parzialmente la clorofilla.",
+                    s: "La sintesi della clorofilla richiede la presenza di luce."
+                },
+
+                // --- LIVELLO MEDIO (36 - 70) -->
+                {
+                    d: "Quali sono i due fotosistemi principali coinvolti nella fase dipendente dalla luce?",
+                    r: "Il Fotosistema II (PSII) e il Fotosistema I (PSI).",
+                    s: "Lavorano in serie nel flusso elettronico non ciclico."
+                },
+                {
+                    d: "Perché il Fotosistema II si chiama così pur agendo per primo nella sequenza?",
+                    r: "Perché è stato scoperto cronologicamente dopo il Fotosistema I.",
+                    s: "Tuttavia, nel percorso della luce, gli elettroni fluiscono prima dal PSII al PSI."
+                },
+                {
+                    d: "Qual è il ruolo del centro di reazione P680 nel Fotosistema II?",
+                    r: "Eccitarsi alla lunghezza d'onda di 680 nm e cedere elettroni alla catena di trasporto.",
+                    s: "Ha un potenziale redox così positivo da poter ossidare le molecole d'acqua."
+                },
+                {
+                    d: "Qual è il ruolo del centro di reazione P700 nel Fotosistema I?",
+                    r: "Eccitarsi alla lunghezza d'onda di 700 nm per ridurre il $\text{NADP}^+$ a NADPH.",
+                    s: "Riceve gli elettroni provenienti dal PSII attraverso il citocromo b6f e la plastocianina."
+                },
+                {
+                    d: "Come avviene la generazione del gradiente protonico nei tilacoidi durante la fotosintesi?",
+                    r: "Tramite la fotolisi dell'acqua nel lume e il pompaggio di protoni operato dal complesso del citocromo b6f.",
+                    s: "Crea una forte concentrazione di ioni $\text{H}^+$ all'interno del lume tilacoidale."
+                },
+                {
+                    d: "Quale enzima di membrana sintetizza l'ATP sfruttando il gradiente protonico dei tilacoidi?",
+                    r: "L'ATP sintasi (o complesso CF0-CF1).",
+                    s: "I protoni fluiscono secondo gradiente dal lume allo stroma attraverso l'ATP sintasi."
+                },
+                {
+                    d: "Come si chiama il processo di sintesi dell'ATP guidato dall'energia luminosa nei cloroplasti?",
+                    r: "Fotofosforilazione.",
+                    s: "Può essere di tipo aciclico (con produzione di ATP e NADPH) o ciclico (solo ATP)."
+                },
+                {
+                    d: "Qual è la differenza principale tra flusso elettronico ciclico e non ciclico nella fase luminosa?",
+                    r: "Il flusso ciclico coinvolge solo il PSI producendo solo ATP, mentre quello non ciclico coinvolge entrambi i fotosistemi producendo ATP e NADPH.",
+                    s: "Il flusso ciclico serve a bilanciare il fabbisogno energetico del Ciclo di Calvin."
+                },
+                {
+                    d: "Quali sono le tre fasi principali in cui si articola il Ciclo di Calvin?",
+                    r: "Fissazione del carbonio, riduzione e rigenerazione del ribosio-1,5-bisfosfato (RuBP).",
+                    s: "Consente di trasformare la $\text{CO}_2$ in zuccheri complessi."
+                },
+                {
+                    d: "Quanti cicli completi di fissazione sono necessari per produrre una molecola netta di gliceraldeide-3-fosfato (G3P)?",
+                    r: "Tre turni completi del ciclo.",
+                    s: "Per una molecola di glucosio a 6 atomi di carbonio occorrono 6 cicli."
+                },
+                {
+                    d: "Qual è il destino della G3P prodotta nello stroma del cloroplasto?",
+                    r: "Parte viene esportata nel citoplasma per diventare saccarosio, e parte resta nel cloroplasto per sintetizzare amido.",
+                    s: "Costituisce la riserva energetica e la materia prima della pianta."
+                },
+                {
+                    d: "Che cos'è la fotorespirazione e perché rappresenta un costo energetico per la pianta?",
+                    r: "Un processo in cui la RuBisCO fissa ossigeno anziché $\text{CO}_2$, consumando ATP e rilasciando $\text{CO}_2$.",
+                    s: "Riduce l'efficienza fotosintetica, soprattutto in condizioni di caldo e aridità con stomi chiusi."
+                },
+                {
+                    d: "Come fanno le piante C4 a superare il problema della fotorespirazione?",
+                    r: "Separando spazialmente la cattura iniziale della $\text{CO}_2$ (nelle cellule del mesofillo) dal Ciclo di Calvin (nelle cellule della guaina del fascio).",
+                    s: "Concentrano attivamente la $\text{CO}_2$ intorno alla RuBisCO."
+                },
+                {
+                    d: "Come fanno le piante CAM (es. cactus e succulente) ad adattarsi agli ambienti aridi?",
+                    r: "Separando i processi temporalmente: aprono gli stomi e fissano la $\text{CO}_2$ di notte, compiendo la fotosintesi di giorno.",
+                    s: "Riducono drasticamente la perdita d'acqua per traspirazione."
+                },
+                {
+                    d: "Qual è il ruolo del complesso del citocromo b6f nella catena di trasporto degli elettroni tilacoidale?",
+                    r: "Trasferire gli elettroni dal plastochinone alla plastocianina pompando protoni nello stroma verso il lume.",
+                    s: "Funge da anello di congiunzione tra PSII e PSI."
+                },
+                {
+                    d: "Quali molecole trasportano gli elettroni tra i vari complessi proteici nella membrana tilacoidale?",
+                    r: "Il plastochinone (PQ), il citocromo b6f, la plastocianina (PC) e la ferredossina (Fd).",
+                    s: "Costituiscono i trasportatori mobili di elettroni."
+                },
+                {
+                    d: "Come influisce il pH dello stroma durante l'illuminazione attiva del cloroplasto?",
+                    r: "Il pH dello stroma sale (diventa più alcalino, intorno a 8.0) a causa del pompaggio di protoni nel lume.",
+                    s: "L'alcalinizzazione attiva alcuni enzimi chiave del Ciclo di Calvin."
+                },
+                {
+                    d: "Qual è la funzione dei carotenoidi come agenti fotoprotettivi nei cloroplasti?",
+                    r: "Dissipare l'energia in eccesso sotto forma di calore e neutralizzare i radicali liberi dell'ossigeno.",
+                    s: "Prevengono il fotoinvecchiamento e i danni ossidativi ai fotosistemi."
+                },
+                {
+                    d: "Quale mutazione o alterazione causa la clorosi fogliare (ingiallimento delle foglie)?",
+                    r: "La carenza di magnesio, ferro o azoto, oppure la degradazione della clorofilla.",
+                    s: "Il magnesio è l'atomo centrale dell'anello porfirinico della molecola di clorofilla."
+                },
+                {
+                    d: "In che modo i cloroplasti comunicano con il nucleo cellulare per coordinare la loro attività?",
+                    r: "Mediante la segnalazione retrograda (retrograde signaling) da parte di metaboliti e proteine dell'organello.",
+                    s: "Il nucleo modula la trascrizione dei geni nucleari destinati al cloroplasto."
+                },
+                {
+                    d: "Quale enzima catalizza la prima reazione della fase oscura fissando la $\text{CO}_2$ sul ribosio bisfosfato?",
+                    r: "La RuBisCO.",
+                    s: "Produce un composto instabile a 6 atomi di carbonio che si scinde subito in due molecole di 3-fosfoglicerato."
+                },
+                {
+                    d: "Quale ruolo ha la tioredossina nel cloroplasto?",
+                    r: "Regolare l'attività degli enzimi del Ciclo di Calvin tramite modifiche redox (riduzione di ponti disolfuro).",
+                    s: "Attiva gli enzimi solo in presenza di luce."
+                },
+                {
+                    d: "Perché l'amido sintetizzato nel cloroplasto viene accumulato sotto forma di granuli insolubili nello stroma?",
+                    r: "Per evitare di alterare la pressione osmotica interna dell'organulo.",
+                    s: "L'accumulo di zuccheri liberi richiamerebbe troppa acqua rompendo il cloroplasto."
+                },
+                {
+                    d: "Qual è la differenza strutturale tra la clorofilla a e la clorofilla b?",
+                    r: "La presenza di un gruppo metilico ($\text{-CH}_3$) nella clorofilla a e di un gruppo formilico ($\text{-CHO}$) nella clorofilla b.",
+                    s: "Questa leggera differenza chimica sposta leggermente le bande di assorbimento della luce."
+                },
+                {
+                    d: "Quale ruolo svolgono le proteine LHC (Light-Harvesting Complexes) nei tilacoidi?",
+                    r: "Formare un'antenna di pigmenti per catturare e convogliare l'energia luminosa verso i centri di reazione.",
+                    s: "Massimizzano l'efficienza di cattura dei fotoni."
+                },
+                {
+                    d: "Come risponde il cloroplasto a condizioni di stress luminoso estremo (fotoinibizione)?",
+                    r: "Attivando il non-photochemical quenching (NPQ) per dissipare l'energia luminosa in eccesso come calore.",
+                    s: "Protegge la struttura dei fotosistemi da danni permanenti."
+                },
+                {
+                    d: "Qual è il destino delle proteine codificate dal DNA nucleare ma destinate al cloroplasto?",
+                    r: "Vengono sintetizzate nel citoplasma con una sequenza di transito e importate tramite i complessi TIC e TOC.",
+                    s: "I trasloconi TIC (Inner Chloroplast) e TOC (Outer Chloroplast) mediano l'ingresso."
+                },
+                {
+                    d: "Che cos'è un proplastidio?",
+                    r: "Un plastidio immaturo e indifferenziato presente nelle cellule meristematiche delle piante.",
+                    s: "Può svilupparsi in cloroplasto se esposto alla luce."
+                },
+                {
+                    d: "Quale composto funge da donatore primario di elettroni al Fotosistema II dopo la sua ossidazione?",
+                    r: "L'acqua, tramite il complesso di evoluzione dell'ossigeno (OEC).",
+                    s: "Estrae elettroni dalle molecole d'acqua spezzandole."
+                },
+                {
+                    d: "Come varia la concentrazione di ioni magnesio nello stroma tra buio e luce?",
+                    r: "Aumenta durante l'illuminazione perché i protoni escono dallo stroma verso il lume tilacoidale.",
+                    s: "Il magnesio stimola l'attività della RuBisCO."
+                },
+                {
+                    d: "Qual è la funzione dei pori o canali anionici nella membrana esterna del cloroplasto?",
+                    r: "Permettere il passaggio di piccole molecole e metaboliti tra citoplasma e spazio intermembrana.",
+                    s: "Garantiscono la permeabilità dell'involucro esterno."
+                },
+                {
+                    d: "Quale molecola viene prodotta dalla fosforilazione dell'ADP guidata dall'ATP sintasi nel cloroplasto?",
+                    r: "ATP (adenosina trifosfato).",
+                    s: "Rappresenta la valuta energetica cellulare."
+                },
+                {
+                    d: "In quale fase della vita di una foglia si verifica la trasformazione dei cloroplasti in gerontoplasti?",
+                    r: "Durante la senescenza autunnale.",
+                    s: "I cloroplasti perdono le membrane e i pigmenti, smantellando l'apparato fotosintetico."
+                },
+                {
+                    d: "Quale interazione metabolica esiste tra cloroplasti e mitocondri nella cellula vegetale?",
+                    r: "I prodotti della fotosintesi (glucosio e ossigeno) alimentano la respirazione mitocondriale, mentre i rifiuti di questa ($\text{CO}_2$ e $\text{H}_2\text{O}$) alimentano i cloroplasti.",
+                    s: "Formano un ciclo energetico chiuso e mutualistico."
+                },
+                {
+                    d: "Perché il genoma del cloroplasto è notevolmente ridotto rispetto a quello del presunto cianobatterio ancestrale?",
+                    r: "Perché molti geni originari sono stati trasferiti al nucleo della cellula ospite nel corso dell'evoluzione.",
+                    s: "Questo fenomeno è noto come trasferimento genico endosimbiontico."
+                },
+
+                // --- LIVELLO DIFFICILE (71 - 100) ---
+                {
+                    d: "Qual è il meccanismo biochimico preciso del complesso di evoluzione dell'ossigeno (OEC) associato al Fotosistema II?",
+                    r: "Un cluster di quattro atomi di manganese ($\text{Mn}_4\text{CaO}_5$) che accumula cariche positive strappando 4 elettroni da 2 molecole d'acqua per rilasciare $\text{O}_2$ e $4\text{H}^+$.",
+                    s: "Costituisce il cuore catalitico della fotolisi dell'acqua."
+                },
+                {
+                    d: "Quale ruolo svolgono le proteine dello stroma chiamate chaperonine (es. Hsp60/Cpn60) nel cloroplasto?",
+                    r: "Assistono il corretto ripiegamento (folding) delle proteine neo-importate o sintetizzate nello stroma, inclusa la subunità grande della RuBisCO.",
+                    s: "Prevengono aggregazioni proteiche anomale."
+                },
+                {
+                    d: "Qual è la funzione specifica del ciclo delle xantofille (violaxantina-anteraxantina-zeaxantina) nei tilacoidi?",
+                    r: "Convertire l'energia luminosa in eccesso in calore disperdendola in sicurezza per proteggere l'apparato fotosintetico.",
+                    s: "Si attiva rapidamente in risposta a un forte stress luminoso."
+                },
+                {
+                    d: "Quale mutazione o difetto provoca la sindrome da variegazione fogliare legata al citoplasma?",
+                    r: "Un difetto nella trasmissione o replicazione del DNA cloroplastico durante le divisioni cellulari.",
+                    s: "Genera settori fogliari privi di clorofilla (bianchi o gialli)."
+                },
+                {
+                    d: "Qual è il meccanismo d'azione di erbicidi come il DCMU o ilparaquat sul funzionamento del cloroplasto?",
+                    r: "Il DCMU blocca il trasporto di elettroni legandosi al sito di legame del plastochinone nel PSII, mentre il paraquat devia gli elettroni dal PSI generando specie reattive dell'ossigeno.",
+                    s: "Bloccano la fotosintesi portando alla morte della pianta."
+                },
+                {
+                    d: "In che modo l'enzima sedoetidolo-1,7-bisfosfatasi regola il flusso metabolico nel Ciclo di Calvin?",
+                    r: "Agisce come punto di controllo chiave dipendente dalla luce e dalla concentrazione di tioredossina ridotta nello stroma.",
+                    s: "Impedisce reazioni futili al buio."
+                },
+                {
+                    d: "Qual è l'impatto di un'alterazione del complesso TOC/TIC sulla biogenesi dei cloroplasti?",
+                    r: "Impedisce l'importazione delle proteine nucleari essenziali, bloccando lo sviluppo e la funzionalità dell'organulo.",
+                    s: "Provoca difetti letali per la cellula vegetale."
+                },
+                {
+                    d: "Qual è la differenza cinetica e di affinità della RuBisCO per la $\text{CO}_2$ rispetto all'$\text{O}_2$?",
+                    r: "Ha un'affinità molto più elevata per la $\text{CO}_2$, ma la presenza di alte concentrazioni di $\text{O}_2$ e temperature elevate favorisce la reazione ossigenasica.",
+                    s: "Spiega l'inefficienza relativa della pianta in condizioni di stress."
+                },
+                {
+                    d: "Quale ruolo svolgono le stromule (estensioni tubulari dinamiche dei cloroplasti)?",
+                    r: "Facilitare la comunicazione interorganellare, il trasferimento di proteine e lo scambio di metaboliti tra cloroplasti vicini.",
+                    s: "Aumentano la connettività del reticolo plastidiale."
+                },
+                {
+                    d: "Quale meccanismo di trasporto attivo consente il passaggio di fosfato inorganico e triosi fosfati attraverso la membrana interna del cloroplasto?",
+                    r: "Il traslocatore dei fosfati triosio/fosfato (TPT), un antiporto che scambia triosi fosfati con fosfato inorganico.",
+                    s: "Garantisce l'esportazione degli zuccheri verso il citoplasma."
+                },
+                {
+                    d: "Come agisce la ferredossina-NADP+ reduttasi (FNR) nella fase terminale della catena di trasporto della fase luminosa?",
+                    r: "Catalizza il trasferimento di due elettroni dalla ferredossina ridotta al $\text{NADP}^+$ con il consumo di un protone stromale per formare NADPH.",
+                    s: "Si trova sul lato stromale della membrana tilacoidale."
+                },
+                {
+                    d: "Qual è l'effetto biochimico dell'acidificazione forzata del lume tilacoidale sui complessi antenna?",
+                    r: "Induce il distacco o la disattivazione energetica dei complessi LHCII tramite protonazione di residui specifici (es. proteina PsbS).",
+                    s: "Attiva il meccanismo di fotoprotezione NPQ."
+                },
+                {
+                    d: "Qual è il ruolo dei plastoglobuli presenti nello stroma del cloroplasto?",
+                    r: "Gocciole lipidiche delimitate da monostrato associate ai tilacoidi che accumulano plastochinoni, tocoferoli e lipidi di riserva o di smantellamento.",
+                    s: "Agiscono come depositi metabolici dinamici durante la senescenza o lo stress."
+                },
+                {
+                    d: "Come si spiega l'eredità uniparentale (spesso materna) del DNA cloroplastico nella maggior parte delle angiosperme?",
+                    r: "Durante la fecondazione, i plastidi del polline vengono esclusi o degradati, cosicché solo quelli contenuti nella cellula uovo materna vengono trasmessi alla prole.",
+                    s: "Non segue le leggi mendeliane classiche."
+                },
+                {
+                    d: "Quale mutazione o alterazione causa l'anomalia biochimica della cloroplastica 'albino' nei mutanti di mais o orzo?",
+                    r: "L'interruzione nella via di sintesi dei carotenoidi protettivi, che porta alla foto-distruzione della clorofilla appena formata sotto la luce.",
+                    s: "Le foglie appaiono bianche e muoiono per mancanza di fotosintesi."
+                },
+                {
+                    d: "Qual è il meccanismo molecolare con cui il fotosistema I genera il potere riducente per la ferredossina?",
+                    r: "Tramite una serie di trasportatori interni (A0, A1, ferro-zolfo FeSx, FeSa, FeSb) che passano l'elettrone eccitato all'esterno dello stroma.",
+                    s: "Raggiunge un potenziale redox fortemente negativo."
+                },
+                {
+                    d: "Quale ruolo svolgono le ATPasi di tipo F (F-type ATPasi) rispetto alle V-ATPasi lisosomiali nei cloroplasti?",
+                    r: "Utilizzano il flusso protonico secondo gradiente per sintetizzare ATP (funzione di sintesi), a differenza delle V-ATPasi che consumano ATP per pompare protoni.",
+                    s: "Rappresentano la direzione energetica opposta."
+                },
+                {
+                    d: "Come si adatta l'apparato fotosintetico delle piante di ombra rispetto a quelle di pieno sole?",
+                    r: "Le piante d'ombra aumentano le dimensioni dei complessi antenna e riducono gli enzimi del Ciclo di Calvin per massimizzare la cattura di fotoni scarsi.",
+                    s: "Presentano differenze ultrastrutturali nei grani dei cloroplasti."
+                },
+                {
+                    d: "Qual è la funzione dell'enzima fosforilasi dell'amido nello stroma durante la notte?",
+                    r: "Demolire parzialmente l'amido accumulato di giorno per rifornire la cellula di zuccheri e mantenere il metabolismo notturno.",
+                    s: "Garantisce l'autosufficienza energetica anche al buio."
+                },
+                {
+                    d: "Quale ruolo rivestono i lipidi galattolipidi (MGDG e DGDG) nella struttura dei tilacoidi rispetto ai fosfolipidi classici?",
+                    r: "Sono i lipidi predominanti delle membrane tilacoidali (circa l'80%), caratterizzati da teste di galattosio non cariche che favoriscono la curvatura e l'impilamento dei tilacoidi.",
+                    s: "Garantiscono la fluidità unica delle membrane fotosintetiche."
+                },
+                {
+                    d: "Come agisce il meccanismo di transizione dello stato (state transitions) per bilanciare l'energia tra PSII e PSI?",
+                    r: "Se il PSII riceve troppa luce, le chinasi fosforilano i complessi LHCII, che si staccano dal PSII e migrano verso il PSI per riequilibrare l'eccitazione.",
+                    s: "Ottimizza la distribuzione dell'energia luminosa."
+                },
+                {
+                    d: "Qual è l'impatto di un'infezione virale sistemica sulla morfologia e funzione dei cloroplasti fogliari?",
+                    r: "Molti virus vegetali codificano proteine che inducono la frammentazione dei cloroplasti, inibiscono la fotosintesi e formano inclusioni virali nello stroma.",
+                    s: "Causa sintomi di mosaico e necrosi fogliare."
+                },
+                {
+                    d: "Quale reazione catalizza l'enzima fosfoenolpiruvato carbossilasi (PEP carbossilasi) nelle piante C4 prima dell'ingresso nel cloroplasto?",
+                    r: "Fissa la $\text{CO}_2$ (sotto forma di ione bicarbonato) sul PEP per formare ossalacetato nelle cellule del mesofillo.",
+                    s: "A differenza della RuBisCO, non ha alcuna affinità per l'ossigeno e non subisce fotorespirazione."
+                },
+                {
+                    d: "Qual è la funzione del sistema di riparo del Fotosistema II basato sul turnover della proteina D1?",
+                    r: "La proteina D1 del centro di reazione PSII viene danneggiata dai radicali liberi generati da forte luce; viene quindi selettivamente degradata e sostituita da una copia nuova.",
+                    s: "Protegge il fotosistema da danni irreversibili."
+                },
+                {
+                    d: "Come si articola il controllo redox della sintesi dell'amido nello stroma durante il ciclo giorno-notte?",
+                    r: "Gli enzimi chiave della sintesi dell'amido sono inattivati al buio per fosforilazione o ossidazione e attivati alla luce dalla via della ferredossina-tioredossina.",
+                    s: "Evita la sintesi e la degradazione simultanea dello stesso zucchero."
+                },
+                {
+                    d: "Quale specifica modificazione post-traduzionale subiscono le proteine translocate attraverso il complesso TIC/TOC?",
+                    r: "La rimozione della sequenza di transito N-terminale ad opera di una proteasi specifica localizzata nello stroma (stromal processing peptidase).",
+                    s: "Garantisce la maturazione e l'attivazione della proteina."
+                },
+                {
+                    d: "Qual è il ruolo dei trasportatori di ioni magnesio ed idrogeno nella regolazione del pH dello stroma durante l'attivazione della fotosintesi?",
+                    r: "Scambiano protoni pompati nel lume con ioni magnesio rilasciati nello stroma, stimolando gli enzimi stromali dipendenti da $\text{Mg}^{2+}$.",
+                    s: "Accoppia l'energia luminosa al controllo enzimatico."
+                },
+                {
+                    d: "In che modo l'accumulo eccessivo di specie reattive dell'ossigeno (ROS) nei cloroplasti viene neutralizzato dal ciclo degli ascorbato-glutatione?",
+                    r: "Tramite una cascata enzimatica che coinvolge ascorbato perossidasi, deidroascorbato reduttasi e glutatione reduttasi per convertire il perossido di idrogeno in acqua.",
+                    s: "Costituisce il principale sistema di detossificazione antiossidante del cloroplasto."
+                },
+                {
+                    d: "Quale anomalia metabolica si verifica nelle piante dette 'albine' o nei tessuti con mutazioni nei geni di sintesi della clorofilla?",
+                    r: "L'interruzione della via di biosintesi delle porfirine porta all'accumulo di intermedi tossici fotoattivi che generano radicali liberi letali per la cellula.",
+                    s: "Richiede un rigoroso controllo genetico della via biosintetica."
+                },
+                {
+                    d: "Qual è la rilevanza evolutiva della presenza di introni di gruppo II nei geni plastidiali delle piante superiori?",
+                    r: "Rappresentano i fossili molecolari dei trasposoni batterici ancestrali da cui derivano gli introni nucleari degli eucarioti.",
+                    s: "Dimostrano ulteriormente l'origine procariotica ed endosimbiontica del cloroplasto."
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                // Recupera l'esercizio corrispondente dall'array (sottraendo 1 per l'indice 0-based)
+                let item = databaseEsercizi[i - 1];
+                let diffClass, diffLabel;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">Esercizio ${i}: ${item.d}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato:</strong> ${item.r}
+                            </div>
+                            <p style="color: var(--colore-scuro); font-weight: bold; margin-bottom: 0.5rem;">Spiegazione dettagliata:</p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Forza KaTeX a renderizzare gli elementi dinamici inseriti via JavaScript
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ]
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

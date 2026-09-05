@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa ai Sistemi Fratti di 1° Grado: teoria approfondita, condizioni di esistenza (C.E.), eliminazione dei denominatori e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi Fratti di 1° Grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.8; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.8rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1.2rem; margin: 1.2rem 0; font-size: 1.05rem; overflow-x: auto; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="sistemi-fratti" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem;background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Sistemi Fratti di 1° Grado</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida teorica completa alla risoluzione dei sistemi con incognite al denominatore, studio delle Condizioni di Esistenza (C.E.) e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è un Sistema Fratto?</h2>
+            <p>Un sistema lineare fratto (o sistema con incognite al denominatore) è un insieme di equazioni in cui almeno un'incognita (\(x\) o \(y\)) compare all'interno di uno o più denominatori. Una forma tipica si presenta così:</p>
+            
+            <div class="formula-box">
+                $$\begin{cases} \frac{1}{x} + \frac{2}{y} = 3 \\ \frac{3}{x} - \frac{1}{y} = 1 \end{cases}$$
+            </div>
+
+            <p>Sebbene a un primo impatto visivo le equazioni non sembrino di primo grado (poiché l'incognita è a denominatore), queste strutture sono riconducibili a sistemi lineari algebrici standard mediante un'opportuna trasformazione o attraverso il calcolo del m.c.m., purché si ponga la massima attenzione alle restrizioni sul dominio.</p>
+
+            <h2>2. La Regola d'Oro: Le Condizioni di Esistenza (C.E.)</h2>
+            <p>Poiché la divisione per zero è un'operazione priva di significato matematico, la prima fondamentale operazione da compiere prima di qualsiasi calcolo algebrico è la determinazione delle <strong>Condizioni di Esistenza (C.E.)</strong> o campo di esistenza del sistema.</p>
+            <ol>
+                <li>Si individuano tutti i binomi o singoli termini letterali presenti nei denominatori di tutte le equazioni del sistema.</li>
+                <li>Si pongono tali espressioni <strong>strettamente diverse da zero (\(\neq 0\))</strong>.</li>
+                <li>L'insieme di queste disuguaglianze costituisce un sistema ausiliario di restrizioni che la soluzione finale dovrà tassativamente rispettare. Se un valore trovato in seguito viola le C.E., esso deve essere scartato in quanto non accettabile.</li>
+            </ol>
+
+            <h2>3. Metodi di Risoluzione Passo dopo Passo</h2>
+            <p>Per risolvere un sistema fratto di 1° grado si seguono solitamente due strade alternative, a seconda della complessità:</p>
+            
+            <h3>Metodo A: Riduzione a Sistema Intero mediante il m.c.m.</h3>
+            <ol>
+                <li>Si determinano le Condizioni di Esistenza (C.E.).</li>
+                <li>Si calcola il minimo comune multiplo (m.c.m.) dei denominatori all'interno di ciascuna equazione separatamente.</li>
+                <li>Si riducono entrambe le equazioni allo stesso denominatore e si applica il principio d'equivalenza eliminando i denominatori comuni.</li>
+                <li>Si risolve il sistema lineare intero così ottenuto (utilizzando il metodo di sostituzione, riduzione o Cramer).</li>
+                <li>Si confrontano le soluzioni ottenute con le C.E. iniziali per decretarne l'accettabilità.</li>
+            </ol>
+
+            <h3>Metodo B: Sostituzione di Variabile ( Cambio di Variabile o "Posizione" )</h3>
+            <p>Questo metodo risulta estremamente potente quando le incognite compaiono unicamente al denominatore (es. frazioni del tipo \(\frac{1}{x}\) e \(\frac{1}{y}\)).</p>
+            <ol>
+                <li>Si pongono C.E. per \(x\) e \(y\).</li>
+                <li>Si introducono due nuove variabili ausiliarie (ad esempio ponendo \(u = \frac{1}{x}\) e \(v = \frac{1}{y}\)).</li>
+                <li>Si riscrive il sistema sostituendo \(u\) e \(v\), ottenendo un sistema lineare intero nelle nuove variabili.</li>
+                <li>Si risolve il sistema lineare per trovare \(u\) e \(v\).</li>
+                <li>Si risale alle incognite originarie invertendo la posizione: \(x = \frac{1}{u}\) e \(y = \frac{1}{v}\).</li>
+            </ol>
+
+            <div class="formula-box">
+                <strong>Esempio Svolto (con Cambio di Variabile):</strong><br>
+                Risolviamo il sistema:
+                $$\begin{cases} \frac{1}{x} + \frac{2}{y} = 5 \\ \frac{3}{x} - \frac{1}{y} = 1 \end{cases}$$
+                <p><em>1. Condizioni di Esistenza:</em> \(x \neq 0\) e \(y \neq 0\).</p>
+                <p><em>2. Posizione:</em> Poniamo \(u = \frac{1}{x}\) e \(v = \frac{1}{y}\). Il sistema diventa:</p>
+                \(\begin{cases} u + 2v = 5 \\ 3u - v = 1 \end{cases}\)
+                <p><em>3. Risoluzione del sistema ausiliario:</em> Dalla seconda ricaviamo \(v = 3u - 1\). Sostituendo nella prima: \(u + 2(3u - 1) = 5 \implies u + 6u - 2 = 5 \implies 7u = 7 \implies u = 1\).</p>
+                <p>Se \(u = 1\), allora \(v = 3(1) - 1 = 2\).</p>
+                <p><em>4. Ritorno alle variabili originali:</em></p>
+                \(x = \frac{1}{u} = \frac{1}{1} = 1\) (accettabile perché \(1 \neq 0\)).<br>
+                \(y = \frac{1}{v} = \frac{1}{2}\) (accettabile perché \(\frac{1}{2} \neq 0\)).
+                <p><strong>Soluzione finale:</strong> \(\left(x = 1, \, y = \frac{1}{2}\right)\).</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Sistemi Fratti di 1° Grado)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let solX = (i % 3) + 1;
+                let solY = (i % 4) + 1;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE';
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (Con Binomi al Denominatore)';
+                }
+
+                let num1 = 1;
+                let num2 = 2;
+                let domanda = "Risolvi il sistema fratto:<br>\\(\\begin{cases} \\frac{1}{x} + \\frac{1}{y} = \\frac{" + (solX + solY) + "}{" + (solX * solY) + "} \\\\ \\frac{" + solY + "}{x} - \\frac{" + solX + "}{y} = 0 \\end{cases}\\)";
+                let risposta = "x = " + solX + ", \\, y = " + solY;
+                let spiegazione = "1) <strong>C.E.:</strong> \\(x \\neq 0, \\, y \\neq 0\\).<br>2) <strong>Sostituzione:</strong> Poni \\(u = 1/x\\) e \\(v = 1/y\\).<br>3) <strong>Soluzione accettabile:</strong> \\(" + risposta + "\\).";
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzione:</strong> \\(${risposta}\\)</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

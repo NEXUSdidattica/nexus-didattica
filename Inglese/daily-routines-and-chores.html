@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Daily Routines and Chores in inglese: verbi di routine quotidiana, espressioni di tempo e faccende domestiche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Daily Routines and Chores - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="daily-routines-and-chores" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Verbs</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Daily Routines and Chores</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario e verbi essenziali per descrivere la routine giornaliera, le azioni abituali e le faccende domestiche in lingua inglese.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Morning Routine (La Routine del Mattino)</h2>
+            <p>Le azioni tipiche compiute dal momento del risveglio fino all'inizio della giornata lavorativa o scolastica.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To wake up</td><td>Svegliarsi</td></tr>
+                    <tr><td>To get up</td><td>Alzarsi (dal letto)</td></tr>
+                    <tr><td>To stretch</td><td>Fare stretching / Stiracchiarsi</td></tr>
+                    <tr><td>To make the bed</td><td>Rifare il letto</td></tr>
+                    <tr><td>To take a shower / To have a shower</td><td>Fare la doccia</td></tr>
+                    <tr><td>To take a bath</td><td>Fare il bagno</td></tr>
+                    <tr><td>To wash one's face</td><td>Lavarsi la faccia</td></tr>
+                    <tr><td>To brush one's teeth</td><td>Lavarsi i denti</td></tr>
+                    <tr><td>To brush / to comb one's hair</td><td>Spazzolarsi / pettinarsi i capelli</td></tr>
+                    <tr><td>To get dressed</td><td>Vestirsi</td></tr>
+                    <tr><td>To put on makeup</td><td>Truccarsi</td></tr>
+                    <tr><td>To shave</td><td>Farsi la barba / Rasarsi</td></tr>
+                    <tr><td>To have breakfast</td><td>Fare colazione</td></tr>
+                    <tr><td>To leave the house</td><td>Uscire di casa</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Daytime and Afternoon Routine (Routine del Giorno e del Pomeriggio)</h2>
+            <p>Attività legate allo studio, al lavoro, agli spostamenti e ai pasti principali.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To go to school / To go to work</td><td>Andare a scuola / Andare al lavoro</td></tr>
+                    <tr><td>To catch the bus / the train</td><td>Prendere l'autobus / il treno</td></tr>
+                    <tr><td>To drive to work</td><td>Guidare per andare al lavoro</td></tr>
+                    <tr><td>To arrive at school / at work</td><td>Arrivare a scuola / al lavoro</td></tr>
+                    <tr><td>To start lessons / To start work</td><td>Iniziare le lezioni / Iniziare a lavorare</td></tr>
+                    <tr><td>To have lunch</td><td>Pranzare</td></tr>
+                    <tr><td>To finish school / To finish work</td><td>Finire la scuola / Finire di lavorare</td></tr>
+                    <tr><td>To come back home / To get home</td><td>Tornare a casa / Arrivare a casa</td></tr>
+                    <tr><td>To do homework</td><td>Fare i compiti</td></tr>
+                    <tr><td>To study</td><td>Studiare</td></tr>
+                    <tr><td>To have a snack</td><td>Fare merenda</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Evening and Night Routine (Routine della Sera e della Notte)</h2>
+            <p>Attività di relax pomeridiane/serali e preparazione per il riposo notturno.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To relax</td><td>Rilassarsi</td></tr>
+                    <tr><td>To watch TV / to watch a film</td><td>Guardare la televisione / guardare un film</td></tr>
+                    <tr><td>To surf the internet / to check social media</td><td>Navigare in internet / controllare i social media</td></tr>
+                    <tr><td>To listen to music</td><td>Ascoltare la musica</td></tr>
+                    <tr><td>To read a book</td><td>Leggere un libro</td></tr>
+                    <tr><td>To hang out with friends</td><td>Uscire con gli amici</td></tr>
+                    <tr><td>To exercise / to go to the gym</td><td>Fare esercizio fisico / andare in palestra</td></tr>
+                    <tr><td>To cook dinner / To prepare dinner</td><td>Cucinare la cena / Preparare la cena</td></tr>
+                    <tr><td>To have dinner</td><td>Cenar</td></tr>
+                    <tr><td>To wash the dishes / to do the washing up</td><td>Lavare i piatti</td></tr>
+                    <tr><td>To get ready for bed</td><td>Prepararsi per andare a letto</td></tr>
+                    <tr><td>To go to sleep / To go to bed</td><td>Andare a dormire / A letto</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Household Chores (Faccende Domestiche)</h2>
+            <p>I compiti e le faccende di pulizia e manutenzione svolte regolarmente in casa.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Household chores / Chores</td><td>Faccende domestiche</td></tr>
+                    <tr><td>To clean the house</td><td>Pulire la casa</td></tr>
+                    <tr><td>To tidy up / to clean up</td><td>Mettere in ordine / riordinare</td></tr>
+                    <tr><td>To vacuum the floor / to vacuuming</td><td>Passare l'aspirapolvere</td></tr>
+                    <tr><td>To sweep the floor</td><td>Spazzare il pavimento (con la scopa)</td></tr>
+                    <tr><td>To mop the floor</td><td>Lavare il pavimento (con il mocio)</td></tr>
+                    <tr><td>To dust the furniture</td><td>Spolverare i mobili</td></tr>
+                    <tr><td>To take out the trash / the rubbish</td><td>Portare fuori la spazzatura</td></tr>
+                    <tr><td>To do the laundry</td><td>Fare il bucato</td></tr>
+                    <tr><td>To iron the clothes</td><td>Stirare i vestiti</td></tr>
+                    <tr><td>To hang out the clothes</td><td>Stendere il bucato</td></tr>
+                    <tr><td>To load / unload the dishwasher</td><td>Caricare / scaricare la lavastoviglie</td></tr>
+                    <tr><td>To set the table</td><td>Cappare / apparecchiare la tavola</td></tr>
+                    <tr><td>To clear the table</td><td>Sparecchiare la tavola</td></tr>
+                    <tr><td>To water the plants</td><td>Innaffiare le piante</td></tr>
+                    <tr><td>To feed the pet</td><td>Dare da mangiare all'animale domestico</td></tr>
+                </tbody>
+            </table>
+
+            <h2>5. Adverbs of Frequency (Avverbi di Frequenza)</h2>
+            <p>Termini fondamentali utilizzati con il <em>Present Simple</em> per indicare quanto spesso si compiono queste azioni.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano (Percentuale approssimativa)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Always</td><td>Sempre (100%)</td></tr>
+                    <tr><td>Usually / Normally</td><td>Di solito / Normalmente (80-90%)</td></tr>
+                    <tr><td>Often</td><td>Spesso (70%)</td></tr>
+                    <tr><td>Sometimes</td><td>A volte / Qualche volta (50%)</td></tr>
+                    <tr><td>Occasionally</td><td>Occasionalmente (30%)</td></tr>
+                    <tr><td>Rarely / Seldom</td><td>Raramente (10-15%)</td></tr>
+                    <tr><td>Hardly ever</td><td>Quasi mai (5%)</td></tr>
+                    <tr><td>Never</td><td>Mai (0%)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Regola Grammaticale Importante</h3>
+                <p style="margin-bottom: 0;">
+                    Quando parli della tua routine usando gli avverbi di frequenza con il <b>Present Simple</b>, ricorda che l'avverbio si posiziona <i>prima</i> del verbo principale (es. <i>"I <b>usually</b> wake up at 7 AM"</i>), ma <i>dopo</i> il verbo essere "to be" (es. <i>"I am <b>always</b> busy"</i>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

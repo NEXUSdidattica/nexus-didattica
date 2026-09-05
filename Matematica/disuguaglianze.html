@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disuguaglianze numeriche: concetti base, proprietà d'ordine e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disuguaglianze - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-1-grado-disuguaglianze" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Disuguaglianze</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetti fondamentali sulle disuguaglianze numeriche, simboli di ordinamento e proprietà con 100 esercizi pratici svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Cos'è una Disuguaglianza Numerica?</h2>
+            <p>
+                Una <strong>disuguaglianza numerica</strong> è una relazione di confronto tra due espressioni numeriche che indica quale delle due sia maggiore, minore o se siano eventualmente uguali.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Simboli di Disuguaglianza:</strong><br>
+                • <code>&gt;</code> Maggiore stretto (es. $5 > 3$)<br>
+                • <code>&lt;</code> Minore stretto (es. $-2 < 4$)<br>
+                • <code>&ge;</code> Maggiore o uguale (es. $x \ge 0$)<br>
+                • <code>&le;</code> Minore o uguale (es. $y \le 10$)
+            </div>
+
+            <h2>Proprietà Fondamentali delle Disuguaglianze</h2>
+            <p>
+                Operare su una disuguaglianza richiede attenzione, specialmente quando si moltiplica o divide per un numero negativo:
+            </p>
+
+            <ol>
+                <li>
+                    <strong>Proprietà additiva:</strong> Sommandosi o sottraendo uno stesso numero a entrambi i membri di una disuguaglianza, il verso della disuguaglianza <strong>non cambia</strong>.
+                    <br><em>Esempio:</em> Se $a > b$, allora $a + c > b + c$.
+                </li>
+                <li>
+                    <strong>Proprietà moltiplicativa (numero positivo):</strong> Moltiplicando o dividendo entrambi i membri per uno stesso numero <strong>positivo</strong> ($c > 0$), il verso <strong>non cambia</strong>.
+                    <br><em>Esempio:</em> Se $4 < 8$, allora $4 \cdot 2 < 8 \cdot 2 \implies 8 < 16$.
+                </li>
+                <li>
+                    <strong>Proprietà moltiplicativa (numero negativo):</strong> Moltiplicando o dividendo entrambi i membri per uno stesso numero <strong>negativo</strong> ($c < 0$), il verso della disuguaglianza si <strong>inverte</strong>.
+                    <br><em>Esempio:</em> Se $3 < 7$, moltiplicando per $-2$ si ottiene $-6 > -14$.
+                </li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Verifica se la seguente disuguaglianza è VERA o FALSA: <code>-3 · (2 - 5) > 5 - 2²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Calcoliamo il 1° membro:</strong> <code>-3 · (-3) = +9</code>.</li>
+                    <li><strong>Calcoliamo il 2° membro:</strong> <code>5 - 4 = 1</code>.</li>
+                    <li><strong>Confrontiamo i risultati:</strong> <code>9 > 1</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> La disuguaglianza è <strong>VERA</strong>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disuguaglianze</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua comprensione verificando la veridicità delle disuguaglianze e applicando le proprietà dell'ordinamento reale.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    let a = i * 2 - 5;
+                    let b = i + 3;
+                    let esito = a > b;
+
+                    domanda = `Stabilisci se la seguente disuguaglianza è VERA o FALSA: <strong>${a} &gt; ${b}</strong>.`;
+                    risposta = esito ? 'VERA' : 'FALSA';
+                    spiegazione = `
+                    1) Confrontiamo i numeri: il primo membro vale <code>${a}</code>, il secondo vale <code>${b}</code>.<br>
+                    2) Poiché <code>${a}</code> ${esito ? 'è maggiore di' : 'NON è maggiore di'} <code>${b}</code>, la disuguaglianza è <strong>${risposta}</strong>.`;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    let val1 = (i % 5) + 2;
+                    let val2 = (i % 3) + 1;
+                    let m1 = val1 * 3 - 4;
+                    let m2 = val2 * 2 + 1;
+                    let esito = m1 <= m2;
+
+                    domanda = `Verifica la veridicità di: <strong>${val1} · 3 - 4 &le; ${val2} · 2 + 1</strong>.`;
+                    risposta = esito ? 'VERA' : 'FALSA';
+                    spiegazione = `
+                    1) Calcoliamo il 1° membro: <code>${val1} · 3 - 4 = ${m1}</code>.<br>
+                    2) Calcoliamo il 2° membro: <code>${val2} · 2 + 1 = ${m2}</code>.<br>
+                    3) Il confronto <code>${m1} &le; ${m2}</code> risulta <strong>${risposta}</strong>.`;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    let k = (i % 4) + 2;
+                    let m1 = -k * 3;
+                    let m2 = -k * 2 + 1;
+                    let esito = m1 < m2;
+
+                    domanda = `Moltiplicando ${3} > ${2 - 1/k} per -${k}, la disuguaglianza <strong>${m1} &lt; ${m2}</strong> è corretta?`;
+                    risposta = esito ? 'VERA' : 'FALSA';
+                    spiegazione = `
+                    1) Quando si moltiplicano entrambi i membri per un numero negativo (<code>-${k}</code>), il verso della disuguaglianza <strong>si inverte</strong>.<br>
+                    2) 1° membro: <code>-${k} · 3 = ${m1}</code>.<br>
+                    3) 2° membro: <code>-${k} · (2 - 1/${k}) = ${m2}</code>.<br>
+                    4) La disuguaglianza finale <code>${m1} &lt; ${m2}</code> è <strong>${risposta}</strong>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

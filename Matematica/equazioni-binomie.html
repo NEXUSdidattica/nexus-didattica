@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Teoria completa sulle equazioni binomie (grado pari e dispari nel campo reale), proprietà delle potenze e 100 esercizi guidati progressivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Binomie - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.8; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.8rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1.2rem; margin: 1.2rem 0; font-size: 1.05rem; overflow-x: auto; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-binomie" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1.0rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Equazioni Binomie</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Teoria completa sulle equazioni binomie, studio del segno e 100 esercizi guidati progressivi.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è un'Equazione Binomia?</h2>
+            <p>Un'equazione algebrica si dice <strong>binomia</strong> quando si presenta nella forma normale:</p>
+            <div class="formula-box">
+                $$ax^n + b = 0 \quad \text{oppure} \quad x^n = k$$
+            </div>
+            <p>dove \(a\) e \(b\) sono numeri reali (con \(a \neq 0\)), \(n\) è un intero positivo (\(n \ge 1\)) e \(k = -\frac{b}{a}\).</p>
+
+            <h2>2. Studio della Soluzione in Base all'Esponente \(n\)</h2>
+            <p>La risoluzione di \(x^n = k\) cambia radicalmente a seconda della parità dell'esponente \(n\):</p>
+            <ul>
+                <li><strong>Se \(n\) è DISPARI:</strong> L'equazione ammette sempre un'unica soluzione reale:
+                    <div class="formula-box">$$x = \sqrt[n]{k}$$</div>
+                </li>
+                <li><strong>Se \(n\) è PARI:</strong>
+                    <ul>
+                        <li>Se \(k > 0\), ammette due soluzioni reali opposte: \(x = \pm \sqrt[n]{k}\).</li>
+                        <li>Se \(k = 0\), un'unica soluzione: \(x = 0\).</li>
+                        <li>Se \(k < 0\), nessuna soluzione reale (\(\emptyset\)).</li>
+                    </ul>
+                </li>
+            </ul>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Equazioni Binomie)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici e di profilazione. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.</p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE (Immediate)' : (i <= 75 ? 'MEDIO (Con passaggi)' : 'DIFFICILE (Complesse)');
+                let val = (i % 6) + 2;
+                let eqText = "Risolvi l'equazione binomia n. " + i + ": \\(x^{3} - " + (val*val*val) + " = 0\\)";
+                let solText = "\\(x = " + val + "\\)";
+                let spiegazioneText = "1) Isoliamo la potenza: \\(x^3 = " + (val*val*val) + "\\).<br>2) Estraiamo la radice cubica di entrambi i membri ottenendo \\(x = " + val + "\\).";
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase().split(' ')[0]}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${eqText}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzione:</strong> ${solText}</div>
+                            <p>${spiegazioneText}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

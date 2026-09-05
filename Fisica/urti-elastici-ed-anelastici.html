@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sugli Urti Elastici e Anelastici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Gli Urti Elastici e Anelastici - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="urti-elastici-ed-anelastici" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica e Quantità di Moto</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Gli Urti Elastici e Anelastici</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio approfondito delle collisioni tra corpi, classificazione degli urti in base alla conservazione dell'energia cinetica e applicazioni pratiche.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Classificazione degli Urti</h2>
+            <p>
+                Un <strong>urto</strong> è una forte interazione tra due o più corpi che avviene in un intervallo di tempo molto breve. In tutti i tipi di urto (in un sistema isolato), la <strong>quantità di moto totale si conserva sempre</strong>. Tuttavia, gli urti si distinguono in base a cosa accade all'energia cinetica totale del sistema:
+            </p>
+            <ul>
+                <li><strong>Urto elastico:</strong> Si conservano <em>sia</em> la quantità di moto totale <em>sia</em> l'energia cinetica totale del sistema. Non vi è dispersione di energia in calore o deformazioni permanenti.</li>
+                <li><strong>Urto anelastico:</strong> Si conserva la quantità di moto totale, ma l'energia cinetica totale <em>non</em> si conserva (una parte viene convertita in calore, suono o deformazione).</li>
+                <li><strong>Urto perfettamente anelastico:</strong> È un caso particolare di urto anelastico in cui i corpi, dopo l'impatto, restano uniti e si muovono con la stessa velocità finale, subendo la massima perdita possibile di energia cinetica compatibile con la conservazione della quantità di moto.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Equazioni chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • <em>Quantità di moto (sempre valida):</em> $\vec{p}_i = \vec{p}_f$<br>
+                    • <em>Energia cinetica (solo urto elastico):</em> $K_{1i} + K_{2i} = K_{1f} + K_{2f}$
+                </p>
+            </div>
+
+            <h2>2. Formule per l'Urto Elastico Frontale in 1D</h2>
+            <p>
+                Nel caso di un urto elastico frontale tra due corpi di masse $m_1$ e $m_2$ che si muovono lungo la stessa retta con velocità iniziali $v_{1i}$ e $v_{2i}$, le velocità finali possono essere calcolate direttamente con le relazioni:
+            </p>
+            <div class="formula-box">
+                $$v_{1f} = \frac{m_1 - m_2}{m_1 + m_2} v_{1i} + \frac{2m_2}{m_1 + m_2} v_{2i}$$
+                $$v_{2f} = \frac{2m_1}{m_1 + m_2} v_{1i} + \frac{m_2 - m_1}{m_1 + m_2} v_{2i}$$
+            </div>
+
+            <h2>3. Esercizi Guidati</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esercizi = [
+                {
+                    d: "facile",
+                    q: "Qual è la principale differenza fisica tra un urto elastico e un urto anelastico?",
+                    r: "Nell'urto elastico si conserva anche l'energia cinetica totale, mentre in quello anelastico l'energia cinetica non si conserva.",
+                    s: "La quantità di moto si conserva in entrambi i tipi di urto (se il sistema è isolato), ma solo nell'urto elastico non vi è dissipazione di energia meccanica in calore o deformazioni."
+                },
+                {
+                    d: "facile",
+                    q: "Un carrello di massa $3\text{ kg}$ che viaggia a $4\text{ m/s}$ urta frontalmente un secondo carrello fermo di massa $1\text{ kg}$ e i due si agganciano (urto perfettamente anelastico). Qual è la velocità finale comune?",
+                    r: "$3\text{ m/s}$.",
+                    s: "Per la conservazione della quantità di moto: $m_1 v_1 + m_2 v_2 = (m_1 + m_2) v_f \implies 3 \cdot 4 + 1 \cdot 0 = (3 + 1) v_f \implies 12 = 4 v_f \implies v_f = \frac{12}{4} = 3\text{ m/s}$."
+                },
+                {
+                    d: "medio",
+                    q: "Un corpo di massa $2\text{ kg}$ si muove a $5\text{ m/s}$ e urta elasticamente e frontalmente un secondo corpo fermo avente la stessa identica massa ($2\text{ kg}$). Quali sono le velocità finali dei due corpi?",
+                    r: "Il primo corpo si ferma ($v_{1f} = 0\text{ m/s}$) e il secondo si muove con la velocità del primo ($v_{2f} = 5\text{ m/s}$).",
+                    s: "In un urto elastico tra corpi di massa identica, si verifica un totale scambio di velocità: $v_{1f} = v_{2i} = 0$ e $v_{2f} = v_{1i} = 5\text{ m/s}$."
+                },
+                {
+                    d: "medio",
+                    q: "Un blocco di massa $2\text{ kg}$ che si muove a $6\text{ m/s}$ urta un blocco fermo di eguale massa ($2\text{ kg}$ e si agganciano permanentemente. Quanta energia cinetica è stata dissipata durante l'urto?",
+                    r: "$18\text{ J}$.",
+                    s: "• Energia cinetica iniziale: $E_{ki} = \frac{1}{2} m_1 v_1^2 = \frac{1}{2} \cdot 2 \cdot 6^2 = 36\text{ J}$.<br>• Velocità finale comune: $v_f = \frac{2 \cdot 6}{2 + 2} = 3\text{ m/s}$.<br>• Energia cinetica finale: $E_{kf} = \frac{1}{2} (m_1 + m_2) v_f^2 = \frac{1}{2} \cdot 4 \cdot 3^2 = 18\text{ J}$.<br>• Energia dissipata: $\Delta E_k = 36 - 18 = 18\text{ J}$."
+                },
+                {
+                    d: "difficile",
+                    q: "Un corpo di massa $m_1 = 1\text{ kg}$ che viaggia a $4\text{ m/s}$ urta frontalmente ed elasticamente un secondo corpo di massa $m_2 = 3\text{ kg}$ inizialmente fermo. Calcola le velocità finali $v_{1f}$ e $v_{2f}$.",
+                    r: "$v_{1f} = -2\text{ m/s}$ e $v_{2f} = 2\text{ m/s}$.",
+                    s: "Applicando le formule dell'urto elastico in 1D:<br>• $v_{1f} = \frac{m_1 - m_2}{m_1 + m_2} v_{1i} = \frac{1 - 3}{1 + 3} \cdot 4 = \frac{-2}{4} \cdot 4 = -2\text{ m/s}$ (rimbalza indietro).<br>• $v_{2f} = \frac{2 m_1}{m_1 + m_2} v_{1i} = \frac{2 \cdot 1}{1 + 3} \cdot 4 = \frac{2}{4} \cdot 4 = 2\text{ m/s}$ (avanti)."
+                }
+            ];
+
+            esercizi.forEach((item, index) => {
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${item.d}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${index + 1}</h3>
+                        <span class="badge-difficolta ${item.d}">${item.d}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Guidato:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            });
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

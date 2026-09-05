@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa ed esercizi pratici sulle Potenze e le loro proprietà">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <title>Le Potenze: Teoria Completa e 100 Esercizi - NEXUS didattica</title>
+</head>
+
+<body data-lesson-id="aritmetica-potenze" data-materia="Matematica">
+
+    <!-- Header di navigazione -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- Pulsante Torna Indietro -->
+        <div style="margin-bottom: 1rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- Hero lezione -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1>Le Potenze: Teoria Completa e Proprietà</h1>
+                <p class="lead-text">
+                    Dalla definizione base agli esponenti negativi, regole dei segni con basi negative, potenze di 10 e le 5 proprietà fondamentali con 100 esercizi pratici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- Contenuto Teorico -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è la Potenza e Casi Particolari</h2>
+            <p>
+                L'<strong>elevamento a potenza</strong> è una moltiplicazione ripetuta: in <code>a<sup>n</sup></code> la <strong>base</strong> <code>a</code> viene moltiplicata per se stessa tante volte quante indicate dall'<strong>esponente</strong> <code>n</code>.
+            </p>
+
+            <div class="box-evidenza">
+                💡 <strong>Regole e Casi Particolari:</strong><br>
+                • <code>a<sup>1</sup> = a</code> (Ogni numero elevato a 1 rimane se stesso).<br>
+                • <code>a<sup>0</sup> = 1</code> (Ogni numero diverso da zero elevato a 0 vale 1).<br>
+                • <code>0<sup>n</sup> = 0</code> (Zero elevato a qualsiasi esponente positivo dà 0).<br>
+                • <code>0<sup>0</sup></code> <strong>NON ha significato</strong> (operazione indeterminata).<br>
+                • <code>1<sup>n</sup> = 1</code> (Uno elevato a qualsiasi esponente vale sempre 1).
+            </div>
+
+            <h2>2. Regola dei Segni (Basi Negative)</h2>
+            <p>Quando la base è un numero negativo, il segno del risultato dipende dall'esponente:</p>
+            <ul>
+                <li><strong>Esponente PARI:</strong> Il risultato è sempre <strong>POSITIVO</strong>. Es: <code>(-3)<sup>2</sup> = +9</code></li>
+                <li><strong>Esponente DISPARI:</strong> Il risultato mantiene il segno <strong>NEGATIVO</strong>. Es: <code>(-3)<sup>3</sup> = -27</code></li>
+                <li>⚠️ <strong>Attenzione alle parentesi:</strong> <code>(-2)<sup>4</sup> = +16</code> (l'esponente agisce anche sul segno -), mentre <code>-2<sup>4</sup> = -16</code> (l'esponente agisce solo sul numero 2).</li>
+            </ul>
+
+            <h2>3. Esponenti Negativi</h2>
+            <p>Una potenza con <strong>esponente negativo</strong> è uguale al reciproco della base con l'esponente positivo:</p>
+            <ul>
+                <li>Numero intero: <code>a<sup>-n</sup> = 1 / a<sup>n</sup></code> (Es: <code>2<sup>-3</sup> = 1 / 2<sup>3</sup> = 1/8</code>).</li>
+                <li>Frazione: <code>(a/b)<sup>-n</sup> = (b/a)<sup>n</sup></code> (Es: <code>(2/3)<sup>-2</sup> = (3/2)<sup>2</sup> = 9/4</code>).</li>
+            </ul>
+
+            <h2>4. Le 5 Proprietà Fondamentali delle Potenze</h2>
+            <ul>
+                <li><strong>1. Prodotto con la STESSA BASE:</strong> Si sommano gli esponenti &rarr; <code>a<sup>m</sup> × a<sup>n</sup> = a<sup>(m+n)</sup></code></li>
+                <li><strong>2. Quoziente con la STESSA BASE:</strong> Si sottraggono gli esponenti &rarr; <code>a<sup>m</sup> : a<sup>n</sup> = a<sup>(m-n)</sup></code></li>
+                <li><strong>3. Potenza di Potenza:</strong> Si moltiplicano gli esponenti &rarr; <code>(a<sup>m</sup>)<sup>n</sup> = a<sup>(m×n)</sup></code></li>
+                <li><strong>4. Prodotto con LO STESSO ESPONENTE:</strong> Si moltiplicano le basi &rarr; <code>a<sup>n</sup> × b<sup>n</sup> = (a × b)<sup>n</sup></code></li>
+                <li><strong>5. Quoziente con LO STESSO ESPONENTE:</strong> Si dividono le basi &rarr; <code>a<sup>n</sup> : b<sup>n</sup> = (a : b)<sup>n</sup></code></li>
+            </ul>
+
+            <h2>5. Le Potenze di 10 e Notazione Scientifica</h2>
+            <p>Le potenze di 10 con esponente positivo indicano 1 seguito da tanti zeri quanti è l'esponente (<code>10<sup>4</sup> = 10.000</code>). Con esponente negativo indicano cifre decimali (<code>10<sup>-3</sup> = 0,001</code>).</p>
+        </article>
+
+        <!-- Sezione Esercizi Pratici (100 Esercizi Generati) -->
+        <section class="sezione-esercizi">
+            <h2>✏️ 100 Esercizi Pratici per Allenarsi</h2>
+            <p>Di seguito trovi 100 esercizi sulle potenze che coprono base, esponenti negativi, regole dei segni, potenze di 10 e tutte le 5 proprietà. Clicca su "Mostra Soluzione" per verificare.</p>
+
+            <div id="lista-esercizi">
+                <!-- Verranno inseriti automaticamente i 100 esercizi via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+    </footer>
+
+    <!-- Script Generatore dei 100 Esercizi sulle Potenze -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 35 FACILI (Verde): Basi positive, esponente 0, 1, potenze di 10 e basi negative semplici
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 5 === 0) {
+                        let base = Math.floor(Math.random() * 80) + 2;
+                        domanda = `Quanto vale <strong>${base}<sup>0</sup></strong>?`;
+                        risposta = `1`;
+                        spiegazione = `Qualsiasi numero diverso da zero elevato a 0 è sempre uguale a <strong>1</strong>.`;
+                    } else if (i % 4 === 0) {
+                        let base = Math.floor(Math.random() * 5) + 2;
+                        let esp = 2;
+                        domanda = `Calcola il valore di <strong>(-${base})<sup>${esp}</sup></strong>`;
+                        risposta = `+${base * base}`;
+                        spiegazione = `La base è negativa ma l'esponente è PARI, quindi il risultato è POSITIVO: (-${base}) × (-${base}) = +${base * base}.`;
+                    } else {
+                        let base = Math.floor(Math.random() * 7) + 2;
+                        let esp = Math.floor(Math.random() * 3) + 2;
+                        domanda = `Calcola il valore di <strong>${base}<sup>${esp}</sup></strong>`;
+                        risposta = Math.pow(base, esp);
+                        spiegazione = `Moltiplica la base ${base} per se stessa ${esp} volte: ${Array(esp).fill(base).join(' × ')} = ${risposta}.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 35 MEDI (Giallo): 5 Proprietà e Basi negative con esponente dispari
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let tipo = i % 4;
+
+                    if (tipo === 0) {
+                        let base = Math.floor(Math.random() * 6) + 2;
+                        let e1 = Math.floor(Math.random() * 4) + 2;
+                        let e2 = Math.floor(Math.random() * 4) + 2;
+                        domanda = `Applica le proprietà: <strong>${base}<sup>${e1}</sup> × ${base}<sup>${e2}</sup></strong>`;
+                        risposta = `${base}<sup>${e1 + e2}</sup>`;
+                        spiegazione = `Stessa base: si sommano gli esponenti (${e1} + ${e2} = ${e1 + e2}). Risultato: <code>${base}<sup>${e1 + e2}</sup></code>.`;
+
+                    } else if (tipo === 1) {
+                        let base = Math.floor(Math.random() * 6) + 2;
+                        let e2 = Math.floor(Math.random() * 3) + 2;
+                        let e1 = e2 + Math.floor(Math.random() * 3) + 1;
+                        domanda = `Applica le proprietà: <strong>${base}<sup>${e1}</sup> : ${base}<sup>${e2}</sup></strong>`;
+                        risposta = `${base}<sup>${e1 - e2}</sup>`;
+                        spiegazione = `Stessa base: si sottraggono gli esponenti (${e1} - ${e2} = ${e1 - e2}). Risultato: <code>${base}<sup>${e1 - e2}</sup></code>.`;
+
+                    } else if (tipo === 2) {
+                        let b1 = Math.floor(Math.random() * 4) + 2;
+                        let b2 = Math.floor(Math.random() * 4) + 2;
+                        let esp = Math.floor(Math.random() * 3) + 2;
+                        domanda = `Applica le proprietà: <strong>${b1}<sup>${esp}</sup> × ${b2}<sup>${esp}</sup></strong>`;
+                        risposta = `${b1 * b2}<sup>${esp}</sup>`;
+                        spiegazione = `Stesso esponente: si moltiplicano le basi (${b1} × ${b2} = ${b1 * b2}) e si mantiene l'esponente (${esp}). Risultato: <code>${b1 * b2}<sup>${esp}</sup></code>.`;
+
+                    } else {
+                        let base = Math.floor(Math.random() * 4) + 2;
+                        let esp = 3;
+                        domanda = `Calcola la potenza con base negativa: <strong>(-${base})<sup>${esp}</sup></strong>`;
+                        risposta = `-${Math.pow(base, esp)}`;
+                        spiegazione = `La base è negativa e l'esponente è DISPARI (3), quindi il risultato rimane NEGATIVO: -${Math.pow(base, esp)}.`;
+                    }
+
+                } else {
+                    // 30 DIFFICILI (Rosso): Esponenti negativi, differenze di parentesi e potenza di potenza
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 3 === 0) {
+                        let base = Math.floor(Math.random() * 5) + 2;
+                        let esp = Math.floor(Math.random() * 3) + 1;
+                        domanda = `Calcola la potenza con esponente negativo: <strong>${base}<sup>-${esp}</sup></strong>`;
+                        risposta = `1 / ${base}<sup>${esp}</sup> = 1/${Math.pow(base, esp)}`;
+                        spiegazione = `Un esponente negativo ribalta la base al denominatore: ${base}<sup>-${esp}</sup> = 1 / ${base}<sup>${esp}</sup> = 1/${Math.pow(base, esp)}.`;
+                    } else if (i % 3 === 1) {
+                        let base = Math.floor(Math.random() * 4) + 2;
+                        let esp = 4;
+                        domanda = `Qual è la differenza tra <strong>(-${base})<sup>${esp}</sup></strong> e <strong>-${base}<sup>${esp}</sup></strong>?`;
+                        risposta = `(-${base})<sup>${esp}</sup> = +${Math.pow(base, esp)} mentre -${base}<sup>${esp}</sup> = -${Math.pow(base, esp)}`;
+                        spiegazione = `Nel primo caso la parentesi include il segno meno nell'elevamento a potenza (+${Math.pow(base, esp)}). Nel secondo caso il meno si applica dopo l'elevamento (-${Math.pow(base, esp)}).`;
+                    } else {
+                        let base = Math.floor(Math.random() * 4) + 2;
+                        let e1 = Math.floor(Math.random() * 3) + 2;
+                        let e2 = Math.floor(Math.random() * 3) + 2;
+                        domanda = `Semplifica la potenza di potenza: <strong>(${base}<sup>${e1}</sup>)<sup>${e2}</sup></strong>`;
+                        risposta = `${base}<sup>${e1 * e2}</sup>`;
+                        spiegazione = `Potenza di potenza: si mantiene la base e si moltiplicano gli esponenti (${e1} × ${e2} = ${e1 * e2}). Risultato: <code>${base}<sup>${e1 * e2}</sup></code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script Moduli Esterni -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+
+</body>
+
+</html>

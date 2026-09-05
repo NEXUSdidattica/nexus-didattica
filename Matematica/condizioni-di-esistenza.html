@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 1: Condizioni di Esistenza delle Frazioni Algebriche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Condizioni di Esistenza - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="frazioni-algebriche-condizioni-di-esistenza" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Frazioni Algebriche</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Condizioni di Esistenza (C.E.)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Imparare a determinare il dominio di una frazione algebrica imponendo che il denominatore sia diverso da zero.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è una Frazione Algebrica?</h2>
+            <p>
+                Una <strong>frazione algebrica</strong> è un rapporto tra due polinomi <code>A/B</code>, dove il numeratore è <code>A</code> e il denominatore è <code>B</code> (con <code>B</code> che contiene almeno una variabile).
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Regola fondamentale per l'esistenza:</strong><br>
+                In matematica la divisione per zero è impossibile. Di conseguenza, una frazione algebrica ha significato soltanto se il suo denominatore è diverso da zero:<br><br>
+                <code>Denominatore ≠ 0  (C.E.: B ≠ 0)</code>
+            </div>
+
+            <h2>2. Procedimento per determinare le C.E.</h2>
+            <ol>
+                <li><strong>Prendere in considerazione SOLO il denominatore</strong> (il numeratore può assumere qualsiasi valore, anche zero).</li>
+                <li><strong>Scomporre in fattori</strong> il denominatore se si tratta di un polinomio di grado superiore al primo.</li>
+                <li><strong>Porre ciascun fattore del denominatore diverso da zero</strong> e risolvere le relative disequazioni.</li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trova le Condizioni di Esistenza della frazione algebrica: <code>(2x + 1) / (x² - 9)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Isoliamo il denominatore: <code>x² - 9</code>.</li>
+                    <li>Scomponiamo usando la differenza di quadrati: <code>(x - 3)(x + 3)</code>.</li>
+                    <li>Imponiamo che la scomposizione sia diversa da zero: <code>(x - 3)(x + 3) ≠ 0</code>.</li>
+                    <li>Poniamo ciascun fattore diverso da zero:
+                        <br>• <code>x - 3 ≠ 0  =>  x ≠ 3</code>
+                        <br>• <code>x + 3 ≠ 0  =>  x ≠ -3</code>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato C.E.: x ≠ 3 e x ≠ -3 (oppure x ≠ ±3)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Condizioni di Esistenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua preparazione con 100 esercizi svolti: livello facile (denominatori di 1° grado), medio (raccoglimenti e prodotti notevoli) e difficile (trinomi speciali, somme di quadrati e casi particolari).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi per C.E. -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // FACILE: Denominatori di 1° grado
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 5) + 1;
+                    let b = (i % 7) + 1;
+                    let isPlus = (i % 2 === 0);
+
+                    let numStr = (i % 2 === 0) ? `x + ${i}` : `${i}`;
+                    let denStr = isPlus ? `${a}x + ${b}` : `${a}x - ${b}`;
+                    let resVal = isPlus ? `- ${b}/${a}` : `${b}/${a}`;
+                    if (a === 1) resVal = isPlus ? `- ${b}` : `${b}`;
+
+                    domanda = `Determina le Condizioni di Esistenza della frazione algebrica: <br><code>F(x) = (${numStr}) / (${denStr})</code>.`;
+                    risposta = `C.E.: <code>x ≠ ${resVal}</code>`;
+                    spiegazione = `
+                    1) Imponiamo il denominatore diverso da zero: <code>${denStr} ≠ 0</code>.<br>
+                    2) Trasportiamo il termine noto: <code>${a}x ≠ ${isPlus ? -b : b}</code>.<br>
+                    3) Dividiamo per il coefficiente di x: <code>x ≠ ${resVal}</code>.`;
+
+                } else if (i <= 70) {
+                    // MEDIO: Raccoglimento a fattor comune e differenza di quadrati
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let k = (i % 6) + 2;
+                        domanda = `Determina le Condizioni di Esistenza della frazione algebrica con raccoglimento parziale/totale: <br><code>F(x) = (3x) / (x² - ${k}x)</code>.`;
+                        risposta = `C.E.: <code>x ≠ 0</code> e <code>x ≠ ${k}</code>`;
+                        spiegazione = `
+                        1) Scomponiamo il denominatore raccogliendo x a fattor comune: <code>x(x - ${k})</code>.<br>
+                        2) Imponiamo che il prodotto sia diverso da zero: <code>x(x - ${k}) ≠ 0</code>.<br>
+                        3) Poniamo ciascun fattore diverso da zero: <code>x ≠ 0</code> e <code>x - ${k} ≠ 0 => x ≠ ${k}</code>.`;
+                    } else {
+                        let n = (i % 7) + 2;
+                        let n2 = n * n;
+                        domanda = `Determina le Condizioni di Esistenza della frazione algebrica con differenza di quadrati: <br><code>F(x) = (x + 1) / (x² - ${n2})</code>.`;
+                        risposta = `C.E.: <code>x ≠ ${n}</code> e <code>x ≠ -${n}</code> (ovvero <code>x ≠ ±${n}</code>)`;
+                        spiegazione = `
+                        1) Scomponiamo il denominatore <code>x² - ${n2}</code> come differenza di quadrati: <code>(x - ${n})(x + ${n})</code>.<br>
+                        2) Imponiamo che la scomposizione sia diversa da zero: <code>(x - ${n})(x + ${n}) ≠ 0</code>.<br>
+                        3) Ne deriva che: <code>x ≠ ${n}</code> e <code>x ≠ -${n}</code>.`;
+                    }
+
+                } else {
+                    // DIFFICILE: Trinomi, somme di quadrati e casi particolari
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+
+                    if (mod === 0) {
+                        // Trinomio speciale
+                        let r1 = (i % 4) + 1;
+                        let r2 = (i % 5) + 2;
+                        let sum = r1 + r2;
+                        let prod = r1 * r2;
+
+                        domanda = `Determina le C.E. scomponendo il trinomio di 2° grado al denominatore: <br><code>F(x) = 5 / (x² - ${sum}x + ${prod})</code>.`;
+                        risposta = `C.E.: <code>x ≠ ${r1}</code> e <code>x ≠ ${r2}</code>`;
+                        spiegazione = `
+                        1) Scomponiamo il trinomio speciale al denominatore cercando due numeri che moltiplicati diano ${prod} e sommati diano -${sum}: i numeri sono -${r1} e -${r2}.<br>
+                        2) Il denominatore si scompone in: <code>(x - ${r1})(x - ${r2})</code>.<br>
+                        3) Imponiamo: <code>(x - ${r1})(x - ${r2}) ≠ 0</code>.<br>
+                        4) Risultato: <code>x ≠ ${r1}</code> e <code>x ≠ ${r2}</code>.`;
+
+                    } else if (mod === 1) {
+                        // Somma di quadrati (sempre positiva / mai nulla)
+                        let sq = (i % 5) + 1;
+                        let sq2 = sq * sq;
+
+                        domanda = `Determina le C.E. per la frazione algebrica: <br><code>F(x) = (2x - 3) / (x² + ${sq2})</code>.`;
+                        risposta = `C.E.: Nessuna restrizione (valida per ogni x reale, <code>∀ x ∈ ℝ</code>)`;
+                        spiegazione = `
+                        1) Prendiamo il denominatore: <code>x² + ${sq2}</code>.<br>
+                        2) Poiché <code>x²</code> è sempre maggiore o uguale a zero per qualsiasi valore reale di x, la somma <code>x² + ${sq2}</code> sarà sempre maggiore o uguale a ${sq2} (quindi sempre strettamente positiva).<br>
+                        3) Il denominatore non si annulla mai per nessun valore reale di x.<br>
+                        4) Esito: La frazione esiste per qualsiasi valore di x (<code>∀ x ∈ ℝ</code>).`;
+
+                    } else {
+                        // Denominatore di 3° grado con raccoglimento totale e differenza di quadrati
+                        let a = (i % 3) + 2;
+                        let a2 = a * a;
+
+                        domanda = `Determina le C.E. per il denominatore di 3° grado: <br><code>F(x) = (x²) / (x³ - ${a2}x)</code>.`;
+                        risposta = `C.E.: <code>x ≠ 0</code>, <code>x ≠ ${a}</code>, <code>x ≠ -${a}</code>`;
+                        spiegazione = `
+                        1) Effettuiamo prima un raccoglimento totale di x al denominatore: <code>x(x² - ${a2})</code>.<br>
+                        2) Scomponiamo la differenza di quadrati rimasta: <code>x(x - ${a})(x + ${a})</code>.<br>
+                        3) Imponiamo che l'intero prodotto sia diverso da zero: <code>x(x - ${a})(x + ${a}) ≠ 0</code>.<br>
+                        4) Ricaviamo le tre condizioni imponendo ogni singolo fattore diverso da zero: <code>x ≠ 0</code>, <code>x ≠ ${a}</code> e <code>x ≠ -${a}</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Procedimento C.E.</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Passaggi di calcolo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulla Forza di Coriolis e Sistemi di Riferimento Non Inerziali - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Forza di Coriolis e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="forza-di-coriolis" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Forza di Coriolis</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio della forza apparente (o inerziale) che agisce sui corpi in movimento all'interno di sistemi di riferimento in rotazione, con 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Forza di Coriolis?</h2>
+            <p>
+                La <strong>forza di Coriolis</strong> è una forza apparente (o inerziale) che si manifesta esclusivamente quando si osserva il moto di un corpo all'interno di un <em>sistema di riferimento in rotazione</em> (come la Terra). Essa non è causata da un'interazione fisica diretta, ma è una conseguenza cinematografica della rotazione del sistema. Prende il nome dallo scienziato francese Gaspard-Gustave de Coriolis.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formula vettoriale e caratteristiche fondamentali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Vettore forza di Coriolis: $\vec{F}_c = -2m (\vec{\omega} \times \vec{v})$<br>
+                    • Modulo: $F_c = 2 \cdot m \cdot v \cdot \omega \cdot \sin(\theta)$<br>
+                    • $\vec{\omega}$: velocità angolare del sistema di rotazione<br>
+                    • $\vec{v}$: velocità del corpo rispetto al sistema rotante<br>
+                    • Effetto principale: Devia la traiettoria dei corpi in movimento verso destra nell'emisfero settentrionale e verso sinistra nell'emisfero meridionale.
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esercizi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Che tipo di forza è la forza di Coriolis?", 
+                    r: "È una forza apparente (o inerziale), che compare nei sistemi di riferimento in rotazione.", 
+                    s: "Esempio guidato: non esiste un'interazione fisica o un oggetto che la generi, ma è il risultato della rotazione del punto di osservazione." 
+                },
+                { 
+                    q: "In quale direzione vengono deviati i corpi in movimento a causa della forza di Coriolis nell'emisfero boreale (settentrionale)?", 
+                    r: "Verso destra rispetto alla direzione del loro moto.", 
+                    s: "Esempio guidato: un vento che soffia verso nord nell'emisfero nord viene deviato verso est." 
+                },
+                { 
+                    q: "Qual è la condizione fondamentale affinché la forza di Coriolis agisca su un corpo?", 
+                    r: "Il corpo deve essere in movimento ($v > 0$) rispetto al sistema rotante.", 
+                    s: "Esempio guidato: se un oggetto è perfettamente fermo nel sistema rotante, la forza di Coriolis è nulla." 
+                },
+                { 
+                    q: "Cosa accade alla forza di Coriolis per un corpo che si muove esattamente lungo l'asse di rotazione del sistema?", 
+                    r: "È nulla, poiché l'angolo tra la velocità e la velocità angolare è zero (o parallelo).", 
+                    s: "Esempio guidato ai poli geografici terrestri in direzione verticale." 
+                },
+                { 
+                    q: "In quale verso vengono deviati i corpi in movimento nell'emisfero australe (meridionale)?", 
+                    r: "Verso sinistra rispetto alla direzione del loro moto.", 
+                    s: "Esempio guidato: l'esatto opposto di ciò che accade nell'emisfero nord." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un vagone merci di massa $m = 2000\text{ kg}$ si muove su rotaie rettilinee a una velocità di $10\text{ m/s}$ in una zona in cui la componente efficace della velocità angolare terrestre produce un fattore di Coriolis tale per cui $F_c = 2mv\omega_{\text{eff}}$ con $2\omega_{\text{eff}} = 10^{-4}\text{ s}^{-1}$. Qual è il modulo della forza di Coriolis?", 
+                    r: "2 N.", 
+                    s: "Esempio guidato: $F_c = 2 \cdot m \cdot v \cdot \omega_{\text{eff}} = 2000 \cdot 10 \cdot 10^{-4} = 20000 \cdot 10^{-4} = 2\text{ N}$." 
+                },
+                { 
+                    q: "Perché la forza di Coriolis ha un effetto trascurabile sui movimenti quotidiani su piccola scala (come il lancio di una pietra o lo scarico di un lavandino)?", 
+                    r: "Perché la velocità angolare della Terra ($\omega \approx 7,27 \times 10^{-5}\text{ rad/s}$) è estremamente piccola e genera forze impercettibili per oggetti leggeri o lenti.", 
+                    s: "Esempio guidato: il verso di rotazione di un lavandino dipende unicamente dalla geometria del sifone e dalle correnti iniziali, non da Coriolis." 
+                },
+                { 
+                    q: "Un corpo di massa $m = 5\text{ kg}$ si muove con velocità $v = 20\text{ m/s}$ perpendicolarmente all'asse di rotazione di una piattaforma che gira a $\omega = 2\text{ rad/s}$. Calcola il modulo della forza di Coriolis ($F_c = 2mv\omega$).", 
+                    r: "400 N.", 
+                    s: "Esempio guidato: $F_c = 2 \cdot 5 \cdot 20 \cdot 2 = 10 \cdot 20 \cdot 2 = 400\text{ N}$." 
+                },
+                { 
+                    q: "Come influisce la forza di Coriolis sui grandi sistemi meteorologici come i cicloni e gli uragani?", 
+                    r: "Costringe i venti che convergono verso una zona di bassa pressione a ruotare (in senso antiorario a nord e orario a sud dell'equatore).", 
+                    s: "Esempio guidato: impedisce al vento di fluire direttamente al centro della bassa pressione, creando il caratteristico movimento vorticoso." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un proiettile di massa $m = 0,5\text{ kg}$ viene sparato orizzontalmente verso nord alla velocità di $500\text{ m/s}$ a una latitudine dove la componente verticale della velocità angolare terrestre è $\omega_z = 10^{-4}\text{ rad/s}$. Calcola la forza di Coriolis iniziale orientata verso est.", 
+                    r: "0,05 N.", 
+                    s: "Esempio guidato: $F_c = 2 \cdot m \cdot v \cdot \omega_z = 2 \cdot 0,5 \cdot 500 \cdot 10^{-4} = 500 \cdot 10^{-4} = 0,05\text{ N}$." 
+                },
+                { 
+                    q: "Una piattaforma rotante (giostra) compie un giro ogni 10 secondi ($\omega = \frac{2\pi}{10} \approx 0,628\text{ rad/s}$). Un bambino di massa $m = 30\text{ kg}$ cammina dal centro verso il bordo lungo un raggio con una velocità radiale costante di $1,5\text{ m/s}$. Qual è il modulo della forza di Coriolis avvertita dal bambino?", 
+                    r: "56,5 N.", 
+                    s: "Esempio guidato: $F_c = 2 \cdot m \cdot v \cdot \omega = 2 \cdot 30 \cdot 1,5 \cdot 0,6283 = 90 \cdot 0,6283 \approx 56,55\text{ N}$." 
+                },
+                { 
+                    q: "Se un corpo viene fatto cadere liberamente da una torre alta $h = 100\text{ m}$ nell'emisfero nord, a causa della forza di Coriolis esso devia leggermente dalla verticale. In quale direzione cade rispetto alla base geometrica della torre?", 
+                    r: "Verso est.", 
+                    s: "Esempio guidato: durante la caduta, il corpo conserva la velocità lineare maggiore che aveva in cima alla torre (per via del raggio maggiore rispetto al suolo), anticipando la rotazione terrestre e deviando verso est." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

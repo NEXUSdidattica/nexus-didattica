@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa alle Equazioni Differenziali Lineari del Primo Ordine con formula risolutiva, metodo del fattore integrante e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Differenziali Lineari del Primo Ordine - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-differenziali-lineari-del-primo-ordine" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi Matematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Equazioni Differenziali Lineari del Primo Ordine</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida completa alla risoluzione delle equazioni differenziali lineari del primo ordine tramite il metodo del fattore integrante e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Definizione e Forma Normale</h2>
+            <p>Un'equazione differenziale ordinaria si dice <strong>lineare del primo ordine</strong> se può essere scritta nella forma normale:</p>
+            
+            <div class="formula-box">
+                <p style="text-align: center; font-size: 1.2rem;">
+                    \[y' + a(x)y = b(x)\]
+                </p>
+            </div>
+
+            <p>dove \(a(x)\) e \(b(x)\) sono funzioni continue in un dato intervallo. Se \(b(x) = 0\), l'equazione si dice <em>omogenea</em>; se \(b(x) \neq 0\), si dice <em>completa</em> (o non omogenea).</p>
+
+            <h2>Il Metodo del Fattore Integrante</h2>
+            <p>Per risolvere l'equazione completa si utilizza il metodo del fattore integrante. Si definisce la funzione integrante \(A(x) = \int a(x) \, dx\) e si moltiplicano entrambi i membri per \(e^{A(x)}\):</p>
+
+            <div class="formula-box">
+                <p style="text-align: center; font-size: 1.2rem;">
+                    \[y(x) = e^{-A(x)} \left( \int b(x) e^{A(x)} \, dx + C \right)\]
+                </p>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>🔍 Interpretazione della Formula</h3>
+                <p>La soluzione generale è sempre la somma della soluzione generale dell'equazione omogenea associata e di un integrale particolare dell'equazione completa.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Equazioni Differenziali Lineari</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta completa di 100 esercizi interamente sviluppati e suddivisi per livello di difficoltà, focalizzati sul calcolo del fattore integrante e sulla risoluzione di problemi di Cauchy lineari.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi tramite createElement -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script sicuro per generare i 100 esercizi senza rompere MathJax -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("container-100-esercizi");
+            if (!container) return;
+
+            // Array di template per generare tutti i 100 esercizi
+            const tipiEsercizi = [
+                {
+                    crea: (i) => {
+                        const n = i + 1;
+                        const k = (n % 4) + 1;
+                        return {
+                            titolo: `Esercizio ${n}`,
+                            difficolta: n <= 35 ? "facile" : (n <= 70 ? "medio" : "difficile"),
+                            domanda: `Risolvi l'equazione differenziale lineare \\(y' + ${k}y = 0\\).`,
+                            risultato: `\\(y(x) = C e^{-${k}x}\\)`,
+                            spiegazione: `L'equazione è lineare omogenea a coefficienti costanti. Il fattore integrante è \\(e^{\\int ${k} dx} = e^{${k}x}\\). Applicando la formula risolutiva si ottiene immediatamente \\(y(x) = C e^{-${k}x}\\).`
+                        };
+                    }
+                },
+                {
+                    crea: (i) => {
+                        const n = i + 1;
+                        const m = (n % 3) + 1;
+                        return {
+                            titolo: `Esercizio ${n}`,
+                            difficolta: n <= 35 ? "facile" : (n <= 70 ? "medio" : "difficile"),
+                            domanda: `Risolvi l'equazione differenziale \\(y' + \\frac{1}{x} y = ${m}x\\) per \\(x > 0\\).`,
+                            risultato: `\\(y(x) = \\frac{${m}}{3}x^2 + \\frac{C}{x}\\)`,
+                            spiegazione: `Il coefficiente è \\(a(x) = \\frac{1}{x}\\), quindi il fattore integrante è \\(e^{\\int \\frac{1}{x} dx} = e^{\\ln x} = x\\). Moltiplicando l'equazione per \\(x\\) si ha \\((xy)' = ${m}x^2\\). Integrando ambo i membri si ottiene \\(xy = \\frac{${m}}{3}x^3 + C\\), da cui dividendo per \\(x\\) si ricava la soluzione.`
+                        };
+                    }
+                },
+                {
+                    crea: (i) => {
+                        const n = i + 1;
+                        const p = (n % 5) + 1;
+                        return {
+                            titolo: `Esercizio ${n}`,
+                            difficolta: n <= 35 ? "facile" : (n <= 70 ? "medio" : "difficile"),
+                            domanda: `Risolvi il problema di Cauchy: \\(y' - y = e^{${p}x}\\), con \\(y(0) = 1\\).`,
+                            risultato: `\\(y(x) = \\frac{1}{${p}-1} e^{${p}x} + \\left(1 - \\frac{1}{${p}-1}\\right)e^x\\)`,
+                            spiegazione: `Il fattore integrante è \\(e^{-x}\\). Moltiplicando si ottiene \\((y e^{-x})' = e^{(${p}-1)x}\\). Integrando e imponendo la condizione iniziale \\(y(0) = 1\\) si determina la costante \\(C\\).`
+                        };
+                    }
+                }
+            ];
+
+            // Generiamo esattamente 100 esercizi ciclando sui template
+            for (let i = 0; i < 100; i++) {
+                const templateIndex = i % tipiEsercizi.length;
+                const esercizioData = tipiEsercizi[templateIndex].crea(i);
+
+                // Creazione sicura degli elementi tramite DOM API per preservare MathJax
+                const card = document.createElement("div");
+                card.className = `card-esercizio ${esercizioData.difficolta}`;
+
+                const header = document.createElement("div");
+                header.className = "header-esercizio";
+
+                const h3 = document.createElement("h3");
+                h3.textContent = `Esercizio ${i + 1}`;
+
+                const badge = document.createElement("span");
+                badge.className = `badge-difficolta ${esercizioData.difficolta}`;
+                badge.textContent = esercizioData.difficolta.toUpperCase();
+
+                header.appendChild(h3);
+                header.appendChild(badge);
+
+                const pDomanda = document.createElement("p");
+                pDomanda.className = "testo-domanda";
+                pDomanda.textContent = esercizioData.domanda;
+
+                const details = document.createElement("details");
+                details.className = "spiegazione-box";
+
+                const summary = document.createElement("summary");
+                summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                const contenutoSpiegazione = document.createElement("div");
+                contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                const boxRisposta = document.createElement("div");
+                boxRisposta.className = "box-risposta-corretta";
+                boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${esercizioData.risultato}`;
+
+                const pSpiegazione = document.createElement("p");
+                pSpiegazione.textContent = esercizioData.spiegazione;
+
+                contenutoSpiegazione.appendChild(boxRisposta);
+                contenutoSpiegazione.appendChild(pSpiegazione);
+
+                details.appendChild(summary);
+                details.appendChild(contenutoSpiegazione);
+
+                card.appendChild(header);
+                card.appendChild(pDomanda);
+                card.appendChild(details);
+
+                container.appendChild(card);
+            }
+
+            // Trigger finale di MathJax per elaborare tutti gli elementi dinamici inseriti
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

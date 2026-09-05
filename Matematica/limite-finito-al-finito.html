@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Limite Finito al Finito con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Limite Finito al Finito - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="limite-finito-al-finito" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi Matematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Limite Finito al Finito</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Definizione rigorosa con epsilon e delta (\(\varepsilon, \delta\)), significato geometrico degli intorni e risoluzione di verifiche di limite.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Definizione Analitica e Geometrica del Limite Finito in un Punto</h2>
+            <p>Il concetto di <strong>limite finito al finito</strong> esprime l'idea che, man mano che la variabile indipendente \(x\) si avvicina a un valore reale \(x_0\), i valori assunti dalla funzione \(f(x)\) si concentrano attorno a un numero reale \(l\).</p>
+            
+            <div class="formula-box">
+                <p><strong>Definizione Formale (\(\varepsilon, \delta\)):</strong></p>
+                <p>Si dice che il limite di \(f(x)\), per \(x\) che tende a \(x_0\), è uguale a \(l\) (\(\lim_{x \to x_0} f(x) = l\)) se:</p>
+                $$\forall \varepsilon > 0, \ \exists \delta > 0 \quad \text{tale che} \quad \forall x \in D, \ 0 < |x - x_0| < \delta \implies |f(x) - l| < \varepsilon$$
+                <ul>
+                    <li><strong>Significato di \(\varepsilon\) (intorno di \(l\)):</strong> Rappresenta la tolleranza verticale sull'asse delle ordinate (\(l - \varepsilon < f(x) < l + \varepsilon\)).</li>
+                    <li><strong>Significato di \(\delta\) (intorno di \(x_0\)):</strong> Rappresenta l'ampiezza dell'intorno circolare sull'asse delle ascisse (\(x_0 - \delta < x < x_0 + \delta\) con \(x \neq x_0\)).</li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato (Verifica di Limite)</h3>
+                <p>Verifica mediante la definizione che \(\lim_{x \to 2} (3x - 1) = 5\).</p>
+                <ol>
+                    <li><strong>Impostazione della disequazione:</strong> Poniamo \(|(3x - 1) - 5| < \varepsilon\).</li>
+                    <li><strong>Semplificazione algebrica:</strong>
+                        $$|3x - 6| < \varepsilon \implies 3|x - 2| < \varepsilon \implies |x - 2| < \frac{\varepsilon}{3}$$
+                    </li>
+                    <li><strong>Conclusione:</strong> Avendo trovato un intorno \(\delta = \frac{\varepsilon}{3}\) dipendente da \(\varepsilon\) tale che per ogni \(x\) nell'intorno di \(2\) la disuguaglianza è verificata, il limite è corretto.</li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Limite Finito al Finito</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Verifiche elementari di limiti con funzioni lineari
+                    const casiFacili = [
+                        ["Verifica che $\\lim_{x \\to 1} (2x + 3) = 5$ determinando $\\delta$ in funzione di $\\varepsilon$.", "\\delta = \\frac{\\varepsilon}{2}", "Impostiamo $|(2x+3) - 5| < \\varepsilon \\implies |2x - 2| < \\varepsilon \\implies 2|x-1| < \\varepsilon \\implies |x-1| < \\frac{\\varepsilon}{2}$. Dunque $\\delta = \\frac{\\varepsilon}{2}$."],
+                        ["Verifica che $\\lim_{x \\to 3} \\left( \\frac{1}{2}x + 1 \\right) = \\frac{5}{2}$.", "\\delta = 2\\varepsilon", "Impostiamo $\\left|\\frac{1}{2}x + 1 - \\frac{5}{2}\\right| < \\varepsilon \\implies \\left|\\frac{1}{2}x - \\frac{3}{2}\\right| < \\varepsilon \\implies \\frac{1}{2}|x-3| < \\varepsilon \\implies |x-3| < 2\\varepsilon$."],
+                        ["Verifica che $\\lim_{x \\to 0} (5x + 2) = 2$.", "\\delta = \\frac{\\varepsilon}{5}", "Impostiamo $|5x + 2 - 2| < \\varepsilon \\implies |5x| < \\varepsilon \\implies 5|x| < \\varepsilon \\implies |x| < \\frac{\\varepsilon}{5}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Scriviamo la disequazione fondamentale $|f(x) - l| < \\varepsilon$.<br>2) ${cf[2]}<br>3) La relazione trovata conferma la definizione di limite.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Verifiche con funzioni quadratiche o fratte semplici
+                    const casiMedi = [
+                        ["Verifica tramite la definizione che $\\lim_{x \\to 2} x^2 = 4$ assumendo $\\varepsilon < 1$.", "\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)", "Impostiamo $|x^2 - 4| < \\varepsilon \\implies |x-2||x+2| < \\varepsilon$. Limitando $x$ nell'intorno $|x-2| < 1$, si ha $1 < x < 3$, da cui $3 < x+2 < 5$, quindi $|x+2| < 5$. Ne segue $|x-2| \\cdot 5 < \\varepsilon$, cioè $|x-2| < \\frac{\\varepsilon}{5}$."],
+                        ["Verifica che $\\lim_{x \\to 1} (x^2 + x) = 2$ ponendo un intorno iniziale di ampiezza 1.", "\\delta = \\min\\left(1, \\frac{\\varepsilon}{4}\\right)", "Impostiamo $|x^2 + x - 2| < \\varepsilon \\implies |(x-1)(x+2)| < \\varepsilon$. Ponendo $|x-1| < 1$, si ha $0 < x < 2$, da cui $2 < x+2 < 4$, dunque $|x+2| < 4$. Scegliamo $\\delta = \\min(1, \\frac{\\varepsilon}{4})$."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Impostiamo la disuguaglianza con il valore assoluto della funzione.<br>2) ${cm[2]}<br>3) Ricaviamo il parametro $\\delta$ garantendo la validità per intorni ristretti.`;
+                } else {
+                    // Difficili (76 - 100): Verifiche rigorose con funzioni trigonometriche, radici o fratte complesse
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `Verifica rigorosamente tramite la definizione di limite che \(\\lim_{x \\to 0} x \\sin\\left(\\frac{1}{x}\\right) = 0\).`;
+                        risposta = "\\delta = \\varepsilon",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Impostazione della disuguaglianza</strong><br>
+                        Dobbiamo dimostrare che per ogni \(\varepsilon > 0\) esiste \(\delta > 0\) tale che se \(0 < |x - 0| < \delta\), allora:
+                        $$\left|x \sin\left(\frac{1}{x}\right) - 0\right| < \varepsilon$$<br><br>
+                        <strong>Fase 2: Maggiorazione trigonometrica</strong><br>
+                        Sfruttiamo le proprietà del valore assoluto e la limitatezza della funzione seno:
+                        $$\left|x \sin\left(\frac{1}{x}\right)\right| = |x| \cdot \left|\sin\left(\frac{1}{x}\right)\right|$$
+                        Poiché \(\left|\sin\left(\frac{1}{x}\right)\right| \le 1\) per ogni \(x \neq 0\), si ha:
+                        $$|x| \cdot \left|\sin\left(\frac{1}{x}\right)\right| \le |x|$$<br><br>
+                        <strong>Fase 3: Scelta di \(\delta\)</strong><br>
+                        Imponendo $|x| < \varepsilon$, basta scegliere \(\delta = \varepsilon\).<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        La verifica è completata rigorosamente.`;
+                    } else if (varIndex === 1) {
+                        domanda = `Verifica con la definizione che \(\\lim_{x \\to 4} \\sqrt{x} = 2\).`;
+                        risposta = "\\delta = \\min\\left(2, 4\\varepsilon - 4\\varepsilon^2\\right) \\text{ o } \\delta = 3\\varepsilon",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Impostazione della disuguaglianza</strong><br>
+                        Dobbiamo verificare che \(|\sqrt{x} - 2| < \varepsilon\) per \(x \geq 0\).<br><br>
+                        <strong>Fase 2: Risoluzione algebrica</strong><br>
+                        $-\varepsilon < \sqrt{x} - 2 < \varepsilon \implies 2 - \varepsilon < \sqrt{x} < 2 + \varepsilon$.<br>
+                        Elevando al quadrato (assumendo \(2 - \varepsilon > 0\)):
+                        $$(2 - \varepsilon)^2 < x < (2 + \varepsilon)^2$$
+                        $$4 - 4\varepsilon + \varepsilon^2 < x < 4 + 4\varepsilon + \varepsilon^2$$<br><br>
+                        <strong>Fase 3: Determinazione degli intorni di \(4\)</strong><br>
+                        La distanza da \(4\) è delimitata da \(4\varepsilon - \varepsilon^2\) a sinistra e \(4\varepsilon + \varepsilon^2\) a destra. Prendendo il valore più restrittivo per \(\delta\), otteniamo la compatibilità della definizione.<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        Il limite è verificato.`;
+                    } else {
+                        domanda = `Verifica mediante la definizione che \(\\lim_{x \\to 1} \frac{2x}{x+1} = 1\).`;
+                        risposta = "\\delta = \\min\\left(\\frac{1}{2}, \\frac{3}{4}\\varepsilon\\right)",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Impostazione della disequazione</strong><br>
+                        $$\left|\frac{2x}{x+1} - 1\right| < \varepsilon \implies \left|\frac{2x - x - 1}{x+1}\right| < \varepsilon \implies \frac{|x-1|}{|x+1|} < \varepsilon$$<br><br>
+                        <strong>Fase 2: Limitazione preliminare del denominatore</strong><br>
+                        Fissiamo un intorno iniziale ponendo \(|x-1| < \frac{1}{2}\), da cui \(\frac{1}{2} < x < \frac{3}{2}\). Sommando \(1\) al denominatore otteniamo \(\frac{3}{2} < x+1 < \frac{5}{2}\), il che implica \(\frac{1}{|x+1|} < \frac{2}{3}\).<br><br>
+                        <strong>Fase 3: Stima della disuguaglianza finale</strong><br>
+                        La frazione diventa \(\frac{|x-1|}{|x+1|} < \frac{2}{3}|x-1| < \varepsilon \implies |x-1| < \frac{3}{2}\varepsilon\).<br>
+                        Scegliendo \(\delta = \min\left(\frac{1}{2}, \frac{3}{2}\varepsilon\right)\), la condizione è soddisfatta.<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        La verifica formale è conclusa.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

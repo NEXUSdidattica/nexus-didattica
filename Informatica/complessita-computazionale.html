@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="La Complessità Computazionale: notazione O-grande, efficienza degli algoritmi, analisi temporale e spaziale - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Complessità Computazionale - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .mem-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        @media(max-width: 768px) {
+            .mem-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .mem-output {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+
+        /* Tabella complessità */
+        .flow-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #fed7aa;
+        }
+
+        .flow-table th,
+        .flow-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ffedd5;
+        }
+
+        .flow-table th {
+            background-color: #fff7ed;
+            color: #c2410c;
+            font-weight: bold;
+        }
+
+        .flow-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="complessita-computazionale" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Complessità
+                    Computazionale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dell'efficienza degli algoritmi, misurazione delle risorse temporali e spaziali, e
+                    introduzione alla notazione asintotica O-grande ($O$).
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Complessità Computazionale?</h2>
+            <p>
+                La <strong>complessità computazionale</strong> è la branca dell'informatica teorica che studia la
+                quantità di risorse (in termini di tempo di calcolo e di memoria RAM) necessarie per l'esecuzione di un
+                algoritmo. Poiché la velocità di esecuzione dipende dall'hardware della macchina su cui il programma
+                viene eseguito, l'analisi teorica prescinde dai secondi fisici e misura le prestazioni in funzione della
+                dimensione $n$ dei dati in ingresso (<em>input size</em>).
+            </p>
+
+            <h2>2. La Notazione Asintotica: O-Grande ($O$)</h2>
+            <p>
+                Per descrivere come cresce il costo computazionale al crescere di $n$ (specialmente per valori molto
+                grandi), si utilizza la <strong>notazione O-grande</strong> ($O$). Essa descrive il limite superiore del
+                comportamento asintotico dell'algoritmo, trascurando le costanti moltiplicatrici e i termini di ordine
+                inferiore.
+            </p>
+
+            <table class="flow-table">
+                <thead>
+                    <tr>
+                        <th>Notazione</th>
+                        <th>Nome della Complessità</th>
+                        <th>Esempio Tipico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>$O(1)$</strong></td>
+                        <td>Costante</td>
+                        <td>Accesso diretto a un elemento di un array tramite indice.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$O(\log n)$</strong></td>
+                        <td>Logaritmica</td>
+                        <td>Ricerca binaria (Binary Search) in un vettore ordinato.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$O(n)$</strong></td>
+                        <td>Lineare</td>
+                        <td>Scansione sequenziale (ricerca lineare) di una lista non ordinata.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$O(n \log n)$</strong></td>
+                        <td>Linearitmica</td>
+                        <td>Algoritmi di ordinamento efficienti (es. Merge Sort, Quick Sort).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$O(n^2)$</strong></td>
+                        <td>Quadratica</td>
+                        <td>Doppi cicli annidati (es. Bubble Sort, Selection Sort).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$O(2^n)$</strong></td>
+                        <td>Esponenziale</td>
+                        <td>Soluzioni ricorsive ingenue (es. calcolo naif della sequenza di Fibonacci).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                <strong>Tempo di Esecuzione e Spazio:</strong>
+                <ul>
+                    <li><em>Complessità Temporale ($Time$):</em> Numero di operazioni elementari eseguite in funzione di
+                        $n$.</li>
+                    <li><em>Complessità Spaziale ($Space$):</em> Quantità di memoria di supporto aggiuntiva richiesta
+                        dall'algoritmo durante il calcolo.</li>
+                </ul>
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore Interattivo: Comparatore di Complessità</h2>
+            <p>Seleziona un ordine di complessità e imposta una dimensione d'input $n$ per stimare il numero teorico di
+                operazioni eseguite dall'algoritmo.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">big-o-eval@nexus-core:~#</span>
+                    <span style="font-size: 0.8rem; color: #888;">Asymptotic Growth Estimator</span>
+                </div>
+
+                <div class="mem-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona
+                            Complessità O():</label>
+                        <select id="compSelect" class="code-input">
+                            <option value="o_1">O(1) - Costante</option>
+                            <option value="o_log">O(log n) - Logaritmica</option>
+                            <option value="o_n">O(n) - Lineare</option>
+                            <option value="o_n2">O(n^2) - Quadratica</option>
+                            <option value="o_2n">O(2^n) - Esponenziale</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Valore di
+                            Input ($n$):</label>
+                        <select id="inputSize" class="code-input">
+                            <option value="10">n = 10</option>
+                            <option value="100">n = 100</option>
+                            <option value="1000">n = 1000</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <button class="btn-os" onclick="simulaComplessita()" style="width: 100%;">Calcola Operazioni
+                        Teoriche ⚡</button>
+                </div>
+
+                <div class="mem-output" id="memOutput">
+                    > In attesa di parametri per la stima asintotica...
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore Complessità -->
+    <script>
+        window.simulaComplessita = function () {
+            const key = document.getElementById('compSelect').value;
+            const n = parseInt(document.getElementById('inputSize').value);
+            const output = document.getElementById('memOutput');
+
+            let ops = 0;
+            let descrizione = "";
+
+            switch (key) {
+                case 'o_1':
+                    ops = 1;
+                    descrizione = "O(1) - Esecuzione a tempo costante, indipendente da n.";
+                    break;
+                case 'o_log':
+                    ops = Math.round(Math.log2(n));
+                    descrizione = `O(log n) - Crescita logaritmica (circa ${ops} passaggi per n = ${n}).`;
+                    break;
+                case 'o_n':
+                    ops = n;
+                    descrizione = `O(n) - Crescita lineare proporzionale a n (${n} operazioni).`;
+                    break;
+                case 'o_n2':
+                    ops = n * n;
+                    descrizione = `O(n^2) - Crescita quadratica (${ops.toLocaleString()} operazioni, tipica di doppi cicli).`;
+                    break;
+                case 'o_2n':
+                    if (n > 100) {
+                        ops = "Valore enormemente elevato (> 2^100)";
+                    } else {
+                        ops = Math.pow(2, n).toLocaleString();
+                    }
+                    descrizione = `O(2^n) - Crescita esponenziale catastrofica per input elevati!`;
+                    break;
+            }
+
+            output.style.color = "#4ade80";
+            output.innerHTML = `> Analisi per <strong>n = ${n}</strong>:<br>` +
+                `&nbsp;&nbsp;↳ Modello: <strong>${descrizione}</strong><br>` +
+                `&nbsp;&nbsp;↳ Operazioni stimate: <strong>${ops}</strong>`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

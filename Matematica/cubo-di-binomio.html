@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 4: Cubo di un binomio - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Cubo di un binomio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polinomi-cubo-di-binomio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Prodotti Notevoli</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Cubo di un binomio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Regola fondamentale, tripli prodotti, gestione dei segni alternati, frazioni e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Formula del Cubo di Binomio</h2>
+            <p>
+                Il cubo di un binomio è un prodotto notevole che si sviluppa in quattro termini (un quadrinomio). La regola generale afferma che il cubo della somma di due termini è uguale al <strong>cubo del primo termine</strong>, più il <strong>triplo prodotto del quadrato del primo per il secondo</strong>, più il <strong>triplo prodotto del primo per il quadrato del secondo</strong>, più il <strong>cubo del secondo termine</strong>.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Formula con la somma:</strong> <code>(A + B)³ = A³ + 3A²B + 3AB² + B³</code><br>
+                🔹 <strong>Formula con la differenza:</strong> <code>(A - B)³ = A³ - 3A²B + 3AB² - B³</code>
+            </div>
+
+            <h2>2. Regole sui Segni e Proprietà</h2>
+            <p>
+                Quando si sviluppa un cubo di binomio:
+            </p>
+            <ul>
+                <li>Se il binomio contiene una sottrazione <code>(A - B)³</code>, i segni dei termini dello sviluppo saranno <strong>alternati</strong>: <code>+ - + -</code>.</li>
+                <li>L'esponente dispari (3) conserva il segno originario delle basi: il cubo di un numero negativo rimane negativo.</li>
+                <li>I tripli prodotti dipendono dal quadrato del primo o del secondo termine: poiché qualsiasi quadrato è sempre positivo, il segno del triplo prodotto dipende solo dal termine non elevato al quadrato.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola lo sviluppo del seguente cubo di binomio: <code>( 2x - 3y )³</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Cubo del primo termine:</strong> <code>(2x)³ = 8x³</code></li>
+                    <li><strong>Triplo prodotto del quadrato del primo per il secondo:</strong> <code>3 · (2x)² · (-3y) = 3 · (4x²) · (-3y) = -36x²y</code></li>
+                    <li><strong>Triplo prodotto del primo per il quadrato del secondo:</strong> <code>3 · (2x) · (-3y)² = 3 · (2x) · (9y²) = +54xy²</code></li>
+                    <li><strong>Cubo del secondo termine:</strong> <code>(-3y)³ = -27y³</code></li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 8x³ - 36x²y + 54xy² - 27y³</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Cubo di Binomio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (interi), medio (con frazioni e potenze) e difficile (espressioni combinate con altri prodotti notevoli e scomposizioni).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i % 3) + 1;
+                    let b = (i % 2) + 1;
+                    let sign = i % 2 === 0 ? '+' : '-';
+
+                    domanda = `Sviluppa il cubo del binomio: <code>(${a}x ${sign} ${b})³</code>.`;
+
+                    let cubeA = a * a * a;
+                    let cubeB = b * b * b;
+                    let tp1 = 3 * (a * a) * b;
+                    let tp2 = 3 * a * (b * b);
+
+                    if (sign === '+') {
+                        risposta = `<code>${cubeA}x³ + ${tp1}x² + ${tp2}x + ${cubeB}</code>`;
+                        spiegazione = `
+                        1) Cubo del 1° termine: <code>(${a}x)³ = ${cubeA}x³</code>.<br>
+                        2) Triplo prodotto del quadrato del 1° per il 2°: <code>3 · (${a}x)² · (${b}) = 3 · ${a*a}x² · ${b} = +${tp1}x²</code>.<br>
+                        3) Triplo prodotto del 1° per il quadrato del 2°: <code>3 · (${a}x) · (${b})² = 3 · ${a}x · ${b*b} = +${tp2}x</code>.<br>
+                        4) Cubo del 2° termine: <code>(${b})³ = +${cubeB}</code>.<br>
+                        5) Risultato: <code>${cubeA}x³ + ${tp1}x² + ${tp2}x + ${cubeB}</code>.`;
+                    } else {
+                        risposta = `<code>${cubeA}x³ - ${tp1}x² + ${tp2}x - ${cubeB}</code>`;
+                        spiegazione = `
+                        1) Cubo del 1° termine: <code>(${a}x)³ = ${cubeA}x³</code>.<br>
+                        2) Triplo prodotto del quadrato del 1° per il 2°: <code>3 · (${a}x)² · (-${b}) = 3 · ${a*a}x² · (-${b}) = -${tp1}x²</code>.<br>
+                        3) Triplo prodotto del 1° per il quadrato del 2°: <code>3 · (${a}x) · (-${b})² = 3 · ${a}x · ${b*b} = +${tp2}x</code>.<br>
+                        4) Cubo del 2° termine: <code>(-${b})³ = -${cubeB}</code>.<br>
+                        5) Risultato: <code>${cubeA}x³ - ${tp1}x² + ${tp2}x - ${cubeB}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let num1 = 1;
+                    let den1 = (i % 3) + 2;
+                    let num2 = (i % 2) + 1;
+                    let den2 = (i % 2) + 3;
+
+                    domanda = `Sviluppa il cubo di binomio con frazioni: <br>
+                    <code>( ${num1}/${den1} a - ${num2}/${den2} b )³</code>.`;
+
+                    let cubeNum1 = num1 * num1 * num1;
+                    let cubeDen1 = den1 * den1 * den1;
+                    let cubeNum2 = num2 * num2 * num2;
+                    let cubeDen2 = den2 * den2 * den2;
+
+                    let tp1Num = 3 * (num1 * num1) * num2;
+                    let tp1Den = (den1 * den1) * den2;
+
+                    let tp2Num = 3 * num1 * (num2 * num2);
+                    let tp2Den = den1 * (den2 * den2);
+
+                    risposta = `<code>${cubeNum1}/${cubeDen1} a³ - ${tp1Num}/${tp1Den} a²b + ${tp2Num}/${tp2Den} ab² - ${cubeNum2}/${cubeDen2} b³</code>`;
+                    spiegazione = `
+                    1) Cubo del 1°: <code>(${num1}/${den1} a)³ = ${cubeNum1}/${cubeDen1} a³</code>.<br>
+                    2) Primo triplo prodotto: <code>3 · (${num1*num1}/${den1*den1} a²) · (-${num2}/${den2} b) = - ${tp1Num}/${tp1Den} a²b</code>.<br>
+                    3) Secondo triplo prodotto: <code>3 · (${num1}/${den1} a) · (${num2*num2}/${den2*den2} b²) = + ${tp2Num}/${tp2Den} ab²</code>.<br>
+                    4) Cubo del 2°: <code>(-${num2}/${den2} b)³ = - ${cubeNum2}/${cubeDen2} b³</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Semplifica l'espressione contenente cubi e quadrati di binomio: <br>
+                        <code>( x - 1 )³ - ( x + 1 )³ + 6x²</code>.`;
+
+                        risposta = `<code>- 2</code>`;
+                        spiegazione = `
+                        1) Sviluppiamo <code>(x - 1)³ = x³ - 3x² + 3x - 1</code>.<br>
+                        2) Sviluppiamo <code>(x + 1)³ = x³ + 3x² + 3x + 1</code>.<br>
+                        3) Sottraiamo i due sviluppi: <code>(x³ - 3x² + 3x - 1) - (x³ + 3x² + 3x + 1) = -6x² - 2</code>.<br>
+                        4) Sommiamo <code>+ 6x²</code>: <code>-6x² - 2 + 6x² = -2</code>.`;
+                    } else {
+                        domanda = `Riconosci il cubo di binomio di partenza (scomposizione): <br>
+                        <code>8a³ - 36a²b + 54ab² - 27b³</code>.`;
+
+                        risposta = `<code>( 2a - 3b )³</code>`;
+                        spiegazione = `
+                        1) Individuiamo i due cubi perfetti: <code>8a³ = (2a)³</code> e <code>-27b³ = (-3b)³</code>.<br>
+                        2) Verifichiamo il primo triplo prodotto: <code>3 · (2a)² · (-3b) = 3 · 4a² · (-3b) = -36a²b</code> (corretto).<br>
+                        3) Verifichiamo il secondo triplo prodotto: <code>3 · (2a) · (-3b)² = 3 · 2a · 9b² = +54ab²</code> (corretto).<br>
+                        4) Risultato della scomposizione: <code>(2a - 3b)³</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

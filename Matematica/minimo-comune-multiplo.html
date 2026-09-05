@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa al Minimo Comune Multiplo (m.c.m.), Tecniche di Calcolo ed Esercizi Svolti Passo-Passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Minimo Comune Multiplo (m.c.m.): Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-minimo-comune-multiplo" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Minimo Comune Multiplo (m.c.m.)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione, scomposizione in primi, relazione fondamentale con il M.C.D., problemi di coincidenza temporale e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione di Minimo Comune Multiplo</h2>
+            <p>
+                Il <strong>Minimo Comune Multiplo (m.c.m.)</strong> tra due o più numeri naturali (diversi da zero) è il **più piccolo numero naturale (diverso da zero) che è multiplo di tutti i numeri dati**.
+            </p>
+            <ul>
+                <li><strong>Interpretazione pratica:</strong> È l'operazione fondamentale usata per sommare o sottrarre le frazioni (denominatore comune) e per risolvere problemi di eventi periodici che si ripetono in tempi diversi (es. "ogni quanti giorni due fari lampeggiano insieme?").</li>
+                <li><strong>Numeri coprimi:</strong> Se due numeri sono primi tra loro (es. 8 e 9), il loro m.c.m. è semplicemente pari al loro **prodotto**: <code>m.c.m.(8, 9) = 8 × 9 = 72</code>.</li>
+            </ul>
+
+            <h2>2. Regola per il Calcolo tramite Fattorizzazione</h2>
+            <p>Per calcolare il m.c.m. di due o più numeri mediante scomposizione in fattori primi si applica la regola seguente:</p>
+            <div style="background-color: #eff6ff; border-left: 4px solid #2563eb; padding: 1.2rem; border-radius: 6px; margin: 1.5rem 0;">
+                <p style="margin: 0; font-size: 1.05rem; color: #1e3a8a; font-weight: bold;">
+                    📌 Regola del m.c.m.: Si scompongono i numeri in fattori primi e si moltiplicano tra loro TUTTI i fattori COMUNI E NON COMUNI, presi una sola volta e con l'ESPONENTE MAGGIORE.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Metodo Standard)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il m.c.m. tra <strong>12</strong>, <strong>18</strong> e <strong>30</strong>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scomponiamo in fattori primi ciascun numero:
+                        <ul>
+                            <li><code>12 = 2² × 3</code></li>
+                            <li><code>18 = 2 × 3²</code></li>
+                            <li><code>30 = 2 × 3 × 5</code></li>
+                        </ul>
+                    </li>
+                    <li>Individuiamo tutti i fattori presenti (comuni e non comuni): i fattori sono <strong>2, 3 e 5</strong>.</li>
+                    <li>Selezioniamo ciascun fattore con l'esponente più grande:
+                        <ul>
+                            <li>Per il 2: il massimo esponente è <strong>2</strong> &rarr; <code>2²</code></li>
+                            <li>Per il 3: il massimo esponente è <strong>2</strong> &rarr; <code>3²</code></li>
+                            <li>Per il 5: il massimo esponente è <strong>1</strong> &rarr; <code>5¹</code></li>
+                        </ul>
+                    </li>
+                    <li>Moltiplichiamo i fattori selezionati: <code>m.c.m.(12, 18, 30) = 2² × 3² × 5 = 4 × 9 × 5 = 180</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>m.c.m.(12, 18, 30) = 180</code></p>
+            </div>
+
+            <h2>3. Relazione Fondamentale tra M.C.D. e m.c.m.</h2>
+            <p>
+                Per qualsiasi coppia di numeri interi naturali <code>a</code> e <code>b</code>, vale sempre l'uguaglianza:
+            </p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.15rem; color: #0f172a; background-color: #f1f5f9; padding: 0.8rem; border-radius: 6px;">
+                a × b = M.C.D.(a, b) × m.c.m.(a, b)
+            </p>
+            <p>
+                Da questa proprietà deriva una formula rapida per trovare il m.c.m. conoscendo già il M.C.D.:
+            </p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.05rem; color: #2563eb;">
+                m.c.m.(a, b) = (a × b) / M.C.D.(a, b)
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 3 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Formula tramite Prodotto)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola <code>m.c.m.(15, 20)</code> sapendo che <code>M.C.D.(15, 20) = 5</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo il prodotto dei due numeri: <code>15 × 20 = 300</code>.</li>
+                    <li>Dividiamo il prodotto ottenuto per il M.C.D.: <code>300 : 5 = 60</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>m.c.m.(15, 20) = 60</code>.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sul Minimo Comune Multiplo (m.c.m.)</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi ordinati per difficoltà crescente. Espandi ciascuna scheda per vedere i fattori scelti e il calcolo esatto.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Testo Puro) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            function factorize(n) {
+                let temp = n, factors = {};
+                for (let d = 2; d * d <= temp; d++) {
+                    while (temp % d === 0) {
+                        factors[d] = (factors[d] || 0) + 1;
+                        temp /= d;
+                    }
+                }
+                if (temp > 1) factors[temp] = (factors[temp] || 0) + 1;
+                return factors;
+            }
+
+            function getGCD(a, b) {
+                return b === 0 ? a : getGCD(b, a % b);
+            }
+
+            function getLCM(a, b) {
+                return (a * b) / getGCD(a, b);
+            }
+
+            function formatFactors(factors) {
+                return Object.keys(factors)
+                    .map(k => factors[k] > 1 ? `${k}<sup>${factors[k]}</sup>` : `${k}`)
+                    .join(' × ');
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = (i * 2) + 2;
+                    let b = (i * 3) + 3;
+                    let lcmVal = getLCM(a, b);
+                    let fa = factorize(a), fb = factorize(b);
+
+                    domanda = `Calcola il m.c.m. tra i numeri <strong>${a}</strong> e <strong>${b}</strong>.`;
+                    risposta = `m.c.m.(${a}, ${b}) = ${lcmVal}`;
+                    spiegazione = `
+                    Scomposizioni:<br>
+                    • ${a} = <code>${formatFactors(fa)}</code><br>
+                    • ${b} = <code>${formatFactors(fb)}</code><br>
+                    Moltiplicando tutti i fattori primi comuni e non comuni con l'esponente più alto si ottiene <strong>${lcmVal}</strong>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let a = 6 + (i % 5);
+                        let b = 10 + (i % 7);
+                        let c = 15 + (i % 4);
+                        let lcmVal = getLCM(a, getLCM(b, c));
+                        let fa = factorize(a), fb = factorize(b), fc = factorize(c);
+
+                        domanda = `Calcola il m.c.m. della terna di numeri <strong>${a}</strong>, <strong>${b}</strong> e <strong>${c}</strong>.`;
+                        risposta = `m.c.m.(${a}, ${b}, ${c}) = ${lcmVal}`;
+                        spiegazione = `
+                        Fattorizzazioni:<br>
+                        • ${a} = <code>${formatFactors(fa)}</code><br>
+                        • ${b} = <code>${formatFactors(fb)}</code><br>
+                        • ${c} = <code>${formatFactors(fc)}</code><br>
+                        Prendendo tutti i fattori presenti con esponente massimo otteniamo <strong>${lcmVal}</strong>.`;
+                    } else if (mod === 2) {
+                        let a = 8 + (i % 9);
+                        let b = 15 + (i % 6);
+                        let gcdVal = getGCD(a, b);
+                        let lcmVal = (a * b) / gcdVal;
+
+                        domanda = `Calcola il m.c.m. dei numeri coprimi o semi-coprimi <strong>${a}</strong> e <strong>${b}</strong>.`;
+                        risposta = `m.c.m.(${a}, ${b}) = ${lcmVal}`;
+                        spiegazione = `Applicando la formula <code>m.c.m.(a,b) = (a × b) / M.C.D.(a,b)</code>: <code>(${a} × ${b}) / ${gcdVal} = ${lcmVal}</code>.`;
+                    } else {
+                        let t1 = 4 + (i % 5);
+                        let t2 = 6 + (i % 4);
+                        let lcmVal = getLCM(t1, t2);
+
+                        domanda = `Un autobus della linea A passa ogni <strong>${t1} minuti</strong>, mentre la linea B passa ogni <strong>${t2} minuti</strong>. Se partono insieme adesso, tra quanti minuti ripartiranno insieme dalla stessa fermata?`;
+                        risposta = `Ripartiranno insieme tra ${lcmVal} minuti`;
+                        spiegazione = `Il tempo necessario affinché i due autobus coincidano è dato dal <code>m.c.m.(${t1}, ${t2})</code>, che vale esattamente <strong>${lcmVal} minuti</strong>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 2;
+                    if (mod === 1) {
+                        let a = 14 + (i - 70);
+                        let b = 20 + (i - 70);
+                        let c = 35 + (i - 70);
+                        let lcmVal = getLCM(a, getLCM(b, c));
+                        let fa = factorize(a), fb = factorize(b), fc = factorize(c);
+
+                        domanda = `Calcola il m.c.m. per i numeri <strong>${a}</strong>, <strong>${b}</strong> e <strong>${c}</strong>.`;
+                        risposta = `m.c.m.(${a}, ${b}, ${c}) = ${lcmVal}`;
+                        spiegazione = `
+                        Scomposizioni:<br>
+                        • ${a} = <code>${formatFactors(fa)}</code><br>
+                        • ${b} = <code>${formatFactors(fb)}</code><br>
+                        • ${c} = <code>${formatFactors(fc)}</code><br>
+                        Il prodotto dei fattori con esponente massimo è <strong>${lcmVal}</strong>.`;
+                    } else {
+                        let f1 = 12 + (i - 70);
+                        let f2 = 18 + (i - 70);
+                        let lcmVal = getLCM(f1, f2);
+
+                        domanda = `Tre luci pubblicitarie lampeggiano a intervalli regolari rispettivamente ogni <strong>${f1} secondi</strong> e <strong>${f2} secondi</strong>. Dopo quanti secondi lampeggeranno contemporaneamente?`;
+                        risposta = `Lampeggeranno insieme dopo ${lcmVal} secondi`;
+                        spiegazione = `La coincidenza temporale si ottiene calcolando il <code>m.c.m.(${f1}, ${f2})</code>, che equivale a <strong>${lcmVal} secondi</strong>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

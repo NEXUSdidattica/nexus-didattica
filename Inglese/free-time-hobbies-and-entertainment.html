@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Free Time, Hobbies and Entertainment in inglese: vocaboli per passatempi, sport, attività ricreative e intrattenimento - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Free Time, Hobbies and Entertainment - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="free-time-hobbies-and-entertainment" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Leisure</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Free Time, Hobbies and Entertainment</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo dedicato ai passatempi, agli hobby creativi, agli sport, alle attività all'aperto e alle forme di intrattenimento in lingua inglese.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. General Free Time Activities (Attività Generali per il Tempo Libero)</h2>
+            <p>Espressioni e verbi comunemente impiegati per descrivere ciò che si fa nel tempo libero.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Free time / Leisure time</td><td>Tempo libero</td></tr>
+                    <tr><td>Hobby / Pastime</td><td>Hobby / Passatempo</td></tr>
+                    <tr><td>To hang out with friends</td><td>Uscire con gli amici / Stare in compagnia</td></tr>
+                    <tr><td>To relax / to chill out</td><td>Rilassarsi / Staccare la spina</td></tr>
+                    <tr><td>To listen to music</td><td>Ascoltare la musica</td></tr>
+                    <tr><td>To play a musical instrument</td><td>Suonare uno strumento musicale</td></tr>
+                    <tr><td>To surf the net / to browse the web</td><td>Navigare in internet</td></tr>
+                    <tr><td>To play video games</td><td>Giocare ai videogiochi</td></tr>
+                    <tr><td>To read books / magazines</td><td>Leggere libri / riviste</td></tr>
+                    <tr><td>To write stories / a blog</td><td>Scrivere storie / un blog</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Sports and Physical Activities (Sport e Attività Fisiche)</h2>
+            <p>I principali sport individuali e di squadra praticati nel tempo libero.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Basketball</td><td>Pallacanestro / Basket</td></tr>
+                    <tr><td>Football / Soccer (US)</td><td>Calcio</td></tr>
+                    <tr><td>Tennis</td><td>Tennis</td></tr>
+                    <tr><td>Swimming</td><td>Nuoto</td></tr>
+                    <tr><td>Cycling</td><td>Ciclismo / Andare in bici</td></tr>
+                    <tr><td>Running / Jogging</td><td>Corsa / Jogging</td></tr>
+                    <tr><td>Volleyball</td><td>Pallavolo</td></tr>
+                    <tr><td>Skateboarding</td><td>Skateboarding</td></tr>
+                    <tr><td>Gym workout / Fitness</td><td>Allenamento in palestra / Fitness</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Outdoor Activities and Adventure (Attività all'Aperto e Avventura)</h2>
+            <p>Passatempi a contatto con la natura, escursioni e attività di esplorazione all'aria aperta.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Hiking / Trekking</td><td>Escursionismo / Trekking (camminare in montagna)</td></tr>
+                    <tr><td>Camping</td><td>Campeggio</td></tr>
+                    <tr><td>Fishing</td><td>Pesca</td></tr>
+                    <tr><td>Gardening</td><td>Giardinaggio</td></tr>
+                    <tr><td>Walking in the park</td><td>Camminare al parco</td></tr>
+                    <tr><td>Photography</td><td>Fotografia</td></tr>
+                    <tr><td>Travelling / Sightseeing</td><td>Viaggiare / Visitare luoghi turistici</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Creative Hobbies and Arts (Hobby Creativi e Arti)</h2>
+            <p>Attività manuali, artistiche e creative praticate per passione.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Drawing / Painting</td><td>Disegno / Pittura</td></tr>
+                    <tr><td>Cooking / Baking</td><td>Cucinare / Preparare dolci al forno</td></tr>
+                    <tr><td>DIY (Do It Yourself)</td><td>Fai da te</td></tr>
+                    <tr><td>Sewing / Knitting</td><td>Cucito / Lavoro a maglia</td></tr>
+                    <tr><td>Writing poems / diary</td><td>Scrivere poesie / diario</td></tr>
+                    <tr><td>Making videos / editing</td><td>Creare video / montaggio video</td></tr>
+                </tbody>
+            </table>
+
+            <h2>5. Entertainment and Media (Intrattenimento e Media)</h2>
+            <p>Forme di svago legate allo spettacolo, al cinema, alla TV e agli eventi dal vivo.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Entertainment</td><td>Intrattenimento / Svago</td></tr>
+                    <tr><td>To go to the cinema / movies</td><td>Andare al cinema</td></tr>
+                    <tr><td>To watch a film / a series (streaming)</td><td>Guardare un film / una serie TV</td></tr>
+                    <tr><td>To go to a concert</td><td>Andare a un concerto</td></tr>
+                    <tr><td>To go to a museum / art gallery</td><td>Andare a un museo / galleria d'arte</td></tr>
+                    <tr><td>To attend a sports match</td><td>Assistere a una partita sportiva</td></tr>
+                    <tr><td>Board games</td><td>Giochi da tavolo</td></tr>
+                    <tr><td>Card games</td><td>Giochi di carte</td></tr>
+                    <tr><td>Amusement park</td><td>Parco divertimenti</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Regola dei Verbi con gli Hobby (Play, Do, Go)</h3>
+                <p style="margin-bottom: 0;">
+                    Fai attenzione all'uso dei verbi associati agli hobby: si usa <b>play</b> per gli sport di squadra e con la palla o strumenti musicali (es. <i>play basketball</i>), <b>go</b> per le attività che terminano in <i>-ing</i> (es. <i>go swimming, go hiking</i>), e <b>do</b> per le attività individuali o ricreative (es. <i>do yoga, do DIY</i>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Analitica - Sezione Retta: Condizioni di Parallelismo e Perpendicolarità - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Condizioni di Parallelismo e Perpendicolarità - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Analitica */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-analitica-retta-sezione-5" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">La Retta - Sezione 5</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Condizioni di Parallelismo e Perpendicolarità</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come riconoscere se due rette nel piano cartesiano sono parallele o perpendicolari confrontando i loro coefficienti angolari, con 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+<article class="contenuto-lezione">
+
+            <h2>1. Condizione di Parallelismo</h2>
+            <p>
+                Due rette distinte nel piano cartesiano, di equazioni in forma esplicita <code>r: y = m<sub>1</sub>x + q<sub>1</sub></code> e <code>s: y = m<sub>2</sub>x + q<sub>2</sub></code>, si dicono <strong>parallele</strong> se e solo se hanno la stessa pendenza.
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>m<sub>1</sub> = m<sub>2</sub></code> &nbsp;&nbsp;(con <code>q<sub>1</sub> &neq; q<sub>2</sub></code> se le rette sono distinte)
+                </p>
+            </div>
+            <ul>
+                <li>Se possiedono anche lo stesso termine noto (<code>q<sub>1</sub> = q<sub>2</sub></code>), le rette vengono a coincidere.</li>
+            </ul>
+
+            <h2>2. Condizione di Perpendicolarità</h2>
+            <p>
+                Due rette si dicono <strong>perpendicolari</strong> (formano cioè un angolo retto di 90 gradi nel punto d'intersezione) se il prodotto dei loro coefficienti angolari è pari a <code>-1</code>.
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>m<sub>1</sub> &middot; m<sub>2</sub> = -1</code> &nbsp;&nbsp;&rArr;&nbsp;&nbsp; <code>m<sub>2</sub> = - 1 / m<sub>1</sub></code>
+                </p>
+            </div>
+            <ul>
+                <li>In termini pratici, il coefficiente angolare di una retta perpendicolare è l'<strong>antireciproco</strong> (o opposto del reciproco) dell'altro: se una retta ha pendenza <code>2/3</code>, la perpendicolare avrà pendenza <code>-3/2</code>.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Parallelismo e Perpendicolarità) -->
+            <div class="figura-geometrica-container">
+                <svg width="420" height="280" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="420" height="280" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    
+                    <!-- Assi cartesiani di riferimento leggeri -->
+                    <line x1="30" y1="240" x2="390" y2="240" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+                    <line x1="60" y1="260" x2="60" y2="20" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+
+                    <!-- Rette Parallele -->
+                    <line x1="80" y1="180" x2="220" y2="100" stroke="#2563eb" stroke-width="2.5"/>
+                    <line x1="80" y1="130" x2="220" y2="50" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="5,5"/>
+                    <text x="225" y="95" fill="#2563eb" font-family="Arial, sans-serif" font-weight="bold" font-size="12">m₁ = m₂</text>
+
+                    <!-- Rette Perpendicolari -->
+                    <line x1="260" y1="220" x2="380" y2="100" stroke="#10b981" stroke-width="2.5"/>
+                    <line x1="270" y1="110" x2="390" y2="230" stroke="#ef4444" stroke-width="2.5"/>
+                    <text x="315" y="150" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="12">90°</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Rappresentazione visiva di rette parallele (<code style="color:#2563eb;">stessa pendenza</code>) e perpendicolari (<code style="color:#10b981;">antireciproke</code>).
+                </div>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Data la retta <code>r: y = -3x + 5</code>, scrivi l'equazione della retta <code>s</code> passante per il punto <code>P(1, 4)</code> e parallela a <code>r</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricaviamo il coefficiente angolare della retta data: <code>m = -3</code>.</li>
+                    <li>Poiché la retta <code>s</code> è parallela, manterrà lo stesso coefficiente angolare: <code>m<sub>s</sub> = -3</code>.</li>
+                    <li>Impostiamo l'equazione generica della retta passante per <code>P</code> sfruttando il fascio improprio <code>y - y<sub>P</sub> = m(x - x<sub>P</sub>)</code>.</li>
+                    <li>Sostituiamo coordinate e pendenza: <code>y - 4 = -3(x - 1)</code> &rArr; <code>y - 4 = -3x + 3</code> &rArr; <code>y = -3x + 7</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: L'equazione della retta parallela è <code>y = -3x + 7</code>.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Parallelismo e Perpendicolarità</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di verifica di parallelismo, determinazione di rette perpendicolari e calcolo di fasci di rette.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    domanda = `Data la retta <code>y = 4x - 2</code>, indica il coefficiente angolare di qualsiasi retta ad essa parallela.`;
+                    risposta = `<strong>m = 4</strong>`;
+                    spiegazione = `
+                    1) Le rette parallele condividono lo stesso coefficiente angolare.<br>
+                    2) Estrapolando la pendenza dalla retta data otteniamo <code>m = 4</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Data la retta <code>y = -2/5 x + 1</code>, trova il coefficiente angolare di una retta perpendicolare.`;
+                    risposta = `<strong>m = 5/2</strong>`;
+                    spiegazione = `
+                    1) Il coefficiente angolare dato è <code>m<sub>1</sub> = -2/5</code>.<br>
+                    2) La condizione di perpendicolarità richiede l'antireciproco: rovesciamo la frazione e cambiamo di segno ottenendo <code>5/2</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Scrivi l'equazione della retta passante per <code>P(2, -1)</code> e perpendicolare alla retta <code>y = 1/3 x + 4</code>.`;
+                    risposta = `<strong>y = -3x + 5</strong>`;
+                    spiegazione = `
+                    1) La pendenza della retta data è <code>1/3</code>, quindi quella perpendicolare avrà <code>m = -3</code>.<br>
+                    2) Imkopfiamo la formula del passaggio per un punto: <code>y - (-1) = -3(x - 2)</code>.<br>
+                    3) Sviluppando otteniamo <code>y + 1 = -3x + 6</code> &rArr; <code>y = -3x + 5</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sull'ingrandimento lineare negli specchi e nelle lenti, relazioni geometriche, altezza e dimensioni delle immagini con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Ingrandimento Lineare e Formazione delle Immagini con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="ingrandimento" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <summary class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Ingrandimento Lineare</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio delle proporzioni geometriche tra dimensioni dell'oggetto e dell'immagine, ingrandimento trasversale e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </summary>
+
+        <article class="contenuto-lezione">
+            <h2>1. Definizione di Ingrandimento Lineare ($G$)</h2>
+            <p>
+                L'<strong>ingrandimento lineare</strong> (o trasversale) $G$ è una grandezza adimensionale che quantifica il rapporto tra le dimensioni lineari dell'immagine formata da uno specchio o da una lente e quelle dell'oggetto corrispondente.
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formule dell'Ingrandimento Lineare:</b>
+                <p style="margin-top: 0.5rem;">
+                    • In funzione delle altezze ($h_p$ altezza oggetto, $h_q$ altezza immagine):
+                    $$G = \frac{h_q}{h_p}$$
+                    • In funzione delle distanze nello specchio sferico (o lente sottile):
+                    $$G = -\frac{d_q}{d_p}$$
+                    • <b>Interpretazione del Segno:</b>
+                    - Se $G > 0$, l'immagine è <strong>dritta</strong> (avente lo stesso orientamento dell'oggetto).<br>
+                    - Se $G < 0$, l'immagine è <strong>capovolta</strong> (invertita verticalmente).<br>
+                    - Se $|G| > 1$, l'immagine è ingrandita; se $|G| < 1$, l'immagine è rimpicciolita.
+                </p>
+            </div>
+
+            <h2>2. Applicazioni Pratiche</h2>
+            <p>
+                Il concetto di ingrandimento è fondamentale nella progettazione di strumenti ottici di precisione come microscopi, telescopi, obiettivi fotografici e specchi retrovisori o di sicurezza.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo dell'ingrandimento, altezze e distanze coniugate:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        // Script autonomo e protetto per la generazione immediata dei 100 esercizi unici
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container || container.children.length > 0) return;
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 4;
+                    if (tipo === 0) {
+                        // Calcolo G da altezze hq e hp
+                        let hp = 2 + (i % 8); // cm
+                        let hq = hp * (0.5 + (i % 5) * 0.5); // es 1.0, 1.5, 2.0...
+                        let capovolta = i % 2 === 0;
+                        if (capovolta) hq = -hq;
+                        let G = hq / hp;
+
+                        q = `Esercizio ${i}: Un oggetto alto $h_p = ${hp}\\text{ cm}$ produce un'immagine alta $h_q = ${Math.abs(hq).toFixed(1)}\\text{ cm}$ (${capovolta ? "capovolta" : "dritta"}). Calcola l'ingrandimento lineare $G$.`;
+                        r = `Ingrandimento $G = ${G.toFixed(2)}$.`;
+                        s = `L'ingrandimento lineare si calcola come rapporto tra l'altezza dell'immagine e quella dell'oggetto: $G = \\frac{h_q}{h_p} = \\frac{${hq.toFixed(1)}}{${hp}} = ${G.toFixed(2)}$.`;
+                    
+                    } else if (tipo === 1) {
+                        // Calcolo altezza immagine hq da G e hp
+                        let hp = 3 + (i % 7);
+                        let G_val = (0.5 + (i % 4) * 0.75).toFixed(2); // es 0.5, 1.25, 2.0...
+                        let segnoG = i % 2 === 0 ? 1 : -1;
+                        let G_eff = segnoG * parseFloat(G_val);
+                        let hq = G_eff * hp;
+
+                        q = `Esercizio ${i}: Un sistema ottico genera un ingrandimento lineare $G = ${G_eff}$ per un oggetto di altezza $h_p = ${hp}\\text{ cm}$. Determina l'altezza $h_q$ e l'orientamento dell'immagine.`;
+                        r = `Altezza immagine $h_q = ${Math.abs(hq).toFixed(1)}\\text{ cm}$ (${hq < 0 ? "capovolta" : "dritta"}).`;
+                        s = `Ricaviamo l'altezza dall'equazione dell'ingrandimento: $h_q = G \\cdot h_p = ${G_eff} \\cdot ${hp} = ${hq.toFixed(1)}\\text{ cm}$. Il segno ${hq < 0 ? "negativo indica che l'immagine è capovolta" : "positivo indica che l'immagine è dritta"}.`;
+                    
+                    } else if (tipo === 2) {
+                        // Calcolo G da distanze dp e dq
+                        let dp = 20 + (i % 30);
+                        let dq = 10 + (i % 20);
+                        let G = -dq / dp;
+
+                        q = `Esercizio ${i}: In uno specchio sferico, la distanza dell'oggetto è $d_p = ${dp}\\text{ cm}$ e la distanza dell'immagine è $d_q = ${dq}\\text{ cm}$. Calcola l'ingrandimento lineare trasversale $G$.`;
+                        r = `Ingrandimento $G \\approx ${G.toFixed(3)}$.`;
+                        s = `Per gli specchi sferici, l'ingrandimento si esprime tramite il rapporto delle distanze cambiato di segno: $G = -\\frac{d_q}{d_p} = -\\frac{${dq}}{${dp}} \\approx ${G.toFixed(3)}$.`;
+                    
+                    } else {
+                        // Calcolo distanza immagine dq da G e dp
+                        let dp = 15 + (i % 25);
+                        let G_target = -(0.5 + (i % 3) * 0.5); // es -0.5, -1.0, -1.5
+                        let dq = -G_target * dp;
+
+                        q = `Esercizio ${i}: Un oggetto si trova a $d_p = ${dp}\\text{ cm}$ da uno specchio. Sapendo che l'ingrandimento lineare vale $G = ${G_target}$, calcola la posizione dell'immagine $d_q$.`;
+                        r = `Distanza immagine $d_q = ${dq.toFixed(1)}\\text{ cm}$.`;
+                        s = `Dalla formula $G = -\\frac{d_q}{d_p}$, ricaviamo $d_q = -G \\cdot d_p = -(${G_target}) \\cdot ${dp} = ${dq.toFixed(1)}\\text{ cm}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

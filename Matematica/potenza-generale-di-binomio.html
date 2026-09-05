@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 5: Potenza generale di binomio con il Triangolo di Tartaglia - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Potenza di un binomio con Tartaglia - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+
+        .tartaglia-tree {
+            font-family: monospace;
+            text-align: center;
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 1rem;
+            border-radius: 8px;
+            line-height: 1.8;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polinomi-potenza-binomio-tartaglia" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Prodotti Notevoli</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 5: Potenza di un binomio con il Triangolo di Tartaglia</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Sviluppo di (A + B)ⁿ per qualsiasi esponente naturale, costruzione del Triangolo di Tartaglia, coefficienti binomiali e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Triangolo di Tartaglia</h2>
+            <p>
+                Per calcolare lo sviluppo di un binomio elevato a una potenza generica <code>n</code>, cioè <code>(A + B)ⁿ</code>, utilizziamo una disposizione triangolare di numeri nota come <strong>Triangolo di Tartaglia</strong> (o Triangolo di Pascal). Ogni riga del triangolo fornisce i <strong>coefficienti numerici</strong> dello sviluppo.
+            </p>
+
+            <div class="tartaglia-tree">
+                n = 0: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 <br>
+                n = 1: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 &nbsp; 1 <br>
+                n = 2: &nbsp;&nbsp;&nbsp;&nbsp; 1 &nbsp; 2 &nbsp; 1 <br>
+                n = 3: &nbsp;&nbsp;&nbsp; 1 &nbsp; 3 &nbsp; 3 &nbsp; 1 <br>
+                n = 4: &nbsp;&nbsp; 1 &nbsp; 4 &nbsp; 6 &nbsp; 4 &nbsp; 1 <br>
+                n = 5: &nbsp; 1 &nbsp; 5 &nbsp; 10 &nbsp; 10 &nbsp; 5 &nbsp; 1
+            </div>
+
+            <p>
+                <strong>Come si costruisce:</strong>
+                Ogni riga inizia e finisce con il numero <code>1</code>. Ogni numero interno è dato dalla <strong>somma dei due numeri sovrastanti</strong> della riga precedente.
+            </p>
+
+            <h2>2. Regola dello Sviluppo del Binomio</h2>
+            <p>
+                Per sviluppare <code>(A + B)ⁿ</code>:
+            </p>
+            <ul>
+                <li>Lo sviluppo conterrà sempre <strong>n + 1</strong> termini.</li>
+                <li>I coefficienti di ciascun termine si leggono direttamente dalla riga <code>n</code> del Triangolo di Tartaglia.</li>
+                <li>Gli esponenti del primo termine <code>A</code> partono da <code>n</code> e <strong>decrescono fino a 0</strong>.</li>
+                <li>Gli esponenti del secondo termine <code>B</code> partono da <code>0</code> e <strong>crescono fino a n</strong>.</li>
+                <li>Se il binomio è una differenza <code>(A - B)ⁿ</code>, i segni dei termini dello sviluppo saranno <strong>alternati</strong> (<code>+ - + - + ...</code>).</li>
+            </ul>
+
+            <div class="formula-box">
+                🔹 <strong>Esempio n = 4:</strong> <code>(A + B)⁴ = 1·A⁴ + 4·A³B + 6·A²B² + 4·AB³ + 1·B⁴</code>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola lo sviluppo del seguente binomio elevato alla quarta: <code>( 2x - y )⁴</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Coeff. della riga <code>n = 4</code>: <code>1, 4, 6, 4, 1</code>.</li>
+                    <li>Sviluppiamo la struttura con i segni alternati (perché c'è un segno meno):
+                        <br>• <code>+ 1 · (2x)⁴ · (y)⁰ = 16x⁴</code>
+                        <br>• <code>- 4 · (2x)³ · (y)¹ = -4 · 8x³ · y = -32x³y</code>
+                        <br>• <code>+ 6 · (2x)² · (y)² = +6 · 4x² · y² = +24x²y²</code>
+                        <br>• <code>- 4 · (2x)¹ · (y)³ = -4 · 2x · y³ = -8xy³</code>
+                        <br>• <code>+ 1 · (2x)⁰ · (y)⁴ = +1 · 1 · y⁴ = +y⁴</code>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 16x⁴ - 32x³y + 24x²y² - 8xy³ + y⁴</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Potenza di Binomio con Tartaglia</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (esponenti 4 e 5 con monomi semplici), medio (con frazioni ed esponenti 5 e 6) e difficile (ricerca di singoli termini k-esimi, espressioni combinate e grado elevato).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Funzione ausiliaria per calcolare la riga di Tartaglia per un dato n
+            function getTartagliaRow(n) {
+                let row = [1];
+                for (let i = 0; i < n; i++) {
+                    let nextRow = [1];
+                    for (let j = 0; j < row.length - 1; j++) {
+                        nextRow.push(row[j] + row[j + 1]);
+                    }
+                    nextRow.push(1);
+                    row = nextRow;
+                }
+                return row;
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n = (i % 2 === 0) ? 4 : 5;
+                    let a = (i % 2) + 1;
+                    let b = 1;
+                    let sign = (i % 3 === 0) ? '-' : '+';
+
+                    domanda = `Sviluppa la potenza quarta o quinta di binomio: <code>(${a}x ${sign} ${b})<sup>${n}</sup></code>.`;
+
+                    let row = getTartagliaRow(n);
+                    let terms = [];
+                    let spiegTerms = [];
+
+                    for (let k = 0; k <= n; k++) {
+                        let coeffTartaglia = row[k];
+                        let expA = n - k;
+                        let expB = k;
+
+                        let valA = Math.pow(a, expA);
+                        let valB = Math.pow(b, expB);
+                        
+                        let currentSign = (sign === '-' && k % 2 !== 0) ? -1 : 1;
+                        let finalCoeff = coeffTartaglia * valA * valB * currentSign;
+
+                        let termStr = '';
+                        let signStr = (finalCoeff > 0 && k > 0) ? '+ ' : (finalCoeff < 0) ? '- ' : '';
+                        let absCoeff = Math.abs(finalCoeff);
+
+                        if (expA > 0) {
+                            termStr = `${absCoeff === 1 && expA > 0 ? '' : absCoeff}x${expA > 1 ? '<sup>' + expA + '</sup>' : ''}`;
+                        } else {
+                            termStr = `${absCoeff}`;
+                        }
+
+                        terms.push(`${signStr}${termStr}`);
+                        spiegTerms.push(`• Termine ${k+1}: coeff. Tartaglia ${coeffTartaglia} · (${a}x)<sup>${expA}</sup> · (${sign}${b})<sup>${expB}</sup> = ${finalCoeff > 0 ? '+' : ''}${finalCoeff}${expA > 0 ? 'x' + (expA > 1 ? '<sup>' + expA + '</sup>' : '') : ''}`);
+                    }
+
+                    risposta = `<code>${terms.join(' ')}</code>`;
+                    spiegazione = `
+                    1) Riga del Triangolo di Tartaglia per n = ${n}: <code>[ ${row.join(', ')} ]</code>.<br>
+                    2) Calcoliamo ciascuno dei ${n+1} termini applicando le potenze decrescenti di (${a}x) e crescenti di (${sign}${b}):<br>
+                    ${spiegTerms.join('<br>')}<br>
+                    3) Uniamo i termini per ottenere il polinomio finale.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let n = 4;
+                    let num1 = 1;
+                    let den1 = 2;
+                    let num2 = (i % 2) + 1;
+
+                    domanda = `Sviluppa il binomio con frazioni alla quarta potenza: <br>
+                    <code>( 1/2 a - ${num2}b )⁴</code>.`;
+
+                    risposta = `<code>1/16 a⁴ - ${num2}/2 a³b + ${3*num2*num2}/2 a²b² - ${2*Math.pow(num2,3)} ab³ + ${Math.pow(num2,4)} b⁴</code>`;
+                    spiegazione = `
+                    1) Utilizziamo la riga n = 4 di Tartaglia: <code>1, 4, 6, 4, 1</code>.<br>
+                    2) Appliciamo la formula alternativa dei segni per la differenza (+, -, +, -, +):
+                    <br>• 1° t: <code>1 · (1/2 a)⁴ = 1/16 a⁴</code>
+                    <br>• 2° t: <code>- 4 · (1/8 a³) · (${num2}b) = - ${num2}/2 a³b</code>
+                    <br>• 3° t: <code>+ 6 · (1/4 a²) · (${num2*num2}b²) = + ${3*num2*num2}/2 a²b²</code>
+                    <br>• 4° t: <code>- 4 · (1/2 a) · (${Math.pow(num2,3)}b³) = - ${2*Math.pow(num2,3)} ab³</code>
+                    <br>• 5° t: <code>+ 1 · (${Math.pow(num2,4)}b⁴) = + ${Math.pow(num2,4)} b⁴</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Determina il <strong>3° termine</strong> dello sviluppo di <code>( 2x³ - y² )⁶</code> senza sviluppare l'intero binomio.`;
+
+                        risposta = `<code>+ 240 x¹² y⁴</code>`;
+                        spiegazione = `
+                        1) Per n = 6, i coefficienti di Tartaglia sono: <code>1, 6, 15, 20, 15, 6, 1</code>.<br>
+                        2) Il 3° termine corrisponde all'indice k = 2 (poiché si parte da k = 0).<br>
+                        3) Il coefficiente di Tartaglia associato è <code>15</code>.<br>
+                        4) Calcoliamo le potenze dei singoli monomi:
+                        <br>• Esponente del 1° termine: <code>n - k = 6 - 2 = 4</code> → <code>(2x³)⁴ = 16x¹²</code>.
+                        <br>• Esponente del 2° termine: <code>k = 2</code> → <code>(-y²)² = +y⁴</code>.<br>
+                        5) Moltiplichiamo i fattori: <code>15 · (16x¹²) · (y⁴) = 240 x¹² y⁴</code>.`;
+                    } else {
+                        domanda = `Semplifica la seguente espressione tra potenze di binomi: <br>
+                        <code>( x + 1 )⁴ - ( x - 1 )⁴</code>.`;
+
+                        risposta = `<code>8x³ + 8x</code>`;
+                        spiegazione = `
+                        1) Sviluppiamo <code>(x + 1)⁴ = x⁴ + 4x³ + 6x² + 4x + 1</code>.<br>
+                        2) Sviluppiamo <code>(x - 1)⁴ = x⁴ - 4x³ + 6x² - 4x + 1</code>.<br>
+                        3) Sottraiamo il secondo sviluppo dal primo cambiando i segni dei termini del secondo:
+                        <br><code>(x⁴ + 4x³ + 6x² + 4x + 1) - (x⁴ - 4x³ + 6x² - 4x + 1)</code>
+                        <br><code>= 4x³ + 4x³ + 4x + 4x = 8x³ + 8x</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

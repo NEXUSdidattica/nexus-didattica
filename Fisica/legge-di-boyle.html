@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Legge di Boyle e Trasformazioni Isoterme con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Legge di Boyle: Teoria, Trasformazioni Isoterme e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="legge-di-boyle" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Legge di Boyle</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio delle trasformazioni isoterme nei gas perfetti, relazione inversa tra pressione e volume, e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Cos'è la Legge di Boyle?</h2>
+            <p>
+                La <strong>Legge di Boyle</strong> (o legge di Boyle-Mariotte) stabilisce che, per una determinata massa di gas perfetto mantenuta a <em>temperatura costante</em> (trasformazione isoterma), il prodotto della pressione per il volume rimane costante:
+            </p>
+            <div class="formula-box">
+                📐 <b>Formula della Legge di Boyle:</b>
+                $$P \cdot V = \text{costante} \implies P_1 \cdot V_1 = P_2 \cdot V_2$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Ciò significa che pressione e volume sono grandezze <strong>inversamente proporzionali</strong>: se il volume di un gas si dimezza, la sua pressione raddoppia (a parità di temperatura e quantità di gas).
+                </p>
+            </div>
+
+            <h2>2. Grafico e Proprietà dell'Isoterma</h2>
+            <ul>
+                <li><strong>Rappresentazione sul piano $P-V$:</strong> L'isoterma è un ramo di iperbole equilatera.</li>
+                <li><strong>Significato Microscopico:</strong> Diminuendo il volume, le molecole del gas si trovano confinate in uno spazio minore, urto dopo urto più frequentemente contro le pareti, determinando un aumento della pressione.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Legge di Boyle</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati alle trasformazioni isoterme e al calcolo di pressione e volume, ordinati per difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulla Legge di Boyle
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // Calcolo della pressione finale P2 = (P1 * V1) / V2
+                    let P1 = 1.0 + (i % 3) * 0.5; // atm o bar
+                    let V1 = 3.0 + (i % 4) * 1.0; // litri
+                    let V2 = 1.5 + (i % 2) * 0.5; // litri
+                    let P2 = (P1 * V1) / V2;
+
+                    q = `Esercizio ${i}: Una massa di gas perfetto alla temperatura costante di $20\\text{ °C}$ occupa un volume $V_1 = ${V1.toFixed(1)}\\text{ litri}$ alla pressione $P_1 = ${P1.toFixed(1)}\\text{ bar}$. Se il volume viene compresso fino a $V_2 = ${V2.toFixed(1)}\\text{ litri}$, calcola la nuova pressione $P_2$.`;
+                    r = `$${P2.toFixed(2)}\\text{ bar}$.`;
+                    s = `Applicando la legge di Boyle ($P_1 V_1 = P_2 V_2$) per la trasformazione isoterma: $P_2 = \\frac{P_1 \\cdot V_1}{V_2} = \\frac{${P1.toFixed(1)} \\cdot ${V1.toFixed(1)}}{${V2.toFixed(1)}} = ${P2.toFixed(2)}\\text{ bar}$.`;
+                
+                } else if (tipo === 1) {
+                    // Calcolo del volume finale V2 = (P1 * V1) / P2
+                    let P1 = 2.0;
+                    let V1 = 5.0;
+                    let P2 = 1.0 + (i % 5) * 0.5;
+                    let V2 = (P1 * V1) / P2;
+
+                    q = `Esercizio ${i}: Un gas ideale in condizioni isoterme si trova a una pressione $P_1 = ${P1}\\text{ atm}$ e occupa un volume $V_1 = ${V1}\\text{ litri}$. Se la pressione scende a $P_2 = ${P2.toFixed(1)}\\text{ atm}$, qual è il nuovo volume $V_2$ del gas?`;
+                    r = `$${V2.toFixed(2)}\\text{ litri}$.`;
+                    s = `Dalla relazione inversa della legge di Boyle $V_2 = \\frac{P_1 \\cdot V_1}{P_2} = \\frac{${P1} \\cdot ${V1}}{${P2.toFixed(1)}} = ${V2.toFixed(2)}\\text{ litri}$.`;
+                
+                } else if (tipo === 2) {
+                    // Calcolo della pressione iniziale P1 = (P2 * V2) / V1
+                    let P2 = 4.0;
+                    let V2 = 2.0;
+                    let V1 = 6.0 + (i % 3) * 2.0;
+                    let P1 = (P2 * V2) / V1;
+
+                    q = `Esercizio ${i}: Durante un'espansione isoterma, un gas occupa un volume finale $V_2 = ${V2}\\text{ litri}$ alla pressione $P_2 = ${P2}\\text{ bar}$. Sapendo che il volume iniziale era $V_1 = ${V1}\\text{ litri}$, determina la pressione iniziale $P_1$.`;
+                    r = `$${P1.toFixed(2)}\\text{ bar}$.`;
+                    s = `Utilizzando la formula inversa $P_1 = \\frac{P_2 \\cdot V_2}{V_1} = \\frac{${P2} \\cdot ${V2}}{${V1}} = ${P1.toFixed(2)}\\text{ bar}$.`;
+                
+                } else {
+                    // Domanda teorica sul significato di trasformazione isoterma
+                    q = `Esercizio ${i}: Definisci una trasformazione isoterma e spiega perché il prodotto $P \\cdot V$ rimane costante in accordo con la legge di Boyle.`;
+                    r = `Un'isoterma è una trasformazione a temperatura costante; il prodotto $P \\cdot V$ è costante perché se il volume diminuisce, le molecole urtano più spesso le pareti aumentando proporzionalmente la pressione.`;
+                    s = `A temperatura costante l'energia cinetica media delle molecole non varia; di conseguenza, la compressione o l'espansione del gas comporta variazioni di pressione inversamente proporzionali al volume.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

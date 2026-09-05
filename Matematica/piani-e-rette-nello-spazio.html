@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Solida - Sezione 1: Piani e Rette nello Spazio - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Piani e Rette nello Spazio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Solida */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-solida-sezione-1" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Solida - Sezione 1</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Piani e Rette nello Spazio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Posizioni reciproche di rette e piani nello spazio tridimensionale, parallelismo, ortogonalità e teoremi fondamentali, con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione alla Geometria dello Spazio</h2>
+            <p>
+                A differenza della geometria piana, in cui tutti gli enti geometrici giacciono su un unico piano, la geometria solida (o dello spazio) studia figure e relazioni tridimensionali. Il piano e la retta nello spazio possono disporsi in svariate posizioni reciproche che determinano le regole strutturali dei solidi geometrici.
+            </p>
+
+            <h2>2. Posizioni Reciproche tra Retta e Piano</h2>
+            <p>Data una retta <code>r</code> e un piano <code>&alpha;</code> nello spazio, si possono verificare tre casi principali:</p>
+            <ul>
+                <li><strong>Retta giacente sul piano:</strong> Tutti i punti della retta appartengono al piano <code>&alpha;</code>.</li>
+                <li><strong>Retta incostante (o incidentale):</strong> La retta interseca il piano in un unico punto e non è perpendicolare ad esso.</li>
+                <li><strong>Retta parallela al piano:</strong> La retta e il piano non hanno alcun punto in comune (la distanza minima resta costante).</li>
+                <li><strong>Retta perpendicolare (ortogonale) al piano:</strong> La retta interseca il piano formando angoli retti con qualsiasi retta del piano passante per il punto d'intersezione.</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Piani, Rette e Angoli nello Spazio) -->
+            <div class="figura-geometrica-container">
+                <svg width="560" height="340" viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sfondo interno decorativo -->
+                    <rect width="560" height="340" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+                    <!-- Piano alpha (rappresentato come un parallelogramma inclinato in prospettiva) -->
+                    <polygon points="80,220 220,130 480,130 340,220" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round"/>
+                    <text x="100" y="205" fill="#1e40af" font-family="Arial, sans-serif" font-size="15" font-weight="bold">&alpha;</text>
+
+                    <!-- Area evidenziata di ortogonalità sul piano -->
+                    <ellipse cx="280" cy="175" rx="35" ry="12" fill="#dbeafe" opacity="0.6"/>
+
+                    <!-- Retta r perpendicolare al piano alpha (Verde scuro) -->
+                    <line x1="280" y1="60" x2="280" y2="245" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+                    <text x="292" y="75" fill="#059669" font-family="Arial, sans-serif" font-size="14" font-weight="bold">r</text>
+
+                    <!-- Simbolo di angolo retto tra la retta r e una retta di servizio sul piano -->
+                    <path d="M 280 160 L 295 160 L 295 175" fill="none" stroke="#ea580c" stroke-width="2"/>
+
+                    <!-- Punto di intersezione P -->
+                    <circle cx="280" cy="175" r="5" fill="#059669"/>
+                    <text x="258" y="180" fill="#059669" font-family="Arial, sans-serif" font-weight="bold" font-size="13">P</text>
+
+                    <!-- Retta s parallela al piano (Viola) -->
+                    <line x1="120" y1="100" x2="420" y2="100" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="6,4"/>
+                    <text x="435" y="105" fill="#7c3aed" font-family="Arial, sans-serif" font-size="14" font-weight="bold">s (// &alpha;)</text>
+
+                    <!-- Linee di proiezione tratteggiate per evidenziare la distanza -->
+                    <line x1="180" y1="100" x2="180" y2="155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+                    <line x1="360" y1="100" x2="360" y2="155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Rappresentazione spaziale. La retta <code style="color:#059669;">r</code> è ortogonale al piano <code style="color:#1e40af;">&alpha;</code> nel punto <code style="color:#059669;">P</code>; la retta <code style="color:#7c3aed;">s</code> è parallela al piano.
+                </div>
+            </div>
+
+            <h2>3. Teorema delle Tre Perpendicolari</h2>
+            <p>
+                Uno dei pilastri della stereometria è il <em>Teorema delle Tre Perpendicolari</em>, fondamentale per calcolare distanze nello spazio tridimensionale e nello studio dei poliedri.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Enunciato del Teorema:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Data una retta <code>r</code> perpendicolare a un piano <code>&alpha;</code> in un punto <code>P</code>, e una retta <code>s</code> giacente su <code>&alpha;</code> passante per il piede della perpendicolare o per un punto qualsiasi della sua proiezione: se da un punto della retta <code>r</code> si traccia la perpendicolare a <code>s</code>, allora la congiungente il punto esterno con il piede della seconda perpendicolare è ortogonale a <code>s</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un segmento <code>AB</code> lungo <code>10 cm</code> ha gli estremi su due piani paralleli distanti tra loro <code>6 cm</code>. Calcola la proiezione ortogonale del segmento <code>AB</code> sul piano.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Visualizziamo la situazione come un triangolo rettangolo nello spazio, dove l'ipotenusa è il segmento obliquo <code>AB = 10 cm</code> e un cateto è l'altezza tra i piani paralleli (distanza <code>h = 6 cm</code>).</li>
+                    <li>Applichiamo il Teorema di Pitagora per trovare l'altro cateto, che corrisponde proprio alla proiezione ortogonale sul piano <code>p = &radic;(AB<sup>2</sup> - h<sup>2</sup>)</code>.</li>
+                    <li>Sostituiamo i valori numerici: <code>p = &radic;(10<sup>2</sup> - 6<sup>2</sup>) = &radic;(100 - 36) = &radic;64</code>.</li>
+                    <li>Eseguiamo la radice quadrata: <code>p = 8 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: La proiezione ortogonale del segmento misura 8 cm.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Piani e Rette nello Spazio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di geometria solida applicati a distanze, proiezioni ortogonali, fasci di piani e teoremi spaziali.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let ipo = (i % 5) + 10; // Ipotenusa tra 10 e 14
+                    let cat = (i % 4) + 6;  // Altezza tra 6 e 9
+                    let proj = Math.sqrt(ipo * ipo - cat * cat).toFixed(1);
+
+                    domanda = `Un segmento obliquo lungo <code>${ipo} cm</code> parte da un punto esterno e arriva a un piano. Se la sua distanza perpendicolare (altezza) dal piano è <code>${cat} cm</code>, calcola la misura della sua proiezione ortogonale sul piano.`;
+                    risposta = `<strong>${proj} cm</strong>`;
+                    spiegazione = `
+                    1) Applichiamo il Teorema di Pitagora sul triangolo rettangolo formato nello spazio: <code>p = &radic;(ipo<sup>2</sup> - cat<sup>2</sup>)</code>.<br>
+                    2) Sostituiamo i dati: <code>p = &radic;(${ipo}<sup>2</sup> - ${cat}<sup>2</sup>) = &radic;(${ipo*ipo} - ${cat*cat}) = &radic;${(ipo*ipo - cat*cat).toFixed(1)} = ${proj} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let cat1 = (i % 6) + 5; // Proiezione
+                    let cat2 = (i % 5) + 8; // Altezza
+                    let ipo = Math.sqrt(cat1 * cat1 + cat2 * cat2).toFixed(1);
+
+                    domanda = `La proiezione ortogonale di un segmento su un piano misura <code>${cat1} cm</code>, mentre la distanza verticale (altezza) del punto dal piano è <code>${cat2} cm</code>. Calcola la lunghezza reale del segmento obliquo nello spazio.`;
+                    risposta = `<strong>${ipo} cm</strong>`;
+                    spiegazione = `
+                    1) Ricaviamo l'ipotenusa del triangolo rettangolo spaziale con Pitagora: <code>l = &radic;(p<sup>2</sup> + h<sup>2</sup>)</code>.<br>
+                    2) Calcoliamo: <code>l = &radic;(${cat1}<sup>2</sup> + ${cat2}<sup>2</sup>) = &radic;(${cat1*cat1} + ${cat2*cat2}) = &radic;${(cat1*cat1 + cat2*cat2).toFixed(1)} = ${ipo} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let d1 = (i % 4) + 12; // Segmento obliquo
+                    let d2 = (i % 3) + 5;  // Proiezione nota
+                    let h = Math.sqrt(d1 * d1 - d2 * d2).toFixed(2);
+
+                    domanda = `Un punto si trova nello spazio a una certa distanza da un piano. Se un segmento obliquo condotto dal punto al piano misura <code>${d1} cm</code> e la sua proiezione sul piano è lunga <code>${d2} cm</code>, qual è la distanza del punto dal piano (altezza)?`;
+                    risposta = `<strong>${h} cm</strong>`;
+                    spiegazione = `
+                    1) Ricaviamo il cateto verticale (altezza) invertendo il Teorema di Pitagora: <code>h = &radic;(segmento<sup>2</sup> - proiezione<sup>2</sup>)</code>.<br>
+                    2) Svolgiamo i calcoli: <code>h = &radic;(${d1}<sup>2</sup> - ${d2}<sup>2</sup>) = &radic;(${d1*d1} - ${d2*d2}) = &radic;${(d1*d1 - d2*d2).toFixed(2)} = ${h} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

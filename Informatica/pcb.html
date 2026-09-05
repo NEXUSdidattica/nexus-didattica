@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Il Process Control Block (PCB) e la Gestione dei Processi nel Kernel - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Process Control Block (PCB) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .pcb-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        @media(max-width: 768px) {
+            .pcb-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pcb-sidebar {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 12px;
+            border-radius: 6px;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .pcb-list-item {
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            background: #1e293b;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-left: 3px solid #64748b;
+            transition: all 0.2s;
+        }
+
+        .pcb-list-item:hover {
+            background: #334155;
+        }
+
+        .pcb-list-item.selected {
+            border-left-color: #ea580c;
+            background: #1a1005;
+        }
+
+        .pcb-inspector {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .pcb-field {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #334155;
+            padding-bottom: 4px;
+        }
+
+        .pcb-field-name {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .pcb-field-value {
+            color: #f8fafc;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="pcb" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Process Control Block (PCB)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    La struttura dati fondamentale del kernel per la gestione, il salvataggio del contesto e lo scheduling dei processi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è il Process Control Block (PCB)?</h2>
+            <p>
+                Il <strong>PCB (Process Control Block)</strong>, noto in alcuni sistemi (come Linux) come <code>task_struct</code>, è una struttura dati mantenuta dal kernel del sistema operativo per ciascun processo attivo. Funziona come una sorta di "carta d'identità" e registro di controllo: senza di esso, il sistema operativo non sarebbe in grado di interrompere un'applicazione, memorizzarne i progressi e riprenderla in seguito.
+            </p>
+            <p>
+                Quando si verifica un cambio di contesto (<cite>Context Switch</cite>), il kernel salva lo stato della CPU associato al processo in esecuzione all'interno del suo PCB, caricando contestualmente i registri salvati nel PCB del processo successivo che deve prendere il controllo del processore.
+            </p>
+
+            <h2>2. Campi Principali di un PCB</h2>
+            <p>I dati contenuti in un blocco di controllo di processo tipico includono:</p>
+            <ul>
+                <li><strong>PID (Process Identifier):</strong> Un numero intero univoco assegnato dal sistema operativo per identificare il processo.</li>
+                <li><strong>Stato del Processo:</strong> Indica la condizione attuale del ciclo di vita (<cite>New, Ready, Running, Waiting, Terminated</cite>).</li>
+                <li><strong>Program Counter (PC):</strong> L'indirizzo della prossima istruzione di codice che il processo dovrà eseguire quando riceverà nuovamente la CPU.</li>
+                <li><strong>Registri della CPU:</strong> Accumulatori, registri di indice, stack pointer e registri generali salvati durante le interruzioni.</li>
+                <li><strong>Informazioni di Scheduling:</strong> Priorità del processo, puntatori alle code di attesa e parametri relativi agli algoritmi di assegnazione temporale.</li>
+                <li><strong>Gestione della Memoria:</strong> Tabelle delle pagine, limiti dei segmenti di memoria assegnati (<cite>Text, Data, Stack, Heap</cite>).</li>
+                <li><strong>Informazioni di I/O e Risorse:</strong> Elenco dei descrittori di file aperti, socket di rete e dispositivi assegnati.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Fondamento del Multitasking:</strong> Il cambio di contesto pulito e sicuro tra processi è reso possibile esclusivamente dall'aggiornamento atomico dei campi critici presenti nel PCB.
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore Interattivo: Ispettore PCB del Kernel</h2>
+            <p>Seleziona un processo dalla tabella di controllo sottostante per ispezionarne in tempo reale i campi interni del PCB.</p>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">kernel-debugger@nexus-core:~# pcb-inspector</span>
+                    <span style="font-size: 0.8rem; color: #888;">Active Task Structs</span>
+                </div>
+
+                <div class="pcb-grid">
+                    <div class="pcb-sidebar" id="listaTaskPCB">
+                        <div class="pcb-list-item selected" onclick="selezionaTask(0)">PID 1: systemd</div>
+                        <div class="pcb-list-item" onclick="selezionaTask(1)">PID 312: bash shell</div>
+                        <div class="pcb-list-item" onclick="selezionaTask(2)">PID 528: nexus-compiler</div>
+                        <div class="pcb-list-item" onclick="selezionaTask(3)">PID 894: sshd daemon</div>
+                    </div>
+
+                    <div class="pcb-inspector" id="pannelloIspettore">
+                        <div class="pcb-field"><span class="pcb-field-name">Process Name:</span> <span class="pcb-field-value">systemd</span></div>
+                        <div class="pcb-field"><span class="pcb-field-name">PID:</span> <span class="pcb-field-value">1</span></div>
+                        <div class="pcb-field"><span class="pcb-field-name">Stato (State):</span> <span class="pcb-field-value" style="color: #4ade80;">RUNNING</span></div>
+                        <div class="pcb-field"><span class="pcb-field-name">Program Counter (PC):</span> <span class="pcb-field-value">0x7ffd4f1a20b0</span></div>
+                        <div class="pcb-field"><span class="pcb-field-name">Priorità (Priority):</span> <span class="pcb-field-value">-20 (High / Nice)</span></div>
+                        <div class="pcb-field"><span class="pcb-field-name">Spazio di Memoria:</span> <span class="pcb-field-value">0x00007fff0000 - 0x7fffffffffff</span></div>
+                        <div class="pcb-field"><span class="pcb-field-name">File Aperti (FDs):</span> <span class="pcb-field-value">stdin, stdout, stderr, /dev/null</span></div>
+                    </div>
+                </div>
+
+                <div class="converter-controls">
+                    <button class="btn-os" onclick="simulaContextSwitch()">Esegui Context Switch ⚡</button>
+                    <button class="btn-os" onclick="aggiungiProcessoPCB()" style="background-color: #0284c7;">+ Genera Nuovo Task ⚙️</button>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore PCB -->
+    <script>
+        const databaseTask = [
+            { name: "systemd", pid: 1, state: "RUNNING", pc: "0x7ffd4f1a20b0", prio: "-20 (High)", mem: "0x00007fff0000 - 0x7fffffff", fds: "stdin, stdout, stderr, /dev/null" },
+            { name: "bash shell", pid: 312, state: "WAITING (I/O)", pc: "0x558a2b104c20", prio: "0 (Normal)", mem: "0x558a2b100000 - 0x558a2b1fffff", fds: "stdin, stdout, tty1" },
+            { name: "nexus-compiler", pid: 528, state: "READY", pc: "0x7f88c2140108", prio: "10 (Low)", mem: "0x7f88c2000000 - 0x7f88c3ffffff", fds: "source.cpp, output.o" },
+            { name: "sshd daemon", pid: 894, state: "WAITING (Socket)", pc: "0x7f9a10022b40", prio: "-5 (Elevated)", mem: "0x7f9a10000000 - 0x7f9a10ffffff", fds: "socket:[4421], syslog" }
+        ];
+
+        let indiceSelezionato = 0;
+
+        window.selezionaTask = function(index) {
+            indiceSelezionato = index;
+            const task = databaseTask[index];
+            
+            // Aggiorna classi CSS nella lista
+            const elementi = document.querySelectorAll('.pcb-list-item');
+            elementi.forEach((el, i) => {
+                if (i === index) el.classList.add('selected');
+                else el.classList.remove('selected');
+            });
+
+            // Aggiorna pannello ispettore
+            const coloreStato = task.state.includes("RUNNING") ? "#4ade80" : (task.state.includes("READY") ? "#38bdf8" : "#fbbf24");
+            const pannello = document.getElementById('pannelloIspettore');
+            pannello.innerHTML = `
+                <div class="pcb-field"><span class="pcb-field-name">Process Name:</span> <span class="pcb-field-value">${task.name}</span></div>
+                <div class="pcb-field"><span class="pcb-field-name">PID:</span> <span class="pcb-field-value">${task.pid}</span></div>
+                <div class="pcb-field"><span class="pcb-field-name">Stato (State):</span> <span class="pcb-field-value" style="color: ${coloreStato};">${task.state}</span></div>
+                <div class="pcb-field"><span class="pcb-field-name">Program Counter (PC):</span> <span class="pcb-field-value">${task.pc}</span></div>
+                <div class="pcb-field"><span class="pcb-field-name">Priorità (Priority):</span> <span class="pcb-field-value">${task.prio}</span></div>
+                <div class="pcb-field"><span class="pcb-field-name">Spazio di Memoria:</span> <span class="pcb-field-value">${task.mem}</span></div>
+                <div class="pcb-field"><span class="pcb-field-name">File Aperti (FDs):</span> <span class="pcb-field-value">${task.fds}</span></div>
+            `;
+        }
+
+        window.simulaContextSwitch = function() {
+            // Ruota ciclicamente il task selezionato simulando un context switch dello scheduler
+            indiceSelezionato = (indiceSelezionato + 1) % databaseTask.length;
+            window.selezionaTask(indiceSelezionato);
+        }
+
+        window.aggiungiProcessoPCB = function() {
+            const nuovoPid = Math.floor(Math.random() * 500) + 1000;
+            const nuovoTask = {
+                name: "nexus-worker-thread",
+                pid: nuovoPid,
+                state: "READY",
+                pc: "0x7f" + Math.floor(Math.random() * 1000000000).toString(16),
+                prio: "0 (Normal)",
+                mem: "0x7f" + Math.floor(Math.random() * 1000000).toString(16) + " - 0x7f999999",
+                fds: "pipe:[12884]"
+            };
+
+            databaseTask.push(nuovoTask);
+
+            // Aggiunge l'elemento alla sidebar HTML
+            const sidebar = document.getElementById('listaTaskPCB');
+            const nuovoItem = document.createElement('div');
+            nuovoItem.className = 'pcb-list-item';
+            const indiceNuovo = databaseTask.length - 1;
+            nuovoItem.onclick = () => selezionaTask(indiceNuovo);
+            nuovoItem.innerText = `PID ${nuovoTask.pid}: ${nuovoTask.name}`;
+            sidebar.appendChild(nuovoItem);
+
+            window.selezionaTask(indiceNuovo);
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

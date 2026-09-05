@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sul Moto Circolare Uniforme e Vario - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Moto Circolare Uniforme e Vario e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="moto-circolare-uniforme-e-vario" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Cinematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Moto Circolare Uniforme e Vario</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Esplora le leggi del moto circolare uniforme e vario con 100 esercizi interattivi guidati ed esempi pratici reali.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è il Moto Circolare?</h2>
+            <p>
+                Il <strong>moto circolare</strong> descrive la traiettoria di un punto materiale che si muove lungo una circonferenza. Nel <strong>moto circolare uniforme</strong> il modulo della velocità rimane costante nel tempo, mentre nel <strong>moto circolare vario</strong> il modulo della velocità cambia (presenza di accelerazione tangenziale oltre a quella centripeta).
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule chiave del moto circolare:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Velocità periferica: $v = \omega \cdot r$<br>
+                    • Accelerazione centripeta: $a_c = \frac{v^2}{r} = \omega^2 \cdot r$<br>
+                    • Periodo e frequenza: $T = \frac{1}{f}$ e $\omega = 2\pi f$<br>
+                    • Accelerazione totale (moto vario): $a = \sqrt{a_t^2 + a_c^2}$
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esempi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Qual è la principale caratteristica del moto circolare uniforme?", 
+                    r: "Il modulo della velocità tangenziale rimane costante nel tempo ($v = \text{costante}$).", 
+                    s: "Esempio guidato: la rotazione stabile delle pale di un ventilatore in marcia a velocità fissa." 
+                },
+                { 
+                    q: "Come si definisce il periodo ($T$) in un moto circolare?", 
+                    r: "Il tempo impiegato per compiere un giro completo.", 
+                    s: "Esempio guidato: la lancetta dei secondi di un orologio impiega esattamente 60 secondi per un giro completo." 
+                },
+                { 
+                    q: "Qual è la relazione tra frequenza ($f$) e periodo ($T$)?", 
+                    r: "Sono inversamente proporzionali: $f = \frac{1}{T}$ e $T = \frac{1}{f}$.", 
+                    s: "Esempio guidato: se una ruota compie 2 giri al secondo ($f = 2\text{ Hz}$), il suo periodo è $0,5\text{ s}$." 
+                },
+                { 
+                    q: "In quale direzione è sempre diretta l'accelerazione centripeta ($a_c$)?", 
+                    r: "Sempre verso il centro della circonferenza.", 
+                    s: "Esempio guidato: la forza esercitata da una fune che trattiene un soggetto in rotazione punta costantemente verso il centro." 
+                },
+                { 
+                    q: "Cosa differenzia il moto circolare vario dal moto circolare uniforme?", 
+                    r: "Nel moto vario il modulo della velocità cambia nel tempo, introducendo un'accelerazione tangenziale.", 
+                    s: "Esempio guidato: un'automobile che percorre una curva accelerando o frenando." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un punto si muove di moto circolare uniforme su una circonferenza di raggio $r = 2\text{ m}$ con velocità angolare $\omega = 3\text{ rad/s}$. Qual è la velocità tangenziale $v$?", 
+                    r: "6 m/s.", 
+                    s: "Esempio guidato: $v = \omega \cdot r = 3 \cdot 2 = 6\text{ m/s}$." 
+                },
+                { 
+                    q: "Utilizzando i dati precedenti ($r = 2\text{ m}$ e $v = 6\text{ m/s}$), qual è l'accelerazione centripeta $a_c$?", 
+                    r: "18 m/s².", 
+                    s: "Esempio guidato: $a_c = \frac{v^2}{r} = \frac{6^2}{2} = \frac{36}{2} = 18\text{ m/s²}$." 
+                },
+                { 
+                    q: "Una giostra compie 10 giri in 20 secondi. Qual è la sua frequenza di rotazione?", 
+                    r: "0,5 Hz.", 
+                    s: "Esempio guidato: $f = \text{numero di giri} / \text{tempo} = 10 / 20 = 0,5\text{ Hz}$." 
+                },
+                { 
+                    q: "Se il raggio di una pista circolare è 10 metri e un'auto viaggia a velocità costante di 20 m/s, qual è l'accelerazione centripeta?", 
+                    r: "40 m/s².", 
+                    s: "Esempio guidato: $a_c = \frac{v^2}{r} = \frac{20^2}{10} = \frac{400}{10} = 40\text{ m/s²}$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "In un moto circolare vario, un punto ha un'accelerazione centripeta di $3\text{ m/s²}$ e un'accelerazione tangenziale di $4\text{ m/s²}$. Qual è il modulo dell'accelerazione totale?", 
+                    r: "5 m/s².", 
+                    s: "Esempio guidato: $a = \sqrt{a_c^2 + a_t^2} = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\text{ m/s²}$." 
+                },
+                { 
+                    q: "Un satellite artificiale orbita attorno alla Terra ad un'altezza tale che il raggio dell'orbita è $R = 7000\text{ km}$ ($7 \cdot 10^6\text{ m}$) con velocità $v = 7,5\text{ km/s}$. Calcola l'accelerazione centripeta.", 
+                    r: "Circa 8,04 m/s².", 
+                    s: "Esempio guidato: $a_c = \frac{(7500)^2}{7000000} \approx 8,035\text{ m/s²}$." 
+                },
+                { 
+                    q: "Se la velocità angolare di un corpo in moto circolare raddoppia, a parità di raggio, cosa accade all'accelerazione centripeta?", 
+                    r: "Quadruplica.", 
+                    s: "Esempio guidato: l'accelerazione centripeta è proporzionale al quadrato della velocità angolare ($a_c = \omega^2 r$), quindi raddoppiando $\omega$, l'accelerazione aumenta di un fattore $2^2 = 4$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

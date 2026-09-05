@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Triangoli - Sezione 3: Somma degli angoli interni ed esterni e proprietà dell'angolo esterno - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Somma degli Angoli Interni ed Esterni di un Triangolo - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="triangoli-sezione-3" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Triangoli - Sezione 3</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Somma degli Angoli Interni ed Esterni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Teorema dell'angolo esterno, proprietà geometriche avanzate e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Gli Angoli Esterni di un Triangolo</h2>
+            <p>
+                Si definisce <strong>angolo esterno</strong> di un triangolo l'angolo formato da un lato del triangolo e dal prolungamento di un altro lato ad esso adiacente. In ogni vertice di un triangolo è possibile tracciare due angoli esterni, tra loro opposti al vertice e quindi congruenti.
+            </p>
+            <ul>
+                <li><strong>Relazione con l'interno:</strong> Ciascun angolo esterno è supplementare rispetto all'angolo interno ad esso adiacente (la loro somma è sempre <code>180&deg;</code>).</li>
+                <li><strong>Somma degli angoli esterni:</strong> La somma dei tre angoli esterni di un triangolo (presi uno per ciascun vertice) è sempre pari a un angolo giro, ovvero <code>360&deg;</code>.</li>
+            </ul>
+
+            <h2>2. Il Teorema dell'Angolo Esterno</h2>
+            <p>
+                Una delle proprietà geometriche più importanti e utili nella risoluzione dei problemi è il <em>Teorema dell'Angolo Esterno</em>:
+            </p>
+            <ul>
+                <li>In ogni triangolo, <strong>ciascun angolo esterno è perfettamente uguale alla somma dei due angoli interni non adiacenti</strong> ad esso.</li>
+                <li>Questa proprietà consente di calcolare rapidamente ampiezze complesse senza dover passare necessariamente per l'angolo interno adiacente.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule e Proprietà Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Teorema angolo esterno (<code>&gamma;<sub>ext</sub></code>): <code>&gamma;<sub>ext</sub> = &alpha; + &beta;</code><br>
+                    • Relazione di supplementarità: <code>&gamma; + &gamma;<sub>ext</sub> = 180&deg;</code><br>
+                    • Somma totale angoli esterni: <code>&alpha;<sub>ext</sub> + &beta;<sub>ext</sub> + &gamma;<sub>ext</sub> = 360&deg;</code>
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In un triangolo, un angolo esterno misura <code>115&deg;</code>. Sapendo che uno dei due angoli interni non adiacenti misura <code>50&deg;</code>, calcola l'ampiezza dell'altro angolo interno non adiacente e l'angolo interno adiacente.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Per il Teorema dell'angolo esterno, l'angolo esterno è uguale alla somma dei due angoli interni non adiacenti: <code>Esterno = Interno_1 + Interno_2</code>.</li>
+                    <li>Ricaviamo l'altro angolo interno sottraendo il valore noto: <code>115&deg; - 50&deg; = 65&deg;</code>.</li>
+                    <li>Per calcolare l'angolo interno adiacente, sfruttiamo la supplementarità con l'angolo esterno: <code>180&deg; - 115&deg; = 65&deg;</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Secondo angolo interno = 65&deg; &nbsp; e &nbsp; Interno adiacente = 65&deg;</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Angoli Interni ed Esterni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici basati sul Teorema dell'angolo esterno, supplementarità e somma degli angoli interni.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let int1 = (i % 35) + 30; // tra 30 e 64
+                    let int2 = (i % 30) + 40; // tra 40 e 69
+                    let ext = int1 + int2;
+                    domanda = `In un triangolo, i due angoli interni non adiacenti a un determinato angolo esterno misurano rispettivamente <code>${int1}&deg;</code> e <code>${int2}&deg;</code>. Calcola l'ampiezza dell'angolo esterno corrispondente.`;
+                    risposta = `<strong>${ext}&deg;</strong>`;
+                    spiegazione = `
+                    1) Per il Teorema dell'angolo esterno, un angolo esterno è uguale alla somma dei due angoli interni non adiacenti.<br>
+                    2) Eseguiamo la somma: <code>${int1}&deg; + ${int2}&deg; = ${ext}&deg;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let extVal = (i % 50) + 90; // tra 90 e 139
+                    let knownInt = (i % 30) + 35; // tra 35 e 64
+                    let unknownInt = extVal - knownInt;
+                    domanda = `Un angolo esterno di un triangolo misura <code>${extVal}&deg;</code>. Sapendo che uno dei due angoli interni non adiacenti misura <code>${knownInt}&deg;</code>, calcola l'ampiezza dell'altro angolo interno non adiacente.`;
+                    risposta = `<strong>${unknownInt}&deg;</strong>`;
+                    spiegazione = `
+                    1) Sfruttiamo il Teorema dell'angolo esterno: l'angolo esterno è la somma dei due interni non adiacenti.<br>
+                    2) Sottraiamo l'angolo interno noto dall'angolo esterno: <code>${extVal}&deg; - ${knownInt}&deg; = ${unknownInt}&deg;</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let extVal2 = (i % 40) + 100; // tra 100 e 139
+                    let adiacenteInt = 180 - extVal2;
+                    let terzoInt = 180 - extVal2 - (i % 20 + 20); // gestito coerentemente o derivato
+                    // Semplifichiamo con una struttura pulita:
+                    let partA = (i % 25) + 30;
+                    let partB = extVal2 - partA;
+                    domanda = `In un triangolo, un angolo esterno misura <code>${extVal2}&deg;</code>. Uno dei due angoli interni non adiacenti misura <code>${partA}&deg;</code>. Calcola l'ampiezza dell'angolo interno adiacente all'angolo esterno e l'altro angolo interno.`;
+                    let adiacenteCalc = 180 - extVal2;
+                    risposta = `<strong>Angolo interno adiacente = ${adiacenteCalc}&deg; e Altro interno = ${partB}&deg;</strong>`;
+                    spiegazione = `
+                    1) L'angolo interno adiacente all'angolo esterno è supplementare rispetto ad esso: <code>180&deg; - ${extVal2}&deg; = ${adiacenteCalc}&deg;</code>.<br>
+                    2) Per il Teorema dell'angolo esterno, l'altro angolo interno non adiacente si trova per sottrazione: <code>${extVal2}&deg; - ${partA}&deg; = ${partB}&deg;</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

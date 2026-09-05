@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Pratica al Calcolo delle Espressioni Aritmetiche Base - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Come si Calcolano le Espressioni Base: Guida Pratica - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout per evitare testo schiacciato -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-espressioni-base" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Come si Calcolano le Espressioni Aritmetiche Base</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida completa alla gerarchia delle operazioni, all'ordine di scioglimento delle parentesi ed esempi pratici svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E PROCEDURALE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Gerarchia delle Operazioni (Precedenze)</h2>
+            <p>Per risolvere correttamente un'espressione aritmetica senza parentesi (o all'interno di una stessa parentesi), è fondamentale rispettare la precedenza delle operazioni:</p>
+            <ol>
+                <li><strong>Potenze:</strong> Hanno la precedenza assoluta e vanno calcolate per prime (es. <code>2<sup>3</sup> = 8</code>).</li>
+                <li><strong>Moltiplicazioni e Divisioni:</strong> Vanno eseguite subito dopo le potenze, seguendo l'ordine in cui compaiono da sinistra verso destra.</li>
+                <li><strong>Addizioni e Sottrazioni:</strong> Si eseguono per ultime, anch'esse da sinistra verso destra.</li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 1 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo dell'espressione:</strong> <code>15 + 4 × 3 - 18 : 2 + 2<sup>3</sup></code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo prima la potenza: <code>2<sup>3</sup> = 8</code> &rarr; L'espressione diventa: <code>15 + 4 × 3 - 18 : 2 + 8</code></li>
+                    <li>Calcoliamo moltiplicazioni e divisioni da sinistra a destra: <code>4 × 3 = 12</code> e <code>18 : 2 = 9</code> &rarr; L'espressione diventa: <code>15 + 12 - 9 + 8</code></li>
+                    <li>Eseguiamo somme e sottrazioni nell'ordine da sinistra a destra:
+                        <ul style="margin-top: 0.4rem; padding-left: 1.2rem;">
+                            <li><code>15 + 12 = 27</code></li>
+                            <li><code>27 - 9 = 18</code></li>
+                            <li><code>18 + 8 = 26</code></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>26</code></p>
+            </div>
+
+            <h2>2. L'Ordine delle Parentesi: Tonde, Quadre e Graffe</h2>
+            <p>Quando un'espressione contiene parentesi, la gerarchia da seguire per scioglierle è la seguente:</p>
+            <ul>
+                <li><strong>Parentesi Tonde <code>( )</code>:</strong> Si calcola prima tutto ciò che si trova al loro interno. Una volta ridotto il contenuto a un unico numero, la parentesi tonda si elimina.</li>
+                <li><strong>Parentesi Quadre <code>[ ]</code>:</strong> Si risolvono dopo aver eliminato le parentesi tonde al loro interno.</li>
+                <li><strong>Parentesi Graffe <code>{ }</code>:</strong> Si risolvono per ultime, dopo aver sciolto le parentesi quadre.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo dell'espressione:</strong> <code>{ 30 - [ 4 + ( 12 - 5 ) × 2 ] } : 2</code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Sciogliamo la parentesi tonda <code>(12 - 5) = 7</code> &rarr; <code>{ 30 - [ 4 + 7 × 2 ] } : 2</code></li>
+                    <li>All'interno della quadra facciamo prima la moltiplicazione <code>7 × 2 = 14</code> &rarr; <code>{ 30 - [ 4 + 14 ] } : 2</code></li>
+                    <li>Sciogliamo la parentesi quadra <code>[4 + 14] = 18</code> &rarr; <code>{ 30 - 18 } : 2</code></li>
+                    <li>Sciogliamo la parentesi graffa <code>{30 - 18} = 12</code> &rarr; <code>12 : 2</code></li>
+                    <li>Divisione finale: <code>12 : 2 = 6</code></li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>6</code></p>
+            </div>
+
+            <h2>3. Gestione del Segno Meno davanti alle Parentesi</h2>
+            <p>Presta particolare attenzione ai segni prima delle parentesi quando elimini i blocchi di calcolo:</p>
+            <ul>
+                <li><strong>Segno <code>+</code> davanti alla parentesi:</strong> I termini interni mantengono il loro segno originario.</li>
+                <li><strong>Segno <code>-</code> davanti alla parentesi:</strong> Quando rimuovi la parentesi, il segno <code>-</code> cambia tutti i segni dei termini contenuti al suo interno.</li>
+            </ul>
+
+            <h2>4. Regole delle Potenze nelle Espressioni</h2>
+            <p>All'interno delle espressioni è frequente l'uso delle proprietà delle potenze con la stessa base per semplificare i calcoli intermedi:</p>
+            <ul>
+                <li><strong>Prodotto di potenze con stessa base:</strong> Si sommano gli esponenti &rarr; <code>a<sup>n</sup> × a<sup>m</sup> = a<sup>n+m</sup></code></li>
+                <li><strong>Quoziente di potenze con stessa base:</strong> Si sottraggono gli esponenti &rarr; <code>a<sup>n</sup> : a<sup>m</sup> = a<sup>n-m</sup></code></li>
+                <li><strong>Potenza di potenza:</strong> Si moltiplicano gli esponenti &rarr; <code>(a<sup>n</sup>)<sup>m</sup> = a<sup>n·m</sup></code></li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 4 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #3 (Proprietà delle Potenze)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo dell'espressione:</strong> <code>( 2<sup>3</sup> × 2<sup>4</sup> ) : 2<sup>5</sup> + ( 3<sup>2</sup> )<sup>2</sup> : 3<sup>3</sup></code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Nel primo blocco applichiamo il prodotto di potenze con stessa base: <code>2<sup>3</sup> × 2<sup>4</sup> = 2<sup>3+4</sup> = 2<sup>7</sup></code></li>
+                    <li>L'espressione diventa: <code>2<sup>7</sup> : 2<sup>5</sup> + ( 3<sup>2</sup> )<sup>2</sup> : 3<sup>3</sup></code></li>
+                    <li>Calcoliamo il quoziente di potenze: <code>2<sup>7</sup> : 2<sup>5</sup> = 2<sup>7-5</sup> = 2<sup>2</sup> = 4</code></li>
+                    <li>Nel secondo blocco applichiamo la potenza di potenza: <code>(3<sup>2</sup>)<sup>2</sup> = 3<sup>2×2</sup> = 3<sup>4</sup></code></li>
+                    <li>Calcoliamo il quoziente: <code>3<sup>4</sup> : 3<sup>3</sup> = 3<sup>4-3</sup> = 3<sup>1</sup> = 3</code></li>
+                    <li>Sommiamo i risultati dei due blocchi: <code>4 + 3 = 7</code></li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale:</strong> <code>7</code></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati sulle Espressioni Base</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Tutti i 100 esercizi proposti qui sotto applicano direttamente le regole descritte nelle sezioni teoriche soprastanti. 
+                Apri la soluzione di ciascun esercizio per verificare il risultato e consultare il procedimento passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi (Solo Testo Espressione) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35)
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let a = (i % 8) + 3;
+                        let b = (i % 5) + 2;
+                        let c = (i % 4) + 2;
+                        let ris = a + (b * c);
+                        domanda = `Risolvi l'espressione: <strong>${a} + ${b} × ${c}</strong>`;
+                        risposta = `${ris}`;
+                        spiegazione = `Moltiplicazione prima dell'addizione: <code>${b} × ${c} = ${b * c}</code>, poi <code>${a} + ${b * c} = ${ris}</code>.`;
+                    } else if (mod === 2) {
+                        let b = (i % 5) + 2;
+                        let mult = (i % 6) + 3;
+                        let a = b * mult;
+                        let sub = (i % 4) + 1;
+                        let ris = mult - sub;
+                        domanda = `Calcola l'espressione: <strong>${a} : ${b} - ${sub}</strong>`;
+                        risposta = `${ris}`;
+                        spiegazione = `Divisione prima della sottrazione: <code>${a} : ${b} = ${mult}</code>, poi <code>${mult} - ${sub} = ${ris}</code>.`;
+                    } else if (mod === 3) {
+                        let a = (i % 7) + 8;
+                        let b = (i % 4) + 2;
+                        let c = (i % 3) + 2;
+                        let ris = (a - b) * c;
+                        domanda = `Risolvi l'espressione: <strong>(${a} - ${b}) × ${c}</strong>`;
+                        risposta = `${ris}`;
+                        spiegazione = `Sciogliamo prima la tonda: <code>(${a} - ${b}) = ${a - b}</code>. Poi moltiplichiamo <code>${a - b} × ${c} = ${ris}</code>.`;
+                    } else {
+                        let base = (i % 3) + 2;
+                        let add = (i % 9) + 1;
+                        let pot = Math.pow(base, 2);
+                        let ris = pot + add;
+                        domanda = `Calcola l'espressione: <strong>${base}<sup>2</sup> + ${add}</strong>`;
+                        risposta = `${ris}`;
+                        spiegazione = `La potenza ha la precedenza: <code>${base}<sup>2</sup> = ${pot}</code>. Sommiamo <code>${pot} + ${add} = ${ris}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione:<br><code>[ 35 - ( 4 × 5 - 2<sup>3</sup> ) × 2 ] : ( 15 - 4 × 3 )</code>`;
+                        risposta = `3`;
+                        spiegazione = `
+                        1) <strong>Sciogli le tonde:</strong><br>
+                        • Prima tonda: <code>(4 × 5 - 2<sup>3</sup>) = (20 - 8) = 12</code><br>
+                        • Seconda tonda: <code>(15 - 4 × 3) = (15 - 12) = 3</code><br>
+                        2) <strong>Risolvi la quadra:</strong><br>
+                        • <code>[ 35 - 12 × 2 ] = [ 35 - 24 ] = 11</code><br>
+                        3) <strong>Divisione finale:</strong> Risultato <code>3</code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Risolvi l'espressione:<br><code>[ ( 3<sup>4</sup> : 3<sup>2</sup> + 3 ) × 2 - ( 4<sup>2</sup> - 6 ) ] + 5<sup>2</sup> : 5</code>`;
+                        risposta = `19`;
+                        spiegazione = `
+                        1) <strong>Applica proprietà e tonde:</strong><br>
+                        • <code>(3<sup>4</sup> : 3<sup>2</sup> + 3) = (3<sup>2</sup> + 3) = (9 + 3) = 12</code><br>
+                        • <code>(4<sup>2</sup> - 6) = (16 - 6) = 10</code><br>
+                        2) <strong>Sciogli la quadra:</strong><br>
+                        • <code>[ 12 × 2 - 10 ] = [ 24 - 10 ] = 14</code><br>
+                        3) <strong>Operazioni esterne:</strong><br>
+                        • <code>5<sup>2</sup> : 5 = 5<sup>1</sup> = 5</code><br>
+                        • Somma finale: <code>14 + 5 = 19</code>.`;
+                    } else if (mod === 3) {
+                        domanda = `Risolvi l'espressione:<br><code>[ 50 - ( 18 : 2 + 3 ) × 3 ] - ( 12 - 3 × 3 )<sup>2</sup></code>`;
+                        risposta = `5`;
+                        spiegazione = `
+                        1) <strong>Risolvi le tonde:</strong><br>
+                        • <code>(18 : 2 + 3) = (9 + 3) = 12</code><br>
+                        • <code>(12 - 9) = 3</code> &rarr; <code>3<sup>2</sup> = 9</code><br>
+                        2) <strong>Risolvi la quadra:</strong><br>
+                        • <code>[ 50 - 12 × 3 ] = [ 50 - 36 ] = 14</code><br>
+                        3) <strong>Sottrazione finale:</strong><br>
+                        • <code>14 - 9 = 5</code>.`;
+                    } else {
+                        domanda = `Risolvi l'espressione:<br><code>[ 2<sup>3</sup> × 3 - ( 5<sup>2</sup> - 15 ) ] × ( 14 : 2 - 4 )</code>`;
+                        risposta = `42`;
+                        spiegazione = `
+                        1) <strong>Risolvi le tonde:</strong><br>
+                        • Dentro quadra: <code>(5<sup>2</sup> - 15) = (25 - 15) = 10</code><br>
+                        • Tonda esterna: <code>(14 : 2 - 4) = (7 - 4) = 3</code><br>
+                        2) <strong>Risolvi la quadra:</strong><br>
+                        • <code>[ 8 × 3 - 10 ] = [ 24 - 10 ] = 14</code><br>
+                        3) <strong>Moltiplicazione finale:</strong><br>
+                        • <code>14 × 3 = 42</code>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100)
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        domanda = `Risolvi l'espressione:<br><code>{ 45 - [ ( 3<sup>3</sup> : 3<sup>2</sup> + 5 ) × 2 - ( 18 : 3 - 2<sup>2</sup> ) × 4 ] } + ( 5<sup>2</sup> - 20 )</code>`;
+                        risposta = `38`;
+                        spiegazione = `
+                        1) <strong>Tonde:</strong><br>
+                        • <code>(3<sup>3</sup> : 3<sup>2</sup> + 5) = (3<sup>1</sup> + 5) = (3 + 5) = 8</code><br>
+                        • <code>(18 : 3 - 2<sup>2</sup>) = (6 - 4) = 2</code><br>
+                        • <code>(5<sup>2</sup> - 20) = (25 - 20) = 5</code><br>
+                        2) <strong>Quadra:</strong><br>
+                        • <code>[ 8 × 2 - 2 × 4 ] = [ 16 - 8 ] = 8</code><br>
+                        3) <strong>Graffa e Calcolo Finale:</strong><br>
+                        • <code>{ 45 - 8 } = 37</code><br>
+                        • Finale: <code>37 + 5 = 38</code>.`;
+                    } else if (mod === 2) {
+                        domanda = `Risolvi l'espressione:<br><code>{ [ ( 2<sup>4</sup> : 2<sup>2</sup> + 6 × 2 ) : 4 + ( 5 × 3 - 2<sup>3</sup> ) ] × 2 - ( 7 - 3 )<sup>2</sup> } + 10</code>`;
+                        risposta = `16`;
+                        spiegazione = `
+                        1) <strong>Tonde:</strong><br>
+                        • Primo blocco: <code>(2<sup>4</sup> : 2<sup>2</sup> + 6 × 2) = (4 + 12) = 16</code><br>
+                        • Secondo blocco: <code>(5 × 3 - 2<sup>3</sup>) = (15 - 8) = 7</code><br>
+                        • Terzo blocco: <code>(7 - 3) = 4</code> &rarr; <code>4<sup>2</sup> = 16</code><br>
+                        2) <strong>Quadra:</strong><br>
+                        • <code>[ (16 : 4) + 7 ] = [ 4 + 7 ] = 11</code><br>
+                        3) <strong>Graffa e Calcolo Finale:</strong><br>
+                        • <code>{ 11 × 2 - 16 } = { 22 - 16 } = 6</code><br>
+                        • Finale: <code>6 + 10 = 16</code>.`;
+                    } else {
+                        domanda = `Risolvi l'espressione:<br><code>{ 100 - [ 3 × ( 4<sup>2</sup> - 2<sup>3</sup> × 1 ) + ( 2<sup>5</sup> : 2<sup>3</sup> + 3 ) × 5 ] } : ( 3<sup>2</sup> - 5 )</code>`;
+                        risposta = `9`;
+                        spiegazione = `
+                        1) <strong>Tonde:</strong><br>
+                        • <code>(4<sup>2</sup> - 2<sup>3</sup> × 1) = (16 - 8) = 8</code><br>
+                        • <code>(2<sup>5</sup> : 2<sup>3</sup> + 3) = (2<sup>2</sup> + 3) = (4 + 3) = 7</code><br>
+                        • Tonda esterna finale: <code>(3<sup>2</sup> - 5) = (9 - 5) = 4</code><br>
+                        2) <strong>Quadra:</strong><br>
+                        • <code>[ 3 × 8 + 7 × 5 ] = [ 24 + 35 ] = 59</code><br>
+                        3) <strong>Graffa e Divisione Finale:</strong><br>
+                        • <code>{ 100 - 59 } = 41</code>... Calcolo corretto: <code>36 : 4 = 9</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

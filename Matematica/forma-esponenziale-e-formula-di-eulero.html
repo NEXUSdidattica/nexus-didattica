@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: La Forma Esponenziale e la Formula di Eulero - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Forma Esponenziale e la Formula di Eulero - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="forma-esponenziale" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Numeri Complessi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Forma Esponenziale e la Formula di Eulero</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Introduzione all'identità di Eulero, scrittura dei numeri complessi in forma esponenziale <code>z = r &middot; e<sup>i&theta;</sup></code>, semplificazione delle potenze e dei prodotti, e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Formula di Eulero</h2>
+            <p>
+                La celebre formula di Eulero stabilisce un profondo legame tra l'analisi matematica e la trigonometria, ponendo in relazione l'esponenziale complesso con le funzioni seno e coseno:
+            </p>
+            <div class="formula-box" style="text-align: center; font-weight: bold; font-size: 1.15rem;">
+                e<sup>i&theta;</sup> = cos(&theta;) + i &middot; sin(&theta;)
+            </div>
+            <p>
+                Da questa identità deriva direttamente la forma esponenziale di un numero complesso, sfruttando il suo modulo <code>r</code> e il suo argomento <code>&theta;</code>.
+            </p>
+
+            <h2>2. Definizione della Forma Esponenziale</h2>
+            <p>
+                Un numero complesso non nullo <code>z</code> pu&ograve; essere rappresentato in modo estremamente compatto tramite la sua <strong>forma esponenziale</strong>:
+            </p>
+            <div class="formula-box" style="text-align: center; font-weight: bold; font-size: 1.15rem;">
+                z = r &middot; e<sup>i&theta;</sup>
+            </div>
+            <ul>
+                <li><strong>Modulo <code>r = |z|</code>:</strong> Rappresenta l'intensità o distanza del numero dall'origine nel piano di Argand-Gauss.</li>
+                <li><strong>Argomento <code>&theta;</code>:</strong> L'angolo misurato in radianti rispetto alla semiretta positiva dell'asse reale.</li>
+                <li><strong>Vantaggi operativi:</strong> La forma esponenziale semplifica notevolmente le operazioni di moltiplicazione e divisione, rispettivamente riducendole a somme e sottrazioni tra gli esponenti (proprietà delle potenze).</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Dato il numero complesso <code>z = 3 &middot; e<sup>i(&pi;/4)</sup></code>:<br>
+                    • Il modulo vale <code>r = 3</code>.<br>
+                    • L'argomento vale <code>&theta; = <sup>&pi;</sup> / <sub>4</sub></code> radianti (45°).<br>
+                    • Trasformandolo in forma trigonometrica si ottiene <code>z = 3 &middot; (cos(<sup>&pi;</sup> / <sub>4</sub>) + i &middot; sin(<sup>&pi;</sup> / <sub>4</sub>))</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Converti il numero complesso <code>z = 2 &middot; (cos(<sup>&pi;</sup> / <sub>3</sub>) + i &middot; sin(<sup>&pi;</sup> / <sub>3</sub>))</code> nella sua forma esponenziale.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Dalla forma trigonometrica estrapoliamo il modulo: <code>r = 2</code>.</li>
+                    <li>Estrapoliamo l'argomento principale: <code>&theta; = <sup>&pi;</sup> / <sub>3</sub></code>.</li>
+                    <li>Applichiamo la struttura della forma esponenziale <code>z = r &middot; e<sup>i&theta;</sup></code>.</li>
+                    <li>Sostituendo i valori otteniamo direttamente <code>z = 2 &middot; e<sup>i(&pi;/3)</sup></code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: z = 2 &middot; e<sup>i(&pi;/3)</sup></strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Forma Esponenziale e Formula di Eulero</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di conversione tra forma trigonometrica ed esponenziale, potenze complesse e applicazioni dell'identità di Eulero.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let modVal = (i % 6) + 1;
+                    domanda = `Scrivi in forma esponenziale il numero complesso avente modulo <code>r = ${modVal}</code> e argomento <code>&theta; = 0</code>.`;
+                    risposta = `<strong>${modVal} &middot; e<sup>i0</sup></strong> (o semplicemente <code>${modVal}</code>)`;
+                    spiegazione = `
+                    1) La formula esponenziale generale è <code>z = r &middot; e<sup>i&theta;</sup></code>.<br>
+                    2) Sostituendo il modulo <code>r = ${modVal}</code> e l'angolo <code>&theta; = 0</code> otteniamo <code>${modVal} &middot; e<sup>i0</sup></code>.<br>
+                    3) Poiché <code>e<sup>0</sup> = 1</code>, il valore corrisponde al numero reale <code>${modVal}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let rNum = (i % 4) + 1;
+                    let denom = (i % 3 === 0) ? '2' : (i % 3 === 1 ? '3' : '6');
+                    domanda = `Converti in forma trigonometrica il numero complesso espresso in forma esponenziale <code>z = ${rNum} &middot; e<sup>i(&pi;/${denom})</sup></code>.`;
+                    risposta = `<strong>${rNum} &middot; (cos(<sup>&pi;</sup> / <sub>${denom}</sub>) + i &middot; sin(<sup>&pi;</sup> / <sub>${denom}</sub>))</strong>`;
+                    spiegazione = `
+                    1) Sfruttiamo la formula di Eulero <code>e<sup>i&theta;</sup> = cos(&theta;) + i sin(&theta;)</code>.<br>
+                    2) Moltiplichiamo il modulo <code>r = ${rNum}</code> per il binomio trigonometrico.<br>
+                    3) Otteniamo direttamente <code>${rNum}(cos(&pi;/${denom}) + i sin(&pi;/${denom}))</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let p1 = (i % 3) + 1;
+                    let p2 = (i % 2) + 1;
+                    domanda = `Calcola il prodotto in forma esponenziale tra <code>z<sub>1</sub> = ${p1} &middot; e<sup>i(&pi;/4)</sup></code> e <code>z<sub>2</sub> = ${p2} &middot; e<sup>i(&pi;/3)</sup></code>.`;
+                    let prodMod = p1 * p2;
+                    risposta = `<strong>${prodMod} &middot; e<sup>i(7&pi;/12)</sup></strong>`;
+                    spiegazione = `
+                    1) Nel prodotto di numeri complessi in forma esponenziale, i moduli si moltiplicano: <code>${p1} &middot; ${p2} = ${prodMod}</code>.<br>
+                    2) Gli argomenti si sommano tra loro: <code>&pi;/4 + &pi;/3 = (3&pi; + 4&pi;) / 12 = 7&pi;/12</code>.<br>
+                    3) Il risultato finale in forma esponenziale è <code>${prodMod} &middot; e<sup>i(7&pi;/12)</sup></code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

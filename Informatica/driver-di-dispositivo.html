@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="I Driver di Dispositivo: Astrazione Hardware, Kernel Space e Gestione Periferiche - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Driver di Dispositivo - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="driver-di-dispositivo" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Driver di
+                    Dispositivo</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Software di traduzione e controllo, astrazione dell'hardware di I/O e comunicazione a livello di
+                    kernel.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è un Driver di Dispositivo?</h2>
+            <p>
+                Un <strong>driver di dispositivo</strong> (o semplicemente <i>driver</i>) è un modulo software
+                specializzato che consente al sistema operativo e alle applicazioni di comunicare con le periferiche
+                hardware (schede video, stampanti, mouse, dischi di memoria). Poiché ogni produttore realizza componenti
+                con specifiche elettroniche uniche, il driver funge da "traduttore universale".
+            </p>
+
+            <h2>2. Funzione di Astrazione e Kernel Space</h2>
+            <p>
+                Il compito principale di un driver è l'<strong>astrazione dell'hardware</strong>: nasconde la
+                complessità dei registri fisici e dei protocolli di basso livello, esponendo funzioni standardizzate al
+                sistema operativo (es. comandi di lettura/scrittura). Nella maggior parte dei sistemi operativi moderni,
+                i driver vengono eseguiti nel cosiddetto <i>Kernel Space</i> (spazio di memoria protetto) per garantire
+                prestazioni elevate e accesso diretto ai bus di sistema.
+            </p>
+
+            <div class="formula-box">
+                <strong>Modello di Traduzione:</strong> $\text{Applicazione} \rightarrow \text{API del Sistema
+                Operativo} \rightarrow \text{Driver di Dispositivo} \rightarrow \text{Hardware Fisico}$. Il driver
+                traduce le richieste logiche in impulsi elettrici e comandi di registro specifici del chip.
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore di Comunicazione Driver / Periferica</h2>
+            <p>Seleziona una periferica hardware per simulare la traduzione dei comandi tramite il rispettivo driver di
+                dispositivo.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">kernel-driver-manager@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">Hardware Abstraction Layer (HAL)</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona
+                            Periferica / Driver:</label>
+                        <select id="driverSelect" class="code-input" style="background-color: #111; color: #f97316;">
+                            <option value="GPU">Driver Scheda Video (GPU Rendering & Framebuffer)</option>
+                            <option value="PRINTER">Driver Stampante (Code LPT/USB & Rasterizzazione)</option>
+                            <option value="STORAGE">Driver Controller NVMe / SSD (Blocchi I/O)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-esegui" onclick=" simulaDriver()" style="width: 100%;">Interroga ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Seleziona una periferica per analizzare l'interazione
+                    del driver con il kernel...</div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore -->
+    <script>
+        window.simulaDriver = function () {
+            let tipo = document.getElementById('driverSelect').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            let compito = "";
+            let interazione = "";
+            let livello = "";
+
+            if (tipo === "GPU") {
+                compito = "Traduce le chiamate grafiche ad alto livello (OpenGL/Vulkan) in istruzioni dirette per i core della GPU e gestione della memoria VRAM.";
+                interazione = "Invio di comandi sul bus PCIe e sincronizzazione del refresh rate sul monitor.";
+                livello = "Kernel Space / Graphics Subsystem";
+            } else if (tipo === "PRINTER") {
+                compito = "Converte i documenti digitali in un flusso di dati raster o in un linguaggio di descrizione pagina (es. PCL/PostScript) comprensibile alla stampante.";
+                interazione = "Gestione della coda di stampa (Spooler) e monitoraggio dello stato inchiostro/carta.";
+                livello = "User/Kernel Space Bridge";
+            } else if (tipo === "STORAGE") {
+                compito = "Gestisce le richieste di lettura e scrittura a blocchi logici sul disco, ottimizzando la coda dei comandi NVMe.";
+                interazione = "Accesso diretto ai registri del controller di memoria non volatile tramite interrupt hardware.";
+                livello = "Kernel Space / Block Device Driver";
+            }
+
+            outputDiv.style.color = '#38bdf8';
+            outputDiv.innerHTML = `> Analisi Driver Dispositivo [<strong>${tipo}</strong>]:<br>` +
+                `&nbsp;&nbsp;Compito principale: <em>${compito}</em><br>` +
+                `&nbsp;&nbsp;Modello di comunicazione: ${interazione}<br>` +
+                `&nbsp;&nbsp;Collocazione di sistema: ${livello}`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

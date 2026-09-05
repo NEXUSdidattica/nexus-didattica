@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sito internet per studiare e fare esercizi">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>NEXUS - Il mio Profilo</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="hotbar">
+
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <!-- Tasti Accesso/Registrazione per Firebase -->
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- DASHBOARD PROFILO AMPLIATA A 1200PX -->
+    <main style="max-width: 1200px; width: 95%; margin: 3rem auto; padding: 0 10px;">
+
+        <!-- CARD INFO UTENTE -->
+        <div
+            style="background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 2rem; display: flex; align-items: center; gap: 24px;">
+            <div
+                style="width: 80px; height: 80px; background: #eff6ff; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: bold; flex-shrink: 0;">
+                👤
+            </div>
+            <div>
+                <h1 id="user-fullname" style="margin: 0; font-size: 2rem; color: #1e293b;">Caricamento...</h1>
+                <p id="user-email" style="margin: 6px 0 0; color: #64748b; font-size: 1rem;">...</p>
+            </div>
+        </div>
+
+        <!-- DASHBOARD RISERVATA ADMIN -->
+        <div id="sezione-admin-profilo"
+            style="display: none; background: #fff; padding: 2.5rem; border-radius: 16px; border: 2px solid #ef4444; margin-top: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.12);">
+            <div
+                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #f1f5f9;">
+                <div>
+                    <span
+                        style="background: #ef4444; color: white; padding: 0.3rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">PANNELLO DI CONTROLLO 👑</span>
+                    <h3 style="margin-top: 0.6rem; color: #0f172a; font-size: 1.5rem; margin-bottom: 0;">Statistiche & Gestione NEXUS</h3>
+                </div>
+                <a href="admin.html"
+                    style="background: #ef4444; color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; transition: 0.2s;">Gestisci ⚙️</a>
+            </div>
+
+            <!-- SCHEDE DI STATISTICA ADMIN -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+                <div
+                    style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Stato Piattaforma</p>
+                    <h4 style="color: #16a34a; font-size: 1.3rem; margin: 0.5rem 0 0 0;">🟢 Online</h4>
+                </div>
+                <div
+                    style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Database Firestore</p>
+                    <h4 style="color: #2563eb; font-size: 1.3rem; margin: 0.5rem 0 0 0;">Sincronizzato</h4>
+                </div>
+                <div
+                    style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Modalità Ruolo</p>
+                    <h4 style="color: #dc2626; font-size: 1.3rem; margin: 0.5rem 0 0 0;">Administrator</h4>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SEZIONE LEZIONI SEGUITE -->
+        <div style="background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem;">
+                <h2 style="margin: 0; font-size: 1.4rem; color: #0f172a;">Le mie Lezioni & Attività</h2>
+                <span id="lesson-count"
+                    style="background: #e0e7ff; color: #3730a3; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">0 lezioni</span>
+            </div>
+
+            <!-- LISTA DINAMICA LEZIONI -->
+            <div id="lessons-container"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem;">
+                <p style="color: #94a3b8; grid-column: 1/-1; text-align: center;">Caricamento lezioni salvate...</p>
+            </div>
+        </div>
+
+    </main>
+
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+    <script type="module" src="auth-profile.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Bit, Byte e Unità di Misura - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Bit, Byte e Unità di Misura - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Tema Arancione Informatica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #fff;
+        }
+
+        /* Linee a sinistra più spesse per gli esercizi */
+        .card-esercizio.livello-facile {
+            border-left: 6px solid #10b981;
+        }
+
+        .card-esercizio.livello-medio {
+            border-left: 6px solid #f59e0b;
+        }
+
+        .card-esercizio.livello-difficile {
+            border-left: 6px solid #ef4444;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .badge-difficolta.facile { background-color: #10b981; }
+        .badge-difficolta.medio { background-color: #f59e0b; }
+        .badge-difficolta.difficile { background-color: #ef4444; }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #ea580c;
+            padding: 0.5rem 0;
+        }
+
+        .spiegazione-contenuto {
+            background-color: #fff7ed;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .box-risposta-corretta {
+            background-color: #ffedd5;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            color: #9a3412;
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stili specifici per il convertitore interattivo */
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input.code-input:focus {
+            border-color: #ea580c;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="bit-e-byte" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica / Architettura</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Bit, Byte e Unità di Misura</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Codifica binaria, multipli della memoria, convertitore interattivo e 100 esercizi obbligatori di conversione.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è un Bit e la Codifica Binaria</h2>
+            <p>
+                Il termine <strong>bit</strong> (contrazione di <em>binary digit</em>, cifra binaria) rappresenta l'unità di misura elementare dell'informazione gestita da un sistema digitale. Può assumere esclusivamente due stati logici distinti: <code>0</code> o <code>1</code> (spento o acceso, falso o vero).
+            </p>
+
+            <h2>2. Dal Byte ai Grandi Multipli della Memoria</h2>
+            <p>
+                Aggregando più bit si ottengono strutture dati più ampie. L'unità fondamentale per la memorizzazione dei testi e dei file è il <strong>Byte</strong>, composto da <code>8 bit</code>, capace di codificare un singolo carattere alfanumerico (secondo lo standard ASCII). I multipli seguono la scala binaria (basata sulle potenze di 2):
+            </p>
+            <ul>
+                <li><strong>Kilobyte (KB):</strong> <code>1 KB = 1024 Byte</code> (2<sup>10</sup> byte).</li>
+                <li><strong>Megabyte (MB):</strong> <code>1 MB = 1024 KB</code> (circa 1 milione di byte).</li>
+                <li><strong>Gigabyte (GB):</strong> <code>1 GB = 1024 MB</code> (circa 1 miliardo di byte).</li>
+                <li><strong>Terabyte (TB):</strong> <code>1 TB = 1024 GB</code> (circa 1 mille miliardi di byte).</li>
+            </ul>
+
+            <div class="formula-box" style="border-color: #fed7aa; background-color: #fff7ed;">
+                📊 <strong>Regola di Conversione Pratica:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Per passare da un'unità superiore a una inferiore (es. da MB a KB), si <strong>moltiplica</strong> per <code>1024</code>.<br>
+                    • Per passare da un'unità inferiore a una superiore (es. da Byte a KB), si <strong>divide</strong> per <code>1024</code>.<br>
+                    • Attenzione alla differenza tra <strong>Bit (b)</strong> e <strong>Byte (B)</strong>: 1 Byte equivale a 8 bit (spesso usato nelle velocità di rete).
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #9a3412; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Quanti Kilobyte (KB) sono contenuti in <code>4 Megabyte (MB)</code>?</p>
+                <hr style="border: 0; border-top: 1px solid #fed7aa; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo la relazione di scala: <code>1 MB = 1024 KB</code>.</li>
+                    <li>Moltiplichiamo il valore di partenza per il fattore di conversione: <code>4 × 1024</code>.</li>
+                    <li>Eseguiamo il calcolo: <code>4096 KB</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione: 4096 KB</strong></p>
+            </div>
+
+            <h2>3. Convertitore Interattivo di Memoria</h2>
+            <p>
+                Inserisci un valore in Megabyte (MB) nel box sottostante e premi il pulsante per calcolarne istantaneamente l'equivalente in Kilobyte e Byte.
+            </p>
+
+            <!-- STRUMENTO INTERATTIVO -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">convertitore@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">Memory Unit Tool</span>
+                </div>
+                <div class="converter-controls">
+                    <input type="number" id="valoreMB" class="code-input" value="5" placeholder="Inserisci valore in MB...">
+                </div>
+                <button class="btn-esegui" onclick="convertiMemoria()">Calcola Conversioni ⚡</button>
+                <div id="terminalOutput" class="terminal-output">> Inserisci un valore e premi calcola...</div>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2 style="color: #c2410c;">✏️ 100 Esercizi Obbligatori su Bit, Byte e Multipli</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi progressivi suddivisi per livello di difficoltà (facile, medio, difficile) per padroneggiare le conversioni di memoria digitale.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Convertitore Interattivo -->
+    <script>
+        function convertiMemoria() {
+            const mb = parseFloat(document.getElementById('valoreMB').value);
+            const outputDiv = document.getElementById('terminalOutput');
+            
+            if (isNaN(mb) || mb < 0) {
+                outputDiv.style.color = '#f87171';
+                outputDiv.innerHTML = `> Errore: Inserisci un valore numerico valido maggiore o uguale a zero.`;
+                return;
+            }
+
+            const kb = mb * 1024;
+            const byte = kb * 1024;
+            const bit = byte * 8;
+
+            outputDiv.style.color = '#38bdf8';
+            outputDiv.innerHTML = `> Risultati per ${mb} MB:<br>` +
+                                  `- Kilobyte (KB): ${kb.toLocaleString()}<br>` +
+                                  `- Byte (B): ${byte.toLocaleString()}<br>` +
+                                  `- Bit (b): ${bit.toLocaleString()}`;
+        }
+    </script>
+
+    <!-- Script Generatore dei 100 Esercizi Obbligatori -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let valKB = (i % 8) + 1;
+                    domanda = `Quanti Byte sono contenuti esattamente in <code>${valKB} KB</code>?`;
+                    let risByte = valKB * 1024;
+                    risposta = `<strong>${risByte.toLocaleString()} Byte</strong>`;
+                    spiegazione = `
+                    1) Sappiamo che <code>1 KB = 1024 Byte</code>.<br>
+                    2) Moltiplichiamo <code>${valKB} × 1024</code> per ottenere <code>${risByte.toLocaleString()} Byte</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let valMB = (i % 5) + 2;
+                    domanda = `Converti <code>${valMB} Megabyte (MB)</code> in Kilobyte (KB).`;
+                    let risKB = valMB * 1024;
+                    risposta = `<strong>${risKB.toLocaleString()} KB</strong>`;
+                    spiegazione = `
+                    1) Ricordiamo che <code>1 MB = 1024 KB</code>.<br>
+                    2) Eseguiamo il calcolo: <code>${valMB} × 1024 = ${risKB.toLocaleString()} KB</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let valGB = (i % 3) + 1;
+                    domanda = `Quanti bit sono presenti in <code>${valGB} Gigabyte (GB)</code>? (Considera <code>1 GB = 1024 MB</code>, <code>1 MB = 1024 KB</code>, <code>1 KB = 1024 Byte</code> e <code>1 Byte = 8 bit</code>).`;
+                    // Calcolo esatto dei bit
+                    let totalBits = valGB * 1024 * 1024 * 1024 * 8;
+                    risposta = `<strong>${totalBits.toLocaleString()} bit</strong>`;
+                    spiegazione = `
+                    1) Convertiamo i GB in Byte: <code>${valGB} × 1024<sup>3</sup> Byte</code>.<br>
+                    2) Moltiplichiamo per 8 per convertire i Byte in bit.<br>
+                    3) Il risultato finale è <code>${totalBits.toLocaleString()} bit</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0; color:#1e293b;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

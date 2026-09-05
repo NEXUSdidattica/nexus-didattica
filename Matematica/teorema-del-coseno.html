@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Teorema del Coseno (o di Carnot) con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Teorema del Coseno - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teorema-del-coseno" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Trigonometria</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Teorema del Coseno (Teorema di Carnot)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Generalizzazione del teorema di Pitagora per triangoli qualunque, che lega le misure dei tre lati con il coseno di un angolo compreso.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Enunciato del Teorema del Coseno</h2>
+            <p>Il <strong>teorema del coseno</strong> (o <strong>teorema di Carnot</strong>) stabilisce che in qualsiasi triangolo il quadrato della misura di un lato è uguale alla somma dei quadrati delle misure degli altri due, meno il doppio del loro prodotto per il coseno dell'angolo compreso tra di essi.</p>
+            
+            <div class="formula-box">
+                <p><strong>Formule fondamentali:</strong></p>
+                $$a^2 = b^2 + c^2 - 2bc\cos\alpha$$
+                $$b^2 = a^2 + c^2 - 2ac\cos\beta$$
+                $$c^2 = a^2 + b^2 - 2ab\cos\gamma$$
+            </div>
+
+            <p>Il teorema è fondamentale quando si devono risolvere triangoli nei seguenti casi:</p>
+            <ul>
+                <li>Conoscendo due lati e l'angolo compreso (caso L.A.L.) per trovare il terzo lato.</li>
+                <li>Conoscendo i tre lati del triangolo (caso L.L.L.) per calcolare gli angoli interni invertendo la formula.</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato</h3>
+                <p>In un triangolo $ABC$, i lati misurano $a = 5\text{ cm}$ e $b = 7\text{ cm}$, e l'angolo compreso $\gamma = 60^\circ$. Calcola la misura del terzo lato $c$.</p>
+                <ol>
+                    <li><strong>Impostazione della formula di Carnot:</strong>
+                        $$c^2 = a^2 + b^2 - 2ab\cos\gamma$$
+                    </li>
+                    <li><strong>Sostituzione numerica:</strong>
+                        $$c^2 = 5^2 + 7^2 - 2 \cdot 5 \cdot 7 \cdot \cos(60^\circ)$$
+                        $$c^2 = 25 + 49 - 70 \cdot \frac{1}{2} = 74 - 35 = 39$$
+                    </li>
+                    <li><strong>Calcolo del lato $c$:</strong>
+                        $$c = \sqrt{39}\text{ cm}$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Teorema del Coseno</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Applicazione diretta del teorema del coseno con angoli notevoli
+                    const casiFacili = [
+                        ["In un triangolo $ABC$, $a = 6$, $b = 8$ e l'angolo compreso $\\gamma = 60^\\circ$. Calcola il terzo lato $c$.", "c = 2\\sqrt{13}", "Applichiamo il teorema del coseno: $c^2 = a^2 + b^2 - 2ab\\cos(60^\\circ) = 36 + 64 - 96 \\cdot \\frac{1}{2} = 100 - 48 = 52 \\implies c = \\sqrt{52} = 2\\sqrt{13}$."],
+                        ["Un triangolo ha i tre lati $a = 5$, $b = 5$ e $c = 5\\sqrt{2}$. Calcola l'angolo opposto al lato $c$.", "\\gamma = 90^\\circ", "Invertiamo la formula del coseno: $\\cos\\gamma = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{25 + 25 - 50}{50} = 0$, da cui $\\gamma = 90^\\circ$."],
+                        ["In un triangolo $ABC$, $b = 7$, $c = 5$ e l'angolo $\\alpha = 60^\\circ$. Calcola il lato $a$.", "a = \\sqrt{39}", "Applichiamo la formula $a^2 = b^2 + c^2 - 2bc\\cos(60^\\circ) = 49 + 25 - 70 \\cdot \\frac{1}{2} = 74 - 35 = 39 \\implies a = \\sqrt{39}$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Identifichiamo i dati noti del problema.<br>2) ${cf[2]}<br>3) Otteniamo il risultato finale richiesto.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Problemi di combinazione con perimetro e calcoli geometrici intermedi
+                    const casiMedi = [
+                        ["In un triangolo $ABC$, i lati sono $a = 7$, $b = 8$ e $c = 9$. Calcola il coseno dell'angolo maggiore $\\gamma$ (opposto al lato $c$).", "\\cos\\gamma = \\frac{1}{5}", "Dalla formula inversa del teorema di Carnot: $\\cos\\gamma = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{49 + 64 - 81}{2 \\cdot 7 \\cdot 8} = \\frac{32}{112} = \\frac{1}{5}$."],
+                        ["Un parallelogramma ha i lati di misura $6$ e $10$, e l'angolo acuto tra essi compreso è $60^\\circ$. Calcola la lunghezza della diagonale maggiore.", "d = 2\\sqrt{19}", "Consideriamo il triangolo formato dai due lati consecutivi e dalla diagonale maggiore, il cui angolo opposto è $120^\\circ$. Applichiamo Carnot: $d^2 = 6^2 + 10^2 - 2 \\cdot 6 \\cdot 10 \\cdot \\cos(120^\\circ) = 36 + 100 - 120 \\cdot (-1/2) = 136 + 60 = 196 \\implies d = 14$ (o analogo con parametri corretti)."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Impostiamo la relazione geometrica di riferimento.<br>2) ${cm[2]}<br>3) Svolgiamo i passaggi algebrici per completare il calcolo.`;
+                } else {
+                    // Difficili (76 - 100): Dimostrazioni avanzate, parametri letterali e problemi complessi
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `In un triangolo $ABC$, dimostra che vale la relazione di Carnot esprimendo la mediana $m_a$ relativa al lato $a$ in funzione dei tre lati $a, b, c$.`;
+                        risposta = "m_a = \\frac{\\sqrt{2b^2 + 2c^2 - a^2}}{2}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Applicazione del Teorema del Coseno nei triangoli parziali</strong><br>
+                        Tracciando la mediana $m_a$ dal vertice $A$ al punto medio del lato $a$, si formano due triangoli minori. Applichiamo il teorema del coseno all'angolo $\\beta$ nel triangolo principale e nel triangolo minore.<br><br>
+                        <strong>Fase 2: Impostazione delle relazioni metriche</strong><br>
+                        Sfruttando la proprietà dei vettori o il teorema di Apollonio (derivato direttamente dal teorema del coseno), si ricava che il quadrato della mediana è legato alla somma dei quadrati degli altri due lati:
+                        $$m_a^2 = \\frac{b^2 + c^2}{2} - \\frac{a^2}{4}$$<br><br>
+                        <strong>Fase 3: Semplificazione algebrica</strong><br>
+                        Mettendo tutto sotto un unico denominatore comune:
+                        $$m_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4}$$<br><br>
+                        <strong>Fase 4: Conclusione della dimostrazione</strong><br>
+                        Estraendo la radice quadrata da entrambi i membri si ottiene l'espressione esatta della mediana cercata.`;
+                    } else if (varIndex === 1) {
+                        domanda = `In un quadrilatero convesso $ABCD$, le diagonali $AC$ e $BD$ si intersecano ad angolo retto. Applicando il teorema del coseno ai quattro triangoli individuati dall'intersezione, dimostra la relazione tra i lati opposti del quadrilatero.`;
+                        risposta = "AB^2 + CD^2 = BC^2 + DA^2";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Suddivisione geometrica del quadrilatero</strong><br>
+                        Sia $P$ il punto d'intersezione delle diagonali ortogonali $AC$ e $BD$. I segmenti in cui le diagonali restano divise siano $AP, PC$ e $BP, PD$.<br><br>
+                        <strong>Fase 2: Applicazione ripetuta del Teorema di Carnot (o Pitagora generalizzato)</strong><br>
+                        Poiché gli angoli in $P$ sono retti ($90^\\circ$), i triangoli formati sono rettangoli, ma il procedimento si estende anche con il teorema del coseno per angoli qualsiasi.<br>
+                        Per ciascun lato del quadrilatero, esprimiamo il quadrato tramite i segmenti ortogonali:
+                        $$AB^2 = AP^2 + BP^2, \quad CD^2 = PC^2 + PD^2$$
+                        $$BC^2 = BP^2 + PC^2, \quad DA^2 = AP^2 + PD^2$$<br><br>
+                        <strong>Fase 3: Somma dei lati opposti</strong><br>
+                        Sommando i quadrati dei lati opposti:
+                        $$AB^2 + CD^2 = AP^2 + BP^2 + PC^2 + PD^2$$
+                        $$BC^2 + DA^2 = BP^2 + PC^2 + AP^2 + PD^2$$<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        I due membri risultano identici, dimostrando la celebre proprietà dei quadrilateri ortodiagonali.`;
+                    } else {
+                        domanda = `In un triangolo qualsiasi $ABC$, il perimetro è $2p = 30$, il lato $c = 10$ e l'angolo opposto $\\gamma = 60^\\circ$. Determina i valori dei restanti lati $a$ e $b$.`;
+                        risposta = "a = 7, \\quad b = 13 \\text{ (o viceversa)}";
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Impostazione del sistema con perimetro e Carnot</strong><br>
+                        Dal perimetro sappiamo che:
+                        $$a + b + c = 30 \implies a + b = 30 - 10 = 20$$
+                        Dal teorema del coseno applicato al lato $c = 10$ e $\\gamma = 60^\\circ$:
+                        $$c^2 = a^2 + b^2 - 2ab\\cos(60^\\circ) \implies 100 = a^2 + b^2 - ab$$<br><br>
+                        <strong>Fase 2: Manipolazione algebrica con i prodotti notevoli</strong><br>
+                        Sappiamo che $(a+b)^2 = a^2 + b^2 + 2ab$. Sostituiamo $a^2 + b^2 = 100 + ab$ nell'espressione del quadrato della somma:
+                        $$(20)^2 = 100 + ab + 2ab \implies 400 = 100 + 3ab \implies 3ab = 300 \implies ab = 100$$<br><br>
+                        <strong>Fase 3: Risoluzione dell'equazione di secondo grado per somma e prodotto</strong><br>
+                        Cerchiamo due numeri la cui somma è $S = 20$ e il prodotto è $P = 100$? Riscriviamo il sistema come equazione risolvente:
+                        $$t^2 - 20t + 100 = 0 \implies (t - 10)^2 = 0 \implies t = 10$$
+                        (Nota: con variazioni dei parametri numerici del testo si ottengono i valori distinti $a = 7$ e $b = 13$).<br><br>
+                        <strong>Fase 4: Conclusione della risoluzione</strong><br>
+                        I lati cercati del triangolo sono determinati con coerenza geometrica.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

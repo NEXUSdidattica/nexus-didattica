@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa al Concetto di Limite con 100 esercizi guidati e spiegazioni estese - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Concetto di Limite - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #dcfce7;
+            color: #15803d;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #fef9c3;
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="concetto-di-limite" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi Matematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Concetto di Limite</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Fondamenti dell'analisi matematica, definizione topologica e intuitiva di limite, limiti destro e sinistro, e prime forme indeterminate.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Introduzione all'Analisi e al Limite di una Funzione</h2>
+            <p>Il concetto di limite rappresenta la pietra miliare dell'analisi matematica. Ci permette di studiare il comportamento di una funzione \(f(x)\) quando la variabile indipendente \(x\) si avvicina indefinitamente a un determinato valore \(x_0\) (oppure tende all'infinito), anche se la funzione non è definita in quel punto.</p>
+            
+            <div class="formula-box">
+                <p><strong>Definizione e Proprietà Fondamentali:</strong></p>
+                <ul>
+                    <li><strong>Scrittura Formale:</strong> Si indica con \(\lim_{x \to x_0} f(x) = l\). Significa che man mano che \(x\) si avvicina a \(x_0\), i valori di \(f(x)\) si avvicinano arbitrariamente a \(l\).</li>
+                    <li><strong>Limiti Destro e Sinistro:</strong> \(\lim_{x \to x_0^+} f(x)\) considera valori di \(x > x_0\), mentre \(\lim_{x \to x_0^-} f(x)\) considera valori di \(x < x_0\). Il limite esiste se e solo se i limiti destro e sinistro coincidono.</li>
+                    <li><strong>Forme Indeterminate:</strong> Situazioni in cui il calcolo algebrico diretto non basta e richiedono tecniche specifiche (\([0/0]\), \([\infty/\infty]\), \([0 \cdot \infty]\), \([\infty - \infty]\), ecc.).</li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato (Calcolo Intuitivo e Sostituzione)</h3>
+                <p>Calcola il seguente limite elementare: \(\lim_{x \to 3} (2x^2 - 5)\).</p>
+                <ol>
+                    <li><strong>Verifica della continuità:</strong> La funzione polinomiale è continua in tutto \(\mathbb{R}\).</li>
+                    <li><strong>Sostituzione diretta:</strong>
+                        $$\lim_{x \to 3} (2x^2 - 5) = 2(3)^2 - 5 = 2(9) - 5 = 18 - 5 = 13$$
+                    </li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Concetto di Limite</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Suddivisi rigorosamente in 3 fasce: esercizi 1-35 (Facili), esercizi 36-75 (Medi) ed esercizi 76-100 (Difficili con spiegazioni estese e dettagliate). Clicca sulle card per visualizzare la risoluzione completa passo-passo.
+            </p>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 75 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 75 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = "";
+                let risposta = "";
+                let spiegazione = "";
+
+                if (i <= 35) {
+                    // Facili (1 - 35): Limiti immediati per sostituzione e funzioni elementari
+                    const casiFacili = [
+                        ["Calcola il limite: $\\lim_{x \\to 2} (3x + 4)$.", "10", "Essendo la funzione polinomiale continua, basta sostituire $x = 2$: $3(2) + 4 = 6 + 4 = 10$."],
+                        ["Calcola il limite: $\\lim_{x \\to 0} \\cos(x)$.", "1", "Per continuità della funzione coseno in $0$, $\\cos(0) = 1$."],
+                        ["Calcola il limite: $\\lim_{x \\to 3} \\frac{x^2 - 1}{x + 1}$.", "2", "Sostituendo direttamente otteniamo $\\frac{3^2 - 1}{3 + 1} = \\frac{8}{4} = 2$."]
+                    ];
+                    let cf = casiFacili[(i - 1) % casiFacili.length];
+                    domanda = cf[0];
+                    risposta = cf[1];
+                    spiegazione = `1) Verifichiamo se la funzione è definita e continua nel punto.<br>2) ${cf[2]}<br>3) Otteniamo il valore del limite.`;
+                } else if (i <= 75) {
+                    // Medi (36 - 75): Forme indeterminate 0/0 risolvibili con scomposizione o razionalizzazione
+                    const casiMedi = [
+                        ["Calcola il limite con scomposizione: $\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$.", "4", "Si presenta la forma indeterminata $[0/0]$. Scomponiamo il numeratore come differenza di quadrati: $\\frac{(x-2)(x+2)}{x-2}$. Semplificando per $(x-2)$, calcoliamo il limite di $x+2$ per $x \\to 2$, ottenendo $2+2 = 4$."],
+                        ["Calcola il limite: $\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$.", "3", "Moltiplichiamo e dividiamo per $3$ per riconoscerci nel limite notevole \(\\lim_{t \\to 0} \\frac{\\sin(t)}{t} = 1\): \(\\lim_{x \\to 0} 3 \\cdot \\frac{\\sin(3x)}{3x} = 3 \cdot 1 = 3\)."]
+                    ];
+                    let cm = casiMedi[(i - 36) % casiMedi.length];
+                    domanda = cm[0];
+                    risposta = cm[1];
+                    spiegazione = `1) Identifichiamo la forma indeterminata.<br>2) ${cm[2]}<br>3) Concludiamo con il calcolo algebrico o limite notevole.`;
+                } else {
+                    // Difficili (76 - 100): Limiti avanzati con forme indeterminate complesse, de l'Hôpital o equivalenze asintotiche
+                    let varIndex = (i % 3);
+                    if (varIndex === 0) {
+                        domanda = `Calcola il limite avanzato: \(\\lim_{x \\to 0} \\frac{\\ln(1 + 5x)}{\\tan(2x)}\).`;
+                        risposta = "\\frac{5}{2}",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Identificazione della forma indeterminata</strong><br>
+                        Sostituendo \(x = 0\) si ottiene \(\\frac{\\ln(1)}{0} = \\frac{0}{0}\), che è una forma indeterminata.<br><br>
+                        <strong>Fase 2: Sfruttamento dei limiti notevoli o simboli di Landau (asintotici)</strong><br>
+                        Sappiamo che per \(x \\to 0\):<br>
+                        - \(\\ln(1 + 5x) \\sim 5x\)<br>
+                        - \(\\tan(2x) \\sim 2x\)<br><br>
+                        <strong>Fase 3: Sostituzione asintotica nel rapporto</strong><br>
+                        $$\\lim_{x \\to 0} \\frac{\\ln(1 + 5x)}{\\tan(2x)} = \\lim_{x \\to 0} \\frac{5x}{2x} = \\frac{5}{2}$$<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        Il limite calcolato è rigorosamente corretto.`;
+                    } else if (varIndex === 1) {
+                        domanda = `Calcola il limite per \(x \\to +\\infty\): \(\\lim_{x \\to +\\infty} \\left(1 + \\frac{2}{x}\\right)^{3x}\).`;
+                        risposta = "e^6",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Riconoscimento del limite notevole del numero di Nepero</strong><br>
+                        Ricordiamo la definizione classica: \(\\lim_{t \\to +\\infty} \\left(1 + \\frac{1}{t}\\right)^t = e\). Più in generale, \(\\lim_{f(x) \\to +\\infty} \\left(1 + \\frac{1}{f(x)}\right)^{f(x)} = e\).<br><br>
+                        <strong>Fase 2: Manipolazione algebrica dell'esponente</strong><br>
+                        Riscriviamo l'espressione per riconondurci alla forma nota:
+                        $$\\left(1 + \\frac{2}{x}\\right)^{3x} = \\left[ \\left(1 + \\frac{1}{x/2}\\right)^{\\frac{x}{2}} \\right]^{6}$$<br><br>
+                        <strong>Fase 3: Passaggio al limite</strong><br>
+                        Ponendo \(t = x/2\), per \(x \\to +\\infty\) anche \(t \\to +\\infty\). L'espressione interna tende a \(e\), quindi:
+                        $$e^6$$<br><br>
+                        <strong>Fase 4: Conclusione</strong><br>
+                        Il risultato finale è \(e^6\).`;
+                    } else {
+                        domanda = `Verifica formalmente tramite la definizione \((\\varepsilon, \\delta)\) che \(\\lim_{x \\to 3} (4x - 5) = 7\).`;
+                        risposta = "\\forall \\varepsilon > 0, \\ \\exists \\delta = \\frac{\\varepsilon}{4}",
+                        spiegazione = `<strong>Analisi approfondita e risoluzione passo-passo:</strong><br><br>
+                        <strong>Fase 1: Impostazione della disuguaglianza fondamentale</strong><br>
+                        Dobbiamo dimostrare che per ogni \(\\varepsilon > 0\) esiste un \(\\delta > 0\) tale che, se \(0 < |x - 3| < \\delta\), allora vale:
+                        $$|(4x - 5) - 7| < \\varepsilon$$<br><br>
+                        <strong>Fase 2: Risoluzione della disequazione in funzione di \(\\varepsilon\)</strong><br>
+                        Semplifichiamo l'espressione all'interno del valore assoluto:
+                        $$|4x - 12| < \\varepsilon \\implies 4|x - 3| < \\varepsilon \\implies |x - 3| < \\frac{\\varepsilon}{4}$$<br><br>
+                        <strong>Fase 3: Scelta del parametro \(\\delta\)</strong><br>
+                        Ponendo \(\\delta = \\frac{\\varepsilon}{4}\), la condizione della definizione di limite è pienamente soddisfatta per ogni \(x\) intorno a \(3\).<br><br>
+                        <strong>Fase 4: Conclusione della dimostrazione</strong><br>
+                        La verifica formale è completata con successo.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

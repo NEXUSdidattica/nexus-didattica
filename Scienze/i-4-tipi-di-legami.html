@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I 4 tipi di legami chimici nel dettaglio: covalente puro, covalente polare, ionico e metallico con rappresentazioni grafiche SVG - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I 4 tipi di legami chimici - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* STILE CONTENITORE DISEGNO / SCHEMA VISIVO SVG */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, var(--sfondo-chiaro) 100%);
+            border: 1px solid var(--bordo-chiaro);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="i-4-tipi-di-legami" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica / Fondamenti di Chimica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I 4 tipi di legami chimici nel dettaglio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi approfondita, caratteristiche energetiche, regole di elettronegatività e rappresentazioni grafiche vettoriali per ogni tipologia di legame.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione: perché gli atomi si legano?</h2>
+            <p>
+                In natura, la stragrande maggioranza degli elementi chimici non si trova sotto forma di atomi isolati, bensì uniti ad altri atomi a formare molecole o strutture estese. Questa tendenza è guidata dalla ricerca della minima energia e della massima stabilità energetica, che nella teoria chimica viene comunemente associata al raggiungimento della configurazione elettronica esterna del gas nobile più vicino (la cosiddetta <strong>regola dell'ottetto</strong>, ovvero il completamento di 8 elettroni nel guscio di valenza, o 2 per l'elio e l'idrogeno).
+            </p>
+            <p>
+                I legami chimici intramolecolari si suddividono principalmente in 4 grandi categorie fondamentali: 
+                <strong>covalente puro (o apolare)</strong>, 
+                <strong>covalente polare</strong>, 
+                <strong>ionico</strong> e 
+                <strong>metallico</strong>. 
+                Ciascun legame è governato dalla differenza di elettronegatività ($\Delta\chi$) tra gli atomi partecipanti e dalle forze elettrostatiche in gioco.
+            </p>
+
+            <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 2rem 0;">
+
+            <!-- ================= SEZIONE 1: LEGAME COVALENTE PURO ================= -->
+            <h2>2. Il Legame Covalente Puro (o Apolare)</h2>
+            <p>
+                Il <strong>legame covalente puro</strong> (o apolare) si instaura solitamente tra atomi dello stesso elemento non metallico o tra atomi di elementi diversi che possiedono una <strong>differenza di elettronegatività nulla o estremamente trascurabile ($\Delta\chi = 0$ o comunque $< 0.4$)</strong>.
+            </p>
+            <p>
+                Poiché gli atomi hanno un potere attrattivo identico o molto simile nei confronti degli elettroni di valenza, la coppia (o le coppie) di elettroni condivisa viene attratta in egual misura da entrambi i nuclei. Di conseguenza, la nuvola elettronica di legame risulta perfettamente simmetrica e non si formano poli di carica elettrica permanente.
+            </p>
+
+            <div class="formula-box">
+                🔬 <strong>Caratteristiche e Esempi:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Esempi classici di molecole con legami covalenti puri sono i gas biatomici omonucleari come l'idrogeno ($\text{H}_2$), l'ossigeno ($\text{O}_2$), l'azoto ($\text{N}_2$), il cloro ($\text{Cl}_2$) e molecole come il metano ($\text{CH}_4$) dove il legame carbonio-idrogeno possiede un carattere apolare per la minima differenza di elettronegatività.
+                </p>
+            </div>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE SVG COVALENTE PURO -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="180" viewBox="0 0 550 180" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="550" height="180" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- Titolo schema -->
+                    <text x="275" y="30" font-family="Arial" font-size="13" fill="#15803d" font-weight="bold" text-anchor="middle">Rappresentazione Molecola di Idrogeno ($\text{H}_2$) - Legame Covalente Puro</text>
+
+                    <!-- Atomo H 1 -->
+                    <g transform="translate(150, 95)">
+                        <circle cx="0" cy="0" r="30" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="0" cy="0" r="22" fill="#dcfce7" stroke="#bbf7d0"/>
+                        <text x="0" y="5" font-family="Arial" font-size="14" fill="#15803d" font-weight="bold" text-anchor="middle">H</text>
+                        <text x="0" y="-38" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">Nucleo 1</text>
+                    </g>
+
+                    <!-- Atomo H 2 -->
+                    <g transform="translate(400, 95)">
+                        <circle cx="0" cy="0" r="30" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="0" cy="0" r="22" fill="#dcfce7" stroke="#bbf7d0"/>
+                        <text x="0" y="5" font-family="Arial" font-size="14" fill="#15803d" font-weight="bold" text-anchor="middle">H</text>
+                        <text x="0" y="-38" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">Nucleo 2</text>
+                    </g>
+
+                    <!-- Nuvola elettronica condivisa al centro (Simmetrica) -->
+                    <ellipse cx="275" cy="95" rx="95" ry="38" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,4"/>
+                    <text x="275" y="70" font-family="Arial" font-size="11" fill="#15803d" font-weight="bold" text-anchor="middle">Nuvola Elettronica Simmetrica</text>
+
+                    <!-- Elettroni condivisi -->
+                    <circle cx="255" cy="95" r="4" fill="#0f172a"/>
+                    <circle cx="295" cy="95" r="4" fill="#0f172a"/>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Condivisione simmetrica degli elettroni di legame nella molecola biatomica di idrogeno ($\text{H}_2$).
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 2rem 0;">
+
+            <!-- ================= SEZIONE 2: LEGAME COVALENTE POLARE ================= -->
+            <h2>3. Il Legame Covalente Polare</h2>
+            <p>
+                Il <strong>legame covalente polare</strong> si instaura tra atomi di non metalli diversi caratterizzati da una <strong>differenza di elettronegatività intermedia ($0.4 < \Delta\chi \le 1.9$)</strong>.
+            </p>
+            <p>
+                In questo tipo di legame, l'atomo più elettronegativo esercita una forza attrattiva maggiore sugli elettroni condivisi, attirandoli più verso di sé. Di conseguenza, la nuvola elettronica risulta deformata e asimmetrica: l'atomo più elettronegativo acquisisce una parziale carica negativa ($\delta^-$), mentre l'atomo meno elettronegativo assume una parziale carica positiva ($\delta^+$). Si genera così un <em>dipolo elettrico molecolare</em>.
+            </p>
+
+            <div class="formula-box">
+                🔬 <strong>Caratteristiche e Esempi:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Il prototipo universale del legame covalente polare è la molecola d'acqua ($\text{H}_2\text{O}$), dove l'ossigeno (più elettronegativo) attrae fortemente gli elettroni rispetto ai due atomi di idrogeno, oppure il cloruro di idrogeno ($\text{HCl}$).
+                </p>
+            </div>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE SVG COVALENTE POLARE -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="200" viewBox="0 0 550 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="550" height="200" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- Titolo schema -->
+                    <text x="275" y="25" font-family="Arial" font-size="13" fill="#1d4ed8" font-weight="bold" text-anchor="middle">Rappresentazione Molecola di $\text{HCl}$ - Legame Covalente Polare</text>
+
+                    <!-- Atomo H (meno elettronegativo) -->
+                    <g transform="translate(130, 100)">
+                        <circle cx="0" cy="0" r="28" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="14" fill="#1e40af" font-weight="bold" text-anchor="middle">H</text>
+                        <text x="0" y="-35" font-family="Arial" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="middle">$\delta^+$</text>
+                    </g>
+
+                    <!-- Atomo Cl (più elettronegativo) -->
+                    <g transform="translate(390, 100)">
+                        <circle cx="0" cy="0" r="42" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="14" fill="#1e40af" font-weight="bold" text-anchor="middle">Cl</text>
+                        <text x="0" y="-48" font-family="Arial" font-size="12" fill="#dc2626" font-weight="bold" text-anchor="middle">$\delta^-$</text>
+                    </g>
+
+                    <!-- Nuvola elettronica deformata verso il Cloro -->
+                    <ellipse cx="280" cy="100" rx="130" ry="48" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,4"/>
+                    
+                    <!-- Freccia del momento dipolare -->
+                    <line x1="165" y1="100" x2="335" y2="100" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed)"/>
+                    <text x="250" y="85" font-family="Arial" font-size="11" fill="#dc2626" font-weight="bold">Spostamento elettronico</text>
+
+                    <!-- Definizione freccia marker -->
+                    <defs>
+                        <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                          <path d="M0,0 L6,3 L0,6 z" fill="#dc2626" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 2: Deformazione della nuvola elettronica verso l'atomo più elettronegativo ($\text{Cl}$) nel cloruro di idrogeno.
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 2rem 0;">
+
+            <!-- ================= SEZIONE 3: LEGAME IONICO ================= -->
+            <h2>4. Il Legame Ionico</h2>
+            <p>
+                Il <strong>legame ionico</strong> si forma quando la <strong>differenza di elettronegatività tra i due atomi è molto elevata ($\Delta\chi > 1.9$)</strong>, solitamente tra un elemento metallico (che cede facilmente elettroni avendo bassa energia di ionizzazione) e un elemento non metallico (che acquista elettroni avendo alta affinità elettronica).
+            </p>
+            <p>
+                Invece di una condivisione, in questo caso si verifica un <strong>trasferimento completo di uno o più elettroni</strong> dall'atomo metallico a quello non metallico. Il metallo si trasforma in uno ione positivo (<strong>catione</strong>) e il non metallo in uno ione negativo (<strong>anione</strong>). Il legame risulta dall'attrazione elettrostatica tridimensionale omnidirezionale tra ioni di segno opposto.
+            </p>
+
+            <div class="formula-box">
+                🔬 <strong>Caratteristiche e Struttura:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Il composto ionico per eccellenza è il cloruro di sodio ($\text{NaCl}$, sale da cucina). I composti ionici non formano molecole isolate discrete, ma si organizzano in cristalli solidi macroscopici chiamati <em>reticoli cristallini ionici</em>, caratterizzati da altissimi punti di fusione e durezza.
+                </p>
+            </div>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE SVG LEGAME IONICO -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="200" viewBox="0 0 550 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="550" height="200" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- Titolo schema -->
+                    <text x="275" y="25" font-family="Arial" font-size="13" fill="#c2410c" font-weight="bold" text-anchor="middle">Rappresentazione Formazione del Legame Ionico ($\text{Na}^+$ e $\text{Cl}^-$)</text>
+
+                    <!-- Catione Sodio Na+ -->
+                    <g transform="translate(130, 100)">
+                        <circle cx="0" cy="0" r="32" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="14" fill="#c2410c" font-weight="bold" text-anchor="middle">$\text{Na}^+$</text>
+                        <text x="0" y="-40" font-family="Arial" font-size="11" fill="#c2410c" font-weight="bold" text-anchor="middle">Catione (Ceduto e-)</text>
+                    </g>
+
+                    <!-- Freccia di trasferimento elettrone -->
+                    <path d="M 180 90 Q 240 50 300 90" fill="none" stroke="#f97316" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+                    <text x="240" y="55" font-family="Arial" font-size="11" fill="#ea580c" font-weight="bold" text-anchor="middle">Trasferimento e⁻</text>
+
+                    <!-- Anione Cloro Cl- -->
+                    <g transform="translate(390, 100)">
+                        <circle cx="0" cy="0" r="42" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="14" fill="#c2410c" font-weight="bold" text-anchor="middle">$\text{Cl}^-$</text>
+                        <text x="0" y="-50" font-family="Arial" font-size="11" fill="#c2410c" font-weight="bold" text-anchor="middle">Anione (Acquisito e-)</text>
+                    </g>
+
+                    <!-- Testo attrazione elettrostatica -->
+                    <text x="260" y="160" font-family="Arial" font-size="12" fill="#475569" text-anchor="middle" font-weight="bold">⚡ Forte attrazione elettrostatica coulombiana tra ioni di segno opposto</text>
+
+                    <!-- Definizione freccia marker arancione -->
+                    <defs>
+                        <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                          <path d="M0,0 L6,3 L0,6 z" fill="#f97316" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 3: Trasferimento completo di elettroni dal sodio al cloro con formazione di ioni a forte attrazione elettrostatica.
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 2rem 0;">
+
+            <!-- ================= SEZIONE 4: LEGAME METALLICO ================= -->
+            <h2>5. Il Legame Metallico</h2>
+            <p>
+                Il <strong>legame metallico</strong> è la forza attrattiva che tiene uniti gli atomi dei <strong>metalli allo stato solido</strong> (es. ferro, rame, oro, argento, alluminio). I metalli sono caratterizzati da una bassa energia di ionizzazione e da pochi elettroni di valenza, i quali risultano debolmente legati ai rispettivi nuclei.
+            </p>
+            <p>
+                Nel modello del legame metallico (spesso descritto come il <em>"mare di elettroni"</em>), gli atomi metallici perdono i propri elettroni di valenze trasformandosi in cationi positivi disposti in un reticolo cristallino regolare. Gli elettroni liberati non appartengono più a un singolo atomo, ma formano una nube elettronica delocalizzata e mobile che permea l'intero reticolo, agendo da "collante" elettrostatico flessibile.
+            </p>
+
+            <div class="formula-box">
+                🔬 <strong>Proprietà Macroscopiche derivanti dal Legame:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    La natura del legame metallico spiega proprietà tipiche dei metalli come l'ottima <strong>conducibilità elettrica e termica</strong> (dovuta alla mobilità degli elettroni liberi), la <strong>lucentezza metallica</strong> e la straordinaria <strong>malleabilità e duttilità</strong> (i piani di cationi possono scorrere gli uni sugli altri senza che la struttura reticolare si spezzi grazie alla mediazione del mare elettronico).
+                </p>
+            </div>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE SVG LEGAME METALLICO -->
+            <div class="figura-geometrica-container">
+                <svg width="550" height="210" viewBox="0 0 550 210" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="550" height="210" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- Titolo schema -->
+                    <text x="275" y="25" font-family="Arial" font-size="13" fill="#7c2d12" font-weight="bold" text-anchor="middle">Rappresentazione del "Mare di Elettroni" nel Legame Metallico</text>
+
+                    <!-- Griglia di Cationi Positivi -->
+                    <!-- Riga 1 -->
+                    <g transform="translate(100, 70)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+                    <g transform="translate(210, 70)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+                    <g transform="translate(320, 70)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+                    <g transform="translate(430, 70)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+
+                    <!-- Riga 2 -->
+                    <g transform="translate(100, 145)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+                    <g transform="translate(210, 145)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+                    <g transform="translate(320, 145)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+                    <g transform="translate(430, 145)">
+                        <circle cx="0" cy="0" r="18" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+                        <text x="0" y="5" font-family="Arial" font-size="12" fill="#c2410c" font-weight="bold" text-anchor="middle">+</text>
+                    </g>
+
+                    <!-- Elettroni delocalizzati (pallini blu sparsi) -->
+                    <circle cx="155" cy="70" r="4" fill="#3b82f6"/>
+                    <circle cx="265" cy="70" r="4" fill="#3b82f6"/>
+                    <circle cx="375" cy="70" r="4" fill="#3b82f6"/>
+                    
+                    <circle cx="155" cy="145" r="4" fill="#3b82f6"/>
+                    <circle cx="265" cy="145" r="4" fill="#3b82f6"/>
+                    <circle cx="375" cy="145" r="4" fill="#3b82f6"/>
+
+                    <circle cx="100" cy="108" r="4" fill="#3b82f6"/>
+                    <circle cx="210" cy="108" r="4" fill="#3b82f6"/>
+                    <circle cx="320" cy="108" r="4" fill="#3b82f6"/>
+                    <circle cx="430" cy="108" r="4" fill="#3b82f6"/>
+
+                    <text x="275" y="192" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle" font-weight="bold">🔵 Elettroni di valenza delocalizzati (liberi di muoversi nel reticolo)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 4: Struttura reticolare dei cationi metallici immersi in un mare di elettroni liberi e mobili.
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 2rem 0;">
+
+            <!-- ================= SEZIONE 6: TABELLA COMPARATIVA ================= -->
+            <h2>6. Tabella sinottica riassuntiva dei 4 legami</h2>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Tipo di Legame</th>
+                        <th>Tra quali atomi si forma</th>
+                        <th>Differenza di Elettronegatività ($\Delta\chi$)</th>
+                        <th>Natura degli Elettroni</th>
+                        <th>Esempio Tipico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Covalente Puro (Apolare)</strong></td>
+                        <td>Non metallo + Non metallo (stesso elemento o simili)</td>
+                        <td>$\Delta\chi < 0.4$</td>
+                        <td>Condivisi in modo perfettamente simmetrico.</td>
+                        <td>$\text{H}_2, \text{O}_2, \text{CH}_4$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Covalente Polare</strong></td>
+                        <td>Non metallo + Non metallo (elementi diversi)</td>
+                        <td>$0.4 < \Delta\chi \le 1.9$</td>
+                        <td>Condivisi in modo asimmetrico (spostati verso il più elettronegativo).</td>
+                        <td>$\text{H}_2\text{O}, \text{HCl}, \text{NH}_3$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ionico</strong></td>
+                        <td>Metallo + Non metallo</td>
+                        <td>$\Delta\chi > 1.9$</td>
+                        <td>Trasferimento completo dal metallo al non metallo.</td>
+                        <td>$\text{NaCl}, \text{MgO}$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metallico</strong></td>
+                        <td>Metallo + Metallo</td>
+                        <td>Bassa elettronegatività per entrambi</td>
+                        <td>Delocalizzati e liberi in un "mare" comune.</td>
+                        <td>$\text{Fe}, \text{Cu}, \text{Au}, \text{Al}$</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- APPROFONDIMENTO FINALE -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Il carattere di legame come uno spettro continuo</h3>
+                <p style="margin-bottom: 0;">
+                    È importante ricordare che la suddivisione in quattro categorie rigide costituisce un modello didattico. In chimica, la natura dei legami chimici si comporta come uno spettro continuo: non esiste un confine netto e assoluto tra un legame covalente polare estremo e un legame ionico, così come molti composti presentano percentuali miste di carattere covalente e ionico calcolabili in base alla scala delle percentuali di ionicità di Linus Pauling.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

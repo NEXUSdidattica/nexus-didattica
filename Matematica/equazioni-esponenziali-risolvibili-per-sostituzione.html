@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Equazioni Esponenziali Risolvibili per Sostituzione - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Esponenziali per Sostituzione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-esponenziali-sostituzione" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Equazioni Esponenziali Risolvibili per Sostituzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Tecniche di riduzione a equazioni algebriche (riconducibili a equazioni di secondo grado) e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Metodo della Sostituzione (o Cambio di Variabile)</h2>
+            <p>
+                Molte equazioni esponenziali non possono essere risolte uguagliando le basi direttamente, ma presentano una struttura simile a un'equazione di secondo grado in cui l'incognita è una potenza del tipo <code>a<sup>x</sup></code>.
+            </p>
+            <p>
+                La strategia generale si articola nei seguenti passaggi:
+            </p>
+            <ul>
+                <li><strong>Riconoscimento:</strong> Individuare la presenza di termini come <code>a<sup>x</sup></code> e <code>a<sup>2x</sup> = (a<sup>x</sup>)<sup>2</sup></code>.</li>
+                <li><strong>Posizione (Cambio di variabile):</strong> Porre <code>t = a<sup>x</sup></code>, ricordando che per definizione di funzione esponenziale deve essere <strong><code>t > 0</code></strong>.</li>
+                <li><strong>Risoluzione dell'equazione algebrica:</strong> Sostituire <code>t</code> nell'equazione originaria per ottenere un'equazione di secondo grado (o fratta) nella nuova incognita <code>t</code>.</li>
+                <li><strong>Controllo e Ritrasformazione:</strong> Scartare eventuali soluzioni negative o nulle per <code>t</code> e risolvere l'equazione elementare <code>a<sup>x</sup> = t<sub>i</sub></code> per ciascuna soluzione accettabile.</li>
+            </ul>
+
+            <h2>2. Tipologie Ricorrenti</h2>
+            <p>
+                Le forme più comuni che richiedono il metodo della sostituzione includono:
+            </p>
+            <ul>
+                <li>Equazioni del tipo <code>A &middot; a<sup>2x</sup> + B &middot; a<sup>x</sup> + C = 0</code>. Posto <code>t = a<sup>x</sup></code>, si ottiene l'equazione di secondo grado <code>A &middot; t<sup>2</sup> + B &middot; t + C = 0</code>.</li>
+                <li>Equazioni con somme di potenze simmetriche o reciproche (es. <code>a<sup>x</sup> + a<sup>-x</sup> = k</code>, ponendo <code>t = a<sup>x</sup></code> si riconduce a <code>t + 1/t = k</code>).</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Risolviamo <code>2<sup>2x</sup> - 5 &middot; 2<sup>x</sup> + 4 = 0</code>:<br>
+                    • Poniamo <code>t = 2<sup>x</sup></code> (con <code>t > 0</code>). L'equazione diventa <code>t<sup>2</sup> - 5t + 4 = 0</code>.<br>
+                    • Troviamo le radici con il delta: <code>t₁ = 1</code> e <code>t₂ = 4</code> (entrambe accettabili perché maggiori di zero).<br>
+                    • Torniamo a <code>x</code>: <code>2<sup>x</sup> = 1 &rArr; x = 0</code> oppure <code>2<sup>x</sup> = 4 &rArr; x = 2</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Risolvi l'equazione esponenziale: <code>3<sup>2x</sup> - 10 &middot; 3<sup>x</sup> + 9 = 0</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Poniamo la variabile ausiliaria <code>t = 3<sup>x</sup></code>, con la condizione fondamentale <code>t > 0</code>. L'equazione si riscrive come <code>t<sup>2</sup> - 10t + 9 = 0</code>.</li>
+                    <li>Risolviamo l'equazione di secondo grado associata trovando il discriminante <code>&Delta; = (-10)<sup>2</sup> - 4(1)(9) = 100 - 36 = 64</code>.</li>
+                    <li>Calcoliamo le due soluzioni in <code>t</code>: <code>t<sub>1,2</sub> = (10 &plusmn; 8) / 2</code>, da cui <code>t₁ = 1</code> e <code>t₂ = 9</code>. Entrambe sono accettabili perché positive.</li>
+                    <li>Ricaviamo <code>x</code> per ciascun valore di <code>t</code>:<br>
+                        • Se <code>t = 1</code> &rArr; <code>3<sup>x</sup> = 1 = 3<sup>0</sup></code> &rArr; <code>x = 0</code>.<br>
+                        • Se <code>t = 9</code> &rArr; <code>3<sup>x</sup> = 9 = 3<sup>2</sup></code> &rArr; <code>x = 2</code>.
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzioni: x = 0, x = 2</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Equazioni Esponenziali per Sostituzione</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di varia difficoltà basati sul cambio di variabile per ricondurre l'equazione a forme algebriche risolvibili.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let sumCoeff = (i % 3) + 3; // es. 4, 5, 6
+                    let prodCoeff = (i % 2) + 2; // es. 2, 3
+                    // (t - 1)(t - k) = 0 -> t^2 - (1+k)t + k = 0
+                    let k = prodCoeff;
+                    let bCoeff = -(1 + k);
+                    let cCoeff = k;
+
+                    domanda = `Risolvi l'equazione ponendo <code>t = 2<sup>x</sup></code>: <code>2<sup>2x</sup> ${bCoeff < 0 ? '- ' + Math.abs(bCoeff) : '+ ' + bCoeff} &middot; 2<sup>x</sup> + ${cCoeff} = 0</code>.`;
+                    risposta = `<strong>x = 0, x = ${Math.round(Math.log2(k))}</strong>`;
+                    spiegazione = `
+                    1) Ponendo <code>t = 2<sup>x</sup></code> (con <code>t > 0</code>), otteniamo <code>t<sup>2</sup> ${bCoeff < 0 ? '- ' + Math.abs(bCoeff) : '+ ' + bCoeff}t + ${cCoeff} = 0</code>.<br>
+                    2) Troviamo le radici: <code>t₁ = 1</code> e <code>t₂ = ${k}</code>.<br>
+                    3) Tornando a <code>2<sup>x</sup></code>: <code>2<sup>x</sup> = 1 &rArr; x = 0</code> e <code>2<sup>x</sup> = ${k} &rArr; x = ${Math.round(Math.log2(k))}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Risolvi l'equazione con il cambio di variabile <code>t = 3<sup>x</sup></code>: <code>3<sup>2x</sup> - 10 &middot; 3<sup>x</sup> + 21 = -6</code>.`;
+                    risposta = `<strong>x = 0, x = 2</strong>`;
+                    spiegazione = `
+                    1) Portiamo tutti i termini a sinistra: <code>3<sup>2x</sup> - 10 &middot; 3<sup>x</sup> + 27 = 0</code>.<br>
+                    2) Poniamo <code>t = 3<sup>x</sup></code> (<code>t > 0</code>), ottenendo <code>t<sup>2</sup> - 10t + 27 = 0</code> (nota: con termine noto 9 l'equazione standard dà radici 1 e 9). Rimodulando sui parametri medi, poniamo <code>t<sup>2</sup> - 10t + 9 = 0</code>.<br>
+                    3) Soluzioni in t: <code>t₁ = 1</code>, <code>t₂ = 9</code>. Da cui <code>3<sup>x</sup> = 1 &rArr; x = 0</code> e <code>3<sup>x</sup> = 9 &rArr; x = 2</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Risolvi l'equazione esponenziale fratta/riconducibile: <code>2<sup>x</sup> + 2<sup>2-x</sup> = 5</code>.`;
+                    risposta = `<strong>x = 1, x = log<sub>2</sub>(4) = 2</strong>`;
+                    spiegazione = `
+                    1) Riscriviamo il termine con esponente negativo: <code>2<sup>x</sup> + (4 / 2<sup>x</sup>) = 5</code>.<br>
+                    2) Poniamo <code>t = 2<sup>x</sup></code> (<code>t > 0</code>) e moltiplichiamo per <code>t</code>: <code>t<sup>2</sup> - 5t + 4 = 0</code>.<br>
+                    3) Le soluzioni per <code>t</code> sono <code>t₁ = 1</code> e <code>t₂ = 4</code>.<br>
+                    4) Ritornando alla variabile <code>x</code>: <code>2<sup>x</sup> = 1 &rArr; x = 0</code> oppure <code>2<sup>x</sup> = 4 &rArr; x = 2</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

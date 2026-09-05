@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Personal Identification and Feelings in inglese: vocaboli, espressioni e traduzioni per descrivere identità personale, carattere e stati d'animo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Personal Identification and Feelings - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="personal-identification-and-feelings" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Lexicon</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Personal Identification and Feelings</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo per la categoria tematica "Personal Identification and Feelings" (Identità personale, anagrafica, aspetto fisico, carattere e stati d'animo).
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Personal Details and Identification (Dati Anagrafici e Identità)</h2>
+            <p>Termini fondamentali per la compilazione di moduli, presentazioni formali e riconoscimento personale.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>First name / Given name</td><td>Nome</td></tr>
+                    <tr><td>Surname / Family name / Last name</td><td>Cognome</td></tr>
+                    <tr><td>Middle name</td><td>Secondo nome</td></tr>
+                    <tr><td>Date of birth (DOB)</td><td>Data di nascita</td></tr>
+                    <tr><td>Place of birth</td><td>Luogo di nascita</td></tr>
+                    <tr><td>Age</td><td>Età</td></tr>
+                    <tr><td>Gender / Sex</td><td>Genere / Sesso</td></tr>
+                    <tr><td>Nationality</td><td>Nazionalità</td></tr>
+                    <tr><td>Country of origin</td><td>Paese d'origine</td></tr>
+                    <tr><td>Address</td><td>Indirizzo</td></tr>
+                    <tr><td>Phone number / Mobile number</td><td>Numero di telefono / Cellulare</td></tr>
+                    <tr><td>Email address</td><td>Indirizzo email</td></tr>
+                    <tr><td>Marital status</td><td>Stato civile</td></tr>
+                    <tr><td>Single</td><td>Celibe / Nubile / Single</td></tr>
+                    <tr><td>Married</td><td>Sposato / Sposata</td></tr>
+                    <tr><td>Divorced</td><td>Divorziato / Divorziata</td></tr>
+                    <tr><td>Widowed</td><td>Vedovo / Vedova</td></tr>
+                    <tr><td>Separated</td><td>Separato / Separata</td></tr>
+                    <tr><td>Occupation / Profession</td><td>Professione / Lavoro</td></tr>
+                    <tr><td>Background</td><td>Origini / Estrazione sociale o culturale</td></tr>
+                    <tr><td>Identity card (ID card)</td><td>Carta d'identità</td></tr>
+                    <tr><td>Passport</td><td>Passaporto</td></tr>
+                    <tr><td>Driving licence</td><td>Patente di guida</td></tr>
+                    <tr><td>Signature</td><td>Firma</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Physical Appearance (Aspetto Fisico)</h2>
+            <p>Vocaboli essenziali per descrivere l'aspetto esteriore di una persona.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Height</td><td>Altezza</td></tr>
+                    <tr><td>Tall</td><td>Alto / Alta</td></tr>
+                    <tr><td>Short</td><td>Basso / Bassa</td></tr>
+                    <tr><td>Medium height</td><td>Di media statura</td></tr>
+                    <tr><td>Build / Figure</td><td>Corporatura</td></tr>
+                    <tr><td>Slim / Thin</td><td>Magro / Sottile</td></tr>
+                    <tr><td>Muscular / Well-built</td><td>Muscoloso / Robusto</td></tr>
+                    <tr><td>Overweight / Plump</td><td>In sovrappeso / Paffuto</td></tr>
+                    <tr><td>Hair type and color</td><td>Tipo e colore dei capelli</td></tr>
+                    <tr><td>Fair / Blonde hair</td><td>Capelli biondi / Chiari</td></tr>
+                    <tr><td>Dark / Black hair</td><td>Capelli scuri / Neri</td></tr>
+                    <tr><td>Brown hair</td><td>Capelli castani</td></tr>
+                    <tr><td>Red hair</td><td>Capelli rossi</td></tr>
+                    <tr><td>Curly / Wavy / Straight hair</td><td>Capelli ricci / Mossi / Lisci</td></tr>
+                    <tr><td>Bald</td><td>Calvo</td></tr>
+                    <tr><td>Eyes (blue, green, brown, hazel)</td><td>Occhi (azzurri, verdi, castani, nocciola)</td></tr>
+                    <tr><td>Complexion</td><td>Carnagione</td></tr>
+                    <tr><td>Pale / Fair skin</td><td>Pelle pallida / Chiara</td></tr>
+                    <tr><td>Tanned skin</td><td>Pelle abbronzata</td></tr>
+                    <tr><td>Beard / Moustache</td><td>Barba / Baffi</td></tr>
+                    <tr><td>Glasses</td><td>Occhiali</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Personality and Character Traits (Carattere e Personalità)</h2>
+            <p>Aggettivi per descrivere i tratti psicologici, comportamentali e attitudinali di un individuo.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Outgoing</td><td>Estroverso / Socievole</td></tr>
+                    <tr><td>Introverted</td><td>Introverso</td></tr>
+                    <tr><td>Reliable / Trustworthy</td><td>Affidabile</td></tr>
+                    <tr><td>Stubborn</td><td>Testardo / Ostinato</td></tr>
+                    <tr><td>Easy-going</td><td>Tranquillo / Cordiale / Di bocca buona</td></tr>
+                    <tr><td>Ambitious</td><td>Ambizioso</td></tr>
+                    <tr><td>Generous</td><td>Generoso</td></tr>
+                    <tr><td>Self-confident</td><td>Sicuro di sé</td></tr>
+                    <tr><td>Shy</td><td>Timido</td></tr>
+                    <tr><td>Moody</td><td>Lunatico / Turbolento d'umore</td></tr>
+                    <tr><td>Hard-working / Diligent</td><td>Lavoratore / Impegnato / Diligente</td></tr>
+                    <tr><td>Lazy</td><td>Pigro</td></tr>
+                    <tr><td>Friendly / Kind</td><td>Amichevole / Gentile</td></tr>
+                    <tr><td>Unfriendly / Rude</td><td>Sgarbato / Maleducato</td></tr>
+                    <tr><td>Polite</td><td>Educato / Cortese</td></tr>
+                    <tr><td>Honest</td><td>Onesto</td></tr>
+                    <tr><td>Dishonest</td><td> disonesto</td></tr>
+                    <tr><td>Optimistic</td><td>Ottimista</td></tr>
+                    <tr><td>Pessimistic</td><td>Pessimista</td></tr>
+                    <tr><td>Creative</td><td>Creativo</td></tr>
+                    <tr><td>Smart / Clever / Intelligent</td><td>Intelligente / Svelto</td></tr>
+                    <tr><td>Stupid / Foolish</td><td>Sciocco / Stupido</td></tr>
+                    <tr><td>Patient</td><td>Paziente</td></tr>
+                    <tr><td>Impatient</td><td>Impaziente</td></tr>
+                    <tr><td>Brave / Courageous</td><td>Coraggioso</td></tr>
+                    <tr><td>Cowardly</td><td>Codardo / Pauroso</td></tr>
+                    <tr><td>Sensitive</td><td>Sensibile</td></tr>
+                    <tr><td>Sensible</td><td>Sensato / Assennato</td></tr>
+                    <tr><td>Talkative</td><td>Chiacchierone</td></tr>
+                    <tr><td>Quiet</td><td>Silenzioso / Riservato</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Feelings, Emotions and Moods (Sentimenti ed Emozioni)</h2>
+            <p>Lessico completo per esprimere stati d'animo, reazioni emotive transitorie o sentimenti profondi.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Happy / Glad</td><td>Felice / Contento</td></tr>
+                    <tr><td>Delighted / Thrilled</td><td>Entusiasta / Al settimo cielo</td></tr>
+                    <tr><td>Sad / Unhappy</td><td>Triste</td></tr>
+                    <tr><td>Depressed</td><td>Depresso</td></tr>
+                    <tr><td>Angry / Cross</td><td>Arrabbiato</td></tr>
+                    <tr><td>Furious</td><td>Furioso</td></tr>
+                    <tr><td>Anxious / Worried</td><td>Ansioso / Preoccupato</td></tr>
+                    <tr><td>Relieved</td><td>Sollevato</td></tr>
+                    <tr><td>Overwhelmed</td><td>Sopraffatto / Travolto (da impegni o emozioni)</td></tr>
+                    <tr><td>Frustrated</td><td>Frustrato</td></tr>
+                    <tr><td>Enthusiastic / Excited</td><td>Eccitato / Entusiasta</td></tr>
+                    <tr><td>Disappointed</td><td>Deluso</td></tr>
+                    <tr><td>Lonely</td><td>Solitario / Che prova solitudine</td></tr>
+                    <tr><td>Ashamed / Embarrassed</td><td>Vergognoso / Imbarazzato</td></tr>
+                    <tr><td>Confused</td><td>Confuso</td></tr>
+                    <tr><td>Surprised / Astonished</td><td>Sorpreso / Stupito</td></tr>
+                    <tr><td>Scared / Frightened / Afraid</td><td>Spaventato / Pauroso</td></tr>
+                    <tr><td>Terrified</td><td>Terrorizzato</td></tr>
+                    <tr><td>Tired / Exhausted</td><td>Stanco / Esaurito / Esausto</td></tr>
+                    <tr><td>Stressed</td><td>Stressato</td></tr>
+                    <tr><td>Relaxed</td><td>Rilassato</td></tr>
+                    <tr><td>Calm</td><td>Calmo / Tranquillo</td></tr>
+                    <tr><td>Jealous / Envious</td><td>Geloso / Invidioso</td></tr>
+                    <tr><td>Proud</td><td>Fiero / Orgoglioso</td></tr>
+                    <tr><td>Guilty</td><td>In colpa</td></tr>
+                    <tr><td>Curious</td><td>Curioso</td></tr>
+                    <tr><td>Bored</td><td>Annoiato</td></tr>
+                    <tr><td>Interested</td><td>Interessato</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Consiglio di Studio Completo</h3>
+                <p style="margin-bottom: 0;">
+                    Questo glossario copre l'intero spettro di <i>Personal Identification and Feelings</i>. Per memorizzare al meglio i termini correlati, prova a combinare un dato anagrafico o aspetto fisico con un tratto di carattere e uno stato d'animo attuale (es. <i>"A tall, outgoing person who feels excited"</i>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

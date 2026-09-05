@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida Completa alle Frazioni e all'Unità Frazionaria, Concetti Base ed Esercizi Svolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Frazioni e l'Unità Frazionaria: Guida Completa - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fix Spaziatura Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="aritmetica-frazioni-e-unita-frazionaria" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE CON BOTTONE SALVA -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Le Frazioni e l'Unità Frazionaria</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetto di frazione, numeratore, denominatore, linea di frazione, unità frazionaria e calcolo della frazione di una quantità con 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è una Frazione?</h2>
+            <p>
+                Una <strong>frazione</strong> è un operatore matematico che indica la divisione di un intero (l'unità) in un certo numero di parti uguali e la presa in considerazione di alcune di esse.
+            </p>
+            <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #2563eb; margin: 1.5rem 0;">
+                <sup>a</sup>/<sub>b</sub> &nbsp;&nbsp;oppure&nbsp;&nbsp; <span style="font-size: 1.7rem;"><sup>a</sup>&frasl;<sub>b</sub></span>
+            </p>
+            <ul>
+                <li><strong>Numeratore (a):</strong> Il numero scritto in alto. Indica quante parti dell'intero vengono considerate.</li>
+                <li><strong>Linea di frazione:</strong> Il tratto orizzontale o obliquo che separa numeratore e denominatore. Simboleggia l'operazione di divisione (<code>:</code>).</li>
+                <li><strong>Denominatore (b):</strong> Il numero scritto in basso. Indica in quante parti <strong>uguali</strong> è stato diviso l'intero. Deve essere sempre diverso da zero (<code>b ≠ 0</code>).</li>
+            </ul>
+
+            <h2>2. L'Unità Frazionaria</h2>
+            <p>
+                L'<strong>unità frazionaria</strong> rappresenta una sola delle parti uguali in cui è stato diviso l'intero. Si tratta di una frazione che ha sempre come numeratore il numero <strong>1</strong>.
+            </p>
+            <div style="background-color: #eff6ff; border-left: 4px solid #2563eb; padding: 1.2rem; border-radius: 6px; margin: 1.5rem 0;">
+                <p style="margin: 0; font-size: 1.05rem; color: #1e3a8a; font-weight: bold;">
+                    📌 Definizione: Se un intero è diviso in <em>n</em> parti uguali, la singola parte (l'unità frazionaria) si scrive <sup>1</sup>/<sub>n</sub>.
+                </p>
+            </div>
+            <p>
+                Qualsiasi frazione può essere vista come la somma di più unità frazionarie. Per esempio, la frazione <code><sup>4</sup>/<sub>7</sub></code> è composta da 4 unità frazionarie pari a <code><sup>1</sup>/<sub>7</sub></code>:
+            </p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.1rem; color: #334155;">
+                <sup>4</sup>/<sub>7</sub> = <sup>1</sup>/<sub>7</sub> + <sup>1</sup>/<sub>7</sub> + <sup>1</sup>/<sub>7</sub> + <sup>1</sup>/<sub>7</sub>
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 2 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #1 (Unità Frazionaria)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Qual è l'unità frazionaria della frazione <strong><sup>5</sup>/<sub>9</sub></strong>? Esprimi la frazione come somma di unità frazionarie.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Il denominatore è <code>9</code>, quindi l'intero è suddiviso in 9 parti uguali.</li>
+                    <li>L'unità frazionaria ha numeratore 1 e denominatore 9 &rarr; <strong><sup>1</sup>/<sub>9</sub></strong>.</li>
+                    <li>Avendo numeratore 5, la frazione equivale a 5 unità frazionarie regolarmente sommate: <code><sup>5</sup>/<sub>9</sub> = <sup>1</sup>/<sub>9</sub> + <sup>1</sup>/<sub>9</sub> + <sup>1</sup>/<sub>9</sub> + <sup>1</sup>/<sub>9</sub> + <sup>1</sup>/<sub>9</sub></code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Unità frazionaria: <code><sup>1</sup>/<sub>9</sub></code></p>
+            </div>
+
+            <h2>3. Calcolare la Frazione di un Numero e l'Intero dal Valore Frazionario</h2>
+            <p>Nell'uso pratico delle frazioni si riscontrano due operazioni fondamentali:</p>
+            <ol>
+                <li>
+                    <strong>Calcolare il valore della frazione di una quantità data:</strong> Si divide la quantità totale per il denominatore (per trovare il valore di 1 unità frazionaria) e si moltiplica il risultato per il numeratore.<br>
+                    <code>Valore = (Totale : b) × a</code>
+                </li>
+                <li>
+                    <strong>Calcolare il totale sapendo il valore corrispondente a una frazione:</strong> Si divide il valore noto per il numeratore (per ottenere il valore dell'unità frazionaria) e si moltiplica per il denominatore.<br>
+                    <code>Totale = (Valore Noto : a) × b</code>
+                </li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE 3 -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato #2 (Calcolo Pratico)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In una biblioteca ci sono 120 libri. I <strong><sup>3</sup>/<sub>8</sub></strong> sono romanzi. Quanti sono i romanzi?</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo l'unità frazionaria (<sup>1</sup>/<sub>8</sub> di 120): <code>120 : 8 = 15 libri</code>.</li>
+                    <li>Moltiplichiamo per il numeratore 3: <code>15 × 3 = 45 libri</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> I romanzi sono 45.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Pratici Guidati su Frazioni e Unità Frazionaria</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue conoscenze con 100 esercizi ordinati per difficoltà crescente. Clicca su ciascun esercizio per visualizzare il risultato e lo svolgimento passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // 🟢 LIVELLO FACILE (1-35): Numeratore, Denominatore, Unità frazionaria pura e somme di unità
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let mod = i % 4;
+                    if (mod === 1) {
+                        let den = (i % 12) + 3;
+                        let num = (i % (den - 1)) + 1;
+                        domanda = `Qual è l'unità frazionaria della frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong>?`;
+                        risposta = `<sup>1</sup>/<sub>${den}</sub>`;
+                        spiegazione = `L'unità frazionaria indica una sola parte dell'intero diviso in ${den} parti uguali. Mantiene lo stesso denominatore ed ha sempre numeratore 1: <code><sup>1</sup>/<sub>${den}</sub></code>.`;
+                    } else if (mod === 2) {
+                        let den = (i % 10) + 4;
+                        let num = (i % (den - 1)) + 1;
+                        domanda = `Nella frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong>, qual è il numeratore e qual è il denominatore?`;
+                        risposta = `Numeratore = ${num}, Denominatore = ${den}`;
+                        spiegazione = `Il numeratore è il numero in alto (<code>${num}</code>) e indica le parti considerate. Il denominatore è il numero in basso (<code>${den}</code>) e indica le parti totali in cui è diviso l'intero.`;
+                    } else if (mod === 3) {
+                        let den = (i % 8) + 3;
+                        let num = (i % (den - 1)) + 2;
+                        domanda = `Da quante unità frazionarie <strong><sup>1</sup>/<sub>${den}</sub></strong> è composta la frazione <strong><sup>${num}</sup>/<sub>${den}</sub></strong>?`;
+                        risposta = `${num} unità frazionarie`;
+                        spiegazione = `Il numeratore indica quante unità frazionarie formano la frazione. Quindi <code><sup>${num}</sup>/<sub>${den}</sub></code> è composta da <strong>${num}</strong> unità frazionarie <code><sup>1</sup>/<sub>${den}</sub></code>.`;
+                    } else {
+                        let den = (i % 9) + 5;
+                        let num = (i % (den - 2)) + 1;
+                        domanda = `Scrivi come un'unica frazione la seguente somma: <code><sup>1</sup>/<sub>${den}</sub> + <sup>1</sup>/<sub>${den}</sub> + ...</code> (${num} volte).`;
+                        risposta = `<sup>${num}</sup>/<sub>${den}</sub>`;
+                        spiegazione = `Sommando la stessa unità frazionaria <code><sup>1</sup>/<sub>${den}</sub></code> per ${num} volte, si ottiene la frazione <code><sup>${num}</sup>/<sub>${den}</sub></code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // 🟡 LIVELLO MEDIO (36-70): Calcolo della frazione di un numero e calcolo dell'intero nota la frazione
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let den = (i % 6) + 3;
+                        let num = (i % (den - 1)) + 1;
+                        let base = den * (i - 30);
+                        let risVal = (base / den) * num;
+
+                        domanda = `Calcola i <strong><sup>${num}</sup>/<sub>${den}</sub></strong> del numero <strong>${base}</strong>.`;
+                        risposta = `${risVal}`;
+                        spiegazione = `
+                        1) Calcoliamo il valore dell'unità frazionaria (1/${den}): <code>${base} : ${den} = ${base / den}</code>.<br>
+                        2) Moltiplichiamo per il numeratore (${num}): <code>${base / den} × ${num} = ${risVal}</code>.`;
+                    } else if (mod === 2) {
+                        let den = (i % 5) + 4;
+                        let num = (i % (den - 1)) + 1;
+                        let unit = (i - 30) * 2;
+                        let parte = unit * num;
+                        let totale = unit * den;
+
+                        domanda = `I <strong><sup>${num}</sup>/<sub>${den}</sub></strong> di una quantità corrispondono a <strong>${parte}</strong>. Qual è il valore totale dell'intero?`;
+                        risposta = `${totale}`;
+                        spiegazione = `
+                        1) Troviamo l'unità frazionaria (1/${den}): <code>${parte} : ${num} = ${unit}</code>.<br>
+                        2) Moltiplichiamo per il denominatore (${den}) per trovare l'intero: <code>${unit} × ${den} = ${totale}</code>.`;
+                    } else {
+                        let den = (i % 7) + 3;
+                        let num = (i % (den - 1)) + 1;
+                        let capienza = den * (i - 25);
+                        let occupato = (capienza / den) * num;
+                        let rimanente = capienza - occupato;
+
+                        domanda = `Un serbatoio della capienza di <strong>${capienza} litri</strong> contiene acqua per i <strong><sup>${num}</sup>/<sub>${den}</sub></strong> del totale. Quanti litri d'acqua mancano per riempirlo?`;
+                        risposta = `${rimanente} litri`;
+                        spiegazione = `
+                        1) Litri presenti: <code>(${capienza} : ${den}) × ${num} = ${occupato} L</code>.<br>
+                        2) Litri mancanti: <code>${capienza} - ${occupato} = ${rimanente} L</code>.`;
+                    }
+
+                } else {
+                    // 🔴 LIVELLO DIFFICILE (71-100): Problemi contestualizzati a due passaggi e frazioni complementari
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let mod = i % 3;
+                    if (mod === 1) {
+                        let den = (i % 6) + 4;
+                        let num = (i % (den - 2)) + 1;
+                        let numCompl = den - num;
+
+                        domanda = `Quale frazione occorre aggiungere a <strong><sup>${num}</sup>/<sub>${den}</sub></strong> per completare l'intero (1)?`;
+                        risposta = `<sup>${numCompl}</sup>/<sub>${den}</sub>`;
+                        spiegazione = `L'intero è espresso da <sup>${den}</sup>/<sub>${den}</sub>. Togliendo la parte data (<sup>${num}</sup>/<sub>${den}</sub>) si ottiene la frazione rimanente: <code><sup>${den - num}</sup>/<sub>${den}</sub></code>.`;
+                    } else if (mod === 2) {
+                        let den1 = 4, den2 = 5;
+                        let pag1 = (i - 70) * 10;
+                        let totalePagine = pag1 * den1; 
+                        let lette2 = (totalePagine / den2) * 2;
+                        let rimanenti = totalePagine - pag1 - lette2;
+
+                        domanda = `Marco legge un libro di <strong>${totalePagine} pagine</strong>. Il primo giorno legge <sup>1</sup>/<sub>4</sub> delle pagine totali, il secondo giorno legge i <sup>2</sup>/<sub>5</sub> dell'intero libro. Quante pagine gli restano da leggere?`;
+                        risposta = `${rimanenti} pagine`;
+                        spiegazione = `
+                        1) Pagine 1° giorno: <code>${totalePagine} : 4 = ${pag1}</code>.<br>
+                        2) Pagine 2° giorno: <code>(${totalePagine} : 5) × 2 = ${lette2}</code>.<br>
+                        3) Pagine lette in totale: <code>${pag1} + ${lette2} = ${pag1 + lette2}</code>.<br>
+                        4) Pagine rimanenti: <code>${totalePagine} - ${pag1 + lette2} = ${rimanenti}</code>.`;
+                    } else {
+                        let u = i - 65;
+                        let num1 = 3, den1 = 7;
+                        let parte1 = u * num1;
+                        let totale = u * den1;
+                        let differenza = totale - parte1;
+
+                        domanda = `In una scuola i <sup>3</sup>/<sub>7</sub> degli studenti praticano nuoto. Sapendo che gli studenti che praticano nuoto sono <strong>${parte1}</strong>, quanti sono gli studenti che NON praticano nuoto?`;
+                        risposta = `${differenza} studenti`;
+                        spiegazione = `
+                        1) Unità frazionaria (1/7): <code>${parte1} : 3 = ${u}</code>.<br>
+                        2) Totale studenti (7/7): <code>${u} × 7 = ${totale}</code>.<br>
+                        3) Studenti non nuotatori: <code>${totale} - ${parte1} = ${differenza}</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

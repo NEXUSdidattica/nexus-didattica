@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 7: Gli Angoli formati da due Rette tagliate da una Trasversale (classificazione, teoremi e proprietà) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Angoli formati da due Rette tagliate da una Trasversale - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-lezione-7" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Euclidea Piana / Lezione 7</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Angoli formati da due Rette e una Trasversale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi dettagliata di alterni, corrispondenti, coniugati e 100 esercizi guidati passo-passo con soluzioni commentate.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Mappa Completa degli Angoli con una Trasversale</h2>
+            <p>
+                Quando una retta <code>t</code> (chiamata <strong>trasversale</strong>) interseca due rette distinte <code>r</code> e <code>s</code> nello stesso piano, vengono generati complessivamente <code>8</code> angoli. Questi angoli si dividono in categorie precise in base alla loro posizione geometrica:
+            </p>
+            <ul>
+                <li><strong>Angoli Interni:</strong> Si trovano nello spazio compreso tra le due rette <code>r</code> e <code>s</code> (interni alla striscia).</li>
+                <li><strong>Angoli Esterni:</strong> Si trovano all'esterno dello spazio compreso tra le due rette.</li>
+                <li><strong>Angoli Alterni (Interni ed Esterni):</strong> Si trovano da parti opposte (alterni) rispetto alla retta trasversale <code>t</code>.</li>
+                <li><strong>Angoli Corrispondenti:</strong> Si trovano dallo stesso lato rispetto alla trasversale e si presentano uno interno e uno esterno alle due rette.</li>
+                <li><strong>Angoli Coniugati (Interni ed Esterni):</strong> Si trovano dallo stesso lato rispetto alla retta trasversale <code>t</code> (sia entrambi interni che entrambi esterni).</li>
+            </ul>
+
+            <h2>2. Relazioni nel Caso di Rette Parallele</h2>
+            <p>
+                Se le due rette di partenza <code>r</code> e <code>s</code> sono <strong>parallele</strong> (<code>r &parallel; s</code>), le proprietà geometriche degli angoli formati dalla trasversale diventano particolarmente rigide e simmetriche:
+            </p>
+            <ul>
+                <li>Gli angoli <strong>corrispondenti</strong> sono perfettamente congruenti (uguali).</li>
+                <li>Gli angoli <strong>alterni interni</strong> ed <strong>alterni esterni</strong> sono perfettamente congruenti.</li>
+                <li>Gli angoli <strong>coniugati interni</strong> ed <strong>coniugati esterni</strong> sono sempre supplementari (la loro somma algebrica è pari a <code>180&deg;</code>).</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Sintesi delle Proprietà con Rette Parallele:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Se <code>r &parallel; s</code> &rArr; Corrispondenti uguali, Alterni uguali.<br>
+                    • Se <code>r &parallel; s</code> &rArr; Coniugati sommano sempre a <code>180&deg;</code>.<br>
+                    • Se un angolo misura <code>&alpha;</code>, il suo opposto al vertice misura <code>&alpha;</code> e il suo adiacente misura <code>180&deg; - &alpha;</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Due rette parallele <code>r</code> e <code>s</code> sono tagliate da una trasversale <code>t</code>. Un angolo coniugato interno supera il suo coniugato interno consecutivo (sullo stesso lato) di <code>40&deg;</code>. Calcola l'ampiezza dei due angoli.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo che gli angoli coniugati interni formati da rette parallele sono supplementari: la loro somma è <code>180&deg;</code>.</li>
+                    <li>Impostiamo un sistema o un'equazione ponendo il primo angolo pari a <code>x</code> e il secondo pari a <code>x + 40&deg;</code>.</li>
+                    <li>Sommiamo i due angoli: <code>x + (x + 40&deg;) = 180&deg;</code> &rArr; <code>2x + 40&deg; = 180&deg;</code> &rArr; <code>2x = 140&deg;</code> &rArr; <code>x = 70&deg;</code>.</li>
+                    <li>Il primo angolo misura <code>70&deg;</code>, mentre il secondo misura <code>70&deg; + 40&deg; = 110&deg;</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Angolo 1 = 70&deg; &nbsp; e &nbsp; Angolo 2 = 110&deg;</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sugli Angoli con Trasversale</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici basati su angoli alterni, corrispondenti, coniugati e relazioni con equazioni lineari.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let angoloBase = (i * 3) % 110 + 35; // Valore tra 35 e 144
+                    domanda = `Due rette parallele sono tagliate da una trasversale. Sapendo che un angolo alterno esterno misura <code>${angoloBase}&deg;</code>, calcola l'ampiezza dell'angolo alterno esterno ad esso corrispondente e congruente.`;
+                    risposta = `<strong>${angoloBase}&deg;</strong>`;
+                    spiegazione = `
+                    1) Gli angoli alterni esterni formati da rette parallele tagliate da una trasversale sono congruenti.<br>
+                    2) Di conseguenza, l'angolo richiesto mantiene esattamente la stessa misura dell'angolo di partenza.<br>
+                    3) Risultato: <code>${angoloBase}&deg;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let angoloBase2 = (i * 2) % 90 + 40; // Valore tra 40 e 129
+                    let supplementare = 180 - angoloBase2;
+                    domanda = `Due rette parallele sono intersecate da una trasversale. Un angolo coniugato interno misura <code>${angoloBase2}&deg;</code>. Calcola l'ampiezza del suo rispettivo angolo coniugato interno adiacente sulla stessa parte.`;
+                    risposta = `<strong>${supplementare}&deg;</strong>`;
+                    spiegazione = `
+                    1) Gli angoli coniugati interni sono supplementari, ovvero la loro somma è pari a <code>180&deg;</code>.<br>
+                    2) Sottraiamo l'ampiezza nota dall'angolo piatto: <code>180&deg; - ${angoloBase2}&deg;</code>.<br>
+                    3) Svolgendo il calcolo si ottiene <code>${supplementare}&deg;</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let diffVal = (i % 5) * 10 + 20; // Differenza tra 20, 30, 40, 50, 60
+                    let angoloA = (180 - diffVal) / 2;
+                    let angoloB = angoloA + diffVal;
+                    domanda = `Due rette parallele sono tagliate da una trasversale. Due angoli coniugati interni differiscono di <code>${diffVal}&deg;</code>. Calcola l'ampiezza di entrambi gli angoli sapendo che la loro somma è <code>180&deg;</code>.`;
+                    risposta = `<strong>${angoloA}&deg; e ${angoloB}&deg;</strong>`;
+                    spiegazione = `
+                    1) Impostiamo la relazione sapendo che i coniugati interni sono supplementari (somma <code>180&deg;</code>) e la loro differenza è <code>${diffVal}&deg;</code>.<br>
+                    2) Troviamo il primo angolo sottraendo la differenza alla somma e dividendo per 2: <code>(180&deg; - ${diffVal}&deg;) / 2 = ${angoloA}&deg;</code>.<br>
+                    3) Troviamo il secondo angolo aggiungendo la differenza: <code>${angoloA}&deg; + ${diffVal}&deg; = ${angoloB}&deg;</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

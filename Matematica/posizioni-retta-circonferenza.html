@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Posizioni Reciproche tra Retta e Circonferenza: metodo algebrico (delta), geometrico (distanza), schemi visivi e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Posizioni Retta-Circonferenza - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="posizioni-retta-circonferenza" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Posizioni Reciproche tra Retta e Circonferenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio delle intersezioni e dei metodi di verifica (algebrico tramite il Delta e geometrico tramite la distanza centro-retta).
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>I Tre Casi Possibili</h2>
+            <p>
+                Dato un piano con una circonferenza e una retta, confrontando la distanza del centro \(C\) dalla retta (\(d\)) con il raggio (\(r\)), oppure analizzando il delta (\(\Delta\)) del sistema associato, si distinguono tre posizioni reciproche:
+            </p>
+            <ul>
+                <li><strong>Retta Secante:</strong> La retta interseca la circonferenza in 2 punti distinti (\(d < r\) oppure \(\Delta > 0\)).</li>
+                <li><strong>Retta Tangente:</strong> La retta tocca la circonferenza in 1 solo punto in comune, detto punto di tangenza (\(d = r\) oppure \(\Delta = 0\)).</li>
+                <li><strong>Retta Esterna:</strong> La retta non ha punti in comune con la circonferenza (\(d > r\) oppure \(\Delta < 0\)).</li>
+            </ul>
+
+            <!-- SEZIONE GRAFICI VISIVI (SVG) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                
+                <!-- CASO 1: SECANTE -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.05rem;">Retta Secante</h3>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 180px; margin: 0.5rem auto; display: block;">
+                        <!-- Assi cartesiani -->
+                        <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="100" y1="20" x2="100" y2="180" stroke="#cbd5e1" stroke-width="1.5" />
+                        <!-- Circonferenza -->
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="#2563eb" stroke-width="2.5" />
+                        <!-- Centro -->
+                        <circle cx="100" cy="100" r="3" fill="#1e3a8a" />
+                        <text x="108" y="97" font-size="12" fill="#1e3a8a" font-weight="bold">C</text>
+                        <!-- Retta Secante -->
+                        <line x1="40" y1="65" x2="160" y2="135" stroke="#dc2626" stroke-width="2.5" />
+                        <!-- Distanza d (più corta del raggio) -->
+                        <line x1="100" y1="100" x2="125" y2="85" stroke="#059669" stroke-width="1.5" stroke-dasharray="3,3" />
+                        <text x="115" y="88" font-size="10" fill="#059669" font-weight="bold">d &lt; r</text>
+                    </svg>
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0;">Due punti d'intersezione (\(\Delta > 0\)).</p>
+                </div>
+
+                <!-- CASO 2: TANGENTE -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.05rem;">Retta Tangente</h3>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 180px; margin: 0.5rem auto; display: block;">
+                        <!-- Assi cartesiani -->
+                        <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="100" y1="20" x2="100" y2="180" stroke="#cbd5e1" stroke-width="1.5" />
+                        <!-- Circonferenza -->
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="#2563eb" stroke-width="2.5" />
+                        <!-- Centro -->
+                        <circle cx="100" cy="100" r="3" fill="#1e3a8a" />
+                        <text x="108" y="97" font-size="12" fill="#1e3a8a" font-weight="bold">C</text>
+                        <!-- Retta Tangente -->
+                        <line x1="45" y1="50" x2="155" y2="50" stroke="#dc2626" stroke-width="2.5" />
+                        <!-- Punto di tangenza T -->
+                        <circle cx="100" cy="50" r="3.5" fill="#dc2626" />
+                        <text x="108" y="48" font-size="12" fill="#dc2626" font-weight="bold">T</text>
+                        <!-- Distanza d = r -->
+                        <line x1="100" y1="100" x2="100" y2="50" stroke="#059669" stroke-width="1.5" stroke-dasharray="3,3" />
+                        <text x="105" y="78" font-size="10" fill="#059669" font-weight="bold">d = r</text>
+                    </svg>
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0;">Un solo punto in comune (\(\Delta = 0\)).</p>
+                </div>
+
+                <!-- CASO 3: ESTERNA -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.05rem;">Retta Esterna</h3>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 180px; margin: 0.5rem auto; display: block;">
+                        <!-- Assi cartesiani -->
+                        <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="100" y1="20" x2="100" y2="180" stroke="#cbd5e1" stroke-width="1.5" />
+                        <!-- Circonferenza -->
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="#2563eb" stroke-width="2.5" />
+                        <!-- Centro -->
+                        <circle cx="100" cy="100" r="3" fill="#1e3a8a" />
+                        <text x="108" y="97" font-size="12" fill="#1e3a8a" font-weight="bold">C</text>
+                        <!-- Retta Esterna -->
+                        <line x1="40" y1="35" x2="160" y2="35" stroke="#dc2626" stroke-width="2.5" />
+                        <!-- Distanza d (maggiore del raggio) -->
+                        <line x1="100" y1="100" x2="100" y2="35" stroke="#059669" stroke-width="1.5" stroke-dasharray="3,3" />
+                        <text x="105" y="70" font-size="10" fill="#059669" font-weight="bold">d &gt; r</text>
+                    </svg>
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0;">Nessun punto in comune (\(\Delta < 0\)).</p>
+                </div>
+
+            </div>
+
+            <div class="formula-box">
+                📐 <strong>Metodo Geometrico (Distanza):</strong><br>
+                Confronto tra la distanza \(d\) del centro dalla retta e il raggio \(r\):<br>
+                $$d < r \text{ (secante)} \quad | \quad d = r \text{ (tangente)} \quad | \quad d > r \text{ (esterna)}$$
+            </div>
+
+            <h2>Il Metodo Algebrico (Sistema)</h2>
+            <p>
+                Per determinare la posizione o trovare eventuali punti di intersezione, si mette a sistema l'equazione della circonferenza con quella della retta:
+            </p>
+            <ol>
+                <li>Si ricava una variabile (es. \(y\)) dall'equazione della retta.</li>
+                <li>Si sostituisce nell'equazione della circonferenza ottenendo un'equazione di secondo grado nella sola \(x\).</li>
+                <li>Si calcola il discriminante \(\Delta = b^2 - 4ac\):
+                    <ul>
+                        <li>\(\Delta > 0 \implies\) 2 soluzioni reali distinte (Secante)</li>
+                        <li>\(\Delta = 0 \implies\) 2 soluzioni coincidenti (Tangente)</li>
+                        <li>\(\Delta < 0 \implies\) Nessuna soluzione reale (Esterna)</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Determina la posizione della retta \(y = x + 1\) rispetto alla circonferenza \(x^2 + y^2 - 2x - 3 = 0\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Mettiamo a sistema e sostituiamo \(y = x + 1\) nella circonferenza:
+                        $$x^2 + (x + 1)^2 - 2x - 3 = 0$$
+                    </li>
+                    <li>Sviluppiamo i calcoli:
+                        $$x^2 + x^2 + 2x + 1 - 2x - 3 = 0 \implies 2x^2 - 2 = 0 \implies x^2 - 1 = 0$$
+                    </li>
+                    <li>Calcoliamo il \(\Delta\) o risolviamo direttamente: \(x^2 = 1 \implies x = \pm 1\). Avendo due soluzioni reali distinte (\(\Delta > 0\)), la retta è secante.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> La retta è <strong>secante</strong> (punti di intersezione in \(x = 1\) e \(x = -1\)).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Posizioni Retta-Circonferenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 verifiche di posizione reciproca tra rette e circonferenze. Clicca sulle singole card per visualizzare il delta, i calcoli e la risposta corretta.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let qVal = (i % 7) - 3;
+                let tipoPos;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    tipoPos = 'Secante';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    tipoPos = 'Tangente';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    tipoPos = 'Esterna';
+                }
+
+                let eqRetta = `y = x ${qVal >= 0 ? '+ ' + qVal : '- ' + Math.abs(qVal)}`;
+                let eqCirc = `x^2 + y^2 - 4x - 2y + ${Math.abs(qVal) + 1} = 0`;
+
+                let calcoloSpiegato = `
+                    1) Mettiamo a sistema la retta e la circonferenza sostituendo \\(y = x ${qVal >= 0 ? '+ ' + qVal : '- ' + Math.abs(qVal)}\\).<br>
+                    2) Sviluppando l'equazione risolvente in \\(x\\) e calcolando il discriminante \\(\\Delta\\), otteniamo la condizione geometrica.<br>
+                    3) Risultato dell'analisi: la posizione reciproca è <strong>${tipoPos}</strong>.
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Determina la posizione reciproca tra la retta \\(${eqRetta}\\) e la circonferenza \\(${eqCirc}\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Posizione:</strong> ${tipoPos}</p>
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

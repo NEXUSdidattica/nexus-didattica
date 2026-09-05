@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Memorie Cache (L1, L2, L3) della CPU - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Memorie Cache (L1, L2, L3) - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .converter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button.btn-esegui {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-esegui:hover {
+            background-color: #c2410c;
+        }
+
+        .terminal-output {
+            margin-top: 10px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #ea580c;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="cache-l1-l2-l3" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Memorie
+                    Cache (L1, L2, L3)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Architettura della memoria cache interna al processore, livelli gerarchici, latenze e localizzazione
+                    dei dati per l'ottimizzazione del calcolo.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Memoria Cache?</h2>
+            <p>
+                La <strong>memoria cache</strong> è una memoria di piccolissime dimensioni ma estremamente veloce,
+                integrata direttamente sul chip del processore (CPU). Il suo scopo principale è ridurre i tempi di
+                attesa della CPU quando deve accedere ai dati o alle istruzioni memorizzate nella più lenta RAM
+                centrale, sfruttando i principi di località spaziale e temporale.
+            </p>
+
+            <h2>2. I Livelli della Cache: L1, L2 e L3</h2>
+            <p>
+                L'architettura dei processori moderni suddivide la cache in livelli gerarchici caratterizzati da un
+                compromesso tra velocità di accesso e capacità di memorizzazione:
+            </p>
+            <ul>
+                <li><strong>Cache L1 (Livello 1):</strong> È la più vicina ai core di calcolo ed è la più veloce in
+                    assoluto (latenza di 1 ciclo di clock). Ha una capacità molto ridotta (decine o poche centinaia di
+                    Kilobyte) ed è solitamente divisa in cache dati e cache istruzioni.</li>
+                <li><strong>Cache L2 (Livello 2):</strong> Leggermente più capiente (da 256 KB a 2 MB per core), ha
+                    tempi di accesso superiori alla L1 ma comunque estremamente rapidi. Può essere dedicata al singolo
+                    core o condivisa tra pochi core adiacenti.</li>
+                <li><strong>Cache L3 (Livello 3):</strong> Una memoria di grandi dimensioni (da decine fino a centinaia
+                    di Megabyte) condivisa tra tutti i core del processore. Funge da "polmone" comune per i dati
+                    frequentemente utilizzati.</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Principio di Funzionamento:</strong> Quando la CPU richiede un dato, cerca prima nella cache L1
+                (Hit). Se il dato non è presente (Miss), la ricerca si sposta progressivamente in L2, poi in L3 e
+                infine, in ultima istanza, nella RAM di sistema.
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore di Latenza e Livelli di Cache</h2>
+            <p>Seleziona un livello di cache o la RAM per analizzarne i tempi di accesso stimati e la capacità tipica
+                all'interno del processore.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">cache-inspector@nexus-ide:~</span>
+                    <span style="font-size: 0.8rem; color: #888;">CPU Latency Analyzer</span>
+                </div>
+                <div class="converter-controls" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Seleziona
+                            Livello di Memoria:</label>
+                        <select id="cacheSelect" class="code-input" style="background-color: #111; color: #f97316;">
+                            <option value="L1">Cache L1 (Ultra-veloce, dedicata al core)</option>
+                            <option value="L2">Cache L2 (Veloce, locale/semi-condivisa)</option>
+                            <option value="L3">Cache L3 (Capiente, condivisa tra tutti i core)</option>
+                            <option value="RAM">Memoria Centrale RAM (Esterna al die della CPU)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-esegui" onclick="analizzaCache()" style="width: 100%;">Analizza ⚡</button>
+                    </div>
+                </div>
+                <div id="terminalOutput" class="terminal-output">> Seleziona un livello di memoria per stimare latenza e
+                    comportamento di accesso...</div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore -->
+    <script>
+        function analizzaCache() {
+            let livello = document.getElementById('cacheSelect').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            let capacita = "";
+            let latenza = "";
+            let impatto = "";
+
+            if (livello === "L1") {
+                capacita = "32 KB - 64 KB per core";
+                latenza = "~1 nanosecondo (circa 1-4 cicli di clock)";
+                impatto = "Massima velocità di risposta per le istruzioni immediate del core.";
+            } else if (livello === "L2") {
+                capacita = "512 KB - 2 MB per core";
+                latenza = "~3 - 7 nanosecondi";
+                impatto = "Ottimo bilanciamento tra velocità e capacità di memorizzazione locale.";
+            } else if (livello === "L3") {
+                capacita = "16 MB - 96+ MB (Condivisa)";
+                latenza = "~10 - 20 nanosecondi";
+                impatto = "Riduce drasticamente l'accesso alla RAM per i dati riutilizzati dai vari core.";
+            } else if (livello === "RAM") {
+                capacita = "16 GB - 64 GB+ (Esterna)";
+                latenza = "~50 - 100 nanosecondi";
+                impatto = "Collo di bottiglia relativo se confrontato con la cache interna, ma essenziale per grandi moli di dati.";
+            }
+
+            outputDiv.style.color = '#38bdf8';
+            outputDiv.innerHTML = `> Analisi Livello [<strong>${livello}</strong>]:<br>` +
+                `&nbsp;&nbsp;Capacità tipica: <em>${capacita}</em><br>` +
+                `&nbsp;&nbsp;Latenza stimata: ${latenza}<br>` +
+                `&nbsp;&nbsp;Ruolo architetturale: ${impatto}`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sullo Spazio Percorso - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Lo Spazio Percorso e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="spazio-percorso" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Cinematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Lo Spazio Percorso</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studia il concetto di spazio percorso in cinematica con 100 esercizi interattivi guidati ed esempi pratici reali.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è lo Spazio Percorso?</h2>
+            <p>
+                In fisica, lo <strong>spazio percorso</strong> (spesso indicato con la lettera $s$ o $\Delta s$) rappresenta la lunghezza effettiva della traiettoria percorsa da un corpo nel muoversi da una posizione iniziale a una posizione finale.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Unità di misura e natura:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Nel Sistema Internazionale (S.I.) l'unità di misura dello spazio percorso è il <strong>metro ($m$)</strong>. È una grandezza scalare sempre positiva o nulla.
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esempi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Come si definisce lo spazio percorso in fisica?", 
+                    r: "La lunghezza complessiva della traiettoria seguita da un corpo in movimento.", 
+                    s: "Esempio guidato: se percorri un corridoio dritto lungo 10 metri, lo spazio percorso è esattamente 10 metri." 
+                },
+                { 
+                    q: "Qual è l'unità di misura dello spazio nel Sistema Internazionale (S.I.)?", 
+                    r: "Il metro (simbolo: m).", 
+                    s: "Esempio guidato: tutte le distanze in fisica vengono convertite preferibilmente in metri per i calcoli standard." 
+                },
+                { 
+                    q: "Lo spazio percorso può essere una quantità negativa?", 
+                    r: "No, lo spazio percorso è sempre una grandezza scalare positiva o nulla.", 
+                    s: "Esempio guidato: camminare in avanti o all'indietro accumula sempre una lunghezza positiva di tragitto compiuto." 
+                },
+                { 
+                    q: "Se un'auto percorre 5 km verso nord e poi 3 km verso sud, qual è lo spazio totale percorso?", 
+                    r: "8 chilometri (5 + 3).", 
+                    s: "Esempio guidato: lo spazio percorso somma tutte le tratte effettuate indipendentemente dalla direzione o inversione di marcia." 
+                },
+                { 
+                    q: "Converti 2,5 chilometri in metri.", 
+                    r: "2500 metri.", 
+                    s: "Esempio guidato: moltiplicando i chilometri per 1000 si ottiene il valore in metri (2,5 x 1000 = 2500 m)." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un podista compie 3 giri completi attorno a una pista di atletica lunga 400 metri. Qual è lo spazio percorso?", 
+                    r: "1200 metri.", 
+                    s: "Esempio guidato: 3 giri moltiplicati per 400 metri a giro danno 1200 metri complessivi." 
+                },
+                { 
+                    q: "Un ciclista viaggia a velocità costante e percorre 15 km in un'ora. Quanto spazio percorre in 3 ore?", 
+                    r: "45 chilometri.", 
+                    s: "Esempio guidato: moltiplicando lo spazio orario per le 3 ore si ottiene 15 x 3 = 45 km." 
+                },
+                { 
+                    q: "Se un corpo si muove lungo una traiettoria circolare di raggio R = 7 metri compiendo un quarto di giro, quanto vale lo spazio percorso?", 
+                    r: "Circa 11 metri (1/4 della circonferenza 2 * pigreco * 7).", 
+                    s: "Esempio guidato: la lunghezza della circonferenza è 2 * 3,14 * 7 = 43,96 m; dividendola per 4 si ottiene circa 11 metri." 
+                },
+                { 
+                    q: "Converti 450 centimetri in metri.", 
+                    r: "4,5 metri.", 
+                    s: "Esempio guidato: dividendo i centimetri per 100 si ottiene la misura in metri (450 / 100 = 4,5 m)." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un punto materiale si muove con legge oraria s(t) = 3 * t al quadrato + 2 * t. Qual è lo spazio percorso tra t = 0 s e t = 4 s?", 
+                    r: "56 metri.", 
+                    s: "Esempio guidato: calcoliamo s(0) = 0 e s(4) = 3*(16) + 2*4 = 48 + 8 = 56 m. La differenza s(4) - s(0) è 56 metri." 
+                },
+                { 
+                    q: "Un'auto accelera in modo che lo spazio sia s(t) = 5 * t al cubo. Qual è lo spazio percorso nei primi 2 secondi?", 
+                    r: "40 metri.", 
+                    s: "Esempio guidato: sostituendo t = 2 nella formula si ottiene s(2) = 5 * (2 al cubo) = 5 * 8 = 40 m." 
+                },
+                { 
+                    q: "Se un oggetto percorre 1200 mm, quanti metri ha percorso?", 
+                    r: "1,2 metri.", 
+                    s: "Esempio guidato: per passare dai millimetri ai metri si divide per 1000 (1200 / 1000 = 1,2 m)." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

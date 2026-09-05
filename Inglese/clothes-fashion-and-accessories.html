@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di Clothes, Fashion and Accessories in inglese: vocaboli dettagliati per abbigliamento, capi di vestiario, moda, calzature e accessori - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Clothes, Fashion and Accessories - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="clothes-fashion-and-accessories" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Lexicon</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Clothes, Fashion and Accessories</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo dedicato all'abbigliamento, ai capi di vestiario giornalieri, ai capispalla, alle calzature, agli accessori e alle tendenze della moda in lingua inglese.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Upper Body Clothes (Capi per la Parte Superiore del Corpo)</h2>
+            <p>Vocaboli relativi a maglie, camicie, felpe e indumenti indossati nella parte alta del corpo.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>T-shirt</td><td>Maglietta a maniche corte</td></tr>
+                    <tr><td>Shirt / Blouse</td><td>Camicia (da uomo/donna) / Blusa</td></tr>
+                    <tr><td>Sweater / Jumper</td><td>Maglione / Pullover</td></tr>
+                    <tr><td>Cardigan</td><td>Cardigan / Maglione aperto con bottoni</td></tr>
+                    <tr><td>Hoodie</td><td>Felpa con cappuccio</td></tr>
+                    <tr><td>Sweatshirt</td><td>Felpa (senza cappuccio)</td></tr>
+                    <tr><td>Top</td><td>Top / Canotta / Maglia leggera</td></tr>
+                    <tr><td>Vest / Tank top</td><td>Canotta / Maglietta smanicata</td></tr>
+                    <tr><td>Polo shirt</td><td>Maglietta polo</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Lower Body Clothes (Capi per la Parte Inferiore del Corpo)</h2>
+            <p>Indumenti indossati dalla vita in giù, inclusi pantaloni, gonne e pantaloncini.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Trousers / Pants (US)</td><td>Pantaloni</td></tr>
+                    <tr><td>Jeans</td><td>Jeans / Pantaloni di denim</td></tr>
+                    <tr><td>Shorts</td><td>Pantaloncini / Shorts</td></tr>
+                    <tr><td>Skirt</td><td>Gonna</td></tr>
+                    <tr><td>Leggings</td><td>Leggings / Pantaloni aderenti elastici</td></tr>
+                    <tr><td>Tracksuit bottoms / Joggers</td><td>Pantaloni della tuta / Jogging</td></tr>
+                    <tr><td>Chinos</td><td>Pantaloni chino in cotone</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Full-Body Garments and Outerwear (Capi Interi e Capispalla)</h2>
+            <p>Abiti completi, vestiti eleganti e giacche per proteggersi dalle intemperie.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Dress</td><td>Vestito / Abito (da donna)</td></tr>
+                    <tr><td>Suit</td><td>Abito elegante / Vestito da uomo (giacca e pantaloni)</td></tr>
+                    <tr><td>Coat</td><td>Cappotto</td></tr>
+                    <tr><td>Jacket</td><td>Giacca</td></tr>
+                    <tr><td>Leather jacket</td><td>Giacca di pelle</td></tr>
+                    <tr><td>Raincoat</td><td>Impermeabile</td></tr>
+                    <tr><td>Windbreaker</td><td>Giubbino frangivento</td></tr>
+                    <tr><td>Anorac / Parka</td><td>Parka / Giaccone imbottito con cappuccio</td></tr>
+                    <tr><td>Blazer</td><td>Blazer / Giacca sportiva elegante</td></tr>
+                    <tr><td>Overalls / Dungarees</td><td>Salopette</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Underwear and Sleepwear (Intimo e Abbigliamento da Notte)</h2>
+            <p>Capi indossati a diretto contatto con la pelle o per dormire.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Underwear</td><td>Intimo / BIANCHERIA intima</td></tr>
+                    <tr><td>Bra</td><td>Reggiseno</td></tr>
+                    <tr><td>Panties / Knickers</td><td>Mutandine (da donna)</td></tr>
+                    <tr><td>Boxers / Briefs</td><td>Boxer / Slip (da uomo)</td></tr>
+                    <tr><td>Socks</td><td>Calze / Calzini</td></tr>
+                    <tr><td>Tights / Stockings</td><td>Collant / Calze da donna</td></tr>
+                    <tr><td>Pyjamas (PJs)</td><td>Pigiama</td></tr>
+                    <tr><td>Nightgown / Nightshirt</td><td>Camicia da notte</td></tr>
+                    <tr><td>Bathrobe</td><td>Accappatoio</td></tr>
+                </tbody>
+            </table>
+
+            <h2>5. Footwear (Calzature)</h2>
+            <p>Scarpe e calzature per le diverse occasioni e stagioni dell'anno.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Shoes</td><td>Scarpe</td></tr>
+                    <tr><td>Trainers / Sneakers (US)</td><td>Scarpe da ginnastica / Sneakers</td></tr>
+                    <tr><td>Boots</td><td>Stivali</td></tr>
+                    <tr><td>Ankle boots</td><td>Stivaletti</td></tr>
+                    <tr><td>Sandals</td><td>Sandali</td></tr>
+                    <tr><td>Flip-flops</td><td>Infradito</td></tr>
+                    <tr><td>High heels</td><td>Scarpe con i tacchi alti</td></tr>
+                    <tr><td>Flat shoes</td><td>Scarpe basse</td></tr>
+                    <tr><td>Slippers</td><td>Pantofole / ciabatte da casa</td></tr>
+                    <tr><td>Loafers</td><td>Mocassini</td></tr>
+                </tbody>
+            </table>
+
+            <h2>6. Accessories and Jewellery (Accessori e Gioielli)</h2>
+            <p>Elementi complementari per completare e arricchire il proprio look.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Accessories</td><td>Accessori</td></tr>
+                    <tr><td>Hat / Cap</td><td>Cappello / Berretto con visiera</td></tr>
+                    <tr><td>Scarf</td><td>Sciarpa</td></tr>
+                    <tr><td>Gloves</td><td>Guanti</td></tr>
+                    <tr><td>Belt</td><td>Cintura</td></tr>
+                    <tr><td>Tie</td><td>Cravatta</td></tr>
+                    <tr><td>Bow tie</td><td>Papillon / Farfallino</td></tr>
+                    <tr><td>Handbag</td><td>Borsetta (da donna)</td></tr>
+                    <tr><td>Backpack</td><td>Zaino</td></tr>
+                    <tr><td>Wallet / Purse</td><td>Portafoglio / Borsellino</td></tr>
+                    <tr><td>Sunglasses</td><td>Occhiali da sole</td></tr>
+                    <tr><td>Watch</td><td>Orologio (da polso)</td></tr>
+                    <tr><td>Jewellery / Jewelry (US)</td><td>Gioielli / bigiotteria</td></tr>
+                    <tr><td>Ring</td><td>Anello</td></tr>
+                    <tr><td>Necklace</td><td>Collana</td></tr>
+                    <tr><td>Earrings</td><td>Orecchini</td></tr>
+                    <tr><td>Bracelet</td><td>Braccialetto</td></tr>
+                </tbody>
+            </table>
+
+            <h2>7. Fabrics, Patterns and Style (Tessuti, Fantasie e Stile)</h2>
+            <p>Materiali di fabbricazione, fantasie dei tessuti e aggettivi per definire lo stile d'abbigliamento.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cotton</td><td>Cotone</td></tr>
+                    <tr><td>Wool</td><td>Lana</td></tr>
+                    <tr><td>Silk</td><td>Seta</td></tr>
+                    <tr><td>Leather</td><td>Pelle</td></tr>
+                    <tr><td>Denim</td><td>Denim / Jeans</td></tr>
+                    <tr><td>Linen</td><td>Lino</td></tr>
+                    <tr><td>Plain</td><td>Tinta unita / Semplice</td></tr>
+                    <tr><td>Striped</td><td>A righe</td></tr>
+                    <tr><td>Checked / Plaid</td><td>A quadri</td></tr>
+                    <tr><td>Spotted / Polka dot</td><td>A pois</td></tr>
+                    <tr><td>Flowered / Floral</td><td>A fiori</td></tr>
+                    <tr><td>Casual</td><td>Casual / Informale</td></tr>
+                    <tr><td>Formal / Smart</td><td>Formale / Elegante</td></tr>
+                    <tr><td>Trendy / Stylish</td><td>Alla moda / Stiloso</td></tr>
+                    <tr><td>Vintage</td><td>Vintage / Retrò</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Verbi Utili per l'Abbigliamento</h3>
+                <p style="margin-bottom: 0;">
+                    Ricorda la differenza tra i verbi d'azione: usi <b>to put on</b> per l'azione di indossare un capo, <b>to wear</b> per indicare che si sta indossando qualcosa, e <b>to take off</b> per l'azione di togliersi i vestiti. Per le scarpe e gli accessori si usano le stesse espressioni (es. <i>"Put on your coat"</i>).
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida definitiva e completa alle Disequazioni di Grado Superiore al Secondo: scomposizione, regola di Ruffini, studio del segno dei fattori, tabella dei segni e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni di Grado Superiore al Secondo - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        
+        /* Stili card esercizi personalizzati per mantenere coerenza cromatica */
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        /* Stili per la Tabella dello Studio del Segno */
+        .tabella-segni-container {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+        }
+        .tabella-segni {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.95rem;
+        }
+        .tabella-segni th, .tabella-segni td {
+            text-align: center;
+            padding: 6px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .tabella-segni th {
+            border-bottom: 2px solid #0f172a;
+            color: #0f172a;
+            font-weight: bold;
+        }
+        .tabella-segni td.label-fattore {
+            text-align: left;
+            font-weight: bold;
+            color: #1e3a8a;
+            border-right: 2px solid #0f172a;
+            padding-right: 0.8rem;
+        }
+        .tabella-segni tr.riga-prodotto {
+            border-top: 2px solid #0f172a;
+            font-weight: bold;
+            background-color: #f1f5f9;
+        }
+        .segno-piu { color: #16a34a; font-weight: bold; }
+        .segno-meno { color: #dc2626; font-weight: bold; }
+        
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-grado-superiore" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra Superiore</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Disequazioni di Grado Superiore al Secondo</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida definitiva: forma normale, scomposizione in fattori (raccoglimenti, prodotti notevoli, Ruffini), studio del segno con la tabella dei segni e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Introduzione e Forma Normale</h2>
+            <p>Una disequazione algebrica intera si dice di <strong>grado superiore al secondo</strong> quando, portata in forma normale, il polinomio associato ha grado $n \ge 3$. La forma normale generale si presenta come:</p>
+            <div class="formula-box">
+                $$P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \ge 0 \quad (\text{oppure } >, <, \le)$$
+            </div>
+            <p>L'obiettivo fondamentale per risolvere queste disequazioni <strong>non è applicare formule dirette</strong> (che non esistono per gradi $\ge 5$ e sono impraticabili per il 3° e 4° grado), bensì <strong>scomporre il polinomio $P(x)$ nel prodotto di fattori di primo e secondo grado</strong>:</p>
+            <div class="formula-box">
+                $$P(x) = A(x) \cdot B(x) \cdot C(x) \dots > 0$$
+            </div>
+
+            <h2>2. Metodi Fondamentali di Scomposizione</h2>
+            <p>Prima di studiare il segno, bisogna saper scomporre il polinomio con le tecniche algebriche fondamentali:</p>
+            <ul>
+                <li><strong>Raccoglimento Totale a Fattor Comune:</strong> Estarre il fattor comune massimo (es. $x^3 - 2x^2 = x^2(x - 2)$).</li>
+                <li><strong>Raccoglimento Parziale:</strong> Raggruppare i termini a coppie o gruppi per evidenziare un binomio comune.</li>
+                <li><strong>Prodotti Notevoli:</strong> Differenza di quadrati ($A^2 - B^2 = (A-B)(A+B)$), somma o differenza di cubi ($A^3 \pm B^3 = (A \pm B)(A^2 \mp AB + B^2)$).</li>
+                <li><strong>Regola di Ruffini:</strong> Fondamentale per polinomi di 3°, 4° grado o superiore. Si cercano i divisori del termine noto $a_0$, si individua una radice intera $\alpha$ tale che $P(\alpha) = 0$, e si divide il polinomio per $(x - \alpha)$.</li>
+            </ul>
+
+            <h2>3. Procedura Passo dopo Passo per la Risoluzione</h2>
+            <ol>
+                <li><strong>Portare a 0:</strong> Spostare tutti i termini a sinistra in modo da avere un polinomio maggiore o minore di zero ($> 0$, $< 0$, $\ge 0$, $\le 0$).</li>
+                <li><strong>Scomporre in Fattori:</strong> Ridurre il polinomio $P(x)$ nel prodotto di fattori irriducibili (primo o secondo grado con $\Delta < 0$).</li>
+                <li><strong>Studio del Segno dei Singoli Fattori:</strong> Porre ciascun fattore strettamente maggiore di zero ($F_i(x) > 0$), indipendentemente dal verso della disequazione iniziale.</li>
+                <li><strong>Costruire la Tabella dei Segni (o Grafico dei Segni):</strong> Ordinare le radici sulla retta reale, tracciare le linee continue (segno più) o tratteggiate (segno meno) per ogni fattore e applicare la regola dei segni della moltiplicazione verticale.</li>
+                <li><strong>Estrarre l'Insieme delle Soluzioni:</strong> Scegliere gli intervalli in base al verso finale della disequazione (se $> 0$ o $\ge 0$ cerchiamo i segni <strong>PIÙ</strong>; se $< 0$ o $\le 0$ cerchiamo i segni <strong>MENO</strong>).</li>
+            </ol>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato Completo</h3>
+                <p><strong>Risolvi la disequazione di terzo grado:</strong></p>
+                <div class="formula-box">
+                    $$x^3 - 2x^2 - x + 2 > 0$$
+                </div>
+                <p><strong>Passo 1: Scomposizione con Ruffini o Raccoglimento Parziale.</strong><br>
+                Usiamo il raccoglimento parziale a coppie:
+                $x^2(x - 2) - 1(x - 2) > 0 \implies (x - 2)(x^2 - 1) > 0$.<br>
+                Scomponendo ulteriormente la differenza di quadrati $(x^2 - 1) = (x - 1)(x + 1)$, otteniamo la forma fattorizzata completa:</p>
+                <div class="formula-box">
+                    $$(x - 2)(x - 1)(x + 1) > 0$$
+                </div>
+
+                <p><strong>Passo 2: Studio dei singoli fattori ($> 0$).</strong></p>
+                <ul>
+                    <li>Fattore 1: $x + 1 > 0 \implies x > -1$ (Radice: $-1$)</li>
+                    <li>Fattore 2: $x - 1 > 0 \implies x > 1$ (Radice: $1$)</li>
+                    <li>Fattore 3: $x - 2 > 0 \implies x > 2$ (Radice: $2$)</li>
+                </ul>
+
+                <p><strong>Passo 3: Tabella dei Segni.</strong> Ordinando le radici in ordine crescente ($-1, 1, 2$):</p>
+
+                <div class="tabella-segni-container">
+                    <table class="tabella-segni">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Fattore / Intervallo</th>
+                                <th>\(x < -1\)</th>
+                                <th>\(-1\)</th>
+                                <th>\(-1 < x < 1\)</th>
+                                <th>\(1\)</th>
+                                <th>\(1 < x < 2\)</th>
+                                <th>\(2\)</th>
+                                <th>\(x > 2\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-fattore">\(x + 1\)</td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td>0</td>
+                                <td><span class="segno-piu">+</span></td>
+                                <td><span class="segno-piu">+</span></td>
+                                <td><span class="segno-piu">+</span></td>
+                                <td><span class="segno-piu">+</span></td>
+                                <td><span class="segno-piu">+</span></td>
+                            </tr>
+                            <tr>
+                                <td class="label-fattore">\(x - 1\)</td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td>0</td>
+                                <td class="segno-piu">+</td>
+                                <td><span class="segno-piu">+</span></td>
+                                <td><span class="segno-piu">+</span></td>
+                            </tr>
+                            <tr>
+                                <td class="label-fattore">\(x - 2\)</td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td>0</td>
+                                <td class="segno-piu">+</td>
+                            </tr>
+                            <tr class="riga-prodotto">
+                                <td class="label-fattore">Prodotto Totale (\(>\) 0)</td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td>0</td>
+                                <td><span class="segno-piu">+</span></td>
+                                <td>0</td>
+                                <td><span class="segno-meno">-</span></td>
+                                <td>0</td>
+                                <td><span class="segno-piu">+</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>🎯 <strong>Soluzione della Disequazione:</strong> Poiché la disequazione richiede il polinomio <strong>maggiore di zero</strong> ($> 0$), peschiamo gli intervalli con segno **PIÙ**: <strong>\(-1 < x < 1 \quad \cup \quad x > 2\)</strong>.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (da Facili a Difficili)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let domanda, risposta, spiegazione;
+
+                // 1. Da 1 a 35: FACILE (Verde)
+                if (i <= 35) {
+                    diffClass = 'livello-facile'; diffLabel = 'FACILE';
+                    let a = (i % 3) + 1;
+                    domanda = "Risolvi la disequazione di 3° grado: $$x^3 - " + (a*a) + "x > 0$$";
+                    risposta = "-" + a + " < x < 0 \\quad \\cup \\quad x > " + a;
+                    spiegazione = "1) Raccogliendo la $x$ a fattor comune: $x(x^2 - " + (a*a) + ") > 0$.<br>2) Scomponendo la differenza di quadrati: $x(x - " + a + ")(x + " + a + ") > 0$.<br>3) Ponendo i fattori $>0$ e facendo lo studio del segno con la tabella, i segni positivi si alternano negli intervalli esterni e intermedi, risultando <strong>-" + a + " < x < 0 \\cup x > " + a + "</strong>.";
+                
+                // 2. Da 36 a 75: MEDIO (Giallo)
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio'; diffLabel = 'MEDIO';
+                    // Divido i medi in due tipologie per mantenere la varietà
+                    if (i <= 55) {
+                        let n = (i % 4) + 2;
+                        domanda = "Risolvi la disequazione biquadratica: $$x^4 - " + (n*n) + "x^2 \\le 0$$";
+                        risposta = "-" + n + " \\le x \\le " + n;
+                        spiegazione = "1) Raccogliendo $x^2$: $x^2(x^2 - " + (n*n) + ") \\le 0$ $\\implies x^2(x - " + n + ")(x + " + n + ") \\le 0$.<br>2) Poiché $x^2 \\ge 0$ sempre, il segno dipende unicamente dal binomio o dall'intervallo compreso tra le radici reali.<br>3) Tenendo conto che per $x=0$ l'espressione si annulla (ed è inclusa dallo $\\le$), la soluzione è l'intervallo chiuso <strong>-" + n + " \\le x \\le " + n + "</strong>.";
+                    } else {
+                        let m = (i % 3) + 2;
+                        domanda = "Risolvi la disequazione con Ruffini: $$x^3 - " + (m+1) + "x^2 + " + m + "x \\ge 0$$";
+                        risposta = "0 \\le x \\le 1 \\quad \\cup \\quad x \\ge " + m;
+                        spiegazione = "1) Raccogliendo $x$ in evidenza: $x(x^2 - " + (m+1) + "x + " + m + ") \\ge 0$.<br>2) Scomponendo il trinomio di secondo grado tra parentesi con la regola somma-prodotto troviamo $(x - 1)(x - " + m + ").<br>3) La forma fattorizzata è $x(x - 1)(x - " + m + ") \\ge 0$. Dallo studio dei segni con la tabella, otteniamo gli intervalli in cui il prodotto è positivo o nullo: <strong>0 \\le x \\le 1 \\cup x \\ge " + m + "</strong>.";
+                    }
+
+                // 3. Da 76 a 100: DIFFICILE (Rosso)
+                } else {
+                    diffClass = 'livello-difficile'; diffLabel = 'DIFFICILE';
+                    let k = (i % 3) + 1;
+                    domanda = "[DIFFICILE] Risolvi la disequazione di 4° grado simmetrica/particolare con quadrato di binomio: $$(x^2 - " + (k*k) + ")^2 - (x - " + k + ")^2 \\le 0$$";
+                    risposta = "-" + k + " \\le x \\le " + k + " \\quad (\\text{con attenzione ai punti di contatto e molteplicità pari})";
+                    spiegazione = "1) Scomponendo la differenza di quadrati generale $[(x^2 - " + (k*k) + ") - (x - " + k + ")][(x^2 - " + (k*k) + ") + (x - " + k + ")] \\le 0$.<br>2) Scomponendo i singoli fattori di secondo grado si ottiene una scomposizione avanzata con fattori aventi molteplicità o radici coincidenti.<br>3) Analizzando i segni dei quadrati e dei fattori lineari tramite tabella di segno estesa, la soluzione rigorosa per l'intervallo chiuso e i punti di annullamento risulta <strong>-" + k + " \\le x \\le " + k + "</strong>.";
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}" style="padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box" style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Tabella dei Segni e Soluzione</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta" style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Risultato:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

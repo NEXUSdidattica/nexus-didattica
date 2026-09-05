@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Verb To Have in English: coniugazione al Present Simple, forme affirmative, negative, interrogative, risposte brevi e usi principali (possesso e have got) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>The Verb To Have - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="to-have" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Ausiliari e Present Tenses</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">The Verb To Have (Il Verbo Avere)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio completo del verbo avere in inglese: la doppia modalità (have vs. have got), la coniugazione al Present Simple, forme negative, interrogative e usi speciali come ausiliare nei tempi composti.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione e Funzioni del Verbo "To Have"</h2>
+            <p>
+                Il verbo <strong>to have</strong> (avere) è, insieme a <em>to be</em>, uno dei verbi più importanti della lingua inglese. Svolge funzioni fondamentali:
+            </p>
+            <ul>
+                <li><strong>Verbo possessivo / predicativo:</strong> esprime possesso, relazioni familiari o caratteristiche fisiche. In questa veste può presentarsi nella forma semplice (<strong>have</strong>) oppure nella variante rafforzata d'uso comune britannico (<strong>have got</strong>).</li>
+                <li><strong>Verbo ausiliare:</strong> è indispensabile per la costruzione dei tempi verbali composti (come il <em>Present Perfect</em> e il <em>Past Perfect</em>).</li>
+            </ul>
+
+            <h2>2. La Doppia Forma: Have vs. Have Got</h2>
+            <p>
+                Nella lingua inglese contemporanea, per esprimere il possesso al presente esistono due costruzioni principali:
+            </p>
+            <ul>
+                <li><strong>Have (senza got):</strong> molto diffusa nell'inglese americano e formale. Si comporta come un verbo ordinario: richiede l'ausiliare <em>do/does</em> per negazioni e interrogative.</li>
+                <li><strong>Have got:</strong> tipica soprattutto dell'inglese britannico (UK) nella lingua parlata e informale. Il verbo <em>have</em> funge da ausiliare di se stesso (non richiede <em>do/does</em>) e viene quasi sempre contratto.</li>
+            </ul>
+
+            <h2>3. Coniugazione al Present Simple (Forma Affermativa)</h2>
+            <p>
+                Osserviamo la coniugazione affermativa del verbo base <em>to have</em> e la corrispondente forma contratta con <em>got</em>.
+            </p>
+
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Pronome Personale</th>
+                        <th>Forma Semplice (Have)</th>
+                        <th>Forma con "Got" (Estesa)</th>
+                        <th>Forma con "Got" (Contratta)</th>
+                        <th>Traduzione italiana</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I</strong></td>
+                        <td>I <em>have</em></td>
+                        <td>I have got</td>
+                        <td><strong>I've got</strong></td>
+                        <td>io ho</td>
+                    </tr>
+                    <tr>
+                        <td><strong>You</strong></td>
+                        <td>You <em>have</em></td>
+                        <td>You have got</td>
+                        <td><strong>You've got</strong></td>
+                        <td>tu hai</td>
+                    </tr>
+                    <tr>
+                        <td><strong>He / She / It</strong></td>
+                        <td>He / She / It <em>has</em></td>
+                        <td>He / She / It has got</td>
+                        <td><strong>He's / She's / It's got</strong></td>
+                        <td>egli / ella / esso ha</td>
+                    </tr>
+                    <tr>
+                        <td><strong>We</strong></td>
+                        <td>We <em>have</em></td>
+                        <td>We have got</td>
+                        <td><strong>We're got</strong> (raro) / <strong>We've got</strong></td>
+                        <td>noi abbiamo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>You</strong></td>
+                        <td>You <em>have</em></td>
+                        <td>You have got</td>
+                        <td><strong>You've got</strong></td>
+                        <td>voi avete</td>
+                    </tr>
+                    <tr>
+                        <td><strong>They</strong></td>
+                        <td>They <em>have</em></td>
+                        <td>They have got</td>
+                        <td><strong>They've got</strong></td>
+                        <td>essi / esse hanno</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">⚠️ Attenzione alla Terza Persona Singolare</h3>
+                <p style="margin-bottom: 0;">
+                    Come per molti verbi regolari e irregolari al Present Simple, alla terza persona singolare (<em>He, She, It</em>) la voce verbale cambia da <strong>have</strong> a <strong>has</strong> (e di conseguenza <em>has got</em> / <em>'s got</em>). Non dire mai *he have* o *she have*!
+                </p>
+            </div>
+
+            <h2>4. Forma Negativa</h2>
+            <p>
+                Il comportamento della forma negativa cambia drasticamente a seconda che si utilizzi la struttura con <em>got</em> oppure la struttura standard con l'ausiliare <em>do/does</em>.
+            </p>
+
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Pronome</th>
+                        <th>Negativa con "Have got" (Contratta)</th>
+                        <th>Negativa Standard (con Do/Does)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I</strong></td>
+                        <td>I <strong>haven't got</strong></td>
+                        <td>I <strong>don't have</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>You</strong></td>
+                        <td>You <strong>haven't got</strong></td>
+                        <td>You <strong>don't have</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>He / She / It</strong></td>
+                        <td>He / She / It <strong>hasn't got</strong></td>
+                        <td>He / She / It <strong>doesn't have</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>We</strong></td>
+                        <td>We <strong>haven't got</strong></td>
+                        <td>We <strong>don't have</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>You</strong></td>
+                        <td>You <strong>haven't got</strong></td>
+                        <td>You <strong>don't have</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>They</strong></td>
+                        <td>They <strong>haven't got</strong></td>
+                        <td>They <strong>don't have</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>5. Forma Interrogativa e Risposte Brevi (Short Answers)</h2>
+            <p>
+                Anche nelle domande si applica la distinzione tra la forma con <em>got</em> (inversione del verbo) e la forma standard (uso dell'ausiliare <em>Do/Does</em>).
+            </p>
+
+            <div class="formula-box">
+                🇬🇧 <strong>Schemi strutturali delle domande:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                    • Con <em>got</em>: \(\text{[Have/Has]} + \text{[Soggetto]} + \text{got} + \text{[Complemento]} + \mathbf{?}\) <br>
+                    <em>Esempio:</em> <strong>Have you got</strong> a car? (Hai una macchina?)
+                </p>
+                <p style="margin-top: 0; margin-bottom: 0;">
+                    • Senza <em>got</em>: \(\text{[Do/Does]} + \text{[Soggetto]} + \text{have} + \text{[Complemento]} + \mathbf{?}\) <br>
+                    <em>Esempio:</em> <strong>Do you have</strong> a car? (Hai una macchina?)
+                </p>
+            </div>
+
+            <p>
+                Le risposte brevi riprendono l'ausiliare impiegato nella domanda o nella costruzione di base:
+            </p>
+
+            <ul>
+                <li><strong>Domanda:</strong> <em>Have you got a bicycle? / Do you have a bicycle?</em> <br>
+                    <strong>Risposta Affermativa:</strong> <em>Yes, I <strong>have</strong>.</em> oppure <em>Yes, I <strong>do</strong>.</em> <br>
+                    <strong>Risposta Negativa:</strong> <em>No, I <strong>haven't</strong>.</em> oppure <em>No, I <strong>don't</strong>.</em>
+                </li>
+                <li><strong>Domanda:</strong> <em>Has she got a brother? / Does she have a brother?</em> <br>
+                    <strong>Risposta Affermativa:</strong> <em>Yes, she <strong>has</strong>.</em> oppure <em>Yes, she <strong>does</strong>.</em> <br>
+                    <strong>Risposta Negativa:</strong> <em>No, she <strong>hasn't</strong>.</em> oppure <em>No, she <strong>doesn't</strong>.</em>
+                </li>
+            </ul>
+
+            <h2>6. Usi Idiomatici e Particolari (Have got to / Have breakfast)</h2>
+            <p>
+                Il verbo <em>to have</em> perde il significato di possesso ed entra a far parte di locuzioni particolari in molti contesti fissi della lingua inglese:
+            </p>
+            <ul>
+                <li><strong>Espressioni di azioni quotidiane (in cui NON si usa *got*):</strong> 
+                    <em>have breakfast / lunch / dinner</em> (fare colazione / pranzo / cena), 
+                    <em>have a shower / a bath</em> (fare la doccia / il bagno), 
+                    <em>have a good time</em> (divertirsi).
+                </li>
+                <li><strong>Obbligo (Have to / Have got to):</strong> seguito da un verbo all'infinito, esprime una necessità o un obbligo imposto dall'esterno. <br>
+                    <em>Esempio:</em> <em>I <strong>have to</strong> study English today.</em> (Devo studiare inglese oggi).
+                </li>
+            </ul>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

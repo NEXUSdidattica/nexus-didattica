@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 2: Grado di un monomio - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Grado di un monomio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="monomi-grado-di-un-monomio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Monomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Grado di un monomio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Grado relativo a una lettera, grado complessivo (o totale) di un monomio e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Grado Relativo ad una Lettera</h2>
+            <p>
+                Il <strong>grado relativo a una data lettera</strong> è l'esponente con cui quella lettera compare nel monomio ridotto in forma normale.
+            </p>
+            <p>
+                Se una lettera non è presente nel monomio, il suo grado relativo è uguale a <code>0</code> (poiché qualsiasi lettera elevata a 0 è uguale a 1).
+            </p>
+
+            <h2>2. Grado Complessivo (o Totale)</h2>
+            <p>
+                Il <strong>grado complessivo (o totale)</strong> di un monomio non nullo è la <strong>somma di tutti gli esponenti</strong> delle sue lettere.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Consideriamo il monomio <code>-7 a³ b² c</code>:<br>
+                    • Grado rispetto ad <em>a</em>: <strong>3</strong><br>
+                    • Grado rispetto a <em>b</em>: <strong>2</strong><br>
+                    • Grado rispetto a <em>c</em>: <strong>1</strong> (l'esponente 1 è sottinteso)<br>
+                    • Grado complessivo: <code>3 + 2 + 1 = 6</code>
+                </p>
+            </div>
+
+            <h2>3. Casi Particolari</h2>
+            <ul>
+                <li><strong>Monomio formato solo da un numero (costante diversa da zero):</strong> ha grado complessivo pari a <code>0</code> (es. il numero <code>5</code> ha grado 0).</li>
+                <li><strong>Monomio nullo (0):</strong> per convenzione, al monomio <code>0</code> <strong>non si attribuisce alcun grado</strong>.</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il grado relativo a ciascuna lettera e il grado complessivo del monomio <code>4 x⁴ y z²</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Individuiamo gli esponenti di ciascuna lettera: per <em>x</em> è <code>4</code>, per <em>y</em> è <code>1</code> (sottinteso), per <em>z</em> è <code>2</code>.</li>
+                    <li>Sommiamo gli esponenti per trovare il grado complessivo: <code>4 + 1 + 2 = 7</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>G(x) = 4, G(y) = 1, G(z) = 2 | Grado Totale: 7</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Grado del Monomio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Calcola i gradi relativi e complessivi e confronta il grado tra più monomi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let expX = (i % 4) + 1;
+                    let expY = (i % 3) + 1;
+                    let gradoTotale = expX + expY;
+
+                    domanda = `Determina il grado complessivo del monomio: <code>-3 x${expX > 1 ? '<sup>' + expX + '</sup>' : ''} y${expY > 1 ? '<sup>' + expY + '</sup>' : ''}</code>.`;
+                    risposta = `Grado complessivo: <strong>${gradoTotale}</strong>`;
+                    spiegazione = `
+                    1) L'esponente della lettera <em>x</em> è <code>${expX}</code>.<br>
+                    2) L'esponente della lettera <em>y</em> è <code>${expY}</code>.<br>
+                    3) Sommiamo gli esponenti: <code>${expX} + ${expY} = ${gradoTotale}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let expA = (i % 3) + 2;
+                    let expB = (i % 2) + 1;
+                    let expC = 1;
+                    let gradoTotale = expA + expB + expC;
+
+                    domanda = `Calcola i gradi relativi a ogni lettera e il grado complessivo del monomio: <code>5/2 a<sup>${expA}</sup> b<sup>${expB}</sup> c</code>.`;
+                    risposta = `G(a) = ${expA}, G(b) = ${expB}, G(c) = 1 | Grado Complessivo: <strong>${gradoTotale}</strong>`;
+                    spiegazione = `
+                    1) Grado rispetto ad <em>a</em>: <code>${expA}</code>.<br>
+                    2) Grado rispetto a <em>b</em>: <code>${expB}</code>.<br>
+                    3) Grado rispetto a <em>c</em>: <code>1</code> (l'esponente non scritto è 1).<br>
+                    4) Somma totale: <code>${expA} + ${expB} + 1 = ${gradoTotale}</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let k1 = (i % 3) + 2;
+                    let k2 = (i % 4) + 1;
+                    let monomioForm = `(-3 a<sup>${k1}</sup> b) &middot; (2 a<sup>${k2}</sup> b³)`;
+                    let expA_tot = k1 + k2;
+                    let expB_tot = 1 + 3;
+                    let gradoTotale = expA_tot + expB_tot;
+
+                    domanda = `Prima riduci in forma normale e poi calcola il grado complessivo: <code>${monomioForm}</code>.`;
+                    risposta = `Monomio ridotto: <code>-6 a<sup>${expA_tot}</sup> b⁴</code> | Grado Complessivo: <strong>${gradoTotale}</strong>`;
+                    spiegazione = `
+                    1) Riduciamo in forma normale moltiplicando i coefficienti e sommando gli esponenti:<br>
+                       - Coefficiente: <code>(-3) &middot; 2 = -6</code><br>
+                       - Esponente di <em>a</em>: <code>${k1} + ${k2} = ${expA_tot}</code><br>
+                       - Esponente di <em>b</em>: <code>1 + 3 = 4</code><br>
+                    2) Calcoliamo il grado complessivo sommando gli esponenti del monomio ridotto: <code>${expA_tot} + 4 = ${gradoTotale}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

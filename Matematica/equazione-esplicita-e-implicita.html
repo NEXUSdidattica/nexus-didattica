@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Analitica - Sezione Retta: Equazione Esplicita e Implicita della Retta - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazione Esplicita e Implicita della Retta - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Analitica */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-analitica-retta-sezione-1" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">La Retta - Sezione 1</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Equazione Esplicita e Implicita della Retta</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio completo della retta nel piano cartesiano, comprensione del coefficiente angolare <code>m</code>, dell'intercetta <code>q</code> e 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è l'equazione di una retta?</h2>
+            <p>
+                Nel piano cartesiano, ogni retta può essere rappresentata algebricamente da un'equazione di <strong>primo grado</strong> (lineare) in due variabili, <code>x</code> e <code>y</code>. Esistono due forme principali per scrivere l'equazione di una retta: la forma <strong>esplicita</strong> e la forma <strong>implicita</strong>.
+            </p>
+
+            <h3>Forma Esplicita</h3>
+            <p>
+                La forma esplicita si presenta evidenziando la variabile <code>y</code>:
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>y = mx + q</code>
+                </p>
+            </div>
+            <ul>
+                <li><strong><code>m</code> (Coefficiente angolare):</strong> indica la pendenza della retta rispetto all'asse <code>x</code>. Se <code>m > 0</code> la retta è crescente, se <code>m < 0</code> è decrescente, se <code>m = 0</code> la retta è orizzontale.</li>
+                <li><strong><code>q</code> (Intercetta o ordinata all'origine):</strong> rappresenta il punto in cui la retta interseca l'asse verticale delle ordinate <code>y</code> (coordinate <code>(0, q)</code>).</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Retta) -->
+            <div class="figura-geometrica-container">
+                <svg width="420" height="300" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="420" height="300" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                    
+                    <!-- Griglia di sfondo leggera -->
+                    <path d="M 60,40 V 260 M 120,40 V 260 M 180,40 V 260 M 240,40 V 260 M 300,40 V 260 M 360,40 V 260" stroke="#f1f5f9" stroke-width="1"/>
+                    <path d="M 40,50 H 380 M 40,100 H 380 M 40,150 H 380 M 40,200 H 380 M 40,250 H 380" stroke="#f1f5f9" stroke-width="1"/>
+
+                    <!-- Assi Cartesiani X e Y -->
+                    <line x1="40" y1="200" x2="380" y2="200" stroke="#0f172a" stroke-width="2"/>
+                    <line x1="200" y1="270" x2="200" y2="30" stroke="#0f172a" stroke-width="2"/>
+
+                    <!-- Retta y = 2x + 1 -->
+                    <line x1="90" y1="266" x2="330" y2="46" stroke="#2563eb" stroke-width="3"/>
+
+                    <!-- Intercetta q e punto di taglio -->
+                    <circle cx="200" cy="170" r="5" fill="#1e3a8a"/>
+                    <text x="212" y="174" fill="#1e3a8a" font-family="Arial, sans-serif" font-weight="bold" font-size="13">q (0, 1)</text>
+
+                    <!-- Etichette Assi -->
+                    <text x="370" y="218" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="14">x</text>
+                    <text x="182" y="42" fill="#0f172a" font-family="Arial, sans-serif" font-weight="bold" font-size="14">y</text>
+                    <text x="182" y="217" fill="#0f172a" font-family="Arial, sans-serif" font-size="12">O</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Rappresentazione grafica di una retta in forma esplicita <code style="color:#2563eb;">y = mx + q</code>.
+                </div>
+            </div>
+
+            <h3>Forma Implicita</h3>
+            <p>
+                La forma implicita raccoglie tutti i termini a primo membro uguagliandoli a zero:
+            </p>
+            <div class="formula-box">
+                <p style="text-align: center; margin: 0; font-size: 1.15rem;">
+                    <code>ax + by + c = 0</code>
+                </p>
+            </div>
+            <p>
+                Dove <code>a</code>, <code>b</code> e <code>c</code> sono coefficienti reali. Da questa forma è possibile ricavare rapidamente il coefficiente angolare e l'intercetta tramite le formule dirette:
+            </p>
+            <ul>
+                <li><code>m = -a / b</code> &nbsp;&nbsp;(purché <code>b &neq; 0</code>)</li>
+                <li><code>q = -c / b</code> &nbsp;&nbsp;(purché <code>b &neq; 0</code>)</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Data l'equazione implicita <code>2x - 4y + 8 = 0</code>, trasformala in forma esplicita e individua coefficiente angolare <code>m</code> e intercetta <code>q</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Isoliamo il termine con la <code>y</code> a primo membro: <code>-4y = -2x - 8</code>.</li>
+                    <li>Dividiamo tutti i termini per <code>-4</code> per isolare la <code>y</code>: <code>y = (-2 / -4)x + (-8 / -4)</code>.</li>
+                    <li>Semplifichiamo le frazioni ottenendo la forma esplicita: <code>y = (1/2)x + 2</code>.</li>
+                    <li>Leggiamo i parametri: <code>m = 1/2</code> e <code>q = 2</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: Forma esplicita <code>y = (1/2)x + 2</code>, con m = 1/2 e q = 2.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Retta</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di conversione tra forma esplicita e implicita, calcolo di pendenza e intercette.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let m = 2, q = 3;
+                    domanda = `Data la retta in forma esplicita <code>y = ${m}x + ${q}</code>, individua il coefficiente angolare <code>m</code> e l'intercetta <code>q</code>.`;
+                    risposta = `<strong>m = ${m}, q = ${q}</strong>`;
+                    spiegazione = `
+                    1) Confrontiamo l'equazione data con il modello generale esplicito <code>y = mx + q</code>.<br>
+                    2) Il coefficiente che moltiplica la <code>x</code> è <code>m = ${m}</code>.<br>
+                    3) Il termine noto costante è <code>q = ${q}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    domanda = `Trasforma l'equazione implicita <code>3x - y + 5 = 0</code> in forma esplicita.`;
+                    risposta = `<strong>y = 3x + 5</strong>`;
+                    spiegazione = `
+                    1) Portiamo tutti i termini tranne la <code>y</code> al secondo membro: <code>-y = -3x - 5</code>.<br>
+                    2) Cambiamo segno a tutti i termini moltiplicando per <code>-1</code>: <code>y = 3x + 5</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    domanda = `Data l'equazione implicita <code>4x - 2y + 6 = 0</code>, scrivi la forma esplicita e ricava <code>m</code> e <code>q</code>.`;
+                    risposta = `<strong>y = 2x + 3 &nbsp;(m = 2, q = 3)</strong>`;
+                    spiegazione = `
+                    1) Isolate il termine in <code>y</code>: <code>-2y = -4x - 6</code>.<br>
+                    2) Dividete ciascun termine per <code>-2</code>: <code>y = (-4/-2)x + (-6/-2)</code>.<br>
+                    3) Semplificate ottenendo <code>y = 2x + 3</code>, da cui <code>m = 2</code> e <code>q = 3</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

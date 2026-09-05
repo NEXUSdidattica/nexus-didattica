@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Matrice di adiacenza nei grafi: rappresentazione tabellare, complessità spaziale e temporale, vantaggi e svantaggi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Matrice di Adiacenza - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #c2410c;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #9a3412;
+        }
+
+        .box-evidenza {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .terminal-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ea580c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .terminal-title {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        .mem-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        @media(max-width: 768px) {
+            .mem-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        input.code-input,
+        select.code-input {
+            width: 100%;
+            background-color: #111;
+            color: #f97316;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .mem-output {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        button.btn-os {
+            padding: 10px 18px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        button.btn-os:hover {
+            background-color: #c2410c;
+        }
+
+        /* Codice sorgente formattato */
+        .code-snippet {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border: 1px solid #334155;
+            margin: 1.5rem 0;
+        }
+
+        /* Tabella Matrix style per esempio */
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: monospace;
+            margin: 1rem 0;
+            background: #0f172a;
+            color: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            border: 1px solid #334155;
+            padding: 10px;
+        }
+
+        .matrix-table th {
+            background-color: #1e293b;
+            color: #ea580c;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="matrice-di-adiacenza" data-materia="Informatica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.path || history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #fff7ed; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #fed7aa; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno"
+                    style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Informatica
+                    / Lezione Teorico-Pratica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Matrice di
+                    Adiacenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Struttura dati tabellare bidimensionale per la rappresentazione algebrica dei grafi, analisi delle
+                    prestazioni e dei costi di memoria.
+                </p>
+            </div>
+
+            <button id="btn-salva-lezione"
+                style="background-color: #ea580c; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- SEZIONE TEORIA COMPLETA -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è la Matrice di Adiacenza?</h2>
+            <p>
+                La <strong>matrice di adiacenza</strong> è una rappresentazione basata su una tabella bidimensionale
+                (array 2D) di dimensione $V \times V$, dove $V$ è il numero di vertici del grafo. Ciascuna riga $i$ e
+                colonna $j$ corrisponde a un vertice.
+            </p>
+            <p>
+                L'elemento alla posizione $M[i][j]$ assume valori specifici in base alle caratteristiche del grafo:
+            </p>
+            <ul>
+                <li><strong>Grafi non pesati:</strong> $M[i][j] = 1$ se esiste un arco che collega il nodo $i$ al nodo
+                    $j$; altrimenti $M[i][j] = 0$.</li>
+                <li><strong>Grafi pesati:</strong> $M[i][j]$ memorizza direttamente il peso dell'arco tra $i$ e $j$,
+                    mentre i valori speciali (come $\infty$ o $0$) indicano l'assenza di collegamento diretto.</li>
+            </ul>
+
+            <h3 style="margin-top: 1.5rem;">Esempio Pratico di Tabella</h3>
+            <p>Consideriamo un grafo non orientato con 4 nodi ($0, 1, 2, 3$) e archi tra $(0,1), (0,2), (1,3), (2,3)$:
+            </p>
+
+            <table class="matrix-table">
+                <tr>
+                    <th></th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <th>0</th>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+            </table>
+
+            <h2>2. Vantaggi, Svantaggi e Complessità</h2>
+            <p>
+                L'utilizzo della matrice di adiacenza offre compromessi ben definiti in termini di efficienza
+                computazionale:
+            </p>
+            <ul>
+                <li><strong>Controllo adiacenza in $\mathcal{O}(1)$:</strong> Verificare se due nodi $i$ e $j$ sono
+                    connessi richiede l'accesso diretto all'elemento $M[i][j]$, operazione immediata.</li>
+                <li><strong>Occupazione di Memoria $\mathcal{O}(V^2)$:</strong> Indipendentemente dal numero reale di
+                    archi presenti, la matrice richiede sempre uno spazio proporzionale al quadrato dei vertici. Questo
+                    la rende inefficiente per i <em>grafi sparsi</em> (pochi archi).</li>
+                <li><strong>Ricerca dei vicini in $\mathcal{O}(V)$:</strong> Per trovare tutti i nodi adiacenti a un
+                    vertice $i$, è necessario scorrere l'intera riga $i$ di lunghezza $V$.</li>
+            </ul>
+
+            <div class="code-snippet">
+                <span style="color: #64748b;">// Implementazione base di una Matrice di Adiacenza in C++</span>
+                <span style="color: #c084fc;">#include</span> <span style="color: #34d399;">&lt;vector&gt;</span>
+                <span style="color: #c084fc;">#include</span> <span style="color: #34d399;">&lt;iostream&gt;</span>
+
+                <span style="color: #fb923c;">class</span> <span style="color: #60a5fa;">AdjacencyMatrixGraph</span> {
+                <span style="color: #fb923c;">int</span> V;
+                std::vector&lt;std::vector&lt;<span style="color: #fb923c;">int</span>&gt;&gt; matrix;
+                <span style="color: #fb923c;">public:</span>
+                AdjacencyMatrixGraph(<span style="color: #fb923c;">int</span> v) : V(v), matrix(v, std::vector&lt;<span
+                    style="color: #fb923c;">int</span>&gt;(v, 0)) {}
+
+                <span style="color: #fb923c;">void</span> addEdge(<span style="color: #fb923c;">int</span> u, <span
+                    style="color: #fb923c;">int</span> v, <span style="color: #fb923c;">int</span> weight = 1) {
+                matrix[u][v] = weight;
+                matrix[v][u] = weight; <span style="color: #64748b;">// Solo se non orientato</span>
+                }
+                };
+            </div>
+
+            <!-- SIMULATORE INTERATTIVO -->
+            <h2>3. Simulatore Interattivo: Generazione Matrice $V \times V$</h2>
+            <p>Inserisci il numero di vertici del grafo per calcolare la dimensione strutturale e l'occupazione teorica
+                di memoria della matrice.</p>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">matrix-engine@nexus-core:~#</span>
+                    <span style="font-size: 0.8rem; color: #888;">Adjacency Matrix Calculator</span>
+                </div>
+
+                <div class="mem-controls">
+                    <div>
+                        <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Numero di
+                            Vertici ($V$):</label>
+                        <input type="number" id="matrixVerticesInput" class="code-input" value="5" min="1" max="1000">
+                    </div>
+                    <div>
+                        <label
+                            style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 4px;">Azione:</label>
+                        <button class="btn-os" onclick="simulaMatriceAdiacenza()">CALCOLA MATRICE 📊</button>
+                    </div>
+                </div>
+
+                <div class="mem-output" id="memOutputMatrix">
+                    > Inserisci il numero di vertici e avvia il calcolo dei parametri di memorizzazione.
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per
+                personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html"
+                    target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Simulatore Matrice -->
+    <script>
+        window.simulaMatriceAdiacenza = function () {
+            const v = parseInt(document.getElementById('matrixVerticesInput').value);
+            const output = document.getElementById('memOutputMatrix');
+
+            if (isNaN(v) || v <= 0) {
+                output.style.color = "#ef4444";
+                output.innerHTML = `> Errore: Inserire un numero valido di vertici ($V > 0$).`;
+                return;
+            }
+
+            const totalCells = v * v;
+            const memoryBytes = totalCells * 4; // Supponendo interi da 4 byte
+
+            output.style.color = "#4ade80";
+            output.innerHTML = `> Analisi Matrice per <strong>$V = ${v}$</strong> vertici:<br>` +
+                `&nbsp;&nbsp;↳ Dimensioni Tabella: <strong>${v} × ${v}</strong> (${totalCells.toLocaleString()} celle totali).<br>` +
+                `&nbsp;&nbsp;↳ Complessità Spaziale: <strong>$\\mathcal{O}(V^2)$</strong>.<br>` +
+                `&nbsp;&nbsp;↳ Occupazione di memoria stimata: ~<strong>${memoryBytes.toLocaleString()} Byte</strong> ($\\approx ${(memoryBytes / 1024).toFixed(2)}$ KB).`;
+        }
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

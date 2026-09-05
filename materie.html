@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sito internet per studiare e fare esercizi">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Materie - NEXUS didattica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="hotbar">
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <main class="materie-container">
+        <div class="materie-header-text">
+            <h1>Esplora il Programma di Studio</h1>
+            <p>Scopri l'elenco completo delle materie e dei concetti chiave disponibili sulla piattaforma per prepararti al meglio.</p>
+        </div>
+
+        <div class="materie-list-vertical" id="lista-materie-dinamica">
+
+            <!-- MATEMATICA -->
+            <div class="materia-row-card card-matematica" id="matematica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box mat-icon">📐</div>
+                    <div>
+                        <h2 class="materia-titolo">Matematica</h2>
+                        <p class="materia-desc">Dai concetti base dell'aritmetica fino allo studio di funzioni complesse e calcolo delle probabilità.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body">
+                    <span class="materia-label">Argomenti trattati:</span>
+                    <div class="materia-tags">
+                        <a href="Matematica/aritmetica.html" class="tag tag-link">Aritmetica</a>
+                        <a href="Matematica/algebra.html" class="tag tag-link">Algebra</a>
+                        <a href="Matematica/geometria_piana.html" class="tag tag-link">Geometria Euclidea Piana</a>
+                        <a href="Matematica/geometria_solida.html" class="tag tag-link">Geometria Solida</a>
+                        <a href="Matematica/geometria_analitica.html" class="tag tag-link">Geometria Analitica</a>
+                        <a href="Matematica/trigonometria_goniometria.html" class="tag tag-link">Trigonometria / Goniometria</a>
+                        <a href="Matematica/analisi_matematica.html" class="tag tag-link">Analisi Matematica</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMATICA -->
+            <div class="materia-row-card card-informatica" id="informatica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box inf-icon">💻</div>
+                    <div>
+                        <h2 class="materia-titolo">Informatica</h2>
+                        <p class="materia-desc">Comprendere la struttura dei calcolatori, la logica di programmazione e la sicurezza delle reti di dati.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body">
+                    <span class="materia-label">Argomenti trattati:</span>
+                    <div class="materia-tags">
+                        <a href="Informatica/hardware_architettura.html" class="tag tag-link">Hardware & Architettura</a>
+                        <a href="Informatica/sistemi_operativi_software.html" class="tag tag-link">Sistemi Operativi & Software</a>
+                        <a href="Informatica/algoritmi_strutture_dati.html" class="tag tag-link">Algoritmi & Strutture Dati</a>
+                        <a href="Informatica/linguaggi_programmazione_markup.html" class="tag tag-link">Linguaggi di Programmazione & Markup</a>
+                        <a href="Informatica/reti_web.html" class="tag tag-link">Reti & Web</a>
+                        <a href="Informatica/dati_database_sicurezza.html" class="tag tag-link">Dati, Database & Sicurezza</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FISICA -->
+            <div class="materia-row-card card-fisica" id="fisica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box fis-icon">⚡</div>
+                    <div>
+                        <h2 class="materia-titolo">Fisica</h2>
+                        <p class="materia-desc">Lo studio dei fenomeni naturali, delle leggi della dinamica, dell'energia e dei campi elettromagnetici.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body">
+                    <span class="materia-label">Argomenti trattati:</span>
+                    <div class="materia-tags">
+                        <a href="Fisica/strumenti_misurazioni.html" class="tag tag-link">Strumenti & Misurazioni</a>
+                        <a href="Fisica/dinamica_cinematica.html" class="tag tag-link">Dinamica & Cinematica</a>
+                        <a href="Fisica/fluidi.html" class="tag tag-link">Fluidi</a>
+                        <a href="Fisica/termologia_termodinamica.html" class="tag tag-link">Termologia & Termodinamica</a>
+                        <a href="Fisica/onde_ottica.html" class="tag tag-link">Onde & Ottica</a>
+                        <a href="Fisica/elettromagnetismo.html" class="tag tag-link">Elettromagnetismo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCIENZE -->
+            <div class="materia-row-card card-scienze" id="scienze">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box sci-icon">🧪</div>
+                    <div>
+                        <h2 class="materia-titolo">Scienze</h2>
+                        <p class="materia-desc">Un viaggio attraverso la struttura della materia, il funzionamento degli organismi viventi e la Terra.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body">
+                    <span class="materia-label">Argomenti trattati:</span>
+                    <div class="materia-tags">
+                        <a href="Scienze/biologia.html" class="tag tag-link">Biologia</a>
+                        <a href="Scienze/chimica.html" class="tag tag-link">Chimica</a>
+                        <a href="Scienze/scienze_della_terra.html" class="tag tag-link">Scienze della Terra</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INGLESE -->
+            <div class="materia-row-card card-inglese" id="inglese">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box uma-icon">🇬🇧</div>
+                    <div>
+                        <h2 class="materia-titolo">Inglese</h2>
+                        <p class="materia-desc">Regole grammaticali, ampliamento del vocabolario e comprensione del testo scritto e parlato.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body">
+                    <span class="materia-label">Argomenti trattati:</span>
+                    <div class="materia-tags">
+                        <a href="Inglese/grammar.html" class="tag tag-link">Grammar</a>
+                        <a href="Inglese/vocabulary.html" class="tag tag-link">Vocabulary</a>
+                        <!-- <a href="Inglese/listening.html" class="tag tag-link">Listening</a>
+                        <a href="Inglese/reading.html" class="tag tag-link">Reading</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITALIANO -->
+            <div class="materia-row-card card-italiano" id="italiano">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box lin-icon">🇮🇹</div>
+                    <div>
+                        <h2 class="materia-titolo">Italiano</h2>
+                        <p class="materia-desc">Padronanza delle strutture grammaticali e logiche per una corretta analisi della lingua italiana.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body">
+                    <span class="materia-label">Argomenti trattati:</span>
+                    <div class="materia-tags">
+                        <a href="Italiano/analisi_grammaticale.html" class="tag tag-link">Analisi Grammaticale</a>
+                        <a href="Italiano/analisi_logica.html" class="tag tag-link">Analisi Logica</a>
+                        <a href="Italiano/analisi_del_periodo.html" class="tag tag-link">Analisi del Periodo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEZIONE ROADMAP / PROSSIMI ARGOMENTI -->
+        <section class="roadmap-section">
+            <div class="roadmap-header">
+                <h2>🚀 Prossime Uscite & Programma</h2>
+                <p>Lavoriamo continuamente per aggiungere nuovi contenuti. Ecco cosa verrà pubblicato nelle prossime settimane:</p>
+            </div>
+        
+            <!-- I dati verranno caricati qui da Firebase -->
+            <div class="roadmap-grid" id="lista-roadmap-dinamica">
+                <p style="text-align: center; color: #64748b;">Caricamento prossimi argomenti...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+</body>
+</html>

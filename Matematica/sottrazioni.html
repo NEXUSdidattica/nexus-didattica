@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa ed esercizi pratici sulle Sottrazioni">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <title>La Sottrazione: Teoria e 100 Esercizi - NEXUS didattica</title>
+</head>
+
+<body data-lesson-id="aritmetica-sottrazioni" data-materia="Matematica">
+
+    <!-- Header di navigazione -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- Pulsante Torna Indietro -->
+        <div style="margin-bottom: 1rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- Hero lezione -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span class="badge-anno">Matematica / Aritmetica</span>
+                <h1>La Sottrazione e la Proprietà Invariantiva</h1>
+                <p class="lead-text">
+                    Scopri come calcolare la differenza tra due numeri, gestisci il prestito nei calcoli in colonna e domina la proprietà invariantiva con 100 esercizi pratici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- Contenuto Teorico -->
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è la Sottrazione?</h2>
+            <p>
+                La <strong>sottrazione</strong> è l'operazione aritmetica inversa dell'addizione. Consente di calcolare la differenza tra due quantità o di scoprire quanto manca a un numero per raggiungerne un altro. Il simbolo utilizzato è il meno (<strong>-</strong>).
+            </p>
+
+            <div class="box-evidenza">
+                💡 <strong>Terminologia:</strong> Nella scrittura <code>a - b = c</code>, il primo numero <code>a</code> si chiama <strong>minuendo</strong>, il secondo numero <code>b</code> è il <strong>sottraendo</strong> e il risultato <code>c</code> è detto <strong>resto</strong> o <strong>differenza</strong>.
+            </div>
+
+            <h2>2. La Proprietà Invariantiva</h2>
+            <p>A differenza dell'addizione, la sottrazione <strong>non è commutativa</strong> (es. <code>8 - 3 ≠ 3 - 8</code> nei numeri naturali). Possiede però una proprietà fondamentale per i calcoli veloci:</p>
+            <ul>
+                <li><strong>Proprietà Invariantiva:</strong> Aggiungendo o sottraendo uno stesso numero sia al minuendo che al sottraendo, il risultato (la differenza) <strong>non cambia</strong>.</li>
+                <li><em>Esempio con addizione:</em> <code>45 - 19</code> &rarr; Aggiungiamo 1 a entrambi: <code>(45 + 1) - (19 + 1) = 46 - 20 = 26</code>.</li>
+                <li><em>Esempio con sottrazione:</em> <code>54 - 14</code> &rarr; Togliamo 4 a entrambi: <code>(54 - 4) - (14 - 4) = 50 - 10 = 40</code>.</li>
+            </ul>
+        </article>
+
+        <!-- Sezione Esercizi Pratici (100 Esercizi Generati) -->
+        <section class="sezione-esercizi">
+            <h2>✏️ 100 Esercizi Pratici per Allenarsi</h2>
+            <p>Di seguito trovi 100 sottrazioni divise in tre livelli di difficoltà crescente, con calcoli diretti, problemi sulla proprietà invariantiva e decimali. Clicca su "Mostra Soluzione" per verificare i tuoi calcoli.</p>
+
+            <div id="lista-esercizi">
+                <!-- Verranno inseriti automaticamente i 100 esercizi via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+    </footer>
+
+    <!-- Script Generatore dei 100 Esercizi con Proprietà Invariantiva -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 40) {
+                    // 40 FACILI (Verde): Sottrazioni senza prestito + domande sui termini (minuendo/sottraendo)
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    if (i % 4 === 0) {
+                        let m = Math.floor(Math.random() * 50) + 30;
+                        let s = Math.floor(Math.random() * 20) + 5;
+                        domanda = `Nella sottrazione <strong>${m} - ${s} = ${m - s}</strong>, come si chiama il numero <strong>${m}</strong>?`;
+                        risposta = `Minuendo (il risultato è ${m - s})`;
+                        spiegazione = `Il primo termine di una sottrazione si chiama <strong>minuendo</strong>, mentre il secondo è il <strong>sottraendo</strong>.`;
+                    } else {
+                        let n1 = Math.floor(Math.random() * 50) + 50;
+                        let n2 = Math.floor(Math.random() * 40) + 5;
+                        domanda = `Calcola la differenza: <strong>${n1} - ${n2}</strong>`;
+                        risposta = n1 - n2;
+                        spiegazione = `Esegui la sottrazione: ${n1} - ${n2} = ${risposta}.`;
+                    }
+
+                } else if (i <= 75) {
+                    // 35 MEDI (Giallo): Sottrazioni con prestito e Proprietà Invariantiva
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    if (i % 2 === 0) {
+                        let baseM = Math.floor(Math.random() * 100) + 100;
+                        let baseS = Math.floor(Math.random() * 40) + 19;
+                        let k = Math.floor(Math.random() * 5) + 1;
+                        let newM = baseM + k;
+                        let newS = baseS + k;
+                        domanda = `Applica la <strong>proprietà invariantiva</strong> sommando ${k} a entrambi i termini per calcolare: <strong>${baseM} - ${baseS}</strong>`;
+                        risposta = `(${baseM} + ${k}) - (${baseS} + ${k}) = ${newM} - ${newS} = ${baseM - baseS}`;
+                        spiegazione = `Aggiungendo ${k} sia al minuendo che al sottraendo otteniamo <code>${newM} - ${newS}</code>. La differenza rimane <strong>${baseM - baseS}</strong>.`;
+                    } else {
+                        let n1 = Math.floor(Math.random() * 300) + 200;
+                        let n2 = Math.floor(Math.random() * 150) + 50;
+                        domanda = `Calcola la differenza in colonna (con eventuale prestito): <strong>${n1} - ${n2}</strong>`;
+                        risposta = n1 - n2;
+                        spiegazione = `Allinea in colonna le unità, decine e centinaia chiedendo il prestito se la cifra del minuendo è minore: ${n1} - ${n2} = ${risposta}.`;
+                    }
+
+                } else {
+                    // 25 DIFFICILI (Rosso): Decimali e Invariantiva con sottrazione
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 3 === 0) {
+                        let baseM = Math.floor(Math.random() * 100) + 204;
+                        let baseS = Math.floor(Math.random() * 50) + 54;
+                        let k = 4;
+                        domanda = `Sottrai ${k} a entrambi i termini usando la <strong>proprietà invariantiva</strong> per velocizzare: <strong>${baseM} - ${baseS}</strong>`;
+                        risposta = `(${baseM} - ${k}) - (${baseS} - ${k}) = ${baseM - k} - ${baseS - k} = ${baseM - baseS}`;
+                        spiegazione = `Togliendo ${k} a entrambi i numeri otteniamo un sottraendo tondo (${baseS - k}), semplificando il calcolo finale a ${baseM - baseS}.`;
+                    } else {
+                        let n1 = parseFloat((Math.random() * 100 + 50).toFixed(2));
+                        let n2 = parseFloat((Math.random() * 40 + 5).toFixed(2));
+                        let minuendo = Math.max(n1, n2);
+                        let sottraendo = Math.min(n1, n2);
+                        domanda = `Calcola la sottrazione con i numeri decimali: <strong>${minuendo} - ${sottraendo}</strong>`;
+                        risposta = (minuendo - sottraendo).toFixed(2);
+                        spiegazione = `Incolonna allineando le virgole (aggiungi zeri segnaposto se necessario): ${minuendo} - ${sottraendo} = ${risposta}.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risposta corretta:</strong> ${risposta}
+                            </div>
+                            <p><strong>Spiegazione passo-passo:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script Moduli Esterni -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+
+</body>
+
+</html>

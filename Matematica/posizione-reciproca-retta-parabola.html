@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla Posizione Reciproca tra Retta e Parabola: secanti, tangenti, esterne, sistema risolvente, grafici SVG e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Posizione Reciproca Retta e Parabola - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="posizione-reciproca-retta-parabola" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Posizione Reciproca tra Retta e Parabola</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio analitico del sistema tra retta e parabola: come determinare se una retta è secante, tangente o esterna.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Il Metodo Algebrico: Il Sistema Risolvente</h2>
+            <p>
+                Per studiare la posizione reciproca tra una retta di equazione \(y = mx + q\) e una parabola di equazione \(y = ax^2 + bx + c\), si imposta un sistema non lineare uguagliando le due espressioni della \(y\):
+            </p>
+            <div class="formula-box">
+                $$\begin{cases} y = ax^2 + bx + c \\ y = mx + q \end{cases} \implies ax^2 + bx + c = mx + q$$
+            </div>
+            <p>
+                Portando tutti i termini a sinistra si ottiene l'<strong>equazione risolvente di secondo grado</strong> in forma normale:
+            </p>
+            <div class="formula-box">
+                $$ax^2 + (b - m)x + (c - q) = 0$$
+            </div>
+            <p>
+                Analizzando il discriminante \(\Delta\) di questa equazione risolvente, possiamo classificare la posizione geometrica della retta rispetto alla parabola in tre categorie fondamentali:
+            </p>
+
+            <ul>
+                <li><strong>\(\Delta > 0\) (Retta Secante):</strong> La retta interseca la parabola in <strong>due punti distinti</strong>. Il sistema ammette due soluzioni reali e distinte.</li>
+                <li><strong>\(\Delta = 0\) (Retta Tangente):</strong> La retta tocca la parabola in <strong>un solo punto</strong> (punto di tangenza). Il sistema ammette due soluzioni coincidenti.</li>
+                <li><strong>\(\Delta < 0\) (Retta Esterna):</strong> La retta <strong>non ha punti in comune</strong> con la parabola. Il sistema non ammette soluzioni reali.</li>
+            </ul>
+
+            <!-- GRAFICO SVG I TRE CASI -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                
+                <!-- Secante -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1rem;">\(\Delta > 0\) (Secante)</h3>
+                    <svg viewBox="0 0 160 160" style="width: 100%; max-width: 130px; margin: 0.5rem auto; display: block;">
+                        <path d="M 30,30 Q 80,150 130,30" fill="none" stroke="#2563eb" stroke-width="2" />
+                        <line x1="20" y1="50" x2="140" y2="110" stroke="#dc2626" stroke-width="2" />
+                        <circle cx="43" cy="57" r="3" fill="#059669" />
+                        <circle cx="117" cy="95" r="3" fill="#059669" />
+                    </svg>
+                    <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0;">2 punti d'intersezione.</p>
+                </div>
+
+                <!-- Tangente -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1rem;">\(\Delta = 0\) (Tangente)</h3>
+                    <svg viewBox="0 0 160 160" style="width: 100%; max-width: 130px; margin: 0.5rem auto; display: block;">
+                        <path d="M 30,30 Q 80,150 130,30" fill="none" stroke="#2563eb" stroke-width="2" />
+                        <line x1="20" y1="35" x2="140" y2="95" stroke="#dc2626" stroke-width="2" />
+                        <circle cx="80" cy="90" r="3" fill="#059669" />
+                    </svg>
+                    <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0;">1 punto di contatto.</p>
+                </div>
+
+                <!-- Esterna -->
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1rem;">\(\Delta < 0\) (Esterna)</h3>
+                    <svg viewBox="0 0 160 160" style="width: 100%; max-width: 130px; margin: 0.5rem auto; display: block;">
+                        <path d="M 30,50 Q 80,160 130,50" fill="none" stroke="#2563eb" stroke-width="2" />
+                        <line x1="20" y1="20" x2="140" y2="20" stroke="#dc2626" stroke-width="2" />
+                    </svg>
+                    <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0;">Nessun punto in comune.</p>
+                </div>
+
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Determina la posizione reciproca tra la parabola \(y = x^2 - 4x + 3\) e la retta \(y = 2x - 6\). Calcola eventuali punti di intersezione.</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Mettiamo a sistema uguagliando le equazioni:
+                        $$x^2 - 4x + 3 = 2x - 6$$
+                    </li>
+                    <li>Portiamo tutto a sinistra in forma normale:
+                        $$x^2 - 4x - 2x + 3 + 6 = 0 \implies x^2 - 6x + 9 = 0$$
+                    </li>
+                    <li>Calcoliamo il discriminante (\(\Delta\)):
+                        $$\Delta = (-6)^2 - 4(1)(9) = 36 - 36 = 0$$
+                    </li>
+                    <li>Poiché \(\Delta = 0\), la retta è <strong>tangente</strong> alla parabola.</li>
+                    <li>Risolviamo l'equazione risolvente per trovare l'ascissa del punto di contatto:
+                        $$x = \frac{6}{2(1)} = 3$$
+                    </li>
+                    <li>Sostituiamo \(x = 3\) nell'equazione della retta per trovare \(y\):
+                        $$y = 2(3) - 6 = 6 - 6 = 0 \implies \text{Punto di tangenza: } T(3, 0)$$
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Retta tangente nel punto \(T(3, 0)\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Retta e Parabola</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sulla posizione reciproca tra rette e parabole. Clicca sulle card per visualizzare il procedimento e le soluzioni complete.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let aVal = 1;
+                let bVal = -4;
+                let cVal = 3;
+                let mVal = (i % 3 === 0) ? 0 : 2;
+                let qVal = - (i % 5);
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    mVal = 2;
+                    qVal = -1; // Tangente o secante pulita
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    mVal = 1;
+                    qVal = -5;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    aVal = 2;
+                    mVal = -2;
+                    qVal = 4;
+                }
+
+                let eqParabola = `y = ${aVal === 1 ? '' : aVal}x^2 ${bVal >= 0 ? '+ ' + bVal : '- ' + Math.abs(bVal)}x ${cVal >= 0 ? '+ ' + cVal : '- ' + Math.abs(cVal)}`;
+                let eqRetta = `y = ${mVal === 0 ? '' : (mVal === 1 ? 'x' : (mVal === -1 ? '-x' : mVal + 'x'))} ${qVal >= 0 ? '+ ' + qVal : '- ' + Math.abs(qVal)}`;
+                // Rendi pulita la visualizzazione se m=0
+                if (mVal === 0) eqRetta = `y = ${qVal}`;
+
+                // Risolvente: aVal*x^2 + (bVal - mVal)*x + (cVal - qVal) = 0
+                let A_res = aVal;
+                let B_res = bVal - mVal;
+                let C_res = cVal - qVal;
+                let delta = B_res * B_res - 4 * A_res * C_res;
+
+                let posizioneStr = "";
+                let dettagliSoluzione = "";
+
+                if (delta > 0) {
+                    posizioneStr = "Secante (2 punti di intersezione)";
+                    let x1 = ((-B_res - Math.sqrt(delta)) / (2 * A_res)).toFixed(2);
+                    let x2 = ((-B_res + Math.sqrt(delta)) / (2 * A_res)).toFixed(2);
+                    let y1 = (mVal * x1 + qVal).toFixed(2);
+                    let y2 = (mVal * x2 + qVal).toFixed(2);
+                    dettagliSoluzione = `Punti d'intersezione: \\(A(${x1}, ${y1})\\) e \\(B(${x2}, ${y2})\\)`;
+                } else if (delta === 0) {
+                    posizioneStr = "Tangente (1 punto di contatto)";
+                    let x0 = (-B_res / (2 * A_res)).toFixed(2);
+                    let y0 = (mVal * x0 + qVal).toFixed(2);
+                    dettagliSoluzione = `Punto di tangenza: \\(T(${x0}, ${y0})\\)`;
+                } else {
+                    posizioneStr = "Esterna (Nessun punto in comune)";
+                    dettagliSoluzione = `Non ci sono punti di intersezione reali essendo \\(\\Delta < 0\\)`;
+                }
+
+                let calcoloSpiegato = `
+                    1) Impostiamo il sistema uguagliando le due equazioni.<br>
+                    2) Otteniamo l'equazione risolvente in forma normale: \\(${A_res}x^2 ${B_res >= 0 ? '+ ' + B_res : '- ' + Math.abs(B_res)}x ${C_res >= 0 ? '+ ' + C_res : '- ' + Math.abs(C_res)} = 0\\).<br>
+                    3) Calcoliamo il delta: \\(\\Delta = (${B_res})^2 - 4(${A_res})(${C_res}) = ${delta}\\).<br>
+                    4) Conclusione: <strong>${posizioneStr}</strong>. ${dettagliSoluzione}
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Determina la posizione reciproca tra la parabola \\(${eqParabola}\\) e la retta \\(${eqRetta}\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Posizione:</strong> ${posizioneStr}</p>
+                            <p>🎯 <strong>Soluzioni:</strong> ${dettagliSoluzione}</p>
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

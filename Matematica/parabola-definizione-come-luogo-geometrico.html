@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla Parabola come Luogo Geometrico: definizione con fuoco e direttrice, equazione canonica, grafici SVG e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Parabola come Luogo Geometrico - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="definizione-come-luogo-geometrico" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Parabola come Luogo Geometrico</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione rigorosa basata sull'equidistanza da un punto fisso (fuoco) e da una retta fissa ( direttrice).
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Definizione di Parabola</h2>
+            <p>
+                Si definisce <strong>parabola</strong> il luogo geometrico dei punti del piano equidistanti da un punto fisso detto <strong>fuoco</strong> (\(F\)) e da una retta fissa detta <strong>direttrice</strong> (\(d\)).
+            </p>
+            <p>
+                Prendendo un generico punto \(P(x, y)\) appartenente alla parabola, la proprietà fondamentale che lo caratterizza è:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Proprietà Caratteristica del Luogo:</strong><br>
+                $$\overline{PF} = \overline{PH}$$
+                <em>(dove \(H\) è la proiezione ortogonale del punto \(P\) sulla retta direttrice \(d\)).</em>
+            </div>
+
+            <!-- GRAFICO VETTORIALE SVG DELLA PARABOLA -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; text-align: center; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.1rem; margin-bottom: 1rem;">Rappresentazione Geometrica (Fuoco, Direttrice e Punto \(P\))</h3>
+                <svg viewBox="0 0 300 260" style="width: 100%; max-width: 280px; margin: 0 auto; display: block;">
+                    <!-- Assi cartesiani -->
+                    <line x1="30" y1="220" x2="270" y2="220" stroke="#cbd5e1" stroke-width="1.5" />
+                    <line x1="150" y1="20" x2="150" y2="240" stroke="#cbd5e1" stroke-width="1.5" />
+                    
+                    <!-- Direttrice d (retta orizzontale in basso) -->
+                    <line x1="50" y1="190" x2="250" y2="190" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4" />
+                    <text x="255" y="193" font-size="11" fill="#dc2626" font-weight="bold">d</text>
+
+                    <!-- Curva della Parabola -->
+                    <path d="M 90,80 Q 150,180 210,80" fill="none" stroke="#2563eb" stroke-width="3" />
+
+                    <!-- Fuoco F -->
+                    <circle cx="150" cy="110" r="3.5" fill="#1e3a8a" />
+                    <text x="160" y="108" font-size="11" fill="#1e3a8a" font-weight="bold">F</text>
+
+                    <!-- Punto P sulla parabola -->
+                    <circle cx="190" cy="100" r="3.5" fill="#059669" />
+                    <text x="198" y="96" font-size="11" fill="#059669" font-weight="bold">P(x,y)</text>
+
+                    <!-- Segmento PF -->
+                    <line x1="190" y1="100" x2="150" y2="110" stroke="#059669" stroke-width="1.5" stroke-dasharray="2,2" />
+
+                    <!-- Proiezione H sulla direttrice -->
+                    <circle cx="190" cy="190" r="3" fill="#dc2626" />
+                    <text x="195" y="205" font-size="11" fill="#dc2626" font-weight="bold">H</text>
+
+                    <!-- Segmento PH -->
+                    <line x1="190" y1="100" x2="190" y2="190" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2" />
+                </svg>
+                <p style="font-size: 0.9rem; color: #475569; margin-top: 1rem; margin-bottom: 0;">Per ogni punto \(P\) della curva, la distanza da \(F\) è sempre uguale alla distanza da \(H\) (\(\overline{PF} = \overline{PH}\)).</p>
+            </div>
+
+            <h2>Dall'Equazione al Luogo (e Viceversa)</h2>
+            <p>
+                Impostando l'uguaglianza tra le distanze con la formula algebrica nel piano cartesiano (\(\sqrt{(x - x_F)^2 + (y - y_F)^2} = |y - y_d|\)) ed elevando al quadrato, si ricava l'equazione canonica della parabola con asse parallelo all'asse \(y\):
+            </p>
+            
+            <div class="formula-box">
+                $$y = ax^2 + bx + c$$
+            </div>
+
+            <ul>
+                <li><strong>Se \(a > 0\):</strong> La parabola volge la concavità verso l'alto (\(\cup\)).</li>
+                <li><strong>Se \(a < 0\):</strong> La parabola volge la concavità verso il basso (\(\cap\)).</li>
+                <li><strong>Coordinate del Fuoco:</strong> \(F\left(-\frac{b}{2a}, \frac{1 - \Delta}{4a}\right)\)</li>
+                <li><strong>Equazione della Direttrice:</strong> \(y = -\frac{1 + \Delta}{4a}\)</li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Scrivi l'equazione della parabola avente fuoco \(F(0, 1)\) e direttrice \(y = -1\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Applichiamo la condizione geometrica del luogo \(\overline{PF} = \overline{PH}\) per un punto generico \(P(x, y)\):
+                        $$\sqrt{(x - 0)^2 + (y - 1)^2} = |y - (-1)| \implies \sqrt{x^2 + (y - 1)^2} = y + 1$$
+                    </li>
+                    <li>Elehiamo entrambi i membri al quadrato per eliminare la radice:
+                        $$x^2 + (y - 1)^2 = (y + 1)^2$$
+                    </li>
+                    <li>Sviluppiamo i prodotti notevoli:
+                        $$x^2 + y^2 - 2y + 1 = y^2 + 2y + 1$$
+                    </li>
+                    <li>Semplifichiamo \(y^2\) e \(1\) da entrambi i lati e isoliamo \(y\):
+                        $$x^2 - 2y = 2y \implies 4y = x^2 \implies y = \frac{1}{4}x^2$$
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> L'equazione della parabola è \(y = \frac{1}{4}x^2\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Parabola come Luogo Geometrico</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi focalizzati sulla determinazione dell'equazione di una parabola a partire da fuoco e direttrice. Clicca sulle singole card per visualizzare i passaggi e la soluzione completa.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let pDist = (i % 5) + 1; // Parametro di distanza variabile
+                let tipoPos;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    tipoPos = `Fuoco \\(F(0, ${pDist})\\) e direttrice \\(y = -${pDist}\\)`;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    tipoPos = `Fuoco \\(F(0, ${pDist + 1})\\) e direttrice \\(y = -${pDist}\\)`;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    tipoPos = `Fuoco \\(F(${i % 3}, ${pDist})\\) e direttrice \\(y = ${-pDist - 1}\\)`;
+                }
+
+                let coeffA = (1 / (2 * pDist)).toFixed(2);
+                let soluzioneEq = `y = ${coeffA}x^2 ${i % 3 !== 0 ? '+ ' + (i % 3) : ''}`;
+
+                let calcoloSpiegato = `
+                    1) Impostiamo l'equazione del luogo geometrico uguagliando la distanza del punto generico \\(P(x,y)\\) dal fuoco \\(F\\) e dalla direttrice \\(d\\): \\(\\overline{PF} = \\overline{PH}\\).<br>
+                    2) Sviluppiamo i quadrati dei binomi ed eliminiamo la radice quadrata elevando al quadrato entrambi i membri.<br>
+                    3) Semplifichiamo i termini simili e ricaviamo la forma esplicita della parabola.<br>
+                    4) Risultato finale dell'equazione: <strong>\\(${soluzioneEq}\\)</strong>.
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Determina l'equazione della parabola avente ${tipoPos}.</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Equazione Risolutiva:</strong> \\(${soluzioneEq}\\)</p>
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

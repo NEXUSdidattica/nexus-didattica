@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le miscele eterogenee, le fasi, le sospensioni e le emulsioni - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le miscele eterogenee - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Design coerente con Chimica) -->
+    <style>
+        body[data-materia="Chimica"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #15803d;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #15803d;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #16a34a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .formula-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno / Schema Visivo SVG */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 100%);
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #15803d;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            background: #f0fdf4;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #bbf7d0;
+            transition: all 0.2s;
+        }
+
+        .btn-torna-indietro:hover {
+            background: #dcfce7;
+        }
+
+        .badge-anno-materia {
+            background-color: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #0ad41f;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="miscele-eterogenee" data-materia="Chimica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-registrati">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia" style="display: inline-block; margin-bottom: 0.6rem;">Chimica / Sistemi / Classificazione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0; margin-bottom: 0.5rem;">Le miscele eterogenee</h1>
+                <p style="color: #64748b; font-size: 1.05rem; margin-bottom: 0;">
+                    Caratteristiche dei sistemi non uniformi, definizione di fase, emulsioni, sospensioni e metodi di separazione.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Concetto di Fase</h2>
+            <p>
+                Un miscuglio si dice <strong>eterogeneo</strong> quando è costituito da due o più componenti e non presenta una composizione né un aspetto uniformi in tutti i suoi punti. In un sistema eterogeneo è possibile distinguere chiaramente porzioni di materia delimitate da superfici di separazione nettamente visibili. Ognuna di queste porzioni prende il nome di <strong>fase</strong>.
+            </p>
+
+            <!-- SCHEMA VISIVO RAPPRESENTATIVO SVG -->
+            <div class="figura-geometrica-container">
+                <svg width="520" height="210" viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="520" height="210" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <!-- Contenitore Becher -->
+                    <path d="M 210 40 L 310 40 L 310 160 C 310 175 295 185 280 185 L 240 185 C 225 185 210 175 210 160 Z" fill="none" stroke="#64748b" stroke-width="3"/>
+
+                    <!-- Fase Superiore (Olio) -->
+                    <path d="M 212 90 L 308 90 L 308 160 C 308 173 294 183 280 183 L 240 183 C 226 183 212 173 212 160 Z" fill="#fef08a" opacity="0.65"/>
+                    <text x="260" y="125" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="12" fill="#854d0e">Fase 1: Olio (Líquido)</text>
+
+                    <!-- Fase Inferiore (Acqua) -->
+                    <path d="M 212 45 L 308 45 L 308 89 L 212 89 Z" fill="#bae6fd" opacity="0.75"/>
+                    <text x="260" y="70" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="12" fill="#0369a1">Fase 2: Acqua (Liquido)</text>
+
+                    <!-- Etichette Laterali -->
+                    <line x1="310" y1="67" x2="380" y2="67" stroke="#0369a1" stroke-width="1.5" stroke-dasharray="3"/>
+                    <text x="390" y="71" font-family="Arial" font-size="11" fill="#0369a1">Superficie di separazione</text>
+
+                    <line x1="210" y1="90" x2="130" y2="90" stroke="#854d0e" stroke-width="1.5" stroke-dasharray="3"/>
+                    <text x="25" y="94" font-family="Arial" font-size="11" fill="#854d0e">Interfaccia tra le fasi</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Esempio classico di miscuglio eterogeneo (Acqua e Olio) composto da due fasi liquide immiscibili.
+                </div>
+            </div>
+
+            <h2>2. Principali Tipologie di Miscugli Eterogenei</h2>
+            <p>
+                A seconda dello stato fisico dei componenti e delle dimensioni delle particelle disperse, le miscele eterogenee si suddividono in:
+            </p>
+            <ul>
+                <li><strong>Sospensioni:</strong> Costituite da un solido finemente suddiviso disperso all'interno di un liquido (es. sabbia in acqua o uno sciroppo farmaceutico non filtrato). Le particelle tendono col tempo a depositarsi sul fondo per gravità.</li>
+                <li><strong>Emulsioni:</strong> Sistemi eterogenei formati da due liquidi immiscibili tra loro (es. acqua e olio, oppure il latte e la naionese). Spesso richiedono l'uso di sostanze stabilizzanti dette <em>emulsionanti</em> per evitare la separazione spontanea.</li>
+                <li><strong>Schiume e Nebbie:</strong> Schiume (gas disperso in un liquido o solido, es. la panna montata) e nebbie/aerosol (piccole goccioline di liquido disperse in un gas, es. la nebbia atmosferica).</li>
+            </ul>
+
+            <h2>3. Metodi di Separazione</h2>
+            <p>
+                Poiché i componenti mantengono le loro proprietà chimiche e fisiche individuali, è possibile separarli sfruttando differenze di densità, stato o dimensioni tramite metodi fisici:
+            </p>
+            <ul>
+                <li><strong>Filtrazione:</strong> Sfrutta barriere porose (carta da filtro) per trattenere le particelle solide di una sospensione lasciando passare il liquido.</li>
+                <li><strong>Centrifugazione:</strong> Accelera la separazione delle fasi sfruttando la forza centrifuga basata sulle differenze di densità.</li>
+                <li><strong>Decantazione:</strong> Consente a un miscuglio eterogeneo liquido-liquido (es. acqua e olio) o solido-liquido di separarsi spontaneamente nel tempo per effetto della gravità.</li>
+            </ul>
+
+            <!-- APPROFONDIMENTO PRATICO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #15803d; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Curiosità di Laboratorio</h3>
+                <p style="margin-bottom: 0;">
+                    Il <strong>sangue</strong> a un primo sguardo può sembrare un liquido omogeneo, ma in realtà a livello microscopico e chimico è un miscuglio eterogeneo (una sospensione complessa). Tramite l'uso di una centrifuga da laboratorio, i globuli rossi, le piastrelle e il plasma si separano chiaramente in strati distinti in base alla loro densità.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

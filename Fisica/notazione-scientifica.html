@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulla Notazione Scientifica - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Notazione Scientifica e 50 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Tema Viola Fisica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-misure {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e9d5ff;
+        }
+
+        .tabella-misure th, .tabella-misure td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f3e8ff;
+        }
+
+        .tabella-misure th {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+            font-weight: bold;
+        }
+
+        .tabella-misure tr:last-child td {
+            border-bottom: none;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .card-esercizio.livello-facile .header-esercizio h3 {
+            color: #14532d;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .card-esercizio.livello-medio .header-esercizio h3 {
+            color: #713f12;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .card-esercizio.livello-difficile .header-esercizio h3 {
+            color: #7f1d1d;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .box-risposta-corretta strong {
+            color: #0c4a6e;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="notazione-scientifica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Metodo Scientifico</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Notazione Scientifica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Guida completa alla gestione dei numeri molto grandi o molto piccoli tramite le potenze di 10, con regole di scrittura e 50 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è la Notazione Scientifica?</h2>
+            <p>
+                In fisica e nelle scienze applicate si incontrano spesso numeri enormi (come la velocità della luce o la distanza tra le galassie) o piccolissimi (come le dimensioni di un atomo o la carica dell'elettrone). Scrivere tutti gli zeri rende i calcoli complessi e soggetti a errore: per questo si usa la <strong>notazione scientifica</strong>.
+            </p>
+
+            <div class="formula-box" style="border-color: #e9d5ff; background-color: #faf5ff;">
+                📐 <strong>Forma generale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Un numero è scritto in notazione scientifica quando si presenta nella forma:
+                    <br><strong style="font-size: 1.15rem; color: #7e22ce;">a x 10^n</strong>
+                    <br>Dove:
+                    <br>• <strong>a</strong> (il coefficiente) è un numero compreso tra 1 e 10 (cioè 1 &le; |a| &lt; 10).
+                    <br>• <strong>n</strong> (l'esponente) è un numero intero relativo (positivo o negativo).
+                </p>
+            </div>
+
+            <h2>2. Regole Pratiche per la Conversione</h2>
+            <p>
+                Per trasformare un numero decimale standard in notazione scientifica, sposta la virgola decimale fino a ottenere un numero compreso tra 1 e 10:
+            </p>
+            <ul>
+                <div><li><strong>Numeri grandi (&gt; 10):</strong> Sposti la virgola verso <em>sinistra</em>. L'esponente n sarà <strong>positivo</strong> e pari al numero di posti di cui hai spostato la virgola. (Es: 45000 &rarr; 4.5 x 10^4).</li></div>
+                <div><li><strong>Numeri piccoli (&lt; 1):</strong> Sposti la virgola verso <em>destra</em>. L'esponente n sarà <strong>negativo</strong> e pari al numero di posti spostati. (Es: 0.00032 &rarr; 3.2 x 10^-4).</li></div>
+            </ul>
+
+            <h2>3. Tabella di Esempi Comuni</h2>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Numero Standard</th>
+                        <th>Movimento della Virgola</th>
+                        <th>Notazione Scientifica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>300.000 (Velocità della luce)</td><td>5 posti a sinistra</td><td>3 x 10^5 m/s</td></tr>
+                    <tr><td>1.500.000.000</td><td>9 posti a sinistra</td><td>1.5 x 10^9</td></tr>
+                    <tr><td>0,0000000016</td><td>9 posti a destra</td><td>1.6 x 10^-9</td></tr>
+                    <tr><td>0,05</td><td>2 posti a destra</td><td>5 x 10^-2</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Batteria di 50 Esercizi Interattivi</h2>
+            <p>
+                Metti alla prova le tue competenze con 50 esercizi suddivisi in tre livelli di difficoltà (Facile, Medio, Difficile) completi di soluzioni e spiegazioni passo-passo.
+            </p>
+
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 50; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 17) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let val = (i % 8) + 2;
+                    let zeri = (i % 4) + 2;
+                    let numFull = val * Math.pow(10, zeri);
+                    let risSci = `${val} x 10^${zeri}`;
+
+                    domanda = `Scrivi in notazione scientifica il numero intero: ${numFull.toLocaleString('it-IT')}.`;
+                    risposta = `<strong>${risSci}</strong>`;
+                    spiegazione = `1) Spostiamo la virgola a sinistra di ${zeri} posizioni per ottenere il coefficiente ${val}.<br>2) Poiché il numero è grande, l'esponente è positivo (+${zeri}).<br>3) Risultato: ${risSci}.`;
+
+                } else if (i <= 34) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let val = (i % 7) + 1.2;
+                    val = Math.round(val * 10) / 10;
+                    let exp = (i % 5) + 2;
+
+                    if (i % 2 === 0) {
+                        let numOriginale = (val * Math.pow(10, exp)).toFixed(0);
+                        domanda = `Converti in notazione scientifica il numero: ${numOriginale}.`;
+                        risposta = `<strong>${val} x 10^${exp}</strong>`;
+                        spiegazione = `1) Posizioniamo la virgola dopo la prima cifra significativa ottenendo ${val}.<br>2) Contiamo i posti di spostamento: ${exp}.<br>3) Esponente positivo: ${val} x 10^${exp}.`;
+                    } else {
+                        let numOriginale = Number((val / Math.pow(10, exp)).toFixed(exp + 1));
+                        domanda = `Converti in notazione scientifica il numero decimale: ${numOriginale}.`;
+                        risposta = `<strong>${val} x 10^-${exp}</strong>`;
+                        spiegazione = `1) Spostiamo la virgola verso destra di ${exp} posizioni per trovare il coefficiente ${val}.<br>2) Trattandosi di un numero inferiore a 1, l'esponente è negativo.<br>3) Risultato: ${val} x 10^-${exp}.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let c1 = (i % 4) + 2;
+                    let c2 = (i % 3) + 1.5;
+                    c2 = Math.round(c2 * 10) / 10;
+                    let e1 = (i % 4) + 3;
+                    let e2 = (i % 5) - 2;
+
+                    let sommaExp = e1 + e2;
+                    let prodCoef = Math.round(c1 * c2 * 10) / 10;
+
+                    domanda = `Esegui il prodotto tra numeri in notazione scientifica ed esprimi il risultato corretto: (${c1} x 10^${e1}) * (${c2} x 10^${e2}).`;
+                    risposta = `<strong>${prodCoef} x 10^${sommaExp}</strong>`;
+                    spiegazione = `1) Moltiplichiamo i coefficienti: ${c1} x ${c2} = ${prodCoef}.<br>2) Sommiamo gli esponenti della base 10 per le proprietà delle potenze: ${e1} + (${e2}) = ${sommaExp}.<br>3) Risultato finale: ${prodCoef} x 10^${sommaExp}.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

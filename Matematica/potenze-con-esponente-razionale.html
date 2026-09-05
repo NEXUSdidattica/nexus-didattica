@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Potenze con Esponente Irrazionale e Reale: definizioni, stime per approssimazione, proprietà delle potenze e 100 esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Potenze con Esponente Irrazionale - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+
+<body data-lesson-id="radicali-potenze-esponente-irrazionale" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Radicali</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Potenze con Esponente Irrazionale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Estensione del concetto di potenza al campo reale $\mathbb{R}$, proprietà e calcoli con esponenti irrazionali.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Dalle Potenze Razionali a Quelle Irrazionali</h2>
+            <p>Abbiamo visto che una potenza con esponente razionale positivo si riconduce a un radicale:</p>
+            <div class="formula-box">
+                $$a^{\frac{m}{n}} = \sqrt[n]{a^m} \quad \text{con } a > 0$$
+            </div>
+            <p>Cosa succede se l'esponente è un numero irrazionale $x \in \mathbb{R} \setminus \mathbb{Q}$ (come $\sqrt{2}, \pi, e$)?</p>
+            <p>Si definisce la potenza $a^x$ (con $a > 1$) approssimando l'esponente irrazionale $x$ tramite due successioni di numeri razionali: una per <strong>difetto</strong> $r_1, r_2, r_3, \dots$ e una per <strong>eccesso</strong> $s_1, s_2, s_3, \dots$. Per la proprietà di completezza dei numeri reali, esiste un unico numero reale compreso tra tutte le potenze per difetto e per eccesso.</p>
+
+            <div class="warning-box">
+                <strong>⚠️ Vincolo sulla Base:</strong><br>
+                Per definire le potenze con esponente reale o irrazionale qualunque, la base $a$ deve essere <strong>strettamente positiva</strong> ($a > 0$).
+            </div>
+
+            <h2>2. Proprietà delle Potenze con Esponente Reale/Irrazionale</h2>
+            <p>Tutte le classiche proprietà delle potenze valide in $\mathbb{N}$ e $\mathbb{Q}$ continuano a valere in $\mathbb{R}$ per basi positive $a, b > 0$ ed esponenti $x, y \in \mathbb{R}$:</p>
+
+            <div class="formula-box">
+                <ul>
+                    <li>Prodotto con stessa base: $a^x \cdot a^y = a^{x+y}$</li>
+                    <li>Quoziente con stessa base: $\frac{a^x}{a^y} = a^{x-y}$</li>
+                    <li>Potenza di potenza: $(a^x)^y = a^{x \cdot y}$</li>
+                    <li>Prodotto con stesso esponente: $a^x \cdot b^x = (a \cdot b)^x$</li>
+                    <li>Quoziente con stesso esponente: $\frac{a^x}{b^x} = \left(\frac{a}{b}\right)^x$</li>
+                </ul>
+            </div>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempi Guidati</h3>
+                <ol>
+                    <li><strong>Prodotto:</strong> $2^{\sqrt{3}} \cdot 2^{2\sqrt{3}} = 2^{\sqrt{3} + 2\sqrt{3}} = 2^{3\sqrt{3}}$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Potenza di Potenza:</strong> $\left(3^{\sqrt{2}}\right)^{\sqrt{2}} = 3^{\sqrt{2} \cdot \sqrt{2}} = 3^2 = 9$.</li>
+                    <li style="margin-top: 0.8rem;"><strong>Semplificazione:</strong> $\frac{5^{\sqrt{5}+1}}{5^{\sqrt{5}}} = 5^{(\sqrt{5}+1) - \sqrt{5}} = 5^1 = 5$.</li>
+                </ol>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Potenze con Esponente Irrazionale</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                let tipo = i % 4;
+
+                if (tipo === 0) {
+                    let b = (i % 4) + 2;
+                    let c1 = (i % 3) + 1;
+                    let c2 = (i % 2) + 2;
+                    let rad = (i % 2 === 0) ? '\\sqrt{2}' : '\\sqrt{3}';
+                    let sumC = c1 + c2;
+
+                    domanda = `Semplifica il prodotto di potenze: $${b}^{${c1}${rad}} \\cdot ${b}^{${c2}${rad}}$`;
+                    risposta = `${b}^{${sumC}${rad}}`;
+                    spiegazione = `1) Applicando la proprietà del prodotto di potenze con la stessa base, sommiamo gli esponenti:<br>` +
+                                  `$$${c1}${rad} + ${c2}${rad} = (${c1} + ${c2})${rad} = ${sumC}${rad}$$<br>` +
+                                  `2) Risultato finale: $${b}^{${sumC}${rad}}$.`;
+                } else if (tipo === 1) {
+                    let b = (i % 3) + 2;
+                    let rad = '\\sqrt{5}';
+                    let c1 = (i % 4) + 3;
+
+                    domanda = `Semplifica il quoziente di potenze: $\\frac{${b}^{${c1}${rad} + 2}}{${b}^{${c1}${rad}}}$`;
+                    let rispVal = b * b;
+                    risposta = `${rispVal}`;
+                    spiegazione = `1) Applicando la proprietà del quoziente di potenze con stessa base, sottraiamo gli esponenti:<br>` +
+                                  `$$(${c1}${rad} + 2) - (${c1}${rad}) = 2$$<br>` +
+                                  `2) Otteniamo $${b}^2 = ${rispVal}$.`;
+                } else if (tipo === 2) {
+                    let b = (i % 3) + 2;
+                    let rad = '\\sqrt{3}';
+
+                    domanda = `Semplifica la potenza di potenza: $\\left(${b}^{\\sqrt{3}}\\right)^{\\sqrt{3}}$`;
+                    let valFinal = Math.pow(b, 3);
+
+                    risposta = `${valFinal}`;
+                    spiegazione = `1) Applicando la proprietà della potenza di potenza, moltiplichiamo gli esponenti:<br>` +
+                                  `$$\\sqrt{3} \\cdot \\sqrt{3} = (\\sqrt{3})^2 = 3$$<br>` +
+                                  `2) Calcoliamo $${b}^3 = ${valFinal}$.`;
+                } else {
+                    let b = 2;
+                    domanda = `Calcola il valore dell'espressione: $\\frac{\\left(2^{\\sqrt{2}}\\right)^{\\sqrt{8}}}{2^3}$`;
+                    risposta = `2`;
+                    spiegazione = `1) Al numeratore moltiplichiamo gli esponenti: $\\sqrt{2} \\cdot \\sqrt{8} = \\sqrt{16} = 4$, quindi $2^4$.<br>` +
+                                  `2) Eseguiamo il quoziente con il denominatore: $\\frac{2^4}{2^3} = 2^{4-3} = 2^1 = 2$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

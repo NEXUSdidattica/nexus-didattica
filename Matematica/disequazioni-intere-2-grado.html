@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disequazioni di 2° Grado Intere: metodo del paraboloide, studio del segno, gestione dei coefficienti frazionari ed esercizi guidati risolti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni di 2° Grado Intere - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        .warning-box { background-color: #fff1f2; border-left: 4px solid #f43f5e; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+        .info-box { background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-2-grado-intere" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 2° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Disequazioni di 2° Grado Intere</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Risoluzione teorica e grafica delle disequazioni intere, compresi i casi con coefficienti frazionari.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Struttura e Metodo di Risoluzione</h2>
+            <p>Una disequazione di secondo grado si presenta nella forma normale:</p>
+            <div class="formula-box">
+                $$ax^2 + bx + c > 0 \quad (\text{oppure } \ge, <, \le)$$
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Nota sui coefficienti frazionari:</strong> Un'equazione o disequazione come $\frac{1}{4}x^2 - x - 3 > 0$ è un'equazione/disequazione <strong>INTERA</strong> e NON fratta. È definita fratta solo quando l'incognita $x$ compare al <em>denominatore</em>. Quando vi sono numeri al denominatore (es. $\frac{1}{4}$), si tratta semplicemente di un coefficiente reale. Per semplicità, si può eliminare il denominatore moltiplicando tutta la disequazione per il m.c.m. delle frazioni.
+            </div>
+
+            <h3>Procedimento Passo-Passo:</h3>
+            <ol>
+                <li><strong>Normalizzazione:</strong> Portare tutti i termini a sinistra lasciando $0$ a destra. Se il primo coefficiente $a$ è negativo, è consigliabile cambiare tutti i segni e invertire il verso del verso della disequazione.</li>
+                <li><strong>Eliminazione dei denominatori numerici (opzionale ma consigliato):</strong> Moltiplicare tutti i termini per il m.c.m. positivo per lavorare con numeri interi.</li>
+                <li><strong>Equazione Associata:</strong> Risolvere $ax^2 + bx + c = 0$ e calcolare $\Delta = b^2 - 4ac$.</li>
+                <li><strong>Interpretazione Grafica (Parabola):</strong>
+                    <ul>
+                        <li><strong>$\Delta > 0$:</strong> Due soluzioni $x_1 < x_2$.
+                            <ul>
+                                | Per $> 0$ oppure $\ge 0$: valori <em>esterni</em> ($x < x_1 \cup x > x_2$).
+                                | Per $< 0$ oppure $\le 0$: valori <em>interni</em> ($x_1 < x < x_2$).
+                            </ul>
+                        </li>
+                        <li><strong>$\Delta = 0$:</strong> Un'unica soluzione $x_1 = x_2 = x_0$.
+                            <ul>
+                                | Per $> 0$: $\forall x \in \mathbb{R} \setminus \{x_0\}$.
+                                | Per $\ge 0$: $\forall x \in \mathbb{R}$.
+                                | Per $< 0$: Nessuna soluzione ($\emptyset$).
+                                | Per $\le 0$: Solo $x = x_0$.
+                            </ul>
+                        </li>
+                        <li><strong>$\Delta < 0$:</strong> Nessuna radice reale. La parabola sta interamente sopra l'asse $x$.
+                            <ul>
+                                | Per $> 0$ o $\ge 0$: Sempre verificata ($\forall x \in \mathbb{R}$).
+                                | Per $< 0$ o $\le 0$: Impossibile ($\emptyset$).
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato (con coefficienti frazionari)</h3>
+                <p>Risolvi la disequazione intera: $\frac{1}{4}x^2 - \frac{1}{2}x - 2 > 0$</p>
+                <ol>
+                    <li><strong>Eliminiamo i denominatori:</strong> Troviamo il $\text{m.c.m.}(4, 2) = 4$. Moltiplichiamo entrambi i membri per $4$ (essendo positivo, il verso rimane $> $):
+                        $$4 \cdot \left(\frac{1}{4}x^2 - \frac{1}{2}x - 2\right) > 4 \cdot 0 \implies x^2 - 2x - 8 > 0$$
+                    </li>
+                    <li><strong>Risolviamo l'equazione associata:</strong> $x^2 - 2x - 8 = 0$
+                        $$\Delta = (-2)^2 - 4(1)(-8) = 4 + 32 = 36$$
+                        $$x_{1,2} = \frac{2 \pm \sqrt{36}}{2} = \frac{2 \pm 6}{2} \implies x_1 = -2, \, x_2 = 4$$
+                    </li>
+                    <li><strong>Studio del verso ($> 0$ e $\Delta > 0$):</strong> Essendo il verso della disequazione $> 0$, la parabola è positiva negli intervalli <strong>esterni</strong> alle radici.</li>
+                    <li><strong>Soluzione Finale:</strong>
+                        $$x < -2 \quad \cup \quad x > 4$$
+                    </li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Ricorda:</strong> Se moltiplichi o dividi entrambi i membri di una disequazione per un numero <strong>negativo</strong>, devi <strong>invertire il verso</strong> della disequazione (da $>$ a $<$, o da $\le$ a $\ge$).
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disequazioni Intere</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+
+                let k = (i % 8) + 1;
+                let val = k * 2;
+                
+                let domanda, risposta, spiegazione;
+
+                if (i % 3 === 1) {
+                    // Caso Delta > 0 con frazione
+                    domanda = `Risolvi la disequazione intera: $\\frac{1}{2}x^2 - ${k}x < 0$`;
+                    risposta = `0 < x < ${val}`;
+                    spiegazione = `1) Moltiplichiamo per 2 per eliminare la frazione: $x^2 - ${val}x < 0$.<br>` +
+                                  `2) Equazione associata: $x(x - ${val}) = 0 \\implies x_1 = 0, x_2 = ${val}$.<br>` +
+                                  `3) Il verso è $<$ e $\\Delta > 0$, quindi prendiamo i valori <strong>interni</strong>.<br>` +
+                                  `4) Soluzione: <strong>$0 < x < ${val}$</strong>.`;
+                } else if (i % 3 === 2) {
+                    // Caso Delta > 0 con due radici distinte
+                    domanda = `Risolvi la disequazione intera: $x^2 - ${k+2}x + ${k+1} > 0$`;
+                    risposta = `x < 1 \\cup x > ${k+1}`;
+                    spiegazione = `1) Equazione associata: $x^2 - ${k+2}x + ${k+1} = 0$.<br>` +
+                                  `2) Calcoliamo il $\\Delta = (-${k+2})^2 - 4(1)(${k+1}) > 0$. Radici: $x_1 = 1, x_2 = ${k+1}$.<br>` +
+                                  `3) Il verso è $>$ e $\\Delta > 0$, perciò prendiamo gli intervalli <strong>esterni</strong>.<br>` +
+                                  `4) Soluzione: <strong>$x < 1 \\cup x > ${k+1}$</strong>.`;
+                } else {
+                    // Caso Delta <= 0
+                    domanda = `Risolvi la disequazione intera: $x^2 + ${2*k}x + ${k*k} \\le 0$`;
+                    risposta = `x = -${k}`;
+                    spiegazione = `1) Riconosciamo un quadrato di binomio nell'equazione associata: $(x + ${k})^2 = 0 \\implies x = -${k}$.<br>` +
+                                  `2) Il discriminante è $\\Delta = 0$. Il quadrato $(x + ${k})^2$ è sempre $\\ge 0$.<br>` +
+                                  `3) Poiché la disequazione richiede $\\le 0$, l'unico valore accettabile è quello che la annulla.<br>` +
+                                  `4) Soluzione: <strong>$x = -${k}$</strong>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

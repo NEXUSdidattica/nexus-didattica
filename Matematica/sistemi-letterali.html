@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa ai Sistemi Letterali di 1° Grado: teoria approfondita, discussione dei parametri (determinati, indeterminati, impossibili) e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi Letterali di 1° Grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.8; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.8rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1.2rem; margin: 1.2rem 0; font-size: 1.05rem; overflow-x: auto; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="sistemi-letterali" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Sistemi Letterali di 1° Grado</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Trattazione teorica approfondita sui parametri, studio della compatibilità, metodo di Cramer letterale, discussione e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è un Sistema Letterale?</h2>
+            <p>Un sistema lineare si dice <strong>letterale</strong> quando, oltre alle incognite (solitamente \(x\) ed \(y\)), compaiono una o più lettere (chiamate <strong>parametri</strong>, es. \(a, b, k\)) che rappresentano numeri reali costanti ma non specificati. Un sistema letterale ridotto in forma normale si presenta nella forma:</p>
+            
+            <div class="formula-box">
+                $$\begin{cases} ax + by = 1 \\ x + ay = a \end{cases}$$
+            </div>
+
+            <p>Risolvere un sistema letterale non significa semplicemente trovare una terna o una coppia di numeri fissi, bensì determinare le soluzioni del sistema <strong>in funzione dei valori che il parametro può assumere</strong>. Questa fase fondamentale prende il nome di <strong>discussione del sistema</strong>.</p>
+
+            <h2>2. La Metodologia di Risoluzione e l'Uso di Cramer</h2>
+            <p>Il metodo più potente e rigoroso per affrontare i sistemi letterali 2x2 è il <strong>Metodo di Cramer</strong>, poiché permette di esprimere i determinanti direttamente in funzione del parametro letterale.</p>
+            <p>Dato il sistema generale:</p>
+            <div class="formula-box">
+                $$\begin{cases} ax + by = c \\ a'x + b'y = c' \end{cases}$$
+            </div>
+            <p>Calcoliamo i determinanti caratteristici:</p>
+            <ul>
+                <li><strong>Determinante Principale (\(D\)):</strong> \(D = ab' - a'b\)</li>
+                <li><strong>Determinante in \(x\) (\(D_x\)):</strong> \(D_x = cb' - c'b\)</li>
+                <li><strong>Determinante in \(y\) (\(D_y\)):</strong> \(D_y = ac' - a'c\)</li>
+            </ul>
+
+            <h2>3. La Discussione Completa: Determinato, Indeterminato, Impossibile</h2>
+            <p>Una volta calcolati i determinanti in funzione del parametro, si procede alla discussione analizzando i vari casi possibili:</p>
+            <ol>
+                <li><strong>Sistema Determinato (\(D \neq 0\)):</strong> Se il determinante principale risulta diverso da zero per determinati valori del parametro, il sistema ammette un'unica soluzione data da:
+                    $$x = \frac{D_x}{D}, \quad y = \frac{D_y}{D}$$
+                </li>
+                <li><strong>Annullamento del Determinante Principale (\(D = 0\)):</strong> Quando il parametro assume valori che azzerano \(D\), il metodo di Cramer non è più applicabile direttamente (perché si dividerebbe per zero). In questi specifici casi si sostituisce il valore numerico del parametro direttamente nel sistema di partenza e si valuta il comportamento algebrico:
+                    <ul>
+                        <li>Se contemporaneamente anche \(D_x = 0\) e \(D_y = 0\), le equazioni diventano equivalenti (o identiche): il sistema ammette infinite soluzioni e si dice <strong>indeterminato</strong>.</li>
+                        <li>Se almeno uno tra \(D_x\) o \(D_y\) è diverso da zero, si perviene a un'equazione impossibile (del tipo \(0 = num\) con \(num \neq 0\)): il sistema non ammette alcuna soluzione e si dice <strong>impossibile</strong>.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="formula-box">
+                <strong>Esempio Svolto (Sistema Letterale con parametro \(k\)):</strong><br>
+                Discutiamo e risolviamo il sistema:
+                $$\begin{cases} kx + y = 1 \\ x + ky = 1 \end{cases}$$
+                <p><em>1. Calcolo dei determinanti:</em></p>
+                \(D = \begin{vmatrix} k & 1 \\ 1 & k \end{vmatrix} = k^2 - (1)(1) = k^2 - 1 = (k-1)(k+1)\)<br>
+                \(D_x = \begin{vmatrix} 1 & 1 \\ 1 & k \end{vmatrix} = k - 1\)<br>
+                \(D_y = \begin{vmatrix} k & 1 \\ 1 & 1 \end{vmatrix} = k - 1\)
+                <p><em>2. Analisi del caso Determinato (\(D \neq 0 \implies k \neq 1\) e \(k \neq -1\)):</em></p>
+                \(x = \frac{D_x}{D} = \frac{k-1}{(k-1)(k+1)} = \frac{1}{k+1}\)<br>
+                \(y = \frac{D_y}{D} = \frac{k-1}{(k-1)(k+1)} = \frac{1}{k+1}\)
+                <p><em>3. Studio dei casi particolari (\(D = 0\)):</em></p>
+                <ul>
+                    <li><strong>Se \(k = 1\):</strong> Sostituendo \(1\) al posto di \(k\) nel sistema otteniamo \(\begin{cases} x + y = 1 \\ x + y = 1 \end{cases}\). Le due equazioni sono identiche, quindi il sistema è <strong>indeterminato</strong> (infinite soluzioni, rappresentate dalla retta \(x + y = 1\)).</li>
+                    <li><strong>Se \(k = -1\):</strong> Sostituendo \(-1\) al posto di \(k\) otteniamo \(\begin{cases} -x + y = 1 \\ x - y = 1 \end{cases}\). Sommando le equazioni si ottiene \(0 = 2\), che è una contraddizione palese; pertanto il sistema è <strong>impossibile</strong>.</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Sistemi Letterali di 1° Grado)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let parametro = (i % 2 === 0) ? 'k' : 'a';
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE';
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (Con Parametri Multipli o Raccolti)';
+                }
+
+                let domanda = "Discuti e risolvi il sistema letterale col parametro \\(" + parametro + "\\):<br>\\(\\begin{cases} " + parametro + "x + y = 1 \\\\ x + " + parametro + "y = 1 \\end{cases}\\)";
+                let risposta = "Se \\(" + parametro + " \\neq \\pm 1\\): \\(x = \\frac{1}{" + parametro + "+1}, \\, y = \\frac{1}{" + parametro + "+1}\\); se \\(" + parametro + "=1\\) indeterminato; se \\(" + parametro + "=-1\\) impossibile.";
+                let spiegazione = "1) Calcola il determinante principale \\(D = " + parametro + "^2 - 1\\).<br>2) Analizza il caso \\(D \\neq 0\\) applicando Cramer.<br>3) Studia separatamente i casi \\(" + parametro + "=1\\) e \\(" + parametro + "=-1\\).";
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Discussione e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzione:</strong> ${risposta}</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

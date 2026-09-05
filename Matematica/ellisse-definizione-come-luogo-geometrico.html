@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Definizione dell'Ellisse come luogo geometrico: spiegazione dei fuochi, somma costante delle distanze, grafici SVG e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Ellisse: Definizione come Luogo Geometrico - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stili specifici per la lezione -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow-x: auto; /* Risolve il trabocco orizzontale */
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .badge-argomento.ellisse {
+            background-color: #fdf2f8;
+            color: #db2777;
+            border: 1px solid #fbcfe8;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="ellisse-definizione-come-luogo-geometrico" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno ellisse">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Ellisse: Definizione come Luogo Geometrico</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Esploriamo l'ellisse partendo dalla sua proprietà fondamentale: il luogo geometrico dei punti la cui somma delle distanze da due punti fissi (fuochi) è costante.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>Che cos'è un'Ellisse?</h2>
+            <p>
+                In geometria analitica, l'ellisse è una curva piana chiusa che assomiglia a un cerchio allungato o "schiacciato". È una delle quattro sezioni coniche, ottenuta dall'intersezione di un cono circolare retto con un piano inclinato.
+            </p>
+            <p>
+                Tuttavia, la definizione più rigorosa e utile per comprenderne le proprietà è quella di <strong>luogo geometrico</strong>.
+            </p>
+
+            <div class="box-evidenza">
+                <h3>🎯 Definizione Geometrica</h3>
+                <p>
+                    L'<strong>ellisse</strong> è il luogo geometrico dei punti \(P\) del piano per i quali la <strong>somma delle distanze</strong> da due punti fissi distinti, chiamati <strong>fuochi</strong>, è costante.
+                </p>
+            </div>
+
+            <h2>Elementi Fondamentali della Definizione</h2>
+            <p>
+                Analizziamo gli elementi chiave presenti nella definizione:
+            </p>
+
+            <ul>
+                <li><strong>I Fuochi (\(F_1\), \(F_2\)):</strong> Sono due punti distinti fissati nel piano. La loro posizione determina la forma dell'ellisse. Di solito sono indicati come \(F_1(-c, 0)\) e \(F_2(c, 0)\) nel caso più semplice di ellisse centrata nell'origine degli assi, dove \(c\) è la semi-distanza focale.</li>
+                <li><strong>Un punto qualsiasi (\(P\)):</strong> È un punto generico che appartiene alla curva. Le sue coordinate \((x, y)\) devono soddisfare la condizione di somma costante.</li>
+                <li><strong>La somma costante (\(2a\)):</strong> La definizione afferma che, preso un punto \(P\) qualsiasi sull'ellisse, la somma delle sue distanze dai due fuochi è sempre uguale a un valore fisso. Per convenzione, questo valore costante è indicato con \(2a\), dove \(a\) è la lunghezza del semiasse maggiore.
+                    <div class="formula-box">
+                        $$\vert{}PF_1\vert{} + \vert{}PF_2\vert{} = 2a$$
+                    </div>
+                </li>
+            </ul>
+
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; text-align: center; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); overflow-x: auto;">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.1rem; margin-bottom: 1rem;">Visualizzazione dei Fuochi e delle Distanze</h3>
+                <svg viewBox="0 0 400 200" style="width: 100%; max-width: 350px; margin: 0 auto; display: block;">
+                    <ellipse cx="200" cy="100" rx="150" ry="80" fill="none" stroke="#2563eb" stroke-width="3" />
+                    <line x1="50" y1="100" x2="350" y2="100" stroke="#cbd5e1" stroke-width="1" />
+                    <line x1="200" y1="20" x2="200" y2="180" stroke="#cbd5e1" stroke-width="1" />
+                    <circle cx="120" cy="100" r="4" fill="#dc2626" />
+                    <text x="100" y="115" font-size="10" fill="#dc2626" font-weight="bold">F₁(-c, 0)</text>
+                    <circle cx="280" cy="100" r="4" fill="#dc2626" />
+                    <text x="270" y="115" font-size="10" fill="#dc2626" font-weight="bold">F₂(c, 0)</text>
+                    <circle cx="80" cy="136" r="4" fill="#059669" />
+                    <text x="50" y="148" font-size="10" fill="#059669" font-weight="bold">P(x, y)</text>
+                    <line x1="80" y1="136" x2="120" y2="100" stroke="#059669" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="80" y1="136" x2="280" y2="100" stroke="#059669" stroke-width="1" stroke-dasharray="3,3" />
+                    <text x="160" y="90" font-size="11" fill="#0369a1">|PF₁| + |PF₂| = 2a</text>
+                </svg>
+                <p style="font-size: 0.9rem; color: #475569; margin-top: 1rem; margin-bottom: 0;">Spostando il punto \(P\) lungo il perimetro dell'ellisse, la somma delle lunghezze delle linee tratteggiate verdi rimane costante.</p>
+            </div>
+
+            <h2>Proprietà Geometriche Derivate</h2>
+            <p>
+                Da questa definizione discendono importanti proprietà geometriche dell'ellisse:
+            </p>
+            <ul>
+                <li><strong>Simmetria:</strong> L'ellisse è simmetrica rispetto a due assi perpendicolari tra loro, chiamati <strong>assi dell'ellisse</strong>. Il loro punto di intersezione è il <strong>centro dell'ellisse</strong>.</li>
+                <li><strong>Semiassi:</strong> I segmenti che vanno dal centro all'ellisse lungo gli assi sono i <strong>semiassi</strong>. Quello più lungo è il <strong>semiasse maggiore (\(a\))</strong>, quello più corto è il <strong>semiasse minore (\(b\))</strong>.</li>
+                <li><strong>Relazione tra i parametri:</strong> Esiste una relazione fondamentale tra il semiasse maggiore \(a\), il semiasse minore \(b\) e la semi-distanza focale \(c\):
+                    <div class="formula-box">
+                        $$a^2 = b^2 + c^2 \quad \implies \quad c = \sqrt{a^2 - b^2}$$
+                    </div>
+                    Questa relazione deriva applicando il teorema di Pitagora a un triangolo rettangolo formato da \(a\), \(b\) e \(c\) nel piano dell'ellisse.
+                </li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Verifica se il punto \(P(3, 2)\) appartiene all'ellisse avente i fuochi in \(F_1(-\sqrt{5}, 0)\) e \(F_2(\sqrt{5}, 0)\), sapendo che la somma costante delle distanze dai fuochi è \(2a = 8\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo la distanza tra \(P(3, 2)\) e \(F_1(-\sqrt{5}, 0)\):
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$\vert{}PF_1\vert{} = \sqrt{(3 + \sqrt{5})^2 + 2^2} = \sqrt{9 + 6\sqrt{5} + 5 + 4} = \sqrt{18 + 6\sqrt{5}} \approx 5.60$$
+                        </div>
+                    </li>
+                    <li>Calcoliamo la distanza tra \(P(3, 2)\) e \(F_2(\sqrt{5}, 0)\):
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$\vert{}PF_2\vert{} = \sqrt{(3 - \sqrt{5})^2 + 2^2} = \sqrt{9 - 6\sqrt{5} + 5 + 4} = \sqrt{18 - 6\sqrt{5}} \approx 2.14$$
+                        </div>
+                    </li>
+                    <li>Sommiamo le due distanze:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$\vert{}PF_1\vert{} + \vert{}PF_2\vert{} \approx 5.60 + 2.14 = 7.74$$
+                        </div>
+                    </li>
+                    <li>Confrontiamo il risultato con la somma costante assegnata \(2a = 8\): poiché \(7.74 \neq 8\), la condizione del luogo geometrico non è soddisfatta.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Il punto \(P(3, 2)\) <strong>non appartiene</strong> all'ellisse.</p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Luogo Geometrico dell'Ellisse</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sulla definizione di ellisse come luogo geometrico e sulla verifica dei punti. Clicca sulle card per visualizzare il procedimento e la soluzione passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let cVal = 3;
+                let sumConst = 10;
+                let px = (i % 3) + 1;
+                let py = (i % 2) + 1;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    px = 5; 
+                    py = 0;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    px = 3;
+                    py = 2;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    px = 4;
+                    py = 3;
+                }
+
+                let appartiene = (i <= 35) ? "appartiene" : "non appartiene";
+                let spiegazioneDettaglio = (i <= 35) 
+                    ? `Il punto si trova sull'asse maggiore e soddisfa esattamente la condizione geometrica \\(|PF_1| + |PF_2| = 2a\\).`
+                    : `La somma calcolata delle distanze dai fuochi differisce dal valore della costante \\(2a\\).`;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Verifica se il punto \\(P(${px}, ${py})\\) appartiene all'ellisse con fuochi in \\(F_1(-${cVal}, 0)\\) e \\(F_2(${cVal}, 0)\\) e somma costante \\(2a = ${sumConst}\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Esito:</strong> Il punto \\(P(${px}, ${py})\\) <strong>${appartiene}</strong> all'ellisse.</p>
+                            <p>📝 <strong>Procedimento:</strong><br>
+                            1) Si calcolano le distanze \\(|PF_1|\\) e \\(|PF_2|\\) applicando la formula della distanza tra due punti nel piano cartesiano.<br>
+                            2) Si sommano i valori ottenuti.<br>
+                            3) Si confronta la somma con il valore costante \\(2a = ${sumConst}\\). ${spiegazioneDettaglio}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

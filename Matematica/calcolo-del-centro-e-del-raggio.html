@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida pratica al Calcolo del Centro e del Raggio di una circonferenza: formule inverse, passaggi chiave e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Calcolo del Centro e del Raggio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="calcolo-centro-raggio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Calcolo del Centro e del Raggio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Approfondimento operativo per ricavare rapidamente centro e raggio dall'equazione cartesiana della circonferenza.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Strategia di Calcolo Rapido</h2>
+            <p>
+                Quando ci viene fornita un'equazione in forma normale \(x^2 + y^2 + ax + by + c = 0\), il calcolo del centro \(C\) e del raggio \(r\) richiede di prestare molta attenzione ai segni dei coefficienti \(a\) e \(b\).
+            </p>
+
+            <div class="formula-box">
+                💡 <strong>Regola pratica dei segni:</strong><br>
+                Per trovare l'ascissa e l'ordinata del centro, si prendono i coefficienti di \(x\) e \(y\), si dividono per \(2\) e se ne <strong>cambia il segno</strong>.
+            </div>
+
+            <h2>Procedimento Operativo Passo-Passo</h2>
+            <ol>
+                <li><strong>Ispeziona l'equazione:</strong> Verifica che i coefficienti di \(x^2\) e \(y^2\) siano uguali a \(1\). Se sono diversi (es. \(2x^2 + 2y^2\)), dividi l'intera equazione per quel numero prima di procedere.</li>
+                <li>Estrai i valori dei coefficienti \(a\), \(b\) e del termine noto \(c\).</li>
+                <li>Calcola \(x_C = -\frac{a}{2}\) e \(y_C = -\frac{b}{2}\).</li>
+                <li>Applica la formula del raggio sfruttando direttamente le coordinate del centro appena trovate: 
+                    $$r = \sqrt{x_C^2 + y_C^2 - c}$$
+                </li>
+            </ol>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Trova centro e raggio di: \(2x^2 + 2y^2 + 8x - 4y - 16 = 0\)</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Dividiamo tutto per \(2\) per normalizzare: 
+                        $$x^2 + y^2 + 4x - 2y - 8 = 0$$
+                    </li>
+                    <li>Ricaviamo \(a = 4\), \(b = -2\), \(c = -8\).</li>
+                    <li>Calcoliamo il centro: 
+                        $$x_C = -\frac{4}{2} = -2, \quad y_C = -\frac{-2}{2} = 1 \implies C(-2; 1)$$
+                    </li>
+                    <li>Calcoliamo il raggio: 
+                        $$r = \sqrt{(-2)^2 + 1^2 - (-8)} = \sqrt{4 + 1 + 8} = \sqrt{13}$$
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> \(C(-2; 1)\) e \(r = \sqrt{13}\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Calcolo di Centro e Raggio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi mirati per acquisire velocità e sicurezza nel ricavare le proprietà geometriche della circonferenza dall'algebra. Clicca sulle card per visualizzare la soluzione completa.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let a, b, c;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    a = -2 * (i % 4 - 2);
+                    b = -2 * (i % 3 - 1);
+                    c = (i % 6) - 3;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    a = -2 * (i % 5 - 2);
+                    b = -2 * (i % 4 - 2);
+                    c = (i % 9) - 4;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    a = -2 * (i % 6 - 3);
+                    b = -2 * (i % 5 - 2);
+                    c = - (i % 12);
+                }
+
+                // Evitiamo a=0 o b=0 casuali per mantenere l'esercizio stimolante
+                if (a === 0) a = -2;
+                if (b === 0) b = 2;
+
+                let strA = a > 0 ? `+ ${a}x` : `- ${Math.abs(a)}x`;
+                let strB = b > 0 ? `+ ${b}y` : `- ${Math.abs(b)}y`;
+                let strC = c === 0 ? '' : (c > 0 ? `+ ${c}` : `- ${Math.abs(c)}`);
+                let eqStr = `x^2 + y^2 ${strA} ${strB} ${strC} = 0`;
+
+                let xC = -a / 2;
+                let yC = -b / 2;
+                let valRsq = (xC * xC) + (yC * yC) - c;
+                let rStr = Number.isInteger(Math.sqrt(valRsq)) ? Math.sqrt(valRsq) : `\\sqrt{${valRsq}}`;
+
+                let calcoloSpiegato = `
+                    1) Dall'equazione leggiamo i coefficienti: \\(a = ${a}\\), \\(b = ${b}\\), \\(c = ${c}\\).<br><br>
+                    2) Calcoliamo l'ascissa del centro: \\(x_C = -(${a})/2 = ${xC}\\).<br>
+                    3) Calcoliamo l'ordinata del centro: \\(y_C = -(${b})/2 = ${yC}\\).<br>
+                    Quindi il centro è \\(C(${xC}; ${yC})\\).<br><br>
+                    4) Calcoliamo il raggio: \\(r = \\sqrt{(${xC})^2 + (${yC})^2 - (${c})} = \\sqrt{${xC*xC} + ${yC*yC} ${c >= 0 ? '- ' + c : '+ ' + Math.abs(c)}} = ${rStr}\\).
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Determina con precisione centro e raggio della circonferenza di equazione \\(${eqStr}\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

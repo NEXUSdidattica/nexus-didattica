@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 4: Operazioni tra monomi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Operazioni tra monomi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-riassuntiva {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .tabella-riassuntiva th, .tabella-riassuntiva td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .tabella-riassuntiva th {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="monomi-operazioni-tra-monomi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Monomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Operazioni tra monomi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Somma algebrica, prodotto, quoziente e potenza di monomi spiegati passo-passo con 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Somma Algebrica (Addizione e Sottrazione)</h2>
+            <p>
+                La <strong>somma algebrica</strong> tra due o più monomi si può eseguire <strong>esclusivamente se i monomi sono simili</strong> (cioè se hanno la stessa identica parte letterale).
+            </p>
+            <p>
+                Il risultato è un monomio che ha per coefficiente la somma algebrica dei coefficienti e per parte letterale la stessa parte letterale comune.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>3 a² b + 5 a² b = (3 + 5) a² b = 8 a² b</code><br>
+                ⚠️ <em>Se i monomi non sono simili (es. <code>3x + 2y</code>), l'operazione non si può unificare in un unico monomio.</em>
+            </div>
+
+            <h2>2. Moltiplicazione (Prodotto)</h2>
+            <p>
+                La moltiplicazione si può eseguire <strong>sempre</strong> tra qualsiasi coppia di monomi. Si moltiplicano tra loro i coefficienti numerici e si sommano gli esponenti delle lettere uguali (proprietà delle potenze: <em>aᵐ · aⁿ = aᵐ⁺ⁿ</em>).
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>(3 x² y) · (4 x y³) = (3 · 4) x²⁺¹ y¹⁺³ = 12 x³ y⁴</code>
+            </div>
+
+            <h2>3. Divisione (Quoziente)</h2>
+            <p>
+                Un monomio <em>A</em> è divisibile per un monomio <em>B</em> (con <em>B ≠ 0</em>) se le lettere di <em>B</em> sono presenti anche in <em>A</em> con esponente minore o uguale. Si dividono i coefficienti e si sottraggono gli esponenti delle lettere uguali (<em>aᵐ : aⁿ = aᵐ⁻ⁿ</em>).
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>(12 x⁴ y³) : (3 x² y) = (12 : 3) x⁴⁻² y³⁻¹ = 4 x² y²</code>
+            </div>
+
+            <h2>4. Potenza di un Monomio</h2>
+            <p>
+                Per elevare un monomio a potenza, si eleva il coefficiente numerico alla potenza data e si moltiplica l'esponente di ciascuna lettera per l'esponente della potenza.
+            </p>
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> <code>(-3 x² y³)² = (-3)² · x²·² y³·² = +9 x⁴ y⁶</code>
+            </div>
+
+            <h2>5. Schema Riassuntivo</h2>
+            <table class="tabella-riassuntiva">
+                <thead>
+                    <tr>
+                        <th>Operazione</th>
+                        <th>Condizione</th>
+                        <th>Coefficienti</th>
+                        <th>Esponenti</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Somma Algebrica</strong></td>
+                        <td>Monomi Simili</td>
+                        <td>Somma algebrica</td>
+                        <td>Invariati</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moltiplicazione</strong></td>
+                        <td>Sempre possibile</td>
+                        <td>Moltiplicazione</td>
+                        <td>Si sommano (+)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Divisione</strong></td>
+                        <td>Se divisibile</td>
+                        <td>Divisione</td>
+                        <td>Si sottraggono (-)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Potenza</strong></td>
+                        <td>Sempre possibile</td>
+                        <td>Elevamento a potenza</td>
+                        <td>Si moltiplicano (·)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Risolvi la seguente espressione tra monomi: <code>(2 x² y) · (-3 x y³) + (10 x³ y⁴)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Eseguiamo prima la moltiplicazione: <code>(2 · -3) x²⁺¹ y¹⁺³ = -6 x³ y⁴</code>.</li>
+                    <li>Sostituiamo nell'espressione: <code>-6 x³ y⁴ + 10 x³ y⁴</code>.</li>
+                    <li>I due monomi sono simili: sommiamo i coefficienti <code>(-6 + 10) x³ y⁴ = 4 x³ y⁴</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: 4 x³ y⁴</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Operazioni tra Monomi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con somme, prodotti, quozienti e potenze di monomi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let tipo = i % 3;
+                    let c1 = (i % 5) + 2;
+                    let c2 = (i % 4) + 1;
+                    let exp = (i % 3) + 1;
+
+                    if (tipo === 0) {
+                        // Somma
+                        let cTot = c1 + c2;
+                        domanda = `Calcola la somma algebrica: <code>${c1} a<sup>${exp}</sup> + ${c2} a<sup>${exp}</sup></code>.`;
+                        risposta = `<code>${cTot} a<sup>${exp}</sup></code>`;
+                        spiegazione = `I monomi sono simili. Sommiamo i coefficienti: <code>${c1} + ${c2} = ${cTot}</code> e manteniamo la parte letterale <code>a<sup>${exp}</sup></code>.`;
+                    } else if (tipo === 1) {
+                        // Moltiplicazione
+                        let cTot = c1 * c2;
+                        let expTot = exp + 1;
+                        domanda = `Calcola il prodotto: <code>(${c1} x<sup>${exp}</sup>) &middot; (${c2} x)</code>.`;
+                        risposta = `<code>${cTot} x<sup>${expTot}</sup></code>`;
+                        spiegazione = `Moltiplichiamo i coefficienti (<code>${c1} &middot; ${c2} = ${cTot}</code>) e sommiamo gli esponenti di <em>x</em> (<code>${exp} + 1 = ${expTot}</code>).`;
+                    } else {
+                        // Potenza
+                        let cTot = c1 * c1;
+                        let expTot = exp * 2;
+                        domanda = `Calcola la potenza: <code>(${c1} y<sup>${exp}</sup>)²</code>.`;
+                        risposta = `<code>${cTot} y<sup>${expTot}</sup></code>`;
+                        spiegazione = `Eleviamo al quadrato il coefficiente (<code>${c1}² = ${cTot}</code>) e moltiplichiamo l'esponente per 2 (<code>${exp} &middot; 2 = ${expTot}</code>).`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let c1 = (i % 6) + 3;
+                    let c2 = 2;
+                    let expX = (i % 3) + 2;
+                    let expY = (i % 2) + 1;
+
+                    if (i % 2 === 0) {
+                        // Divisione
+                        let coeffRes = c1 * 2;
+                        domanda = `Calcola il quoziente: <code>(${coeffRes} x<sup>${expX}</sup> y<sup>${expY}</sup>) : (${c1} x y)</code>.`;
+                        let resExpX = expX - 1;
+                        let resExpY = expY - 1;
+                        let partLett = (resExpX > 1 ? `x<sup>${resExpX}</sup>` : (resExpX === 1 ? 'x' : '')) + (resExpY > 1 ? `y<sup>${resExpY}</sup>` : (resExpY === 1 ? 'y' : ''));
+                        risposta = `<code>2 ${partLett}</code>`;
+                        spiegazione = `Dividiamo i coefficienti (<code>${coeffRes} : ${c1} = 2</code>) e sottraggiamo gli esponenti delle lettere uguali: <em>x</em> (<code>${expX} - 1 = ${resExpX}</code>) e <em>y</em> (<code>${expY} - 1 = ${resExpY}</code>).`;
+                    } else {
+                        // Prodotto a più lettere
+                        let prodCoeff = -c1 * c2;
+                        let resExpX = expX + 1;
+                        domanda = `Moltplica: <code>(-${c1} x<sup>${expX}</sup> y) &middot; (${c2} x y<sup>${expY}</sup>)</code>.`;
+                        let resExpY = expY + 1;
+                        risposta = `<code>${prodCoeff} x<sup>${resExpX}</sup> y<sup>${resExpY}</sup></code>`;
+                        spiegazione = `Moltiplichiamo i coefficienti (<code>-${c1} &middot; ${c2} = ${prodCoeff}</code>) e sommiamo gli esponenti di <em>x</em> e <em>y</em>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let a = (i % 3) + 2;
+                    domanda = `Risolvi l'espressione: <code>(${a} a b)² &middot; (-2 a³) + (5 a⁵ b²)</code>.`;
+                    let coeffPot = a * a;
+                    let coeffProd = coeffPot * -2;
+                    let coeffFinale = coeffProd + 5;
+
+                    risposta = `<code>${coeffFinale} a⁵ b²</code>`;
+                    spiegazione = `
+                    1) Eleviamo a potenza il primo monomio: <code>(${a} a b)² = ${coeffPot} a² b²</code>.<br>
+                    2) Moltiplichiamo per <code>-2 a³</code>: <code>(${coeffPot} a² b²) &middot; (-2 a³) = ${coeffProd} a⁵ b²</code>.<br>
+                    3) Sommiamo il monomio simile <code>5 a⁵ b²</code>: <code>(${coeffProd} + 5) a⁵ b² = ${coeffFinale} a⁵ b²</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

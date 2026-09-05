@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla classificazione delle equazioni di 1° grado: determinate, indeterminate ed impossibili. Esempi pratici e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Determinate, Indeterminate ed Impossibili - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-1-grado-classificazione" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Equazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 5: Classificazione delle Equazioni</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Equazioni determinate, indeterminate ed impossibili: analisi della forma normale ax = b e 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>La Forma Normale $ax = b$</h2>
+            <p>
+                Qualsiasi equazione algebrica di primo grado ad una sola incognita, mediante l'applicazione dei principi di equivalenza, può essere ridotta alla sua <strong>forma normale</strong>:
+            </p>
+            <div class="formula-box">
+                📐 <strong>Forma Normale:</strong> <code>ax = b</code>
+            </div>
+            <p>
+                In base ai valori assunti dal coefficiente dell'incognita ($a$) e dal termine noto ($b$), l'equazione viene classificata in tre tipologie distinte.
+            </p>
+
+            <h3>1. Equazione Determinata ($a \neq 0$)</h3>
+            <p>
+                Un'equazione è <strong>determinata</strong> se ammette un numero finito di soluzioni (esattamente una per il 1° grado). La soluzione è data da $x = \frac{b}{a}$.
+            </p>
+
+            <h3>2. Equazione Indeterminata ($a = 0$ e $b = 0$)</h3>
+            <p>
+                L'equazione si riduce alla forma <code>0x = 0</code>. Qualsiasi numero reale sostituito al posto della $x$ rende l'uguaglianza vera ($0 \cdot x = 0$). L'equazione ammette <strong>infinite soluzioni</strong> ($S = \mathbb{R}$).
+            </p>
+
+            <h3>3. Equazione Impossibile ($a = 0$ e $b \neq 0$)</h3>
+            <p>
+                L'equazione si riduce alla forma <code>0x = b</code> (con $b \neq 0$). Poiché qualsiasi numero moltiplicato per 0 dà 0, non esiste alcun valore di $x$ in grado di soddisfare l'uguaglianza. L'equazione ammette <strong>nessuna soluzione</strong> ($S = \emptyset$).
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Classifica la seguente equazione: <code>4(x - 1) + 2 = 2(2x - 1)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Sviluppiamo le parentesi:</strong> <code>4x - 4 + 2 = 4x - 2 &rArr; 4x - 2 = 4x - 2</code>.</li>
+                    <li><strong>Trasportiamo i termini in x a sinistra:</strong> <code>4x - 4x = -2 + 2</code>.</li>
+                    <li><strong>Forma normale:</strong> <code>0x = 0</code>.</li>
+                    <li><strong>Conclusione:</strong> Essendo $a = 0$ e $b = 0$, l'equazione è <strong>Indeterminata</strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Indeterminata (infinite soluzioni).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Classificazione delle Equazioni</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati con 100 problemi svolti e commentati: riconosci la natura dell'equazione portandola in forma normale ax = b.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+                let tipo = i % 3;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                if (tipo === 1) {
+                    let k = (i % 5) + 2;
+                    let sol = (i % 4) + 1;
+                    domanda = `Classifica l'equazione e trova l'eventuale soluzione: <strong>${k}x + 3 = ${k*sol + 3}</strong>.`;
+                    risposta = `Determinata con soluzione x = ${sol}`;
+                    spiegazione = `
+                    1) Trasportiamo 3 a destra: <code>${k}x = ${k*sol}</code>.<br>
+                    2) Forma normale <code>ax = b</code> con a = ${k} ≠ 0.<br>
+                    3) L'equazione è <strong>Determinata</strong> con <code>x = ${sol}</code>.`;
+                } else if (tipo === 2) {
+                    let a = (i % 4) + 2;
+                    domanda = `Classifica l'equazione: <strong>${a}(x + 1) - ${a}x = ${a}</strong>.`;
+                    risposta = `Indeterminata (0x = 0)`;
+                    spiegazione = `
+                    1) Sviluppiamo: <code>${a}x + ${a} - ${a}x = ${a}</code>.<br>
+                    2) Riduciamo i termini simili: <code>0x + ${a} = ${a} &rArr; 0x = 0</code>.<br>
+                    3) Poiché a = 0 e b = 0, l'equazione è <strong>Indeterminata</strong> (infinite soluzioni).`;
+                } else {
+                    let a = (i % 4) + 2;
+                    let b = (i % 3) + 1;
+                    domanda = `Classifica l'equazione: <strong>${a}x + 5 = ${a}x + ${5 + b}</strong>.`;
+                    risposta = `Impossibile (0x = ${b})`;
+                    spiegazione = `
+                    1) Trasportiamo i termini con x a sinistra: <code>${a}x - ${a}x = ${5 + b} - 5</code>.<br>
+                    2) Forma normale: <code>0x = ${b}</code>.<br>
+                    3) Poiché a = 0 e b ≠ 0, l'equazione è <strong>Impossibile</strong> (nessuna soluzione).`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

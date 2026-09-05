@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossario completo ed esaustivo di House, Rooms and Household Items in inglese: vocaboli dettagliati per la casa, le stanze, i mobili, gli elettrodomestici e gli oggetti domestici - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>House, Rooms and Household Items - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia (Inglese) -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (INGLESE) --- */
+        body[data-materia="Inglese"] {
+            --colore-primario: #feadad;
+            --colore-hover: #f87171;
+            --colore-scuro: #991b1b;
+            --colore-testo-scuro: #7f1d1d;
+            --sfondo-chiaro: #fef2f2;
+            --sfondo-vetro: rgba(254, 226, 226, 0.5);
+            --bordo-chiaro: #fecaca;
+            --ombra-rgb: 254, 173, 173;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        /* TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="house-room-and-household-items" data-materia="Inglese">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="85" height="85" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login-header">Accedi</a>
+                <a href="../registrati.html" class="btn-registrati-header">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Inglese / Vocabulary & Lexicon</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">House, Rooms and Household Items</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Glossario completo ed esaustivo dedicato alla casa, alle stanze interne, agli spazi esterni, ai mobili, agli elettrodomestici e agli oggetti domestici di uso quotidiano.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO / VOCABOLARIO ESAUSTIVO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Types of Houses and Exterior Areas (Tipi di Abitazione e Aree Esterne)</h2>
+            <p>Termini per descrivere gli edifici residenziali e gli spazi esterni della casa.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>House</td><td>Casa</td></tr>
+                    <tr><td>Detached house</td><td>Casa indipendente / Unifamiliare</td></tr>
+                    <tr><td>Semi-detached house</td><td>Villa bifamiliare / Casa bifamiliare</td></tr>
+                    <tr><td>Terraced house</td><td>Casa a schiera</td></tr>
+                    <tr><td>Flat / Apartment</td><td>Appartamento</td></tr>
+                    <tr><td>Studio flat</td><td>Monolocale</td></tr>
+                    <tr><td>Penthouse</td><td>Attico</td></tr>
+                    <tr><td>Cottage</td><td>Villino / Casetta di campagna</td></tr>
+                    <tr><td>Skyscraper</td><td>Grattacielo</td></tr>
+                    <tr><td>Roof</td><td>Tetto</td></tr>
+                    <tr><td>Chimney</td><td>Camino (sul tetto)</td></tr>
+                    <tr><td>Balcony</td><td>Balcone</td></tr>
+                    <tr><td>Terrace</td><td>Terrazzo</td></tr>
+                    <tr><td>Porch / Veranda</td><td>Portico / Veranda</td></tr>
+                    <tr><td>Garden</td><td>Giardino</td></tr>
+                    <tr><td>Yard / Courtyard</td><td>Cortile</td></tr>
+                    <tr><td>Driveway</td><td>Viale d'accesso (per auto)</td></tr>
+                    <tr><td>Fence</td><td>Recinzione / Staccionata</td></tr>
+                    <tr><td>Gate</td><td>Cancello</td></tr>
+                    <tr><td>Garage</td><td>Garage / Autorimessa</td></tr>
+                    <tr><td>Basement / Cellar</td><td>Seminterrato / Cantina</td></tr>
+                    <tr><td>Attic / Loft</td><td>Soffitta / Mansarda</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Rooms of the House (Le Stanze della Casa)</h2>
+            <p>I vari ambienti interni in cui è suddivisa un'abitazione.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Hall / Entrance hall</td><td>Ingresso / Disimpegno</td></tr>
+                    <tr><td>Living room / Sitting room</td><td>Salotto / Soggiorno</td></tr>
+                    <tr><td>Dining room</td><td>Sala da pranzo</td></tr>
+                    <tr><td>Kitchen</td><td>Cucina</td></tr>
+                    <tr><td>Bedroom</td><td>Camera da letto</td></tr>
+                    <tr><td>Master bedroom</td><td>Camera matrimoniale principale</td></tr>
+                    <tr><td>Bathroom</td><td>Bagno</td></tr>
+                    <tr><td>Toilet / Restroom</td><td>Servizi igienici / Toletta</td></tr>
+                    <tr><td>Study / Home office</td><td>Studio / Ufficio domestico</td></tr>
+                    <tr><td>Laundry room</td><td>Lavanderia</td></tr>
+                    <tr><td>Corridor / Hallway</td><td>Corridoio</td></tr>
+                    <tr><td>Stairs / Staircase</td><td>Scale</td></tr>
+                </tbody>
+            </table>
+
+            <h2>3. Furniture and Fixtures (Mobili e Complementi d'Arredo)</h2>
+            <p>Arredi principali presenti nelle diverse stanze della casa.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Furniture</td><td>Mobili / Arredamento (termine non numerabile)</td></tr>
+                    <tr><td>Armchair</td><td>Poltrona</td></tr>
+                    <tr><td>Sofa / Couch</td><td>Divano</td></tr>
+                    <tr><td>Coffee table</td><td>Tavolino da salotto</td></tr>
+                    <tr><td>Bookcase / Bookshelf</td><td>Libreria</td></tr>
+                    <tr><td>Table</td><td>Tavolo</td></tr>
+                    <tr><td>Chair</td><td>Sedia</td></tr>
+                    <tr><td>Bed</td><td>Letto</td></tr>
+                    <tr><td>Wardrobe / Closet</td><td>Armadio / Guardaroba</td></tr>
+                    <tr><td>Chest of drawers</td><td>Cassettiera / Comodino a cassetti</td></tr>
+                    <tr><td>Bedside table</td><td>Comodino</td></tr>
+                    <tr><td>Desk</td><td>Scrivania</td></tr>
+                    <tr><td>Rug / Carpet</td><td>Tappeto (piccolo o da parete a parete)</td></tr>
+                    <tr><td>Curtains / Drapes</td><td>Tendaggi / Tende</td></tr>
+                    <tr><td>Blinds</td><td>Tapparelle / Persiane / Veneziane</td></tr>
+                    <tr><td>Mirror</td><td>Specchio</td></tr>
+                    <tr><td>Lamp (table lamp, floor lamp)</td><td>Lampada (da tavolo, da terra)</td></tr>
+                    <tr><td>Picture / Painting</td><td>Quadro / Dipinto</td></tr>
+                    <tr><td>Cushion</td><td>Cuscino (da arredamento/divano)</td></tr>
+                    <tr><td>Pillow</td><td>Cuscino (da letto)</td></tr>
+                    <tr><td>Blanket / Quilt</td><td>Coperta / Trapunta</td></tr>
+                    <tr><td>Sheets</td><td>Lenzuola</td></tr>
+                </tbody>
+            </table>
+
+            <h2>4. Household Appliances (Elettrodomestici)</h2>
+            <p>Dispositivi meccanici ed elettronici utilizzati per i lavori domestici.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Household appliances</td><td>Elettrodomestici</td></tr>
+                    <tr><td>Refrigerator / Fridge</td><td>Frigorifero</td></tr>
+                    <tr><td>Freezer</td><td>Congelatore</td></tr>
+                    <tr><td>Oven</td><td>Forno</td></tr>
+                    <tr><td>Microwave oven</td><td>Forno a microonde</td></tr>
+                    <tr><td>Stove / Cooker</td><td>Cucina a gas / Fornello</td></tr>
+                    <tr><td>Dishwasher</td><td>Lavastoviglie</td></tr>
+                    <tr><td>Washing machine</td><td>Lavatrice</td></tr>
+                    <tr><td>Tumble dryer / Dryer</td><td>Asciugatrice</td></tr>
+                    <tr><td>Iron</td><td>Ferro da stiro</td></tr>
+                    <tr><td>Vacuum cleaner</td><td>Aspirapolvere</td></tr>
+                    <tr><td>Toaster</td><td>Tapire / Tostapane</td></tr>
+                    <tr><td>Blender / Mixer</td><td>Frullatore / Mixer</td></tr>
+                    <tr><td>Coffee maker / Coffee machine</td><td>Macchina da caffè</td></tr>
+                    <tr><td>Hairdryer</td><td>Asciugacapelli / Phono</td></tr>
+                    <tr><td>Air conditioner</td><td>Condizionatore d'aria</td></tr>
+                    <tr><td>Radiator</td><td>Termosifone / Radiatore</td></tr>
+                </tbody>
+            </table>
+
+            <h2>5. Household Items and Utensils (Oggetti Domestici e Utensili)</h2>
+            <p>Oggetti di uso comune, vasellame, stoviglie e strumenti per la pulizia.</p>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr><th>Inglese</th><th>Italiano</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Plate / Dish</td><td>Piatto</td></tr>
+                    <tr><td>Bowl</td><td>Ciotola / Scodella</td></tr>
+                    <tr><td>Cup / Mug</td><td>Tazza / Mug</td></tr>
+                    <tr><td>Glass</td><td>Bicchiere</td></tr>
+                    <tr><td>Cutlery / Silverware</td><td>Posate</td></tr>
+                    <tr><td>Knife</td><td>Coltello</td></tr>
+                    <tr><td>Fork</td><td>Forchetta</td></tr>
+                    <tr><td>Spoon</td><td>Cucchiaio</td></tr>
+                    <tr><td>Teaspoon</td><td>Cucchiaino</td></tr>
+                    <tr><td>Pot / Saucepan</td><td>Pentola / Casseruola</td></tr>
+                    <tr><td>Frying pan</td><td>Padella</td></tr>
+                    <tr><td>Cutting board</td><td>Tagliere</td></tr>
+                    <tr><td>Bin / Rubbish bin / Trash can</td><td>Pattumiera / Secchio dell'immondizia</td></tr>
+                    <tr><td>Broom</td><td>Scopa</td></tr>
+                    <tr><td>Mop</td><td>Mocio / Spatola lavapavimenti</td></tr>
+                    <tr><td>Bucket</td><td>Secchio</td></tr>
+                    <tr><td>Duster</td><td>Spolverino</td></tr>
+                    <tr><td>Cloth / Rag</td><td>Strofinaccio / Panno / cencio</td></tr>
+                    <tr><td>Towel</td><td>Asciugamano</td></tr>
+                    <tr><td>Soap</td><td>Sapone</td></tr>
+                    <tr><td>Toothbrush</td><td>Spazzolino da denti</td></tr>
+                    <tr><td>Toothpaste</td><td>Dentifricio</td></tr>
+                    <tr><td>Key</td><td>Chiave</td></tr>
+                    <tr><td>Lock</td><td>Serratura</td></tr>
+                    <tr><td>Doorknob / Door handle</td><td>Maniglia della porta</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">💡 Consiglio di Studio per la Casa</h3>
+                <p style="margin-bottom: 0;">
+                    Un ottimo esercizio per memorizzare questi vocaboli consiste nel fare un vero e proprio "tour" mentale della tua abitazione: cammina stanza per stanza (dalla <i>kitchen</i> alla <i>bedroom</i>) etichettando mentalmente ogni oggetto e mobile in inglese.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

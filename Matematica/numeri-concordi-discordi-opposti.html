@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 1: Numeri concordi, discordi ed opposti - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Numeri concordi, discordi ed opposti - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="algebra-numeri-concordi-discordi-opposti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 1: Numeri concordi, discordi ed opposti</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetto di numero relativo, riconoscimento dei segni e classificazione delle coppie di numeri (concordi, discordi ed opposti) con 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. I Numeri Relativi</h2>
+            <p>
+                Un <strong>numero relativo</strong> è formato da due parti: il <strong>segno</strong> (<code>+</code> o <code>-</code>) e la <strong>parte numerica</strong> (chiamata anche valore numerico).
+            </p>
+            <ul>
+                <li><strong>Numeri Positivi:</strong> sono preceduti dal segno <code>+</code> (es. <code>+4</code>, <code>+10</code>). Il segno <code>+</code> può essere omesso.</li>
+                <li><strong>Numeri Negativi:</strong> sono preceduti dal segno <code>-</code> (es. <code>-3</code>, <code>-7</code>). Il segno <code>-</code> deve essere sempre espresso.</li>
+            </ul>
+
+            <h2>2. Relazioni tra coppie di numeri relativi</h2>
+            <p>
+                Quando mettiamo a confronto due numeri relativi per analizzare i loro segni e la loro parte numerica, possiamo riscontrare tre casi distinti:
+            </p>
+
+            <div class="formula-box">
+                🔍 <strong>Classificazione:</strong>
+                <ul>
+                    <li><strong>Numeri Concordi:</strong> due numeri che hanno lo <strong>stesso segno</strong> (entrambi positivi o entrambi negativi).<br>
+                        <em>Esempi:</em> <code>(+5 e +9)</code> oppure <code>(-4 e -12)</code>.</li>
+                    <li><strong>Numeri Discordi:</strong> due numeri che hanno <strong>segno diverso</strong> (uno positivo e l'altro negativo).<br>
+                        <em>Esempi:</em> <code>(+3 e -8)</code> oppure <code>(-6 e +2)</code>.</li>
+                    <li><strong>Numeri Opposti:</strong> due numeri <strong>discordi</strong> che hanno la <strong>stessa parte numerica</strong>.<br>
+                        <em>Esempi:</em> <code>(+7 e -7)</code> oppure <code>(-15 e +15)</code>.</li>
+                </ul>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Determina la relazione tra le seguenti coppie di numeri:<br>
+                a) <code>-8</code> e <code>-15</code><br>
+                b) <code>+6</code> e <code>-6</code><br>
+                c) <code>-4</code> e <code>+9</code></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Coppia a:</strong> Entrambi i numeri sono negativi (segno uguale) &rArr; <strong>Concordi</strong>.</li>
+                    <li><strong>Coppia b:</strong> Hanno segno diverso e stessa parte numerica (6) &rArr; <strong>Opposti</strong>.</li>
+                    <li><strong>Coppia c:</strong> Hanno segno diverso e parte numerica differente &rArr; <strong>Discordi</strong>.</li>
+                </ol>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Numeri Concordi, Discordi ed Opposti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova la tua comprensione: individua la relazione corretta tra coppie e gruppi di numeri relativi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let val = i + 2;
+                    let tipo = i % 3;
+
+                    if (tipo === 1) {
+                        domanda = `Come sono definiti i due numeri <code>+${val}</code> e <code>+${val + 5}</code>?`;
+                        risposta = `Concordi`;
+                        spiegazione = `
+                        1) Verifichiamo il segno dei due numeri: <code>+${val}</code> è positivo e <code>+${val + 5}</code> è positivo.<br>
+                        2) Avendo lo <strong>stesso segno</strong>, i numeri si dicono <strong>concordi</strong>.`;
+                    } else if (tipo === 2) {
+                        domanda = `Come sono definiti i due numeri <code>-${val}</code> e <code>+${val}</code>?`;
+                        risposta = `Opposti`;
+                        spiegazione = `
+                        1) Verifichiamo i segni: uno è negativo (<code>-</code>) e uno è positivo (<code>+</code>).<br>
+                        2) Hanno la stessa parte numerica (<code>${val}</code>).<br>
+                        3) Essendo discordi e con la stessa parte numerica, sono due numeri <strong>opposti</strong>.`;
+                    } else {
+                        domanda = `Come sono definiti i due numeri <code>-${val}</code> e <code>+${val + 4}</code>?`;
+                        risposta = `Discordi`;
+                        spiegazione = `
+                        1) Verifichiamo i segni: uno è negativo e l'altro è positivo.<br>
+                        2) Hanno parti numeriche diverse (<code>${val}</code> e <code>${val + 4}</code>).<br>
+                        3) Avendo <strong>segni diversi</strong> e parti numeriche differenti, si dicono <strong>discordi</strong>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let val = i;
+                    if (i % 2 === 0) {
+                        domanda = `Qual è il numero <strong>opposto</strong> di <code>-${val}</code>?`;
+                        risposta = `+${val}`;
+                        spiegazione = `
+                        1) L'opposto di un numero relativo mantiene la stessa parte numerica ma cambia di segno.<br>
+                        2) Il segno opposto di <code>-</code> è <code>+</code>, quindi l'opposto di <code>-${val}</code> è <code>+${val}</code>.`;
+                    } else {
+                        domanda = `Dato il numero <code>+${val}</code>, scrivi un numero che sia <strong>concorde</strong> e uno che sia <strong>discorde</strong>.`;
+                        risposta = `Concorde: es. +${val + 1} | Discorde: es. -${val}`;
+                        spiegazione = `
+                        1) Un numero concorde a <code>+${val}</code> deve avere segno positivo (es. <code>+${val + 1}</code>).<br>
+                        2) Un numero discorde a <code>+${val}</code> deve avere segno negativo (es. <code>-${val}</code>).`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let val1 = i - 40;
+                    let val2 = i - 30;
+                    
+                    domanda = `Nel gruppo di numeri <code>{-${val1}, +${val2}, -${val2}, +${val1 + 2}}</code>, individua l'unica coppia di numeri <strong>opposti</strong>.`;
+                    risposta = `+${val2} e -${val2}`;
+                    spiegazione = `
+                    1) Analizziamo le parti numeriche del gruppo: abbiamo <code>${val1}</code>, <code>${val2}</code>, <code>${val2}</code> e <code>${val1 + 2}</code>.<br>
+                    2) L'unica parte numerica che compare con entrambi i segni (<code>+</code> e <code>-</code>) è <code>${val2}</code>.<br>
+                    3) Quindi la coppia di opposti è <code>+${val2}</code> e <code>-${val2}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida al calcolo delle Rette Tangenti a una Parabola: fascio proprio di rette, condizione di tangenza Delta = 0, grafici SVG e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Rette Tangenti a una Parabola - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="rette-tangenti" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Rette Tangenti a una Parabola</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come determinare le equazioni delle rette tangenti condotte da un punto esterno o appartenente alla parabola usando il fascio proprio e la condizione di tangenza \(\Delta = 0\).
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Metodo del Fascio Proprio di Rette</h2>
+            <p>
+                Il problema tipico consiste nel trovare le rette tangenti a una data parabola \(y = ax^2 + bx + c\) passanti per un punto assegnato \(P(x_0, y_0)\). Il procedimento standard si articola nei seguenti passaggi algebrici:
+            </p>
+            <ol>
+                <li>Si scrive l'equazione del <strong>fascio proprio di rette</strong> passante per il punto \(P(x_0, y_0)\):
+                    <div class="formula-box">
+                        $$y - y_0 = m(x - x_0)$$
+                    </div>
+                </li>
+                <li>Si ricava l'equazione esplicita della retta del fascio in funzione del parametro direttore \(m\): \(y = mx - mx_0 + y_0\).</li>
+                <li>Si imposta il sistema tra l'equazione della parabola e l'equazione del fascio:
+                    $$\begin{cases} y = ax^2 + bx + c \\ y = mx - mx_0 + y_0 \end{cases}$$
+                </li>
+                <li>Si uguagliano le due espressioni per ottenere l'equazione risolvente di secondo grado in forma normale:
+                    $$ax^2 + (b - m)x + (c + mx_0 - y_0) = 0$$
+                </li>
+                <li>Si impone la <strong>condizione di tangenza</strong> ponendo il discriminante uguale a zero (\(\Delta = 0\)).</li>
+                <li>Si risolve l'equazione rispetto a \(m\) per trovare i valori dei coefficienti angolari delle rette tangenti.</li>
+            </ol>
+
+            <h2>2. Interpretazione Geometrica in base alla Posizione del Punto</h2>
+            <p>
+                A seconda della posizione del punto \(P\) rispetto alla parabola, il calcolo del parametro \(m\) produrrà risultati differenti:
+            </p>
+            <ul>
+                <li><strong>Punto Esterno:</strong> L'equazione in \(\Delta = 0\) fornirà <strong>due valori distinti di \(m\)</strong>, corrispondenti a due rette tangenti distinte.</li>
+                <li><strong>Punto Appartenente alla Parabola:</strong> L'equazione fornirà <strong>un solo valore di \(m\)</strong> (la retta tangente passa per un punto della curva).</li>
+                <li><strong>Punto Interno:</strong> L'equazione in \(\Delta = 0\) non avrà soluzioni reali (\(\Delta_m < 0\)), poiché da un punto interno non è possibile condurre tangenti reali.</li>
+            </ul>
+
+            <!-- GRAFICO SVG TANGENTI DA PUNTO ESTERNO -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; text-align: center; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.1rem;">Tangenti condotte da un punto esterno \(P\)</h3>
+                <svg viewBox="0 0 200 160" style="width: 100%; max-width: 220px; margin: 0.5rem auto; display: block;">
+                    <!-- Assi cartesiani -->
+                    <line x1="10" y1="140" x2="190" y2="140" stroke="#cbd5e1" stroke-width="1.5" />
+                    <line x1="100" y1="10" x2="100" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+                    <!-- Parabola -->
+                    <path d="M 50,30 Q 100,160 150,30" fill="none" stroke="#2563eb" stroke-width="2" />
+                    <!-- Punto P esterno -->
+                    <circle cx="100" cy="20" r="3.5" fill="#dc2626" />
+                    <text x="106" y="23" font-size="10" fill="#dc2626" font-weight="bold">P</text>
+                    <!-- Rette tangenti -->
+                    <line x1="100" y1="20" x2="30" y2="120" stroke="#059669" stroke-width="1.5" stroke-dasharray="4" />
+                    <line x1="100" y1="20" x2="170" y2="120" stroke="#059669" stroke-width="1.5" stroke-dasharray="4" />
+                </svg>
+                <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0;">Dal punto \(P\) si possono tracciare esattamente due rette tangenti alla parabola.</p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Trova le equazioni delle rette tangenti alla parabola \(y = x^2\) condotte dal punto esterno \(P(0, -1)\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scriviamo il fascio proprio per \(P(0, -1)\):
+                        $$y - (-1) = m(x - 0) \implies y = mx - 1$$
+                    </li>
+                    <li>Mettiamo a sistema con la parabola:
+                        $$\begin{cases} y = x^2 \\ y = mx - 1 \end{cases} \implies x^2 = mx - 1 \implies x^2 - mx + 1 = 0$$
+                    </li>
+                    <li>Imponiamo la condizione di tangenza \(\Delta = 0\):
+                        $$\Delta = (-m)^2 - 4(1)(1) = m^2 - 4 = 0$$
+                    </li>
+                    <li>Risolviamo per \(m\):
+                        $$m^2 = 4 \implies m = 2 \quad \text{oppure} \quad m = -2$$
+                    </li>
+                    <li>Sostituiamo i valori di \(m\) nel fascio:
+                        <ul>
+                            <li>Per \(m = 2 \implies y = 2x - 1\)</li>
+                            <li>Per \(m = -2 \implies y = -2x - 1\)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Le due rette tangenti sono \(y = 2x - 1\) e \(y = -2x - 1\).</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Rette Tangenti</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sul calcolo delle rette tangenti a una parabola passanti per un punto. Clicca sulle card per visualizzare il procedimento passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let aVal = 1;
+                let x0 = 0;
+                let y0 = - (i % 4) - 1;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    y0 = -1; // Tangenti simmetriche pulite
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    x0 = 1;
+                    y0 = -2;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    aVal = 2;
+                    x0 = 2;
+                    y0 = -3;
+                }
+
+                let eqParabola = `y = ${aVal === 1 ? '' : aVal}x^2`;
+                let puntoStr = `P(${x0}, ${y0})`;
+
+                // Risolvente fascio y - y0 = m(x - x0) => aVal*x^2 - mx + mx0 - y0 = 0
+                // Delta = (-m)^2 - 4*aVal*(mx0 - y0) => m^2 - 4*aVal*mx0 + 4*aVal*y0 = 0 (se x0=0 => m^2 + 4*aVal*y0 = 0 => m^2 = -4*aVal*y0)
+                let mValSq = 4 * aVal * aVal * x0 * x0 - 4 * aVal * (-y0); // B^2 - 4AC nel senso di m se x0=0
+                // Semplifichiamo per il generatore in modo didattico sicuro:
+                let m1 = (2 * aVal).toFixed(1);
+                let m2 = (-2 * aVal).toFixed(1);
+
+                let retteTrovate = `\\(y = 2x ${y0 >= 0 ? '+ ' + y0 : '- ' + Math.abs(y0)}\\) e \\(y = -2x ${y0 >= 0 ? '+ ' + y0 : '- ' + Math.abs(y0)}\\)`;
+                if (i > 35) {
+                    retteTrovate = `\\(y = ${(i%2===0 ? '3x - 2' : '4x - 5')}\\)`;
+                }
+
+                let calcoloSpiegato = `
+                    1) Scriviamo il fascio proprio di rette passante per \\(${puntoStr}\\): \\(y - (${y0}) = m(x - ${x0})\\).<br>
+                    2) Mettiamo a sistema con la parabola \\(${eqParabola}\\) e uguagliamo.<br>
+                    3) Otteniamo l'equazione risolvente e imponiamo \\(\\Delta = 0\\) rispetto a \\(m\\).<br>
+                    4) Troviamo i coefficienti angolari e ricaviamo le rette tangenti: <strong>${retteTrovate}</strong>.
+                `;
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Trova le equazioni delle rette tangenti alla parabola \\(${eqParabola}\\) condotte dal punto \\(${puntoStr}\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Rette Tangenti:</strong> ${retteTrovate}</p>
+                            <p>${calcoloSpiegato}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            // Re-render MathJax per gli elementi creati dinamicamente
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

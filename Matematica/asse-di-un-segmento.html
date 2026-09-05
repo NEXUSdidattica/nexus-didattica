@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 5: L'Asse di un Segmento (definizione, proprietà e costruzione) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Asse di un Segmento - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-lezione-5" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Euclidea Piana / Lezione 5</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">L'Asse di un Segmento</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione geometrica dell'asse, proprietà di equidistanza, perpendicolarità nel punto medio e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è l'Asse di un Segmento?</h2>
+            <p>
+                L'<strong>asse di un segmento</strong> è la retta perpendicolare al segmento condotta per il suo punto medio. In altre parole, l'asse taglia il segmento a metà formando angoli retti (<code>90&deg;</code>).
+            </p>
+            <ul>
+                <li><strong>Passaggio per il punto medio:</strong> Interseca il segmento esattamente nel suo punto medio <code>M</code>, dividendolo in due parti congruenti (<code>AM = MB</code>).</li>
+                <li><strong>Perpendicolarità:</strong> Forma quattro angoli retti nel punto d'intersezione con il segmento di origine.</li>
+                <li><strong>Proprietà fondamentale di equidistanza:</strong> Ogni punto che appartiene all'asse di un segmento si trova a <em>uguale distanza</em> (è equidistante) dai due estremi del segmento stesso.</li>
+            </ul>
+
+            <h2>2. Applicazioni e Proprietà Geometriche</h2>
+            <p>
+                Nello studio dei triangoli e delle figure piane, l'asse del segmento riveste un ruolo cruciale:
+            </p>
+            <ul>
+                <li>Se un punto è equidistante dagli estremi di un segmento, allora esso appartiene certamente all'asse di quel segmento.</li>
+                <li>Gli assi dei tre lati di un triangolo si incontrano tutti in un unico punto chiamato <em>circocentro</em>, che rappresenta il centro della circonferenza circoscritta al triangolo.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Proprietà Chiave dell'Asse:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Se <code>r</code> è l'asse di <code>AB</code> e <code>M</code> è il punto medio, allora <code>AM = MB = AB / 2</code>.<br>
+                    • Per qualsiasi punto <code>P</code> situato sull'asse <code>r</code>, vale sempre la relazione di distanza: <code>PA = PB</code>.<br>
+                    • L'asse interseca il segmento formando angoli di <code>90&deg;</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un segmento <code>AB</code> misura <code>16 cm</code> e la retta <code>r</code> è il suo asse. Sapendo che <code>M</code> è il punto medio, calcola la misura del segmento <code>AM</code> e la distanza tra un punto <code>P</code> qualsiasi dell'asse e l'estremo <code>B</code>, sapendo che <code>PA = 10 cm</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo che l'asse passa per il punto medio <code>M</code>, quindi divide <code>AB</code> in due parti uguali: <code>AM = AB / 2 = 16 / 2 = 8 cm</code>.</li>
+                    <li>Sfruttiamo la proprietà di equidistanza dell'asse: ogni punto sull'asse ha la stessa distanza dai due estremi <code>A</code> e <code>B</code>.</li>
+                    <li>Poiché <code>PA = 10 cm</code>, per la proprietà dell'asse si ha immediatamente che <code>PB = PA = 10 cm</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: AM = 8 cm &nbsp; e &nbsp; PB = 10 cm</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sull'Asse di un Segmento</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e geometrici basati sul punto medio, sulla perpendicolarità e sulla proprietà di equidistanza dell'asse.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let abVal = ((i % 15) + 5) * 2; // Valore pari per divisione esatta
+                    let amVal = abVal / 2;
+                    domanda = `Il segmento <code>AB</code> misura <code>${abVal} cm</code> e la retta <code>r</code> è il suo asse. Calcola la misura del segmento <code>AM</code>, dove <code>M</code> è il punto d'intersezione dell'asse con il segmento.`;
+                    risposta = `<strong>${amVal} cm</strong>`;
+                    spiegazione = `
+                    1) L'asse di un segmento passa sempre per il suo punto medio <code>M</code>.<br>
+                    2) Il punto medio divide il segmento in due parti congruenti: <code>AM = AB / 2</code>.<br>
+                    3) Eseguiamo il calcolo: <code>${abVal} cm / 2 = ${amVal} cm</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let distVal = (i % 25) + 12;
+                    domanda = `Sia <code>r</code> l'asse del segmento <code>AB</code> e sia <code>P</code> un punto qualsiasi appartenente alla retta <code>r</code>. Sapendo che la distanza <code>PA</code> misura <code>${distVal} cm</code>, quanto misura la distanza <code>PB</code>?`;
+                    risposta = `<strong>${distVal} cm</strong>`;
+                    spiegazione = `
+                    1) Sfruttiamo la proprietà fondamentale dell'asse di un segmento: ogni punto appartenente all'asse è equidistante dagli estremi.<br>
+                    2) Per tale proprietà geometrica, la distanza <code>PB</code> è esattamente uguale alla distanza <code>PA</code>.<br>
+                    3) Di conseguenza, <code>PB = ${distVal} cm</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let metaVal = (i % 20) + 10;
+                    let totVal = metaVal * 2;
+                    domanda = `Un punto <code>P</code> appartiene all'asse del segmento <code>AB</code>. La distanza tra il punto <code>P</code> e l'estremo <code>A</code> è di <code>${metaVal} cm</code>. Sapendo inoltre che la distanza tra il punto medio <code>M</code> e l'estremo <code>B</code> è metà di <code>AB</code>, calcola la lunghezza totale del segmento <code>AB</code> sapendo che <code>AM = ${metaVal} cm</code> (suggerimento: sfrutta le proprietà di simmetria dell'asse).`;
+                    risposta = `<strong>${totVal} cm</strong>`;
+                    spiegazione = `
+                    1) L'asse interseca il segmento nel suo punto medio <code>M</code>, dividendolo in due parti uguali (<code>AM = MB = ${metaVal} cm</code>).<br>
+                    2) La lunghezza totale del segmento <code>AB</code> è data dalla somma di <code>AM</code> e <code>MB</code>.<br>
+                    3) Calcolo finale: <code>${metaVal} cm + ${metaVal} cm = ${totVal} cm</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

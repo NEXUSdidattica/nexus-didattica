@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La solubilità e tutti i fattori che la influenzano: natura chimica, temperatura, pressione, legge di Henry e curve di solubilità - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La solubilità e tutti i fattori che la influenzano - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+
+        /* STILE TABELLE DIDATTICHE */
+        .tabella-didattica {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--bordo-chiaro);
+        }
+
+        .tabella-didattica th, .tabella-didattica td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tabella-didattica th {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            font-weight: 700;
+        }
+
+        .tabella-didattica tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* STILE CONTENITORE DISEGNO / SCHEMA VISIVO SVG */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, var(--sfondo-chiaro) 100%);
+            border: 1px solid var(--bordo-chiaro);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="solubilita-e-tutti-i-fattori-che-la-influenzano" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia">Scienze / Chimica / Soluzioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La solubilità e tutti i fattori che la influenzano</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi approfondita del concetto di solubilità, concentrazione delle soluzioni sature, natura chimica, effetto della temperatura, legge di Henry e pressione.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione rigorosa di solubilità</h2>
+            <p>
+                Si definisce <strong>solubilità ($S$)</strong> di una data sostanza (soluto) in un determinato solvente, a una specifica temperatura e pressione, la <strong>massima quantità di soluto che può sciogliersi in una massa o volume noto di solvente</strong> (solitamente $100\text{ g}$ di acqua) per formare una soluzione satura e in equilibrio chimico con il soluto non sciolto.
+            </p>
+            <p>
+                In base alla quantità di soluto disciolto rispetto al limite di solubilità, una soluzione può essere classificata come:
+            </p>
+            <ul>
+                <li><strong>Insura:</strong> Contiene una quantità di soluto inferiore alla massima solubilità consentita a quella temperatura.</li>
+                <li><strong>Satura:</strong> Contiene la quantità massima di soluto che il solvente può sciogliere; si stabilisce un equilibrio dinamico tra il soluto che passa in soluzione e quello che precipita.</li>
+                <li><strong>Sovrasatura:</strong> Contiene una quantità di soluto superiore alla sua normale solubilità a quella temperatura (stato metastabile, ottenuto raffreddando lentamente una soluzione satura calda).</li>
+            </ul>
+
+            <h2>2. Fattore 1: La natura chimica di soluto e solvente</h2>
+            <p>
+                Il principio fondamentale che regola la compatibilità chimica è riassunto dall'assioma empirico: <strong>"Il simile scioglie il simile"</strong>.
+            </p>
+            <ul>
+                <li><strong>Sostanze polari e ioniche:</strong> Si sciolgono eccellentemente in solventi polari (come l'acqua, $\text{H}_2\text{O}$) grazie a forti interazioni elettrostatiche di tipo ione-dipolo o dipolo-dipolo (es. il cloruro di sodio o il glucosio).</li>
+                <li><strong>Sostanze apolari:</strong> Si sciolgono in solventi organici apolari (es. esano, benzene, tetracloruro di carbonio) mediante deboli forze di dispersione di London. I composti apolari (es. grassi, oli) sono invece insolumili in acqua.</li>
+            </ul>
+
+            <h2>3. Fattore 2: L'effetto della temperatura</h2>
+            <p>
+                La temperatura modifica in modo marcato la solubilità, ma il comportamento varia drasticamente a seconda dello stato fisico del soluto:
+            </p>
+            <ul>
+                <li>
+                    <strong>Solidi in liquidi (Processi Endotermici vs Esotermici):</strong> 
+                    Per la grande maggioranza dei sali solidi, il processo di dissoluzione è endotermico ($\Delta H_{\text{soluzione}} > 0$); di conseguenza, <strong>all'aumentare della temperatura, la solubilità aumenta</strong>. Tuttavia, esistono eccezioni (come il solfato di cerio o alcuni solfati) in cui la dissoluzione è esotermica e la solubilità diminuisce all'aumentare della temperatura.
+                </li>
+                <li>
+                    <strong>Gas in liquidi:</strong> 
+                    La dissoluzione di un gas in un liquido è sempre un processo esotermico, accompagnato da una diminuzione di entropia. Per questo motivo, <strong>all'aumentare della temperatura, la solubilità dei gas diminuisce sempre</strong> (le molecole gassose acquistano energia cinetica e fuggono dalla fase liquida).
+                </li>
+            </ul>
+
+            <!-- SCHEMA VISIVO RAPPRESENTATIVO SVG -->
+            <div class="figura-geometrica-container">
+                <svg width="560" height="220" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="560" height="220" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    
+                    <text x="280" y="25" font-family="Arial" font-size="13" fill="#15803d" font-weight="bold" text-anchor="middle">Andamento Tipico della Solubilità in Funzione della Temperatura</text>
+
+                    <!-- Assi Cartesiani -->
+                    <line x1="70" y1="180" x2="510" y2="180" stroke="#475569" stroke-width="2"/>
+                    <line x1="70" y1="50" x2="70" y2="180" stroke="#475569" stroke-width="2"/>
+                    <text x="515" y="185" font-family="Arial" font-size="10" fill="#475569">Temp ($^\circ\text{C}$)</text>
+                    <text x="40" y="45" font-family="Arial" font-size="10" fill="#475569">Solubilità</text>
+
+                    <!-- Curve Solidi (Crescenti) -->
+                    <path d="M 80 160 Q 250 150 490 70" fill="none" stroke="#0ad41f" stroke-width="3"/>
+                    <text x="320" y="95" font-family="Arial" font-size="11" fill="#15803d" font-weight="bold">Solidi tipici ($\Delta H > 0$)</text>
+
+                    <!-- Curva Gas (Decrescente) -->
+                    <path d="M 80 70 Q 250 130 490 170" fill="none" stroke="#3b82f6" stroke-width="3"/>
+                    <text x="250" y="145" font-family="Arial" font-size="11" fill="#1e40af" font-weight="bold">Gas in acqua ($\Delta H < 0$)</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Grafico comparativo dell'effetto della temperatura sulla solubilità di solidi e gas.
+                </div>
+            </div>
+
+            <h2>4. Fattore 3: L'effetto della pressione e la Legge di Henry</h2>
+            <p>
+                La pressione ha un effetto trascurabile sulla solubilità dei solidi e dei liquidi, poiché essi sono virtualmente incompressibili. Al contrario, <strong>la pressione esercita un'influenza fondamentale sulla solubilità dei gas</strong> nei liquidi.
+            </p>
+            <p>
+                Questo comportamento è descritto quantitativamente dalla <strong>Legge di Henry</strong>, la quale stabilisce che a temperatura costante, la solubilità di un gas in un liquido è direttamente proporzionale alla pressione parziale del gas che sovrasta la soluzione:
+            </p>
+            <div class="formula-box">
+                $$S = k_H \cdot P_{\text{gas}}$$
+                <p style="margin-top: 0.5rem; margin-bottom: 0; font-size: 0.95rem;">
+                    Dove $S$ è la solubilità del gas, $P_{\text{gas}}$ è la pressione parziale del gas e $k_H$ è la <em>costante di Henry</em> (specifica per ogni coppia gas-solvente a quella data temperatura).
+                </p>
+            </div>
+            <p>
+                Un'applicazione quotidiana di questa legge si osserva nelle bevande gassate: le bottiglie vengono imbottigliate sotto una pressione di anidride carbonica ($\text{CO}_2$) superiore a $1\text{ atm}$. Quando si svita il tappo, la pressione diminuisce improvvisamente e la solubilità della $\text{CO}_2$ cala, provocando la fuoriuscita di bollicine gassose.
+            </p>
+
+            <h2>5. Tabella riassuntiva di tutti i fattori</h2>
+            <table class="tabella-didattica">
+                <thead>
+                    <tr>
+                        <th>Fattore Influente</th>
+                        <th>Natura del Soluto</th>
+                        <th>Effetto sulla Solubilità</th>
+                        <th>Ragione Fondamentale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Natura Chimica</strong></td>
+                        <td>Qualsiasi</td>
+                        <td>Simile scioglie simile</td>
+                        <td>Compatibilità di polarità e forze intermolecolari.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperatura</strong></td>
+                        <td>Solidi (Endotermici)</td>
+                        <td>Aumenta ($\uparrow$)</td>
+                        <td>Fornisce energia per rompere il reticolo cristallino.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperatura</strong></td>
+                        <td>Gas</td>
+                        <td>Diminuisce ($\downarrow$)</td>
+                        <td>Aumenta l'agitazione termica e la tendenza alla fuga del gas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pressione</strong></td>
+                        <td>Solidi e Liquidi</td>
+                        <td>Ininfluente ($\approx 0$)</td>
+                        <td>Incompressibilità delle fasi condensate.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pressione</strong></td>
+                        <td>Gas</td>
+                        <td>Aumenta ($\uparrow$)</td>
+                        <td>Maggiore compressione molecolare (Legge di Henry).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- APPROFONDIMENTO DIDATTICO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">⚠️ Applicazione medica: la malattia da decompressione (i subacquei)</h3>
+                <p style="margin-bottom: 0;">
+                    La Legge di Henry spiega anche un fenomeno fisico critico per i subacquei professionisti e sportivi: la <strong>malattia da decompressione</strong> (nota come "le <em> bends</em>"). Sott'acqua, a causa della pressione elevata delle bombole e della profondità, una grande quantità di azoto ($\text{N}_2$) si scioglie nel sangue e nei tessuti corporei del subacqueo. Se la risalita in superficie avviene troppo rapidamente, la pressione diminuisce in modo repentino e l'azoto disciolto fuoriesce dalla soluzione formando minuscoli bollicine gassose nei vasi sanguigni, causando gravi embolie e dolori lancinanti. Per evitarlo, i subacquei devono rispettare tabelle di decompressione rigorose durante la risalita.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

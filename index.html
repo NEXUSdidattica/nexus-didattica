@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sito internet per studiare e fare esercizi">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title> NEXUS didattica </title>
+
+    <!-- Google AdSense: -->
+
+    <!-- Conferma di Google Search Console: -->
+
+
+</head>
+
+<body>
+
+    <!-- BANNER AVVISI ADMIN -->
+    <div id="banner-avviso-admin"
+        style="display: none; background: linear-gradient(90deg, #2563eb, #1d4ed8); color: white; text-align: center; padding: 0.75rem 1rem; font-weight: bold; position: relative; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+        <span id="testo-avviso-admin">🔔 Caricamento avviso...</span>
+    </div>
+
+    <header>
+
+        <div class="hotbar">
+
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <!-- Tasti Accesso/Registrazione per Firebase -->
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- Immagine sfondo (CSS) con testo sopra: -->
+        <div class="hero-banner">
+            <h2> NEXUS </h2>
+            <p> La piattaforma interattiva per studiare e fare esercizi</p>
+
+            <!-- Pulsante che ti fa scorrere sotto fino alla sezione "Materie" -->
+            <a href="#materie" class="btn-materie">Scopri le Materie</a>
+        </div>
+
+
+        <!-- SEZIONE ESERCIZIO DELLA SETTIMANA -->
+        <section class="es-settimana">
+            <h2>Esercizio della Settimana e soluzione del Precedente💡</h2>
+            <p class="sottotitolo-esercizio">Allena la mente! Scopri lo svolgimento della sfida precedente e mettiti
+                alla prova con il nuovo quesito.</p>
+
+            <!-- 1. SOLUZIONE SETTIMANA PRECEDENTE -->
+            <div class="vecchia-soluzione">
+                <span class="materia-badge passato">Soluzione della Settimana Scorsa</span>
+                <h3 id="vecchia-soluzione-titolo">Quesito: Caricamento...</h3>
+
+                <div class="soluzione-contenuto" id="vecchia-soluzione-testo">
+                    <p>Caricamento soluzione...</p>
+                </div>
+            </div>
+
+            <!-- 2. NUOVO QUESITO -->
+            <div class="quesito">
+                <h1>Sfida della Settimana</h1>
+                <h2 id="nuovo-quesito-titolo">Caricamento materia e titolo...</h2>
+                <p class="testo-esercizio" id="nuovo-quesito-testo">Caricamento esercizio...</p>
+
+                <div class="avviso-prossima-settimana">
+                    <p>⏳ <em>La soluzione completa e il procedimento verranno pubblicati lunedì prossimo!</em></p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Come nasce NEXUS didattica? -->
+        <div class="nascita">
+            <h3> Come nesce l'idea di NEXUS? </h3>
+            <p>NEXUS didattica<sup>&trade;</sup> è una piattaforma digitale moderna nata per connettere la teoria
+                scolastica alla pratica. Offre spiegazioni chiare, esercizi interattivi e simulazioni mirate in
+                un'interfaccia semplice e intuitiva, pensata per aiutare gli studenti a ripassare rapidamente e
+                tracciare i propri progressi.</p>
+        </div>
+
+
+        <!-- Guida alla struttura di NEXUS: -->
+        <div class="faq">
+            <h3>Come è strutturato NEXUS?</h3>
+            <p>NEXUS didattica è organizzato in sezioni chiare e intuitive per facilitare la navigazione:</p>
+            <ul>
+                <li><strong>Area Teoria:</strong> Schede sintetiche con spiegazioni chiare, formule ed esempi pratici
+                    diviso per materia.</li>
+                <li><strong>Area Esercizi:</strong> Quiz interattivi con correzione immediata per testare subito la
+                    preparazione.</li>
+                <li><strong>Simulazioni INVALSI:</strong> Moduli dedicati alle prove ufficiali con tracciamento del
+                    punteggio.</li>
+                <li><strong>Sezione Blog & Guide:</strong> Articoli di approfondimento e consigli utili sul metodo di
+                    studio.</li>
+            </ul>
+        </div>
+
+
+        <!-- Come studiare con NEXUS: -->
+
+        <section class="sezione-metodo">
+            <h2>Come studiare con NEXUS?</h2>
+            <p class="sottotitolo-metodo">Un percorso guidato in 3 fasi pensato per rendere lo studio semplice, chiaro
+                ed efficace.</p>
+
+            <div class="metodo-container">
+
+                <!-- Foto/Anteprima della pagina di studio -->
+                <div class="metodo-immagine">
+                    <img src="Immagini/anteprima_studio.jpg" alt="Esempio di pagina di studio su NEXUS didattica">
+                </div>
+
+                <!-- Spiegazione del metodo -->
+                <div class="metodo-passi">
+                    <div class="passo-card">
+                        <h3>1. Titoli e Definizioni Chiave</h3>
+                        <p>Ogni lezione si apre con una panoramica dei concetti fondamentali, per darti subito un quadro
+                            chiaro dell'argomento senza perdere tempo.</p>
+                    </div>
+
+                    <div class="passo-card">
+                        <h3>2. Teoria Facile e Adatta a Tutti</h3>
+                        <p>Spiegazioni semplici, linguaggio chiaro ed esempi pratici pensati per rendere accessibili
+                            anche i concetti più complessi.</p>
+                    </div>
+
+                    <div class="passo-card">
+                        <h3>3. Esercizi Divisi per Livello</h3>
+                        <p>Metti alla prova quello che hai imparato con tantissimi esercizi graduati (base, intermedio e
+                            avanzato) per consolidare la tua preparazione.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Le materie -->
+        <section class="sezione-materie" id="materie">
+
+            <h2> Scopri le materie scolastiche dove potrai studiare ed esercitarti: </h2>
+
+            <div class="materie">
+
+                <a href="materie.html#matematica" class="materia-card-link materia-matematica">
+                    <article class="materia-card">
+                        <h3>Matematica</h3>
+                        <ul>
+                            <li>Algebra</li>
+                            <li>Aritmetica</li>
+                            <li>Geometria</li>
+                            <li>Tirgonometria-Goniometria</li>
+                            <li>Analisi Matematica</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <a href="materie.html#fisica" class="materia-card-link materia-fisica">
+                    <article class="materia-card">
+                        <h3>Fisica</h3>
+                        <ul>
+                            <li>Strumenti e Misurazioni</li>
+                            <li>Dinamica e Cinematica</li>
+                            <li>Fluidi</li>
+                            <li>Onde e Ottica</li>
+                            <li>Termologia e Termodinamica</li>
+                            <li>Elettromagnetismo</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <a href="materie.html#inglese" class="materia-card-link materia-inglese">
+                    <article class="materia-card">
+                        <h3>Inglese</h3>
+                        <ul>
+                            <li>Grammar</li>
+                            <li>Vocabulary</li>
+                            <li>Listening</li>
+                            <li>Reading</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <a href="materie.html#italiano" class="materia-card-link materia-italiano">
+                    <article class="materia-card">
+                        <h3>Italiano</h3>
+                        <ul>
+                            <li>Analisi Grammaticale</li>
+                            <li>Analisi Logica</li>
+                            <li>Analisi del Periodo</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <a href="materie.html#informatica" class="materia-card-link materia-informatica">
+                    <article class="materia-card">
+                        <h3>Informatica</h3>
+                        <ul>
+                            <li>Hardware & Architettura</li>
+                            <li>Sistemi Operativi e Software</li>
+                            <li>Algoritmi e Strutture Dati</li>
+                            <li>Linguaggi di Programmazione e di Markup</li>
+                            <li>Reti & Web</li>
+                            <li>Sicurezza, Dati & Database</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <a href="materie.html#scienze" class="materia-card-link materia-scienze">
+                    <article class="materia-card">
+                        <h3>Scienze</h3>
+                        <ul>
+                            <li>Scienze della Terra</li>
+                            <li>Chimica</li>
+                            <li>Biologia</li>
+                        </ul>
+                    </article>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- SEZIONE FINALE -->
+        <section class="sezione-cta-finale">
+            <div class="cta-box">
+                <h2>Pronto a trasformare la tua preparazione? 🚀</h2>
+                <p>Scegli una materia, mettiti alla prova con gli esercizi e traccia i tuoi progressi ogni giorno.</p>
+                <a href="registrati.html" class="btn-registrati-finale">Crea un account gratuito</a>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+
+</body>
+
+</html>

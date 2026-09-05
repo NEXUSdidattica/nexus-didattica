@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Le Radici n-esime di un Numero Complesso - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Le Radici n-esime di un Numero Complesso - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="radici-nesime" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Numeri Complessi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Le Radici n-esime di un Numero Complesso</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Teoria del calcolo delle <code>n</code> radici distinte nel campo complesso, formula generale, interpretazione geometrica come vertici di un poligono regolare e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizione e Formula Generale</h2>
+            <p>
+                Nel campo complesso, l'estrazione di radice di indice <code>n</code> (con <code>n &ge; 2</code> intero) ammette sempre esattamente <code>n</code> soluzioni distinte. Dato un numero complesso <code>z = r &middot; (cos(&theta;) + i sin(&theta;))</code>, le sue <code>n</code> radici n-esime <code>w<sub>k</sub></code> sono date dalla formula:
+            </p>
+            <div class="formula-box" style="text-align: center; font-weight: bold; font-size: 1.15rem;">
+                w<sub>k</sub> = <sup>n</sup>&radic;r &middot; [cos((&theta; + 2k&pi;) / n) + i &middot; sin((&theta; + 2k&pi;) / n)]
+            </div>
+            <p>
+                dove l'indice <code>k</code> assume tutti i valori interi compresi tra <code>0</code> e <code>n - 1</code> (cioè <code>k = 0, 1, 2, ..., n-1</code>).
+            </p>
+
+            <h2>2. Interpretazione Geometrica</h2>
+            <p>
+                Geometricamente, i punti del piano di Argand-Gauss che rappresentano le <code>n</code> radici n-esime di un numero complesso godono di proprietà notevoli:
+            </p>
+            <ul>
+                <li><strong>Stessa circonferenza:</strong> Hanno tutti lo stesso modulo <code><sup>n</sup>&radic;r</code>, il che significa che si trovano tutti sulla medesima circonferenza centrata nell'origine e di raggio <code><sup>n</sup>&radic;r</code>.</li>
+                <li><strong>Poligono regolare:</strong> Gli affissi delle radici formano i vertici di un <em>poligono regolare di <code>n</code> lati</em> inscritto in tale circonferenza, uniformemente distanziati da un angolo pari a <code><sup>2&pi;</sup> / <sub>n</sub></code>.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico (Radici Quadrate):</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Calcoliamo le radici quadrate di <code>z = -4</code> (quindi <code>n = 2</code>, <code>r = 4</code>, <code>&theta; = &pi;</code>):<br>
+                    • Modulo delle radici: <code><sup>2</sup>&radic;4 = 2</code>.<br>
+                    • Per <code>k = 0</code>: <code>w<sub>0</sub> = 2 &middot; (cos(&pi;/2) + i sin(&pi;/2)) = 2i</code>.<br>
+                    • Per <code>k = 1</code>: <code>w<sub>1</sub> = 2 &middot; (cos((&pi; + 2&pi;)/2) + i sin(3&pi;/2)) = 2 &middot; (cos(3&pi;/2) + i sin(3&pi;/2)) = -2i</code>.<br>
+                    • Soluzioni: <code>w<sub>0</sub> = 2i</code> e <code>w<sub>1</sub> = -2i</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Trova le radici cubiche di <code>z = 8</code> (ovvero le soluzioni di <code>w<sup>3</sup> = 8</code>).</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Scriviamo <code>z = 8</code> in forma trigonometrica: <code>r = 8</code>, <code>&theta; = 0</code>. L'indice di radice è <code>n = 3</code>.</li>
+                    <li>Il modulo delle tre radici è <code><sup>3</sup>&radic;8 = 2</code>.</li>
+                    <li>Applichiamo la formula per <code>k = 0, 1, 2</code>:<br>
+                        • <strong>k = 0:</strong> <code>w<sub>0</sub> = 2 &middot; (cos(0) + i sin(0)) = 2</code>.<br>
+                        • <strong>k = 1:</strong> <code>w<sub>1</sub> = 2 &middot; (cos(<sup>2&pi;</sup> / <sub>3</sub>) + i sin(<sup>2&pi;</sup> / <sub>3</sub>)) = 2 &middot; (-<sup>1</sup>/<sub>2</sub> + i <sup>&radic;3</sup>/<sub>2</sub>) = -1 + i&radic;3</code>.<br>
+                        • <strong>k = 2:</strong> <code>w<sub>2</sub> = 2 &middot; (cos(<sup>4&pi;</sup> / <sub>3</sub>) + i sin(<sup>4&pi;</sup> / <sub>3</sub>)) = 2 &middot; (-<sup>1</sup>/<sub>2</sub> - i <sup>&radic;3</sup>/<sub>2</sub>) = -1 - i&radic;3</code>.
+                    </li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: w<sub>0</sub> = 2, w<sub>1</sub> = -1 + i&radic;3, w<sub>2</sub> = -1 - i&radic;3</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Radici n-esime</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di estrazione di radici quadrate, cubiche, quarte e n-esime di numeri complessi con argomenti notevoli.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let baseVal = (i % 4) + 1;
+                    let radVal = baseVal * baseVal;
+                    domanda = `Calcola le radici quadrate del numero reale positivo <code>z = ${radVal}</code>.`;
+                    risposta = `<strong>w<sub>0</sub> = ${baseVal}, &nbsp; w<sub>1</sub> = -${baseVal}</strong>`;
+                    spiegazione = `
+                    1) Modulo <code>r = ${radVal}</code>, argomento <code>&theta; = 0</code>.<br>
+                    2) Modulo delle radici: <code><sup>2</sup>&radic;${radVal} = ${baseVal}</code>.<br>
+                    3) Per <code>k = 0</code> otteniamo <code>${baseVal}</code>, per <code>k = 1</code> otteniamo <code>-${baseVal}</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let imBase = (i % 3) + 1;
+                    let imVal = imBase * imBase;
+                    domanda = `Determina le radici quadrate del numero immaginario puro <code>z = -${imVal}</code>.`;
+                    risposta = `<strong>w<sub>0</sub> = ${imBase}i, &nbsp; w<sub>1</sub> = -${imBase}i</strong>`;
+                    spiegazione = `
+                    1) Il numero <code>-${imVal}</code> si pu&ograve; scrivere in forma trigonometrica con modulo <code>${imVal}</code> e argomento <code>&pi;</code>.<br>
+                    2) Il modulo delle radici è <code><sup>2</sup>&radic;${imVal} = ${imBase}</code>.<br>
+                    3) Applicando la formula si ottengono i due valori opposti immaginari puri <code>${imBase}i</code> e <code>-${imBase}i</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let kSub = i % 3;
+                    domanda = `Trova la radice cubica <code>w<sub>${kSub}</sub></code> (con <code>k = ${kSub}</code>) dell'unit&agrave; <code>z = 1</code>.`;
+                    let angoloStr = kSub === 0 ? '0' : (kSub === 1 ? '2&pi;/3' : '4&pi;/3');
+                    let valRis = kSub === 0 ? '1' : (kSub === 1 ? '-1/2 + i&radic;3/2' : '-1/2 - i&radic;3/2');
+                    risposta = `<strong>${valRis}</strong>`;
+                    spiegazione = `
+                    1) Per <code>z = 1</code> si ha <code>r = 1</code>, <code>&theta; = 0</code> e <code>n = 3</code>.<br>
+                    2) Applicando la formula per <code>k = ${kSub}</code>, l'argomento della radice risulta <code>(${0} + 2&middot;${kSub}&middot;&pi;) / 3 = ${angoloStr}</code>.<br>
+                    3) Calcolando seno e coseno si perviene al valore <code>${valRis}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

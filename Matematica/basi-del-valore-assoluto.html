@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 2: Basi del valore assoluto - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Basi del valore assoluto - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="algebra-basi-valore-assoluto" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 2: Basi del valore assoluto</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Concetto di valore assoluto (o modulo), significato geometrico come distanza dall'origine e 100 esercizi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è il Valore Assoluto?</h2>
+            <p>
+                Il <strong>valore assoluto</strong> (chiamato anche <strong>modulo</strong>) di un numero relativo è il valore del numero considerato <strong>senza il suo segno</strong>. Si indica racchiudendo il numero tra due barre verticali <code>| |</code>.
+            </p>
+            <ul>
+                <li>Se il numero è positivo, il valore assoluto coincide con il numero stesso: <code>|+5| = 5</code>.</li>
+                <li>Se il numero è negativo, il valore assoluto è il suo opposto (diventa positivo): <code>|-5| = 5</code>.</li>
+                <li>Il valore assoluto di zero è zero: <code>|0| = 0</code>.</li>
+            </ul>
+
+            <h2>2. Significato Geometrico: Distanza dall'Origine</h2>
+            <p>
+                Sulla retta orientata dei numeri, il valore assoluto di un numero rappresenta la <strong>distanza</strong> tra quel numero e lo zero (l'origine). Poiché una distanza non può mai essere negativa, il valore assoluto è <strong>sempre maggiore o uguale a zero</strong>.
+            </p>
+
+            <div class="formula-box">
+                📏 <strong>Proprietà Fondamentali:</strong>
+                <ul>
+                    <li><code>|a| &ge; 0</code> per qualsiasi numero <i>a</i> (non è mai negativo).</li>
+                    <li>Due numeri opposti hanno lo stesso valore assoluto: <code>|+a| = |-a| = a</code>.</li>
+                    <li>Se <code>|a| = 0</code>, allora <code>a = 0</code>.</li>
+                </ul>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il valore assoluto dei seguenti numeri: <code>-14</code>, <code>+9</code> e <code>|-(-7)|</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><code>|-14|</code>: togliamo il segno meno, la distanza da zero è <strong>14</strong>.</li>
+                    <li><code>|+9|</code>: togliamo il segno più, il valore assoluto è <strong>9</strong>.</li>
+                    <li><code>|-(-7)|</code>: risolviamo prima l'interno <code>-(-7) = +7</code>, quindi <code>|+7| = 7</code>.</li>
+                </ol>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Basi del Valore Assoluto</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati nel calcolo del valore assoluto di numeri positivi, negativi e semplici espressioni col modulo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let val = i + 3;
+                    if (i % 2 === 1) {
+                        domanda = `Calcola il valore assoluto del numero <code>-${val}</code>.`;
+                        risposta = `${val}`;
+                        spiegazione = `
+                        1) Il valore assoluto elimina il segno negativo dal numero.<br>
+                        2) Pertanto <code>|-${val}| = ${val}</code>.`;
+                    } else {
+                        domanda = `Calcola il valore assoluto del numero <code>+${val}</code>.`;
+                        risposta = `${val}`;
+                        spiegazione = `
+                        1) Per i numeri positivi, il valore assoluto coincide con la parte numerica stessa.<br>
+                        2) Pertanto <code>|+${val}| = ${val}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = i;
+                    let b = i + 4;
+                    if (i % 2 === 0) {
+                        domanda = `Quali numeri hanno valore assoluto pari a <code>${a}</code>?`;
+                        risposta = `+${a} e -${a}`;
+                        spiegazione = `
+                        1) Esistono due numeri sulla retta orientata aventi distanza <code>${a}</code> dallo zero.<br>
+                        2) I due numeri sono gli opposti: <code>+${a}</code> e <code>-${a}</code>.`;
+                    } else {
+                        domanda = `Calcola il valore del seguente modulo: <code>|-(${a} + ${b})|</code>.`;
+                        let somma = a + b;
+                        risposta = `${somma}`;
+                        spiegazione = `
+                        1) Calcoliamo la somma tra parentesi: <code>${a} + ${b} = ${somma}</code>.<br>
+                        2) Applichiamo il segno meno: <code>-${somma}</code>.<br>
+                        3) Calcoliamo il valore assoluto: <code>|-${somma}| = ${somma}</code>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let val1 = i - 30;
+                    let val2 = i - 50;
+
+                    domanda = `Determina se la seguente uguaglianza è vera o falsa: <code>|-<sup></sup>${val1}| = |+<sup></sup>${val1}|</code>.`;
+                    risposta = `Vera`;
+                    spiegazione = `
+                    1) Calcoliamo il membro di sinistra: <code>|-<sup></sup>${val1}| = ${val1}</code>.<br>
+                    2) Calcoliamo il membro di destra: <code>|+<sup></sup>${val1}| = ${val1}</code>.<br>
+                    3) Poiché <code>${val1} = ${val1}</code>, l'uguaglianza è <strong>Vera</strong> (due numeri opposti hanno sempre lo stesso valore assoluto).`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

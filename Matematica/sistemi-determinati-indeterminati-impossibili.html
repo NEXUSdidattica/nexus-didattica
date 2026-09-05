@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa sui Sistemi determinati, indeterminati ed impossibili: teoria, rango dei coefficienti e 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi determinati, indeterminati ed impossibili - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="sistemi-determinati-indeterminati-impossibili" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Sistemi determinati, indeterminati ed impossibili</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Analisi dei coefficienti, interpretazione geometrica e 100 esercizi guidati commentati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Classificazione dei Sistemi Lineari</h2>
+            <p>Dato un sistema lineare in forma normale:</p>
+            <div class="formula-box">
+                $$\begin{cases} a_1x + b_1y = c_1 \\ a_2x + b_2y = c_2 \end{cases}$$
+            </div>
+            <p>Possiamo classificare il sistema confrontando i rapporti tra i coefficienti delle incognite e i termini noti:</p>
+            <ul>
+                <li><strong>Sistema Determinato:</strong> Se \(\frac{a_1}{a_2} \neq \frac{b_1}{b_2}\). Le rette sono incidenti e il sistema ammette <em>una sola soluzione</em>.</li>
+                <li><strong>Sistema Indeterminato:</strong> Se \(\frac{a_1}{a_2} = \frac{b_1}{b_2} = \frac{c_1}{c_2}\). Le rette sono coincidenti e il sistema ammette <em>infinite soluzioni</em>.</li>
+                <li><strong>Sistema Impossibile:</strong> Se \(\frac{a_1}{a_2} = \frac{b_1}{b_2} \neq \frac{c_1}{c_2}\). Le rette sono parallele distinte e il sistema <em>non ammette soluzioni</em>.</li>
+            </ul>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Determinati, Indeterminati, Impossibili)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = '';
+                let diffLabel = '';
+                let domanda = '';
+                let risposta = '';
+                let spiegazione = '';
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'FACILE (Determinato)';
+                    let a = (i % 3) + 1;
+                    let b = (i % 4) + 2;
+                    let solX = (i % 3) + 1;
+                    let solY = (i % 2) + 1;
+                    let c1 = a * solX + b * solY;
+                    let c2 = (a + 2) * solX + b * solY;
+                    domanda = "Stabilisci se il sistema è determinato, indeterminato o impossibile: \\(\\begin{cases} " + a + "x + " + b + "y = " + c1 + " \\\\ " + (a+2) + "x + " + b + "y = " + c2 + " \\end{cases}\\)";
+                    risposta = "Sistema Determinato (Soluzione: x = " + solX + ", y = " + solY + ")";
+                    spiegazione = "1) Confrontiamo i coefficienti: \\(\\frac{" + a + "}{" + (a+2) + "} \\neq \\frac{" + b + "}{" + b + "}\\).<br>2) Poiché i rapporti sono diversi, le rette sono incidenti e il sistema è <strong>determinato</strong>.";
+                } else if (i <= 75) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'MEDIO (Indeterminato o Impossibile)';
+                    if (i % 2 === 0) {
+                        let a = (i % 3) + 2;
+                        let b = (i % 4) + 1;
+                        let k = (i % 3) + 2;
+                        domanda = "Discuti il seguente sistema: \\(\\begin{cases} " + a + "x + " + b + "y = 5 \\\\ " + (a*k) + "x + " + (b*k) + "y = " + (5*k) + " \\end{cases}\\)";
+                        risposta = "Sistema Indeterminato (Infinite soluzioni)";
+                        spiegazione = "1) Notiamo che la seconda equazione è ottenuta moltiplicando la prima per \\(" + k + "\\).<br>2) Si ha \\(\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}\\), quindi il sistema è <strong>indeterminato</strong>.";
+                    } else {
+                        let a = (i % 4) + 1;
+                        let b = (i % 3) + 2;
+                        let k = (i % 3) + 2;
+                        domanda = "Discuti il seguente sistema: \\(\\begin{cases} " + a + "x + " + b + "y = 4 \\\\ " + (a*k) + "x + " + (b*k) + "y = " + (4*k + 3) + " \\end{cases}\\)";
+                        risposta = "Sistema Impossibile (Nessuna soluzione)";
+                        spiegazione = "1) I coefficienti delle incognite sono proporzionali, ma i termini noti no: \\(\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}\\).<br>2) Il sistema è <strong>impossibile</strong> (rette parallele distinte).";
+                    }
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'DIFFICILE (Lungo & con Parametri)';
+                    let p = (i % 3) + 2;
+                    domanda = "Discuti al variare del parametro reale \\(k\\) il seguente sistema complesso:<br>\\(\\begin{cases} kx + (k-1)y = 2 \\\\ 4x + 2y = " + p + " \\end{cases}\\)";
+                    risposta = "Determinato per \\(k \\neq 2\\); Impossibile per \\(k = 2\\)";
+                    spiegazione = "1) <strong>Sviluppo e rapporti:</strong> Calcoliamo i rapporti dei coefficienti \\(\\frac{k}{4}\\) e \\(/frac{k-1}{2}\\).<br>2) <strong>Discussione:</strong> Ponendo \\(\\frac{k}{4} = \\frac{k-1}{2}\\) otteniamo \\(2k = 4k - 4 \\implies k = 2\\). Sostituendo \\(k=2\\) nei termini noti verifichiamo se il sistema diventa impossibile o indeterminato.<br>3) Concludiamo che per \\(k=2\\) il sistema è <strong>impossibile</strong>, mentre per \\(k \\neq 2\\) è <strong>determinato</strong>.";
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Risposta:</strong> \\(${risposta}\\)</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

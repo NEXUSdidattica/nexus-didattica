@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 4: La Bisettrice di un Angolo (definizione, proprietà e costruzione) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Bisettrice di un Angolo - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-lezione-4" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Euclidea Piana / Lezione 4</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">La Bisettrice di un Angolo</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione geometrica della bisettrice, proprietà fondamentali, costruzione con riga e compasso e 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Cos'è la Bisettrice di un Angolo?</h2>
+            <p>
+                La <strong>bisettrice</strong> di un angolo è la semiretta uscente dal vertice che divide l'angolo stesso in due parti perfettamente congruenti (uguali). 
+            </p>
+            <ul>
+                <li><strong>Origine:</strong> Ha origine nello stesso vertice <code>V</code> dell'angolo di partenza.</li>
+                <li><strong>Divisione in parti uguali:</strong> Se un angolo misura <code>&alpha;</code>, la sua bisettrice lo suddivide in due angoli adiacenti ambedue ampi <code>&alpha; / 2</code>.</li>
+                <li><strong>Proprietà di equidistanza:</strong> Ogni punto appartenente alla bisettrice di un angolo si trova a <em>uguale distanza</em> dai due lati dell'angolo stesso.</li>
+            </ul>
+
+            <h2>2. Relazioni e Calcoli Operativi</h2>
+            <p>
+                Nello studio dei problemi geometrici con gli angoli, la presenza della bisettrice permette di ricavare rapidamente ampiezze parziali o totali:
+            </p>
+            <ul>
+                <li>Se è nota l'ampiezza totale dell'angolo, la misura dell'angolo dimezzato dalla bisettrice si ottiene dividendo per due.</li>
+                <li>Al contrario, se si conosce l'ampiezza di una delle due parti generate dalla bisettrice, l'angolo totale originario si ottiene moltiplicando per due.</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule Chiave sulla Bisettrice:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Se la semiretta <code>s</code> è bisettrice dell'angolo <code>&Acirc;</code>, allora: <code>&ang;1 = &ang;2 = &Acirc; / 2</code>.<br>
+                    • Angolo totale conoscendo la metà: <code>&Acirc; = 2 &middot; &ang;1</code>.<br>
+                    • Nel sistema sessagesimale, dividere un angolo per <code>2</code> richiede di convertire eventuali primi (<code>'</code>) o secondi (<code>''</code>) dispari in unità inferiori per eseguire una divisione esatta.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un angolo misura <code>74&deg; 30'</code>. Calcola l'ampiezza di ciascuno dei due angoli in cui viene diviso dalla sua bisettrice.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricordiamo che la bisettrice divide l'angolo a metà (dividendo per <code>2</code>).</li>
+                    <li>Dividiamo i gradi: <code>74&deg; / 2 = 37&deg;</code>.</li>
+                    <li>Dividiamo i primi: <code>30' / 2 = 15'</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: 37&deg; 15'</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Bisettrice di un Angolo</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi numerici e sessagesimali sulla divisione degli angoli tramite bisettrici e calcoli inversi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let angoloVal = ((i % 40) + 20) * 2; // Valore pari per divisione intera pulita
+                    let metaAngolo = angoloVal / 2;
+                    domanda = `Un angolo misura <code>${angoloVal}&deg;</code>. Calcola l'ampiezza dell'angolo formato dalla sua bisettrice con uno dei lati d'origine.`;
+                    risposta = `<strong>${metaAngolo}&deg;</strong>`;
+                    spiegazione = `
+                    1) La bisettrice divide l'angolo originario in due parti perfettamente uguali.<br>
+                    2) Eseguiamo la divisione per due: <code>${angoloVal}&deg; / 2 = ${metaAngolo}&deg;</code>.<br>
+                    3) Ciascuna delle due parti risultanti ha un'ampiezza di <code>${metaAngolo}&deg;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let metaVal = (i % 35) + 15;
+                    let totVal = metaVal * 2;
+                    domanda = `Una semiretta è la bisettrice di un angolo e divide questo in una parte che misura <code>${metaVal}&deg;</code>. Calcola l'ampiezza dell'angolo totale.`;
+                    risposta = `<strong>${totVal}&deg;</strong>`;
+                    spiegazione = `
+                    1) La bisettrice divide l'angolo in due metà uguali; perciò la parte nota rappresenta esattamente la metà del totale.<br>
+                    2) Moltiplichiamo per due il valore dato: <code>2 &middot; ${metaVal}&deg; = ${totVal}&deg;</code>.<br>
+                    3) L'ampiezza dell'angolo totale risulta quindi pari a <code>${totVal}&deg;</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let gradi = (i % 25) + 40; // es. tra 40 e 64
+                    let primi = ((i % 30) * 2); // numero pari di primi (es. 0, 2, 4... 58)
+                    let metaGradi = Math.floor(gradi / 2);
+                    let restoGradi = gradi % 2;
+                    let primiTotali = primi + (restoGradi * 60);
+                    let metaPrimi = primiTotali / 2;
+                    domanda = `Un angolo misura <code>${gradi}&deg; ${primi}'</code>. Calcola la misura dell'angolo dimezzato dalla sua bisettrice.`;
+                    risposta = `<strong>${metaGradi}&deg; ${metaPrimi}'</strong>`;
+                    spiegazione = `
+                    1) Dividiamo i gradi per <code>2</code>: <code>${gradi}&deg; / 2</code> dà <code>${metaGradi}&deg;</code> con un eventuale resto di <code>1&deg;</code> (${restoGradi > 1 ? '' : 'che equivale a <code>60\'</code>'}).<br>
+                    2) Sommiamo i primi convertiti ai primi di partenza: <code>${primi}' + ${restoGradi * 60}' = ${primiTotali}'</code>.<br>
+                    3) Dividiamo i primi per <code>2</code>: <code>${primiTotali}' / 2 = ${metaPrimi}'</code>, ottenendo il risultato finale di <code>${metaGradi}&deg; ${metaPrimi}'</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

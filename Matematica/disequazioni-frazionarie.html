@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alle Disequazioni Frazionarie (Fratte) di 1° Grado: condizioni di esistenza, studio del segno di numeratore e denominatore, tabella dei segni ed esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni Frazionarie - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.7; margin-bottom: 1.2rem; }
+        .contenuto-lezione li { margin-bottom: 0.6rem; }
+        .contenuto-lezione h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        .contenuto-lezione h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .box-evidenza { background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-esercizio { margin-bottom: 1.2rem; }
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 1.05rem; }
+        
+        /* Stili per la Tabella dei Segni Perfettamente Allineata */
+        .tabella-segni-container {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+        }
+        .tabella-segni {
+            width: 100%;
+            max-width: 580px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.95rem;
+        }
+        .tabella-segni th, .tabella-segni td {
+            text-align: center;
+            padding: 0;
+            vertical-align: middle;
+            height: 36px;
+        }
+        .tabella-segni th {
+            border-bottom: 2px solid #0f172a;
+            color: #0f172a;
+            font-weight: bold;
+            padding-bottom: 0.4rem;
+        }
+        .tabella-segni td.label-fattore {
+            text-align: left;
+            font-weight: bold;
+            color: #1e3a8a;
+            width: 130px;
+            border-right: 2px solid #0f172a;
+            padding-right: 0.6rem;
+        }
+        .tabella-segni tr.riga-totale {
+            border-top: 2px solid #0f172a;
+            font-weight: bold;
+            background-color: #f1f5f9;
+        }
+        
+        /* Larghezze Colonne */
+        .col-intervallo { width: 28%; }
+        .col-valore { width: 32px; }
+
+        /* Tratti di linea */
+        .linea-continua {
+            width: 100%;
+            height: 3px;
+            background-color: #2563eb;
+        }
+        .linea-tratteggiata {
+            width: 100%;
+            height: 3px;
+            background-image: linear-gradient(to right, #94a3b8 50%, transparent 50%);
+            background-size: 8px 100%;
+        }
+        
+        /* Pallini Solitari Centrati sotto i Valori Verticali (senza riga tagliata) */
+        .punto-incluso {
+            width: 12px;
+            height: 12px;
+            background-color: #2563eb;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .punto-escluso {
+            width: 12px;
+            height: 12px;
+            background-color: #ffffff;
+            border: 3px solid #dc2626;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .segno-esito {
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+        .segno-piu { color: #16a34a; }
+        .segno-meno { color: #dc2626; }
+        .intervallo-selezionato {
+            background-color: #dcfce7;
+            border: 2px dashed #16a34a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-1-grado-frazionarie" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Disequazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 5: Disequazioni Frazionarie</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio del segno del rapporto tra Numeratore e Denominatore con C.E., grafici allineati e 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Cos'è una Disequazione Frazionaria?</h2>
+            <p>Una disequazione è <strong>frazionaria (o fratta)</strong> quando l'incognita $x$ figura al denominatore di almeno una frazione:</p>
+            <div class="formula-box">
+                $$\frac{N(x)}{D(x)} > 0 \quad \text{oppure} \quad \frac{N(x)}{D(x)} \ge 0 \quad (\text{analogamente per } <, \le)$$
+            </div>
+
+            <h2>Procedimento di Risoluzione</h2>
+            <ol>
+                <li><strong>Forma normale:</strong> Portare tutti i termini al 1° membro per ottenere $0$ al 2° membro ed eseguire il $\text{m.c.m.}$.</li>
+                <li><strong>Condizioni di Esistenza (C.E.):</strong> Imporre sempre $D(x) \ne 0$.</li>
+                <li><strong>Studio del segno separato:</strong> Studiare <strong>sempre</strong> $N(x) \ge 0$ (o $> 0$) e $D(x) > 0$ (rigorosamente $ > 0$, mai $\ge 0$).</li>
+                <li><strong>Tabella dei segni:</strong> Tracciare la griglia con i punti critici ben allineati e determinare il segno del quoziente ($+ \cdot + = +$, $+ \cdot - = -$).</li>
+            </ol>
+
+            <div class="box-evidenza">
+                <h3>📝 Esempio Guidato con Tabella dei Segni</h3>
+                <p><strong>Risolvi:</strong> $$\frac{x - 3}{x + 1} \ge 0$$</p>
+                <ul>
+                    <li><strong>Condizioni di Esistenza (C.E.):</strong> $x + 1 \ne 0 \implies x \ne -1$</li>
+                    <li><strong>Numeratore:</strong> $N(x) \ge 0 \implies x - 3 \ge 0 \implies x \ge 3$ (punto incluso 🔵 in $3$)</li>
+                    <li><strong>Denominatore:</strong> $D(x) > 0 \implies x + 1 > 0 \implies x > -1$ (punto escluso 🔴 in $-1$)</li>
+                </ul>
+
+                <!-- Graph Tabella dei Segni Allineata -->
+                <div class="tabella-segni-container">
+                    <table class="tabella-segni">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Fattore</th>
+                                <th class="col-intervallo"></th>
+                                <th class="col-valore">-1</th>
+                                <th class="col-intervallo"></th>
+                                <th class="col-valore">3</th>
+                                <th class="col-intervallo"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Riga Numeratore -->
+                            <tr>
+                                <td class="label-fattore">N: $x \ge 3$</td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="punto-incluso" title="x = 3 incluso"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                            </tr>
+                            <!-- Riga Denominatore -->
+                            <tr>
+                                <td class="label-fattore">D: $x > -1$</td>
+                                <td><div class="linea-tratteggiata"></div></td>
+                                <td><div class="punto-escluso" title="x = -1 escluso"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                                <td><div class="linea-continua"></div></td>
+                            </tr>
+                            <!-- Riga Esito Finale -->
+                            <tr class="riga-totale">
+                                <td class="label-fattore">Esito $\ge 0$</td>
+                                <td class="intervallo-selezionato"><span class="segno-esito segno-piu">+</span></td>
+                                <td><span class="segno-esito" style="color: #dc2626;">∄</span></td>
+                                <td><span class="segno-esito segno-meno">-</span></td>
+                                <td><span class="segno-esito">0</span></td>
+                                <td class="intervallo-selezionato"><span class="segno-esito segno-piu">+</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>🎯 <strong>Soluzione Finale:</strong> $$x < -1 \quad \cup \quad x \ge 3$$</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati con Tabella Grafica dei Segni</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 35 ? 'livello-facile' : (i <= 70 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 35 ? 'FACILE' : (i <= 70 ? 'MEDIO' : 'DIFFICILE');
+                
+                let valN, valD, op, domanda, risposta, spiegazione, graficoHtml;
+
+                if (i <= 35) {
+                    // LIVELLO FACILE: (x - a)/(x + b) > 0 oppure >= 0
+                    let a = (i % 5) + 1;
+                    let b = (i % 4) + 2;
+                    let val1 = -b;
+                    let val2 = a;
+
+                    domanda = `Risolvi la disequazione frazionaria: $$\\frac{x - ${a}}{x + ${b}} \\ge 0$$`;
+                    risposta = `x < -${b} \\quad \\cup \\quad x \\ge ${a}`;
+
+                    graficoHtml = `
+                    <div class="tabella-segni-container">
+                        <table class="tabella-segni">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left;">Fattore</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">-${b}</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">${a}</th>
+                                    <th class="col-intervallo"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="label-fattore">N: $x \\ge ${a}$</td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="punto-incluso"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-fattore">D: $x > -${b}$</td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="punto-escluso"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                </tr>
+                                <tr class="riga-totale">
+                                    <td class="label-fattore">Esito</td>
+                                    <td class="intervallo-selezionato"><span class="segno-esito segno-piu">+</span></td>
+                                    <td><span class="segno-esito" style="color: #dc2626;">∄</span></td>
+                                    <td><span class="segno-esito segno-meno">-</span></td>
+                                    <td><span class="segno-esito">0</span></td>
+                                    <td class="intervallo-selezionato"><span class="segno-esito segno-piu">+</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>`;
+
+                    spiegazione = `1) <strong>C.E.:</strong> $x + ${b} \\ne 0 \\implies x \\ne -${b}$.<br>` +
+                                  `2) <strong>$N \\ge 0$:</strong> $x - ${a} \\ge 0 \\implies x \\ge ${a}$ (pallino pieno in $x = ${a}$).<br>` +
+                                  `3) <strong>$D > 0$:</strong> $x + ${b} > 0 \\implies x > -${b}$ (pallino vuoto in $x = -${b}$).<br>` +
+                                  `4) Dal quadro dei segni sottostante, il quoziente risulta positivo o nullo per <strong>$x < -${b} \\cup x \\ge ${a}$</strong>.` + graficoHtml;
+
+                } else if (i <= 70) {
+                    // LIVELLO MEDIO: (a - x)/(x - b) < 0
+                    let a = (i % 6) + 3;
+                    let b = (i % 3) + 1;
+                    
+                    domanda = `Risolvi la disequazione frazionaria: $$\\frac{${a} - x}{x - ${b}} < 0$$`;
+                    risposta = `x < ${b} \\quad \\cup \\quad x > ${a}`;
+
+                    graficoHtml = `
+                    <div class="tabella-segni-container">
+                        <table class="tabella-segni">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left;">Fattore</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">${b}</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">${a}</th>
+                                    <th class="col-intervallo"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="label-fattore">N: $x < ${a}$</td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="punto-escluso"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-fattore">D: $x > ${b}$</td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="punto-escluso"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                </tr>
+                                <tr class="riga-totale">
+                                    <td class="label-fattore">Esito</td>
+                                    <td class="intervallo-selezionato"><span class="segno-esito segno-meno">-</span></td>
+                                    <td><span class="segno-esito" style="color: #dc2626;">∄</span></td>
+                                    <td><span class="segno-esito segno-piu">+</span></td>
+                                    <td><span class="segno-esito">0</span></td>
+                                    <td class="intervallo-selezionato"><span class="segno-esito segno-meno">-</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>`;
+
+                    spiegazione = `1) <strong>C.E.:</strong> $x - ${b} \\ne 0 \\implies x \\ne ${b}$.<br>` +
+                                  `2) <strong>$N > 0$:</strong> $${a} - x > 0 \\implies -x > -${a} \\implies x < ${a}$.<br>` +
+                                  `3) <strong>$D > 0$:</strong> $x - ${b} > 0 \\implies x > ${b}$.<br>` +
+                                  `4) Dal confronto dei segni, la frazione è strettamente negativa ($< 0$) negli intervalli esterni <strong>$x < ${b} \\cup x > ${a}$</strong>.` + graficoHtml;
+
+                } else {
+                    // LIVELLO DIFFICILE: Tre fattori di 1° grado
+                    let k = (i % 4) + 1;
+                    domanda = `Risolvi la disequazione a 3 fattori di 1° grado: $$\\frac{(x - ${k})(2x + 4)}{x - 5} \\le 0$$`;
+                    risposta = `x \\le -2 \\quad \\cup \\quad ${k} \\le x < 5`;
+
+                    graficoHtml = `
+                    <div class="tabella-segni-container">
+                        <table class="tabella-segni">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left;">Fattore</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">-2</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">${k}</th>
+                                    <th class="col-intervallo"></th>
+                                    <th class="col-valore">5</th>
+                                    <th class="col-intervallo"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="label-fattore">$F_1: x \\ge ${k}$</td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="punto-incluso"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-fattore">$F_2: x \\ge -2$</td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="punto-incluso"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-fattore">$D: x > 5$</td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="linea-tratteggiata"></div></td>
+                                    <td><div class="punto-escluso"></div></td>
+                                    <td><div class="linea-continua"></div></td>
+                                </tr>
+                                <tr class="riga-totale">
+                                    <td class="label-fattore">Esito</td>
+                                    <td class="intervallo-selezionato"><span class="segno-esito segno-meno">-</span></td>
+                                    <td><span class="segno-esito">0</span></td>
+                                    <td><span class="segno-esito segno-piu">+</span></td>
+                                    <td><span class="segno-esito">0</span></td>
+                                    <td class="intervallo-selezionato"><span class="segno-esito segno-meno">-</span></td>
+                                    <td><span class="segno-esito" style="color: #dc2626;">∄</span></td>
+                                    <td><span class="segno-esito segno-piu">+</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>`;
+
+                    spiegazione = `1) <strong>Fattore $N_1 \\ge 0$:</strong> $x - ${k} \\ge 0 \\implies x \\ge ${k}$ (incluso 🔵).<br>` +
+                                  `2) <strong>Fattore $N_2 \\ge 0$:</strong> $2x + 4 \\ge 0 \\implies x \\ge -2$ (incluso 🔵).<br>` +
+                                  `3) <strong>Fattore $D > 0$:</strong> $x - 5 > 0 \\implies x > 5$ (escluso 🔴 in $x = 5$).<br>` +
+                                  `4) Valutando il segno del prodotto/quoziente complessivo, si trova che l'espressione è $\\le 0$ per <strong>$x \\le -2 \\cup ${k} \\le x < 5$</strong>.` + graficoHtml;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase()}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Grafico del Segno</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">🎯 <strong>Risultato finale:</strong> $${risposta}$</div>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+
+            // Renderizza MathJax
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida alla Risoluzione di Problemi con le Equazioni di 1° Grado: modello matematico, problemi numerici, geometrici ed di età con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Problemi con Equazioni di 1° Grado - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro (Senza Polyfill) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Fix Spaziatura e Layout -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-1-grado-problemi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Equazioni di 1° Grado</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 7: Problemi di Modellizzazione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Come tradurre testi e problemi reali in equazioni di 1° grado: problemi numerici, di geometria e di età con 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>Come Tradurre un Problema in un'Equazione</h2>
+            <p>
+                Risolvere un problema con le equazioni significa costruire un <strong>modello matematico</strong> della situazione descritta dal testo. Si seguono 4 fasi fondamentali:
+            </p>
+
+            <ol>
+                <li><strong>Scelta dell'incognita:</strong> identificare la quantità sconosciuta e indicarla con la lettera $x$ (esplicitando le sue unità di misura o le limitazioni).</li>
+                <li><strong>Traduzione del testo:</strong> esprimere tutte le altre quantità descritte in funzione di $x$.</li>
+                <li><strong>Impostazione dell'equazione:</strong> legare le espressioni mediante un'uguaglianza basata sulle relazioni date dal testo.</li>
+                <li><strong>Risoluzione e verifica:</strong> risolvere l'equazione e verificare se il valore ottenuto è accettabile nel contesto reale del problema.</li>
+            </ol>
+
+            <div class="formula-box">
+                📐 <strong>Dizionario di Traduzione Italiano &rArr; Matematica:</strong><br>
+                • "Un numero aumentato di 5" &rArr; $x + 5$<br>
+                • "Il triplo del successivo di un numero" &rArr; $3(x + 1)$<br>
+                • "La somma di due numeri consecutivi è 15" &rArr; $x + (x + 1) = 15$<br>
+                • "Il doppio di un numero supera di 4 il numero stesso" &rArr; $2x = x + 4$
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO SEZIONE TEORIA -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato (Problema Geometrico)</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> In un rettangolo la base supera l'altezza di 4 cm. Sapendo che il perimetro è 40 cm, calcola le dimensioni del rettangolo.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Scelta dell'incognita:</strong> Poniamo l'altezza $h = x$ (cm).</li>
+                    <li><strong>Espressione della base:</strong> La base $b = x + 4$ (cm).</li>
+                    <li><strong>Impostazione dell'equazione del perimetro:</strong><br>
+                        <code>2 · (base + altezza) = 40 &rArr; 2( (x + 4) + x ) = 40</code>
+                    </li>
+                    <li><strong>Risoluzione:</strong><br>
+                        <code>2(2x + 4) = 40 &rArr; 4x + 8 = 40 &rArr; 4x = 32 &rArr; x = 8</code>.
+                    </li>
+                    <li><strong>Conclusione:</strong> Altezza = 8 cm, Base = 8 + 4 = 12 cm.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Altezza = 8 cm; Base = 12 cm.</p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Problemi Guidati Svolti Passo Passo</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità risolvendo 100 problemi di modellizzazione algebrica (numerici, geometrici e reali).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup>[cite: 1]</p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+                let numBase = (i % 8) + 3;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let somma = 2 * numBase + 1;
+                    domanda = `Trova due numeri interi consecutivi la cui somma è <strong>${somma}</strong>.`;
+                    risposta = `I due numeri sono ${numBase} e ${numBase + 1}`;
+                    spiegazione = `
+                    1) Poniamo il primo numero <code>x</code> e il consecutivo <code>x + 1</code>.<br>
+                    2) Impostiamo l'equazione: <code>x + (x + 1) = ${somma}</code>.<br>
+                    3) Risolviamo: <code>2x + 1 = ${somma} &rArr; 2x = ${somma - 1} &rArr; x = ${numBase}</code>.<br>
+                    4) I numeri sono <strong>${numBase}</strong> e <strong>${numBase + 1}</strong>.`;
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let perimetro = 4 * numBase + 10;
+                    domanda = `Un rettangolo ha la base che misura 5 cm più dell'altezza. Sapendo che il perimetro è <strong>${perimetro} cm</strong>, calcola le dimensioni.`;
+                    risposta = `Altezza = ${numBase} cm, Base = ${numBase + 5} cm`;
+                    spiegazione = `
+                    1) Poniamo altezza <code>x</code> e base <code>x + 5</code>.<br>
+                    2) Equazione perimetro: <code>2(x + x + 5) = ${perimetro} &rArr; 2(2x + 5) = ${perimetro}</code>.<br>
+                    3) Sviluppiamo: <code>4x + 10 = ${perimetro} &rArr; 4x = ${perimetro - 10} &rArr; x = ${numBase}</code>.<br>
+                    4) Risultato: Altezza = <strong>${numBase} cm</strong>, Base = <strong>${numBase + 5} cm</strong>.`;
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let etaPadre = numBase * 4;
+                    let traAnni = numBase;
+                    domanda = `Un padre ha ${etaPadre} anni e il figlio ha ${numBase} anni. Tra quanti anni l'età del padre sarà il triplo di quella del figlio?`;
+                    risposta = `Tra ${numBase} anni`;
+                    spiegazione = `
+                    1) Poniamo <code>x</code> = anni da trascorrere.<br>
+                    2) Tra x anni il padre avrà <code>${etaPadre} + x</code> anni e il figlio <code>${numBase} + x</code> anni.<br>
+                    3) Equazione: <code>${etaPadre} + x = 3(${numBase} + x)</code>.<br>
+                    4) Risolviamo: <code>${etaPadre} + x = ${3 * numBase} + 3x &rArr; -2x = ${3 * numBase - etaPadre} &rArr; x = ${numBase}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Problema ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

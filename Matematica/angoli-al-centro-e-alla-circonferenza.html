@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Circonferenza e Cerchio - Sezione 2: Angoli al Centro e alla Circonferenza - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Angoli al Centro e alla Circonferenza - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="circonferenza-cerchio-sezione-2" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria / Circonferenza e Cerchio - Sezione 2</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Angoli al Centro e alla Circonferenza</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Relazioni geometriche, teoremi fondamentali sugli archi, angoli congruenti e proprietà della semicirconferenza, con 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Definizioni: Angolo al Centro e Angolo alla Circonferenza</h2>
+            <p>
+                Studio delle relazioni angolari all'interno di una circonferenza:
+            </p>
+            <ul>
+                <li><strong>Angolo al Centro:</strong> È un angolo che ha il vertice coincidente con il <em>centro</em> <code>(O)</code> della circonferenza e i cui lati sono formati da due raggi.</li>
+                <li><strong>Angolo alla Circonferenza (o Inscritto):</strong> È un angolo che ha il vertice situato <em>sopra la circonferenza</em> e i cui lati sono due corde (o una corda e una secante) che partono dal vertice.</li>
+                <li><strong>Arco di Competenza (o Insistenza):</strong> Entrambi gli angoli "insistono" su un determinato arco di circonferenza compreso tra i loro punti di contatto.</li>
+            </ul>
+
+            <h2>2. Il Teorema Fondamentale e Proprietà Geometriche</h2>
+            <p>
+                Il legame matematico tra i due tipi di angoli che insistono sullo stesso arco è costante e rigoroso:
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Proprietà e Relazioni Chiave:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Relazione principale: <em>Un angolo alla circonferenza è sempre la metà dell'angolo al centro corrispondente che insiste sullo stesso arco</em> <code>(&alpha;<sub>circonferenza</sub> = &alpha;<sub>centro</sub> / 2)</code>.<br>
+                    • Formula inversa: <em>L'angolo al centro è il doppio dell'angolo alla circonferenza corrispondente</em> <code>(&alpha;<sub>centro</sub> = 2 &times; &alpha;<sub>circonferenza</sub>)</code>.<br>
+                    • Angoli congruenti: Tutti gli angoli alla circonferenza che insistono sullo stesso arco (o su archi congruenti) sono perfettamente congruenti tra loro.<br>
+                    • Proprietà della semicirconferenza: Qualsiasi angolo iscritto in una semicirconferenza è sempre un angolo retto <code>(90&deg;)</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un angolo al centro di una circonferenza misura <code>84&deg;</code>. Calcola l'ampiezza dell'angolo alla circonferenza corrispondente che insiste sullo stesso arco.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Identifichiamo la regola geometrica: l'angolo alla circonferenza è la metà del rispettivo angolo al centro.</li>
+                    <li>Impostiamo il calcolo: <code>&alpha;<sub>circonferenza</sub> = 84&deg; / 2</code>.</li>
+                    <li>Eseguiamo la divisione: <code>84 / 2 = 42&deg;</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: L'angolo alla circonferenza misura 42&deg;.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Angoli al Centro e alla Circonferenza</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico tra angoli al centro, angoli inscritti e proprietà degli archi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let centroVal = (i % 20) * 4 + 20; // Angoli al centro pari tra 20 e 96
+                    let circVal = centroVal / 2;
+                    domanda = `Un angolo al centro misura <code>${centroVal}&deg;</code>. Calcola l'ampiezza dell'angolo alla circonferenza corrispondente.`;
+                    risposta = `<strong>${circVal}&deg;</strong>`;
+                    spiegazione = `
+                    1) L'angolo alla circonferenza è la metà dell'angolo al centro: <code>&alpha;<sub>c</sub> = &alpha;<sub>centro</sub> / 2</code>.<br>
+                    2) Eseguiamo il calcolo: <code>${centroVal}&deg; / 2 = ${circVal}&deg;</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let circValM = (i % 15) * 3 + 15; // Angoli alla circonferenza tra 15 e 57
+                    let centroValM = circValM * 2;
+                    domanda = `Un angolo alla circonferenza misura <code>${circValM}&deg;</code>. Calcola l'ampiezza del corrispondente angolo al centro.`;
+                    risposta = `<strong>${centroValM}&deg;</strong>`;
+                    spiegazione = `
+                    1) L'angolo al centro è il doppio dell'angolo alla circonferenza: <code>&alpha;<sub>centro</sub> = 2 &times; &alpha;<sub>c</sub></code>.<br>
+                    2) Eseguiamo il calcolo: <code>2 &times; ${circValM}&deg; = ${centroValM}&deg;</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Un triangolo è inscritto in una semicirconferenza. Sapendo che uno degli angoli alla circonferenza insiste sul diametro, quanto misura tale angolo?`;
+                        risposta = `<strong>90&deg;</strong>`;
+                        spiegazione = `
+                        1) Per il teorema della semicirconferenza, ogni angolo iscritto in una semicirconferenza è retto.<br>
+                        2) Di conseguenza, l'angolo misura sempre <code>90&deg;</code>.`;
+                    } else {
+                        let baseAngolo = (i % 12) * 5 + 30;
+                        let angoloCentroTot = 2 * baseAngolo;
+                        domanda = `Due angoli alla circonferenza insistono sullo stesso arco. Se il primo misura <code>${baseAngolo}&deg;</code>, quanto misura il secondo e qual è l'angolo al centro?`;
+                        risposta = `<strong>${baseAngolo}&deg; (circonferenza) e ${angoloCentroTot}&deg; (centro)</strong>`;
+                        spiegazione = `
+                        1) Gli angoli alla circonferenza che insistono sullo stesso arco sono congruenti tra loro: il secondo misura anch'esso <code>${baseAngolo}&deg;</code>.<br>
+                        2) L'angolo al centro è il doppio: <code>2 &times; ${baseAngolo}&deg; = ${angoloCentroTot}&deg;</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

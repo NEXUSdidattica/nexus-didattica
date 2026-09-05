@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezioni ed esercizi di Sistemi Operativi e Software - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Sistemi Operativi e Software - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="materie-container">
+        <!-- BREADCRUMB PER TORNARE INDIETRO -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="../materie.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">← Torna a tutte le Materie</a>
+        </div>
+
+        <div class="materie-header-text">
+            <h1>Sistemi Operativi e Software</h1>
+            <p>Seleziona l'argomento o la lezione che desideri approfondire per accedere alle spiegazioni e agli esercizi pratici.</p>
+        </div>
+
+        <!-- LISTA DELLE LEZIONI / ARGOMENTI -->
+        <div class="materie-list-vertical">
+
+            <!-- 1. TIPOLOGIA DI SOFTWARE E LICENZE -->
+            <div class="materia-row-card card-informatica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box info-icon">📦</div>
+                    <div>
+                        <h2 class="materia-titolo">Tipologia di Software e Licenze</h2>
+                        <p class="materia-desc">Software di sistema, applicativo, di base, licenze proprietarie, open source, freeware, shareware e Creative Commons.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="tipologia_software_licenze.html" class="tag tag-link-m" style="background-color: #ff7c02; color: #fff; padding: 0.6rem 1.2rem; font-weight: bold;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 2. ARCHITETTURA DEI SISTEMI OPERATIVI -->
+            <div class="materia-row-card card-informatica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box info-icon">🏛️</div>
+                    <div>
+                        <h2 class="materia-titolo">Architettura dei Sistemi Operativi</h2>
+                        <p class="materia-desc">Struttura a strati (onion model), Kernel (monolitico, microkernel), shell, interfaccia utente (CLI vs GUI) e chiamate di sistema (System Calls).</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="architettura_sistemi_operativi.html" class="tag tag-link-m" style="background-color: #ff7c02; color: #fff; padding: 0.6rem 1.2rem; font-weight: bold;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 3. GESTIONE DEI PROCESSI E DELLA MEMORIA -->
+            <div class="materia-row-card card-informatica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box info-icon">⚡</div>
+                    <div>
+                        <h2 class="materia-titolo">Gestione dei Processi e della Memoria</h2>
+                        <p class="materia-desc">Stati di un processo, algoritmo di scheduling (FCFS, SJF, Round Robin), multitasking, thread, memoria virtuale, paginazione e segmentazione.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="gestione_processi_memoria.html" class="tag tag-link-m" style="background-color: #ff7c02; color: #fff; padding: 0.6rem 1.2rem; font-weight: bold;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+            <!-- 4. FILE SYSTEM E GESTIONE I/O -->
+            <div class="materia-row-card card-informatica">
+                <div class="materia-row-header">
+                    <div class="materia-icon-box info-icon">📁</div>
+                    <div>
+                        <h2 class="materia-titolo">File System e Gestione I/O</h2>
+                        <p class="materia-desc">Organizzazione gerarchica delle cartelle, file system (FAT32, NTFS, ext4), permessi sui file, driver e gestione dei dispositivi di Input/Output.</p>
+                    </div>
+                </div>
+                <div class="materia-row-body" style="justify-content: flex-end;">
+                    <a href="file_system_gestione_io.html" class="tag tag-link-m" style="background-color: #ff7c02; color: #fff; padding: 0.6rem 1.2rem; font-weight: bold;">Apri Lezione ➔</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="../cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

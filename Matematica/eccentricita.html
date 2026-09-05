@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Approfondimento sull'eccentricità dell'ellisse: formula, significato geometrico, limiti e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Eccentricità dell'Ellisse - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stili specifici per la lezione -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .badge-argomento.ellisse {
+            background-color: #fdf2f8;
+            color: #db2777;
+            border: 1px solid #fbcfe8;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="eccentricita-ellisse" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno ellisse">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">L'Eccentricità dell'Ellisse</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Scopriamo cos'è l'eccentricità \(e\), come misura lo "schiacciamento" dell'ellisse e qual è la sua formula in relazione ai semiassi e ai fuochi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>Cos'è l'Eccentricità?</h2>
+            <p>
+                L'<strong>eccentricità</strong> (indicata con la lettera \(e\)) è un parametro numerico che descrive la forma di un'ellisse, indicando quanto essa si discosti dalla forma di una circonferenza perfetta. 
+            </p>
+            <p>
+                In termini geometrici, l'eccentricità è il rapporto tra la semi-distanza focale \(c\) e la lunghezza del semiasse maggiore \(a\).
+            </p>
+
+            <div class="box-evidenza">
+                <h3>🎯 Formula dell'Eccentricità</h3>
+                <div class="formula-box">
+                    $$e = \frac{c}{a} = \frac{\sqrt{a^2 - b^2}}{a}$$
+                </div>
+                <p style="margin-bottom: 0;">
+                    Poiché per l'ellisse i fuochi si trovano interni al semiasse maggiore, la semi-distanza focale \(c\) è sempre minore di \(a\). Di conseguenza, l'eccentricità è sempre un numero compreso strettamente tra \(0\) e \(1\) (\(0 < e < 1\)).
+                </p>
+            </div>
+
+            <h2>Interpretazione Geometrica e Limiti</h2>
+            <p>
+                Il valore di \(e\) ci dà subito un'idea visiva dell'ellisse:
+            </p>
+            
+            <ul>
+                <li><strong>Se \(e\) è vicino a \(0\)</strong> (ad esempio \(e = 0.1\)): i fuochi sono vicinissimi al centro. L'ellisse è "poco schiacciata" e molto simile a una circonferenza. Nel caso limite in cui \(c = 0\) (quindi \(a = b\)), l'ellisse diventa una circonferenza perfetta e \(e = 0\).</li>
+                <li><strong>Se \(e\) è vicino a \(1\)</strong> (ad esempio \(e = 0.9\)): i fuochi sono molto lontani dal centro e vicini ai vertici. L'ellisse appare estremamente allungata e schiacciata.</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Calcolare l'eccentricità dell'ellisse avente semiasse maggiore \(a = 5\) e semiasse minore \(b = 3\).</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Ricaviamo la semi-distanza focale \(c\) utilizzando la relazione fondamentale:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$c = \sqrt{a^2 - b^2} = \sqrt{5^2 - 3^2} = \sqrt{25 - 9} = \sqrt{16} = 4$$
+                        </div>
+                    </li>
+                    <li>Applichiamo la formula dell'eccentricità \(e = \frac{c}{a}\):
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$e = \frac{4}{5} = 0.8$$
+                        </div>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> L'eccentricità dell'ellisse è \(e = 0.8\) (o \(\frac{4}{5}\)).</p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sull'Eccentricità dell'Ellisse</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sul calcolo dell'eccentricità a partire dai semiassi o dai parametri focali. Clicca sulle card per visualizzare il procedimento passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let aVal = (i % 4) + 3; // 3, 4, 5, 6
+                let bVal = aVal - 1;
+                let a2 = aVal * aVal;
+                let b2 = bVal * bVal;
+                
+                // Variazione per rendere i dati dinamici nei 100 esercizi
+                if (i % 2 === 0) {
+                    bVal = Math.max(1, aVal - 2);
+                    b2 = bVal * bVal;
+                }
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                let cVal = Math.sqrt(a2 - b2);
+                let eNum = cVal;
+                let eDen = aVal;
+                let eFrac = (eNum / eDen).toFixed(2);
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Calcola l'eccentricità \\(e\\) dell'ellisse di equazione \\(\\frac{x^2}{${a2}} + \\frac{y^2}{${b2}} = 1\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Soluzione:</strong> \\(e = \\frac{${cVal}}{${aVal}} \\approx ${eFrac}\\).</p>
+                            <p>📝 <strong>Procedimento:</strong><br>
+                            1) Si identificano i semiassi \\(a = ${aVal}\\) e \\(b = ${bVal}\\) dai denominatori dell'equazione.<br>
+                            2) Si calcola la semi-distanza focale \\(c = \\sqrt{a^2 - b^2} = \\sqrt{${a2} - ${b2}} = ${cVal}\\).<br>
+                            3) Si applica la formula dell'eccentricità \\(e = \\frac{c}{a} = \\frac{${cVal}}{${aVal}}\\).</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

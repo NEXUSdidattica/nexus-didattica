@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 4: Operazioni con i relativi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Operazioni con i relativi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="algebra-operazioni-con-i-relativi" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 4: Operazioni con i relativi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Somma algebrica, moltiplicazione, divisione, potenze e regola dei segni con 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Somma Algebrica (Addizione e Sottrazione)</h2>
+            <p>
+                In algebra addizione e sottrazione si uniscono nel concetto di <strong>somma algebrica</strong>.
+            </p>
+            <ul>
+                <li><strong>Numeri Concordi (stesso segno):</strong> si sommano i valori assoluti e si conserva lo stesso segno.<br>
+                    <em>Esempi:</em> <code>(+5) + (+3) = +8</code> | <code>(-4) + (-2) = -6</code></li>
+                <li><strong>Numeri Discordi (segno diverso):</strong> si calcola la differenza tra i valori assoluti e si mette il segno del numero con valore assoluto maggiore.<br>
+                    <em>Esempi:</em> <code>(-7) + (+3) = -4</code> | <code>(+9) + (-5) = +4</code></li>
+                <li><strong>Sottrazione:</strong> sottrarre un numero equivale ad aggiungere il suo <strong>opposto</strong>.<br>
+                    <em>Esempio:</em> <code>(-5) - (-8) = (-5) + (+8) = +3</code></li>
+            </ul>
+
+            <h2>2. Moltiplicazione e Divisione: La Regola dei Segni</h2>
+            <p>
+                Per moltiplicare o dividere due numeri relativi si eseguono le operazioni tra i valori assoluti e si applica la <strong>regola dei segni</strong>:
+            </p>
+
+            <div class="formula-box">
+                ✖️➗ <strong>Regola dei Segni:</strong>
+                <ul>
+                    <li><code>+</code> per <code>+</code> &rArr; <code>+</code> (concordi)</li>
+                    <li><code>-</code> per <code>-</code> &rArr; <code>+</code> (concordi)</li>
+                    <li><code>+</code> per <code>-</code> &rArr; <code>-</code> (discordi)</li>
+                    <li><code>-</code> per <code>+</code> &rArr; <code>-</code> (discordi)</li>
+                </ul>
+            </div>
+
+            <h2>3. Potenze di Numeri Relativi</h2>
+            <p>
+                Quando si calcola la potenza di un numero relativo con segno:
+            </p>
+            <ul>
+                <li>Se la base è <strong>positiva</strong>, il risultato è sempre <strong>positivo</strong> (es. <code>(+3)² = +9</code>).</li>
+                <li>Se la base è <strong>negativa</strong>:
+                    <ul>
+                        <li>con esponente <strong>pari</strong> il risultato è <strong>positivo</strong> (es. <code>(-3)² = +9</code>).</li>
+                        <li>con esponente <strong>dispari</strong> il risultato è <strong>negativo</strong> (es. <code>(-2)³ = -8</code>).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Calcola il valore della seguente espressione: <code>(-4) &middot; (+3) - (-10) : (+2)</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Eseguiamo la moltiplicazione: <code>(-4) &middot; (+3) = -12</code> (segni discordi &rArr; meno).</li>
+                    <li>Eseguiamo la divisione: <code>(-10) : (+2) = -5</code> (segni discordi &rArr; meno).</li>
+                    <li>Sostituiamo nell'espressione: <code>-12 - (-5) = -12 + 5 = -7</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> <code>-7</code></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Operazioni con i Relativi</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue competenze risolvendo somme algebriche, prodotti, quozienti e potenze con numeri relativi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let a = i + 2;
+                    let b = i + 5;
+                    if (i % 3 === 1) {
+                        domanda = `Calcola la seguente somma algebrica: <code>(-${a}) + (+${b})</code>.`;
+                        let res = b - a;
+                        let signRes = res >= 0 ? `+${res}` : `${res}`;
+                        risposta = signRes;
+                        spiegazione = `
+                        1) I due numeri hanno segno diverso (discordi).<br>
+                        2) Calcoliamo la differenza tra i valori assoluti: <code>${b} - ${a} = ${res}</code>.<br>
+                        3) Il numero con valore assoluto maggiore è <code>+${b}</code>, quindi il risultato è <code>${signRes}</code>.`;
+                    } else if (i % 3 === 2) {
+                        domanda = `Calcola il seguente prodotto: <code>(-${a}) &middot; (-${b})</code>.`;
+                        let res = a * b;
+                        risposta = `+${res}`;
+                        spiegazione = `
+                        1) Applichiamo la regola dei segni: <code>(-) &middot; (-) = (+)</code> (concordi).<br>
+                        2) Moltiplichiamo i valori assoluti: <code>${a} &middot; ${b} = ${res}</code>.<br>
+                        3) Il risultato finale è <code>+${res}</code>.`;
+                    } else {
+                        domanda = `Calcola la seguente potenza: <code>(-${(i % 5) + 2})²</code>.`;
+                        let base = (i % 5) + 2;
+                        let res = base * base;
+                        risposta = `+${res}`;
+                        spiegazione = `
+                        1) La base è negativa (<code>-${base}</code>) e l'esponente è pari (<code>2</code>).<br>
+                        2) Una base negativa elevata a esponente pari dà un risultato <strong>positivo</strong>.<br>
+                        3) Pertanto: <code>(-${base})² = +${res}</code>.`;
+                    }
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = i - 30;
+                    let b = 2;
+                    if (i % 2 === 0) {
+                        domanda = `Calcola il risultato della seguente divisione: <code>(-${a * 4}) : (+4)</code>.`;
+                        risposta = `-${a}`;
+                        spiegazione = `
+                        1) Applichiamo la regola dei segni: <code>(-) : (+) = (-)</code> (discordi).<br>
+                        2) Dividiamo i valori assoluti: <code>${a * 4} : 4 = ${a}</code>.<br>
+                        3) Il risultato finale è <code>-${a}</code>.`;
+                    } else {
+                        domanda = `Calcola la seguente espressione: <code>(-${a}) - (+${a + 5})</code>.`;
+                        let res = -a - (a + 5);
+                        risposta = `${res}`;
+                        spiegazione = `
+                        1) Trasformiamo la sottrazione in un'addizione aggiungendo l'opposto: <code>(-${a}) + (-${a + 5})</code>.<br>
+                        2) I due numeri sono concordi (entrambi negativi): sommiamo i valori assoluti <code>${a} + ${a + 5} = ${2 * a + 5}</code>.<br>
+                        3) Il risultato mantiene il segno meno: <code>${res}</code>.`;
+                    }
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let v1 = (i % 4) + 2;
+                    let v2 = (i % 3) + 1;
+                    let v3 = (i % 5) + 3;
+
+                    domanda = `Risolvi la seguente espressione algebrica: <code>(-${v1}) &middot; (+${v2}) + (-${v3 * 2}) : (-2)</code>.`;
+                    let prod = -v1 * v2;
+                    let div = v3;
+                    let res = prod + div;
+                    let signRes = res >= 0 ? `+${res}` : `${res}`;
+
+                    risposta = signRes;
+                    spiegazione = `
+                    1) Risolviamo il prodotto: <code>(-${v1}) &middot; (+${v2}) = ${prod}</code>.<br>
+                    2) Risolviamo la divisione: <code>(-${v3 * 2}) : (-2) = +${div}</code> (segni concordi &rArr; positivo).<br>
+                    3) Sommiamo algebricamente i risultati: <code>${prod} + ${div} = ${signRes}</code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

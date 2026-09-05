@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 3: Grado di un polinomio - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Grado di un polinomio - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-riassuntiva {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .tabella-riassuntiva th, .tabella-riassuntiva td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .tabella-riassuntiva th {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="polinomi-grado-di-un-polinomio" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Polinomi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 3: Grado di un polinomio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Determinare il grado complessivo e il grado relativo a ciascuna lettera di un polinomio ridotto, con 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Grado Complessivo (o Assoluto)</h2>
+            <p>
+                Il <strong>grado complessivo</strong> (o assoluto) di un polinomio ridotto a forma normale è il <strong>massimo tra i gradi complessivi dei suoi singoli monomi</strong>.
+            </p>
+
+            <h2>2. Grado Relativo a una Lettera</h2>
+            <p>
+                Il <strong>grado di un polinomio rispetto a una data variabile (o lettera)</strong> è l'<strong>esponente maggiore</strong> con cui quella variabile compare nel polinomio ridotto.
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Esempio:</strong> Consideriamo il polinomio <code>P = 4x³y - 2x²y⁴ + 7y⁵</code>.<br>
+                - Grado di <code>4x³y</code> = 3 + 1 = 4<br>
+                - Grado di <code>-2x²y⁴</code> = 2 + 4 = 6<br>
+                - Grado di <code>7y⁵</code> = 5<br>
+                &rarr; <strong>Grado complessivo di P:</strong> <code>6</code> (il valore massimo).<br>
+                &rarr; <strong>Grado rispetto a x:</strong> <code>3</code> (esponente più alto di x).<br>
+                &rarr; <strong>Grado rispetto a y:</strong> <code>5</code> (esponente più alto di y).
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Determina il grado complessivo e i gradi relativi alle variabili del polinomio: <code>P(a, b) = 3a⁴b - 8a²b⁵ + 5a³b³ - 11</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo i gradi di ciascun monomio:
+                        <ul>
+                            <li><code>3a⁴b</code> &rarr; grado = 4 + 1 = 5</li>
+                            <li><code>-8a²b⁵</code> &rarr; grado = 2 + 5 = 7</li>
+                            <li><code>5a³b³</code> &rarr; grado = 3 + 3 = 6</li>
+                            <li><code>-11</code> &rarr; grado = 0</li>
+                        </ul>
+                    </li>
+                    <li>Il grado massimo tra tutti è 7 (dato dal termine <code>-8a²b⁵</code>), quindi il <strong>grado complessivo</strong> è 7.</li>
+                    <li>Gli esponenti della lettera <code>a</code> sono 4, 2 e 3. Il massimo è 4, quindi il <strong>grado rispetto ad a</strong> è 4.</li>
+                    <li>Gli esponenti della lettera <code>b</code> sono 1, 5 e 3. Il massimo è 5, quindi il <strong>grado rispetto a b</strong> è 5.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Grado complessivo: 7 | Grado risp. ad a: 4 | Grado risp. a b: 5</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Grado di un Polinomio</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercitati a calcolare il grado complessivo e i gradi relativi rispetto alle variabili nei polinomi.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let expX = (i % 4) + 1;
+                    let expY = (i % 3) + 1;
+                    let expTot = expX + expY;
+
+                    domanda = `Qual è il grado complessivo del binomio: <code>3x<sup>${expX}</sup>y<sup>${expY}</sup> - 5</code>?`;
+                    risposta = `Il grado complessivo è <strong>${expTot}</strong>.`;
+                    spiegazione = `
+                    1) Il primo termine <code>3x<sup>${expX}</sup>y<sup>${expY}</sup></code> ha grado <code>${expX} + ${expY} = ${expTot}</code>.<br>
+                    2) Il termine noto <code>-5</code> ha grado <code>0</code>.<br>
+                    3) Il grado complessivo del polinomio è il massimo tra i due, cioè <strong>${expTot}</strong>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let e1 = (i % 3) + 2;
+                    let e2 = (i % 4) + 1;
+                    let e3 = (i % 2) + 4;
+
+                    domanda = `Determina il grado del polinomio rispetto alla lettera <em>a</em> e alla lettera <em>b</em>: <code>P = 2a<sup>${e1}</sup>b<sup>${e2}</sup> - 7a<sup>${e3}</sup>b + 3</code>.`;
+                    let maxA = Math.max(e1, e3);
+                    let maxB = Math.max(e2, 1);
+
+                    risposta = `Grado risp. ad <em>a</em> = <strong>${maxA}</strong>; Grado risp. a <em>b</em> = <strong>${maxB}</strong>.`;
+                    spiegazione = `
+                    1) Confrontiamo gli esponenti di <em>a</em>: <code>${e1}</code> e <code>${e3}</code>. Il valore massimo è <strong>${maxA}</strong>.<br>
+                    2) Confrontiamo gli esponenti di <em>b</em>: <code>${e2}</code> e <code>1</code>. Il valore massimo è <strong>${maxB}</strong>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let k = (i % 3) + 2;
+                    let g1 = k + 3;
+                    let g2 = k + 4;
+                    let g3 = k + 2;
+                    let maxTot = Math.max(g1, g2, g3);
+
+                    domanda = `Dato il polinomio da ridurre: <code>P = 4x<sup>${k}</sup>y³ + 2x<sup>${k+1}</sup>y³ - 3x<sup>${k}</sup>y³ + 5x<sup>2</sup>y<sup>${k}</sup></code>, calcolane prima la forma normale e poi determina il grado complessivo.`;
+                    
+                    risposta = `Forma normale: <code>x<sup>${k}</sup>y³ + 2x<sup>${k+1}</sup>y³ + 5x²y<sup>${k}</sup></code>. Grado complessivo: <strong>${g2}</strong>.`;
+                    spiegazione = `
+                    1) Sommiamo i termini simili <code>4x<sup>${k}</sup>y³</code> e <code>-3x<sup>${k}</sup>y³</code> ottenendo <code>x<sup>${k}</sup>y³</code> (grado ${g1}).<br>
+                    2) Il secondo termine è <code>2x<sup>${k+1}</sup>y³</code> (grado ${g2}).<br>
+                    3) Il terzo termine è <code>5x²y<sup>${k}</sup></code> (grado ${g3}).<br>
+                    4) Il massimo grado tra i monomi della forma normale è <strong>${maxTot}</strong>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

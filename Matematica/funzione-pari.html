@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guida completa allo studio della Parità e Disparità di una funzione di variabile reale con 100 esercizi guidati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Studio di Funzione: Parità e Disparità - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione Standard -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p,
+        .contenuto-lezione ul,
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: none;
+            border-left: 6px solid transparent;
+        }
+
+        .card-esercizio.facile {
+            background-color: #f0fdf4 !important;
+            border-left-color: #22c55e !important;
+        }
+
+        .card-esercizio.medio {
+            background-color: #fefce8 !important;
+            border-left-color: #eab308 !important;
+        }
+
+        .card-esercizio.difficile {
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1.0rem;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-difficolta {
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .badge-difficolta.facile {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+        
+        .badge-difficolta.medio {
+            background-color: #fef9c3 !important;
+            color: #a16207 !important;
+        }
+        
+        .badge-difficolta.difficile {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .box-risposta-corretta {
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="studio-funzione-parita" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello
+                    Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato" style="max-width: 850px; margin: 2rem auto; padding: 0 1.5rem;">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()"
+                style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">←
+                Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione"
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Studio di Funzione</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Parità e Disparità di una Funzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Studio della simmetria del grafico rispetto all'asse y e rispetto all'origine degli assi, con 100 esercizi guidati.</p>
+            </div>
+            <button id="btn-salva-lezione"
+                style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>Cosa sono le Funzioni Pari e Dispari</h2>
+            <p>Prima di studiare la parità di una funzione \(y = f(x)\), è obbligatorio verificare che il suo <strong>dominio sia simmetrico</strong> rispetto all'origine (cioè se \(x \in D\), allora anche \(-x \in D\)). Se il dominio non è simmetrico, la funzione non è né pari né dispari.</p>
+            
+            <div class="box-evidenza">
+                <h3>💡 Regole di Simmetria Analitica</h3>
+                <ul>
+                    <li style="margin-bottom: 0.5rem;"><strong>Funzione Pari:</strong> Una funzione si dice pari se, per ogni \(x\) appartenente al dominio, si ha:
+                        \[f(-x) = f(x)\]
+                        Il suo grafico è <em>simmetrico rispetto all'asse delle ordinate (\(y\))</em>. Esempi classici: \(x^2, \cos x, |x|\).
+                    </li>
+                    <li><strong>Funzione Dispari:</strong> Una funzione si dice dispari se, per ogni \(x\) appartenente al dominio, si ha:
+                        \[f(-x) = -f(x)\]
+                        Il suo grafico è <em>simmetrico rispetto all'origine degli assi</em>. Esempi classici: \(x^3, \sin x, \tan x\).
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati su Parità e Disparità</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Raccolta completa di 100 esercizi interamente sviluppati e suddivisi per livello di difficoltà, dedicati alla verifica della simmetria delle funzioni algebriche e trascendenti.
+            </p>
+            <!-- Contenitore in cui il JavaScript inietterà i 100 esercizi -->
+            <div id="container-100-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXus didattica<sup>&trade;</sup></p>
+        <p>Link utili: <a href="../privacy_policy.html">Privacy Policy</a> | <a href="../cookie_policy.html">Cookie
+                Policy</a> | <a href="../chi_siamo.html">Chi Siamo</a></p>
+    </footer>
+
+    <!-- Script JavaScript per la generazione dinamica dei 100 esercizi sulla parità -->
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById("container-100-esercizi");
+                if (!container) return;
+                container.innerHTML = "";
+
+                for (let i = 0; i < 100; i++) {
+                    const n = i + 1;
+                    let difficolta, domanda, risultato, spiegazione;
+
+                    if (n <= 35) {
+                        // 1) FACILI: Polinomi elementari con solo potenze pari o solo potenze dispari
+                        difficolta = "facile";
+                        const tipo = n % 4;
+                        const c = n + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina la parità della funzione algebrica intera \\(f(x) = x^4 - ${c}x^2 + ${n}\\{).`; // Corretto o adattato
+                            // Riscriviamo pulito:
+                            domanda = `Determina la parità della funzione \\(f(x) = x^4 - ${c}x^2 + ${n}\\).`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\) (simmetrico). Sostituiamo \\(x\\) con \\(-x\\):\n\\(f(-x) = (-x)^4 - ${c}(-x)^2 + ${n} = x^4 - ${c}x^2 + ${n} = f(x)\\).\nEssendo \\(f(-x) = f(x)\\), la funzione è pari.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina la parità della funzione \\(f(x) = x^5 - ${c}x^3\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\) (simmetrico). Sostituiamo \\(x\\) con \\(-x\\):\n\\(f(-x) = (-x)^5 - ${c}(-x)^3 = -x^5 + ${c}x^3 = -(x^5 - ${c}x^3) = -f(x)\\).\nEssendo \\(f(-x) = -f(x)\\), la funzione è dispari.`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina la parità della funzione trigonometrica \\(f(x) = \\cos(x) + x^2\\).`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\). Verifichiamo con \\(-x\\):\n\\(f(-x) = \\cos(-x) + (-x)^2 = \\cos(x) + x^2 = f(x)\\) (poiché il coseno è una funzione pari e il quadrato restituisce segno positivo). La funzione è pari.`;
+                        } else {
+                            domanda = `Determina la parità della funzione \\(f(x) = \\sin(x) + x^3\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\). Sostituiamo \\(-x\\):\n\\(f(-x) = \\sin(-x) + (-x)^3 = -\\sin(x) - x^3 = -(\\sin(x) + x^3) = -f(x)\\) (poiché il seno è dispari e la potenza cubica mantiene il segno negativo). La funzione è dispari.`;
+                        }
+
+                    } else if (n <= 70) {
+                        // 2) MEDI: Funzioni fratte, miste, con valori assoluti o combinazioni di potenze pari e dispari
+                        difficolta = "medio";
+                        const tipo = n % 5;
+                        const a = (n % 5) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina la parità della funzione fratta \\(f(x) = \\frac{x^2 - ${a}}{x^4 + 1}\\).`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\) (simmetrico). Calcoliamo \\(f(-x)\\):\n\\(f(-x) = \\frac{(-x)^2 - ${a}}{(-x)^4 + 1} = \\frac{x^2 - ${a}}{x^4 + 1} = f(x)\\).\nLa funzione è simmetrica rispetto all'asse \\(y\\), dunque è pari.`;
+                        } else if (tipo === 1) {
+                            domanda = `Determina la parità della funzione \\(f(x) = \\frac{x^3 - ${a}x}{x^2 + 2}\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Il dominio è \\(\\mathbb{R}\\). Calcoliamo \\(f(-x)\\):\n\\(f(-x) = \\frac{(-x)^3 - ${a}(-x)}{(-x)^2 + 2} = \\frac{-x^3 + ${a}x}{x^2 + 2} = -\\frac{x^3 - ${a}x}{x^2 + 2} = -f(x)\\).\nLa funzione risulta dispari.`;
+                        } else if (tipo === 2) {
+                            domanda = `Determina la parità della funzione con valore assoluto \\(f(x) = |x| + x^2\\).`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Sostituendo \\(-x\\):\n\\(f(-x) = |-x| + (-x)^2 = |x| + x^2 = f(x)\\).\nPoiché il valore assoluto e il quadrato assorbono il segno negativo, la funzione è pari.`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina la parità della funzione mista \\(f(x) = x^3 + x\\).`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Sostituiamo \\(-x\\):\n\\(f(-x) = (-x)^3 + (-x) = -x^3 - x = -(x^3 + x) = -f(x)\\).\nLa funzione è dispari.`;
+                        } else {
+                            domanda = `Verifica la parità della funzione \\(f(x) = x^2 + x\\).`;
+                            risultato = `NÉ PARI NÉ DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Testiamo \\(-x\\):\n\\(f(-x) = (-x)^2 + (-x) = x^2 - x\\).\nNotiamo che \\(x^2 - x \\neq f(x)\\) e \\(x^2 - x \\neq -f(x)\\) (poiché \\(-f(x) = -x^2 - x\\)). La funzione non presenta alcuna simmetria elementare.`;
+                        }
+
+                    } else {
+                        // 3) DIFFICILI: Funzioni trascendenti avanzate, logaritmi, esponenziali, argomenti complessi
+                        difficolta = "difficile";
+                        const tipo = n % 5;
+                        const k = (n % 4) + 2;
+
+                        if (tipo === 0) {
+                            domanda = `Determina la parità della funzione trascendente:\n\\[f(x) = \\ln\\left( \\frac{1 + x}{1 - x} \\right)\\]`;
+                            risultato = `Funzione DISPARI`;
+                            spiegazione = `1. **Dominio:** Richiede \\(\\frac{1+x}{1-x} > 0 \\implies -1 < x < 1\\), che è un intervallo simmetrico rispetto all'origine.\n` +
+                            `2. **Verifica della disparità:** Calcoliamo \\(f(-x)\\):\n` +
+                            `\\[f(-x) = \\ln\\left( \\frac{1 + (-x)}{1 - (-x)} \\right) = \\ln\\left( \\frac{1 - x}{1 + x} \\right) = \\ln\\left( \\left(\\frac{1 + x}{1 - x}\\right)^{-1} \\right) = -\\ln\\left( \\frac{1 + x}{1 - x} \\right) = -f(x)\\]\n` +
+                            `La funzione è pertanto dispari.`;
+                        } else if (tipo === 1) {
+                            domanda = `Studia la parità della funzione esponenziale complessa:\n\\[f(x) = e^x + e^{-x}\\]`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\) (simmetrico). Sostituiamo \\(-x\\):\n` +
+                            `\\[f(-x) = e^{-x} + e^{-(-x)} = e^{-x} + e^x = e^x + e^{-x} = f(x)\\]\n` +
+                            `Essendo la somma commutativa, \\(f(-x) = f(x)\\), la funzione è pari (è la definizione algebrica della funzione coseno iperbolico \\(\\cosh(x)\\)).`;
+                        } else if (tipo === 2) {
+                            domanda = `Verifica se la seguente funzione è pari o dispari:\n\\[f(x) = x \\cdot \\ln\\left( \\frac{${k} + x}{${k} - x} \\right)\\]`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `1. **Dominio:** \\(-${k} < x < ${k}\\) (intervallo simmetrico).\n` +
+                            `2. **Sostituzione di \\(-x\\):**\n` +
+                            `\\[f(-x) = (-x) \\cdot \\ln\\left( \\frac{${k} + (-x)}{${k} - (-x)} \\right) = -x \\cdot \\ln\\left( \\frac{${k} - x}{${k} + x} \\right) = -x \\cdot \\left[ -\\ln\\left(\\frac{${k} + x}{${k} - x}\\right) \\right] = x \\cdot \\ln\\left(\\frac{${k} + x}{${k} - x}\\right) = f(x)\\]\n` +
+                            `Il prodotto di due funzioni dispari (il fattore \\(x\\) e il logaritmo) risulta in una funzione pari.`;
+                        } else if (tipo === 3) {
+                            domanda = `Determina la parità della funzione trigonometrica mista:\n\\[f(x) = x^2 \\sin(x) + x \\cos(x)\\]`;
+                            risultato = `NÉ PARI NÉ DISPARI`;
+                            spiegazione = `Dominio \\(\\mathbb{R}\\). Calcoliamo \\(f(-x)\\):\n` +
+                            `\\[f(-x) = (-x)^2 \\sin(-x) + (-x) \\cos(-x) = x^2 (-\\sin x) - x \\cos x = -x^2 \\sin x - x \\cos x = -(x^2 \\sin x + x \\cos x)\\]\n` +
+                            `Attenzione: \\(f(-x) = -(x^2 \\sin x + x \\cos x)\\) non corrisponde né a \\(f(x)\\) né a \\(-f(x)\\) a causa del cambio di segno disomogeneo tra i due addendi. Pertanto la funzione non è né pari né dispari.`;
+                        } else {
+                            domanda = `Studia la parità della funzione con radici e potenze:\n\\[f(x) = \\sqrt{${k} + x^2} - |x|\\]`;
+                            risultato = `Funzione PARI`;
+                            spiegazione = `1. Il dominio è \\(\\mathbb{R}\\) perché il radicando \\(${k} + x^2\\) è sempre positivo.\n` +
+                            `2. Calcoliamo \\(f(-x)\\):\n` +
+                            `\\[f(-x) = \\sqrt{${k} + (-x)^2} - |-x| = \\sqrt{${k} + x^2} - |x| = f(x)\\]\n` +
+                            `La funzione risulta pari.`;
+                        }
+                    }
+
+                    // Creazione della card esercizio
+                    const card = document.createElement("div");
+                    card.className = `card-esercizio ${difficolta}`;
+
+                    const header = document.createElement("div");
+                    header.className = "header-esercizio";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = `Esercizio ${n}`;
+
+                    const badge = document.createElement("span");
+                    badge.className = `badge-difficolta ${difficolta}`;
+                    badge.textContent = difficolta.toUpperCase();
+
+                    header.appendChild(h3);
+                    header.appendChild(badge);
+
+                    const pDomanda = document.createElement("p");
+                    pDomanda.className = "testo-domanda";
+                    pDomanda.innerHTML = domanda.replace(/\n/g, '<br>');
+
+                    const details = document.createElement("details");
+                    details.className = "spiegazione-box";
+
+                    const summary = document.createElement("summary");
+                    summary.textContent = "🔍 Mostra Soluzione e Spiegazione Passo-Passo";
+
+                    const contenutoSpiegazione = document.createElement("div");
+                    contenutoSpiegazione.className = "spiegazione-contenuto";
+
+                    const boxRisposta = document.createElement("div");
+                    boxRisposta.className = "box-risposta-corretta";
+                    boxRisposta.innerHTML = `🎯 <strong>Risultato finale:</strong> ${risultato}`;
+
+                    const pSpiegazione = document.createElement("p");
+                    pSpiegazione.innerHTML = spiegazione.replace(/\n/g, '<br>');
+
+                    contenutoSpiegazione.appendChild(boxRisposta);
+                    contenutoSpiegazione.appendChild(pSpiegazione);
+
+                    details.appendChild(summary);
+                    details.appendChild(contenutoSpiegazione);
+
+                    card.appendChild(header);
+                    card.appendChild(pDomanda);
+                    card.appendChild(details);
+
+                    container.appendChild(card);
+                }
+
+                // Renderizzazione MathJax dinamica
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise([container]).catch((err) => console.log('MathJax error:', err));
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

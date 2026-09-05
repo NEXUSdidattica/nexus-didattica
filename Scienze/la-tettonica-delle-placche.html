@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Tettonica delle Placche: Margini divergenti, convergenti e trascorrenti, litosfera e astenosfera - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Tettonica delle Placche - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- KaTeX per il rendering delle formule -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });"></script>
+
+    <!-- Stili Custom Dinamici per Materia -->
+    <style>
+        /* --- DEFINIZIONE COLORI PER MATERIA (VARIABILI CSS) --- */
+        body[data-materia="Scienze"] {
+            --colore-primario: #0ad41f;
+            --colore-hover: #22c55e;
+            --colore-scuro: #15803d;
+            --colore-testo-scuro: #14532d;
+            --sfondo-chiaro: #f0fdf4;
+            --sfondo-vetro: rgba(220, 252, 231, 0.45);
+            --bordo-chiaro: #bbf7d0;
+            --ombra-rgb: 10, 212, 31;
+        }
+
+        body[data-materia="Matematica"] {
+            --colore-primario: #3b82f6;
+            --colore-hover: #2563eb;
+            --colore-scuro: #1e40af;
+            --colore-testo-scuro: #1e3a8a;
+            --sfondo-chiaro: #eff6ff;
+            --sfondo-vetro: rgba(239, 246, 255, 0.6);
+            --bordo-chiaro: #bfdbfe;
+            --ombra-rgb: 59, 130, 246;
+        }
+
+        body[data-materia="Informatica"] {
+            --colore-primario: #f97316;
+            --colore-hover: #ea580c;
+            --colore-scuro: #c2410c;
+            --colore-testo-scuro: #7c2d12;
+            --sfondo-chiaro: #fff7ed;
+            --sfondo-vetro: rgba(255, 237, 213, 0.6);
+            --bordo-chiaro: #fed7aa;
+            --ombra-rgb: 249, 115, 22;
+        }
+
+        /* --- STILI GENERALI DELLA LEZIONE --- */
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid var(--colore-primario);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e293b;
+        }
+
+        /* PULSANTE SALVA LEZIONE DINAMICO */
+        #btn-salva-lezione {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--colore-primario);
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--colore-primario);
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #btn-salva-lezione:hover {
+            background-color: var(--colore-hover);
+            border-color: var(--colore-hover);
+            box-shadow: 0 0 18px rgba(var(--ombra-rgb), 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Stato quando la lezione è salvata */
+        #btn-salva-lezione.salvato, 
+        #btn-salva-lezione[data-salvato="true"] {
+            background-color: #fef08a;
+            color: #713f12;
+            border: 2px solid #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+
+        /* TASTO TORNA INDIETRO */
+        .btn-torna-indietro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--sfondo-vetro);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--colore-scuro);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--bordo-chiaro);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-torna-indietro:hover {
+            background-color: var(--bordo-chiaro);
+            color: var(--colore-scuro);
+            border-color: var(--colore-primario);
+            transform: translateY(-1px);
+        }
+
+        /* BADGE ANNO / MATERIA */
+        .badge-anno-materia {
+            background-color: var(--sfondo-chiaro);
+            color: var(--colore-scuro);
+            border: 1px solid var(--colore-primario);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* BOX REGOLE ED EVIDENZE */
+        .box-evidenza {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-left: 8px solid var(--colore-primario);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 0 15px rgba(var(--ombra-rgb), 0.15);
+            overflow-x: auto;
+        }
+
+        .box-evidenza h3 {
+            color: var(--colore-scuro) !important;
+        }
+
+        .formula-box {
+            background-color: var(--sfondo-chiaro);
+            color: #0f172a;
+            border: 2px solid var(--colore-primario);
+            border-radius: 8px;
+            padding: 1.0rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 0 10px rgba(var(--ombra-rgb), 0.1);
+            overflow-x: auto;
+        }
+
+        .formula-box strong {
+            color: var(--colore-scuro);
+        }
+    </style>
+</head>
+
+<body data-lesson-id="l-la-tettonica-delle-placche" data-materia="Scienze">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-complex">
+                <div class="auth-buttons">
+                    <a href="../login.html" class="btn-login">Accedi</a>
+                    <a href="../registrati.html" class="btn-register">Registrati</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" class="btn-torna-indietro">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno badge-anno-materia" style="display: inline-block; margin-bottom: 0.6rem;">Scienze / Scienze della Terra / Tettonica delle Placche</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0; margin-bottom: 0.5rem;">La Tettonica delle Placche</h1>
+                <p style="color: #64748b; font-size: 1.05rem; margin-bottom: 0;">
+                    Il modello unificante della geologia moderna: litosfera, astenosfera e la dinamica dei margini divergenti, convergenti e trascorrenti.
+                </p>
+            </div>
+        
+            <!-- TASTO SALVA LEZIONE -->
+            <button id="btn-salva-lezione">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Il Modello della Tettonica delle Placche</h2>
+            <p>
+                La teoria della <strong>tettonica delle placche</strong>, formulata alla fine degli anni '60, costituisce il paradigma unificante di tutte le scienze della Terra. Essa spiega come la parte più esterna del nostro pianeta sia suddivisa in un mosaico di blocchi rigidi, denominati <strong>placche litosferiche</strong>, che si muovono continuamente l'una rispetto all'altra galleggiando sullo strato sottostante.
+            </p>
+            <p>
+                Questo modello unisce e spiega brillantemente le intuizioni di Wegener sulla deriva dei continenti e le scoperte sull'espansione dei fondali oceanici, fornendo una spiegazione globale ai fenomeni vulcanici, sismici e orogenetici (formazione delle catene montuose).
+            </p>
+
+            <h2>2. Litosfera e Astenosfera</h2>
+            <p>
+                Per comprendere il movimento delle placche è fondamentale distinguere gli strati meccanici superiori della Terra:
+            </p>
+            <ul>
+                <li><strong>La Litosfera:</strong> È lo strato più esterno e rigido, comprendente l'intera crosta (sia continentale che oceanica) e la parte sommitale del mantello superiore. Ha uno spessore variabile da circa $10\text{ km}$ sotto gli oceani fino a oltre $100-150\text{ km}$ in corrispondenza dei cratoni continentali. Le placche litosferiche sono proprio questi enormi frammenti rigidi.</li>
+                <li><strong>L'Astenosfera:</strong> È la porzione sottostante del mantello superiore (fino a circa $660\text{ km}$ di profondità). Pur essendo solida, si trova in condizioni di temperatura e pressione vicine al punto di fusione, il che la rende parzialmente fusa, plastica e dotata di notevole <em>deformabilità per scorrimento</em> (comportamento reologico duttile). Sull'astenosfera le placche litosferiche possono muoversi quasi senza attrito.</li>
+            </ul>
+
+            <h2>3. I Margini di Placca e le Loro Interazioni</h2>
+            <p>
+                Le zone in cui due placche confinano e interagiscono sono chiamate <strong>margini di placca</strong>. A seconda del tipo di movimento relativo, i margini si suddividono in tre categorie principali:
+            </p>
+            <ul>
+                <li><strong>Margini Divergenti (o Costruttivi):</strong> Le placche si allontanano l'una dall'altra. In corrispondenza di questi margini (come le dorsali oceaniche o i rift continentali) si ha la risalita di magma che crea nuova crosta litosferica.</li>
+                <li><strong>Margini Convergenti (o Distruttivi):</strong> Le placche si scontrano o si avvicinano. A seconda della natura delle placche coinvolte si possono avere fenomeni di <em>subduzione</em> (una placca oceanica più densa sprofonda nel mantello generando fosse oceaniche e archi vulcanici) oppure di <em>orogenesi</em> (collisione tra continenti con imponenti corrugamenti montuosi come le Alpi o l'Himalaya).</li>
+                <li><strong>Margini Trascorrenti (o Conservativi):</strong> Le placche scorrono lateralmente l'una rispetto all'altra lungo faglie verticali (chiamate faglie trasformi), senza che vi sia creazione né distruzione di crosta (un esempio celebre è la faglia di Sant'Andrea in California).</li>
+            </ul>
+
+            <div class="formula-box">
+                ⚡ <strong>Il Bilancio Energetico e il Motore della Tettonica:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Il motore principale che muove le placche litosferiche non sono solo i moti convettivi passivi del mantello, ma soprattutto la forza di gravità che agisce attraverso due componenti fondamentali:
+                    $$\text{Forza totale} = F_{\text{ridge-push (spinta dalla dorsale)}} + F_{\text{slab-pull (trazione della slab in subduzione)}}$$
+                    In particolare, il meccanismo di <em>slab-pull</em> (la placca fredda e densa che sprofonda tira il resto della placca dietro di sé) è di gran lunga il motore trainante dominante della tettonica globale.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Pratico: Analisi dei Margini e Sismicità</h3>
+                <p style="margin-bottom: 0.8rem;">Durante l'analisi dei dati sismologici lungo una fossa oceanica profonda, i geofisici notano che gli ipocentri dei terremoti si distribuiscono lungo un piano inclinato (noto come <em>piano di Benioff</em>) che scende verso l'interno della Terra fino a profondità di oltre $600\text{ km}$. Quale tipo di margine di placca è attivo in questa regione e cosa sta accadendo?</p>
+                <hr style="border: 0; border-top: 1px solid var(--bordo-chiaro); margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento analitico:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Identificazione del margine:</strong> La presenza di una fossa oceanica e di ipocentri sismici profondi distribuiti su un piano inclinato indica inequivocabilmente un <strong>margine convergente in subduzione</strong>.</li>
+                    <li><strong>Dinamica in atto:</strong> Una placca litosferica oceanica fredda e densa si sta flettendo e sta sprofondando sotto un'altra placca (oceanica o continentale) nel mantello sottostante, generando attrito e terremoti lungo tutto il percorso di discesa.</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem; color: var(--colore-scuro); font-weight: bold;">🎯 <strong>Conclusione:</strong> Il piano di Benioff rappresenta l'evidenza sismica diretta di una placca in subduzione attiva all'interno del mantello terrestre.</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

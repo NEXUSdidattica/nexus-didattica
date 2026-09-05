@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Approfondimento sui semiassi maggiore e minore dell'ellisse: formule, relazione con i fuochi, eccentricità e 100 esercizi guidati passo passo - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Semiassi Maggiore e Minore dell'Ellisse - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Sicuro -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stili specifici per la lezione -->
+    <style>
+        .contenitore-centrato {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 1rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #cbd5e1;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .badge-argomento.ellisse {
+            background-color: #fdf2f8;
+            color: #db2777;
+            border: 1px solid #fbcfe8;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="semiassi-maggiori-e-minori-ellisse" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno ellisse">Matematica / Geometria Analitica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">I Semiassi Maggiore e Minore dell'Ellisse</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analizziamo il ruolo geometrico e algebrico dei semiassi \(a\) e \(b\) nell'equazione canonica dell'ellisse e le loro relazioni con i fuochi e l'eccentricità.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+
+            <h2>Cosa sono i Semiassi?</h2>
+            <p>
+                In un'ellisse centrata nell'origine degli assi cartesiani, i <strong>semiassi</strong> rappresentano le lunghezze dei segmenti che vanno dal centro geometrico dell'ellisse fino ai suoi vertici sugli assi di simmetria.
+            </p>
+            
+            <ul>
+                <li><strong>Semiasse Maggiore (\(a\)):</strong> È la metà della corda massima passante per il centro e per i fuochi (asse maggiore). Rappresenta la dimensione di massimo allungamento dell'ellisse.</li>
+                <li><strong>Semiasse Minore (\(b\)):</strong> È la metà della corda perpendicolare all'asse maggiore passante per il centro (asse minore). Rappresenta la dimensione di minor apertura dell'ellisse.</li>
+            </ul>
+
+            <div class="box-evidenza">
+                <h3>📐 Equazione Canonica e Ruolo dei Semiassi</h3>
+                <p>
+                    Nell'equazione canonica dell'ellisse:
+                </p>
+                <div class="formula-box">
+                    $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$
+                </div>
+                <p style="margin-bottom: 0;">
+                    I denominatori contengono i quadrati dei semiassi. Se il denominatore maggiore si trova sotto \(x^2\) (\(a > b\)), l'asse maggiore è orizzontale (sull'asse \(x\)). Se invece si trova sotto \(y^2\) (\(b > a\)), l'asse maggiore è verticale (sull'asse \(y\)).
+                </p>
+            </div>
+
+            <h2>Relazione Fondamentale con i Fuochi</h2>
+            <p>
+                I semiassi non determinano solo la larghezza e l'altezza dell'ellisse, ma sono legati in modo indissolubile alla posizione dei fuochi tramite la semi-distanza focale \(c\):
+            </p>
+            <div class="formula-box">
+                $$c^2 = |a^2 - b^2| \quad \implies \quad c = \sqrt{|a^2 - b^2|}$$
+            </div>
+            <p>
+                Questa formula discende direttamente dal teorema di Pitagora applicato sul piano cartesiano tra il semiasse minore, il semiasse maggiore e la distanza focale.
+            </p>
+
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Data l'ellisse di equazione \(\frac{x^2}{25} + \frac{y^2}{9} = 1\), determinare la misura dei semiassi maggiore e minore e calcolare la distanza focale.</strong></p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Svolgimento:</strong></p>
+                <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Dal confronto con l'equazione canonica ricaviamo i quadrati dei semiassi: \(a^2 = 25\) e \(b^2 = 9\).</li>
+                    <li>Estraendo la radice quadrata otteniamo i semiassi: \(a = \sqrt{25} = 5\) (semiasse maggiore) e \(b = \sqrt{9} = 3\) (semiasse minore).</li>
+                    <li>Calcoliamo la semi-distanza focale \(c\) usando la relazione geometrica:
+                        <div style="overflow-x: auto; padding: 0.5rem 0;">
+                            $$c = \sqrt{a^2 - b^2} = \sqrt{25 - 9} = \sqrt{16} = 4$$
+                        </div>
+                    </li>
+                    <li>La distanza focale complessiva (\(2c\)) risulta quindi pari a \(2 \times 4 = 8\).</li>
+                </ul>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato:</strong> Semiasse maggiore \(a = 5\), semiasse minore \(b = 3\), distanza focale pari a \(8\).</p>
+            </div>
+
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sui Semiassi dell'Ellisse</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Mettiti alla prova con 100 esercizi interattivi sul calcolo dei semiassi e dei parametri focali a partire dall'equazione cartesiana. Clicca sulle card per scoprire la soluzione passo dopo passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel;
+                let denA = (i % 5 + 2) * (i % 5 + 2);
+                let denB = (i % 3 + 1) * (i % 3 + 1);
+                if (denA === denB) denA += 4;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                }
+
+                let valA = Math.sqrt(denA).toFixed(0);
+                let valB = Math.sqrt(denB).toFixed(0);
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3 style="margin:0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-size:0.85rem; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
+                            ${diffLabel}
+                        </span>
+                    </div>
+                    <p class="testo-domanda">Data l'equazione \\(\\frac{x^2}{${denA}} + \\frac{y^2}{${denB}} = 1\\), individua la lunghezza del semiasse maggiore \\(a\\) e del semiasse minore \\(b\\).</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Procedimento</summary>
+                        <div style="margin-top: 1rem;">
+                            <p>🎯 <strong>Soluzione:</strong> Semiasse maggiore \\(a = ${valA}\\), semiasse minore \\(b = ${valB}\\).</p>
+                            <p>📝 <strong>Procedimento:</strong><br>
+                            1) Si identificano i denominatori associati a \\(x^2\\) e \\(y^2\\), che rappresentano i quadrati dei semiassi.<br>
+                            2) Si calcola la radice quadrata di ciascun denominatore per trovare i valori lineari dei semiassi.</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax error: ' + err.message);
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

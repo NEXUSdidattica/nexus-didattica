@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida completa alle equazioni risolvibili mediante raccoglimento totale, parziale, prodotti notevoli, trinomie e Ruffini, con 100 esercizi avanzati - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Equazioni Risolvibili tramite Scomposizione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- MathJax Configurazione e Script -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .contenuto-lezione p, .contenuto-lezione ul, .contenuto-lezione ol { line-height: 1.8; margin-bottom: 1.2rem; }
+        .contenuto-lezione h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+        .contenuto-lezione h3 { margin-top: 1.8rem; margin-bottom: 0.8rem; color: #1e3a8a; }
+        .formula-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1.2rem; margin: 1.2rem 0; font-size: 1.05rem; overflow-x: auto; }
+        .esempio-box { background-color: #f8fafc; border-left: 4px solid #2563eb; border: 1px solid #e2e8f0; border-left-width: 6px; border-radius: 8px; padding: 1.2rem; margin: 1.5rem 0; }
+        
+        .card-esercizio {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-esercizio.livello-facile { border-left-color: #16a34a; background-color: #f0fdf4; }
+        .card-esercizio.livello-medio { border-left-color: #ca8a04; background-color: #fefce8; }
+        .card-esercizio.livello-difficile { border-left-color: #dc2626; background-color: #fef2f2; }
+        
+        .testo-domanda { font-size: 1.05rem; line-height: 1.6; }
+        .badge-difficolta { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-difficolta.facile { background-color: #dcfce7; color: #16a34a; }
+        .badge-difficolta.medio { background-color: #fef9c3; color: #ca8a04; }
+        .badge-difficolta.difficile { background-color: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+
+<body data-lesson-id="equazioni-scomposizione" data-materia="Matematica">
+
+    <!-- HEADER -->
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+            <h1>NEXUS didattica</h1>
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">Pannello Admin 👑</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1.0rem; border-radius: 8px; border: 1px solid #bfdbfe;">← Torna indietro</a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Algebra</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Equazioni Risolvibili tramite Scomposizione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">Guida teorica avanzata, metodi di scomposizione complessi, trinomie, Ruffini e 100 esercizi di livello progressivo elevato.</p>
+            </div>
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Il Principio Fondamentale e la Legge di Annullamento del Prodotto</h2>
+            <p>Un'equazione algebrica di grado superiore al secondo si risolve portandola in forma normale ($P(x) = 0$) e riducendo il polinomio in fattori di primo o secondo grado mediante scomposizione algebrica.</p>
+            <div class="formula-box">
+                $$A(x) \cdot B(x) \cdot C(x) = 0 \iff A(x) = 0 \lor B(x) = 0 \lor C(x) = 0$$
+            </div>
+
+            <h2>2. Tecniche Avanzate di Scomposizione</h2>
+            <ul>
+                <li><strong>Raccoglimento Totale e Successivo:</strong> Estrazione del fattore comune massimo seguito da identità notevoli ripetute (es. differenze di potenze quarte o seste).</li>
+                <li><strong>Equazioni Trinomie:</strong> Equazioni del tipo $a x^{2n} + b x^n + c = 0$ risolvibili ponendo una variabile ausiliaria $t = x^n$ (equazioni di 4º grado riconducibili a secondi).</li>
+                <li><strong>Raccoglimento Parziale a 4 o più termini:</strong> Raggruppamenti strategici per evidenziare fattori binomiali comuni complessi.</li>
+                <li><strong>Regola di Ruffini:</strong> Ricerca delle radici razionali intere tra i divisori del termine noto per abbassare il grado del polinomio tramite divisione sintetica.</li>
+            </ul>
+
+            <h2>3. Esempi Svolti Passo-Passo</h2>
+
+            <div class="esempio-box">
+                <h3 style="margin-top: 0; color: #1e3a8a;">Esempio 1: Equazione Trinomia di 4º grado</h3>
+                <p><strong>Traccia:</strong> Risolvi l'equazione $x^4 - 10x^2 + 9 = 0$</p>
+                <p><strong>Svolgimento:</strong></p>
+                <ol>
+                    <li>Poniamo la variabile ausiliaria $t = x^2$ (con $t \geq 0$). L'equazione diventa di secondo grado:
+                        <div class="formula-box">$$t^2 - 10t + 9 = 0$$</div>
+                    </li>
+                    <li>Risolviamo l'equazione di secondo grado trovando le due radici per $t$:
+                        <div class="formula-box">$$(t - 1)(t - 9) = 0 \implies t_1 = 1, \; t_2 = 9$$</div>
+                    </li>
+                    <li>Torniamo alla variabile originaria $x$ ($x^2 = t$):
+                        <ul>
+                            <li>Se $t = 1 \implies x^2 = 1 \implies x = \pm 1$</li>
+                            <li>Se $t = 9 \implies x^2 = 9 \implies x = \pm 3$</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p><strong>Soluzione finale:</strong> $x = 1, \; x = -1, \; x = 3, \; x = -3$.</p>
+            </div>
+
+            <div class="esempio-box">
+                <h3 style="margin-top: 0; color: #1e3a8a;">Esempio 2: Scomposizione con la Regola di Ruffini</h3>
+                <p><strong>Traccia:</strong> Risolvi l'equazione $x^3 - 2x^2 - 5x + 6 = 0$</p>
+                <p><strong>Svolgimento:</strong></p>
+                <ol>
+                    <li>I divisori del termine noto ($6$) sono $\pm 1, \pm 2, \pm 3, \pm 6$. Testiamo $x = 1$:
+                        <div class="formula-box">$(1)^3 - 2(1)^2 - 5(1) + 6 = 1 - 2 - 5 + 6 = 0 \quad (\text{Radice trovata!})$</div>
+                    </li>
+                    <li>Applichiamo Ruffini con $x = 1$ sul polinomio $x^3 - 2x^2 - 5x + 6$:
+                        <p>Il polinomio si scompone nel fattore $(x - 1)$ e nel quoziente di secondo grado $(x^2 - x - 6)$:</p>
+                        <div class="formula-box">$$(x - 1)(x^2 - x - 6) = 0$$</div>
+                    </li>
+                    <li>Scomponiamo ulteriormente il trinomio di secondo grado trovando due numeri la cui somma è $-1$ e prodotto $-6$ (cioè $-3$ e $+2$):
+                        <div class="formula-box">$$(x - 1)(x - 3)(x + 2) = 0$$</div>
+                    </li>
+                    <li>Applichiamo la legge di annullamento del prodotto: $x = 1, \; x = 3, \; x = -2$.</li>
+                </ol>
+                <p><strong>Soluzione finale:</strong> $x = 1, \; x = 3, \; x = -2$.</p>
+            </div>
+        </article>
+
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati (Avanzati)</h2>
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici e di profilazione. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.</p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            if (!container) return;
+            let htmlEsercizi = '';
+            
+            for (let i = 1; i <= 100; i++) {
+                let diffClass = i <= 25 ? 'livello-facile' : (i <= 65 ? 'livello-medio' : 'livello-difficile');
+                let diffLabel = i <= 25 ? 'FACILE (Raccoglimenti complessi)' : (i <= 65 ? 'MEDIO (Trinomie e Parziali)' : 'DIFFICILE (Ruffini e Gradi Superiori)');
+                
+                let eqText = "", solText = "", spiegazioneText = "";
+                let tipo = i % 5;
+
+                if (tipo === 0) {
+                    // Trinomie 4º grado
+                    let a = (i % 3) + 1; 
+                    let b = a * a + 4;
+                    eqText = `Risolvi l'equazione trinomia: \\(x^4 - ${b}x^2 + ${a*a*4} = 0\\)`;
+                    let r1 = 2, r2 = a*2;
+                    solText = `\\(x = \\pm ${r1}, \\, x = \\pm ${r2}\\)`;
+                    spiegazioneText = `1) Poni $t = x^2$ ottenendo $t^2 - ${b}t + ${a*a*4} = 0$.<br>2) Scomponi in $(t - ${r1*r1})(t - ${a*a}) = 0$, ricavando $t = ${r1*r1}$ e $t = ${a*a}$.<br>3) Estrai le radici quadrate per tornare a $x$, ottenendo le quattro soluzioni simmetriche.`;
+                } else if (tipo === 1) {
+                    // Grado superiore con raccoglimento
+                    let k = (i % 4) + 2;
+                    eqText = `Risolvi l'equazione: \\(x^5 - ${k*k}x^3 = 0\\)`;
+                    solText = `\\(x = 0 \\text{ (mol. 3)}, \\, x = \\pm ${k}\\)`;
+                    spiegazioneText = `1) Raccogli a fattore comune la potenza massima $x^3$, ottenendo $x^3(x^2 - ${k*k}) = 0$.<br>2) Scomponi la differenza di quadrati nella parentesi: $x^3(x - ${k})(x + ${k}) = 0$.<br>3) Applica la legge di annullamento considerando la radice tripla in $x=0$.`;
+                } else if (tipo === 2) {
+                    // Parziale a 4 termini
+                    let m = (i % 3) + 1;
+                    eqText = `Risolvi l'equazione con raccoglimento parziale: \\(x^3 - ${m}x^2 - ${4}x + ${4*m} = 0\\)`;
+                    solText = `\\(x = ${m}, \\, x = \\pm 2\\)`;
+                    spiegazioneText = `1) Raggruppa a coppie: $x^2(x - ${m}) - 4(x - ${m}) = 0$.<br>2) Raccogli il binomio comune $(x - ${m})(x^2 - 4) = 0$.<br>3) Scomponi la differenza di quadrati e ricava le tre soluzioni reali.`;
+                } else if (tipo === 3) {
+                    // Cubo di binomio / Prodotti notevoli
+                    let c = (i % 4) + 1;
+                    eqText = `Risolvi l'equazione: \\(x^3 - 3${c}x^2 + 3${c*c}x - ${c*c*c} = 0\\)`;
+                    solText = `\\(x = ${c} \\text{ (soluzione tripla)}\\)`;
+                    spiegazioneText = `1) Riconosci che il polinomio a primo membro è lo sviluppo del cubo di un binomio: $(x - ${c})^3 = 0$.<br>2) Applica la legge di annullamento del prodotto ponendo il fattore base uguale a zero.`;
+                } else {
+                    // Ruffini avanzato
+                    let r = (i % 3) + 2;
+                    eqText = `Risolvi l'equazione di 3º grado: \\(x^3 - ${(r+1)}x^2 + ${r}x = 0\\)`;
+                    solText = `\\(x = 0, \\, x = 1, \\, x = ${r}\\)`;
+                    spiegazioneText = `1) Raccogli subito la $x$ iniziale: $x(x^2 - ${(r+1)}x + ${r}) = 0$.<br>2) Scomponi il trinomio di secondo grado cercando due numeri che sommati diano $-(${r+1})$ e moltiplicati diano ${r} (cioè $-1$ e $-${r}$).<br>3) Ottieni $x(x - 1)(x - ${r}) = 0$ e ricava le soluzioni.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel.toLowerCase().split(' ')[0]}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${eqText}</p>
+                    <details style="margin-top: 0.8rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <summary style="cursor: pointer; font-weight: 600; color: #2563eb;">🔍 Mostra Svolgimento e Soluzione</summary>
+                        <div style="margin-top: 0.8rem;">
+                            <div style="background: #eff6ff; padding: 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;">🎯 <strong>Soluzione:</strong> ${solText}</div>
+                            <p>${spiegazioneText}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+        });
+    </script>
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+</html>

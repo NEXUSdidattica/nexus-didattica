@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione Geometria Solida - Sezione 4: Il Prisma Retto e Regolare - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Prisma Retto e Regolare - NEXUS didattica</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Stile Contenitore Disegno SVG per Geometria Solida */
+        .figura-geometrica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .figura-geometrica-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .didascalia-figura {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="geometria-solida-sezione-4" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../../index.html">Home</a>
+                <a href="../../chi_siamo.html">Chi Siamo</a>
+                <a href="../../materie.html" class="active">Materie</a>
+                <a href="../../contatti.html">Contatti</a>
+                <a href="../../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../../login.html" class="btn-login">Accedi</a>
+                <a href="../../registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Geometria Solida - Sezione 4</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Il Prisma Retto e Regolare</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizioni, proprietà geometriche, formule di area laterale, totale e volume per i prismi retti e regolari, corredate da 100 esercizi guidati passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Che cos'è un Prisma?</h2>
+            <p>
+                Un <strong>prisma</strong> è un poliedro delimitato da due facce poligonali uguali e parallele, chiamate <strong>basi</strong>, e da una serie di facce laterali che sono dei parallelogrammi (rettangoli nel caso del prisma retto).
+            </p>
+            <ul>
+                <li><strong>Prisma Retto:</strong> Un prisma in cui gli spigoli laterali sono perpendicolari ai piani delle basi. Di conseguenza, le facce laterali sono tutti rettangoli.</li>
+                <li><strong>Prisma Regolare:</strong> Un prisma retto che ha per basi due <em>poligoni regolari</em> (es. triangolo equilatero, quadrato, pentagono regolare, esagono regolare).</li>
+            </ul>
+
+            <!-- DISEGNO / RAPPRESENTAZIONE GRAFICA SVG (Un Prisma Retto a Base Triangolare) -->
+            <div class="figura-geometrica-container">
+                <svg width="520" height="320" viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sfondo interno decorativo -->
+                    <rect width="520" height="320" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+                    <!-- Base inferiore (triangolo) -->
+                    <polygon points="140,240 300,240 220,170" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2.5" stroke-linejoin="round"/>
+
+                    <!-- Facce laterali (proiezioni verticali) -->
+                    <!-- Faccia sinistra -->
+                    <polygon points="140,240 140,90 220,20 220,170" fill="#bfdbfe" opacity="0.4"/>
+                    <!-- Faccia destra -->
+                    <polygon points="300,240 300,90 220,20 220,170" fill="#93c5fd" opacity="0.3"/>
+
+                    <!-- Spigolo posteriore (tratteggiato) -->
+                    <line x1="220" y1="170" x2="220" y2="20" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5"/>
+
+                    <!-- Spigoli anteriori e visibili (blu scuro pieno) -->
+                    <g stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Spigoli verticali -->
+                        <line x1="140" y1="240" x2="140" y2="90" />
+                        <line x1="300" y1="240" x2="300" y2="90" />
+                        
+                        <!-- Base superiore (triangolo traslato) -->
+                        <polygon points="140,90 300,90 220,20" fill="none" />
+                    </g>
+
+                    <!-- Evidenziazione Altezza (h) in arancione -->
+                    <line x1="340" y1="90" x2="340" y2="240" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="4,4"/>
+                    <line x1="330" y1="90" x2="350" y2="90" stroke="#ea580c" stroke-width="2.5"/>
+                    <line x1="330" y1="240" x2="350" y2="240" stroke="#ea580c" stroke-width="2.5"/>
+                    <text x="355" y="170" fill="#ea580c" font-family="Arial, sans-serif" font-weight="bold" font-size="14">h</text>
+
+                    <!-- Etichette Basi -->
+                    <text x="210" y="220" fill="#1e40af" font-family="Arial, sans-serif" font-weight="bold" font-size="13">Base Inferiore</text>
+                    <text x="200" y="70" fill="#1e40af" font-family="Arial, sans-serif" font-weight="bold" font-size="13">Base Superiore</text>
+                </svg>
+                <div class="didascalia-figura">
+                    Figura 1: Prisma retto a base triangolare con evidenziata l'altezza <code style="color:#ea580c;">h</code>.
+                </div>
+            </div>
+
+            <h2>2. Formule Fondamentali del Prisma Retto</h2>
+            <div class="formula-box">
+                📐 <strong>Formule Principali:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    &bull; <strong>Perimetro di base (2p):</strong> Somma dei lati del poligono di base.<br>
+                    &bull; <strong>Superficie Laterale (S<sub>L</sub>):</strong> S<sub>L</sub> = 2p &middot; h &nbsp; (Perimetro di base per altezza)<br>
+                    &bull; <strong>Superficie Totale (S<sub>T</sub>):</strong> S<sub>T</sub> = S<sub>L</sub> + 2 &middot; A<sub>base</sub><br>
+                    &bull; <strong>Volume (V):</strong> V = A<sub>base</sub> &middot; h &nbsp; (Area di base per altezza)
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Un prisma retto ha per base un triangolo rettangolo con i cateti di <code>6 cm</code> e <code>8 cm</code> (ipotenusa di <code>10 cm</code>). Sapendo che l'altezza del prisma è <code>12 cm</code>, calcola la superficie laterale e il volume.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Calcoliamo il perimetro di base (2p = 6 + 8 + 10 = 24 cm).</li>
+                    <li>Calcoliamo l'area di base (A<sub>base</sub> = (cateto<sub>1</sub> &middot; cateto<sub>2</sub>) / 2 = (6 &middot; 8) / 2 = 24 cm<sup>2</sup>).</li>
+                    <li>Calcoliamo la superficie laterale (S<sub>L</sub> = 2p &middot; h = 24 &middot; 12 = 288 cm<sup>2</sup>).</li>
+                    <li>Calcoliamo il volume (V = A<sub>base</sub> &middot; h = 24 &middot; 12 = 288 cm<sup>3</sup>).</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato: La superficie laterale è 288 cm² e il volume è 288 cm³.</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sul Prisma Retto e Regolare</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Problemi di calcolo geometrico su prismi con basi triangolari, quadrate e rettangolari con soluzioni dettagliate passo-passo.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../../privacy_policy.html">Privacy Policy</a>
+        <a href="../../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../../chi_siamo.html">Chi Siamo</a>
+        <a href="../../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let lato = (i % 5) + 3; // Lato base quadrata tra 3 e 7
+                    let h = (i % 6) + 8;    // Altezza prisma tra 8 e 13
+                    let p = lato * 4;
+                    let ab = lato * lato;
+                    let sl = p * h;
+                    let vol = ab * h;
+
+                    domanda = `Un prisma retto ha per base un quadrato di lato <code>${lato} cm</code>. Sapendo che l'altezza del prisma è <code>${h} cm</code>, calcola la superficie laterale e il volume.`;
+                    risposta = `<strong>S<sub>L</sub> = ${sl} cm²</strong>, <strong>V = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Perimetro di base: <code>2p = ${lato} &times; 4 = ${p} cm</code>.<br>
+                    2) Area di base: <code>A<sub>base</sub> = ${lato}<sup>2</sup> = ${ab} cm<sup>2</sup></code>.<br>
+                    3) Superficie laterale: <code>S<sub>L</sub> = 2p &times; h = ${p} &times; ${h} = ${sl} cm<sup>2</sup></code>.<br>
+                    4) Volume: <code>V = A<sub>base</sub> &times; h = ${ab} &times; ${h} = ${vol} cm<sup>3</sup></code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let base = (i % 4) + 4;  // Base rettangolo tra 4 e 7
+                    let altB = (i % 3) + 3;  // Altezza base tra 3 e 5
+                    let h = (i % 5) + 10;   // Altezza prisma tra 10 e 14
+                    let p = 2 * (base + altB);
+                    let ab = base * altB;
+                    let sl = p * h;
+                    let st = sl + 2 * ab;
+                    let vol = ab * h;
+
+                    domanda = `Un prisma retto ha per base un rettangolo con le dimensioni di <code>${base} cm</code> e <code>${altB} cm</code>. L'altezza del prisma misura <code>${h} cm</code>. Calcola la superficie totale e il volume.`;
+                    risposta = `<strong>S<sub>T</sub> = ${st} cm²</strong>, <strong>V = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Perimetro di base: <code>2p = 2 &times; (${base} + ${altB}) = ${p} cm</code>.<br>
+                    2) Area di base: <code>A<sub>base</sub> = ${base} &times; ${altB} = ${ab} cm<sup>2</sup></code>.<br>
+                    3) Superficie laterale: <code>S<sub>L</sub> = ${p} &times; ${h} = ${sl} cm<sup>2</sup></code>.<br>
+                    4) Superficie totale: <code>S<sub>T</sub> = S<sub>L</sub> + 2 &times; A<sub>base</sub> = ${sl} + 2 &times; ${ab} = ${st} cm<sup>2</sup></code>.<br>
+                    5) Volume: <code>V = ${ab} &times; ${h} = ${vol} cm<sup>3</sup></code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let c1 = 6;
+                    let c2 = 8;
+                    let ip = 10;
+                    let h = (i % 6) + 12; // Altezza tra 12 e 17
+                    let p = c1 + c2 + ip;
+                    let ab = (c1 * c2) / 2;
+                    let sl = p * h;
+                    let st = sl + 2 * ab;
+                    let vol = ab * h;
+
+                    domanda = `Un prisma retto ha per base un triangolo rettangolo con i cateti di <code>6 cm</code> e <code>8 cm</code> e ipotenusa di <code>10 cm</code>. L'altezza del prisma è <code>${h} cm</code>. Calcola la superficie totale e il volume.`;
+                    risposta = `<strong>S<sub>T</sub> = ${st} cm²</strong>, <strong>V = ${vol} cm³</strong>`;
+                    spiegazione = `
+                    1) Perimetro di base: <code>2p = 6 + 8 + 10 = ${p} cm</code>.<br>
+                    2) Area di base: <code>A<sub>base</sub> = (6 &times; 8) / 2 = ${ab} cm<sup>2</sup></code>.<br>
+                    3) Superficie laterale: <code>S<sub>L</sub> = ${p} &times; ${h} = ${sl} cm<sup>2</sup></code>.<br>
+                    4) Superficie totale: <code>S<sub>T</sub> = ${sl} + 2 &times; ${ab} = ${st} cm<sup>2</sup></code>.<br>
+                    5) Volume: <code>V = ${ab} &times; ${h} = ${vol} cm<sup>3</sup></code>.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../../main-auth.js"></script>
+    <script src="../../cookie_banner.js"></script>
+    <script type="module" src="../../salva-lezione.js"></script>
+</body>
+
+</html>

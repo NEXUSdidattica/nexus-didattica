@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulla carica elettrica, quantizzazione, conservazione della carica, legge di Coulomb e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Carica Elettrica e la Legge di Coulomb con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .box-disegno {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(126, 34, 206, 0.05);
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="carica-elettrica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Carica Elettrica e la Legge di Coulomb</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Proprietà fondamentali della carica, quantizzazione, principi di elettrizzazione, legge di Coulomb nel vuoto e 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è la Carica Elettrica</h2>
+            <p>
+                La <strong>carica elettrica</strong> è una proprietà fondamentale della materia associata alle particelle subatomiche. Esistono due tipi di carica: <strong>positiva</strong> (portata dai protoni) e <strong>negativa</strong> (portata dagli elettroni). Cariche dello stesso segno si respingono, mentre cariche di segno opposto si attraggono.
+            </p>
+            <p>
+                La carica elettrica è <strong>quantizzata</strong>: qualsiasi quantità di carica $q$ presente su un corpo è un multiplo intero della carica elementare $e$:
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Quantizzazione e Conservazione della Carica:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Carica Elementare:</b> $e \approx 1,602 \times 10^{-19}\text{ C}$ (il Coulomb $\text{C}$ è l'unità nel S.I.)<br>
+                    • <b>Formula di quantizzazione:</b> 
+                    $$q = N \cdot e \quad (N \in \mathbb{N})$$
+                    • <b>Principio di conservazione:</b> In un sistema elettricamente isolato, la somma algebrica delle cariche elettriche rimane costante nel tempo.
+                </p>
+            </div>
+
+            <h2>2. La Legge di Coulomb</h2>
+            <p>
+                La forza d'interazione elettrostatica tra due cariche puntiformi $q_1$ e $q_2$ collocate nel vuoto a una distanza $r$ è direttamente proporzionale al prodotto dei moduli delle cariche e inversamente proporzionale al quadrato della loro distanza.
+            </p>
+
+            <div class="box-disegno">
+                <h3 style="color: #7e22ce; margin-bottom: 1rem; font-size: 1.2rem;">Forza di Repulsione Elettrostatica Tra Cariche Concordi</h3>
+                <svg viewBox="0 0 600 160" width="100%" height="auto" style="max-width: 550px; background: #faf5ff; border-radius: 8px; border: 1px solid #e9d5ff; padding: 10px;">
+                    <!-- Carica q1 -->
+                    <circle cx="180" cy="80" r="22" fill="#ef4444" />
+                    <text x="180" y="85" font-size="16" fill="#ffffff" font-weight="bold" text-anchor="middle">+</text>
+                    <text x="180" y="120" font-size="12" fill="#7e22ce" font-weight="bold" text-anchor="middle">$q_1$</text>
+
+                    <!-- Carica q2 -->
+                    <circle cx="420" cy="80" r="22" fill="#ef4444" />
+                    <text x="420" y="85" font-size="16" fill="#ffffff" font-weight="bold" text-anchor="middle">+</text>
+                    <text x="420" y="120" font-size="12" fill="#7e22ce" font-weight="bold" text-anchor="middle">$q_2$</text>
+
+                    <!-- Distanza r -->
+                    <line x1="180" y1="80" x2="420" y2="80" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+                    <text x="300" y="70" font-size="12" fill="#475569" font-weight="bold" text-anchor="middle">$r$</text>
+
+                    <!-- Vettore Forza F21 (su q1 diretta a sx) -->
+                    <line x1="158" y1="80" x2="90" y2="80" stroke="#22c55e" stroke-width="3" />
+                    <polygon points="90,75 80,80 90,85" fill="#22c55e" />
+                    <text x="115" y="65" font-size="12" fill="#15803d" font-weight="bold" text-anchor="middle">$\vec{F}_{21}$</text>
+
+                    <!-- Vettore Forza F12 (su q2 diretta a dx) -->
+                    <line x1="442" y1="80" x2="510" y2="80" stroke="#22c55e" stroke-width="3" />
+                    <polygon points="510,75 520,80 510,85" fill="#22c55e" />
+                    <text x="485" y="65" font-size="12" fill="#15803d" font-weight="bold" text-anchor="middle">$\vec{F}_{12}$</text>
+                </svg>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; margin-bottom: 0;">
+                    I vettori forza agitano lungo la congiungente delle due cariche e soddisfano il terzo principio della dinamica: $\vec{F}_{12} = -\vec{F}_{21}$.
+                </p>
+            </div>
+
+            <div class="formula-box">
+                📐 <b>Espressione della Legge di Coulomb:</b>
+                <p style="margin-top: 0.5rem;">
+                    $$F = k_0 \cdot \frac{|q_1 \cdot q_2|}{r^2}$$
+                    dove $k_0 = \frac{1}{4\pi\varepsilon_0} \approx 8,99 \times 10^9 \text{ N}\cdot\text{m}^2/\text{C}^2$ è la costante elettrostatica nel vuoto, e $\varepsilon_0 \approx 8,854 \times 10^{-12} \text{ C}^2/(\text{N}\cdot\text{m}^2)$ è la costante dielettrica del vuoto.
+                </p>
+            </div>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati alla quantizzazione della carica, al calcolo delle forze elettrostatiche e delle distanze inter-carica:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+                const k_0 = 8.99e9;
+                const e_elem = 1.602e-19;
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let n_exp = 12 + (i % 7);
+                        let n_coeff = 1 + (i * 2) % 8;
+                        let q_tot = n_coeff * Math.pow(10, n_exp) * e_elem;
+
+                        q = `Esercizio ${i}: Un corpo isolato acquista un eccesso pari a $N = ${n_coeff} \\times 10^{${n_exp}}$ elettroni. Calcola il valore assoluto e il segno della carica elettrica totale $Q$ presente sul corpo.`;
+                        r = `Carica totale $Q = -${q_tot.toExponential(2)}\\text{ C}$.`;
+                        s = `Sapendo che ogni elettrone trasporta una carica $e = -1,602 \\times 10^{-19}\\text{ C}$, moltiplichiamo il numero di elettroni per la carica elementare: $Q = -N \\cdot e = -(${n_coeff} \\times 10^{${n_exp}}) \\cdot (1,602 \\times 10^{-19}\\text{ C}) \\approx -${q_tot.toExponential(2)}\\text{ C}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let q1_uC = 1 + (i % 9) * 2;
+                        let q2_uC = 2 + (i % 7) * 3;
+                        let dist_cm = 4 + (i % 11) * 3;
+                        let dist_m = dist_cm / 100;
+
+                        let F = k_0 * (q1_uC * 1e-6) * (q2_uC * 1e-6) / (dist_m * dist_m);
+
+                        q = `Esercizio ${i}: Due cariche puntiformi $q_1 = +${q1_uC}\\text{ }\\mu\\text{C}$ e $q_2 = +${q2_uC}\\text{ }\\mu\\text{C}$ sono posizionate nel vuoto a una distanza $r = ${dist_cm}\\text{ cm}$. Calcola il modulo della forza elettrostatica $F$ che si esercita tra di esse.`;
+                        r = `Forza elettrostatica $F \\approx ${F.toFixed(2)}\\text{ N}$.`;
+                        s = `Usiamo la legge di Coulomb $F = k_0 \\cdot \\frac{|q_1 \\cdot q_2|}{r^2}$. Convertendo le cariche in Coulomb ($q_1 = ${q1_uC} \\times 10^{-6}\\text{ C}$, $q_2 = ${q2_uC} \\times 10^{-6}\\text{ C}$) e la distanza in metri ($r = ${dist_m.toFixed(2)}\\text{ m}$): $F = (8,99 \\times 10^9) \\cdot \\frac{(${q1_uC} \\times 10^{-6}) \\cdot (${q2_uC} \\times 10^{-6})}{(${dist_m.toFixed(2)})^2} \\approx ${F.toFixed(2)}\\text{ N}$.`;
+                    
+                    } else {
+                        let q1_uC = 2 + (i % 6);
+                        let q2_uC = 3 + (i % 5);
+                        let F_val = 0.4 + (i % 8) * 0.3;
+                        let dist_m = Math.sqrt((k_0 * q1_uC * 1e-6 * q2_uC * 1e-6) / F_val);
+                        let dist_cm = dist_m * 100;
+
+                        q = `Esercizio ${i}: Due cariche $q_1 = +${q1_uC}\\text{ }\\mu\\text{C}$ e $q_2 = +${q2_uC}\\text{ }\\mu\\text{C}$ si respingono nel vuoto con una forza di intensità $F = ${F_val.toFixed(2)}\\text{ N}$. Determina la distanza $r$ tra le due cariche.`;
+                        r = `Distanza $r \\approx ${dist_cm.toFixed(1)}\\text{ cm}$ (${dist_m.toFixed(3)}\\text{ m}).`;
+                        s = `Ricaviamo la distanza $r$ dalla legge di Coulomb $F = k_0 \\cdot \\frac{|q_1 \\cdot q_2|}{r^2}$: $r = \\sqrt{\\frac{k_0 \\cdot |q_1 \\cdot q_2|}{F}} = \\sqrt{\\frac{(8,99 \\times 10^9) \\cdot (${q1_uC} \\times 10^{-6}) \\cdot (${q2_uC} \\times 10^{-6})}{${F_val.toFixed(2)}}} \\approx ${dist_m.toFixed(3)}\\text{ m} = ${dist_cm.toFixed(1)}\\text{ cm}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

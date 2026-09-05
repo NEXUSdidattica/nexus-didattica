@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione: Disequazioni Logaritmiche e Metodi di Risoluzione - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Disequazioni Logaritmiche e Metodi di Risoluzione - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="disequazioni-logaritmiche" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Analisi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Disequazioni Logaritmiche e Metodi di Risoluzione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio della monotonia nei logaritmi, imposizione preventiva delle condizioni di esistenza e 100 esercizi svolti passo-passo.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Regole Fondamentali e Monotonia</h2>
+            <p>
+                La risoluzione di una disequazione logaritmica richiede di confrontare due espressioni contenenti logaritmi con la stessa base <code>a</code> (dove <code>a > 0</code> e <code>a &ne; 1</code>). Sfruttiamo la proprietà di monotonia della funzione logaritmica:
+            </p>
+            <ul>
+                <li>Se <strong><code>a > 1</code></strong> (funzione strettamente crescente), la disuguaglianza tra gli argomenti mantiene lo stesso verso: <code>log<sub>a</sub>(f(x)) < log<sub>a</sub>(g(x)) &iff; f(x) < g(x)</code> (con l'obbligo di imporre <code>f(x) > 0</code> e <code>g(x) > 0</code>).</li>
+                <li>Se <strong><code>0 < a < 1</code></strong> (funzione strettamente decrescente), la disuguaglianza inverte il verso: <code>log<sub>a</sub>(f(x)) < log<sub>a</sub>(g(x)) &iff; f(x) > g(x)</code> (sempre unito alle condizioni di esistenza).</li>
+            </ul>
+
+            <h2>2. La Regola d'Oro: Le Condizioni di Esistenza (C.E.)</h2>
+            <p>
+                A differenza delle disequazioni algebriche, nelle disequazioni logaritmiche è tassativo imporre che <strong>tutti gli argomenti</strong> dei logaritmi presenti nell'equazione di partenza siano strettamente positivi <em>prima</em> di applicare qualsiasi proprietà o artificio algebrico.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Esempio Pratico:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    Risolviamo <code>log<sub>2</sub>(x - 1) < 3</code>:<br>
+                    • C.E. dell'argomento: <code>x - 1 > 0 &rArr; x > 1</code>.<br>
+                    • Trasformiamo il numero costante in logaritmo: <code>3 = log<sub>2</sub>(2<sup>3</sup>) = log<sub>2</sub>(8)</code>.<br>
+                    • Passiamo agli argomenti (base <code>2 > 1</code>, verso invariato): <code>x - 1 < 8 &rArr; x < 9</code>.<br>
+                    • Intersecando con le C.E.: <code>1 < x < 9</code>.
+                </p>
+            </div>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Risolvi la disequazione: <code>log<sub>3</sub>(x + 2) + log<sub>3</sub>(x) &le; 1</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li>Impostiamo il sistema delle C.E.:<br>
+                        • <code>x + 2 > 0 &rArr; x > -2</code><br>
+                        • <code>x > 0</code><br>
+                        L'intersezione dà come dominio di riferimento: <strong><code>x > 0</code></strong>.
+                    </li>
+                    <li>Applichiamo la proprietà del prodotto a sinistra: <code>log<sub>3</sub>[x(x + 2)] &le; log<sub>3</sub>(3)</code> (poiché <code>1 = log<sub>3</sub>(3)</code>).</li>
+                    <li>Dato che la base <code>3 > 1</code>, passiamo agli argomenti mantenendo il verso: <code>x(x + 2) &le; 3 &rArr; x<sup>2</sup> + 2x - 3 &le; 0</code>.</li>
+                    <li>Risolviamo la disequazione di secondo grado associata: le radici sono <code>x = 1</code> e <code>x = -3</code>. Soluzione interna: <code>-3 &le; x &le; 1</code>.</li>
+                    <li>Mettiamo a sistema con le C.E. (<code>x > 0</code>): <strong><code>0 < x &le; 1</code></strong>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Soluzione finale: 0 < x &le; 1</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulle Disequazioni Logaritmiche</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Esercizi di varia complessità incentrati sull'impostazione dei domini, confronto di logaritmi e disequazioni riconducibili.
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let n = (i % 6) + 1;
+                    domanda = `Risolvi la disequazione logaritmica elementare: <code>log<sub>2</sub>(x - ${n}) < 3</code>.`;
+                    risposta = `<strong>${n} < x < ${n + 8}</strong>`;
+                    spiegazione = `
+                    1) Condizione di esistenza: <code>x - ${n} > 0 &rArr; x > ${n}</code>.<br>
+                    2) Scriviamo <code>3 = log<sub>2</sub>(8)</code> eguagliando le basi.<br>
+                    3) Passando agli argomenti (base > 1): <code>x - ${n} < 8 &rArr; x < ${n + 8}</code>, verificata con le C.E.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let a = (i % 3) + 2;
+                    domanda = `Risolvi la disequazione con base maggiore di 1: <code>log<sub>${a}</sub>(x + 1) &ge; log<sub>${a}</sub>(5)</code>.`;
+                    risposta = `<strong>x &ge; 4</strong>`;
+                    spiegazione = `
+                    1) C.E.: <code>x + 1 > 0 &rArr; x > -1</code>.<br>
+                    2) Poiché la base <code>${a} > 1</code>, conserviamo il verso tra gli argomenti: <code>x + 1 &ge; 5</code>.<br>
+                    3) Ricaviamo <code>x &ge; 4</code>, che rispetta pienamente la condizione di esistenza iniziale.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let k = (i % 4) + 2;
+                    domanda = `Risolvi la disequazione con sostituzione <code>t = log<sub>2</sub>(x)</code>: <code>(log<sub>2</sub>(x))<sup>2</sup> - ${k}log<sub>2</sub>(x) + ${k - 1} > 0</code>.`;
+                    risposta = `<strong>0 < x < 1 oppure x > 2<sup>${k - 1}</sup></strong>`;
+                    spiegazione = `
+                    1) C.E. generale: <code>x > 0</code>.<br>
+                    2) Posto <code>t = log<sub>2</sub>(x)</code>, otteniamo <code>t<sup>2</sup> - ${k}t + ${k - 1} > 0</code>, le cui radici sono <code>1</code> e <code>${k - 1}</code>.<br>
+                    3) Tornando alla variabile <code>x</code> tramite i logaritmi, si ricavano gli intervalli di validità indicati.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel.toUpperCase()}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

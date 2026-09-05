@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione 5: Scomposizione con la Regola di Ruffini - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Scomposizione con la Regola di Ruffini - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1e3a8a;
+        }
+
+        .box-evidenza {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .box-evidenza ol li,
+        .box-evidenza ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-esercizio {
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            background: #ffffff;
+        }
+
+        .testo-domanda {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 0.2rem 0;
+        }
+
+        .formula-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .spiegazione-box {
+            margin-top: 0.8rem;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+        }
+
+        .box-risposta-corretta {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+
+        /* Schema Tabella Ruffini */
+        .tabella-ruffini {
+            border-collapse: collapse;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        .tabella-ruffini td {
+            padding: 0.4rem 0.8rem;
+        }
+        .tabella-ruffini .v-line {
+            border-left: 2px solid #2563eb;
+            border-right: 2px solid #2563eb;
+        }
+        .tabella-ruffini .h-line td {
+            border-bottom: 2px solid #2563eb;
+        }
+        .resto {
+            text-decoration: underline;
+        }
+        .resto:hover {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="scomposizioni-regola-di-ruffini" data-materia="Matematica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #eff6ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #bfdbfe; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno">Matematica / Scomposizioni</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 0.5rem;">Lezione 5: Regola di Ruffini</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Regola di Ruffini (divisori del termine noto e del coefficiente direttivo), algoritmo di divisione sintetica e 100 esercizi svolti.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. La Regola di Ruffini</h2>
+            <p>
+                La <strong>Regola di Ruffini</strong> è il metodo di scomposizione universale per i polinomi a una sola variabile <code>P(x)</code>. Si basa sul <a class="resto" href="teorema-del-resto.html"><strong>Teorema del Resto</strong></a>: un polinomio <code>P(x)</code> è divisibile per un binomio <code>(x - a)</code> se e solo se <code>P(a) = 0</code>. Il valore <code>a</code> viene chiamato <strong>radice</strong> o <strong>zero</strong> del polinomio.
+            </p>
+
+            <div class="formula-box">
+                🔹 <strong>Formula fondamentale della scomposizione:</strong><br>
+                <code>P(x) = (x - a) · Q(x)</code><br><br>
+                Dove:
+                <br>• <code>a</code> è il valore che annulla il polinomio (<code>P(a) = 0</code>).
+                <br>• <code>Q(x)</code> è il polinomio quoziente di grado inferiore di 1 rispetto a <code>P(x)</code>, i cui coefficienti si ottengono mediante la tabella di Ruffini.
+            </div>
+
+            <p>
+                <strong>Esempio pratico nel punto 1:</strong><br>
+                Scomponiamo il polinomio <code>P(x) = x³ - 2x² - 5x + 6</code>.<br>
+                1. Proviamo le possibili radici tra i divisori del termine noto 6 (±1, ±2, ±3, ±6).<br>
+                2. Calcoliamo <code>P(1)</code>: <code>1³ - 2(1)² - 5(1) + 6 = 1 - 2 - 5 + 6 = 0</code>. Quindi <code>a = 1</code> è una radice!<br>
+                3. Il polinomio è divisibile per <code>(x - 1)</code>.<br>
+                4. Applicando lo schema di Ruffini otteniamo il quoziente <code>Q(x) = x² - x - 6</code>.<br>
+                5. Risultato: <code>P(x) = (x - 1)(x² - x - 6)</code>.
+            </p>
+
+            <h2>2. Come Troviamo i Candidati Zeri (Radici Razionali)</h2>
+            <p>
+                Per individuare i numeri <code>a</code> da testare nel polinomio:
+            </p>
+            <ul>
+                <li><strong>Se il coefficiente principale è 1:</strong> Le possibili radici sono tutti i <strong>divisori interi del termine noto</strong>.</li>
+                <li><strong>Se il coefficiente principale p ≠ 1:</strong> Le possibili radici sono frazioni del tipo <code>± (divisori del termine noto q) / (divisori del coefficiente principale p)</code>.</li>
+            </ul>
+
+            <h2>3. Lo Schema Grafico di Ruffini</h2>
+            <p>
+                Si dispongono i coefficienti di <code>P(x)</code> ordinati in modo decrescente (inserendo 0 per i termini mancanti). Si abbassa il primo coefficiente, lo si moltiplica per la radice <code>a</code>, si sommano le colonne e si prosegue fino a ottenere resto 0 nell'ultima colonna.
+            </p>
+
+            <!-- ESERCIZIO ESEMPIO GUIDATO -->
+            <div class="box-evidenza">
+                <h3 style="margin-top: 0; color: #1e3a8a; font-size: 1.15rem; margin-bottom: 0.8rem;">📝 Esercizio Esempio Guidato</h3>
+                <p style="margin-bottom: 0.8rem;"><strong>Testo:</strong> Scomponi mediante la regola di Ruffini il polinomio: <code>P(x) = x³ - 4x² + x + 6</code>.</p>
+                <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 1rem 0;">
+                <p style="margin-bottom: 0.5rem;"><strong>Risoluzione passo-passo:</strong></p>
+                <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                    <li><strong>Ricerca dello zero:</strong> Divisori di 6: ±1, ±2, ±3, ±6.
+                        <br>• <code>P(1) = 1 - 4 + 1 + 6 = 4 ≠ 0</code>
+                        <br>• <code>P(-1) = (-1)³ - 4(-1)² + (-1) + 6 = -1 - 4 - 1 + 6 = 0</code>. La prima radice è <code>a = -1</code>.
+                    </li>
+                    <li><strong>Divisione con la Tabella di Ruffini:</strong>
+                        <table class="tabella-ruffini">
+                            <tr class="h-line">
+                                <td></td>
+                                <td>1</td>
+                                <td>-4</td>
+                                <td>1</td>
+                                <td class="v-line">6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>-1</strong></td>
+                                <td></td>
+                                <td>-1</td>
+                                <td>5</td>
+                                <td class="v-line">-6</td>
+                            </tr>
+                            <tr style="border-top: 2px solid #2563eb;">
+                                <td></td>
+                                <td><strong>1</strong></td>
+                                <td><strong>-5</strong></td>
+                                <td><strong>6</strong></td>
+                                <td class="v-line"><strong>0</strong></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li><strong>Scrittura del quoziente:</strong> I coefficienti restituiti sono 1, -5, 6, cioè <code>Q(x) = x² - 5x + 6</code>.</li>
+                    <li><strong>Scomposizione finale:</strong> <code>P(x) = (x - (-1))(x² - 5x + 6) = (x + 1)(x² - 5x + 6)</code>.</li>
+                    <li><strong>Ulteriore scomposizione del trinomio:</strong> Il trinomio speciale <code>x² - 5x + 6</code> si scompone in <code>(x - 2)(x - 3)</code>.</li>
+                </ol>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">🎯 <strong>Risultato finale: (x + 1)(x - 2)(x - 3)</strong></p>
+            </div>
+
+        </article>
+
+        <!-- SEZIONE 100 ESERCIZI PRATICI -->
+        <section class="sezione-esercizi" style="margin-top: 3rem;">
+            <h2>✏️ 100 Esercizi Guidati sulla Regola di Ruffini</h2>
+            <p style="margin-bottom: 1.5rem; color: #475569;">
+                Metti alla prova le tue capacità con 100 esercizi svolti: livello facile (polinomi di 3° grado con radici a = ±1 e ±2), medio (polinomi incompleti con termini mancanti da integrare con 0) e difficile (coefficiente principale a > 1, radici frazionarie e scomposizioni ripetute di 4° grado).
+            </p>
+
+            <div id="lista-esercizi" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <!-- Generato dinamicamente da JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let r = (i % 2 === 0) ? 1 : -1;
+                    let a = (i % 3) + 1;
+                    let b = (i % 4) + 2;
+
+                    let S2 = -(r + a - b);
+                    let S1 = (r * a) - (r * b) - (a * b);
+                    let P = r * a * b;
+
+                    let signR = r > 0 ? `- ${r}` : `+ ${Math.abs(r)}`;
+
+                    domanda = `Scomponi con la regola di Ruffini il polinomio di 3° grado: <br>
+                    <code>P(x) = x³ ${S2 >= 0 ? '+ ' + S2 : '- ' + Math.abs(S2)}x² ${S1 >= 0 ? '+ ' + S1 : '- ' + Math.abs(S1)}x ${P >= 0 ? '+ ' + P : '- ' + Math.abs(P)}</code>.`;
+
+                    risposta = `<code>(x ${signR})(x - ${a})(x + ${b})</code>`;
+                    spiegazione = `
+                    1) Troviamo lo zero del polinomio provando tra i divisori del termine noto: testiamo <code>x = ${r}</code>.<br>
+                    2) Verificazione: <code>P(${r}) = 0</code>. Quindi la prima radice è <code>a = ${r}</code> e il polinomio è divisibile per <code>(x ${signR})</code>.<br>
+                    3) Compiliamo la tabella di Ruffini dividendo i coefficienti per <code>${r}</code>.<br>
+                    4) Otteniamo il quoziente di 2° grado <code>Q(x)</code>.<br>
+                    5) Scomponiamo <code>Q(x)</code> per ottenere il risultato completo: <code>(x ${signR})(x - ${a})(x + ${b})</code>.`;
+
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let r = (i % 2 === 0) ? 2 : -2;
+                    let k = (i % 3) + 1;
+                    let c0 = - (r * r * r + k * r);
+
+                    domanda = `Scomponi il seguente polinomio incompleto con la regola di Ruffini: <br>
+                    <code>P(x) = x³ + ${k}x ${c0 >= 0 ? '+ ' + c0 : '- ' + Math.abs(c0)}</code>.`;
+
+                    let signR = r > 0 ? `- ${r}` : `+ ${Math.abs(r)}`;
+
+                    risposta = `<code>(x ${signR})(x² ${r > 0 ? '+ ' + r : '- ' + Math.abs(r)}x + ${r*r + k})</code>`;
+                    spiegazione = `
+                    1) Notiamo che manca il termine di 2° grado (<code>x²</code>), il cui coefficiente nell'algoritmo sarà <code>0</code>.<br>
+                    2) Proviamo i divisori del termine noto e individuiamo che <code>P(${r}) = 0</code>.<br>
+                    3) Impostiamo lo schema di Ruffini ricordando di inserire <code>0</code> per la colonna di <code>x²</code>:<br>
+                    • Coefficienti: <code>[1, 0, ${k}, ${c0}]</code> con radice <code>${r}</code>.<br>
+                    4) Il quoziente ottenuto è <code>x² ${r > 0 ? '+ ' + r : '- ' + Math.abs(r)}x + ${r*r + k}</code>.<br>
+                    5) Risultato della scomposizione: <code>(x ${signR})(x² ${r > 0 ? '+ ' + r : '- ' + Math.abs(r)}x + ${r*r + k})</code>.`;
+
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    if (i % 2 === 0) {
+                        domanda = `Scomponi il polinomio con coefficiente direttivo maggiore di 1: <br>
+                        <code>P(x) = 2x³ - 3x² - 3x + 2</code>.`;
+
+                        risposta = `<code>(x - 2)(x + 1)(2x - 1)</code>`;
+                        spiegazione = `
+                        1) Ricerca delle radici: le possibili radici intere o frazionarie sono <code>±1, ±2, ±1/2</code>.<br>
+                        2) Verifichiamo <code>x = 2</code>: <code>P(2) = 2(8) - 3(4) - 3(2) + 2 = 16 - 12 - 6 + 2 = 0</code>.<br>
+                        3) Eseguiamo la divisione sintetica di Ruffini con radice <code>2</code>.<br>
+                        4) Otteniamo il quoziente <code>2x² + x - 1</code>.<br>
+                        5) Scomponiamo il trinomio ottenuto: <code>2x² + x - 1 = (x + 1)(2x - 1)</code>.<br>
+                        6) Scomposizione finale completa: <code>(x - 2)(x + 1)(2x - 1)</code>.`;
+                    } else {
+                        domanda = `Scomponi il polinomio di 4° grado mediante doppia applicazione della Regola di Ruffini: <br>
+                        <code>P(x) = x⁴ - 2x³ - 7x² + 8x + 12</code>.`;
+
+                        risposta = `<code>(x - 3)(x + 1)(x + 2)(x - 2)</code>`;
+                        spiegazione = `
+                        1) Prima radice: verifichiamo <code>x = -1</code> → <code>P(-1) = 1 + 2 - 7 - 8 + 12 = 0</code>. Raccogliamo <code>(x + 1)</code> e otteniamo <code>Q₁(x) = x³ - 3x² - 4x + 12</code>.<br>
+                        2) Seconda radice su <code>Q₁(x)</code>: verifichiamo <code>x = 3</code> → <code>Q₁(3) = 27 - 27 - 12 + 12 = 0</code>. Raccogliamo <code>(x - 3)</code>.<br>
+                        3) Il quoziente finale di 2° grado è <code>x² - 4 = (x - 2)(x + 2)</code>.<br>
+                        4) Unendo tutti i fattori otteniamo: <code>(x + 1)(x - 3)(x - 2)(x + 2)</code>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}" style="font-weight: bold; text-transform: uppercase;">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary style="cursor: pointer; font-weight: 600;">🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto" style="margin-top: 0.8rem;">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>
