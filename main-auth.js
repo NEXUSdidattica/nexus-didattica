@@ -21,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
                 if (utenteDocSnap.exists() && utenteDocSnap.data().bannato === true) {
                     await signOut(auth);
                     alert("Il tuo account è stato sospeso. Contatta l'assistenza se pensi sia un errore.");
-                    window.location.href = "/index.html";
+                    window.location.href = "/nexus-didattica/index.html";
                     return;
                 }
             } catch (error) {
@@ -32,7 +32,7 @@ onAuthStateChanged(auth, async (user) => {
         if (authButtons) {
             const nomeUtente = user.displayName || "Profilo";
             authButtons.innerHTML = `
-                <a href="/profilo.html" class="btn-profile">👤 ${nomeUtente}</a>
+                <a href="/nexus-didattica/profilo.html" class="btn-profile">👤 ${nomeUtente}</a>
                 <button id="logout-btn" class="btn-logout">Esci</button>
             `;
 
@@ -70,8 +70,8 @@ onAuthStateChanged(auth, async (user) => {
     } else {
         if (authButtons) {
             authButtons.innerHTML = `
-                <a href="/login.html" class="btn-login">Accedi</a>
-                <a href="/registrati.html" class="btn-register">Registrati</a>
+                <a href="/nexus-didattica/login.html" class="btn-login">Accedi</a>
+                <a href="/nexus-didattica/registrati.html" class="btn-register">Registrati</a>
             `;
         }
         if (adminLink) adminLink.style.display = "none";
@@ -627,10 +627,10 @@ async function controllaManutenzione(user) {
 
         if (isAttivo && !siamoInManutenzione) {
             // Manutenzione ATTIVA -> Vai alla pagina di manutenzione
-            window.location.href = "/manutenzione.html";
+            window.location.href = "/nexus-didattica/manutenzione.html";
         } else if (!isAttivo && siamoInManutenzione) {
             // Manutenzione DISATTIVATA -> Torna alla Home
-            window.location.href = "/index.html";
+            window.location.href = "/nexus-didattica/index.html";
         }
     } catch (error) {
         console.error("Errore nel controllo manutenzione:", error);
