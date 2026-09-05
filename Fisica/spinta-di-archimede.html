@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Spinta di Archimede e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Spinta di Archimede: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="spinta-di-archimede" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Fluidi</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Spinta di Archimede</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Principio di Archimede, condizioni di galleggiamento e banca dati dinamica di 100 esercizi dedicati alla forza di sollevamento nei fluidi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Enunciato del Principio di Archimede</h2>
+            <p>
+                Il <strong>principio di Archimede</strong> stabilisce che un corpo immerso in un fluido in quiete riceve una forza verticale dal basso verso l'alto (spinta di Archimede) pari al peso del volume di fluido spostato dal corpo stesso.
+            </p>
+            <div class="formula-box">
+                📐 <b>Formula della Spinta:</b>
+                $$S_a = d_{fluido} \cdot V_{immesso} \cdot g$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $d_{fluido}$ è la densità del liquido, $V_{immesso}$ (o $V_{immerso}$) è il volume del corpo immerso nel fluido e $g$ è l'accelerazione di gravità.
+                </p>
+            </div>
+
+            <h2>2. Condizioni di Galleggiamento</h2>
+            <p>
+                Confrontando la densità del corpo ($d_c$) con quella del fluido ($d_f$), si determinano tre comportamenti distinti:
+            </p>
+            <ul>
+                <li><strong>Affondamento:</strong> se $d_c > d_f$, la forza peso prevale sulla spinta ($P > S_a$) e il corpo affonda.</li>
+                <li><strong>Galleggiamento in equilibrio:</strong> se $d_c < d_f$, il corpo emerge parzialmente finché il peso è bilanciato dalla spinta della parte immersa.</li>
+                <li><strong>Quiete in ogni punto:</strong> se $d_c = d_f$, il corpo rimane in equilibrio ovunque si trovi immerso.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Spinta di Archimede</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo della spinta idrostatica, dei volumi immersi e delle condizioni di galleggiamento, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi specifici sulla Spinta di Archimede
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 3;
+                if (tipo === 0) {
+                    let d = 1000; // Acqua
+                    let v = (0.001 + (i * 0.0002)).toFixed(4);
+                    let res = (d * 9.8 * parseFloat(v)).toFixed(1);
+                    q = `Esercizio ${i}: Un oggetto avente un volume immerso $V = ${v}\\text{ m}^3$ è completamente sommerso nell'acqua ($d = 1000\\text{ kg/m}^3$). Calcola l'intensità della spinta di Archimede (usa $g = 9,8\\text{ m/s}^2$).`;
+                    r = `$${res}\\text{ N}$.`;
+                    s = `Usando la formula di Archimede ($S_a = d \\cdot V \\cdot g$): $S_a = 1000 \\cdot ${v} \\cdot 9,8 = ${res}\\text{ N}$.`;
+                } else if (tipo === 1) {
+                    let d = 1025; // Acqua di mare
+                    let massa_gr = 200 + (i * 50);
+                    let v_cm3 = massa_gr * 1.5; // Esempio coerente di volume in cm^3
+                    let v_m3 = (v_cm3 / 1000000).toFixed(6);
+                    let sa = (d * 9.8 * parseFloat(v_m3)).toFixed(2);
+                    q = `Esercizio ${i}: Un blocco di volume $V = ${v_cm3}\\text{ cm}^3$ è totalmente immerso nell'acqua di mare ($d = 1025\\text{ kg/m}^3$). Determina la spinta di Archimede ricevuta.`;
+                    r = `$${sa}\\text{ N}$.`;
+                    s = `Convertendo il volume in metri cubi ($V = ${v_m3}\\text{ m}^3$) e applicando la formula $S_a = d \\cdot V \\cdot g$: $S_a = 1025 \\cdot ${v_m3} \\cdot 9,8 = ${sa}\\text{ N}$.`;
+                } else {
+                    let d_corpo = 600 + (i * 3);
+                    let d_acqua = 1000;
+                    let percentuale = ((d_corpo / d_acqua) * 100).toFixed(1);
+                    q = `Esercizio ${i}: Un corpo di densità $d_c = ${d_corpo}\\text{ kg/m}^3$ galleggia nell'acqua ($d_f = 1000\\text{ kg/m}^3$). Quale percentuale del suo volume totale si trova immersa nel liquido?`;
+                    r = `$${percentuale}\\%$.`;
+                    s = `Per il galleggiamento, il volume immerso è dato dal rapporto delle densità $\\frac{V_{imm}}{V_{tot}} = \\frac{d_c}{d_f} = \\frac{${d_corpo}}{1000} = ${d_corpo / 1000}$, pari al $${percentuale}\\%$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

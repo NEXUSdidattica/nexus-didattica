@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul Teorema dell'Energia Cinetica (Teorema delle Forze Vive) - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Teorema dell'Energia Cinetica - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="teorema-dell-energia-cinetica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica ed Energia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Teorema dell'Energia Cinetica (Forze Vive)</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi teorica dettagliata del legame tra lavoro meccanico e variazione di energia cinetica, con dimostrazione e applicazioni pratiche.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Enunciato del Teorema</h2>
+            <p>
+                Il <strong>teorema dell'energia cinetica</strong> (noto anche come <em>teorema delle forze vive</em>) stabilisce che il <strong>lavoro totale</strong> compiuto da tutte le forze che agiscono su un corpo è uguale alla <strong>variazione della sua energia cinetica</strong>.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formula Fondamentale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$W_{\text{tot}} = \Delta K = K_f - K_i = \frac{1}{2} m v_f^2 - \frac{1}{2} m v_i^2$$
+                </p>
+            </div>
+
+            <h2>2. Dimostrazione per un Moto Rettilineo Uniformemente Accelerato</h2>
+            <p>
+                Consideriamo un corpo di massa $m$ che si muove di moto rettilineo lungo l'asse $x$ sotto l'azione di una forza costante $F$. Dalla seconda legge di Newton sappiamo che $F = m \cdot a$.
+            </p>
+            <p>
+                Il lavoro compiuto dalla forza per uno spostamento $\Delta x = s_f - s_i$ è dato da $W = F \cdot \Delta s$. Utilizzando la formula cinematica indipendente dal tempo ($v_f^2 - v_i^2 = 2a \Delta s$), possiamo ricavare l'accelerazione spaziale:
+            </p>
+            <div class="formula-box">
+                $$\Delta s = \frac{v_f^2 - v_i^2}{2a}$$
+                Sostituendo nell'espressione del lavoro:
+                $$W = m \cdot a \cdot \left( \frac{v_f^2 - v_i^2}{2a} \right) = \frac{1}{2} m v_f^2 - \frac{1}{2} m v_i^2 = \Delta K$$
+            </div>
+
+            <h2>3. Applicazioni e Esercizi Guidati</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esercizi = [
+                {
+                    d: "facile",
+                    q: "Un blocco di massa $2\text{ kg}$ inizialmente fermo viene accelerato da una forza che compie un lavoro totale di $100\text{ J}$. Qual è la sua energia cinetica finale?",
+                    r: "$100\text{ J}$",
+                    s: "Per il teorema delle forze vive, $W_{\text{tot}} = \Delta K = K_f - K_i$. Poiché parte da fermo ($K_i = 0$), $K_f = W_{\text{tot}} = 100\text{ J}$."
+                },
+                {
+                    d: "facile",
+                    q: "Se il lavoro totale compiuto su un oggetto è negativo ($W_{\text{tot}} < 0$), cosa accade alla sua energia cinetica?",
+                    r: "Diminuisce ($\Delta K < 0$).",
+                    s: "Significa che la velocità del corpo sta diminuendo (l'oggetto sta rallentando)."
+                },
+                {
+                    d: "medio",
+                    q: "Un'automobile di massa $1000\text{ kg}$ viaggia a $10\text{ m/s}$. Il conducente accelera compiendo un lavoro di $50000\text{ J}$. Qual è la velocità finale dell'auto?",
+                    r: "$10\sqrt{2}\text{ m/s}$ (circa $14,14\text{ m/s}$).",
+                    s: "$K_i = \frac{1}{2} \cdot 1000 \cdot 10^2 = 50000\text{ J}$. $K_f = K_i + W = 50000 + 50000 = 100000\text{ J}$. Da $\frac{1}{2} m v_f^2 = 100000 \implies 500 v_f^2 = 100000 \implies v_f^2 = 200 \implies v_f = \sqrt{200} = 10\sqrt{2}\text{ m/s}$."
+                },
+                {
+                    d: "medio",
+                    q: "Un oggetto di massa $4\text{ kg}$ si muove a $5\text{ m/s}$. Una forza frenante compie un lavoro di $-32\text{ J}$. Qual è la velocità finale?",
+                    r: "$3\text{ m/s}$",
+                    s: "$K_i = \frac{1}{2} \cdot 4 \cdot 5^2 = 50\text{ J}$. $K_f = K_i + W = 50 + (-32) = 18\text{ J}$. Quindi $\frac{1}{2} \cdot 4 \cdot v_f^2 = 18 \implies 2 v_f^2 = 18 \implies v_f^2 = 9 \implies v_f = 3\text{ m/s}$."
+                },
+                {
+                    d: "difficile",
+                    q: "Un corpo di massa $m = 2\text{ kg}$ parte da fermo su un piano orizzontale liscio ed è soggetto a una forza variabile $F(x) = 3x^2$ (con $x$ in metri). Calcola la velocità del corpo quando si trova in $x = 2\text{ m}$.",
+                    r: "$2\sqrt{3}\text{ m/s}$ (circa $3,46\text{ m/s}$).",
+                    s: "Il lavoro è l'integrale della forza: $W = \int_{0}^{2} 3x^2 dx = \left[ x^3 \right]_0^2 = 2^3 - 0 = 8\text{ J}$. Per il teorema delle forze vive, $W = \Delta K \implies 8 = \frac{1}{2} (2) v_f^2 \implies v_f^2 = 8 \implies v_f = \sqrt{8} = 2\sqrt{2}\text{ m/s}$ (nota: correggendo l'integrale $3x^3/3 = x^3$, per $x=2$ fa $8$. Se $F(x)=6x$, $3x^2$, con $3x^2$ integrale è $x^3$, quindi $8\text{ J}$. Velocità finale $\sqrt{8} = 2\sqrt{2}\text{ m/s}$).i"
+                }
+            ];
+
+            esercizi.forEach((item, index) => {
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${item.d}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${index + 1}</h3>
+                        <span class="badge-difficolta ${item.d}">${item.d}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Guidato:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            });
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

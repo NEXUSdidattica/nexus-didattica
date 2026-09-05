@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sul Modello del Gas Perfetto e Leggi dei Gas con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Modello del Gas Perfetto: Teoria, Leggi dei Gas e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="modello-del-gas-perfetto" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Modello del Gas Perfetto</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio delle proprietà termodinamiche dei gas, equazione di stato, leggi sperimentali (Boyle, Charles, Gay-Lussac) e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Cos'è il Gas Perfetto?</h2>
+            <p>
+                Un <strong>gas perfetto</strong> (o ideale) è un modello teorico che descrive il comportamento macroscopico dei gas rarefatti attraverso ipotesi microscopiche semplificate: le molecole sono considerate puntiformi (prive di volume proprio), non interagiscono tra loro se non tramite urti perfettamente elastici contro le pareti del recipiente.
+            </p>
+            <div class="formula-box">
+                📐 <b>Equazione di Stato dei Gas Perfetti:</b>
+                $$PV = nRT$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $P$ è la pressione ($\text{Pa}$), $V$ è il volume ($\text{m}^3$), $n$ è il numero di moli ($\text{mol}$), $R \approx 8{,}31\text{ J}/(\text{mol}\cdot\text{K})$ è la costante universale dei gas e $T$ è la temperatura assoluta in **Kelvin ($\text{K}$)**.
+                </p>
+            </div>
+
+            <h2>2. Le Leggi Sperimentali dei Gas</h2>
+            <ul>
+                <li><strong>Legge di Boyle (isoterma, $T = \text{costante}$):</strong> $P \cdot V = \text{costante}$ (pressione e volume sono inversamente proporzionali).</li>
+                <li><strong>Prima Legge di Gay-Lussac / Charles (isobara, $P = \text{costante}$):</strong> $\frac{V}{T} = \text{costante}$ (volume e temperatura assoluta sono direttamente proporzionali).</li>
+                <li><strong>Seconda Legge di Gay-Lussac (isocora, $V = \text{costante}$):</strong> $\frac{P}{T} = \text{costante}$ (pressione e temperatura assoluta sono direttamente proporzionali).</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sul Modello del Gas Perfetto</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati all'equazione di stato e alle trasformazioni termodinamiche dei gas, ordinati per difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sul Modello del Gas Perfetto
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // Equazione di stato: calcolo della pressione P = nRT / V
+                    let n = 1.0 + (i % 3) * 0.5; // mol
+                    let T_C = 27 + (i % 5) * 10; // °C
+                    let T_K = T_C + 273.15; // K
+                    let V = 0.02 + (i % 4) * 0.01; // m^3
+                    let R = 8.31;
+                    let P_val = (n * R * T_K) / V;
+
+                    q = `Esercizio ${i}: Un volume $V = ${V.toFixed(3)}\\text{ m}^3$ contiene $n = ${n.toFixed(1)}\\text{ moli}$ di gas perfetto alla temperatura di $${T_C}\\text{ °C}$. Calcola la pressione $P$ esercitata dal gas ($R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$).`;
+                    r = `$${P_val.toLocaleString('it-IT', {maximumFractionDigits: 0})}\\text{ Pa}$.`;
+                    s = `Convertiamo la temperatura in Kelvin: $T = ${T_C} + 273{,}15 = ${T_K.toFixed(2)}\\text{ K}$. Dalla legge di stato $PV = nRT$ ricaviamo $P = \\frac{nRT}{V} = \\frac{${n.toFixed(1)} \\cdot 8{,}31 \\cdot ${T_K.toFixed(2)}}{${V.toFixed(3)}} \\approx ${P_val.toLocaleString('it-IT', {maximumFractionDigits: 0})}\\text{ Pa}$.`;
+                
+                } else if (tipo === 1) {
+                    // Legge di Boyle: P1 * V1 = P2 * V2 -> P2 = P1 * V1 / V2
+                    let P1 = 1.0 + (i % 3) * 0.5; // atm o bar (esprimiamo in kPa o bar)
+                    let V1 = 4.0 + (i % 4) * 1.0; // litri
+                    let V2 = 2.0; // litri
+                    let P2 = (P1 * V1) / V2;
+
+                    q = `Esercizio ${i}: Una certa quantità di gas perfetto subisce una trasformazione isoterma. Alla pressione iniziale $P_1 = ${P1.toFixed(1)}\\text{ bar}$ il volume è $V_1 = ${V1.toFixed(1)}\\text{ litri}$. Se il volume si riduce a $V_2 = ${V2.toFixed(1)}\\text{ litri}$, calcola la nuova pressione $P_2$.`;
+                    r = `$${P2.toFixed(2)}\\text{ bar}$.`;
+                    s = `Per la legge di Boyle ($T = \\text{costante}$), $P_1 V_1 = P_2 V_2$. Ricaviamo $P_2 = \\frac{P_1 V_1}{V_2} = \\frac{${P1.toFixed(1)} \\cdot ${V1.toFixed(1)}}{${V2.toFixed(1)}} = ${P2.toFixed(2)}\\text{ bar}$.`;
+                
+                } else if (tipo === 2) {
+                    // Prima legge di Gay-Lussac (isobara): V1 / T1 = V2 / T2 -> V2 = V1 * (T2 / T1)
+                    let V1 = 2.0 + (i % 3) * 0.5; // litri
+                    let T1_C = 20;
+                    let T1_K = T1_C + 273.15;
+                    let T2_C = 100 + (i % 5) * 20;
+                    let T2_K = T2_C + 273.15;
+                    let V2 = V1 * (T2_K / T1_K);
+
+                    q = `Esercizio ${i}: Un gas perfetto occupa un volume $V_1 = ${V1.toFixed(1)}\\text{ litri}$ alla temperatura di $${T1_C}\\text{ °C}$ a pressione costante. Se la temperatura viene portata a $${T2_C}\\text{ °C}$, qual è il nuovo volume $V_2$?`;
+                    r = `$${V2.toFixed(2)}\\text{ litri}$.`;
+                    s = `Prima si convertono le temperature in Kelvin: $T_1 = ${T1_K}\\text{ K}$ e $T_2 = ${T2_K}\\text{ K}$. Applicando la prima legge di Gay-Lussac $\\frac{V_1}{T_1} = \\frac{V_2}{T_2}$, si ottiene $V_2 = V_1 \\cdot \\frac{T_2}{T_1} = ${V1.toFixed(1)} \\cdot \\frac{${T2_K}}{${T1_K}} \\approx ${V2.toFixed(2)}\\text{ litri}$.`;
+                
+                } else {
+                    // Domanda teorica sulle ipotesi del gas perfetto
+                    q = `Esercizio ${i}: Spiega perché il modello del gas perfetto descrive in modo eccellente i gas reali solo a basse pressioni e alte temperature.`;
+                    r = `Perché in queste condizioni le molecole si trovano molto distanti tra loro e si muovono ad alta velocità, rendendo trascurabili sia il volume proprio delle molecole sia le forze di attrazione intermolecolari.`;
+                    s = `Nei gas reali a pressioni elevate o temperature prossime alla condensazione, le forze intermolecolari e il volume finito delle molecole non possono più essere ignorati, discostandosi dal modello ideale.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

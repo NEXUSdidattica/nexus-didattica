@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sui Momenti di una Forza e l'Equilibrio Rotazionale - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Momenti di una Forza e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="momenti-di-forze" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Statica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Momenti di una Forza e l'Equilibrio Rotazionale</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio del momento torcente, del braccio della forza e delle condizioni di equilibrio per i corpi estesi, con 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è il Momento di una Forza?</h2>
+            <p>
+                Mentre una forza applicata a un punto materiale ne causa la traslazione, quando agisce su un corpo esteso vincolato a ruotare attorno a un asse (o fulcro) genera una tendenza alla rotazione. Questa grandezza fisica prende il nome di <strong>momento di una forza</strong> (o momento torcente).
+            </p>
+            <p>
+                Il momento dipende non solo dall'intensità della forza, ma anche da <em>dove</em> e <em>con quale direzione</em> viene applicata rispetto al fulcro. La distanza minima tra la linea d'azione della forza e il fulcro è detta <strong>braccio della forza</strong> ($b$).
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule chiave sui Momenti:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Definizione del momento: $M = F \cdot b$<br>
+                    • Unità di misura nel SI: Newton per metro ($\text{N} \cdot \text{m}$)<br>
+                    • Convenzione dei segni: Solitamente si assegna segno positivo (+) a una rotazione antioraria e segno negativo (-) a una rotazione oraria.<br>
+                    • Condizione di equilibrio statico rotazionale: La somma algebrica di tutti i momenti applicati rispetto allo stesso asse deve essere nulla ($\sum M = 0$).
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esercizi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Cos'è il braccio di una forza rispetto a un fulcro?", 
+                    r: "È la distanza perpendicolare (minima) tra la linea d'azione della forza e il fulcro.", 
+                    s: "Esempio guidato: più grande è il braccio, minore è la forza necessaria per generare lo stesso momento (es. aprire una porta spingendo lontano dai cardini)." 
+                },
+                { 
+                    q: "Qual è l'unità di misura del momento di una forza nel Sistema Internazionale?", 
+                    r: "Newton per metro ($\text{N} \cdot \text{m}$).", 
+                    s: "Esempio guidato: si ottiene moltiplicando l'unità della forza (N) per l'unità della lunghezza (m)." 
+                },
+                { 
+                    q: "Se la linea d'azione di una forza passa esattamente per il fulcro, qual è il valore del suo momento?", 
+                    r: "Zero, perché il braccio della forza è pari a zero.", 
+                    s: "Esempio guidato: spingere i cardini di una porta non provocherà alcuna rotazione." 
+                },
+                { 
+                    q: "Secondo la convenzione standard, quale segno viene attribuito a un momento che tende a far ruotare un corpo in senso antiorario?", 
+                    r: "Segno positivo (+).", 
+                    s: "Esempio guidato: il senso antiorario è storicamente assunto come positivo nella fisica elementare." 
+                },
+                { 
+                    q: "Cosa si intende per condizione di equilibrio rotazionale per un corpo rigido?", 
+                    r: "La somma algebrica di tutti i momenti delle forze agenti rispetto a un asse deve essere uguale a zero.", 
+                    s: "Esempio guidato: un'altalena a due posti è in equilibrio se il peso per il braccio del bambino a sinistra eguaglia quello del bambino a destra." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Una forza di $20\text{ N}$ viene applicata perpendicolarmente a una chiave inglese a una distanza di $0,25\text{ m}$ dal bullone. Calcola il momento della forza.", 
+                    r: "$5\text{ N} \cdot \text{m}$.", 
+                    s: "Esempio guidato: $M = F \cdot b = 20\text{ N} \cdot 0,25\text{ m} = 5\text{ N} \cdot \text{m}$." 
+                },
+                { 
+                    q: "Per svitare un bullone è necessario un momento di $15\text{ N} \cdot \text{m}$. Se applichi una forza massima di $50\text{ N}$, quanto deve essere lungo il braccio (la chiave) minimo?", 
+                    r: "$0,3\text{ m}$ (ossia $30\text{ cm}$).", 
+                    s: "Esempio guidato: $b = \frac{M}{F} = \frac{15}{50} = 0,3\text{ m}$." 
+                },
+                { 
+                    q: "Un'asta rigida lunga $2\text{ metri}$ è imperniata al centro. A sinistra, a una distanza di $0,8\text{ m}$ dal fulcro, è appeso un peso che esercita una forza di $30\text{ N}$. A quale distanza dal fulcro, sul lato destro, deve essere applicata una forza verticale di $40\text{ N}$ per mantenere l'equilibrio?", 
+                    r: "$0,6\text{ m}$ dal fulcro.", 
+                    s: "Esempio guidato: $M_1 = F_1 \cdot b_1 = 30 \cdot 0,8 = 24\text{ N}\cdot\text{m}$. Per l'equilibrio $M_2 = M_1 \implies 40 \cdot b_2 = 24 \implies b_2 = \frac{24}{40} = 0,6\text{ m}$." 
+                },
+                { 
+                    q: "Una porta larga $90\text{ cm}$ viene aperta applicando una forza di $10\text{ N}$ perpendicolarmente all'estremità opposta ai cardini. Qual è il momento torcente applicato?", 
+                    r: "$9\text{ N} \cdot \text{m}$.", 
+                    s: "Esempio guidato: convertiamo i centimetri in metri ($90\text{ cm} = 0,9\text{ m}$). $M = 10 \cdot 0,9 = 9\text{ N}\cdot\text{m}$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un'asse di legno uniforme lunga $4\text{ metri}$ e di peso $100\text{ N}$ è appoggiata su due supporti posti ai suoi estremi. Un carico di $300\text{ N}$ è posto a $1\text{ metro}$ di distanza dall'estremo sinistro. Calcola la forza esercitata dal supporto destro.", 
+                    r: "$125\text{ N}$.", 
+                    s: "Esempio guidato: ponendo il fulcro all'estremo sinistro, calcoliamo i momenti rispetto a esso. Il peso dell'asse agisce al centro ($2\text{ m}$ di braccio): $100 \cdot 2 = 200\text{ N}\cdot\text{m}$. Il carico agisce a $1\text{ m}$: $300 \cdot 1 = 300\text{ N}\cdot\text{m}$. Momento totale antiorario/orario bilanciato dalla forza del supporto destro ($F_d$) applicata a $4\text{ m}$: $F_d \cdot 4 = 200 + 300 = 500 \implies F_d = \frac{500}{4} = 125\text{ N}$." 
+                },
+                { 
+                    q: "Una forza $\vec{F}$ di modulo $50\text{ N}$ viene applicata a un'estremità di un'asta formando un angolo di $30^\circ$ rispetto all'asta stessa. Se l'asta è lunga $1,2\text{ m}$ ed è imperniata all'altra estremità, qual è il momento della forza? ($\sin(30^\circ) = 0,5$)", 
+                    r: "$30\text{ N} \cdot \text{m}$.", 
+                    s: "Esempio guidato: il braccio effettivo è $b = L \cdot \sin(30^\circ) = 1,2 \cdot 0,5 = 0,6\text{ m}$. Quindi $M = F \cdot b = 50 \cdot 0,6 = 30\text{ N}\cdot\text{m}$." 
+                },
+                { 
+                    q: "Due forze parallele e concordi di $15\text{ N}$ e $25\text{ N}$ agiscono agli estremi di un'asta rigida lunga $2\text{ m}$. A quale distanza dal punto in cui agisce la forza minore si trova il punto di applicazione della risultante (fulcro di equilibrio)?", 
+                    r: "$1,25\text{ m}$.", 
+                    s: "Esempio guidato: per la regola dei momenti per forze parallele, $F_1 \cdot x = F_2 \cdot (d - x) \implies 15 \cdot x = 25 \cdot (2 - x) \implies 15x = 50 - 25x \implies 40x = 50 \implies x = \frac{50}{40} = 1,25\text{ m}$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

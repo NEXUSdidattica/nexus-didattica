@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul Principio di Sovrapposizione Elettrostatica, somma vettoriale delle forze e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Principio di Sovrapposizione Elettrostatica con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="principio-di-sovrapposizione-elettrostatica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Principio di Sovrapposizione Elettrostatica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi della forza totale esercitata da un sistema di cariche multiple e 100 esercizi interattivi dedicati alla somma vettoriale.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Enunciato del Principio di Sovrapposizione</h2>
+            <p>
+                Quando una carica elettrica è soggetta all'interazione contemporanea di più cariche circostanti, la forza totale che agisce su di essa non dipende dalla presenza delle altre cariche prese singolarmente. 
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formula della Forza Totale:</b>
+                <p style="margin-top: 0.5rem;">
+                    La forza risultante $\vec{F}_{\text{tot}}$ è la <strong>somma vettoriale</strong> delle singole forze esercitate da ciascuna carica:
+                    $$\vec{F}_{\text{tot}} = \vec{F}_{1} + \vec{F}_{2} + \vec{F}_{3} + \dots = \sum_{i} \vec{F}_{i}$$
+                </p>
+            </div>
+
+            <h2>2. Come si risolvono i problemi con più cariche</h2>
+            <ul>
+                <li><strong>Calcolo dei moduli:</strong> Si calcola separatamente l'intensità della forza esercitata da ciascuna carica sulla carica in esame usando la legge di Coulomb.</li>
+                <li><strong>Analisi dei versi:</strong> Si stabilisce se ciascuna forza è attrattiva o repulsiva lungo la linea d'azione.</li>
+                <li><strong>Composizione vettoriale:</strong> Se le cariche sono disposte lungo una retta, si sommano o sottraggono algebricamente tenendo conto dei segni; se sono disposte su un piano (es. vertici di un triangolo o quadrato), si scompongono lungo gli assi cartesiani o si applicano le regole trigonometriche.</li>
+            </ul>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

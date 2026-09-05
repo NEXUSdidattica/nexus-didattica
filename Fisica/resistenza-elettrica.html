@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sulla resistenza elettrica, fattori geometrici, dipendenza dalla temperatura e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Resistenza Elettrica con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="resistenza-elettrica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-credits">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Resistenza Elettrica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Natura della resistenza, dipendenza da lunghezza e sezione, resistività dei materiali, variazione termica e 100 esercizi interattivi dedicati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è la Resistenza Elettrica</h2>
+            <p>
+                La <strong>resistenza elettrica</strong> misura l'opposizione che i materiali offrono al passaggio della corrente elettrica, ossia al flusso ordinato degli elettroni liberi. Essa dipende dalla natura microscopica del materiale conduttore, dalle sue dimensioni geometriche e dalla sua temperatura. L'unità di misura nel Sistema Internazionale è l'Ohm ($\Omega$).
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formule Chiave:</strong>
+                <p style="margin-top: 0.5rem;">
+                    <strong>Seconda Legge di Ohm (Dipendenza geometrica):</strong>
+                    $$R = \rho \cdot \frac{l}{S}$$
+                    dove:
+                    <br>• $R$ è la resistenza ($\Omega$)
+                    <br>• $\rho$ è la resistività del materiale ($\Omega \cdot \text{m}$)
+                    <br>• $l$ è la lunghezza del conduttore ($\text{m}$)
+                    <br>• $S$ è l'area della sezione trasversale ($\text{m}^2$)
+                </p>
+                <p style="margin-top: 0.8rem;">
+                    <strong>Dipendenza della resistenza dalla temperatura:</strong>
+                    $$R(T) = R_0 \cdot [1 + \alpha \cdot (T - T_0)]$$
+                    dove $\alpha$ è il coefficiente termico di resistività ($\text{°C}^{-1}$).
+                </p>
+            </div>
+
+            <h2>2. Fattori Geometrici e Termici</h2>
+            <p>
+                Un conduttore più <strong>lungo</strong> presenta una resistenza maggiore perché gli elettroni subiscono un numero maggiore di urti lungo il loro percorso. Al contrario, un conduttore con una <strong>sezione trasversale</strong> maggiore offre più "spazio" al flusso di cariche, riducendo la resistenza. Inoltre, nei metalli all'aumentare della <strong>temperatura</strong> aumenta l'agitazione termica degli ioni del reticolo cristallino, ostacolando ulteriormente il moto dei portatori di carica e facendo così crescere il valore della resistenza.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo della resistenza, delle dimensioni geometriche e degli effetti della temperatura:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let l_m = 5 + (i % 25);
+                        let S_mm2 = 0.5 + ((i % 10) * 0.2);
+                        let S_m2 = S_mm2 * 1e-6;
+                        let rho = 2.8e-8; // Alluminio
+                        let R_ohm = rho * (l_m / S_m2);
+
+                        q = `Esercizio ${i}: Un filo di alluminio ha una resistività $\\rho = 2.8 \\times 10^{-8}\\text{ }\\Omega\\cdot\\text{m}$, una lunghezza $l = ${l_m}\\text{ m}$ e una sezione $S = ${S_mm2.toFixed(1)}\\text{ mm}^2$. Calcola la sua resistenza elettrica $R$.`;
+                        r = `Resistenza $R \\approx ${R_ohm.toFixed(4)}\\text{ }\\Omega$.`;
+                        s = `Convertendo la sezione in metri quadrati ($S = ${S_mm2.toFixed(1)} \\times 10^{-6}\\text{ m}^2$) e applicando la formula $R = \\rho \\frac{l}{S}$: $R = 2.8 \\times 10^{-8} \\cdot \\frac{${l_m}}{${S_mm2.toFixed(1)} \\times 10^{-6}} \\approx ${R_ohm.toFixed(4)}\\text{ }\\Omega$.`;
+                    
+                    } else if (tipo === 1) {
+                        let R_ohm = 2 + (i % 18);
+                        let l_m = 10 + (i % 40);
+                        let rho = 1.7e-8; // Rame
+                        let S_m2 = rho * (l_m / R_ohm);
+                        let S_mm2 = S_m2 * 1e6;
+
+                        q = `Esercizio ${i}: Un conduttore di rame ($\\rho = 1.7 \\times 10^{-8}\\text{ }\\Omega\\cdot\\text{m}$) lungo $l = ${l_m}\\text{ m}$ possiede una resistenza $R = ${R_ohm}\\text{ }\\Omega$. Calcola l'area della sua sezione trasversale $S$ in millimetri quadrati.`;
+                        r = `Sezione $S \\approx ${S_mm2.toFixed(3)}\\text{ mm}^2$.`;
+                        s = `Dalla formula della seconda legge di Ohm ricaviamo la sezione: $S = \\rho \\frac{l}{R} = 1.7 \\times 10^{-8} \\cdot \\frac{${l_m}}{${R_ohm}} \\approx ${S_m2.toExponential(2)}\\text{ m}^2$, che corrisponde a $\\approx ${S_mm2.toFixed(3)}\\text{ mm}^2$.`;
+                    
+                    } else {
+                        let R0_ohm = 10 + (i % 15);
+                        let alpha = 3.9e-3; // Coefficiente termico del rame
+                        let deltaT = 20 + (i % 50);
+                        let R_fin = R0_ohm * (1 + alpha * deltaT);
+
+                        q = `Esercizio ${i}: Un resistore ha una resistenza $R_0 = ${R_ohm = R0_ohm}\\text{ }\\Omega$ a $20\\text{ °C}$. Calcola la sua resistenza alla temperatura di ${20 + deltaT}\\text{ °C}$ sapendo che il coefficiente termico è $\\alpha = 3.9 \\times 10^{-3}\\text{ °C}^{-1}$.`;
+                        r = `Resistenza finale $R \\approx ${R_fin.toFixed(3)}\\text{ }\\Omega$.`;
+                        s = `Applicando la legge di variazione termica: $R(T) = R_0 (1 + \\alpha \\Delta T) = ${R0_ohm} \\cdot (1 + 3.9 \\times 10^{-3} \\cdot ${deltaT}) \\approx ${R_fin.toFixed(3)}\\text{ }\\Omega$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

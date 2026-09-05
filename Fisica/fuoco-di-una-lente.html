@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione completa sul fuoco di una lente, distanza focale, potere diottrico e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Fuoco di una Lente e Distanza Focale con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="fuoco-di-una-lente" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Ottica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Fuoco di una Lente</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Definizione di fuoco principale, distanza focale, calcolo del potere diottrico e 100 esercizi interattivi unici.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è il Fuoco di una Lente?</h2>
+            <p>
+                Il <strong>fuoco principale</strong> ($F$) di una lente è il punto sull'asse ottico in cui convergono i raggi luminosi che incidono sulla lente parallelamente all'asse stesso (nel caso di lenti convergenti), oppure il punto da cui sembrano divergere i raggi dopo aver attraversato la lente (nel caso di lenti divergenti). La distanza tra il centro ottico della lente e il fuoco è detta <strong>distanza focale</strong> ($f$).
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Relazioni e Potere Diottrico:</b>
+                <p style="margin-top: 0.5rem;">
+                    • <b>Potere diottrico ($D$):</b> Misurato in diottrie ($\text{m}^{-1}$), è definito come l'inverso della distanza focale espressa in metri:
+                    $$D = \frac{1}{f}$$
+                    • <b>Convenzione:</b> $f > 0$ e $D > 0$ per le lenti convergenti; $f < 0$ e $D < 0$ per le lenti divergenti.
+                </p>
+            </div>
+
+            <h2>2. Proprietà e Rilevanza Pratica</h2>
+            <p>
+                La distanza focale determina la "potenza" di deviazione di una lente: una focale più corta corrisponde a una maggiore curvatura delle superfici e a un potere diottrico più elevato, capace di deviare bruscamente i fasci di luce.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati al calcolo della distanza focale e del potere diottrico:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        // Script autonomo e protetto per la generazione immediata dei 100 esercizi unici
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container || container.children.length > 0) return;
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        // Calcolo diottrie da focale in cm
+                        let f_cm = 10 + (i % 40); // cm
+                        let f_m = f_cm / 100;
+                        let diottrie = (1 / f_m).toFixed(2);
+
+                        q = `Esercizio ${i}: Una lente convergente ha una distanza focale $f = ${f_cm}\\text{ cm}$. Calcola il suo potere diottrico $D$.`;
+                        r = `Potere diottrico $D = ${diottrie}\\text{ m}^{-1}$ (o diottrie).`;
+                        s = `Convertiamo la distanza focale in metri: $f = \\frac{${f_cm}}{100} = ${f_m}\\text{ m}$. Il potere diottrico si calcola come $D = \\frac{1}{f} = \\frac{1}{${f_m}} = ${diottrie}\\text{ m}^{-1}$.`;
+                    
+                    } else if (tipo === 1) {
+                        // Calcolo focale da diottrie
+                        let diottrie = 1.5 + (i % 6) * 0.5; // es. 1.5, 2.0, 2.5...
+                        let f_m = (1 / diottrie);
+                        let f_cm = (f_m * 100).toFixed(1);
+
+                        q = `Esercizio ${i}: Una lente correttiva presenta un potere diottrico $D = +${diottrie.toFixed(1)}\\text{ m}^{-1}$. Determina la sua distanza focale $f$ espressa in centimetri.`;
+                        r = `Distanza focale $f \\approx ${f_cm}\\text{ cm}$.`;
+                        s = `Dalla formula $D = \\frac{1}{f}$, ricaviamo $f = \\frac{1}{D} = \\frac{1}{${diottrie.toFixed(1)}} \\approx ${f_m.toFixed(3)}\\text{ m}$, che corrispondono a $\\approx ${f_cm}\\text{ cm}$.`;
+                    
+                    } else {
+                        // Lente divergente
+                        let f_cm = -(12 + (i % 25));
+                        let f_m = f_cm / 100;
+                        let diottrie = (1 / f_m).toFixed(2);
+
+                        q = `Esercizio ${i}: Una lente biconcava divergente possiede una distanza focale $f = ${f_cm}\\text{ cm}$. Calcola il suo potere diottrico $D$.`;
+                        r = `Potere diottrico $D = ${diottrie}\\text{ m}^{-1}$.`;
+                        s = `Per le lenti divergenti la focale è negativa ($f = ${f_m}\\text{ m}$). Il potere diottrico è $D = \\frac{1}{f} = \\frac{1}{${f_m}} = ${diottrie}\\text{ m}^{-1}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

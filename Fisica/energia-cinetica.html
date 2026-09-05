@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sull'Energia Cinetica - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>L'Energia Cinetica e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="energia-cinetica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica ed Energia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">L'Energia Cinetica e il Teorema delle Forze Vive</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio approfondito dell'energia associata al movimento dei corpi e del legame fondamentale con il lavoro meccanico, corredato da 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Cos'è l'Energia Cinetica?</h2>
+            <p>
+                L'<strong>energia cinetica</strong> ($K$ o $E_k$) è l'energia che un corpo possiede per il solo fatto di essere in <strong>movimento</strong> rispetto a un determinato sistema di riferimento. Essa dipende dalla massa del corpo e dalla sua velocità.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Formula dell'Energia Cinetica:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$K = \frac{1}{2} m v^2$$
+                    Dove:<br>
+                    • $K$ è l'energia cinetica (misurata in Joules, $\text{J}$)<br>
+                    • $m$ è la massa del corpo (in $\text{kg}$)<br>
+                    • $v$ è il modulo della velocità del corpo (in $\text{m/s}$)
+                </p>
+            </div>
+
+            <h2>2. Il Teorema delle Forze Vive (o Teorema dell'Energia Cinetica)</h2>
+            <p>
+                Il <strong>teorema delle forze vive</strong> stabilisce che il lavoro totale ($W_{\text{tot}}$) compiuto da tutte le forze che agiscono su un corpo è uguale alla variazione della sua energia cinetica ($\Delta K$).
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Espressione Matematica del Teorema:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$W_{\text{tot}} = \Delta K = K_f - K_i = \frac{1}{2} m v_f^2 - \frac{1}{2} m v_i^2$$
+                </p>
+            </div>
+
+            <h2>3. Batteria di 100 Esercizi con Soluzioni Guidate</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Qual è l'unità di misura dell'energia cinetica nel Sistema Internazionale?", 
+                    r: "Il Joule ($\text{J}$), equivalente a $\text{kg}\cdot\text{m}^2/\text{s}^2$.", 
+                    s: "Esempio guidato: derivato dimensionalmente da $\text{kg} \cdot (\text{m/s})^2$." 
+                },
+                { 
+                    q: "Se un corpo è fermo ($v = 0$), quanto vale la sua energia cinetica?", 
+                    r: "Valore zero ($0\text{ J}$).", 
+                    s: "Esempio guidato: $K = \frac{1}{2} m (0)^2 = 0$." 
+                },
+                { 
+                    q: "Un'automobile di massa $1000\text{ kg}$ viaggia alla velocità costante di $10\text{ m/s}$. Calcola la sua energia cinetica.", 
+                    r: "$50000\text{ J}$ ($50\text{ kJ}$).", 
+                    s: "Esempio guidato: $K = \frac{1}{2} \cdot 1000 \cdot (10)^2 = 500 \cdot 100 = 50000\text{ J}$." 
+                },
+                { 
+                    q: "Se la velocità di un corpo raddoppia, per quale fattore cambia la sua energia cinetica?", 
+                    r: "Quadruplica (aumenta di un fattore $4$).", 
+                    s: "Esempio guidato: poichè $v$ è elevata al quadrato, $(2v)^2 = 4v^2$." 
+                },
+                { 
+                    q: "Un pallone da calcio di massa $0,4\text{ kg}$ viene calciato a una velocità di $20\text{ m/s}$. Qual è la sua energia cinetica?", 
+                    r: "$80\text{ J}$.", 
+                    s: "Esempio guidato: $K = \frac{1}{2} \cdot 0,4 \cdot (20)^2 = 0,2 \cdot 400 = 80\text{ J}$." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un corpo di massa $4\text{ kg}$ passa da una velocità di $2\text{ m/s}$ a una velocità di $6\text{ m/s}$. Calcola la variazione della sua energia cinetica ($\Delta K$).", 
+                    r: "$64\text{ J}$.", 
+                    s: "Esempio guidato: $\Delta K = \frac{1}{2} \cdot 4 \cdot (6^2 - 2^2) = 2 \cdot (36 - 4) = 2 \cdot 32 = 64\text{ J}$." 
+                },
+                { 
+                    q: "Usando il teorema delle forze vive, calcola il lavoro totale necessario per accelerare un oggetto di $10\text{ kg}$ da fermo fino a una velocità di $8\text{ m/s}$.", 
+                    r: "$320\text{ J}$.", 
+                    s: "Esempio guidato: $W_{\text{tot}} = \Delta K = \frac{1}{2} \cdot 10 \cdot 8^2 - 0 = 5 \cdot 64 = 320\text{ J}$." 
+                },
+                { 
+                    q: "Un blocco di massa $2\text{ kg}$ scivola su una superficie liscia. Un lavoro totale di $100\text{ J}$ viene compiuto su di esso. Se partiva da fermo, qual è la sua velocità finale?", 
+                    r: "$10\text{ m/s}$.", 
+                    s: "Esempio guidato: $100 = \frac{1}{2} \cdot 2 \cdot v_f^2 \implies v_f^2 = 100 \implies v_f = 10\text{ m/s}$." 
+                },
+                { 
+                    q: "Un proiettile di massa $0,05\text{ kg}$ ha un'energia cinetica di $1000\text{ J}$. Calcola la sua velocità.", 
+                    r: "$200\text{ m/s}$.", 
+                    s: "Esempio guidato: $1000 = \frac{1}{2} \cdot 0,05 \cdot v^2 \implies 0,025 v^2 = 1000 \implies v^2 = 40000 \implies v = 200\text{ m/s}$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un corpo di massa $m = 3\text{ kg}$ si muove lungo l'asse $x$ soggetto a una forza netta in funzione della posizione $F(x) = 6x$. Se parte da $x = 0$ con velocità zero, qual è la sua velocità quando si trova in $x = 4\text{ m}$?", 
+                    r: "$4\sqrt{2}\text{ m/s}$ (circa $5,66\text{ m/s}$).", 
+                    s: "Esempio guidato: $W = \int_{0}^{4} 6x dx = \left[ 3x^2 \right]_0^4 = 48\text{ J}$. Per il teorema delle forze vive, $48 = \frac{1}{2} (3) v^2 \implies 1,5 v^2 = 48 \implies v^2 = 32 \implies v = \sqrt{32} = 4\sqrt{2}\text{ m/s}$." 
+                },
+                { 
+                    q: "Un'auto di massa $1200\text{ kg}$ che viaggia a $72\text{ km/h}$ viene frenata da una forza d'attrito costante di $4000\text{ N}$. Calcola lo spazio di frenata necessario per arrestarla.", 
+                    r: "$60\text{ m}$.", 
+                    s: "Esempio guidato: $v = 72\text{ km/h} = 20\text{ m/s}$. $K_i = \frac{1}{2} \cdot 1200 \cdot 20^2 = 240000\text{ J}$. Ponendo $W = \Delta K \implies -4000 \cdot \Delta s = 0 - 240000 \implies \Delta s = 60\text{ m}$." 
+                },
+                { 
+                    q: "Una forza costante agisce su un corpo di massa $2\text{ kg}$ inizialmente fermo, facendogli percorrere $10\text{ m}$ in $2\text{ secondi}$. Qual è l'energia cinetica finale del corpo?", 
+                    r: "$100\text{ J}$.", 
+                    s: "Esempio guidato: $\Delta s = \frac{1}{2} a t^2 \implies 10 = \frac{1}{2} a (2)^2 = 2a \implies a = 5\text{ m/s}^2$. $v_f = a t = 5 \cdot 2 = 10\text{ m/s}$. $K = \frac{1}{2} \cdot 2 \cdot (10)^2 = 100\text{ J}$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Guidato:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

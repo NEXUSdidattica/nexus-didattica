@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sui conduttori elettrici in equilibrio elettrostatico, campo elettrico interno, potenziale e 100 esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Conduttori Elettrici in Equilibrio Elettrostatico con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .box-disegno {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(126, 34, 206, 0.05);
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="conduttori-elettrici" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-registrati">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Elettromagnetismo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Conduttori Elettrici in Equilibrio</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Proprietà elettrostatiche dei conduttori, campo interno nullo, distribuzione delle cariche, teorema di Coulomb e 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Proprietà dei Conduttori in Equilibrio Elettrostatico</h2>
+            <p>
+                Un conduttore si dice in <strong>equilibrio elettrostatico</strong> quando le cariche elettriche al suo interno sono ferme (velocità media nulla). In queste condizioni valgono proprietà fondamentali:
+            </p>
+            <ul>
+                <li><strong>Campo elettrico interno nullo:</strong> $E_{\text{interno}} = 0$. Se fosse diverso da zero, gli elettroni liberi continuerebbero a muoversi.</li>
+                <li><strong>Carica sulla superficie:</strong> Eventuali cariche in eccesso fornite al conduttore si distribuiscono esclusivamente sulla sua superficie esterna.</li>
+                <li><strong>Potenziale costante:</strong> Tutto il volume del conduttore e la sua superficie si trovano allo stesso potenziale elettrico (il conduttore è una superficie equipotenziale).</li>
+                <li><strong>Campo esterno perpendicolare:</strong> Subito fuori dalla superficie del conduttore, le linee del campo elettrico sono sempre perfettamente perpendicolari alla superficie stessa.</li>
+            </ul>
+
+            <div class="box-disegno">
+                <h3 style="color: #7e22ce; margin-bottom: 1rem; font-size: 1.2rem;">Conduttore Carico in Equilibrio</h3>
+                <svg viewBox="0 0 500 180" width="100%" height="auto" style="max-width: 450px; background: #faf5ff; border-radius: 8px; border: 1px solid #e9d5ff; padding: 10px;">
+                    <!-- Forma conduttore -->
+                    <ellipse cx="250" cy="90" rx="160" ry="60" fill="#e9d5ff" stroke="#9333ea" stroke-width="2" />
+                    <text x="250" y="95" font-size="14" fill="#6b21a8" font-weight="bold" text-anchor="middle">$E = 0$ (Interno)</text>
+                    <!-- Cariche superficiali -->
+                    <text x="100" y="70" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="150" y="45" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="250" y="35" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="350" y="45" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="400" y="70" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="100" y="115" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="400" y="115" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <text x="250" y="150" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                    <!-- Linee campo ortogonali -->
+                    <path d="M 250 30 L 250 10" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)" />
+                    <path d="M 410 70 L 435 60" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)" />
+                </svg>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; margin-bottom: 0;">
+                    Le cariche si dispongono all'esterno e il campo elettrico appena fuori è ortogonale alla superficie.
+                </p>
+            </div>
+
+            <div class="formula-box">
+                📐 <b>Teorema di Coulomb:</b>
+                <p style="margin-top: 0.5rem;">
+                    Il modulo del campo elettrico $E$ in prossimità della superficie di un conduttore in equilibrio è legato alla densità superficiale di carica $\sigma$ ($\sigma = \frac{Q}{S}$):
+                    $$E = \frac{\sigma}{\varepsilon_0}$$
+                </p>
+            </div>
+
+            <h2>2. Il Potere Dispersivo delle Punte</h2>
+            <p>
+                Su un conduttore di forma irregolare, la carica superficiale si concentra maggiormente dove il raggio di curvatura è minore (sulle punte). Di conseguenza, il campo elettrico vicino alle punte è molto intenso, potendo ionizzare l'aria circostante e disperdere la carica (principio sfruttato nei parafulmini).
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi unici dedicati ai conduttori in equilibrio, campo elettrico interno, potenziale e teorema di Coulomb:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let sigma_nC = 5 + (i % 25);
+                        let eps_0 = 8.85e-12;
+                        let sigma = sigma_nC * 1e-9;
+                        let E_calc = sigma / eps_0;
+
+                        q = `Esercizio ${i}: La densità superficiale di carica su una sfera conduttrice in equilibrio è $\\sigma = ${sigma_nC}\\text{ nC/m}^2$. Calcola l'intensità del campo elettrico $E$ subito fuori dalla superficie del conduttore ($\\varepsilon_0 = 8.85 \\times 10^{-12}\\text{ C}^2/(\\text{N}\\cdot\\text{m}^2)$).`;
+                        r = `Campo elettrico $E \\approx ${E_calc.toFixed(1)}\\text{ N/C}$.`;
+                        s = `Applicando il teorema di Coulomb: $E = \\frac{\\sigma}{\\varepsilon_0} = \\frac{${sigma_nC} \\times 10^{-9}}{8.85 \\times 10^{-12}} \\approx ${E_calc.toFixed(1)}\\text{ N/C}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let Q_uC = 2 + (i % 15);
+                        let r_cm = 5 + (i % 20);
+                        let k = 8.99e9;
+                        let V_calc = (k * Q_uC * 1e-6) / (r_cm * 1e-2);
+
+                        q = `Esercizio ${i}: Una sfera conduttrice di raggio $R = ${r_cm}\\text{ cm}$ possiede una carica netta $Q = ${Q_uC}\\text{ \\mu C}$. Qual è il potenziale elettrico $V$ sulla superficie della sfera?`;
+                        r = `Potenziale $V \\approx ${V_calc.toExponential(2)}\\text{ V}$.`;
+                        s = `All'esterno e sulla superficie, il potenziale di una sfera conduttrice è quello di una carica puntiforme: $V = k \\frac{Q}{R} = 8.99 \\times 10^9 \\cdot \\frac{${Q_uC} \\times 10^{-6}}{${r_cm} \\times 10^{-2}} \\approx ${V_calc.toExponential(2)}\\text{ V}$.`;
+                    
+                    } else {
+                        let r_interno_cm = 2 + (i % 10);
+                        let V_interno = 100 + (i * 15);
+
+                        q = `Esercizio ${i}: All'interno di una cavità vuota scavata dentro un conduttore in equilibrio elettrostatico, a una distanza di $r = ${r_interno_cm}\\text{ cm}$ dal centro, il potenziale elettrico misurato è $V = ${V_interno}\\text{ V}$. Quanto vale il potenziale elettrico nel punto più profondo e centrale del conduttore solido?`;
+                        r = `Il potenziale è costante ovunque nel conduttore ed è pari a ${V_interno}\\text{ V}.`;
+                        s = `In un conduttore in equilibrio elettrostatico, il campo elettrico interno è nullo ($E = 0$) e di conseguenza tutto il volume del conduttore è una superficie equipotenziale, mantenendo lo stesso valore di potenziale ovunque.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax && window.MathJax.Hub) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                setTimeout(generaEsercizi, 50);
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

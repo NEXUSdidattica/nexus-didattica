@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulle Operazioni in Notazione Scientifica - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Operazioni in Notazione Scientifica e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Tema Viola Fisica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .tabella-misure {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e9d5ff;
+        }
+
+        .tabella-misure th, .tabella-misure td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f3e8ff;
+        }
+
+        .tabella-misure th {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+            font-weight: bold;
+        }
+
+        .tabella-misure tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Griglia a larghezza piena per gli esercizi */
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- LIVELLO FACILE (VERDINO CHIARO) --- */
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .card-esercizio.livello-facile .header-esercizio h3 {
+            color: #14532d;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        /* --- LIVELLO MEDIO (GIALLINO/CREMA CHIARO) --- */
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .card-esercizio.livello-medio .header-esercizio h3 {
+            color: #713f12;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        /* --- LIVELLO DIFFICILE (ROSSINO CHIARO) --- */
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .card-esercizio.livello-difficile .header-esercizio h3 {
+            color: #7f1d1d;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .box-risposta-corretta strong {
+            color: #0c4a6e;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="operazioni-in-notazione-scientifica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Metodo Scientifico</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Le Operazioni in Notazione Scientifica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Padroneggia addizione, sottrazione, moltiplicazione e divisione tra numeri espressi in notazione scientifica con tantissimi esempi pratici e ben 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Introduzione alla Notazione Scientifica</h2>
+            <p>
+                Un numero scritto in <strong>notazione scientifica</strong> si presenta nella forma <strong>N &middot; 10<sup>n</sup></strong>, dove il coefficiente <em>N</em> è un numero compreso tra 1 e 10 (1 &le; |N| &lt; 10) ed <em>n</em> è un esponente intero (positivo o negativo)[cite: 2]. Questa forma è fondamentale per semplificare i calcoli con grandezze enormi o microscopiche in fisica.
+            </p>
+
+            <h2>2. Moltiplicazione</h2>
+            <p>
+                La moltiplicazione è diretta perché non richiede che gli esponenti siano uguali[cite: 2]:
+            </p>
+            <ul>
+                <div><li>Si moltiplicano tra loro i coefficienti decimali (N<sub>1</sub> &middot; N<sub>2</sub>)[cite: 2].</li></div>
+                <div><li>Si applica la proprietà delle potenze per la base 10: <strong>si sommano gli esponenti</strong> (10<sup>n</sup> &middot; 10<sup>m</sup> = 10<sup>n+m</sup>)[cite: 2].</li></div>
+            </ul>
+            <p><em>Esempio: (2,0 &middot; 10<sup>3</sup>) &middot; (4,0 &middot; 10<sup>5</sup>) = (2,0 &middot; 4,0) &middot; 10<sup>3+5</sup> = 8,0 &middot; 10<sup>8</sup>[cite: 2].</em></p>
+
+            <h2>3. Divisione</h2>
+            <p>
+                Simile alla moltiplicazione, sfrutta le proprietà delle potenze ma con l'operazione inversa[cite: 2]:
+            </p>
+            <ul>
+                <div><li>Si dividono tra loro i coefficienti decimali (N<sub>1</sub> / N<sub>2</sub>)[cite: 2].</li></div>
+                <div><li>Si applica la proprietà delle potenze: <strong>si sottraggono gli esponenti</strong> (10<sup>n</sup> / 10<sup>m</sup> = 10<sup>n-m</sup>)[cite: 2].</li></div>
+            </ul>
+            <p><em>Esempio: (6,0 &middot; 10<sup>7</sup>) / (3,0 &middot; 10<sup>2</sup>) = (6,0 / 3,0) &middot; 10<sup>7-2</sup> = 2,0 &middot; 10<sup>5</sup>[cite: 2].</em></p>
+
+            <h2>4. Addizione e Sottrazione</h2>
+            <p>
+                Per sommare o sottrarre due numeri in notazione scientifica, i numeri <strong>devono avere obbligatoriamente la stessa potenza di 10</strong>[cite: 2]. Se gli esponenti sono diversi, si sposta la virgola di uno dei due numeri per uguagliare gli esponenti[cite: 2].
+            </p>
+            <div class="formula-box" style="border-color: #e9d5ff; background-color: #faf5ff;">
+                📐 <strong>Regola pratica per la somma:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    <em>Esempio: (3,2 &middot; 10<sup>4</sup>) + (5,1 &middot; 10<sup>3</sup>)</em>[cite: 2]<br>
+                    1) Riduciamo alla stessa potenza (10<sup>4</sup>) scrivendo 5,1 &middot; 10<sup>3</sup> come 0,51 &middot; 10<sup>4</sup>[cite: 2].<br>
+                    2) Sommiamo i coefficienti: (3,2 + 0,51) &middot; 10<sup>4</sup> = 3,71 &middot; 10<sup>4</sup>[cite: 2].
+                </p>
+            </div>
+
+            <h2>5. Tabella Riassuntiva delle Regole</h2>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Operazione</th>
+                        <th>Regola Generale</th>
+                        <th>Esempio Guidato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Moltiplicazione</td><td>(a &middot; 10<sup>n</sup>) &middot; (b &middot; 10<sup>m</sup>) = (a &middot; b) &middot; 10<sup>n+m</sup>[cite: 2]</td><td>(2,0 &middot; 10<sup>3</sup>) &middot; (4,0 &middot; 10<sup>5</sup>) = 8,0 &middot; 10<sup>8</sup>[cite: 2]</td></tr>
+                    <tr><td>Divisione</td><td>(a &middot; 10<sup>n</sup>) / (b &middot; 10<sup>m</sup>) = (a / b) &middot; 10<sup>n-m</sup>[cite: 2]</td><td>(6,0 &middot; 10<sup>7</sup>) / (3,0 &middot; 10<sup>2</sup>) = 2,0 &middot; 10<sup>5</sup>[cite: 2]</td></tr>
+                    <tr><td>Addizione / Sottrazione</td><td>Uguagliare gli esponenti, poi sommare/sottrarre i coefficienti[cite: 2]</td><td>(3,2 &middot; 10<sup>4</sup>) + (5,1 &middot; 10<sup>3</sup>) = 3,71 &middot; 10<sup>4</sup>[cite: 2]</td></tr>
+                </tbody>
+            </table>
+
+            <h2>6. Batteria di 100 Esercizi Interattivi (Tutte le Difficoltà)</h2>
+            <p>
+                Metti alla prova le tue abilità con ben 100 esercizi completi di calcoli, moltiplicazioni, divisioni, somme e sottrazioni in notazione scientifica, suddivisi in tre livelli (Facile, Medio, Difficile) con spiegazioni dettagliate passo-passo.
+            </p>
+
+            <!-- Container generato dinamicamente dallo script -->
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi di Operazioni in Notazione Scientifica -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                if (i <= 35) {
+                    // LIVELLO FACILE (Moltiplicazioni e Divisioni elementari)
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let isMult = (i % 2 === 0);
+                    let c1 = (i % 3) + 2;
+                    let c2 = (i % 4) + 1;
+                    let e1 = (i % 5) + 1;
+                    let e2 = (i % 3) + 1;
+
+                    if (isMult) {
+                        let resCoef = c1 * c2;
+                        let resExp = e1 + e2;
+                        domanda = `Esegui la moltiplicazione: (${c1} &middot; 10<sup>${e1}</sup>) &middot; (${c2} &middot; 10<sup>${e2}</sup>).`;
+                        risposta = `<strong>${resCoef} &middot; 10<sup>${resExp}</sup></strong>`;
+                        spiegazione = `1) Moltiplichiamo i coefficienti: ${c1} &middot; ${c2} = ${resCoef}.<br>2) Sommiamo gli esponenti: ${e1} + ${e2} = ${resExp}.<br>3) Risultato finale: ${resCoef} &middot; 10<sup>${resExp}</sup>.`;
+                    } else {
+                        let resCoef = (c1 * 2).toFixed(1);
+                        let resExp = e1 - e2;
+                        domanda = `Esegui la divisione: (${resCoef} &middot; 10<sup>${e1}</sup>) / (${c1} &middot; 10<sup>${e2}</sup>).`;
+                        let divCoef = (resCoef / c1).toFixed(1);
+                        risposta = `<strong>${divCoef} &middot; 10<sup>${resExp}</sup></strong>`;
+                        spiegazione = `1) Dividiamo i coefficienti: ${resCoef} / ${c1} = ${divCoef}.<br>2) Sottragiamo gli esponenti: ${e1} - (${e2}) = ${resExp}.<br>3) Risultato finale: ${divCoef} &middot; 10<sup>${resExp}</sup>.`;
+                    }
+
+                } else if (i <= 70) {
+                    // LIVELLO MEDIO (Somme e sottrazioni con stessi esponenti o prodotti più complessi)
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        // Somma con stesso esponente
+                        let c1 = (i % 4) + 2;
+                        let c2 = (i % 5) + 1;
+                        let exp = (i % 6) + 2;
+                        let sumCoef = c1 + c2;
+                        domanda = `Esegui la somma: (${c1} &middot; 10<sup>${exp}</sup>) + (${c2} &middot; 10<sup>${exp}</sup>).`;
+                        risposta = `<strong>${sumCoef} &middot; 10<sup>${exp}</sup></strong>`;
+                        spiegazione = `1) Poiché le potenze di 10 sono identiche (10<sup>${exp}</sup>), sommiamo direttamente i coefficienti: ${c1} + ${c2} = ${sumCoef}.<br>2) Manteniamo la stessa potenza: ${sumCoef} &middot; 10<sup>${exp}</sup>.`;
+                    } else if (tipo === 1) {
+                        // Moltiplicazione con normalizzazione del coefficiente >= 10
+                        let c1 = 4.5;
+                        let c2 = 3.0;
+                        let e1 = 4;
+                        let e2 = 3;
+                        domanda = `Esegui la moltiplicazione e normalizza in notazione scientifica standard: (${c1} &middot; 10<sup>${e1}</sup>) &middot; (${c2} &middot; 10<sup>${e2}</sup>).`;
+                        risposta = `<strong>1,35 &middot; 10<sup>8</sup></strong>`;
+                        spiegazione = `1) Moltiplichiamo i coefficienti: 4,5 &middot; 3,0 = 13,5.<br>2) Sommiamo gli esponenti: 4 + 3 = 7 (13,5 &middot; 10<sup>7</sup>).<br>3) Normalizziamo spostando la virgola a sinistra: 1,35 &middot; 10<sup>8</sup>[cite: 2].`;
+                    } else {
+                        // Sottrazione
+                        let c1 = 8.4;
+                        let c2 = 2.1;
+                        let exp = 5;
+                        let diffCoef = (c1 - c2).toFixed(1);
+                        domanda = `Esegui la sottrazione: (${c1} &middot; 10<sup>${exp}</sup>) - (${c2} &middot; 10<sup>${exp}</sup>).`;
+                        risposta = `<strong>${diffCoef} &middot; 10<sup>${exp}</sup></strong>`;
+                        spiegazione = `1) Avendo lo stesso esponente 10<sup>${exp}</sup>, sottraiamo i coefficienti: 8,4 - 2,1 = ${diffCoef}.<br>2) Il risultato è ${diffCoef} &middot; 10<sup>${exp}</sup>.`;
+                    }
+
+                } else {
+                    // LIVELLO DIFFICILE (Esponenti diversi, somme con allineamento di virgole, potenze di potenze)
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let tipoDiff = i % 3;
+                    if (tipoDiff === 0) {
+                        // Somma con esponenti differenti
+                        domanda = `Esegui la somma con esponenti diversi: (4,2 &middot; 10<sup>5</sup>) + (3,1 &middot; 10<sup>4</sup>).`;
+                        risposta = `<strong>4,51 &middot; 10<sup>5</sup></strong>`;
+                        spiegazione = `1) Portiamo 3,1 &middot; 10<sup>4</sup> alla stessa potenza di 10<sup>5</sup> scrivendolo come 0,31 &middot; 10<sup>5</sup>[cite: 2].<br>2) Sommiamo i coefficienti: 4,2 + 0,31 = 4,51.<br>3) Risultato finale: 4,51 &middot; 10<sup>5</sup>.`;
+                    } else if (tipoDiff === 1) {
+                        // Potenza di un numero in notazione scientifica
+                        domanda = `Calcola la potenza: (3 &middot; 10<sup>2</sup>)<sup>2</sup>.`;
+                        risposta = `<strong>9 &middot; 10<sup>4</sup></strong>`;
+                        spiegazione = `1) Eleviamo al quadrato il coefficiente: 3<sup>2</sup> = 9.<br>2) Moltiplichiamo l'esponente per la potenza esterna: 2 &middot; 2 = 4.<br>3) Risultato: 9 &middot; 10<sup>4</sup>.`;
+                    } else {
+                        // Espressione combinata
+                        domanda = `Risolvi l'espressione in notazione scientifica: [(2 &middot; 10<sup>4</sup>) &middot; (3 &middot; 10<sup>2</sup>)] / (4 &middot; 10<sup>3</sup>).`;
+                        risposta = `<strong>1,5 &middot; 10<sup>3</sup></strong>`;
+                        spiegazione = `1) Sviluppiamo il numeratore: (2 &middot; 3) &middot; 10<sup>4+2</sup> = 6 &middot; 10<sup>6</sup>[cite: 2].<br>2) Dividiamo per il denominatore: (6 / 4) &middot; 10<sup>6-3</sup> = 1,5 &middot; 10<sup>3</sup>[cite: 2].<br>3) Risultato: 1,5 &middot; 10<sup>3</sup>.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sulle Conversioni di Unità di Misura - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="../Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Conversioni di Unità di Misura e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Stili Custom e Responsive (Tema Viola Fisica) -->
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Tabelle delle unità di misura */
+        .tabella-misure {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e9d5ff;
+        }
+
+        .tabella-misure th, .tabella-misure td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f3e8ff;
+        }
+
+        .tabella-misure th {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+            font-weight: bold;
+        }
+
+        .tabella-misure tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Griglia a larghezza piena per gli esercizi */
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- LIVELLO FACILE (VERDINO CHIARO) --- */
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .card-esercizio.livello-facile .header-esercizio h3 {
+            color: #14532d;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        /* --- LIVELLO MEDIO (GIALLINO/CREMA CHIARO) --- */
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .card-esercizio.livello-medio .header-esercizio h3 {
+            color: #713f12;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        /* --- LIVELLO DIFFICILE (ROSSINO CHIARO) --- */
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .card-esercizio.livello-difficile .header-esercizio h3 {
+            color: #7f1d1d;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        /* Box Risposta Corretta in Azzurro Chiaro */
+        .spiegazione-contenuto .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .spiegazione-contenuto .box-risposta-corretta strong {
+            color: #0c4a6e;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="conversioni-di-unita-di-misura" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="../index.html" class="logo-link">
+                <img src="../Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../chi_siamo.html">Chi Siamo</a>
+                <a href="../materie.html" class="active">Materie</a>
+                <a href="../contatti.html">Contatti</a>
+                <a href="../admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn-login">Accedi</a>
+                <a href="../registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <!-- BREADCRUMB -->
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff; transition: all 0.2s;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <!-- HERO LEZIONE -->
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Calcolo</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Conversioni di Unità di Misura e 100 Esercizi</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Tabelle di riferimento per ogni grandezza fisica (lunghezza, massa, capacità, superficie, volume) e 100 esercizi interattivi rimescolati per livelli di difficoltà.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <!-- CONTENUTO TEORICO E TABELLE -->
+        <article class="contenuto-lezione">
+
+            <h2>1. Tabelle di Riferimento delle Unità di Misura del SI</h2>
+            <p>
+                Prima di affrontare gli esercizi, consulta le tabelle riassuntive dei multipli e sottomultipli per ciascuna grandezza fondamentale e derivata.
+            </p>
+
+            <h3>📏 Misure di Lunghezza (Unità base: metro - m)</h3>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Unità</th>
+                        <th>Simbolo</th>
+                        <th>Valore rispetto al metro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Chilometro</td><td>km</td><td>1.000 m (10³ m)</td></tr>
+                    <tr><td>Ettometro</td><td>hm</td><td>100 m (10² m)</td></tr>
+                    <tr><td>Decametro</td><td>dam</td><td>10 m (10¹ m)</td></tr>
+                    <tr><td><strong>Metro</strong></td><td><strong>m</strong></td><td><strong>1 m</strong></td></tr>
+                    <tr><td>Decimetro</td><td>dm</td><td>0,1 m (10⁻¹ m)</td></tr>
+                    <tr><td>Centimetro</td><td>cm</td><td>0,01 m (10⁻² m)</td></tr>
+                    <tr><td>Millimetro</td><td>mm</td><td>0,001 m (10⁻³ m)</td></tr>
+                    <tr><td>Nanometro</td><td>nm</td><td>10⁻⁹ m</td></tr>
+                </tbody>
+            </table>
+
+            <h3>⚖️ Misure di Massa / Peso (Unità base: chilogrammo - kg)</h3>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Unità</th>
+                        <th>Simbolo</th>
+                        <th>Valore rispetto al chilogrammo / grammo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Megagrammo (Tonnellata)</td><td>Mg (t)</td><td>1.000 kg (10⁶ g)</td></tr>
+                    <tr><td>Quintale</td><td>q</td><td>100 kg</td></tr>
+                    <tr><td><strong>Chilogrammo</strong></td><td><strong>kg</strong></td><td><strong>1 kg</strong></td></tr>
+                    <tr><td>Ettogrammo</td><td>hg</td><td>0,1 kg (100 g)</td></tr>
+                    <tr><td>Decagrammo</td><td>dag</td><td>0,01 kg (10 g)</td></tr>
+                    <tr><td>Grammo</td><td>g</td><td>0,001 kg (1 g)</td></tr>
+                    <tr><td>Milligrammo</td><td>mg</td><td>10⁻³ g</td></tr>
+                    <tr><td>Microgrammo</td><td>μg</td><td>10⁻⁶ g</td></tr>
+                </tbody>
+            </table>
+
+            <h3>🧪 Misure di Capacità (Unità base: litro - L)</h3>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Unità</th>
+                        <th>Simbolo</th>
+                        <th>Valore rispetto al litro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ettolitro</td><td>hL</td><td>100 L</td></tr>
+                    <tr><td>Decalitro</td><td>daL</td><td>10 L</td></tr>
+                    <tr><td><strong>Litro</strong></td><td><strong>L</strong></td><td><strong>1 L</strong></td></tr>
+                    <tr><td>Decilitro</td><td>dL</td><td>0,1 L</td></tr>
+                    <tr><td>Centilitro</td><td>cL</td><td>0,01 L</td></tr>
+                    <tr><td>Millilitro</td><td>mL</td><td>0,001 L</td></tr>
+                </tbody>
+            </table>
+
+            <h3>🟩 Misure di Superficie (Unità base: metro quadro - m²)</h3>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Unità</th>
+                        <th>Simbolo</th>
+                        <th>Rapporto di scala (fattori 100)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Chilometro quadrato</td><td>km²</td><td>1.000.000 m²</td></tr>
+                    <tr><td>Ettometro quadrato (Ettaro)</td><td>hm² (ha)</td><td>10.000 m²</td></tr>
+                    <tr><td>Decametro quadrato (Aro)</td><td>dam² (a)</td><td>100 m²</td></tr>
+                    <tr><td><strong>Metro quadrato</strong></td><td><strong>m²</strong></td><td><strong>1 m²</strong></td></tr>
+                    <tr><td>Decimetro quadrato</td><td>dm²</td><td>0,01 m²</td></tr>
+                    <tr><td>Centimetro quadrato</td><td>cm²</td><td>0,0001 m² (10⁻⁴ m²)</td></tr>
+                    <tr><td>Millimetro quadrato</td><td>mm²</td><td>10⁻⁶ m²</td></tr>
+                </tbody>
+            </table>
+
+            <h3>📦 Misure di Volume (Unità base: metro cubo - m³)</h3>
+            <table class="tabella-misure">
+                <thead>
+                    <tr>
+                        <th>Unità</th>
+                        <th>Simbolo</th>
+                        <th>Rapporto di scala (fattori 1.000) e Equivalenza</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Chilometro cubo</td><td>km³</td><td>10⁹ m³</td></tr>
+                    <tr><td><strong>Metro cubo</strong></td><td><strong>m³</strong></td><td><strong>1.000 dm³ (= 1.000 litri)</strong></td></tr>
+                    <tr><td>Decimetro cubo</td><td>dm³</td><td>0,001 m³ (= 1 L)</td></tr>
+                    <tr><td>Centimetro cubo</td><td>cm³</td><td>10⁻⁶ m³ (= 1 mL)</td></tr>
+                    <tr><td>Millimetro cubo</td><td>mm³</td><td>10⁻⁹ m³</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Batteria Completa di 100 Esercizi Rimescolati</h2>
+            <p>
+                Esercizi suddivisi in tre livelli rigorosi (<strong>Facili</strong>, <strong>Medi</strong>, <strong>Difficili</strong>) che mescolano trasversalmente tutte le grandezze fisiche viste sopra.
+            </p>
+
+            <!-- Container generato dinamicamente dallo script -->
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <p>Link utili:</p>
+        <a href="../privacy_policy.html">Privacy Policy</a>
+        <a href="../cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+        <a href="../termini_condizioni.html">Termini & Condizioni</a>
+        <a href="../chi_siamo.html">Chi Siamo</a>
+        <a href="../contatti.html">Contatti</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3>Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e cookie di profilazione per personalizzare la tua esperienza. Consulta la nostra <a href="../cookie_policy.html" target="_blank">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Generatore dei 100 Esercizi Rimescolati -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, domanda, risposta, spiegazione;
+
+                // --- LIVELLO FACILE (1 - 35): Conversioni dirette e intuitive (m<->cm, kg<->g, L<->mL, ore<->min) ---
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+
+                    let tipo = i % 7;
+                    let val = (i % 8) + 2;
+
+                    if (tipo === 0) {
+                        let ris = val * 100;
+                        domanda = `Converti ${val} m in centimetri (cm).`;
+                        risposta = `<strong>${ris} cm</strong>`;
+                        spiegazione = `1) 1 m = 100 cm.<br>2) Moltiplichiamo ${val} × 100 = ${ris} cm.`;
+                    } else if (tipo === 1) {
+                        let ris = val * 10;
+                        domanda = `Converti ${val} cm in millimetri (mm).`;
+                        risposta = `<strong>${ris} mm</strong>`;
+                        spiegazione = `1) 1 cm = 10 mm.<br>2) Moltiplichiamo ${val} × 10 = ${ris} mm.`;
+                    } else if (tipo === 2) {
+                        let ris = val * 1000;
+                        domanda = `Converti ${val} kg in grammi (g).`;
+                        risposta = `<strong>${ris} g</strong>`;
+                        spiegazione = `1) 1 kg = 1000 g.<br>2) Moltiplichiamo ${val} × 1000 = ${ris} g.`;
+                    } else if (tipo === 3) {
+                        let ris = val * 1000;
+                        domanda = `Converti ${val} litri (L) in millilitri (mL).`;
+                        risposta = `<strong>${ris} mL</strong>`;
+                        spiegazione = `1) 1 L = 1000 mL.<br>2) Moltiplichiamo ${val} × 1000 = ${ris} mL.`;
+                    } else if (tipo === 4) {
+                        let ris = val * 60;
+                        domanda = `Converti ${val} ore in minuti (min).`;
+                        risposta = `<strong>${ris} min</strong>`;
+                        spiegazione = `1) 1 ora = 60 minuti.<br>2) Moltiplichiamo ${val} × 60 = ${ris} min.`;
+                    } else if (tipo === 5) {
+                        let ris = val * 10;
+                        domanda = `Converti ${val} dm in centimetri (cm).`;
+                        risposta = `<strong>${ris} cm</strong>`;
+                        spiegazione = `1) 1 dm = 10 cm.<br>2) Moltiplichiamo ${val} × 10 = ${ris} cm.`;
+                    } else {
+                        let ris = val * 100;
+                        domanda = `Converti ${val} hg (ettogrammi) in grammi (g).`;
+                        risposta = `<strong>${ris} g</strong>`;
+                        spiegazione = `1) 1 hg = 100 g.<br>2) Moltiplichiamo ${val} × 100 = ${ris} g.`;
+                    }
+
+                // --- LIVELLO MEDIO (36 - 70): Conversioni decimali, aree, volumi semplici e sottomultipli ---
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+
+                    let tipo = i % 6;
+                    let val = (i % 7) + 2;
+
+                    if (tipo === 0) {
+                        let numG = val * 250;
+                        let resKg = (numG / 1000).toFixed(3);
+                        domanda = `Converti ${numG} g in chilogrammi (kg).`;
+                        risposta = `<strong>${resKg} kg</strong>`;
+                        spiegazione = `1) Per passare da grammi a kg si divide per 1000.<br>2) ${numG} / 1000 = ${resKg} kg.`;
+                    } else if (tipo === 1) {
+                        let cm2 = val * 5000;
+                        let m2 = (cm2 / 10000).toFixed(4);
+                        domanda = `Converti ${cm2} cm² in metri quadrati (m²).`;
+                        risposta = `<strong>${m2} m²</strong>`;
+                        spiegazione = `1) 1 m² = 10.000 cm² (fattore di scala quadratico).<br>2) Dividiamo per 10.000: ${cm2} / 10.000 = ${m2} m².`;
+                    } else if (tipo === 2) {
+                        let litri = val * 15;
+                        let dm3 = litri; // 1 L = 1 dm³
+                        domanda = `Converti ${litri} litri (L) in decimetri cubi (dm³).`;
+                        risposta = `<strong>${dm3} dm³</strong>`;
+                        spiegazione = `1) 1 litro equivale esattamente a 1 decimetro cubo (1 L = 1 dm³).<br>2) Il valore rimane identico: ${dm3} dm³.`;
+                    } else if (tipo === 3) {
+                        let min = val * 15;
+                        let sec = min * 60;
+                        domanda = `Converti ${min} minuti in secondi (s).`;
+                        risposta = `<strong>${sec} s</strong>`;
+                        spiegazione = `1) 1 minuto = 60 secondi.<br>2) ${min} × 60 = ${sec} s.`;
+                    } else if (tipo === 4) {
+                        let mg = val * 500;
+                        let g = (mg / 1000).toFixed(2);
+                        domanda = `Converti ${mg} mg (milligrammi) in grammi (g).`;
+                        risposta = `<strong>${g} g</strong>`;
+                        spiegazione = `1) 1 g = 1000 mg, quindi dividiamo per 1000.<br>2) ${mg} / 1000 = ${g} g.`;
+                    } else {
+                        let km = val * 3;
+                        let m = km * 1000;
+                        domanda = `Converti ${km} km in metri (m).`;
+                        risposta = `<strong>${m} m</strong>`;
+                        spiegazione = `1) 1 km = 1000 m.<br>2) ${km} × 1000 = ${m} m.`;
+                    }
+
+                // --- LIVELLO DIFFICILE (71 - 100): Velocità km/h->m/s, volumi cubici complessi, unità estreme SI ---
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+
+                    let tipo = i % 4;
+                    let val = (i % 5) + 2;
+
+                    if (tipo === 0) {
+                        let kmh = val * 36; // Multiplo di 36 per avere risultati puliti
+                        let ms = (kmh / 3.6).toFixed(1);
+                        domanda = `Converti la velocità di ${kmh} km/h in metri al secondo (m/s).`;
+                        risposta = `<strong>${ms} m/s</strong>`;
+                        spiegazione = `1) Per convertire da km/h a m/s si divide per il fattore 3,6.<br>2) Calcolo: ${kmh} / 3,6 = ${ms} m/s.`;
+                    } else if (tipo === 1) {
+                        let m3 = val;
+                        let cm3 = val * 1000000;
+                        domanda = `Converti ${m3} m³ in centimetri cubi (cm³).`;
+                        risposta = `<strong>${cm3} cm³</strong>`;
+                        spiegazione = `1) Poiché 1 m = 100 cm, al cubo si ha 1 m³ = (100)³ cm³ = 1.000.000 cm³.<br>2) ${m3} × 1.000.000 = ${cm3} cm³.`;
+                    } else if (tipo === 2) {
+                        let mhz = val * 15;
+                        let hz = mhz * 1000000;
+                        domanda = `Converti ${mhz} MHz (Megahertz) in Hertz (Hz).`;
+                        risposta = `<strong>${hz} Hz</strong>`;
+                        spiegazione = `1) Il prefisso Mega (M) vale 10⁶ (1.000.000).<br>2) ${mhz} × 1.000.000 = ${hz} Hz.`;
+                    } else {
+                        let nm = val * 250;
+                        domanda = `Converti ${nm} nm (nanometri) in metri (m) usando la notazione scientifica.`;
+                        let sci = `${val * 250 * 1e-9}`;
+                        risposta = `<strong>${val * 2.5e-7} m</strong> (oppure ${nm} × 10⁻⁹ m)`;
+                        spiegazione = `1) Il prefisso nano (n) corrisponde a 10⁻⁹.<br>2) Moltiplichiamo ${nm} per 10⁻⁹ m.`;
+                    }
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${domanda}</p>
+
+                    <details class="spiegazione-box">
+                        <summary>🔍 Mostra Soluzione e Spiegazione Passo-Passo</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                🎯 <strong>Risultato finale:</strong> ${risposta}
+                            </div>
+                            <p><strong>Risoluzione guidata:</strong></p>
+                            <p>${spiegazione}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <!-- Script JavaScript Moduli Auth e Cookie -->
+    <script type="module" src="../main-auth.js"></script>
+    <script src="../cookie_banner.js"></script>
+    <script type="module" src="../salva-lezione.js"></script>
+</body>
+
+</html>

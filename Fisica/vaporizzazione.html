@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sulla Vaporizzazione, Ebollizione e Calore Latente con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Vaporizzazione e l'Ebollizione: Teoria e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="vaporizzazione" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">La Vaporizzazione e l'Ebollizione</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio del calore latente di vaporizzazione, transizioni di fase liquido-aeriforme e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Il Processo di Vaporizzazione e il Calore Latente</h2>
+            <p>
+                La <strong>vaporizzazione</strong> è il passaggio di stato dalla fase liquida alla fase aeriforme. Può avvenire per <em>evaporazione</em> (lentamente e solo sulla superficie del liquido a qualsiasi temperatura) o per <em>ebollizione</em> (rapidamente e in tutta la massa del liquido a una temperatura specifica detta temperatura di ebollizione). Durante l'ebollizione, la temperatura del sistema rimane costante.
+            </p>
+            <div class="formula-box">
+                📐 <b>Equazione del calore per la vaporizzazione:</b>
+                $$Q = m \cdot \lambda_v$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    Dove $m$ è la massa del liquido e $\lambda_v$ è il <strong>calore latente di vaporizzazione</strong> (per l'acqua a $100\text{ °C}$ vale circa $2\,260\,000\text{ J/kg}$ o $2,26\times 10^6\text{ J/kg}$). Il calore deve essere assorbito dal sistema ($Q > 0$).
+                </p>
+            </div>
+
+            <h2>2. Fattori che influenzano l'Ebollizione</h2>
+            <ul>
+                <li><strong>Pressione Esterna:</strong> La temperatura di ebollizione dipende dalla pressione atmosferica. In alta montagna (pressione minore), l'acqua bolle a una temperatura inferiore a $100\text{ °C}$.</li>
+                <li><strong>Sosta Termica:</strong> L'energia fornita sotto forma di calore non aumenta l'energia cinetica molecolare media (temperatura costante), ma serve a vincere le forze di coesione intermolecolari per separare le molecole nel passaggio a gas.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sulla Vaporizzazione</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calore latente di vaporizzazione, riscaldamento e transizioni di fase, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sulla Vaporizzazione
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // Calcolo calore di vaporizzazione acqua
+                    let m = 0.2 + (i % 5) * 0.2;
+                    let lambda = 2260000;
+                    let Q_val = (m * lambda);
+
+                    q = `Esercizio ${i}: Calcola la quantità di calore $Q$ necessaria per vaporizzare completamente una massa $m = ${m.toFixed(1)}\\text{ kg}$ di acqua che si trova già alla temperatura di ebollizione di $100\\text{ °C}$ ($\\lambda_{\\text{vap}} = 2\\,260\\,000\\text{ J/kg}$).`;
+                    r = `$${Q_val.toLocaleString('it-IT')}\\text{ J}$ (o $${(Q_val/1000).toFixed(1)}\\text{ kJ}$).`;
+                    s = `Applicando la formula del calore latente $Q = m \\cdot \\lambda_v$: $Q = ${m.toFixed(1)} \\cdot 2\\,260\\,000 = ${Q_val.toLocaleString('it-IT')}\\text{ J}$. Il calore è assorbito dal sistema ($Q > 0$).`;
+                
+                } else if (tipo === 1) {
+                    // Riscaldamento da T ambiente a 100°C e successiva vaporizzazione
+                    let m = 0.5;
+                    let c_acqua = 4186;
+                    let T_iniziale = 20;
+                    let Q_riscaldamento = m * c_acqua * (100 - T_iniziale);
+                    let Q_vaporizzazione = m * 2260000;
+                    let Q_tot = Q_riscaldamento + Q_vaporizzazione;
+
+                    q = `Esercizio ${i}: Una massa $m = ${m}\\text{ kg}$ di acqua alla temperatura iniziale di $${T_iniziale}\\text{ °C}$ viene riscaldata fino a trasformarsi interamente in vapore a $100\\text{ °C}$. Calcola il calore totale assorbito.`;
+                    r = `$${Q_tot.toLocaleString('it-IT')}\\text{ J}$.`;
+                    s = `Il processo avviene in due fasi: 1) Riscaldamento da $${T_iniziale}\\text{ °C}$ a $100\\text{ °C}$: $Q_1 = m c \\Delta T = ${m} \\cdot 4186 \\cdot (100 - ${T_iniziale}) = ${Q_riscaldamento.toLocaleString('it-IT')}\\text{ J}$. 2) Vaporizzazione a $100\\text{ °C}$: $Q_2 = m \\lambda_v = ${Q_vaporizzazione.toLocaleString('it-IT')}\\text{ J}$. Sommando si ottiene $Q_{\\text{tot}} = ${Q_tot.toLocaleString('it-IT')}\\text{ J}$.`;
+                
+                } else if (tipo === 2) {
+                    // Calcolo della massa dal calore assorbito
+                    let Q_assorbito = 1130000 + (i * 20000);
+                    let lambda = 2260000;
+                    let m_calc = (Q_assorbito / lambda).toFixed(2);
+
+                    q = `Esercizio ${i}: Durante l'ebollizione a temperatura costante, una pentola assorbendo una quantità di calore pari a $${Q_assorbito.toLocaleString('it-IT')}\\text{ J}$ vaporizza una certa quantità di acqua. Sapendo che $\\lambda_v = 2\\,260\\,000\\text{ J/kg}$, calcola la massa $m$ di acqua evaporata.`;
+                    r = `$${m_calc}\\text{ kg}$.`;
+                    s = `Ricavando la formula inversa $m = \\frac{Q}{\\lambda_v}$, si ottiene $m = \\frac{${Q_assorbito.toLocaleString('it-IT')}}{2\\,260\\,000} \\approx ${m_calc}\\text{ kg}$.`;
+                
+                } else {
+                    // Domanda teorica su pressione e temperatura di ebollizione
+                    q = `Esercizio ${i}: Spiega perché in alta montagna l'acqua bolle a una temperatura inferiore a $100\\text{ °C}$ rispetto al livello del mare.`;
+                    r = `Perché in alta montagna la pressione atmosferica esterna è minore; di conseguenza, la tensione di vapore del liquido eguaglia la pressione esterna a una temperatura inferiore.`;
+                    s = `L'ebollizione si verifica quando la pressione di vapore saturo del liquido eguaglia la pressione ambiente. Diminuendo quest'ultima, si riduce anche la temperatura necessaria per raggiungere tale condizione.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

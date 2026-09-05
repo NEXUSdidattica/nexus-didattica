@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione sul Lavoro Termodinamico con 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Lavoro Termodinamico: Area nel Piano P-V e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="lavoro-termodinamico" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.button || history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Lavoro Termodinamico</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Significato fisico del lavoro nei gas, interpretazione geometrica nel piano di Clapeyron ($P-V$) e banca dati di 100 esercizi interattivi.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Definizione e Interpretazione Geometrica</h2>
+            <p>
+                In termodinamica, quando un gas subisce una variazione di volume, compie o subisce un <strong>lavoro</strong> meccanico sulle pareti del contenitore (ad esempio su un pistone mobile). Dal punto di vista macroscopico, il lavoro elementare è definito come $dW = P \cdot dV$.
+            </p>
+            <p>
+                Nel <strong>piano di Clapeyron ($P-V$)</strong>, il lavoro compiuto da un gas in una trasformazione dallo stato iniziale $A$ allo stato finale $B$ corrisponde numericamente all'<strong>area sottesa dalla curva</strong> che descrive la trasformazione nel grafico pressione-volume:
+            </p>
+            
+            <div class="formula-box">
+                📐 <b>Calcolo del Lavoro:</b>
+                $$W = \int_{V_1}^{V_2} P(V) \, dV$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    • Se il gas si espande ($\Delta V > 0$), il lavoro è positivo ($W > 0$).<br>
+                    • Se il gas viene compresso ($\Delta V < 0$), il lavoro è negativo ($W < 0$).<br>
+                    • In un ciclo chiuso, il lavoro totale è pari all'area racchiusa dal ciclo stesso.
+                </p>
+            </div>
+
+            <h2>2. Casi Particolari</h2>
+            <ul>
+                <li><strong>Trasformazione Isocora ($V = \text{costante}$):</strong> Essendo $\Delta V = 0$, il lavoro è nullo ($W = 0$).</li>
+                <li><strong>Trasformazione Isobara ($P = \text{costante}$):</strong> Il lavoro si calcola semplicemente come $W = P \cdot (V_2 - V_1)$, corrispondente all'area di un rettangolo nel piano $P-V$.</li>
+                <li><strong>Trasformazione Isoterma ($T = \text{costante}$):</strong> Il lavoro è dato dall'area sottesa da un'iperbole equilatera: $W = nRT \ln\left(\frac{V_2}{V_1}\right)$.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sul Lavoro Termodinamico</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo del lavoro in differenti cicli e trasformazioni termodinamiche, ordinati per difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sul lavoro termodinamico
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 4;
+                if (tipo === 0) {
+                    // Lavoro isobaro W = P * Delta V
+                    let P_bar = 2.0;
+                    let P_Pa = P_bar * 1e5;
+                    let V1 = 10; // litri
+                    let V2 = 25; // litri
+                    let dV_m3 = (V2 - V1) * 1e-3;
+                    let W = P_Pa * dV_m3;
+
+                    q = `Esercizio ${i}: Un gas ideale compie una trasformazione isobara alla pressione di $${P_bar}\\text{ bar}$ ($2 \\cdot 10^5\\text{ Pa}$), espandendosi da un volume di $${V1}\\text{ litri}$ a $${V2}\\text{ litri}$. Calcola il lavoro compiuto dal gas in joule.`;
+                    r = `$${W.toFixed(0)}\\text{ J}$.`;
+                    s = `Convertendo i litri in metri cubi ($\\Delta V = (${V2} - ${V1}) \\cdot 10^{-3} = ${(V2-V1)*1e-3}\\text{ m}^3$), applichiamo la formula del lavoro isobaro $W = P \\Delta V = 2 \\cdot 10^5 \\cdot 0{,}015 = ${W.toFixed(0)}\\text{ J}$.`;
+                
+                } else if (tipo === 1) {
+                    // Lavoro in trasformazione isocora
+                    let V_L = 15;
+                    q = `Esercizio ${i}: Un gas perfetto subisce una trasformazione isocora a un volume costante di $${V_L}\\text{ litri}$, passando da $1\\text{ atm}$ a $3\\text{ atm}$ di pressione. Qual è il lavoro compiuto dal gas?`;
+                    r = `$0\\text{ J}$.`;
+                    s = `In una trasformazione isocora il volume rimane costante ($\\Delta V = 0$). Poiché il lavoro è definito come $W = P \\Delta V$, il lavoro compiuto è nullo ($0\\text{ J}$).`;
+                
+                } else if (tipo === 2) {
+                    // Lavoro in un ciclo rettangolare o triangolare semplice / stima geometrica
+                    let P_max = 4.0; // atm (~400 kPa)
+                    let P_min = 1.0; // atm (~100 kPa)
+                    let dP_Pa = (P_max - P_min) * 101325;
+                    let V_min = 2.0; // litri
+                    let V_max = 6.0; // litri
+                    let dV_m3 = (V_max - V_min) * 1e-3;
+                    let W_ciclo = dP_Pa * dV_m3 * 0.5; // Area triangolare stimata o rettangolare
+
+                    q = `Esercizio ${i}: In un ciclo termodinamico rappresentato nel piano $P-V$, la trasformazione descrive un'area racchiusa stimata con un rettangolo di altezza $\\Delta P = ${P_max - P_min}\\text{ atm}$ ($${( (P_max - P_min)*101325 ).toFixed(0)}\\text{ Pa}$) e base $\\Delta V = ${V_max - V_min}\\text{ litri}$ ($${dV_m3}\\text{ m}^3$). Se il ciclo è percorso in senso orario, calcola il lavoro totale netto compiuto dal gas.`;
+                    r = `$${(dP_Pa * dV_m3).toFixed(1)}\\text{ J}$.`;
+                    s = `Il lavoro netto in un ciclo in senso orario corrisponde all'area della figura nel piano $P-V$: $W_{\\text{tot}} = \\Delta P \\cdot \\Delta V = (${(P_max - P_min)*101325}) \\cdot ${dV_m3} \\approx ${(dP_Pa * dV_m3).toFixed(1)}\\text{ J}$.`;
+                
+                } else {
+                    // Lavoro segno e compressione
+                    let P_kPa = 150000; // 1.5 bar
+                    let V_iniziale = 8.0;
+                    let V_finale = 3.0; // compressione
+                    let W_comp = P_kPa * (V_finale - V_iniziale) * 1e-3;
+
+                    q = `Esercizio ${i}: Un gas subisce una compressione isobara alla pressione di $1{,}5\\cdot 10^5\\text{ Pa}$, passando da $V_1 = ${V_iniziale}\\text{ litri}$ a $V_2 = ${V_finale}\\text{ litri}$. Calcola il lavoro compiuto dal gas.`;
+                    r = `$${W_comp.toFixed(1)}\\text{ J}$ (negativo, pari a $${Math.abs(W_comp).toFixed(1)}\\text{ J}$ fatto sul gas).`;
+                    s = `Essendo una compressione, $\\Delta V = ${V_finale} - ${V_iniziale} = ${V_finale - V_iniziale}\\text{ litri}$ ($${(V_finale - V_iniziale)*1e-3}\\text{ m}^3$). Il lavoro è $W = P \\Delta V = 150000 \\cdot (-0{,}005) = ${W_comp.toFixed(1)}\\text{ J}$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

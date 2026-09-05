@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul Livello di Intensità Sonora in Decibel, formule logaritmiche e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Livello di Intensità Sonora con 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="livello-di-intensita-sonora" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Onde</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Livello di Intensità Sonora</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Approfondimento sulla percezione logaritmica del suono, la scala dei decibel, la soglia di udibilità e 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. La Scala Logaritmica dei Decibel</h2>
+            <p>
+                L'apparato uditivo umano risponde agli stimoli sonori in modo non lineare, seguendo una legge logaritmica. Per questo motivo, il <strong>livello di intensità sonora</strong> ($\beta$) viene espresso in decibel ($\text{dB}$) rapportando l'intensità del suono ($I$) alla soglia di udibilità standard ($I_0 = 10^{-12}\text{ W/m}^2$).
+            </p>
+
+            <div class="formula-box">
+                📐 <b>Formula del Livello di Intensità Sonora:</b>
+                $$\beta = 10 \log_{10}\left(\frac{I}{I_0}\right)$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    • <b>$\beta$:</b> Livello di intensità in decibel ($\text{dB}$).<br>
+                    • <b>$I$:</b> Intensità sonora del fascio ($\text{W/m}^2$).<br>
+                    • <b>$I_0 = 10^{-12}\text{ W/m}^2$:</b> Soglia di udibilità (minimo suono udibile a $1000\text{ Hz}$).
+                </p>
+            </div>
+
+            <h2>2. Proprietà e Valori di Riferimento</h2>
+            <p>
+                Alcuni punti chiave della scala dei decibel:
+            </p>
+            <ul>
+                <li>Se $I = I_0$, il livello è $\beta = 10 \log_{10}(1) = 0\text{ dB}$ (soglia dell'udito).</li>
+                <li>Un incremento di $10\text{ dB}$ corrisponde a una moltiplicazione per 10 dell'intensità fisica $I$.</li>
+                <li>La soglia del dolore per l'orecchio umano si attesta attorno ai $120\text{ dB}$ - $130\text{ dB}$.</li>
+            </ul>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo dei decibel, inversioni della formula logaritmica e variazioni di intensità:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        // Script autonomo e protetto per la generazione immediata dei 100 esercizi
+        (function() {
+            function generaEsercizi() {
+                const container = document.getElementById('lista-esercizi');
+                if (!container || container.children.length > 0) return;
+                
+                let frammento = document.createDocumentFragment();
+
+                for (let i = 1; i <= 100; i++) {
+                    let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                    let q, r, s;
+
+                    let tipo = i % 3;
+                    if (tipo === 0) {
+                        let esponente = -12 + (i % 5) * 2; // es: -12, -10, -8, etc.
+                        let I = Math.pow(10, esponente);
+                        let beta = 10 * Math.log10(I / 1e-12);
+
+                        q = `Esercizio ${i}: Calcola il livello di intensità sonora $\\beta$ in decibel per un'onda con intensità $I = 10^{${esponente}}\\text{ W/m}^2$ (sapendo che $I_0 = 10^{-12}\\text{ W/m}^2$).`;
+                        r = `Livello $\\beta = ${beta.toFixed(0)}\\text{ dB}$.`;
+                        s = `Applicando la formula $\\beta = 10 \\log_{10}\\left(\\frac{10^{${esponente}}}{10^{-12}}\\right) = 10 \\log_{10}(10^{${esponente - (-12)}}) = 10 \\times (${esponente + 12}) = ${beta.toFixed(0)}\\text{ dB}$.`;
+                    
+                    } else if (tipo === 1) {
+                        let beta_val = 40 + (i % 6) * 10;
+                        q = `Esercizio ${i}: Se un suono ha un livello di intensità sonora pari a $\\beta = ${beta_val}\\text{ dB}$, qual è il rapporto tra la sua intensità $I$ e la soglia di udibilità $I_0$?`;
+                        r = `Il rapporto $\\frac{I}{I_0} = 10^{${beta_val / 10}}$.`;
+                        s = `Dalla definizione $\\beta = 10 \\log_{10}(I/I_0)$, dividendo per 10 si ottiene $\\frac{\\beta}{10} = \\log_{10}(I/I_0)$, da cui $\\frac{I}{I_0} = 10^{\\beta/10} = 10^{${beta_val}/10} = 10^{${beta_val / 10}}$.`;
+                    
+                    } else {
+                        let num_sorgenti = 10 + (i % 5) * 5;
+                        let incremento = 10 * Math.log10(num_sorgenti);
+
+                        q = `Esercizio ${i}: Una singola macchina produce un livello sonoro di $50\\text{ dB}$. Se entrano in funzione contemporaneamente $N = ${num_sorgenti}$ macchine identiche e indipendenti, di quanti decibel aumenta il livello sonoro complessivo rispetto a una sola macchina?`;
+                        r = `Aumento di circa $+${incremento.toFixed(1)}\\text{ dB}$.`;
+                        s = `Poiché le sorgenti sono incoerenti, le intensità si sommano: $I_{\\text{tot}} = N \\cdot I_1$. Di conseguenza, il livello aumenta di $\\Delta\\beta = 10 \\log_{10}(${num_sorgenti}) \\approx +${incremento.toFixed(1)}\\text{ dB}$.`;
+                    }
+
+                    let card = document.createElement('div');
+                    card.className = `card-esercizio livello-${diff}`;
+                    card.innerHTML = `
+                        <div class="header-esercizio">
+                            <h3>Esercizio ${i}</h3>
+                            <span class="badge-difficolta ${diff}">${diff}</span>
+                        </div>
+                        <p class="testo-domanda">${q}</p>
+                        <details class="spiegazione-box">
+                            <summary>Mostra Soluzione e Svolgimento</summary>
+                            <div class="spiegazione-contenuto">
+                                <div class="box-risposta-corretta">
+                                    <strong>Risposta:</strong> <strong>${r}</strong>
+                                </div>
+                                <p><strong>Procedimento:</strong></p>
+                                <p>${s}</p>
+                            </div>
+                        </details>
+                    `;
+                    frammento.appendChild(card);
+                }
+
+                container.appendChild(frammento);
+
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', generaEsercizi);
+            } else {
+                generaEsercizi();
+            }
+        })();
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

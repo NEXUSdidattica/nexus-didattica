@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul Rendimento di una Macchina Termica, formule, limiti fisici e 100 esercizi interattivi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Rendimento di una Macchina Termica e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+            border-bottom: 2px solid #f3e8ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="rendimento-macchina-termica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Termodinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Rendimento di una Macchina Termica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi analitica del rendimento energetico, relazioni tra calore assorbito, lavoro utile e calore disperso, con 100 esercizi interattivi guidati.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            
+            <h2>1. Definizione di Rendimento ($\eta$)</h2>
+            <p>
+                Il <strong>rendimento</strong> ($\eta$) di una macchina termica è una grandezza adimensionale che esprime l'efficienza della conversione del calore prelevato dalla sorgente calda in lavoro meccanico utile. Poiché in base al secondo principio della termodinamica non è possibile convertire integralmente il calore in lavoro ($Q_2 > 0$), il rendimento è sempre inferiore a $1$ (ovvero $< 100\%$).
+            </p>
+            <div class="formula-box">
+                📐 <b>Formule Fondamentali:</b>
+                $$\eta = \frac{W}{Q_1} = \frac{Q_1 - Q_2}{Q_1} = 1 - \frac{Q_2}{Q_1}$$
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; color: #475569;">
+                    • $W$: lavoro utile compiuto ($\text{J}$)<br>
+                    • $Q_1$: calore assorbito dalla sorgente a temperatura superiore ($\text{J}$)<br>
+                    • $Q_2$: calore ceduto alla sorgente a temperatura inferiore ($\text{J}$)
+                </p>
+            </div>
+
+            <h2>2. Interpretazione e Limiti Energetici</h2>
+            <p>
+                Un rendimento pari a $0{,}35$ (o $35\%$) indica che il $35\%$ dell'energia termica prelevata viene convertito in lavoro meccanico, mentre il restante $65\%$ viene disperso nell'ambiente sotto forma di calore di scarto ($Q_2$). Per massimizzare il rendimento reale, è necessario operare con differenze di temperatura elevate o impiegare cicli termodinamici ottimizzati.
+            </p>
+
+            <h2>3. Banca Dati Dinamica: 100 Esercizi sul Rendimento Termico</h2>
+            <p>Elenco completo dei 100 esercizi interattivi dedicati al calcolo del rendimento, stima del lavoro e determinazione del calore disperso, ordinati per livello di difficoltà:</p>
+            
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            // Generazione dinamica di 100 esercizi unici sul rendimento della macchina termica
+            for (let i = 1; i <= 100; i++) {
+                let diff = i <= 35 ? "facile" : (i <= 70 ? "medio" : "difficile");
+                let q, r, s;
+
+                let tipo = i % 3;
+                if (tipo === 0) {
+                    // Calcolo rendimento dati W e Q1
+                    let Q1 = 4000 + (i * 15);
+                    let W = 1200 + (i * 4);
+                    let eta = W / Q1;
+                    let eta_perc = (eta * 100).toFixed(1);
+                    let Q2 = Q1 - W;
+
+                    q = `Esercizio ${i}: Una macchina termica compie un lavoro utile $W = ${W}\\text{ J}$ assorbendo un calore $Q_1 = ${Q1}\\text{ J}$ dalla sorgente calda. Calcola il rendimento percentuale $\\eta$ e il calore $Q_2$ ceduto alla sorgente fredda.`;
+                    r = `Rendimento $\\eta = ${eta_perc}\\%$, calore ceduto $Q_2 = ${Q2}\\text{ J}$.`;
+                    s = `Il rendimento è $\\eta = \\frac{W}{Q_1} = \\frac{${W}}{${Q1}} = ${eta.toFixed(3)}$ ($${eta_perc}\\%$). Il calore ceduto è $Q_2 = Q_1 - W = ${Q1} - ${W} = ${Q2}\\text{ J}$.`;
+                
+                } else if (tipo === 1) {
+                    // Calcolo lavoro noto rendimento e Q1
+                    let Q1 = 2500 + (i * 20);
+                    let eta = 0.20 + ((i % 25) * 0.01);
+                    let W = Q1 * eta;
+                    let eta_perc = (eta * 100).toFixed(0);
+
+                    q = `Esercizio ${i}: Un motore termico ha un rendimento del $${eta_perc}\\%$ e preleva $Q_1 = ${Q1}\\text{ J}$ di calore da una caldaia. Determina il lavoro meccanico $W$ prodotto in ogni ciclo.`;
+                    r = `Lavoro $W = ${W.toFixed(1)}\\text{ J}$.`;
+                    s = `Dalla formula del rendimento $\\eta = \\frac{W}{Q_1}$, ricaviamo il lavoro come $W = \\eta \\cdot Q_1 = ${eta} \\cdot ${Q1} = ${W.toFixed(1)}\\text{ J}$.`;
+                
+                } else {
+                    // Calcolo Q1 noti W e rendimento
+                    let W = 800 + (i * 10);
+                    let eta = 0.25 + ((i % 30) * 0.005);
+                    let Q1 = W / eta;
+                    let eta_perc = (eta * 100).toFixed(1);
+                    let Q2 = Q1 - W;
+
+                    q = `Esercizio ${i}: Una macchina termica con un rendimento del $${eta_perc}\\%$ produce un lavoro di $W = ${W}\\text{ J}$ per ciclo. Calcola il calore totale assorbito $Q_1$ e il calore ceduto $Q_2$.`;
+                    r = `Calore assorbito $Q_1 = ${Q1.toFixed(1)}\\text{ J}$, calore ceduto $Q_2 = ${Q2.toFixed(1)}\\text{ J}$.`;
+                    s = `Il calore assorbito si calcola come $Q_1 = \\frac{W}{\\eta} = \\frac{${W}}{${eta}} = ${Q1.toFixed(1)}\\text{ J}$. Il calore ceduto è $Q_2 = Q_1 - W = ${Q1.toFixed(1)} - ${W} = ${Q2.toFixed(1)}\\text{ J}$.`;
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${diff}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diff}">${diff}</span>
+                    </div>
+                    <p class="testo-domanda">${q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Svolgimento</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta:</strong> <strong>${r}</strong>
+                            </div>
+                            <p><strong>Procedimento:</strong></p>
+                            <p>${s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+            if (window.MathJax) {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            }
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

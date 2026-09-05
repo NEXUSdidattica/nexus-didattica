@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione approfondita sul Principio di Conservazione dell'Energia Meccanica - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>La Conservazione dell'Energia Meccanica - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="conservazione-dell-energia-meccanica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica ed Energia</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Principio di Conservazione dell'Energia Meccanica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Analisi teorica e applicativa del principio secondo cui l'energia meccanica totale di un sistema isolato soggetto a sole forze conservative rimane costante.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Enunciato del Principio</h2>
+            <p>
+                L'<strong>energia meccanica totale</strong> ($E$) di un sistema è definita come la somma dell'energia cinetica ($K$) e dell'energia potenziale ($U$):
+            </p>
+            <div class="formula-box">
+                $$E = K + U$$
+            </div>
+            <p>
+                Il <em>principio di conservazione dell'energia meccanica</em> afferma che, se su un sistema agiscono esclusivamente forze conservative (o se il lavoro totale delle forze non conservative è nullo), l'energia meccanica totale si mantiene costante nel corso del moto.
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Equazione di Conservazione:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $$E_i = E_f \implies K_i + U_i = K_f + U_f$$
+                    $$\frac{1}{2} m v_i^2 + U_i = \frac{1}{2} m v_f^2 + U_f$$
+                </p>
+            </div>
+
+            <h2>2. Presenza di Forze Non Conservative (Dissipative)</h2>
+            <p>
+                Quando sono presenti forze non conservative, come l'<strong>attrito</strong> o la resistenza dell'aria, l'energia meccanica non si conserva interamente, poiché una parte di essa viene dissipata in calore. In questo caso, il lavoro compiuto dalle forze non conservative ($W_{\text{nc}}$) è pari alla variazione dell'energia meccanica totale:
+            </p>
+            <div class="formula-box">
+                $$W_{\text{nc}} = \Delta E = E_f - E_i = (K_f + U_f) - (K_i + U_i)$$
+            </div>
+
+            <h2>3. Esercizi Guidati</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esercizi = [
+                {
+                    d: "facile",
+                    q: "Un corpo di massa $1\text{ kg}$ cade liberamente da ferma da un'altezza di $20\text{ m}$. Calcola la sua energia meccanica totale all'altezza di $20\text{ m}$ ($g = 9,8\text{ m/s}^2$).",
+                    r: "$196\text{ J}$.",
+                    s: "All'inizio il corpo è fermo ($K_i = 0$), quindi l'energia meccanica coincide con l'energia potenziale iniziale: $E = U_i = mgh = 1 \cdot 9,8 \cdot 20 = 196\text{ J}$. Per la conservazione, rimarrà costante per tutto il volo."
+                },
+                {
+                    d: "facile",
+                    q: "Nel corso del moto di un pendolo ideale (senza attrito), cosa succede alla somma di energia cinetica e potenziale?",
+                    r: "Rimane costante.",
+                    s: "Essendo la tensione del filo perpendicolare allo spostamento (quindi compie lavoro nullo) e agendo solo la forza di gravità (conservativa), l'energia meccanica totale si conserva."
+                },
+                {
+                    d: "medio",
+                    q: "Un corpo viene lasciato cadere da un'altezza di $10\text{ m}$ senza velocità iniziale. Utilizzando la conservazione dell'energia meccanica, calcola la sua velocità quando si trova a $4\text{ m}$ dal suolo ($g = 9,8\text{ m/s}^2$).",
+                    r: "$10,84\text{ m/s}$ (circa $10,8\text{ m/s}$).",
+                    s: "$E_i = E_f \implies mgh_i = \frac{1}{2} m v_f^2 + mgh_f \implies g(h_i - h_f) = \frac{1}{2} v_f^2 \implies v_f = \sqrt{2g(h_i - h_f)} = \sqrt{2 \cdot 9,8 \cdot (10 - 4)} = \sqrt{19,6 \cdot 6} = \sqrt{117,6} \approx 10,84\text{ m/s}$."
+                },
+                {
+                    d: "medio",
+                    q: "Una pallina di massa $0,5\text{ kg}$ viene lanciata verso l'alto lungo un piano verticale con una velocità iniziale di $12\text{ m/s}$. Qual è la massima altezza che raggiunge?",
+                    r: "$7,35\text{ m}$.",
+                    s: "All'altezza massima la velocità è zero ($K_f = 0$). Per la conservazione: $\frac{1}{2} m v_i^2 = mgh \implies h = \frac{v_i^2}{2g} = \frac{12^2}{2 \cdot 9,8} = \frac{144}{19,6} \approx 7,35\text{ m}$."
+                },
+                {
+                    d: "difficile",
+                    q: "Un blocco di massa $2\text{ kg}$ scivola lungo un piano inclinato alto $3\text{ m}$. A causa dell'attrito, arriva alla base del piano con una velocità di $6\text{ m/s}$. Quant'è il lavoro compiuto dalla forza d'attrito?",
+                    r: "$-22\text{ J}$.",
+                    s: "L'energia meccanica iniziale è $E_i = U_i = mgh = 2 \cdot 9,8 \cdot 3 = 58,8\text{ J}$. L'energia meccanica finale è $E_f = K_f = \frac{1}{2} m v_f^2 = \frac{1}{2} \cdot 2 \cdot 6^2 = 36\text{ J}$. Il lavoro delle forze non conservative è $W_{\text{nc}} = E_f - E_i = 36 - 58,8 = -22,8\text{ J}$ (arrotondato o calcolato con $g=9,8 \implies 36 - 58,8 = -22,8\text{ J}$)."
+                }
+            ];
+
+            esercizi.forEach((item, index) => {
+                htmlEsercizi += `
+                <div class="card-esercizio livello-${item.d}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${index + 1}</h3>
+                        <span class="badge-difficolta ${item.d}">${item.d}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Guidato:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            });
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sui Principi della Dinamica (I, II e III Legge di Newton) - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>I Principi della Dinamica e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="principi-della-dinamica" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Dinamica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">I Principi della Dinamica</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studio completo delle tre leggi di Newton sul moto dei corpi, con 100 esercizi interattivi guidati ed esempi reali.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Le Tre Leggi di Newton</h2>
+            <p>
+                La dinamica studia le cause del movimento dei corpi. Le leggi fondamentali formulate da Isaac Newton sono tre:
+            </p>
+            <ul>
+                <li><strong>Primo Principio (Inerzia):</strong> Un corpo persevera nel suo stato di quiete o di moto rettilineo uniforme se la risultante delle forze ad esso applicate è nulla ($\sum \vec{F} = 0$).</li>
+                <li><strong>Secondo Principio (Legge fondamentale):</strong> La forza totale applicata a un corpo è pari al prodotto della sua massa per l'accelerazione impressa ($\sum \vec{F} = m \cdot \vec{a}$).</li>
+                <li><strong>Terzo Principio (Azione e Reazione):</strong> Se un corpo A esercita una forza su un corpo B, il corpo B esercita su A una forza uguale e contraria ($\vec{F}_{AB} = -\vec{F}_{BA}$).</li>
+            </ul>
+
+            <div class="formula-box">
+                📐 <strong>Formule chiave della dinamica:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    • Prima legge: $\sum \vec{F} = 0 \implies \vec{a} = 0$<br>
+                    • Seconda legge: $\vec{a} = \frac{\sum \vec{F}}{m}$ o $\sum \vec{F} = m\vec{a}$<br>
+                    • Forza peso: $\vec{P} = m \cdot \vec{g}$<br>
+                    • Terzo principio: $\vec{F}_{1 \to 2} = -\vec{F}_{2 \to 1}$
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esercizi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Quanti sono i principi della dinamica formulati da Isaac Newton?", 
+                    r: "Tre.", 
+                    s: "Esempio guidato: il primo (inerzia), il secondo (relazione forza-accelerazione) e il terzo (azione e reazione)." 
+                },
+                { 
+                    q: "Cosa afferma il terzo principio della dinamica (azione e reazione)?", 
+                    r: "A ogni azione corrisponde una reazione uguale e contraria.", 
+                    s: "Esempio guidato: quando si spinge un muro, il muro esercita sulla mano una forza identica in modulo ma opposta in verso." 
+                },
+                { 
+                    q: "Qual è l'unità di misura della forza nel Sistema Internazionale (SI)?", 
+                    r: "Il Newton (N).", 
+                    s: "Esempio guidato: 1 N è la forza necessaria per imprimere a una massa di 1 kg un'accelerazione di 1 m/s²." 
+                },
+                { 
+                    q: "Se la forza risultante su un oggetto è nulla, quale sarà la sua accelerazione?", 
+                    r: "Zero.", 
+                    s: "Esempio guidato: secondo la legge $\sum F = ma$, se la forza è zero, anche l'accelerazione risulta nulla." 
+                },
+                { 
+                    q: "Come si calcola la forza peso di un corpo di massa $m$ sulla Terra?", 
+                    r: "$P = m \cdot g$, dove $g \approx 9,8\text{ m/s}^2$.", 
+                    s: "Esempio guidato: un corpo di 5 kg ha un peso di circa $5 \cdot 9,8 = 49\text{ N}$." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un blocco di massa $m = 4\text{ kg}$ è soggetto a una forza netta di $20\text{ N}$. Qual è l'accelerazione del blocco?", 
+                    r: "5 m/s².", 
+                    s: "Esempio guidato: $a = \frac{F}{m} = \frac{20}{4} = 5\text{ m/s²}$." 
+                },
+                { 
+                    q: "Una forza di $15\text{ N}$ agisce su un corpo immobile imprimendogli un'accelerazione di $3\text{ m/s²}$. Qual è la massa del corpo?", 
+                    r: "5 kg.", 
+                    s: "Esempio guidato: $m = \frac{F}{a} = \frac{15}{3} = 5\text{ kg}$." 
+                },
+                { 
+                    q: "Due pattinatori si spingono reciprocamente sul ghiaccio privo d'attrito. Se il primo applica una forza di $50\text{ N}$ sul secondo, quale forza riceve il primo?", 
+                    r: "Una forza di 50 N in verso opposto.", 
+                    s: "Esempio guidato: per il terzo principio della dinamica, le forze di interazione tra i due corpi sono uguali e contrarie." 
+                },
+                { 
+                    q: "Qual è la forza peso esercitata su una valigia che ha una massa di $12\text{ kg}$? ($g = 9,8\text{ m/s}^2$)", 
+                    r: "117,6 N.", 
+                    s: "Esempio guidato: $P = 12 \cdot 9,8 = 117,6\text{ N}$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Un carrello di massa $m = 10\text{ kg}$ si muove su un piano orizzontale privo d'attrito trainato da una forza parallela di $30\text{ N}$. Se incontra una forza d'attrito contraria di $10\text{ N}$, qual è l'accelerazione?", 
+                    r: "2 m/s².", 
+                    s: "Esempio guidato: la forza risultante è $F_{\text{netta}} = 30 - 10 = 20\text{ N}$. L'accelerazione è $a = \frac{20}{10} = 2\text{ m/s²}$." 
+                },
+                { 
+                    q: "Un ascensore di massa $500\text{ kg}$ sale con un'accelerazione costante di $2\text{ m/s²}$. Qual è la tensione del cavo di sollevamento? ($g = 9,8\text{ m/s}^2$)", 
+                    r: "5900 N.", 
+                    s: "Esempio guidato: $T - mg = ma \implies T = m(g + a) = 500 \cdot (9,8 + 2) = 500 \cdot 11,8 = 5900\text{ N}$." 
+                },
+                { 
+                    q: "Due corpi di massa $m_1 = 2\text{ kg}$ e $m_2 = 3\text{ kg}$ sono collegati da un filo ideale inestensibile su una carrucola ideale. Calcola l'accelerazione del sistema ($g = 9,8\text{ m/s}^2$).", 
+                    r: "1,96 m/s².", 
+                    s: "Esempio guidato: $a = \frac{(m_2 - m_1)g}{m_1 + m_2} = \frac{(3 - 2) \cdot 9,8}{2 + 3} = \frac{9,8}{5} = 1,96\text{ m/s²}$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>

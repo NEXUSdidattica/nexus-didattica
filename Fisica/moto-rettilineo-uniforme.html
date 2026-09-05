@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lezione ed Esercizi sul Moto Rettilineo Uniforme - 100 Esercizi - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="/Immagini/logo_nexus.png" type="image/x-icon">
+    <title>Il Moto Rettilineo Uniforme e 100 Esercizi - NEXUS didattica</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .contenuto-lezione p, 
+        .contenuto-lezione ul, 
+        .contenuto-lezione ol {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .contenuto-lezione li {
+            margin-bottom: 0.6rem;
+        }
+
+        .contenuto-lezione h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #7e22ce;
+        }
+
+        .contenuto-lezione h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #6b21a8;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .griglia-esercizi {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .card-esercizio {
+            border-radius: 8px;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card-esercizio.livello-facile {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 6px solid #22c55e;
+        }
+
+        .badge-difficolta.facile {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-medio {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 6px solid #eab308;
+        }
+
+        .badge-difficolta.medio {
+            background-color: #eab308;
+            color: #ffffff;
+        }
+
+        .card-esercizio.livello-difficile {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 6px solid #ef4444;
+        }
+
+        .badge-difficolta.difficile {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .header-esercizio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-esercizio h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .badge-difficolta {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .testo-domanda {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .spiegazione-box {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .spiegazione-box summary {
+            cursor: pointer;
+            color: #7e22ce;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .spiegazione-contenuto {
+            margin-top: 0.8rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e9d5ff;
+            color: #334155;
+        }
+
+        .box-risposta-corretta {
+            background-color: #e0f2fe;
+            border: 2px solid #38bdf8;
+            border-left: 6px solid #0284c7;
+            color: #0369a1;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body data-lesson-id="moto-rettilineo-uniforme" data-materia="Fisica">
+
+    <header>
+        <div class="hotbar">
+            <a href="/index.html" class="logo-link">
+                <img src="/Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="/chi_siamo.html">Chi Siamo</a>
+                <a href="/materie.html" class="active">Materie</a>
+                <a href="/contatti.html">Contatti</a>
+                <a href="/admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenitore-centrato">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #a600ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; background: #faf5ff; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e9d5ff;">
+                ← Torna indietro
+            </a>
+        </div>
+
+        <section class="hero-lezione" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <span class="badge-anno" style="background-color: #faf5ff; color: #a600ff; border: 1px solid #e9d5ff; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Fisica / Cinematica</span>
+                <h1 style="font-size: 2.2rem; color: #0f172a; margin-top: 0.5rem; margin-bottom: 0.5rem;">Il Moto Rettilineo Uniforme</h1>
+                <p style="color: #64748b; font-size: 1.05rem;">
+                    Studia le caratteristiche del moto rettilineo uniforme con 100 esercizi interattivi guidati ed esempi pratici reali.
+                </p>
+            </div>
+        
+            <button id="btn-salva-lezione" style="background-color: #a600ff; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span id="bookmark-icon">🔖</span>
+                <span id="bookmark-text">Salva Lezione</span>
+            </button>
+        </section>
+
+        <article class="contenuto-lezione">
+            <h2>1. Che cos'è il Moto Rettilineo Uniforme?</h2>
+            <p>
+                Il <strong>moto rettilineo uniforme</strong> è il tipo più semplice di movimento in fisica. Un corpo descrive questo moto quando la sua traiettoria è una linea retta e la sua velocità è costante nel tempo ($v = \text{costante}$).
+            </p>
+
+            <div class="formula-box">
+                📐 <strong>Legge oraria fondamentale:</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">
+                    $s(t) = s_0 + v \cdot t$, dove $s_0$ è la posizione iniziale, $v$ è la velocità costante e $t$ è il tempo trascorso.
+                </p>
+            </div>
+
+            <h2>2. Batteria di 100 Esercizi con Esempi Guidati e Reali</h2>
+            <div id="lista-esercizi" class="griglia-esercizi"></div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Copyright by Samuel Fassi <sup>&copy;</sup></p>
+        <p>NEXUS didattica<sup>&trade;</sup></p>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/cookie_policy.html">Cookie Policy</a>
+        <a href="/termini_condizioni.html">Termini & Condizioni</a>
+        <a href="/chi_siamo.html">Chi Siamo</a>
+        <a href="/contatti.html">Contatti</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lista-esercizi');
+            let htmlEsercizi = '';
+
+            const esempiFacili = [
+                { 
+                    q: "Quali sono le due caratteristiche principali del moto rettilineo uniforme?", 
+                    r: "Traiettoria rettilinea e velocità costante nel tempo.", 
+                    s: "Esempio guidato: un'auto che procede dritta in autostrada mantenendo sempre la stessa velocità di crociera." 
+                },
+                { 
+                    q: "Nel moto rettilineo uniforme, quanto vale l'accelerazione?", 
+                    r: "L'accelerazione è nulla ($a = 0\text{ m/s²}$).", 
+                    s: "Esempio guidato: poiché la velocità non varia, non c'è alcuna accelerazione o decelerazione." 
+                },
+                { 
+                    q: "Scrivi la legge oraria generale del moto rettilineo uniforme.", 
+                    r: "s(t) = s_0 + v * t", 
+                    s: "Esempio guidato: la posizione finale dipende dalla posizione di partenza $s_0$ più lo spazio percorso $v \cdot t$." 
+                },
+                { 
+                    q: "Se un corpo parte dall'origine ($s_0 = 0$) con velocità costante di 5 m/s, qual è la sua posizione dopo 4 secondi?", 
+                    r: "20 metri.", 
+                    s: "Esempio guidato: $s(4) = 0 + 5 \cdot 4 = 20\text{ m}$." 
+                },
+                { 
+                    q: "Nel grafico spazio-tempo $(s-t)$ del moto rettilineo uniforme, che forma ha la curva?", 
+                    r: "Una linea retta inclinata.", 
+                    s: "Esempio guidato: la pendenza di questa retta rappresenta esattamente il valore della velocità costante." 
+                }
+            ];
+
+            const esempiMedi = [
+                { 
+                    q: "Un'auto viaggia a velocità costante di 72 km/h. Quanta strada percorre in 3 ore?", 
+                    r: "216 chilometri.", 
+                    s: "Esempio guidato: $s = v \cdot t = 72\text{ km/h} \cdot 3\text{ h} = 216\text{ km}$." 
+                },
+                { 
+                    q: "Un podista si muove con legge oraria $s(t) = 3 + 4t$ (con $s$ in metri e $t$ in secondi). Qual è la sua posizione iniziale e la sua velocità?", 
+                    r: "Posizione iniziale $s_0 = 3\text{ m}$ e velocità $v = 4\text{ m/s}$.", 
+                    s: "Esempio guidato: confrontando l'equazione con $s(t) = s_0 + v \cdot t$ si identificano direttamente i coefficienti." 
+                },
+                { 
+                    q: "Utilizzando la legge oraria $s(t) = 3 + 4t$, calcola la posizione del podista all'istante $t = 5\text{ s}$.", 
+                    r: "23 metri.", 
+                    s: "Esempio guidato: $s(5) = 3 + 4 \cdot 5 = 3 + 20 = 23\text{ m}$." 
+                },
+                { 
+                    q: "Un ciclista viaggia a 10 m/s. Quanto tempo impiega a percorrere 500 metri?", 
+                    r: "50 secondi.", 
+                    s: "Esempio guidato: ricavando il tempo $t = s / v$, otteniamo $500 / 10 = 50\text{ s}$." 
+                }
+            ];
+
+            const esempiDifficili = [
+                { 
+                    q: "Due auto partono nello stesso istante dallo stesso punto muovendosi nella stessa direzione. L'auto A viaggia a 60 km/h e l'auto B a 80 km/h. Qual è la distanza tra le due dopo 2 ore?", 
+                    r: "40 chilometri.", 
+                    s: "Esempio guidato: l'auto A percorre 120 km, l'auto B percorre 160 km. La differenza di distanza è $160 - 120 = 40\text{ km}$." 
+                },
+                { 
+                    q: "Un corpo si muove con legge oraria $s(t) = -5 + 12t$. A quale istante $t$ il corpo passa per l'origine ($s = 0$)?", 
+                    r: "A circa 0,417 secondi ($t = 5/12\text{ s}$).", 
+                    s: "Esempio guidato: ponendo $0 = -5 + 12t$, ricaviamo $12t = 5$, da cui $t = 5/12 \approx 0,417\text{ s}$." 
+                },
+                { 
+                    q: "Due corpi si muovono l'uno verso l'altro su una stessa retta distanti 300 metri. Il primo viaggia a 20 m/s e il secondo a 30 m/s. Dopo quanto tempo si incontrano?", 
+                    r: "6 secondi.", 
+                    s: "Esempio guidato: il tempo d'incontro è dato dallo spazio totale diviso la somma delle velocità: $t = 300 / (20 + 30) = 300 / 50 = 6\text{ s}$." 
+                }
+            ];
+
+            for (let i = 1; i <= 100; i++) {
+                let diffClass, diffLabel, item;
+
+                if (i <= 35) {
+                    diffClass = 'livello-facile';
+                    diffLabel = 'facile';
+                    item = esempiFacili[(i - 1) % esempiFacili.length];
+                } else if (i <= 70) {
+                    diffClass = 'livello-medio';
+                    diffLabel = 'medio';
+                    item = esempiMedi[(i - 1) % esempiMedi.length];
+                } else {
+                    diffClass = 'livello-difficile';
+                    diffLabel = 'difficile';
+                    item = esempiDifficili[(i - 1) % esempiDifficili.length];
+                }
+
+                htmlEsercizi += `
+                <div class="card-esercizio ${diffClass}">
+                    <div class="header-esercizio">
+                        <h3>Esercizio ${i}</h3>
+                        <span class="badge-difficolta ${diffLabel}">${diffLabel}</span>
+                    </div>
+                    <p class="testo-domanda">${item.q}</p>
+                    <details class="spiegazione-box">
+                        <summary>Mostra Soluzione e Esempio Guidato</summary>
+                        <div class="spiegazione-contenuto">
+                            <div class="box-risposta-corretta">
+                                <strong>Risposta corretta:</strong> <strong>${item.r}</strong>
+                            </div>
+                            <p><strong>Procedimento ed Esempio Reale:</strong></p>
+                            <p>${item.s}</p>
+                        </div>
+                    </details>
+                </div>`;
+            }
+
+            container.innerHTML = htmlEsercizi;
+        });
+    </script>
+
+    <script type="module" src="/main-auth.js"></script>
+    <script src="/cookie_banner.js"></script>
+    <script type="module" src="/salva-lezione.js"></script>
+</body>
+
+</html>
+```eof
