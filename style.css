@@ -2747,11 +2747,12 @@ article.contenuto-lezione h3 {
         white-space: nowrap;
     }
 
-    /* Pulsante Admin: solo l'emoji 👑 in un quadratino rosso, sulla riga di Accedi/Registrati.
+    /* Pulsante Admin: solo l'emoji 👑 in un quadratino rosso, PRIMA del
+       blocco Profilo/Esci (a sinistra), sulla riga di Accedi/Registrati.
        IMPORTANTE: non tocchiamo "display" qui, cosi' resta gestito da main-auth.js
        (display:none per tutti tranne l'admin loggato). */
     #admin-link {
-        order: 5;
+        order: 4;
         width: 2.1rem !important;
         height: 2.1rem !important;
         padding: 0 !important;
@@ -2770,7 +2771,7 @@ article.contenuto-lezione h3 {
     }
 
     .auth-buttons {
-        order: 4;
+        order: 5;
         flex: 0 1 auto;
         display: flex;
         flex-wrap: wrap;
