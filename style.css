@@ -2682,6 +2682,13 @@ article.contenuto-lezione h3 {
    ======================================================= */
 @media screen and (max-width: 767px) {
 
+    /* 0. Blocca lo scroll orizzontale indesiderato che mostra sfondo nero */
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
     /* 1. Contenitore principale flessibile */
     .contenitore-centrato,
     main {
@@ -2691,21 +2698,93 @@ article.contenuto-lezione h3 {
         box-sizing: border-box;
     }
 
-    /* 2. Header e Navigation Bar */
+    /* 2. Header e Navigation Bar: logo + menu su una riga, Accedi/Registrati (+ Admin) sotto */
     header .hotbar {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        flex-direction: row;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem;
+        justify-content: space-between;
+        gap: 0.4rem 0.4rem;
+        padding: 0.75rem 1rem;
     }
 
-    .navbar,
+    /* Forza il "a capo" esattamente dopo logo+menu, prima della riga Accedi/Registrati */
+    header .hotbar::after {
+        content: "";
+        flex-basis: 100%;
+        order: 3;
+    }
+
+    .logo-link {
+        order: 1;
+        flex: 0 0 auto;
+        /* Su mobile mostriamo il logo "a striscia" (icona + scritta NEXUS)
+           come sfondo, al posto dell'icona singola */
+        display: inline-block;
+        width: 118px;
+        height: 34px;
+        background-image: url('/Immagini/logo_striscia_nexus.jpg');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: contain;
+    }
+
+    .logo-link img {
+        /* L'icona originale resta nel codice ma su mobile non si vede:
+           al suo posto c'e' il logo a striscia impostato sopra */
+        display: none;
+    }
+
+    header h1 {
+        /* Su mobile mostriamo solo l'icona del logo, senza scritta accanto */
+        display: none;
+    }
+
+    /* "Fa sparire" il contenitore .navbar: i link diventano figli diretti
+       di .hotbar e si dispongono liberamente accanto al logo, invece di
+       essere trattati come un unico blocco troppo largo */
+    .navbar {
+        display: contents;
+    }
+
+    .navbar a:not(#admin-link) {
+        order: 2;
+        font-size: 0.72rem;
+        padding: 0.4rem 0.4rem;
+        white-space: nowrap;
+    }
+
+    /* Pulsante Admin: solo l'emoji 👑 in un quadratino rosso, sulla riga di Accedi/Registrati.
+       IMPORTANTE: non tocchiamo "display" qui, cosi' resta gestito da main-auth.js
+       (display:none per tutti tranne l'admin loggato). */
+    #admin-link {
+        order: 5;
+        width: 2.1rem !important;
+        height: 2.1rem !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        /* nasconde il testo "Pannello Admin" originale */
+        line-height: 2.1rem;
+        /* centra verticalmente il contenuto generato sotto */
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    #admin-link::after {
+        content: "👑";
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+
     .auth-buttons {
+        order: 4;
+        flex: 0 1 auto;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
+        margin-top: 0.25rem;
     }
 
     /* 3. Hero Section e Titoli */
@@ -2732,6 +2811,9 @@ article.contenuto-lezione h3 {
         padding: 1.25rem !important;
         background: #ffffff;
         border-radius: 12px;
+        overflow-x: auto;
+        /* Se una formula o una riga di testo e' troppo larga per il box,
+           scorre solo qui dentro, invece di uscire dal riquadro */
     }
 
     /* Layout mobile compattezza: affianca Numero e Titolo */
@@ -2793,13 +2875,14 @@ article.contenuto-lezione h3 {
         overflow-x: auto;
         white-space: nowrap;
     }
+
+    /* Formule matematiche (KaTeX) troppo larghe: scorribili solo al loro interno,
+       invece di essere tagliate o di far scorrere tutta la pagina */
+    .katex-display {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+        padding-bottom: 0.3rem;
+        /* spazio per non coprire il testo con la barra di scroll su alcuni browser */
+    }
 }
-
-
-
-
-
-
-
-
-
