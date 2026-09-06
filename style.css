@@ -221,6 +221,14 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    /* Nascosto finche' Firebase non determina se l'utente e' loggato o meno:
+       evita il "flash" di Accedi/Registrati prima di mostrare il Profilo (o viceversa).
+       Vedi main-auth.js: la classe .auth-ready viene aggiunta appena pronto. */
+    visibility: hidden;
+}
+
+.auth-buttons.auth-ready {
+    visibility: visible;
 }
 
 .btn-login,

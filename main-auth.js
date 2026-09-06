@@ -88,6 +88,10 @@ onAuthStateChanged(auth, async (user) => {
         if (sezioneAdminProfilo) sezioneAdminProfilo.style.display = "none";
         if (sezioneLezioni) sezioneLezioni.style.display = "block";
     }
+
+    // Ora che sappiamo con certezza se l'utente e' loggato o no,
+    // possiamo far comparire i pulsanti (evita il "flash" iniziale)
+    if (authButtons) authButtons.classList.add('auth-ready');
 });
 
 // 2. PUBBLICAZIONE NUOVO ESERCIZIO E GESTIONE STORICO
