@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sito internet per studiare e fare esercizi">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Verifiche - NEXUS didattica</title>
+</head>
+<body>
+
+    <header>
+
+        <div class="hotbar">
+
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="materie.html">Materie</a>
+                <a href="verifiche.html">Verifiche</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <!-- Tasti Accesso/Registrazione per Firebase -->
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+        <section class="hero-chi-siamo">
+            <div class="hero-chi-siamo-content">
+                <span class="badge-anno">Verifica su Misura</span>
+                <h1>Prepariamo la tua prossima verifica</h1>
+                <p class="lead-text">
+                    Dicci su quali argomenti ti stai preparando, la difficoltà e la classe che frequenti: ti prepariamo un quiz personalizzato su Google Moduli e te lo inviamo via email.
+                </p>
+            </div>
+        </section>
+
+        <div class="contenitore-centrato">
+            <div class="layout-contatti">
+
+                <!-- Colonna Sinistra: Come funziona -->
+                <div class="griglia-canali">
+                    <div class="card-contatto">
+                        <div class="icona-contatto">1️⃣</div>
+                        <div>
+                            <h3>Compila il form</h3>
+                            <p>Indicaci argomento, difficoltà, classe e per quando ti serve la verifica.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-contatto">
+                        <div class="icona-contatto">2️⃣</div>
+                        <div>
+                            <h3>Prepariamo il quiz</h3>
+                            <p>Il team NEXUS crea un quiz su misura su Google Moduli, basato sulla tua richiesta.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-contatto">
+                        <div class="icona-contatto">3️⃣</div>
+                        <div>
+                            <h3>Ricevi l'email</h3>
+                            <p>Ti arriva il link al quiz all'indirizzo email del tuo account, con correzione automatica.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-contatto info-box-risposta">
+                        <div class="icona-contatto">⏱️</div>
+                        <div>
+                            <h3>Tempi di preparazione</h3>
+                            <p>Prepariamo i quiz a mano: più tempo ci dai (campo "scadenza"), meglio riusciamo a organizzarci.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonna Destra: Form Richiesta Verifica -->
+                <form class="form-contatti" id="form-verifiche" style="display: none;">
+                    <h2>Richiedi una verifica</h2>
+
+                    <div class="campo-form">
+                        <label for="verifica-email">La tua email *</label>
+                        <input type="email" id="verifica-email" name="email" placeholder="nome@esempio.it" required readonly style="background-color: #f1f5f9; cursor: not-allowed;">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-materia">Materia *</label>
+                        <select id="verifica-materia" name="materia" required>
+                            <option value="" disabled selected>Seleziona una materia...</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-sezione">Sezione / argomento generale *</label>
+                        <select id="verifica-sezione" name="sezione" required disabled>
+                            <option value="" disabled selected>Seleziona prima una materia...</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-argomento">Argomenti specifici (facoltativo)</label>
+                        <textarea id="verifica-argomento" name="argomento" rows="3" placeholder="Es. Equazioni di secondo grado, Teorema di Pitagora... (se ne hai più di uno)"></textarea>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-difficolta">Difficoltà desiderata *</label>
+                        <select id="verifica-difficolta" name="difficolta" required>
+                            <option value="Facile">Facile</option>
+                            <option value="Media" selected>Media</option>
+                            <option value="Difficile">Difficile</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-classe">Classe frequentata *</label>
+                        <input type="text" id="verifica-classe" name="classe" placeholder="Es. 3ª Liceo Scientifico" required>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-scadenza">Per quando ti serve? *</label>
+                        <input type="date" id="verifica-scadenza" name="scadenza" required>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="verifica-note">Note aggiuntive (facoltativo)</label>
+                        <textarea id="verifica-note" name="note" rows="3" placeholder="Altri dettagli utili per preparare la verifica..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-invia-form">Invia Richiesta</button>
+                    <p id="stato-verifica" style="margin-top: 1rem; font-weight: bold;"></p>
+                </form>
+
+                <!-- Blocco mostrato al posto del form se l'utente non ha effettuato l'accesso -->
+                <div class="form-contatti" id="verifiche-login-required" style="display: none; text-align: center;">
+                    <h2>Funzione riservata agli iscritti</h2>
+                    <p style="margin-bottom: 1.5rem;">
+                        Per richiedere una verifica personalizzata devi avere un account NEXUS didattica:
+                        ci serve per sapere a quale email inviarti il quiz e per evitare richieste non tracciabili.
+                    </p>
+                    <div class="auth-buttons" style="justify-content: center;">
+                        <a href="login.html" class="btn-login">Accedi</a>
+                        <a href="registrati.html" class="btn-register">Registrati</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+        <a href="chi_siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="main-auth.js"></script>
+    <script type="module" src="verifiche.js"></script>
+    <script src="cookie_banner.js"></script>
+
+</body>
+</html>

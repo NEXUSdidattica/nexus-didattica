@@ -5,16 +5,6 @@ import { ADMIN_UID } from './admin-config.js';
 
 const db = getFirestore(app);
 
-// 0. CALCOLO AUTOMATICO DEL PERCORSO BASE DEL SITO
-// Funziona sia se il sito è pubblicato su github.io/nexus-didattica/
-// sia se in futuro verrà spostato su un dominio personalizzato (es. nexusdidattica.it),
-// dove non c'è più la sottocartella "/nexus-didattica/". Non serve modificare nulla a mano.
-const REPO_BASE = (() => {
-    const marcatore = "/nexus-didattica/";
-    const path = window.location.pathname;
-    return path.indexOf(marcatore) === 0 ? "/nexus-didattica" : "";
-})();
-
 // 1. GESTIONE AUTENTICAZIONE E VISTE ADMIN/UTENTE
 const authButtons = document.querySelector('.auth-buttons');
 
@@ -31,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
                 if (utenteDocSnap.exists() && utenteDocSnap.data().bannato === true) {
                     await signOut(auth);
                     alert("Il tuo account è stato sospeso. Contatta l'assistenza se pensi sia un errore.");
-                    window.location.href = `${REPO_BASE}/index.html`;
+                    window.location.href = "/index.html";
                     return;
                 }
             } catch (error) {
@@ -42,7 +32,9 @@ onAuthStateChanged(auth, async (user) => {
         if (authButtons) {
             const nomeUtente = user.displayName || "Profilo";
             authButtons.innerHTML = `
-                <a href="${REPO_BASE}/profilo.html" class="btn-profile">👤 ${nomeUtente}</a>
+                <a href="/profilo.html" class="btn-profile" title="${nomeUtente}">
+                    <span class="icona-profilo">👤</span><span class="nome-profilo">${nomeUtente}</span>
+                </a>
                 <button id="logout-btn" class="btn-logout">Esci</button>
             `;
 
@@ -80,18 +72,14 @@ onAuthStateChanged(auth, async (user) => {
     } else {
         if (authButtons) {
             authButtons.innerHTML = `
-                <a href="${REPO_BASE}/login.html" class="btn-login">Accedi</a>
-                <a href="${REPO_BASE}/registrati.html" class="btn-register">Registrati</a>
+                <a href="/login.html" class="btn-login">Accedi</a>
+                <a href="/registrati.html" class="btn-register">Registrati</a>
             `;
         }
         if (adminLink) adminLink.style.display = "none";
         if (sezioneAdminProfilo) sezioneAdminProfilo.style.display = "none";
         if (sezioneLezioni) sezioneLezioni.style.display = "block";
     }
-
-    // Ora che sappiamo con certezza se l'utente e' loggato o no,
-    // possiamo far comparire i pulsanti (evita il "flash" iniziale)
-    if (authButtons) authButtons.classList.add('auth-ready');
 });
 
 // 2. PUBBLICAZIONE NUOVO ESERCIZIO E GESTIONE STORICO
@@ -317,6 +305,44 @@ if (window.location.pathname.includes("admin.html")) {
     caricaMessaggiAdmin();
 }
 
+// 5.1 MOSTRA RICHIESTE VERIFICHE NEL PANNELLO ADMIN (ADMIN.HTML)
+async function caricaVerificheAdmin() {
+    const listaElem = document.getElementById('lista-verifiche');
+    if (!listaElem) return;
+
+    try {
+        const querySnapshot = await getDocs(collection(db, "richieste_verifiche"));
+        if (querySnapshot.empty) {
+            listaElem.innerHTML = "<p style='color: #64748b;'>Nessuna richiesta di verifica ricevuta finora.</p>";
+            return;
+        }
+
+        listaElem.innerHTML = "";
+        querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            listaElem.innerHTML += `
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">
+                        <span>✉️ <a href="mailto:${data.email}">${data.email}</a></span>
+                        <span style="font-size: 0.85rem; color: #64748b;">${data.data}</span>
+                    </div>
+                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #2563eb;"><strong>${data.materia}</strong> — ${data.sezione}</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #334155;"><strong>Classe:</strong> ${data.classe} &nbsp;|&nbsp; <strong>Difficoltà:</strong> ${data.difficolta} &nbsp;|&nbsp; <strong>Scadenza:</strong> ${data.scadenza}</p>
+                    ${data.argomento ? `<p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;"><strong>Argomenti specifici:</strong> ${data.argomento}</p>` : ''}
+                    ${data.note ? `<p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;"><strong>Note:</strong> ${data.note}</p>` : ''}
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.error("Errore nel caricamento richieste verifiche:", error);
+        listaElem.innerHTML = "<p style='color: red;'>Errore nel caricamento delle richieste.</p>";
+    }
+}
+
+if (window.location.pathname.includes("admin.html")) {
+    caricaVerificheAdmin();
+}
+
 // 6. SISTEMA NOTIFICHE / AVVISI GLOBALI
 async function caricaAvvisoGlobale() {
     const banner = document.getElementById('banner-avviso-admin');
@@ -417,6 +443,33 @@ if (btnSvuotaMessaggi) {
         } catch (error) {
             console.error("Errore durante l'eliminazione dei messaggi:", error);
             alert("Errore durante l'eliminazione dei messaggi.");
+        }
+    });
+}
+
+// 7.1 SVUOTA RICHIESTE VERIFICHE
+const btnSvuotaVerifiche = document.getElementById('btn-svuota-verifiche');
+
+if (btnSvuotaVerifiche) {
+    btnSvuotaVerifiche.addEventListener('click', async () => {
+        const conferma = confirm("Sei sicuro di voler eliminare TUTTE le richieste di verifica? L'azione è irreversibile.");
+        if (!conferma) return;
+
+        const listaElem = document.getElementById('lista-verifiche');
+        if (listaElem) listaElem.innerHTML = "<p style='color: #ef4444; font-weight: bold;'>Eliminazione in corso...</p>";
+
+        try {
+            const querySnapshot = await getDocs(collection(db, "richieste_verifiche"));
+            const promesseEliminazione = querySnapshot.docs.map((docSnap) =>
+                deleteDoc(doc(db, "richieste_verifiche", docSnap.id))
+            );
+            await Promise.all(promesseEliminazione);
+
+            alert("Tutte le richieste sono state eliminate con successo!");
+            caricaVerificheAdmin();
+        } catch (error) {
+            console.error("Errore durante l'eliminazione delle richieste:", error);
+            alert("Errore durante l'eliminazione delle richieste.");
         }
     });
 }
@@ -641,10 +694,10 @@ async function controllaManutenzione(user) {
 
         if (isAttivo && !siamoInManutenzione) {
             // Manutenzione ATTIVA -> Vai alla pagina di manutenzione
-            window.location.href = `${REPO_BASE}/manutenzione.html`;
+            window.location.href = "/manutenzione.html";
         } else if (!isAttivo && siamoInManutenzione) {
             // Manutenzione DISATTIVATA -> Torna alla Home
-            window.location.href = `${REPO_BASE}/index.html`;
+            window.location.href = "/index.html";
         }
     } catch (error) {
         console.error("Errore nel controllo manutenzione:", error);

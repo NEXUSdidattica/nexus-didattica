@@ -154,9 +154,12 @@ header {
 }
 
 .hotbar {
-    max-width: var(--max-width);
+    /* Contenitore dedicato all'header, più largo di --max-width:
+       così logo, menu, bottone Admin e profilo hanno spazio per
+       stare tutti su una riga senza andare a capo. */
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 0.85rem 1.5rem;
+    padding: 0.85rem 2rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -199,15 +202,21 @@ header h1 {
 
 .navbar {
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.35rem;
+    /* Non far comprimere i link quando lo spazio scarseggia:
+       meglio che sia il layout ad avere respiro (vedi .hotbar) */
+    flex-shrink: 0;
 }
 
 .navbar a {
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--color-ink-soft);
-    padding: 0.5rem 0.85rem;
+    padding: 0.5rem 0.75rem;
     border-radius: var(--border-radius-s);
+    white-space: nowrap;
+    /* Evita che "Chi Siamo" e simili vadano a capo su due righe */
     transition: color var(--transition-fast),
         background-color var(--transition-fast);
 }
@@ -221,6 +230,10 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    flex-shrink: 0;
+    /* Resta sempre ancorato all'estremità destra dell'header,
+       insieme al resto del gruppo navbar/admin spinto da margin-right:auto su h1 */
+    margin-left: 0.5rem;
 }
 
 .btn-login,
@@ -2698,34 +2711,38 @@ article.contenuto-lezione h3 {
         box-sizing: border-box;
     }
 
-    /* 2. Header e Navigation Bar: logo + menu su una riga, Accedi/Registrati (+ Admin) sotto */
+    /* 2. Header e Navigation Bar: riga 1 = logo + profilo/admin, riga 2 = menu di navigazione */
     header .hotbar {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        gap: 0.4rem 0.4rem;
+        justify-content: flex-start;
+        gap: 0.4rem 0.5rem;
         padding: 0.75rem 1rem;
-    }
-
-    /* Forza il "a capo" esattamente dopo logo+menu, prima della riga Accedi/Registrati */
-    header .hotbar::after {
-        content: "";
-        flex-basis: 100%;
-        order: 3;
     }
 
     .logo-link {
         order: 1;
         flex: 0 0 auto;
+        /* Spinge admin-link e auth-buttons (stessa riga) tutti a destra,
+           lasciando il logo ancorato a sinistra */
+        margin-right: auto;
+        /* Su mobile mostriamo il logo "a striscia" (icona + scritta NEXUS)
+           come sfondo, al posto dell'icona singola */
+        display: inline-block;
+        width: 118px;
+        height: 34px;
+        background-image: url('/Immagini/logo_striscia_nexus.jpg');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: contain;
     }
 
     .logo-link img {
-        /* Su mobile mostriamo solo l'icona del logo (esagono), senza scritta accanto */
-        display: block;
-        width: 42px;
-        height: 42px;
+        /* L'icona originale resta nel codice ma su mobile non si vede:
+           al suo posto c'e' il logo a striscia impostato sopra */
+        display: none;
     }
 
     header h1 {
@@ -2733,26 +2750,9 @@ article.contenuto-lezione h3 {
         display: none;
     }
 
-    /* "Fa sparire" il contenitore .navbar: i link diventano figli diretti
-       di .hotbar e si dispongono liberamente accanto al logo, invece di
-       essere trattati come un unico blocco troppo largo */
-    .navbar {
-        display: contents;
-    }
-
-    .navbar a:not(#admin-link) {
-        order: 2;
-        font-size: 0.72rem;
-        padding: 0.4rem 0.4rem;
-        white-space: nowrap;
-    }
-
-    /* Pulsante Admin: solo l'emoji 👑 in un quadratino rosso, PRIMA del
-       blocco Profilo/Esci (a sinistra), sulla riga di Accedi/Registrati.
-       IMPORTANTE: non tocchiamo "display" qui, cosi' resta gestito da main-auth.js
-       (display:none per tutti tranne l'admin loggato). */
+    /* Pulsante Admin: solo l'emoji 👑, sulla riga del logo/profilo (non del menu) */
     #admin-link {
-        order: 4;
+        order: 2;
         width: 2.1rem !important;
         height: 2.1rem !important;
         padding: 0 !important;
@@ -2771,13 +2771,45 @@ article.contenuto-lezione h3 {
     }
 
     .auth-buttons {
-        order: 5;
-        flex: 0 1 auto;
+        order: 3;
+        flex: 0 0 auto;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
         gap: 0.5rem;
-        margin-top: 0.25rem;
+    }
+
+    /* Profilo/Accedi/Registrati più compatti su mobile, per stare
+       comodamente sulla riga insieme a logo ed eventuale badge Admin */
+    .auth-buttons .btn-profile,
+    .auth-buttons .btn-logout,
+    .auth-buttons .btn-login,
+    .auth-buttons .btn-register {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    /* Forza il "a capo" dopo logo + admin + profilo: il menu di navigazione
+       parte sempre su una riga tutta sua, pulita, sotto quella riga */
+    header .hotbar::after {
+        content: "";
+        flex-basis: 100%;
+        order: 4;
+    }
+
+    /* "Fa sparire" il contenitore .navbar: i link diventano figli diretti
+       di .hotbar e si dispongono liberamente sulla riga del menu */
+    .navbar {
+        display: contents;
+    }
+
+    .navbar a:not(#admin-link) {
+        order: 5;
+        font-size: 0.72rem;
+        padding: 0.4rem 0.45rem;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     /* 3. Hero Section e Titoli */
