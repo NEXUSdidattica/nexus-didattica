@@ -2921,43 +2921,46 @@ article.contenuto-lezione h3 {
    ========================================================= */
 
 /* 1. Blocca qualsiasi elemento che esce dai bordi dello schermo */
-html, body {
-  max-width: 100% !important;
-  overflow-x: hidden !important;
+html,
+body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
 }
 
 /* 2. Regola specifica per iPad / Tablet (768px - 1024px) */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  
-  /* Garantisce che nessun contenitore superi la larghezza dello schermo */
-  *, *::before, *::after {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
 
-  /* Rende la Header flessibile: se i tasti sono troppi, vanno a capo con ordine */
-  header nav, 
-  .hotbar {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    padding: 10px !important;
-  }
+    /* Garantisce che nessun contenitore superi la larghezza dello schermo */
+    *,
+    *::before,
+    *::after {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
 
-  /* Riduce leggermente il font dei link della navbar solo su iPad */
-  header nav a, 
-  .hotbar a {
-    font-size: 0.9rem !important;
-    padding: 5px 8px !important;
-  }
+    /* Rende la Header flessibile: se i tasti sono troppi, vanno a capo con ordine */
+    header nav,
+    .hotbar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 10px !important;
+    }
 
-  /* Mantiene il contenuto principale centrato e privo di margini giganti */
-  main, 
-  .container, 
-  .hero-banner {
-    width: 100% !important;
-    margin: 0 auto !important;
-    padding: 15px !important;
-  }
+    /* Riduce leggermente il font dei link della navbar solo su iPad */
+    header nav a,
+    .hotbar a {
+        font-size: 0.9rem !important;
+        padding: 5px 8px !important;
+    }
+
+    /* Mantiene il contenuto principale centrato e privo di margini giganti */
+    main,
+    .container,
+    .hero-banner {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 15px !important;
+    }
 }
