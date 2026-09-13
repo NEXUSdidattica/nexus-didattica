@@ -14,7 +14,10 @@ onAuthStateChanged(auth, async (user) => {
     const sezioneLezioni = document.getElementById('sezione-lezioni-utente');
 
     if (user) {
-        // Controllo BAN: se l'utente è stato bloccato dall'admin, lo disconnettiamo subito
+        const moderatoreLink = document.getElementById('moderatore-link');
+        let eModeratore = false;
+
+        // Controllo BAN + ruolo: se l'utente è stato bloccato dall'admin, lo disconnettiamo subito
         if (user.uid !== ADMIN_UID) {
             try {
                 const utenteDocSnap = await getDoc(doc(db, "utenti", user.uid));
@@ -24,10 +27,13 @@ onAuthStateChanged(auth, async (user) => {
                     window.location.href = "/index.html";
                     return;
                 }
+                eModeratore = utenteDocSnap.exists() && utenteDocSnap.data().ruolo === "moderatore";
             } catch (error) {
                 console.error("Errore nel controllo stato account:", error);
             }
         }
+
+        if (moderatoreLink) moderatoreLink.style.display = eModeratore ? "inline-block" : "none";
 
         if (authButtons) {
             const nomeUtente = user.displayName || "Profilo";
@@ -76,6 +82,8 @@ onAuthStateChanged(auth, async (user) => {
                 <a href="/registrati.html" class="btn-register">Registrati</a>
             `;
         }
+        const moderatoreLink = document.getElementById('moderatore-link');
+        if (moderatoreLink) moderatoreLink.style.display = "none";
         if (adminLink) adminLink.style.display = "none";
         if (sezioneAdminProfilo) sezioneAdminProfilo.style.display = "none";
         if (sezioneLezioni) sezioneLezioni.style.display = "block";
@@ -301,7 +309,7 @@ async function caricaMessaggiAdmin() {
     }
 }
 
-if (window.location.pathname.includes("admin.html")) {
+if (window.location.pathname.includes("admin.html") || window.location.pathname.includes("moderatore.html")) {
     caricaMessaggiAdmin();
 }
 
@@ -339,8 +347,44 @@ async function caricaVerificheAdmin() {
     }
 }
 
-if (window.location.pathname.includes("admin.html")) {
+if (window.location.pathname.includes("admin.html") || window.location.pathname.includes("moderatore.html")) {
     caricaVerificheAdmin();
+}
+
+// 5.2 MOSTRA RICHIESTE DEI MODERATORI (SOLO ADMIN.HTML — sezione riservata al Super Admin)
+async function caricaRichiesteModeratoriAdmin() {
+    const listaElem = document.getElementById('lista-richieste-moderatori');
+    if (!listaElem) return;
+
+    try {
+        const querySnapshot = await getDocs(collection(db, "richieste_moderatori"));
+        if (querySnapshot.empty) {
+            listaElem.innerHTML = "<p style='color: #64748b;'>Nessuna richiesta dai moderatori al momento.</p>";
+            return;
+        }
+
+        listaElem.innerHTML = "";
+        querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            listaElem.innerHTML += `
+                <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">
+                        <span>🛡️ ${data.moderatoreNome} — <a href="mailto:${data.moderatoreEmail}">${data.moderatoreEmail}</a></span>
+                        <span style="font-size: 0.85rem; color: #64748b;">${data.data}</span>
+                    </div>
+                    <p style="margin: 0.2rem 0 0.5rem 0; font-weight: 600; color: #1d4ed8;">${data.titolo}</p>
+                    <p style="margin: 0; color: #334155; line-height: 1.5;">${data.richiesta}</p>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.error("Errore nel caricamento richieste moderatori:", error);
+        listaElem.innerHTML = "<p style='color: red;'>Errore nel caricamento delle richieste.</p>";
+    }
+}
+
+if (window.location.pathname.includes("admin.html")) {
+    caricaRichiesteModeratoriAdmin();
 }
 
 // 6. SISTEMA NOTIFICHE / AVVISI GLOBALI
@@ -474,6 +518,33 @@ if (btnSvuotaVerifiche) {
     });
 }
 
+// 7.2 SVUOTA RICHIESTE DEI MODERATORI (SOLO ADMIN.HTML)
+const btnSvuotaRichiesteMod = document.getElementById('btn-svuota-richieste-moderatori');
+
+if (btnSvuotaRichiesteMod) {
+    btnSvuotaRichiesteMod.addEventListener('click', async () => {
+        const conferma = confirm("Sei sicuro di voler eliminare TUTTE le richieste dei moderatori? L'azione è irreversibile.");
+        if (!conferma) return;
+
+        const listaElem = document.getElementById('lista-richieste-moderatori');
+        if (listaElem) listaElem.innerHTML = "<p style='color: #ef4444; font-weight: bold;'>Eliminazione in corso...</p>";
+
+        try {
+            const querySnapshot = await getDocs(collection(db, "richieste_moderatori"));
+            const promesseEliminazione = querySnapshot.docs.map((docSnap) =>
+                deleteDoc(doc(db, "richieste_moderatori", docSnap.id))
+            );
+            await Promise.all(promesseEliminazione);
+
+            alert("Tutte le richieste dei moderatori sono state eliminate con successo!");
+            caricaRichiesteModeratoriAdmin();
+        } catch (error) {
+            console.error("Errore durante l'eliminazione delle richieste dei moderatori:", error);
+            alert("Errore durante l'eliminazione delle richieste.");
+        }
+    });
+}
+
 // 8. MOSTRA TABELLA UTENTI IN ADMIN.HTML
 async function caricaUtentiAdmin() {
     const tabellaBody = document.getElementById('tabella-utenti-body');
@@ -591,6 +662,15 @@ async function rimuoviModeratore(userId) {
     }
 }
 
+window.caricaStudentiModeratore = window.caricaStudentiModeratore || null;
+
+function aggiornaListeUtenti() {
+    caricaUtentiAdmin();
+    if (typeof window.caricaStudentiModeratore === "function") {
+        window.caricaStudentiModeratore();
+    }
+}
+
 async function bannaUtente(userId, nomeUtente) {
     const conferma = confirm(`Vuoi davvero sospendere l'utente "${nomeUtente}"? Non potrà più accedere al sito finché non lo sblocchi.`);
     if (!conferma) return;
@@ -598,7 +678,7 @@ async function bannaUtente(userId, nomeUtente) {
     try {
         await setDoc(doc(db, "utenti", userId), { bannato: true }, { merge: true });
         alert(`Utente ${nomeUtente} sospeso.`);
-        caricaUtentiAdmin();
+        aggiornaListeUtenti();
     } catch (error) {
         console.error("Errore durante la sospensione:", error);
         alert("Errore durante la sospensione dell'utente.");
@@ -609,7 +689,7 @@ async function sbloccaUtente(userId, nomeUtente) {
     try {
         await setDoc(doc(db, "utenti", userId), { bannato: false }, { merge: true });
         alert(`Utente ${nomeUtente} sbloccato.`);
-        caricaUtentiAdmin();
+        aggiornaListeUtenti();
     } catch (error) {
         console.error("Errore durante lo sblocco:", error);
         alert("Errore durante lo sblocco dell'utente.");

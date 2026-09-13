@@ -30,10 +30,7 @@
                 <a href="materie.html">Materie</a>
                 <a href="verifiche.html">Verifiche</a>
                 <a href="contatti.html">Contatti</a>
-                <a href="admin.html" id="admin-link"
-                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
-                    Pannello Admin 👑
-                </a>
+                <a href="admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;"> Pannello Admin 👑 </a> <a href="moderatore.html" id="moderatore-link" style="display: none; background-color: #2563eb; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;"> Pagina Moderatore 🛡️ </a>
             </nav>
 
             <!-- Tasti Accesso/Registrazione per Firebase -->
@@ -186,6 +183,19 @@
                 </button>
             </div>
             <div id="lista-verifiche">Caricamento richieste in corso...</div>
+        </div>
+
+        <!-- SEZIONE RICHIESTE DEI MODERATORI -->
+        <div
+            style="margin-top: 2rem; background: #fff; padding: 2rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: #0f172a;">📨 Richieste dai Moderatori</h2>
+                <button id="btn-svuota-richieste-moderatori"
+                    style="background: #ef4444; color: white; border: none; padding: 0.6rem 1.1rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    🗑️ Svuota Richieste
+                </button>
+            </div>
+            <div id="lista-richieste-moderatori">Caricamento richieste in corso...</div>
         </div>
 
         <p id="stato-sfida" style="margin-top: 1rem; font-weight: bold;"></p>
