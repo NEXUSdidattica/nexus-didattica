@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Esercizi e quiz interattivi per materia - NEXUS didattica">
+    <meta name="author" content="Samuel Fassi">
+    <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Esercizi - NEXUS didattica</title>
+
+</head>
+<body>
+
+    <header>
+        <div class="hotbar">
+            <a href="index.html" class="logo-link">
+                <img src="Immagini/logo_nexus.png" width="80" height="80" alt="Logo NEXUS">
+            </a>
+
+            <h1>NEXUS didattica</h1>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="chi_siamo.html">Chi Siamo</a>
+                <a href="esercizi.html">Esercizi</a>
+                <a href="materie.html">Materie</a>
+                <a href="verifiche.html">Verifiche</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="admin.html" id="admin-link"
+                    style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Accedi</a>
+                <a href="registrati.html" class="btn-register">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ===== INTESTAZIONE PAGINA ===== -->
+        <section style="text-align: center; padding: 2.5rem 1.5rem 1rem;">
+            <h1 style="font-size: 2.1rem; color: #0f172a; margin-bottom: 0.5rem;">Esercizi & Quiz</h1>
+            <p style="color: #64748b; max-width: 600px; margin: 0 auto;">Scegli una materia per andare direttamente ai quiz disponibili.</p>
+        </section>
+
+        <!-- ===== PANNELLO ADMIN: AGGIUNGI ESERCIZIO (visibile solo all'admin) ===== -->
+        <div class="pannello-admin-esercizi" id="pannello-admin-esercizi">
+            <h2>👑 Pubblica un nuovo Esercizio</h2>
+            <form class="form-nuovo-esercizio" id="form-nuovo-esercizio">
+                <div class="campo-largo">
+                    <label for="es-titolo">Titolo Esercizio</label>
+                    <input type="text" id="es-titolo" placeholder="Es. Quiz sulle equazioni di secondo grado" required>
+                </div>
+
+                <div>
+                    <label for="es-materia">Materia</label>
+                    <select id="es-materia" required>
+                        <option value="Matematica">Matematica</option>
+                        <option value="Fisica">Fisica</option>
+                        <option value="Scienze">Scienze</option>
+                        <option value="Inglese">Inglese</option>
+                        <option value="Informatica">Informatica</option>
+                        <option value="Italiano">Italiano</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="es-url">URL Google Form</label>
+                    <input type="url" id="es-url" placeholder="https://docs.google.com/forms/..." required>
+                </div>
+
+                <button type="submit" class="btn-pubblica-esercizio">Pubblica su Firestore 🚀</button>
+                <p id="stato-pubblicazione-esercizio" style="grid-column: 1/-1; margin: 0; font-weight: bold;"></p>
+            </form>
+        </div>
+
+        <!-- ===== BARRA STICKY BOTTONI MATERIE (smooth scroll) ===== -->
+        <nav class="barra-materie-esercizi" id="barra-materie-esercizi">
+            <!-- I bottoni vengono generati da esercizi.js, colorati in base a ogni materia -->
+        </nav>
+
+        <!-- ===== SEZIONI MATERIE (contenitori generati da esercizi.js) ===== -->
+        <div id="contenitore-sezioni-materie">
+            <!-- Ogni sezione (id="sezione-matematica", "sezione-fisica", ecc.) viene generata da esercizi.js -->
+        </div>
+
+    </main>
+
+    <!-- ===== MODALE QUIZ (iframe Google Form) ===== -->
+    <div class="overlay-modale-quiz" id="overlay-modale-quiz">
+        <div class="contenitore-modale-quiz">
+            <div class="intestazione-modale-quiz">
+                <h3 id="titolo-modale-quiz">Quiz</h3>
+                <button id="chiudi-modale-quiz" aria-label="Chiudi">&times;</button>
+            </div>
+            <iframe id="iframe-quiz" src="" title="Quiz"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p> Copyright by Samuel Fassi </p>
+        <p> NEXUS didattica<sup>&trade;</sup></p>
+
+        <p>Link utili:</p>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="termini_condizioni.html">Termini & Condizioni</a>
+
+        <a href="contatti.html">Contatti</a>
+        <a href="cookie_policy.html">Cookie Policy</a>
+        <a href="#" id="open-cookie-settings">Gestisci Consenso</a>
+    </footer>
+
+    <!-- Banner Cookie GDPR / AdSense -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <h3> Gestione della Privacy e dei Cookie</h3>
+            <p>
+                Su <strong>NEXUS didattica</strong> utilizziamo cookie tecnici essenziali e, previo tuo consenso, cookie
+                di profilazione e pubblicitari (forniti da terze parti come Google AdSense) per personalizzare gli
+                annunci e analizzare il nostro traffico.
+                Puoi accettare tutti i cookie, rifiutarli o gestire le tue preferenze. Consulta la nostra <a
+                    href="cookie_policy.html" target="_blank">Cookie Policy</a> per saperne di più.
+            </p>
+            <div class="cookie-buttons">
+                <button id="btn-accept-all" class="btn-cookie accept">Accetta Tutti</button>
+                <button id="btn-reject-all" class="btn-cookie reject">Rifiuta Non Essenziali</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="main-auth.js"></script>
+    <script src="cookie_banner.js"></script>
+    <script type="module" src="esercizi.js"></script>
+
+</body>
+</html>
