@@ -1682,11 +1682,16 @@ body.page-login {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-bg);
+  /* Sfondo a quadretti come nel resto del sito, sopra al quale resta
+     il leggero gradiente blu che c'era già */
   background-image:
     linear-gradient(var(--color-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px),
     linear-gradient(180deg, var(--color-primary-soft) 0%, var(--color-bg) 100%);
-  background-size: 32px 32px, 32px 32px, auto;
+  background-size:
+    32px 32px,
+    32px 32px,
+    100% 100%;
   background-repeat: repeat, repeat, no-repeat;
 }
 
@@ -1703,8 +1708,12 @@ body.page-login .auth-container {
 }
 
 body.page-login main.auth-container {
-  margin: auto;
-  /* Centra perfettamente il box verticalmente e orizzontalmente */
+  margin: 3.5rem auto !important;
+  /* !important necessario: nel file HTML questo elemento ha uno stile
+     inline (margin-top/bottom: 5rem) che altrimenti vince. Margine
+     fisso (non "auto" puro) cosi' lo spazio sopra resta sempre
+     presente anche quando il contenuto della pagina è più alto della
+     finestra e non c'è spazio "libero" da distribuire */
 }
 
 body.page-login .auth-header {
@@ -1757,6 +1766,22 @@ body.page-login .form-group input:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(42, 62, 177, 0.12);
+}
+
+/* Campo Password + occhiello: il contenitore che li avvolge (qualunque
+   sia il nome della sua classe nell'HTML) viene reso largo quanto il
+   campo Email, cosi' l'input non si restringe più al solo contenuto */
+body.page-login .form-group:has(input[type="password"]) > *:has(> input[type="password"]) {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+body.page-login .form-group input[type="password"] {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Bottone Login */
@@ -1821,11 +1846,16 @@ body.page-registrati {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-bg);
+  /* Sfondo a quadretti come nel resto del sito, sopra al quale resta
+     il leggero gradiente blu che c'era già */
   background-image:
     linear-gradient(var(--color-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px),
     linear-gradient(180deg, var(--color-primary-soft) 0%, var(--color-bg) 100%);
-  background-size: 32px 32px, 32px 32px, auto;
+  background-size:
+    32px 32px,
+    32px 32px,
+    100% 100%;
   background-repeat: repeat, repeat, no-repeat;
 }
 
@@ -1839,6 +1869,55 @@ body.page-registrati .auth-container {
   border-radius: var(--border-radius-l, 16px);
   border: 1px solid rgba(27, 33, 64, 0.08);
   box-shadow: 0 15px 35px rgba(27, 33, 64, 0.06);
+}
+
+body.page-registrati main.auth-container {
+  margin: 3.5rem auto !important;
+  /* Stesso fix del login: margine fisso sopra/sotto, non solo "auto",
+     cosi' l'aria sopra la card resta garantita anche quando la pagina
+     è più alta della finestra */
+}
+
+/* La card di Login/Registrati deve avere lo stesso aspetto (centrata,
+   con bordo visibile, mai a tutta larghezza) anche su iPad e telefono.
+   Serve !important perché i blocchi responsive generici più sotto nel
+   file (".contenitore-centrato, main { width:100%!important }" e la
+   regola tablet "*{max-width:100%!important}") colpiscono per errore
+   anche main.auth-container, schiacciandolo a tutto schermo. */
+
+/* iPad: leggermente più grande della versione desktop, ma centrata */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+  body.page-login main.auth-container {
+    width: calc(100% - 4rem) !important;
+    max-width: 480px !important;
+    margin: 3rem auto !important;
+    padding: 2.5rem 2rem !important;
+    border-radius: var(--border-radius-l, 16px) !important;
+    box-sizing: border-box !important;
+  }
+
+  body.page-registrati main.auth-container {
+    width: calc(100% - 4rem) !important;
+    max-width: 520px !important;
+    margin: 3rem auto !important;
+    padding: 2.5rem 2rem !important;
+    border-radius: var(--border-radius-l, 16px) !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Telefono: stessa card del computer, rimpicciolita, ma con un
+   margine laterale minimo sempre presente (mai attaccata ai bordi) */
+@media screen and (max-width: 767px) {
+  body.page-login main.auth-container,
+  body.page-registrati main.auth-container {
+    width: calc(100% - 2rem) !important;
+    max-width: 440px !important;
+    margin: 2rem auto !important;
+    padding: 1.75rem 1.25rem !important;
+    border-radius: var(--border-radius-l, 16px) !important;
+    box-sizing: border-box !important;
+  }
 }
 
 body.page-registrati .auth-header {
@@ -1891,6 +1970,20 @@ body.page-registrati .form-group input:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(42, 62, 177, 0.12);
+}
+
+/* Stesso fix del login: contenitore password largo quanto gli altri campi */
+body.page-registrati .form-group:has(input[type="password"]) > *:has(> input[type="password"]) {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+body.page-registrati .form-group input[type="password"] {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Bottone Registrati */
@@ -2752,7 +2845,8 @@ article.contenuto-lezione h3 {
     line-height: 1;
   }
 
-  .auth-buttons {
+  .auth-buttons,
+  .user-menu {
     order: 3;
     flex: 0 0 auto;
     display: flex;
@@ -2761,12 +2855,17 @@ article.contenuto-lezione h3 {
     gap: 0.5rem;
   }
 
-  /* Profilo/Accedi/Registrati più compatti su mobile, per stare
-       comodamente sulla riga insieme a logo ed eventuale badge Admin */
+  /* Profilo/Accedi/Registrati/Esci più compatti su mobile, per stare
+       comodamente sulla riga insieme a logo ed eventuale badge Admin.
+       Incluse .user-pill e .btn-logout-pill: sono i pulsanti mostrati
+       quando si è già loggati (anche come admin/moderatore), prima
+       dimenticati qui e quindi spinti fuori riga/schermo. */
   .auth-buttons .btn-profile,
   .auth-buttons .btn-logout,
   .auth-buttons .btn-login,
-  .auth-buttons .btn-register {
+  .auth-buttons .btn-register,
+  .user-menu .user-pill,
+  .user-menu .btn-logout-pill {
     padding: 0.4rem 0.7rem;
     font-size: 0.78rem;
     white-space: nowrap;
@@ -2905,8 +3004,11 @@ html, body {
   overflow-x: hidden !important;
 }
 
-/* 2. Regola specifica per iPad / Tablet (768px - 1024px) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+/* 2. Regola specifica per iPad / Tablet (768px - 1180px) */
+/* Alzato da 1024px a 1180px: iPad Pro 13" e altri tablet larghi (~1032px)
+   restavano fuori da questo intervallo, quindi l'header non andava mai a
+   capo e il bottone "Registrati" veniva tagliato fuori dallo schermo. */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
   
   /* Garantisce che nessun contenitore superi la larghezza dello schermo */
   *, *::before, *::after {
@@ -2929,6 +3031,14 @@ html, body {
   .hotbar a {
     font-size: 0.9rem !important;
     padding: 5px 8px !important;
+  }
+
+  /* Evita che Accedi/Registrati/Profilo/Admin vengano compressi o
+     tagliati quando il gruppo va a capo su iPad */
+  .auth-buttons,
+  .user-menu,
+  #admin-link {
+    flex-shrink: 0 !important;
   }
 
   /* Mantiene il contenuto principale centrato e privo di margini giganti */
@@ -3155,37 +3265,4 @@ html {
     flex: 1;
     width: 100%;
     border: none;
-}
-
-
-/* ==========================================================
-   TOGGLE MOSTRA/NASCONDI PASSWORD (login.html, registrati.html)
-   ========================================================== */
-.campo-password {
-    position: relative;
-    width: 100%;
-}
-
-.campo-password input {
-    width: 100%;
-    box-sizing: border-box;
-    padding-right: 2.75rem !important; /* spazio per non far sovrapporre il testo all'occhio */
-}
-
-.btn-toggle-password {
-    position: absolute;
-    right: 0.6rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.05rem;
-    color: #64748b;
-    padding: 4px 6px;
-    line-height: 1;
-}
-
-.btn-toggle-password:hover {
-    color: #2563eb;
 }
