@@ -1878,6 +1878,17 @@ body.page-registrati main.auth-container {
      è più alta della finestra */
 }
 
+/* La card di login/registrati non deve "allungarsi" per riempire tutto
+   lo spazio verticale: una regola globale del sito ("main {flex:1}",
+   pensata per spingere il footer in fondo nelle pagine corte) la
+   faceva crescere ben oltre il contenuto, lasciando un grande vuoto
+   bianco sotto al form e rendendola un rettangolo alto invece che un
+   riquadro compatto */
+body.page-login main.auth-container,
+body.page-registrati main.auth-container {
+  flex: none !important;
+}
+
 /* La card di Login/Registrati deve avere lo stesso aspetto (centrata,
    con bordo visibile, mai a tutta larghezza) anche su iPad e telefono.
    Serve !important perché i blocchi responsive generici più sotto nel
