@@ -9,8 +9,6 @@
     <link rel="icon" href="Immagini/logo_nexus.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
     <title>NEXUS - Registrati</title>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6496944493926409" crossorigin="anonymous"></script>
 </head>
 
 <body class="page-registrati">
@@ -25,9 +23,10 @@
                 <a href="chi_siamo.html">Chi Siamo</a>
                 <a href="esercizi.html">Esercizi</a>
                 <a href="materie.html">Materie</a>
-                <a href="verifiche.html">Verifiche</a>
                 <a href="contatti.html">Contatti</a>
-                <a href="admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;"> Pannello Admin 👑 </a> <a href="moderatore.html" id="moderatore-link" style="display: none; background-color: #2563eb; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;"> Pagina Moderatore 🛡️ </a>
+                <a href="admin.html" id="admin-link" style="display: none; background-color: #ef4444; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: bold; text-decoration: none;">
+                    Pannello Admin 👑
+                </a>
             </nav>
             <div class="auth-buttons">
                 <a href="login.html" class="btn-login">Accedi</a>
@@ -57,7 +56,10 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" required minlength="6" placeholder="Minimo 6 caratteri" />
+                <div class="campo-password">
+                    <input type="password" id="password" required minlength="6" placeholder="Minimo 6 caratteri" />
+                    <button type="button" class="btn-toggle-password" data-target="password" aria-label="Mostra password">👁️</button>
+                </div>
             </div>
 
             <button type="submit" class="btn-auth">Registrati</button>
@@ -105,6 +107,7 @@
 
     <script type="module" src="main-auth.js"></script>
     <script src="cookie_banner.js"></script>
+    <script src="password-toggle.js"></script>
     <script type="module" src="auth-signup.js"></script>
 </body>
 

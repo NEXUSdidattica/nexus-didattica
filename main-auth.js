@@ -2,6 +2,7 @@ import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs, deleteD
 import { auth, app } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { ADMIN_UID } from './admin-config.js';
+import { esc } from './sicurezza.js';
 
 const db = getFirestore(app);
 
@@ -36,7 +37,7 @@ onAuthStateChanged(auth, async (user) => {
         if (moderatoreLink) moderatoreLink.style.display = eModeratore ? "inline-block" : "none";
 
         if (authButtons) {
-            const nomeUtente = user.displayName || "Profilo";
+            const nomeUtente = esc(user.displayName || "Profilo");
             authButtons.innerHTML = `
                 <a href="/profilo.html" class="btn-profile" title="${nomeUtente}">
                     <span class="icona-profilo">👤</span><span class="nome-profilo">${nomeUtente}</span>
@@ -295,11 +296,11 @@ async function caricaMessaggiAdmin() {
             listaElem.innerHTML += `
                 <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem;">
                     <div style="display: flex; justify-content: space-between; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">
-                        <span>👤 ${data.nome} (<a href="mailto:${data.email}">${data.email}</a>)</span>
-                        <span style="font-size: 0.85rem; color: #64748b;">${data.data}</span>
+                        <span>👤 ${esc(data.nome)} (<a href="mailto:${esc(data.email)}">${esc(data.email)}</a>)</span>
+                        <span style="font-size: 0.85rem; color: #64748b;">${esc(data.data)}</span>
                     </div>
-                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #2563eb;"><strong>Motivo:</strong> ${data.motivo}</p>
-                    <p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;">${data.messaggio}</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #2563eb;"><strong>Motivo:</strong> ${esc(data.motivo)}</p>
+                    <p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;">${esc(data.messaggio)}</p>
                 </div>
             `;
         });
@@ -331,13 +332,13 @@ async function caricaVerificheAdmin() {
             listaElem.innerHTML += `
                 <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem;">
                     <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">
-                        <span>✉️ <a href="mailto:${data.email}">${data.email}</a></span>
-                        <span style="font-size: 0.85rem; color: #64748b;">${data.data}</span>
+                        <span>✉️ <a href="mailto:${esc(data.email)}">${esc(data.email)}</a></span>
+                        <span style="font-size: 0.85rem; color: #64748b;">${esc(data.data)}</span>
                     </div>
-                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #2563eb;"><strong>${data.materia}</strong> — ${data.sezione}</p>
-                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #334155;"><strong>Classe:</strong> ${data.classe} &nbsp;|&nbsp; <strong>Difficoltà:</strong> ${data.difficolta} &nbsp;|&nbsp; <strong>Scadenza:</strong> ${data.scadenza}</p>
-                    ${data.argomento ? `<p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;"><strong>Argomenti specifici:</strong> ${data.argomento}</p>` : ''}
-                    ${data.note ? `<p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;"><strong>Note:</strong> ${data.note}</p>` : ''}
+                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #2563eb;"><strong>${esc(data.materia)}</strong> — ${esc(data.sezione)}</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.9rem; color: #334155;"><strong>Classe:</strong> ${esc(data.classe)} &nbsp;|&nbsp; <strong>Difficoltà:</strong> ${esc(data.difficolta)} &nbsp;|&nbsp; <strong>Scadenza:</strong> ${esc(data.scadenza)}</p>
+                    ${data.argomento ? `<p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;"><strong>Argomenti specifici:</strong> ${esc(data.argomento)}</p>` : ''}
+                    ${data.note ? `<p style="margin-top: 0.5rem; color: #334155; line-height: 1.5;"><strong>Note:</strong> ${esc(data.note)}</p>` : ''}
                 </div>
             `;
         });
@@ -369,11 +370,11 @@ async function caricaRichiesteModeratoriAdmin() {
             listaElem.innerHTML += `
                 <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem;">
                     <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">
-                        <span>🛡️ ${data.moderatoreNome} — <a href="mailto:${data.moderatoreEmail}">${data.moderatoreEmail}</a></span>
-                        <span style="font-size: 0.85rem; color: #64748b;">${data.data}</span>
+                        <span>🛡️ ${esc(data.moderatoreNome)} — <a href="mailto:${esc(data.moderatoreEmail)}">${esc(data.moderatoreEmail)}</a></span>
+                        <span style="font-size: 0.85rem; color: #64748b;">${esc(data.data)}</span>
                     </div>
-                    <p style="margin: 0.2rem 0 0.5rem 0; font-weight: 600; color: #1d4ed8;">${data.titolo}</p>
-                    <p style="margin: 0; color: #334155; line-height: 1.5;">${data.richiesta}</p>
+                    <p style="margin: 0.2rem 0 0.5rem 0; font-weight: 600; color: #1d4ed8;">${esc(data.titolo)}</p>
+                    <p style="margin: 0; color: #334155; line-height: 1.5;">${esc(data.richiesta)}</p>
                 </div>
             `;
         });
@@ -579,28 +580,28 @@ async function caricaUtentiAdmin() {
             if (!eAdmin) {
                 azioni = `
                     ${eModeratore ? `
-                        <button onclick="rimuoviModeratore('${userId}')"
+                        <button data-azione="rimuovi-mod" data-id="${esc(userId)}"
                                 style="background-color: #e2e8f0; color: #334155; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; margin: 2px;">
                             🛡️ Rimuovi Mod
                         </button>
                     ` : `
-                        <button onclick="promuoviModeratore('${userId}')"
+                        <button data-azione="promuovi" data-id="${esc(userId)}"
                                 style="background-color: #2563eb; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; margin: 2px;">
                             🛡️ Promuovi
                         </button>
                     `}
                     ${eBannato ? `
-                        <button onclick="sbloccaUtente('${userId}', '${u.nome || u.email}')"
+                        <button data-azione="sblocca" data-id="${esc(userId)}" data-nome="${esc(u.nome || u.email)}"
                                 style="background-color: #16a34a; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; margin: 2px;">
                             ✅ Sblocca
                         </button>
                     ` : `
-                        <button onclick="bannaUtente('${userId}', '${u.nome || u.email}')"
+                        <button data-azione="banna" data-id="${esc(userId)}" data-nome="${esc(u.nome || u.email)}"
                                 style="background-color: #f59e0b; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; margin: 2px;">
                             ⛔ Banna
                         </button>
                     `}
-                    <button onclick="eliminaUtente('${userId}', '${u.nome || u.email}')" 
+                    <button data-azione="elimina" data-id="${esc(userId)}" data-nome="${esc(u.nome || u.email)}" 
                             style="background-color: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; margin: 2px;">
                         🗑️ Elimina
                     </button>
@@ -610,10 +611,10 @@ async function caricaUtentiAdmin() {
             tabellaBody.innerHTML += `
                 <tr style="border-bottom: 1px solid #f1f5f9; ${eAdmin ? 'background: #fef2f2;' : ''} ${eBannato ? 'background: #fff1f2;' : ''}">
                     <td style="padding: 0.75rem 1rem; font-weight: bold; color: #1e293b;">
-                        ${eAdmin ? '👑 ' : '👤 '}${u.nome || 'Utente'} ${eAdmin ? '<span style="font-size:0.75rem; color:#ef4444; margin-left:5px;">(Admin)</span>' : ''}
+                        ${eAdmin ? '👑 ' : '👤 '}${esc(u.nome || 'Utente')} ${eAdmin ? '<span style="font-size:0.75rem; color:#ef4444; margin-left:5px;">(Admin)</span>' : ''}
                     </td>
-                    <td style="padding: 0.75rem 1rem; color: #2563eb;"><a href="mailto:${u.email}">${u.email}</a></td>
-                    <td style="padding: 0.75rem 1rem; color: #64748b;">${u.dataRegistrazione || 'N/D'}</td>
+                    <td style="padding: 0.75rem 1rem; color: #2563eb;"><a href="mailto:${esc(u.email)}">${esc(u.email)}</a></td>
+                    <td style="padding: 0.75rem 1rem; color: #64748b;">${esc(u.dataRegistrazione || 'N/D')}</td>
                     <td style="padding: 0.75rem 1rem;">${eAdmin ? '<span style="font-size:0.8rem; color:#ef4444; font-weight:600;">👑 Admin</span>' : badgeStato}</td>
                     <td style="padding: 0.75rem 1rem; text-align: center; white-space: nowrap;">${azioni}</td>
                 </tr>
@@ -701,6 +702,25 @@ window.promuoviModeratore = promuoviModeratore;
 window.rimuoviModeratore = rimuoviModeratore;
 window.bannaUtente = bannaUtente;
 window.sbloccaUtente = sbloccaUtente;
+
+// Gestione click dei bottoni della tabella utenti (sostituisce gli onclick inline,
+// cosi' nome ed email degli utenti non finiscono mai dentro codice JavaScript).
+const tabellaUtentiBody = document.getElementById('tabella-utenti-body');
+if (tabellaUtentiBody) {
+    tabellaUtentiBody.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-azione]');
+        if (!btn) return;
+        const { azione, id, nome } = btn.dataset;
+        const azioni = {
+            'promuovi': () => promuoviModeratore(id),
+            'rimuovi-mod': () => rimuoviModeratore(id),
+            'banna': () => bannaUtente(id, nome),
+            'sblocca': () => sbloccaUtente(id, nome),
+            'elimina': () => eliminaUtente(id, nome)
+        };
+        if (azioni[azione]) azioni[azione]();
+    });
+}
 
 
 // ==========================================

@@ -2,6 +2,7 @@ import { getFirestore, doc, getDoc, collection, getDocs, addDoc } from "https://
 import { auth, app } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { ADMIN_UID } from './admin-config.js';
+import { esc } from './sicurezza.js';
 
 const db = getFirestore(app);
 let utenteCorrente = null;
@@ -69,9 +70,9 @@ async function caricaStudentiModeratore() {
 
             tabellaBody.innerHTML += `
                 <tr style="border-bottom: 1px solid #f1f5f9; ${eBannato ? 'background: #fff1f2;' : ''}">
-                    <td style="padding: 0.75rem 1rem; font-weight: bold; color: #1e293b;">👤 ${u.nome || 'Utente'}</td>
-                    <td style="padding: 0.75rem 1rem; color: #2563eb;"><a href="mailto:${u.email}">${u.email}</a></td>
-                    <td style="padding: 0.75rem 1rem; color: #64748b;">${u.dataRegistrazione || 'N/D'}</td>
+                    <td style="padding: 0.75rem 1rem; font-weight: bold; color: #1e293b;">👤 ${esc(u.nome || 'Utente')}</td>
+                    <td style="padding: 0.75rem 1rem; color: #2563eb;"><a href="mailto:${esc(u.email)}">${esc(u.email)}</a></td>
+                    <td style="padding: 0.75rem 1rem; color: #64748b;">${esc(u.dataRegistrazione || 'N/D')}</td>
                     <td style="padding: 0.75rem 1rem;">${badgeStato}</td>
                 </tr>
             `;
